@@ -20,10 +20,10 @@ public class Client implements TaskDefs {
 	private TaskObject currentTask;
 
 	/* hier bitte die Matrikelnummer eintragen */
-	private final int matrikelnr = 2233018;
+	private final int matrikelnr = 0;
 
 	/* hier bitte das TMT-Passwort eintragen */
-	private final String password = "MhZ9yoq";
+	private final String password = "";
 
 	/* Aufgaben, die bearbeitet werden sollen */
 	private final int[] tasks = { TASK_CLEARTEXT, TASK_XOR, TASK_MODULO,

@@ -1,0 +1,128 @@
+\documentclass[a4]{exam}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{algorithm}
+\usepackage{algorithmicx}
+\usepackage{algpseudocode}
+
+\renewcommand{\author}{Michael Krane}
+\newcommand{\gruppe}{Gruppe E2}
+\newcommand{\assignment}{Übungsblatt 4}
+\newcommand{\class}{BeKo 2013/14}
+
+\pagestyle{headandfoot}
+\firstpageheadrule
+\runningheadrule
+\header{\author}{\gruppe : \assignment}{\class}
+\firstpagefooter{}{}{Seite \thepage\ von \numpages}
+\runningfooter{}{}{Seite \thepage\ von \numpages}
+
+\qformat{\underline{\textbf{Aufgabe \thequestion}} \thequestiontitle\hfill }
+
+\begin{document}
+\begin{questions}
+\setcounter{question}{11} 
+
+%
+% Aufgabe 12
+%
+\titledquestion {Lineare Bandbeschrankung }
+Damit eine $c*n$ lange Bandbeschriftung auf eine Beschriftung der Länge $n$ umgebaut werde kann, muss die Anzahl der Informationen pro Zellen erhöht werden. Dazu fasst man jeweils $c$-Zeichen zu einem neuen Zeichen zusammen, z. B. mit $c = 2$ und der Eingabe: $\Box \mid a\mid b \mid b \mid a \mid a \mid a \mid \Box \Rightarrow \Box a \mid bb \mid aa \mid a\Box$. Das ürsprüngliche Bandalphabet  $(\Gamma = \{a,b,\Box\})$ wird zu $\Gamma^\prime = \{aa,ab,a\Box,ba,bb,b\Box,\Box a,\Box b, \Box\Box\}$ umgebaut. Das Bandalphabet vergrößert sich also um einen Faktor von $ \frac{ \mid \Gamma^\prime\mid}{\mid \Gamma \mid} = 3 = 3^{2-1}$. Für den allgemeinen Fall vergrößert sich das ursprüngliche Bandalphabet also um den Faktor $ \mid\Gamma\mid^{c-1}$ .
+
+%
+% Aufgabe 13
+%
+\titledquestion {LOOP-Programme}
+LOOP-Programm A berechnet $x_2 - x_1$, indem es $x_1$-mal 1 von $x_2$ abzieht. \\
+LOOP-Programm B berechnet $x_1 - x_2$, indem es $x_2$-mal 1 von $x_1$ abzieht. \\
+LOOP-Programm C berechnet $\lvert x_1 - x_2 \rvert$. Indem es zuerst Programm B ausführt und das Ergebnis in $x_3$ speichert, für $x_2 \ge x_1$ ist $x_3 = 0$. Danach wird das Programm A ausgeführt und das Ergebnis in $x_4$ gespeichert, wobei $x_4 = 0$ falls $x_1 \ge x_2$ ist. Da nun entweder $x_3 = 0$ oder $x_4 = 0$ ist, kann man einfach $x_3 + x_4$ rechnen um die positive Differenz von $x_1$ und $x_2$ zu erhalten.\\
+
+%
+% Aufgabe 14
+%
+\titledquestion {GOTO-Programme}
+\begin{parts}
+
+% Aufgabe 14a
+\part  $f_1: \mathbb{N}_0 \times \mathbb{N}_0 \Rightarrow \mathbb{N}_0$, $f_1(a,b) = a+ b$
+\begin{align}
+&\phantom{M_0:} x_0 = x_1; &\text{Das Ergebnis $x_0$ = a gesetzt.}\notag\\
+&M_1: \text{IF } x_2 = 0  \text{ THEN GOTO }  M_2;&\text{Fall $x_2 = 0$ ist muss nichts addiert werden.}  \notag\\
+&\phantom{M_0:}x_0 = x_0 + 1;&\text{Das Ergebnis $x_0$ wird um Eins erhöht.} \notag\\
+&\phantom{M_0:}x_2 = x_2 - 1;&\text{Die Eingabe $x_2$ wird um Eins reduziert.} \notag\\
+&\phantom{M_0:}\text{GOTO } M_1; & \text{Sprung zum Check für  $x_2$ = 0.} \notag\\
+&M_2: \text{HALT};\notag&
+\end{align}
+
+% Aufgabe 14b
+\part  $f_2: \mathbb{N}_0 \times \mathbb{N}_0 \Rightarrow \mathbb{N}_0$, $f_2(a,b) = a - b$
+\begin{align}
+&\phantom{M_0:} x_0 = x_1; &\text{Die Ausgabe $x_0$ = a gesetzt.}\notag\\
+& M_1: \text{IF } x_2 = 0 \text{ THEN GOTO } M_2; &\text{Falls $x_2 = 0$ ist muss nichts subtraiert werden.}\notag\\
+&\phantom{M_0:}x_0 = x_0 -1; &\text{Das Ergebnis $x_0$ wird um Eins reduziert.}\notag\\
+&\phantom{M_0:}x_2 = x_2 -1; &\text{Die Eingabe $x_2$ wird um Eins reduziert.}\notag\\
+&\phantom{M_0:}\text{IF } x_0  = 0 \text{ THEN GOTO } M_2; &\text{Abbruch, da es keien Zahlen $< 0$ gibt.}\notag\\
+&\phantom{M_0:}\text{GOTO }M_1; &\text{Sprung zum Check für  $x_2$ = 0.}\notag\\
+&M_2:\text{HALT};\notag
+\end{align}
+
+% Aufgabe 14c
+\part  $f_3: \mathbb{N}_0 \times \mathbb{N}_0 \Rightarrow \mathbb{N}_0$, $f_3(a,b) = min(a,b)$
+\begin{align}
+&\phantom{M_0:} x_3 = f_2(x_1,x_2);&\text{Die Differenz von $x_1$ und $x_2$ wird gebildet.}\notag\\
+&\phantom{M_0:}\text{IF } x_3 = 0 \text{ THEN GOTO } M_1;&\text{Wenn $x_3 = 0$ ist, ist $x_2 >= x_1$, also mit $M_1$ weiter.}\notag\\
+&\phantom{M_0:}x_0 = x_2;&\text{$x_2$ ist die kleinere Zahl.}\notag\\
+&\phantom{M_0:}\text{GOTO } M_2;&\text{Sprung zum Programmende.}\notag\\
+&M_1: x_0 = x_1;&\text{$x_1$ ist die kleinere Zahl.}\notag\\
+&M_2: \text{HALT}; \notag
+\end{align}
+
+% Aufgabe 14d
+\part  $f_4: \mathbb{N}_0 \times \mathbb{N}_0 \Rightarrow \mathbb{N}_0$, $f_4(a,b) = a $ MOD $ b$
+\begin{align}
+&M_1: x_0 = f_2(x_1,x_2);&\text{Die Differenz von $x_1$ und $x_2$ wird gebildet.}\notag\\
+&\phantom{M_0:}\text{IF } x_0 = 0 \text{ THEN GOTO } M_2;&\text{Abbruchbedingung. Differenz = 0.}\notag\\
+&\phantom{M_0:}x_1 = x_0;&\text{Die Differenz $(> x_2)$  ist das neue a.}\notag\\
+&\phantom{M_0:}\text{GOTO } M_1;&\text{Sprung zurück.}\notag\\
+&M_2: x_4 = f_2(x_1,x_2)&\text{Differenz $x_1$ und $x_2$.}\notag\\
+&\phantom{M_0:} x_5= f_2(x_2,x_1)&\text{Differenz $x_2$ und $x_1$.}\notag\\
+&\phantom{M_0:}\text{IF } x_4 = 0 \text{ THEN GOTO } M_3;&\text{Falls $ x_1 - x_2 = 0$ ist ...}\notag\\
+&\phantom{M_0:}\text{GOTO } M_5;&\notag\\
+&M_3:\text{IF } x_5 = 0 \text{ THEN GOTO } M_4;&\text{und $x_2 - x_1 = 0  \Rightarrow x_1 = x_2$}\notag\\
+&\phantom{M_0:}x_0 = x_1;&\text{Falls $x_1 \ne x_2$ steht in  $x_1$ der modulo ...}\notag\\
+&\phantom{M_0:}\text{GOTO } M_5;&\text{}\notag\\
+&M_4:x_0 = 0;&\text{ansonsten geht der Modulo glatt auf $(=0)$.}\notag\\
+&M_5:\text{HALT};&\notag
+\end{align}
+
+% Aufgabe 14e
+\part  $f_5: \mathbb{N}_0 \times \mathbb{N}_0 \Rightarrow \mathbb{N}_0$, $f_5(a,b) = a $ DIV $ b$
+\begin{align}
+&M_1:\text{IF } x_1 = 0 \text{ THEN GOTO } M_3;&\text{Abbruchbedingung: 0 div a ist immer 0.}\notag\\
+&\phantom{M_0:} x_3 = f_4(x1,x2); &\text{$x_3$ enthält $x_1$ mod $x_2$.}\notag\\
+&\phantom{M_0:} x_3 = f_2(x1,x3); &\text{Damit die Divsion glatt wird $x_3 = x_1 - x_3$ }\notag\\
+&M_2:\text{IF } x_3 = 0 \text{ THEN GOTO } M_3;&\text{Abbruchbedingung: $x_2$ passt nicht in $x_1$ .}\notag\\
+&\phantom{M_0:} x_3 = f_2(x1,x2); &\text{Division durch wiederholte Subtraktion.}\notag\\
+&\phantom{M_0:}x_0 = x_0 + 1;&\text{$x_0$ zählt mit wie oft $x_2$ in $x_1$ passt.}\notag\\
+&\phantom{M_0:}x_1 = x_3;&\text{Minuend aktualisieren.}\notag\\
+&\phantom{M_0:}\text{GOTO } M_1;&\text{Sprung zum Check für  $x_3$ = 0.}\notag\\
+&M_3: \text{HALT};\notag
+\end{align}
+\end{parts}
+
+%
+% Aufgabe 15
+%
+\titledquestion {WHILE-Programme}
+\begin{parts}
+
+% Aufgabe 15a
+\part  Für $x_1 =3 $ und $x_2 = 2$ gibt das Programm $x_0 = 12$ aus.
+
+% Aufgabe 16b
+\part Das Programm implementiert die Funktion $f : \mathbb{N} \Rightarrow \mathbb{N}$, $ f(x_1,x_2) = 2^{x_2}*x_1$. Wobei die innere Schleife (Zeile 3-6) die Zahl verdoppelt und die aüßere Schleife (Zeile 1-8) die Anzahl der Verdoppelungen vorgibt.
+
+\end{parts}
+\end{questions}
+\end{document}

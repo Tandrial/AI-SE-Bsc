@@ -1,0 +1,114 @@
+\documentclass[a4]{exam}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{algorithm}
+\usepackage{algorithmicx}
+\usepackage{algpseudocode}
+\usepackage{enumerate}
+
+\renewcommand{\author}{Michael Krane}
+\newcommand{\gruppe}{Gruppe E2}
+\newcommand{\assignment}{Übungsblatt 9}
+\newcommand{\class}{BeKo 2013/14}
+
+\pagestyle{headandfoot}
+\firstpageheadrule
+\runningheadrule
+\header{\author}{\gruppe : \assignment}{\class}
+\firstpagefooter{}{}{Seite \thepage\ von \numpages}
+\runningfooter{}{}{Seite \thepage\ von \numpages}
+
+\qformat{\underline{\textbf{Aufgabe \thequestion}} \thequestiontitle\hfill }
+
+\begin{document}
+\begin{questions}
+\setcounter{question}{29}
+
+%
+% Aufgabe 30
+%
+\titledquestion {Satz von Rice / Unentscheidbarkeit }
+Es ist zuzeigen, dass $L_0 \le L_= $ gilt. Falls $L_0 \le  L_=$ gilt, kann man aus $L_=$ eine TM für $L_0$ bauen.
+Dies ist mit der Vorverarbeitungs Funktion $f(w) = w\#w_0$ möglich, wobei $w_0$ die Kodierung einer TM ist, die die konstante Nullfunktion berechnet. Da laut Satz von Rice $L_0$ 
+unentscheidbar ist und $L_0 \le L_=$ gilt, ist auch $L_=$ unentscheidbar.
+
+%
+% Aufgabe 31
+%
+\titledquestion {Postsches Korrespondenzproblem }
+\begin{parts}
+% Aufgabe 31a
+\part  Eine mögliche Lösung ist : 3,1,4 
+\begin{align}
+&ab \mid aba  \mid abaa  \notag &&\\
+&a  \phantom{b}\mid ab \phantom{a} \mid abaa  \notag &&
+\end{align}
+
+% Aufgabe 31b
+\part Das MPCP gilt als gelöst, wenn die komplette Sequenz gleich ist, wenn man mit dem Paar $(x_1,y_1)$ beginnt, unterscheiden sich die Sequenzen bereits im 1. Zeichen.
+
+% Aufgabe 31c
+\part
+\begin{enumerate}[1]
+  \item Es gibt ingesamt $K^n$ verschiedenen Indexfolgen. Da man in jedem Schritt eins der K-Wortpaare auswählen kann.
+  \item 
+	\begin{align}
+\sum\limits_{n=1}^{N} \lambda(K,n) = \sum\limits_{n=1}^{N} K^n &= K + K^2 + \dots + K^N \notag \\
+	s_n &= K + K^2 + \dots + K^N  & \mid&  * K \\
+	K s_n &= K^2 + K^3 + \dots + K^{N+1} \\
+	\text{(1) - (2): }  s_n - K s_n &= K - K^{N+1} \notag\\
+	s_n(1-K) &= K - K^{N+1} &\mid& / (1-K) \notag \\
+	s_n &= \frac{K - K^{N+1}}{1-K} \notag \\
+	\sum\limits_{n=1}^{N} \lambda(K,n) &= \frac{K - K^{N+1}}{1-K} \notag
+	\end{align}
+\end{enumerate}
+
+\end{parts}
+
+%
+% Aufgabe 32
+%
+\titledquestion {Reduktion H $\leq$ MPCP}
+\begin{parts}
+
+% Aufgabe 32a
+\part  Die Turingmaschine sucht vom Wortanfang aus ein b. Wenn die TM ein b gefunden hat wird der Kopf wieder auf den Start der Eingabe gesetzt und die Maschine wechselt in den Endzustand. Die TM terminiert bei allen Eingaben die mindestens ein b enthalten : $L(M) =  \{a^*b^+a^*b^*\}$
+
+% Aufgabe 32b
+\part Da es sich um ein MPCP handelt ist $(x_1,y_1) = (\#,\#z_0b\#)$ 
+\begin{enumerate}
+  \item Kopierregeln = $\{(a,a),(b,b),(\Box,\Box),(\#,\#)\}$
+
+  \item Überführugnsregeln = $\{(z_0b,z_1b), (z_E\Box,z_E\Box), (z_Ea,z_Ea), (z_Eb,z_Eb),\\
+	(z_0\Box,\Box z_0), (z_0a,az_0), (z_1\Box,\Box z_E)\\
+	(az_1a,z_1aa), (bz_1a,z_1ba), (\Box z_1a,z_1\Box a),\\
+	(az_1b,z_1ab), (bz_1b,z_1bb), (\Box z_1b,z_1\Box b),\\
+	(\#z_1a,\#z_1\Box a), (\#z_1b,\#z_1\Box b),\\
+	(z_E\#,z_E\Box\#),\\
+	(z_0\#,\Box z_0\#), (z_1\#,z_E\Box\#)$
+
+  \item Löschregeln = $\{(az_E,z_E),(z_Ea,z_E),(bz_E,z_E),(z_Eb,z_E),(\Box z_E,z_E),(z_E\Box ,z_E)\}$
+
+  \item Abschlussregeln = $\{(z_E\#\#,\#)\}$
+\end{enumerate}
+
+% Aufgabe 32c
+\part Für die Eingabe 'b' durchläuft die TM folgende Konfigurationen:
+$z_0 b \vdash 
+z_1b \vdash 
+z_1\Box b \vdash 
+ z_Eb $
+
+% Aufgabe 32d
+\part $(\#,\# z_0b\#),(z_0b,z_1b),(\# z_1b,\# z_1\Box b),(\#,\#),(z_1\Box, \Box z_E),(b,b),(\#,\#),\\(\Box z_E, z_E), (b,b),(\#,\#)(z_Eb,z_E),(\#,\#)(z_E\#\#,\#)$
+\end{parts}
+
+%
+% Aufgabe 33
+%
+\titledquestion {Es weihnachtet sehr! }
+Ein dem Angebot wird eine Turingmaschine beschrieben. Das Band wird durch die Häuser simuliert, das Bandalphabet ist 0 (kein Geschenk im Haus) und 1 (Geschenk im Haus). Jeder Wichtel   stellt eine Übergangsfunktion oder eine Abfolge von Übergangsfunktionen (Der Schlittenfahrer) dar. Das Problem ist der letze Punkt des Vertrages. Es soll ein Computerprogramm geben das entscheidet ob die Wichtel zurück kommen oder nicht. Wenn man das Angebot als eine Art Turingmaschine interpretiert, würde diese Programm das Halteproblem lösen. Das Halteprogramm ist allerdings nicht entscheidbar und deshalb kann es ein solchen Computerprogramm nicht geben. Herr M. E. Phisto ist also ein Betrüger.
+
+\end{questions}
+\end{document}

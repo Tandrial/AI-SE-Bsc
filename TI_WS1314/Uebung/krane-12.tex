@@ -1,0 +1,87 @@
+\documentclass[a4]{exam}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{algorithm}
+\usepackage{algorithmicx}
+\usepackage{algpseudocode}
+
+\renewcommand{\author}{Michael Krane}
+\newcommand{\gruppe}{Gruppe E2}
+\newcommand{\assignment}{Übungsblatt 12}
+\newcommand{\class}{BeKo 2013/14}
+
+\pagestyle{headandfoot}
+\firstpageheadrule
+\runningheadrule
+\header{\author}{\gruppe : \assignment}{\class}
+\firstpagefooter{}{}{Seite \thepage\ von \numpages}
+\runningfooter{}{}{Seite \thepage\ von \numpages}
+
+\qformat{\underline{\textbf{Aufgabe \thequestion}} \thequestiontitle\hfill }
+
+\begin{document}
+\begin{questions}
+\setcounter{question}{40}
+
+%
+% Aufgabe 41
+%
+\titledquestion {Weitere kurze Fragen}
+\begin{parts}
+
+% Aufgabe 41a
+\part  Falsch, wäre H NP-vollständig also $H \in NP$ müsste H entscheidbar sein.
+
+% Aufgabe 41b
+\part Falsch, da $P \subseteq NP$ gitl, würde aus der Aussage sofort $P =NP$ folgen, was allerdings (noch) nicht bekannt ist.
+
+% Aufgabe 41c
+\part Richtig, man kann einen Faktor $t \in \mathbb{N}$ raten und dann in polynomialer Zeit überprüfuen ob $2 \le t \ln k$ und ob n durch t teilbar ist.
+
+% Aufgabe 41d
+\part Richtig. Wenn man eine Aussagelogischeformel f in KNF negiert, dann ist $\neg f$ in DNF. Es gilt: 
+\begin{align}
+\text{F hat eine erfüllende Belegung } &\Leftrightarrow \neg f \text{ ist nicht die Tautologie} \notag \\
+f \in \text{KNF-SAT} &\Leftrightarrow \neg f \notin \text{DNF-TAU}
+\end{align}
+$\Rightarrow $ Wäre DNF-TAU in polynomialer Zeit entscheidbar, dann könnte man auch KNF-SAT in polynomialer Zeit entscheiden und damit auch alle anderen Probleme in NP.
+Also wäre P = NP, was allerdings (noch) nicht bewiesen ist.
+\end{parts}
+
+%
+% Aufgabe 42
+%
+\titledquestion {CLIQUE $\le_p$ INDEPENDENT - SET}
+\begin{parts}
+
+% Aufgabe 42a
+\part  Sei $G =(V,E)$ ein ungerichteter Graph und k eine Zahl. Wir definieren $f(G,k) = (G', k)$ mit $G'(V,E')$ und $E' = \{(v_1,v_2) \in V \times V \mid v_1 \not= v_2 \wedge (v_1,v_2) \notin E\}$, also die Menge aller Kanten die nicht in E liegen. Diese Funktion f ist total und in polynomialzeit berechenbar.
+\begin{align}
+(G,k) \in \text{CLIQUE} \Leftrightarrow f(G,k) \in \text{INDEPENDET - SET}
+\end{align}
+ und damit ist INDEPENDET - SET NP-hart.
+
+% Aufgabe 42b
+\part Es ist möglich eine Menge M mit k Knoten zuraten und dann zu überprüfen ob $M \in IS$ ist. Es gibt maximal $\frac{n(n-1)}{2}$ Kanten, also ist das testen in polynomialer Zeit möglich. Zusammen mit dem Ergebnis aus (a) bedeutet das das INDEPENDENT - SET NP-vollständig ist
+\end{parts}
+
+%
+% Aufgabe 43
+%
+\titledquestion {VERTEX - COVER}
+\begin{parts}
+
+% Aufgabe 43a
+\part  Sei $G = (V,E) $ ein ungerichteter Graph mit $n = \mid V\mid$ und $k \in \mathbb{N}$. Wir definieren $f(G,k) = (G,n-k)$. Diese Funktion f ist total und in polynomialzeit berechenbar.\\
+Wir müssen zeigen: $(G,k) \in \text{ INDEPENDENT - SET} \Leftrightarrow f(G,k) \in \text{VERTEX - COVER}$\\
+"$\Rightarrow$": Sei $(G,k) \in IS$ und sei S ein IS der Größe k. Wir behaupten, dass $ V \backslash S$ ein VC der Größe $n-k$ ist, d. h. dass für alle Kanten $e \in E$ min ein Knoten der Kante in $V \backslash S$ liegt.\\ Angenommen es gäbe eine Kante $e' = \{v_1,v_2\} \in E $ mit $v_1 \notin V \backslash S$ und $v_2 \notin V \backslash S$, d.h. $v_1,v_2 \in S$. Eine solche Kante gibt es nicht, da $S \in IS$ ist.
+\\"$\Leftarrow$": Sei $(G,n-k) \in VC$ und C ein VC der Größe $n-k$. Dann ist $V \backslash C $ ein IS der Größe k, d. h. es gibt keine Kannten zwischen ja 2 Knoten aus $V \backslash C$. Angenommen es gäbe eine Kanten mit $ e = {v_1,v_2} \in E$ mit $v_1,v_2 \in V \backslash C$, d.h. $v_1,v_2 \notin C$. Eine solche Kanten gibt es nicht, da C eine Knotenüberdeckung ist.\\
+Daraus folgt das VC NP-hart ist.
+
+% Aufgabe 43b
+\part Es ist möglich eine Menge M mit k Knoten zuraten und dann zu überprüfen ob $M \in VC$ ist. Es gibt maximal $\frac{n(n-1)}{2}$ Kanten, also ist das testen in polynomialer Zeit möglich. Zusammen mit dem Ergebnis aus (a) bedeutet das das VERTEX - COVER NP-vollständig ist
+\end{parts}
+
+\end{questions}
+\end{document}

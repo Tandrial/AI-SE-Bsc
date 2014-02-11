@@ -1,0 +1,159 @@
+\documentclass[a4]{exam}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{algorithm}
+\usepackage{algorithmicx}
+\usepackage{algpseudocode}
+
+\renewcommand{\author}{Michael Krane}
+\newcommand{\gruppe}{Gruppe E2}
+\newcommand{\assignment}{Übungsblatt 5}
+\newcommand{\class}{BeKo 2013/14}
+
+\pagestyle{headandfoot}
+\firstpageheadrule
+\runningheadrule
+\header{\author}{\gruppe : \assignment}{\class}
+\firstpagefooter{}{}{Seite \thepage\ von \numpages}
+\runningfooter{}{}{Seite \thepage\ von \numpages}
+
+\qformat{\underline{\textbf{Aufgabe \thequestion}} \thequestiontitle\hfill }
+
+\begin{document}
+\begin{questions}
+\setcounter{question}{15}   
+
+%
+% Aufgabe 16
+%
+\titledquestion {WHILE-Programm} 
+Das folgende WHILE-Programm berechnet $f(x_1,x_2) = ggT(x_1,x_2)$:
+\begin{align}
+&\text{WHILE } x_1 \ne x_2 \text{ DO} & \notag \\
+&\phantom{WHILE }\text{IF } x_2 - x_1  = 0\text{ THEN} &\notag\\
+&\phantom{WHILE IF} x_1:=  x_1-x_2 &\notag\\
+&\phantom{WHILE }\text{ELSE } &\notag\\
+&\phantom{WHILE IF} x_2 := x_2-x_1& \notag \\
+&\phantom{WHILE }\text{END;} &\notag\\
+&\text{END}; &\notag\\
+&x_0 := x_1&\notag
+\end{align}
+
+Makro $\text{WHILE } x_1 \ne x_2 \text{ DO A END} $:
+\begin{align}
+&\text{IF } x_2 = x_1\text{ THEN } x_3 := 0 \text{ ELSE } x_3 := 1 \text{ END;}& \notag \\
+&\text{WHILE }x_3 \ne 0 \text{ DO}& \notag \\
+&\phantom{WHILE } A;&\notag\\
+&\phantom{WHILE }\text{IF } x_2 = x_1\text{ THEN } x_3 := 0 \text{ ELSE } x_3 := 1 \text{ END;}& \notag \\
+&\text{END}&\notag
+\end{align}
+
+Makro $ \text{IF } x_2 = x_1\text{ THEN } A \text{ ELSE B END} $:
+\begin{align}
+& x_3 := x_1 - x_2;& \notag \\
+& x_4 := x_2 - x_1;& \notag \\
+& x_3 := x_3 + x_4;& \notag \\
+&\text{IF } x_3 = 0\text{ THEN } A \text{ ELSE } B \text{ END}& \notag 
+\end{align}
+
+Makro $\text{IF } x_1 = 0 \text{ THEN A ELSE B END}$:
+\begin{align}
+&x_2 := x_1; & \notag \\
+&x_3 := 1; & \notag \\
+&x_4 := 0; & \notag \\
+& \text{WHILE } x_2 \ne 0 \text{ DO} &\notag\\
+&\phantom{WHILE } x_2 := x_2- 1;& \notag \\
+&\phantom{WHILE } x_3 := 0;& \notag \\
+&\phantom{WHILE } x_4 := 1& \notag \\
+&\text{END;} &\notag\\
+& \text{WHILE } x_3 \ne 0 \text{ DO} &\notag\\
+&\phantom{WHILE } x_3 := x_3- 1;& \notag \\
+&\phantom{WHILE } \text{A}& \notag \\
+&\text{END;} &\notag\\
+& \text{WHILE } x_4 \ne 0 \text{ DO} &\notag\\
+&\phantom{WHILE } x_4 := x_4- 1;& \notag \\
+&\phantom{WHILE } \text{B}& \notag \\
+&\text{END} &\notag
+\end{align}
+\newpage
+
+%
+% Aufgabe 17
+%
+\titledquestion {LOOP-Programm}
+\begin{parts}
+
+% Aufgabe 17a
+\part In einem LOOP-Programm wird die Anzahl der Schleifendurchläufe festgelegt, bevor die Schleife beginnt. Innerhalb der Schleife kann die Anzahl dann nicht mehr verändert werden, deshalb muss jede Schleife und damit auch jedes LOOP-Programm terminieren.
+
+% Aufgabe 17b
+\part Damit eine Programmiersparche turingmächtig ist, muss sie partielle Funktionen berechnen können. Da alle LOOP-Programme terminieren kann es keine partiellen Funktionen geben, also sind LOOP-Programme nicht turingmächtig.
+
+% Aufgabe 17c
+\part Das folgende LOOP-Programm berechnet die Funktion $f : \mathbb{N}_0 \Rightarrow \mathbb{N}_0$, $f(n) = \begin{cases} 0 &$, falls $ n = 0  \\ \lceil \log_2(n) \rceil& $, sonst $ \\  \end{cases}$
+\begin{align}
+& x_2 := 1; & \notag \\
+&\text{LOOP } x_1  \text{ DO } &\notag\\
+&\phantom{LOOP} \text{IF} (x_2 +1) - x_1 = 0 \text{ THEN}& \notag \\
+&\phantom{LOOP LOOP} x_2 := 2 * x_2; & \notag \\
+&\phantom{LOOP LOOP} x_3 := x_3 +1;& \notag \\
+&\phantom{LOOP} \text{END} & \notag \\
+&\text{END} &\notag\\
+&x_0 := x_3;&\notag
+\end{align}
+\end{parts}
+
+%
+% Aufgabe 18
+%
+\titledquestion {primitiv-rekursive Funktionen} 
+\begin{parts}
+
+% Aufgabe 18a
+\part  
+$f_1(0,y) = g(y) = id = \pi^1_1(y)$ \\
+$f_1(x+1,y) = h(f_1(x,y),x,y) = dec(\pi^3_1(f_1(x,y),x,y))$
+
+% Aufgabe 18b
+\part 
+$\chi_{\{0\}}(0) = 1$ \\
+$\chi_{\{0\}}(n+1) =  h(\chi_{\{0\}}(n),n) = 0$ 
+
+% Aufgabe 18c
+\part 
+$f_2(0,y) = g(y) = f_3(y)$\\
+$f_2(x+1,y) = h(f_2(x,y),x,y) =  y * \pi^3_1(f_2(x,y),x,y)$
+
+$f_3(0) = 0$\\
+$f_3(x+1) = h(f_3(x),x) = 1$
+
+\end{parts}
+
+%
+% Aufgabe 19
+%
+\titledquestion {SKIP-Programm} 
+\begin{parts}
+
+% Aufgabe 19a
+\part Damit ein GOTO-Programm durch ein SKIP-Programm simuliert werden kann, muss die komplette GOTO-Syntax durch die SKIP-Syntax ausgedrückt werden:
+\begin{itemize}
+\item Wertzuweisung: Die Syntax für die Wertezuweisung ist bei beiden Sprachen identisch.
+\item Unbedingter Sprung: $M_j : \text{ GOTO } M_i =  \begin{cases} \text{SKIP } (i-j-1) & $, falls $ i > j \\  \text{GOTOSTART; SKIP} (j-1) & $, falls $ i = j \\ \text{GOTOSTART; SKIP}(j-i-1) & $, falls $ i < j \\  \end{cases}$  
+\item Bedingter Sprung: Die Syntax ist fast identisch, nur GOTO  muss durch SKIP ersetzt werden.
+\item Stopanweisung: HALT = SKIP(n); , wobei n = Anzahl der Zeilen im GOTO-Programm.
+\end{itemize}
+
+% Aufgabe 19b
+\part Damit ein SKIP-Programm durch ein GOTO-Programm simuliert werden kann, muss die komplette SKIP-Syntax durch die GOTO-Syntax ausgedrückt werden:
+\begin{itemize}
+\item Wertzuweisung: Die Syntax für die Wertezuweisung ist bei beiden Sprachen identisch.
+\item Unbedingter Sprung: $\text{SKIP}(k) = \begin{cases} M_i : \text{GOTO } M_{i+k+1}; & $, falls $ i+k+1 < n \\  M_i: \text{HALT;} & $, falls $ i+k+1 \geq n  \end{cases}$ n = Zeilenanzahl.
+\item Bedingter Sprung: Die Syntax ist fast identisch, nur SKIP  muss durch GOTO ersetzt werden.
+\item Sprung zum Start: GOTOSTART = $\text{GOTO } M_1$;
+\end{itemize}
+
+\end{parts}
+\end{questions}
+\end{document}

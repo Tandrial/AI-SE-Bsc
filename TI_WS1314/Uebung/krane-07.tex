@@ -1,0 +1,89 @@
+\documentclass[a4]{exam}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{algorithm}
+\usepackage{algorithmicx}
+\usepackage{algpseudocode}
+
+\renewcommand{\author}{Michael Krane}
+\newcommand{\gruppe}{Gruppe E2}
+\newcommand{\assignment}{Übungsblatt 7}
+\newcommand{\class}{BeKo 2013/14}
+
+\pagestyle{headandfoot}
+\firstpageheadrule
+\runningheadrule
+\header{\author}{\gruppe : \assignment}{\class}
+\firstpagefooter{}{}{Seite \thepage\ von \numpages}
+\runningfooter{}{}{Seite \thepage\ von \numpages}
+
+\qformat{\underline{\textbf{Aufgabe \thequestion}} \thequestiontitle\hfill }
+
+\begin{document}
+\begin{questions}
+\setcounter{question}{22}
+
+%
+% Aufgabe 23
+%
+\titledquestion {Reduktionen I}
+Mit der  Vorverarbeitung $f(a,b,c)$ ist es möglich mit der Maschine $M_{sum}$ zuentscheiden ob $c= a- b$ gilt: \\
+$f: \mathbb{Z}^3 \Rightarrow \mathbb{Z}^3$, $f(a,b,c) = (a,-b,c)$, also $c' = c$ , $b' = -b$ und $a' = a$.
+
+%
+% Aufgabe 24
+%
+\titledquestion {Reduktionen II}
+\begin{parts}
+
+% Aufgabe 24a
+\part  Für alle Zahlen gilt: gerade Zahl + 1 = ungerade Zahl. Also kann man mit der Vorverarbeitung $f_a$ das Problem A auf B reduzieren:
+$f_a: \mathbb{Z} \Rightarrow \mathbb{Z}$, $f_a(x) = x +1$.
+
+% Aufgabe 24b
+\part Wenn $x \mod 11 = 0$ dann ist $x = 11n$, also ein Vielfaches von 11. Desweiteren ist $ y = 11x$, also ein vielfaches von 121 und damit $y \mod 121 = 0$. Also kann mit $f_b$ Problem A auf B reduziert werden: 
+$f_b: \mathbb{Z} \Rightarrow \mathbb{Z}$, $f_b(x) = 11x$.
+
+% Aufgabe 24c
+\part 
+Man kann ein Wort $ w \in A $ in ein Wort $w' \in B$ mit folgenden Regeln umbauen:\\
+$a \Rightarrow c$ : Jedes a wird durch ein c ersetzt. \\
+$b \Rightarrow de$ : Jedes b wird durch de ersetzt.\\
+Damit ist $\#_c(w') = \#_a(w)$, $\#_d(w') = \#_b(w)$ und $\#_e(w') = \#_b(w)$ \\ also $2*\#_b(w)  = \#_d(w') + \#_e(w')$ und damit ist das Kriterium für Sprache B erfüllt. 
+
+\end{parts}
+
+%
+% Aufgabe 25
+%
+\titledquestion {Entscheidbarkeit}
+\begin{parts}
+
+% Aufgabe 25a
+\part Man kann mit der Funktion $f$ eine TM bauen, die charakteristische Funktion $\chi_L$ berechnet. Dabei geht die TM folgendermaße vor: 
+\begin{enumerate}
+\item Die Eingabe ist $w \in \sum^*$.
+\item Setze einen Counter $ i = 0$.
+\item Berechne f(i).
+\item Falls $f(i)=w$, lösche das Band schreibe ein 1 und wechsel in den Endzustand.
+\item Setze $i = i+1$ und gehe nach 3. solange eine Eigenschaft erfüllt ist:
+\begin{enumerate}
+\item $|w| < |f(i)|$
+\item $|w| = |f(i)|$ und es gibt ein $ j \in \{1, \dots ,|w|\}$, sodass $ \forall (k < j \in \mathbb{N} \mid  w_k = f(i)_k \wedge w_j <_{\sum} f(i)_j) $
+\end{enumerate}
+\item Lösche das Band, schreibe eine 0 und wechsel in den Endzustand.
+\end{enumerate}
+
+% Aufgabe 25b
+\part Man kann mit $TM_{\chi_L}$  eine TM bauen die $f$ berechnet, dabei geht die TM folgendermaßen vor:
+\begin{enumerate}
+\item Die Eingabe ist $i \in \mathbb{N}_0$
+\item Setze zwei Counter $j = 0$ und $l = 0$
+\item Simuliere auf $TM_{\chi_L}$ alle Wörter mit Länge l in längen-lexikographischer Reihenfolge. Für jedes Wort $\in L $ erhöhe j um 1.
+\item Falls j = i breche ab und gebe das letze erzeugte Wort zurück.
+\item Setze $ l = l +1$ und gehe nach 3.
+\end{enumerate}
+\end{parts}
+\end{questions}
+\end{document}

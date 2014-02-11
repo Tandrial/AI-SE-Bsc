@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<osm version="0.6" generator="CGImap 0.1.0" copyright="OpenStreetMap and contributors" attribution="http://www.openstreetmap.org/copyright" license="http://opendatacommons.org/licenses/odbl/1-0/">
+ <bounds minlat="51.4533280" minlon="6.9681050" maxlat="51.4534190" maxlon="6.9710240"/>
+ <node id="364072619" lat="51.4533597" lon="6.9693257" user="vogelfreier" uid="74746" visible="true" version="2" changeset="16003135" timestamp="2013-05-06T20:30:01Z">
+  <tag k="denotation" v="urban"/>
+  <tag k="natural" v="tree"/>
+  <tag k="type" v="broad_leafed"/>
+ </node>
+ <node id="370387160" lat="51.4533301" lon="6.9697917" user="YvonneBentele" uid="94327" visible="true" version="1" changeset="278177" timestamp="2009-04-06T19:44:54Z">
+  <tag k="height" v="25"/>
+  <tag k="name:botanical" v="Platane"/>
+  <tag k="natural" v="tree"/>
+  <tag k="type" v="Laubbaum"/>
+ </node>
+ <node id="811182204" lat="51.4533665" lon="6.9704469" user="mapmann" uid="212204" visible="true" version="1" changeset="5188717" timestamp="2010-07-11T10:09:57Z"/>
+ <node id="280758779" lat="51.4533739" lon="6.9693286" user="mapmann" uid="212204" visible="true" version="4" changeset="5188717" timestamp="2010-07-11T10:10:05Z"/>
+ <node id="287142087" lat="51.4533723" lon="6.9696325" user="mapmann" uid="212204" visible="true" version="5" changeset="5188717" timestamp="2010-07-11T10:10:06Z"/>
+ <node id="418772438" lat="51.4533480" lon="6.9695786" user="vogelfreier" uid="74746" visible="true" version="2" changeset="16003135" timestamp="2013-05-06T20:30:02Z">
+  <tag k="denotation" v="urban"/>
+  <tag k="natural" v="tree"/>
+  <tag k="type" v="broad_leafed"/>
+ </node>
+ <node id="439184197" lat="51.4533619" lon="6.9691008" user="vogelfreier" uid="74746" visible="true" version="2" changeset="16003135" timestamp="2013-05-06T20:30:03Z">
+  <tag k="denotation" v="urban"/>
+  <tag k="natural" v="tree"/>
+  <tag k="type" v="broad_leafed"/>
+ </node>
+ <node id="279460570" lat="51.4528812" lon="6.9639597" user="oyvind" uid="7538" visible="true" version="5" changeset="4910919" timestamp="2010-06-05T18:09:36Z">
+  <tag k="highway" v="traffic_signals"/>
+ </node>
+ <node id="280758776" lat="51.4534014" lon="6.9712782" user="StD" uid="91078" visible="true" version="2" changeset="775902" timestamp="2009-01-11T22:14:37Z"/>
+ <node id="280758781" lat="51.4533330" lon="6.9668222" user="StD" uid="91078" visible="true" version="2" changeset="775902" timestamp="2009-01-11T22:14:39Z"/>
+ <node id="283750297" lat="51.4533514" lon="6.9677856" user="mapmann" uid="212204" visible="true" version="3" changeset="5188717" timestamp="2010-07-11T10:10:04Z"/>
+ <node id="287142000" lat="51.4531284" lon="6.9652875" user="StD" uid="91078" visible="true" version="2" changeset="775902" timestamp="2009-01-11T22:14:39Z"/>
+ <node id="287142018" lat="51.4533397" lon="6.9670029" user="StD" uid="91078" visible="true" version="2" changeset="775902" timestamp="2009-01-11T22:14:39Z"/>
+ <node id="287142026" lat="51.4532467" lon="6.9660943" user="StD" uid="91078" visible="true" version="2" changeset="775902" timestamp="2009-01-11T22:14:39Z"/>
+ <node id="287142043" lat="51.4530710" lon="6.9650021" user="mapmann" uid="212204" visible="true" version="3" changeset="5188605" timestamp="2010-07-11T09:57:28Z"/>
+ <node id="287142065" lat="51.4533594" lon="6.9680587" user="mapmann" uid="212204" visible="true" version="3" changeset="5188717" timestamp="2010-07-11T10:10:06Z"/>
+ <node id="287142086" lat="51.4537093" lon="6.9696356" user="Ropino" uid="42123" visible="true" version="2" changeset="834830" timestamp="2009-03-20T12:30:49Z"/>
+ <node id="364060851" lat="51.4533069" lon="6.9696594" user="mapmann" uid="212204" visible="true" version="3" changeset="5188717" timestamp="2010-07-11T10:10:06Z">
+  <tag k="barrier" v="bollard"/>
+ </node>
+ <node id="387443561" lat="51.4532360" lon="6.9660047" user="YvonneBentele" uid="94327" visible="true" version="1" changeset="1017827" timestamp="2009-04-29T17:51:42Z"/>
+ <node id="387443562" lat="51.4531564" lon="6.9654713" user="YvonneBentele" uid="94327" visible="true" version="1" changeset="1017827" timestamp="2009-04-29T17:51:42Z"/>
+ <node id="387448631" lat="51.4532626" lon="6.9662190" user="YvonneBentele" uid="94327" visible="true" version="1" changeset="1017995" timestamp="2009-04-29T18:05:24Z"/>
+ <node id="387448635" lat="51.4532828" lon="6.9663999" user="YvonneBentele" uid="94327" visible="true" version="1" changeset="1017995" timestamp="2009-04-29T18:05:25Z"/>
+ <node id="387448650" lat="51.4533088" lon="6.9666219" user="YvonneBentele" uid="94327" visible="true" version="1" changeset="1017995" timestamp="2009-04-29T18:05:26Z"/>
+ <node id="387448651" lat="51.4532855" lon="6.9664237" user="YvonneBentele" uid="94327" visible="true" version="1" changeset="1017995" timestamp="2009-04-29T18:05:26Z"/>
+ <node id="387448652" lat="51.4533075" lon="6.9666032" user="YvonneBentele" uid="94327" visible="true" version="1" changeset="1017995" timestamp="2009-04-29T18:05:26Z"/>
+ <node id="387448653" lat="51.4533308" lon="6.9668042" user="YvonneBentele" uid="94327" visible="true" version="1" changeset="1017995" timestamp="2009-04-29T18:05:26Z"/>
+ <way id="32339552" user="Ropino" uid="42123" visible="true" version="3" changeset="835272" timestamp="2009-03-20T14:03:03Z">
+  <nd ref="287142086"/>
+  <nd ref="287142087"/>
+  <tag k="highway" v="residential"/>
+  <tag k="name" v="Gervinusstraße"/>
+ </way>
+ <way id="25745807" user="mapmann" uid="212204" visible="true" version="19" changeset="5188717" timestamp="2010-07-11T10:10:06Z">
+  <nd ref="280758776"/>
+  <nd ref="811182204"/>
+  <nd ref="287142087"/>
+  <nd ref="280758779"/>
+  <nd ref="287142065"/>
+  <nd ref="283750297"/>
+  <nd ref="287142018"/>
+  <nd ref="280758781"/>
+  <nd ref="387448653"/>
+  <nd ref="387448650"/>
+  <nd ref="387448652"/>
+  <nd ref="387448651"/>
+  <nd ref="387448635"/>
+  <nd ref="387448631"/>
+  <nd ref="287142026"/>
+  <nd ref="387443561"/>
+  <nd ref="387443562"/>
+  <nd ref="287142000"/>
+  <nd ref="287142043"/>
+  <nd ref="279460570"/>
+  <tag k="highway" v="residential"/>
+  <tag k="maxspeed" v="30"/>
+  <tag k="name" v="Niebuhrstraße"/>
+  <tag k="postal_code" v="45144"/>
+ </way>
+</osm>

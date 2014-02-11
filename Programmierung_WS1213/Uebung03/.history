@@ -1,0 +1,28 @@
+#+1351947461
+ll
+#+1351947472
+cd sdjopeto/
+#+1351947476
+cd..
+#+1351947477
+cd ..
+#+1351947480
+cd sfmikran/
+#+1351947532
+dazzle create couldOrdner
+#+1351947555
+curl https://raw.github.com/hbons/Dazzle/raster/dazzle.sh
+#+1351947567
+curl https://raw.github.com/hbons/Dazzle/raster/dazzle.sh ßdf
+#+1351947602
+curl https://raw.github.com/hbons/Dazzle/raster/dazzle.sh \ --output /usr/bin/dazzle %% chmod /usr/bin/dazzle
+#+1351947610
+dazzle setup
+#+1351947765
+git init --bare ~/sparkleshare
+#+1351957969
+ls
+#+1351984137
+12349
+#+1351984140
+logout

@@ -1,0 +1,91 @@
+Michael Krane 
+
+A1
+a)Intere Fragmentierung tritt nur bei fixer Partitionierung auf, nämlich wenn die gespeicherte Datei die Blockgröße nicht komplett ausfüllt, externe Fragmentierung tritt bei variabler Partitionierung auf, und beschreibt leeren Speicher zwischen zwei allokierten Dateien.
+
+b)Bitmaps: Pro BLOCK_SIZE gibt es ein bit, welches anzeigt ob der Block belegt ist oder nicht. Es gibt also insgesamt SIZE_FILESYSTEM / BLOCK_SIZE bits die nach einem FILE_SIZE langen Stück freiem Speicher durchsucht werden müssen. Die Laufzeit ist also linear von der Speichergröße abhängig : O(n)
+
+  Listen: Jedes Element der Liste stellt entweder ein belegte oder freies Stück Speicher dar. Die Länge der Liste ist deshalb unabhängig von der Größe des Speichers, sondern nur wieviele Blöcke bereits allokiert sind. Die Laufzeit ist also linear von der Anzahl der Prozesse abhängig : O(n) und konstant im Bezug auf die Größe des Speichers: O(1).
+
+  Bäumen: Es müssen maximal log_2(SIZE_FILESYSTEM) - log_2(SIZE_FILE) Schritte gemacht werden um freien Speicher zufinden. Die Laufzeit ist also  O(log(n))
+
+c)First Fit: Beim First Fit wird der Speichern von Beginn an durchsucht und sobald ein ausreichend großer Block efunden wurde, werden die Daten allokiert. 
+  Best Fit: Beim Best Fit muss der komplette Speicher durchsucht werden um den freien Block zufinden welcher minimal größer als der zu allokierende Block ist. Dadurch werden außerdem viele kleine freie Speicherfragtmente erstellt,
+  Next Fit: Ähnlich wie First Fit, nur das ab der Stelle des letzen Schreibbefehl angefanden wird zusuchen.
+
+d)Die virtuelle Adresse bestehet aus 2 Teilen. Der erste Teil beschreibt die page nummer und der 2. Teil den offset innerhalb der page.Ja, 2 virtuelle Adressen können auf die selbe physische Adresse zeigen, z. B. wenn 2 Prozesse auf die selbe Datei zugreifen.
+
+e)Paging erlaubt es Daten in virtuellen Blöcken zusammen zufassen, obwohl die physischen Adresse nicht unbedingt zusammen hängen müssen. 
+
+A2
+a) 	a. First Fit
+		Start 	FreeSize
+		 50  	 50
+		600 	 60
+		850 	174
+
+	b. Next Fit
+		Start 	FreeSize
+		  0		100
+		600		 60
+		900		124
+
+	c. Best Fit
+		Start 	FreeSize
+		 90		 10
+		650		 10
+		760		264
+
+	d. Worst Fit
+		Start 	FreeSize
+		  0		100
+		600		 60
+		900		124
+
+b)
+		Start 	FreeSize
+		128	    128
+		448  	 64
+
+
+c) siehe Eclipse Projekt in ./Aufgabe 2/
+
+A3
+a) Ein Seitenfehler tritt auf wenn ein Programm auf eine page zugreifen will, die aktuell nicht geladen ist. Ein Seitenfehler für zu einem Abbruch wenn ein Prozess versucht auf eine nicht erlaubte logische Adresse zuzugreifen.
+b) FIFO
+   LRU
+   NFU
+   Aging
+   Second Chance
+   Clock	
+c) Bei Aging-Algorithmus wird immer die Seite mit dem kleinsten Zähler ausgelagert. Bei jeder Anfrage werden alle Zähler halbiert und dann der Zähler dier angeforderten Seite erhöht.
+d)	FIFO ersetzt Seite 3.
+	NRU ersetzt Seite 1.
+	LRU ersetzt Seite 1.
+	Second Chance ersetzt Seite 1.
+
+A4)
+b)  ... | tee p | ... : ... müssen jeweils durch die Commands ersetzt werden die vor/nach dem tee ausgeführt werden soll
+	FILENAME.TXT : Sollte angepasst werden, jenachdem in welche Datei der Standartoutput umgeleitet werden soll.
+
+	Nur Linux-Programme:
+
+	mkfifo p
+	... | tee p | ... & cat p > _.txt && (date +"%d.%m.%Y %T" | tr '\n' ' ' && echo 'FILENAME.TXT') >> mytee.log && cut -d ' ' -f3 mytee.log | tail -1 | xargs -d'\n' mv _.txt 
+	rm p
+
+	mkfifo p : Erstellt die pipe p
+	... | tee p | ... : Die egientlich Befehlskette
+	cat p > _.txt : Der Output wird in der temporären Datei _.txt gespeichert
+	(date +"%d.%m.%Y %T" | tr '\n' ' ' && echo 'FILENAME.TXT') >> mytee.log : Datum und Filename werden in die Log-Datei eingetragen
+	cut -d ' ' -f3 mytee.log | tail -1 | xargs -d '\n' mv _.txt : cut ... | tail   liefert den Namen der Datei in der der Output ist xargs benennt die temporäre Datei korrekt um.
+	rm p : Löscht die pipe p
+
+	Alternative mit bash:
+
+	fname=FILENAME.TXT
+	... | tee $fname | ...  && (date +"%d.%m.%Y %T" | tr '\n' ' ' && echo $fname) >> mytee.log 
+
+	fname= ... : fname enthält den namen der Ausgabedatei
+	... | tee $fname | ...  : Die egientlich Befehlskette	
+	(date +"%d.%m.%Y %T" | tr '\n' ' ' && echo $fname) >> mytee.log  : aktuelle Zeit + Dateinamen an mytee.log anhängen

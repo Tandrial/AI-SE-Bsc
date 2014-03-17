@@ -1,0 +1,20 @@
+12:26:01 **** Incremental Build of configuration Debug for project app3c ****
+make all 
+'Invoking: Print Size'
+avr-size --format=avr --mcu=atxmega128a1 app3c.elf
+AVR Memory Usage
+----------------
+Device: atxmega128a1
+
+Program:   15470 bytes (11.1% Full)
+(.text + .data + .bootloader)
+
+Data:        589 bytes (7.2% Full)
+(.data + .bss + .noinit)
+
+
+'Finished building: sizedummy'
+' '
+
+12:26:01 Build Finished (took 406ms)
+

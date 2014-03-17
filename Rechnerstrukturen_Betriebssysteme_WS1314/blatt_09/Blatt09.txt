@@ -1,0 +1,100 @@
+Michael Krane 
+
+[
+Übung
+
+programm
+	reihenfolge von anweisungen an einen Computer
+prozess
+	Die Instanzierung eines Programmes
+prozessor
+	Zentraleinheit aus Steuerwerk und Rechenwerk früht die Anweisung von einem Program aus
+
+]
+
+A1
+a.Programm: Ein Programm besteht aus aufeinanderfolgenden Anweisungen für einen Prozessor.
+
+  Prozess: Ein Prozess ist ein Ablauf von Operationen die auf einem Prozessor ausgeführt werden und durch ein   Programm gesteuert werden.
+
+  Prozessor: Ein Prozessor führt Befehle aus, die von einem Prozess angegeben werden und kann dadurch Programme ausführen.
+
+  van Neumann- und Harvard-Architekturen sind Referenzmodelle für den Aufbau eines Computers. Der Unterschied 
+    besteht darin, das bei einer von Neumann-Architektur es einen gemeinsamen Speicher für Programmbefehle und Daten. Bei der Harvard-Architektur werden Daten getrennt von Programmbefehlen gespeichert.
+
+b.Prozesse verfügen über einen eigenen Speicherbereich, während sich alle zum selben Prozess gehörenden Threads den selben Speicherbereich teilen.
+
+A2
+6. Die Aussgabe ist nicht wahr. Da der Child-Prozess seine eigenen Variablen hat, hat Z.40 keine 
+   Auswirkungen auf das Ergebnis von der Variable total, vom Parent-Prozess.
+7. Warten alleine reicht nicht aus, da der Child-Prozess seine eigenen Variablen hat. Warten 
+   garantiert nur, dass die Ausgabe in der richtigen Reihenfolge (size file1, size file2, total size) ist.
+9. Die Ausgabe ist wahr.
+11. Da das Hauptprogramm nicht mehr auf das Ende des Threads wartet gibt es mehrere Möglichkeiten u. a.
+	1. Der Thread terminiert bevor das Hauptprogramm "Total size ..." ausgibt ==> nichts Ändert sich am Verhalten
+	2. Das Hauptprogramm terminiert bevor der Thread "Size of ..." ausgegeben hat ==> nur die size für das 2. File wird angezeigt und total ist falsch
+	3. Das Hauptprogramm terminiert bevor der Thread total += size1; ausführen konnte ==> richtige Reihenfolge der Ausgabe, aber falsche total size   
+12. Siehe 11. Es ist vorher nicht ersichtlich welche der verschiedenen Fälle eintritt, die Ausgabe ist 
+   nur im Fall 1 korrekt.
+
+
+A3
+b)	
+  Globale Variable ohne Initialisierungswert: 		Im Abschnitt .bss an der Adresse 0x600810.
+  Globale Variable mit 0 initialisiert:			Im Abschnitt .bss an der Adresse 0x60080C.
+  Globale Variable mit Initialisierungswert =! 0: 	Im Abschnitt .data an der Adresse 0x6007FC.
+  Globale Datenkonstante:				Im Abschnitt .rodata an der Adresse 0x400558.
+
+  Der Abschnitt .data ist 8 Byte groß, .rodata ist 20 Byte groß und .bss ist 24 Byte groß. 
+
+  Im .bss Abschnitt werden alle uninitialisierten Variablen gepackt, damit dieser Bereich sehr einfach auf 0 gesetzte werden kann, 
+  im .data Abschnitt befinden sich alle initialisierten Variablen, deren Wert einzelnd gesetzt werden muss.
+
+  Mit dem Parameter -t wird der Symboltable angezeigt werden, welcher das Speicherlayout der Variablen angibt. 
+  Mit der Parameter -h werden u. a. die Größe der einzelnden Abschnitte angezeigt.
+
+  objdump -t objdump.o:
+
+  	0000000000600810 g     O .bss   	0000000000000004              global_nicht_init
+	000000000060080c g     O .bss   	0000000000000004              global_gleich_zero
+	00000000006007fc g     O .data  	0000000000000004              global_ungleich_zero
+	0000000000400558 g     O .rodata	0000000000000004              const_ungleich_zero
+
+  objdump -h objdump.o:
+
+	13 .rodata       00000014  0000000000400548  0000000000400548  00000548  2**3
+                	 CONTENTS, ALLOC, LOAD, READONLY, DATA
+  	22 .data         00000008  00000000006007f8  00000000006007f8  000007f8  2**2
+                 	 CONTENTS, ALLOC, LOAD, DATA
+ 	23 .bss          00000018  0000000000600800  0000000000600800  00000800  2**3
+                	 ALLOC
+
+  objdump -s -j .data objdump.o:	
+
+	Contents of section .data:
+ 	6007f8 00000000 01000000                    ........
+
+  objdump -s -j .rodata objdump.o:
+
+	Contents of section .rodata:
+ 	400548 01000200 00000000 00000000 00000000  ................
+ 	400558 02000000                             ....
+
+c)
+    Die Ergebnisse des Programms stimmen mit objdump Überein. Die Variablen sind zwar nicht an den exakt gleichen Adresse, 
+    es ist aber ein klares Muster zuerkennen: Globale Variablen sind bei 0x60XXXX und Konstanten bei 0x40XXXX zufinden.
+    Laut Ausgabe des Programms wächst der Stack nach unten (also gegen 0x00), da die Variable die zuerste erzeugt wird 
+    eine höhere Adresse hat als die Variablen, welche danach erzeugt werden.
+
+	#### Stack Variablen ####
+         Erster int auf dem Stack:               0x7fffe97d2c64
+         Zweiter int auf dem Stack:              0x7fffe97d2c60
+         Dritter int auf dem Stack:              0x7fffe97d2c5c
+
+A4
+b) Bei 3 Prozessen steigt die Dauer für den Durchlauf eines Child-Processes exponential mit der Nice-Value an. 
+   Wenn es weniger Child-Prozesse als CPU-Kerne gibt haben Nice-Values keinen Einfluss auf die Dauer eines Durchlaufes. 
+   Das erste und zweite Experiment wurden auf einem Dual-Core Laptop ausgeführt. Als letzes Expemirent wurde ein Vergleich 
+   zwischen einem 2-Core und einem 8-Core (Uni Due Zim) CPU durchgeführt, wobei auffällt, dass sich die Durchlaufzeit bei 
+   Prozessen mit gleichen Nice-Werten linear mit der Anzahl der Prozessen erhöht und es einen sichtbaren Knick in der Steigung gibt, 
+   wenn die Anzahl der Child-Prozesse die Anzahl der CPU-Kerne übersteigt. 

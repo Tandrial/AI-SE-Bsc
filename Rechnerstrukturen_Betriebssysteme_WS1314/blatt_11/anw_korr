@@ -1,0 +1,41 @@
+1a)
+intern : ungenutzer speicher innerhalb eines prozesses
+extern: ungenutzer freieer Speicher außerdem von zugeordnetem Speicher
+
+1e)
+Overhead für jedes byte Speicher ienen eigenen Einttag in der Steientabelle
+Jeder Eintrag enthält physische Adresse (32bit) und andere Informationen
+bsp: telefonbuch  
+
+ortsnummer, mehre leute können die selbe nummer haben unterscheidung durch Vorwahl
+
+
+3a) presen-tbit == null >> seite nicht im speicher ==> exception ==> Seitenfehler handler startet lädt gesucht seite, falls kein platz alte seite raus schmeißen
+nein insbesondere die seite mit dem coe für den Seitenfehler-handler nicht
+
+
+Abbruch wenn ein Prozess versucht auf den speicerbereich eines anderen Prozess zuzugreifen
+
+3b)
+optinaml unmöglich zu implementen , nur theoreisch
+
+FIFO: nachteil seiten werden nach fester reihenfolge ersezt häufigkeit der seitenaufrufe spielt keine rolle
+
+NRU: 	vorteil verbessert fifo, seiten die vor kurzem noch wichtig waren bleiben länger im psoeicher
+
+	nachteil: seiten werden nur in klassen eingeteilet und aus diesen zufällig verworfen
+
+LRU: vorteil verbessert NRU: seiten die vor kurzem noch wichtig waren bleiben länger im Speicher 
+Nachteil: Häufigkeit der SEitenaufrufe spiel keine Rolle
+
+
+NFU vorteil verbesser LRU dies seiten die am wenigsten verwendet wurden werden ersezet
+nachteil wenn eine seite zu beginn häuftig verwerden wurde danach aber nicht mehr benötigt wird beleibt sie mitunter lange im speicher
+
+aging
+verbessert NFU seiten werden ersetzt die lange zeit nicht mehr oder nur sehr selten verwendet werden 
+
+second-change vorteil erlaubt komi von aging mit lru ersezt die älteste die am längsten nicht mehr verwendet wurde
+
+clock/fifo
+variation von second chanche /Fifo ermöglichen effizientet implementierung

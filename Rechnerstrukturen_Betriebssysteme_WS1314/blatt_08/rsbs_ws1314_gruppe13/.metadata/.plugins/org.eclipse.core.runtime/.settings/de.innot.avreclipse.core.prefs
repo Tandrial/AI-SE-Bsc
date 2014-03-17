@@ -1,0 +1,15 @@
+avrdudepropertypage/previewexpanded=false
+avrdudepropertypage/weight_preview_collapsed=50
+avrdudepropertypage/weight_preview_expanded=20
+avrdudepropertypage/weight_top_collapsed=950
+avrdudepropertypage/weight_top_expanded=80
+avrpaths//systempath/AVRDUDE=
+avrpaths//systempath/AVRGCC=
+avrpaths//systempath/AVRINCLUDE=
+avrpaths//systempath/MAKE=
+avrpaths//systempath/PDFPATH=
+avrpaths/AVRDUDE=C\:\\Program Files (x86)\\Atmel\\AVR Tools\\AVR Toolchain\\bin
+avrpaths/AVRGCC=C\:\\Program Files (x86)\\Atmel\\AVR Tools\\AVR Toolchain\\bin
+avrpaths/AVRINCLUDE=C\:\\Program Files (x86)\\Atmel\\AVR Tools\\AVR Toolchain\\avr\\include
+avrpaths/MAKE=C\:\\Program Files (x86)\\Atmel\\AVR Tools\\AVR Toolchain\\bin
+eclipse.preferences.version=1

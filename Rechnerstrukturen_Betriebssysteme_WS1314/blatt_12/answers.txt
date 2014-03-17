@@ -1,0 +1,34 @@
+Michael Krane 
+
+A1
+a)Rainbowtables benutzen vorberechnete Hashtabelle, in denen der Hash vom zu knackenden Passwort einfach nachgeguckt werden kann. Wird beim Hashen ein Salt verwendet bringen die Rainbowtables nichts mehr, da der Hash nicht mehr nur noch vom Passwort sondern auch vom Salt abhängt: MD5(Passwort + Salt) anstatt MD5(Passwort)
+b) Der größte Unterschied ist, wo gespeichert ist wer welche Rechte hat. Die ACLs sind in dem Objekt selber vorhanden, die Capabilites sind meistens in einer Art Liste gespeichert, die an einem zentralen Ort für alle Benutzer gespeichert sind.
+
+A2
+b)Ja es liegt ein Deadlock vor, da jeder Prozess noch mindestens eine Ressource braucht um arbeiten zukönnen. Da aber schon alle Ressourcen Prozessen zugewiesen sind kann kein Prozess arbeiten.
+
+A3
+a) Der Code in der Funktion Gabel.nimmAuf() kann zu einem wechelseitigen Ausschlusss führen, wenn 2 Threads gleichzeitig überprüfen ob verfuegbar == true ist.
+b) Jetzt kann ein Hold and wait Problem auftreten, indem jeder Philisop eine Gabel hält und darauf wartet das eine zweite frei wird.
+c) Am einfachste ist das Problem lösbar indem eine gegenseiter Ausschluss in der Methode nimmGabelAuf() verhindert wird. Zum Beispiel so:  
+Nach Zeile 3: private static Object monitor = new Object();  
+
+und um Zeile 14,15 ein synchronized Block:
+ synchronized (monitor) {
+   rechteGabel.nimmAuf();
+   linkeGabel.nimmAuf();
+ }
+ 
+
+A4
+a) siehe A4a.rtf
+b) In einem TLB werden beim paging schon berechnete Umwandlung von virtuellen Adressen in physische Adressen gecacht. Dadurch wird der Speicherzugriff beschleunigt, da nicht bei jedem Zugriff die physische Adresse der zuladenen Seite berechnet werden muss, sondern einfach im TLB nachgeguckt werden kann.
+
+
+A5
+a)Blockgröße = 4 kb = 2^12 Byte, Adressegröße = 64 bit = 2^3 Byte ==>  2^12 / 2^3 = 2^9 = 512 Adresssen
+b) maximale Größe = 12 Datenblöcke direkt adressiert + 1 Datenblock indirekt + 1 Datenblock doppelt indirekt
+				  = 12 * 2^12 Byte  + 1 * 2^9 Adressen * 2^12 Byte + 1 * 2^9 Adressen (1. Level) * 2^9 Adressen (2.Level) * 2^12 Byte
+				  = 48 kb + 2^21 Byte + 2^30 Byte
+				  = 48 kb + 2^11 kb + 2^20 kb
+				  = 1050672 kb (= 1 Tb 2 Mb 48 kb)

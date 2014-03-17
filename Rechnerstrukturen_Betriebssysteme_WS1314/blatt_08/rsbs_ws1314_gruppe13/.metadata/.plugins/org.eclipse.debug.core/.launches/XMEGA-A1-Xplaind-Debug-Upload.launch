@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<launchConfiguration type="org.eclipse.ui.externaltools.ProgramLaunchConfigurationType">
+<listAttribute key="org.eclipse.debug.ui.favoriteGroups">
+<listEntry value="org.eclipse.ui.externaltools.launchGroup"/>
+</listAttribute>
+<stringAttribute key="org.eclipse.ui.externaltools.ATTR_LOCATION" value="C:\Program Files (x86)\Atmel\Flip 3.4.7\bin\batchisp.exe"/>
+<stringAttribute key="org.eclipse.ui.externaltools.ATTR_TOOL_ARGUMENTS" value="-device ATXMEGA128A1&#13;&#10;-hardware RS232&#13;&#10;-baudrate 115200&#13;&#10;-port COM3&#13;&#10;-operation ONFAIL ABORT ASSERT PASS&#13;&#10;echo &quot;Load Hex File:&quot;&#13;&#10;ERASE F&#13;&#10;BLANKCHECK&#13;&#10;MEMORY FLASH&#13;&#10;LOADBUFFER &quot;${project_loc}/Debug/${project_name}.elf&quot;&#13;&#10;PROGRAM&#13;&#10;VERIFY&#13;&#10;START&#13;&#10;RESET 0"/>
+<stringAttribute key="org.eclipse.ui.externaltools.ATTR_WORKING_DIRECTORY" value="${project_loc}"/>
+</launchConfiguration>

@@ -1,0 +1,20 @@
+20:47:35 **** Incremental Build of configuration Debug for project basis_uebung ****
+make all 
+'Invoking: Print Size'
+avr-size --format=avr --mcu=atxmega128a1 basis_uebung.elf
+AVR Memory Usage
+----------------
+Device: atxmega128a1
+
+Program:   12664 bytes (9.1% Full)
+(.text + .data + .bootloader)
+
+Data:        503 bytes (6.1% Full)
+(.data + .bss + .noinit)
+
+
+'Finished building: sizedummy'
+' '
+
+20:47:35 Build Finished (took 180ms)
+

@@ -1,0 +1,127 @@
+Michael Krane 
+
+A1: Es gibt 5 verschiedenen Dateien
+	1. 2 Blöcke : 04->00
+	2. 4 Blöcke : 03->05->06->07
+	3. 5 Blöcke : 08->11->15->13->14
+	4. 5 Blöcke : 28->10->20->21->22
+	5. 3 Blöcke : 02->17->26
+
+A2: 
+	FCFS: AAAABBBCCDDDE
+		Warte	Antwort	Ausführung
+	A 	0 		0 	 	4
+	B 	3 		5 		6
+	C 	4 		8 		6
+	D 	4 		10 		7
+	E  	3 		11 		4
+Mittel	2,8 	6,8 	5,4
+
+	LCFS: AABBCCDDEDBAA
+		Warte	Antwort	Ausführung
+	A 	9 		0 	 	13
+	B 	8 		2 		9
+	C 	0 		0 		2
+	D 	1 		0		4
+	E  	0 		0 		1
+Mittel	3,6 	0,4 	6,8
+
+	RRq1: AABABCABCDEDD
+		Warte	Antwort	Ausführung
+	A 	3 		0 	 	7
+	B 	3 		0 		6
+	C 	3 		1 		5
+	D 	4 		3		7
+	E  	2 		2 		3
+Mittel	3	 	1,2 	5,6
+
+	RRq2: AABBCCDDEAABD
+		Warte	Antwort	Ausführung
+	A 	7 		0 	 	11
+	B 	7 		0 		10
+	C 	0 		0 		2
+	D 	4 		0		7
+	E  	0 		0 		1
+Mittel	3,6		0 	 	6,2
+
+	PRIO: AAAACCDDEDBBB
+		Warte	Antwort	Ausführung
+	A 	0 		0 	 	4
+	B 	8 		9 		11
+	C 	0 		0 		2
+	D 	1 		0		4
+	E  	0 		0 		1
+Mittel	1,8		1,8 	4,4
+
+	SRTN: AAAACCBBEBDDD
+		Warte	Antwort	Ausführung
+	A 	0 		0 	 	4
+	B 	5 		4		8
+	C 	0 		0 		2
+	D 	4 		4		7
+	E  	0 		0 		1
+Mittel	1,8		1,6		4,4
+
+	HRRN: AAABBACBCDEDD
+		Warte	Antwort	Ausführung
+	A 	0 		0 	 	4
+	B 	3 		1 		6
+	C 	3 		2 		5
+	D 	4 		3		7
+	E  	2 		2 		3
+Mittel	2,4		1,6		5
+
+A3:
+	a) Es gibt keinen gegenscheitige Ausschluss für den Zugriff auf die Konten, d.h. wenn Thread A und B gerade 
+	   direkt nacheinander den Kontostand von Konto 100 gelesen haben und dann den geänderten Stand zurück 
+	   schreiben wird eine der beiden Änderungen sofort wieder überschrieben. Dadurch kann Geld aus dem Nichts 
+	   entstehen oder verschwinden.
+	b) Mit s.doLock() und d.doLock() soll der Zugriff auf das source und destination Konto auf einen Thread 
+	   beschränkt werden.
+	c) Mit dem Änderungen kommt es sehr wahrscheinlich zu einem Deadlock. Ein Deadlock tritt auf wenn die folgenden 
+	   4 Bediungen erfüllt werden: 
+	   		1. Die Konten können nur durch die Threads selber freigeben werden.
+	   		2. Die Threads fordern ein Ziel Konto an, nachdem sie das Start Konto gelockt haben.
+	   		3. Der Zugriff auf die Konten ist exklusiv, d. h. nur ein Thread kann gleichzeitig auf ein Konto zugreifen
+	   		4. Es gibte ein Circluar Wait, da die Threads nicht immer die gleichen Konto als Start und Ziel Konto benutzen.
+	d) Ein Circular wait kann vermieden werden, wenn die Threads die Konto immer in der selben Reihenfolge locken.
+		Bsp.: Thread A will von 1000 -> 2000 überweisen, Thread B von 2000 -> 1000. Laut b) lockt Thread A erst 
+		1000 und dann 2000, bei Thread B genau anders herum. Wenn A und B beide erste versuchen 1000 zulocken und 
+		dann 2000 kann es nicht dazu kommen das Thread A versucht ein Lock auf das von Thread B bereits gelockte Konto 2000 zubekommen.
+
+		public void TransferMoney(int source, int destination, int amount) {
+  			Account s = accounts.get(new Integer(source));
+  			Account d = accounts.get(new Integer(destination));
+
+		    // Aufgabenteil c)
+  			//Code neu START
+  			if (source < destination) {
+    			s.doLock();
+    			d.doLock();
+  			} else {
+    			d.doLock();
+    			s.doLock();
+  			}
+  			// Code neu ENDE
+  			if (s.getBalance() >= amount) {
+				try { ...
+
+  A5:
+  	c) mkfifo p 
+  	   last -i | grep -v 'wtmp\|reboot\|^$' | tee p | cut -d' ' -f1 | uniq | tr '[:lower:]' '[:upper:]' > lastusers.txt & grep -v 'logged' p | tr -s ' ' ',' | cut -d',' -f3 | sort -n -u > lasthosts.txt 
+  	   rm p
+
+  	mkfifo p : Erstellt eine named pipe p
+  	last -i : Liefert das Anmeldelog mit aufgelösten Hostnamen (-i)
+  	grep -v 'wtmp\|reboot\|^$' : Entfernt (-v) alle Zeilen in denen wtmp, reboot oder leer (^$) sind
+  	tee p : 1x Input ==> 2x Output (1x pipe, 1x stdout)
+  	cut -d' ' -f1 : Liefert das 1. Feld getrennt du Leerzeichen
+  	uniq : Entfernt aufeinander folgende doppelte Einträge
+  	tr '[:lower:]' '[:upper:]' : Ersetzt Kleinbuchstaben durch Großbuchstaben
+  	> lastusers.txt : Ergebniss wird in lastusers.txt geschrieben
+    grep -v "logged" p : Liest die pipe p aus und entfernt alle Zeilen die logged enthalten
+    tr -s ' ' ',' : Ersetzt alle Gruppen(-s) von Leerzeichen durch ein ,
+    cut -d ',' -f3 : Liefert das 3. Feld getrennt durch , 
+    sort -n -u : Sortiert die IPs numerisch (-n) und gibt bei mehre gleichen nur einen aus (-u)   
+    > lasthosts.txt : Ergebniss wird in lasthosts.txt gespeichert
+    rm p : Die named pipe p wird gelöscht

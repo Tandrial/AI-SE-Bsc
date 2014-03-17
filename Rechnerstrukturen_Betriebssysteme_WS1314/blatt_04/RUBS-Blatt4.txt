@@ -1,0 +1,119 @@
+Wertetabelle entweder per Hand oder mit ModelSim simulieren und abschreiben.
+
+i(2)	i(1)	i(0)		o(2)	o(1)	o(0)
+0		0		0			1		0		0
+0		0		1			1		1		0
+0		1		0			1		0		0
+0		1		1			1		1		0
+1		0		0			1		0		1
+1		0		1			0		0		1
+1		1		0			0		0		0
+1		1		0			0		0		0
+
+
+!!!!!!!
+ni2 heißt NOT i2
+!!!!!!!
+
+o(0) und o(1) sind zu einfach für QMC einfach die beiden Minterme per Resolution zusammenfassen:
+
+o(0)
+
+  Minterme    Index
+        
+i2 ni1 ni0    100   4
+i2 ni1  i0	  101   5
+
+Resolution zu  
+
+i2 ni1		  10X   ODER IN VHDL o(0) <= i(2) AND NOT i(1);  
+
+
+o(1)
+
+  Minterme    Index
+        
+ni2 ni1  i0   001   1
+ni2  i1  i0	  011   3
+
+Resolution zu  
+
+ni2 i0		  0X1  ODER IN VHDL   o(1) <= NOT i(2) AND i(0);
+
+o(2)  
+
+  Minterme    Index
+        
+ni2 ni1 ni0   000   0
+ni2 ni1  i0	  001   1
+ni2 i1  ni0   010   2
+ i2 ni1 ni0	  100   4
+ni2  i1  i0	  011   3
+
+QMC Schritt 1 nach anzahl der nots sortieren
+
+
+Q3	ni2 ni1 ni0   000   0
+
+Q2	ni2 ni1  i0	  001   1
+	ni2 i1  ni0   010   2
+	 i2 ni1 ni0	  100   4
+
+Q1	ni2  i1  i0	  011   3
+
+QMC Schritt 2-3 nicht nötig, da nichts doppelt
+
+QMC Schritt 4: Resolution. Ich suche mir immer 2 Terme dich sich in GENAU einem Wert unterscheiden und packe die zusammen
+
+neuQ2	ni2 ni1       00X   0,1		 0,1 beduetet ich habe Minterm 1 und Minterm 0 mit einander "resolutiert"
+		    ni1  ni0  X00   0,4
+
+neuQ1	ni2  i1       01X   2,3
+
+Da ich alle verwendet habe muss nichts mehr angefügt werden und ich wiederhole Schritt 4 bis sich nichts mehr ändern.
+
+
+neuQ2	ni1  ni0  X00   0,4
+
+neuQ1	ni2       0XX   0,1,2,3
+
+An diesem Punkt bin ich fertig mit Phase 1:
+
+QMC Phase 2: Die Elemente am SCHLUSS von Phase 1 kommen in die Zeilen, in den Spalte stehen die indexe der Minterme.
+			1: bedeutet dieser Index wird durch die Zeile abgedeck
+
+
+		0 	1 	2 	3 	4
+ni1 ni0|1 	 	 	 	1
+ni2    |1 	1	1	1	
+--------------------------
+		2 	1 	1 	1  	1   <--Die Spalten aufaddiert
+
+Ich fange jetzt an von links zugucken wo die 1. Eins stehet. Hier ist das in Zeile 1, dieser Minterm wird NUR durch den Minterm ni2 abgedeckt also muss dieser Teil der Primimplikantenmenge sein
+
+P = {ni2}
+
+Zusätzlich wird nur Zeile 0,2,3 abgedeckt also sieht die Tabelle jetzt so aus
+
+
+		0 	1 	2 	3 	4
+ni1 ni0|1 	 	 	 	1   
+ni2    |1 	1	1	1	
+--------------------------
+		x 	x 	x 	x  	1   
+
+Jetzt gibt es nur in in der Spalte 4 Eine Eins also nehme ich noch den Minterm dazu der Spalte 4 abdeckt:
+
+P ={ni2, ni1 ni0}
+
+Tabelle:
+		0 	1 	2 	3 	4
+ni1 ni0|1 	 	 	 	1   
+ni2    |1 	1	1	1	
+--------------------------
+		x 	x 	x 	x  	x  und damit fertig  
+
+in VHDL sieht das jetzt so aus :
+o(2) <= NOT i(2) OR (NOT i(1) AND NOT i(0));
+
+Also einfach alle Elemente von P ODER verknüpft.

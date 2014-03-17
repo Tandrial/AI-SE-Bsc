@@ -1,0 +1,133 @@
+/*
+ * app3c.c
+ *
+ *  Created on: 19.12.2013
+ *      Author: tan
+ */
+
+#include <stdio.h>
+#include <stdint.h>
+
+#include <avr/io.h>
+#include <avr/delay.h>
+#include <avr/interrupt.h>
+
+#include "rs_xplained.h"
+
+#define G_NAME "GRUPPE 13 - A3c"
+
+volatile uint8_t ms = 0;
+volatile uint8_t s = 0;
+volatile uint8_t min = 0;
+volatile uint8_t hour = 0;
+volatile uint8_t day = 1;
+volatile uint8_t month = 1;
+volatile uint16_t year = 1900;
+volatile bool update = false;
+
+uint8_t tageImMonat[12] = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+
+void setDate() {
+	ms = 0;
+	s = 30;
+	min = 18;
+	hour = 0;
+	day = 24;
+	month = 12;
+	year = 2013;
+}
+
+bool isSchalt(uint16_t y) {
+	if (y % 400 == 0)
+		return true;
+	if (y % 100 == 0)
+		return false;
+	if (y % 4 == 0)
+		return true;
+	return false;
+}
+
+int main(void) {
+	xplained_init();
+	fprintf(COMM_LCD, G_NAME);
+	setDate();
+
+// 250 ms Timer
+// 32 MHz CPU-Takt
+// http://eleccelerator.com/avr-timer-calculator/
+// 256 Prescaler
+// 31250 Timer Top Wert. ~15 s zuschnell über 10 min ==> ~2,5% Fehler
+// +2,5 % (781) ==> 32031 manuell < 0,5 s Differenz über 10 min ==> < 0,08% Fehler
+// +0,11%  (35) ==> 32066
+
+// Top Wert
+	TCC0.PER = 32031;
+// Prescaler
+	TCC0.CTRLA = TC_CLKSEL_DIV256_gc;
+
+	while (1) {
+		if (update) {
+			st7036_goto(LCD_ROW1, 0);
+			fprintf(COMM_LCD, "             ");
+			st7036_goto(LCD_ROW1, 0);
+			fprintf(COMM_LCD, "%d:%d:%d", hour, min, s);
+
+			st7036_goto(LCD_ROW2, 0);
+			fprintf(COMM_LCD, "             ");
+			st7036_goto(LCD_ROW2, 0);
+			fprintf(COMM_LCD, "%.2d.%.2d.%.2d", day, month, year);
+			update = false;
+		}
+	}
+	return 0;
+}
+// Timer0 OVERFLOW INT
+ISR (TCC0_OVF_vect) {
+	ms += 25;
+	if (ms >= 100) {
+		ms = 0;
+		s++;
+		update = true;
+	}
+
+	if (s >= 60) {
+		s = 0;
+		min++;
+	}
+
+	if (min >= 60) {
+		min = 0;
+		hour++;
+	}
+
+	if (hour >= 24) {
+		hour = 0;
+		day++;
+	}
+
+//Februar Sonderfall 28, falls schaltjahr 29
+
+	if (isSchalt(year)) {
+		if ((month == 2) & (day > 29)) {
+			day = 1;
+			month++;
+		}
+	} else {
+		if ((day > tageImMonat[month - 1])) {
+			day = 1;
+			month++;
+		}
+	}
+	if (month >= 13) {
+		month = 1;
+		year++;
+	}
+}
+
+// SWx INT1
+ISR(PORTD_INT1_vect) {
+//SW4
+	if ((PORTD.IN & PIN4_bm) == 0) {
+		setDate();
+	}
+}

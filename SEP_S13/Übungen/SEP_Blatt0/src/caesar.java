@@ -5,7 +5,7 @@ public class caesar {
 		StringBuilder ergebnis = new StringBuilder();
 
 		for (int i = 0; i < s.length(); i++)
-			ergebnis.append((char) (((int) s.charAt(i) - 96 + v) % 26 + 96));
+			ergebnis.append((char) (((int) s.charAt(i) - 'a' + v) % 26 + 'a'));
 
 		return ergebnis.toString();
 	}

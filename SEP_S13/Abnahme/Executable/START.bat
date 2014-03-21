@@ -1,0 +1,1 @@
+start javaw -Xmx1g -Xss4m -jar SEPTrash.jar

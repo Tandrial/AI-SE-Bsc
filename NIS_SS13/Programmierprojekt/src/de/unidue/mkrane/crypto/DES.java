@@ -28,19 +28,19 @@ public class DES {
 		return subkeys;
 	}
 
-	public static String PC1(String key) {
+	private static String PC1(String key) {
 		return permute(key, DESD.PC1);
 	}
 
-	public static String PC2(String key) {
+	private static String PC2(String key) {
 		return permute(key, DESD.PC2);
 	}
 
-	public static String encrypt(String klar, String key) {
+	private static String encrypt(String klar, String key) {
 		return crypt(klar, key, true);
 	}
 
-	public static String decrypt(String cypher, String key) {
+	private static String decrypt(String cypher, String key) {
 		return crypt(cypher, key, false);
 	}
 
@@ -77,7 +77,7 @@ public class DES {
 		return P(result.toString());
 	}
 
-	public static int S(int number, String src) {
+	private static int S(int number, String src) {
 		String outer = src.charAt(0) + "" + src.charAt(src.length() - 1);
 		String inner = src.substring(1, src.length() - 1);
 
@@ -90,15 +90,15 @@ public class DES {
 		return permute(key, DESD.IP);
 	}
 
-	public static String FP(String key) {
+	private static String FP(String key) {
 		return permute(key, DESD.FP);
 	}
 
-	public static String E(String key) {
+	private static String E(String key) {
 		return permute(key, DESD.E);
 	}
 
-	public static String P(String key) {
+	private static String P(String key) {
 		return permute(key, DESD.P);
 	}
 
@@ -110,7 +110,7 @@ public class DES {
 		return key.substring(key.length() / 2);
 	}
 
-	public static String permute(String key, byte[] permuteTable) {
+	private static String permute(String key, byte[] permuteTable) {
 		StringBuilder result = new StringBuilder();
 		for (int i = 0; i < permuteTable.length; i++) {
 			result.append(key.charAt(permuteTable[i]));
@@ -118,18 +118,10 @@ public class DES {
 		return result.toString();
 	}
 
-	public static String ShiftLeft(String key, int amount) {
+	private static String ShiftLeft(String key, int amount) {
 		for (int i = 0; i < amount; i++) {
 			char c = key.charAt(0);
 			key = key.substring(1) + c;
-		}
-		return key;
-	}
-
-	public static String ShiftRight(String key, int amount) {
-		for (int i = 0; i < amount; i++) {
-			char c = key.charAt(key.length() - 1);
-			key = c + key.substring(0, key.length() - 1);
 		}
 		return key;
 	}

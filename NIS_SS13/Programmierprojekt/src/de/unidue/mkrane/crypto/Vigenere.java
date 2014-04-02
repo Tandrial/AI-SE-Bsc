@@ -10,7 +10,7 @@ public class Vigenere {
 		return crypt(text, key, true);
 	}
 
-	public static String crypt(String text, String key, boolean decrypt) {
+	private static String crypt(String text, String key, boolean decrypt) {
 		String result = "";
 
 		text = text.toLowerCase();
@@ -23,11 +23,11 @@ public class Vigenere {
 		return result;
 	}
 
-	static char abc[] = { 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j',
+	private static char abc[] = { 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j',
 			'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w',
 			'x', 'y', 'z' };
 
-	public static char Caeser(char c, char v, boolean decrypt) {
+	private static char Caeser(char c, char v, boolean decrypt) {
 		int pos = 0, a = -1, b = -1;
 
 		for (int i = 0; i < abc.length; i++) {

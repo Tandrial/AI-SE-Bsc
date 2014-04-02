@@ -32,7 +32,7 @@ public class RSA {
 		return crypt(params[0], params[2], text);
 	}
 
-	public static int[] crypt(int n, int power, int[] text) {
+	private static int[] crypt(int n, int power, int[] text) {
 
 		for (int i = 0; i < text.length; i++) {
 			text[i] = Utils.powerModulo(text[i], power, n);

@@ -18,7 +18,7 @@ public class Aufgabe10 {
 		sa0 = Utils.HexToBin(sa0);
 		sa1 = Utils.HexToBin(sa1);		
 
-		return Utils.BinToHex(AES.GF8(sa0, sa1));
+		return Utils.BinToHex(Utils.GF8(sa0, sa1));
 	}
 
 	/**

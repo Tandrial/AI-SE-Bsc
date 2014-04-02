@@ -3,6 +3,25 @@ package de.unidue.mkrane.crypto;
 import java.util.Random;
 
 class Utils {
+	
+	public static String GF8(String a, String b) {
+		String p = "";
+		boolean h_bit = false;
+
+		for (int i = 0; i < 8; i++) {
+			if (b.charAt(7) == '1')
+				p = Utils.XOR(a, p);
+
+			h_bit = (a.charAt(0) == '1') ? true : false;
+
+			a = a.substring(1) + '0';
+			if (h_bit)
+				a = Utils.XOR(a, "11011"); // 0x1b
+
+			b = '0' + b.substring(0, 7);
+		}
+		return p;
+	}
 
 	public static String binMult(String a, String b) {
 		String result = "";

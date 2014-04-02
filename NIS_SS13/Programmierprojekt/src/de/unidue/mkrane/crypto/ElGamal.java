@@ -11,7 +11,7 @@ public class ElGamal {
 		return new String[] { "" + p, "" + alpha, "" + beta, "" + a };
 	}
 
-	public static int calcP() {
+	private static int calcP() {
 		int[] primes = Utils.GetPrimes(10000);
 		int down = Utils.randomInt(primes.length / 10, primes.length - 1);
 
@@ -77,7 +77,7 @@ public class ElGamal {
 		return result.toString();
 	}
 
-	private static String decrypt(int p, int a, String sa0) {
+	public static String decrypt(int p, int a, String sa0) {
 
 		String[] cypher = sa0.split("_");
 

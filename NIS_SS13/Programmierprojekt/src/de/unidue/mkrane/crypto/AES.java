@@ -31,7 +31,7 @@ public class AES {
 		return keyschedule;
 	}
 
-	public static String[] ColumnXOR(String[] a, String[] b) {
+	private static String[] ColumnXOR(String[] a, String[] b) {
 		String[] result = new String[a.length];
 
 		for (int i = 0; i < result.length; i++) {
@@ -40,7 +40,7 @@ public class AES {
 		return result;
 	}
 
-	public static String[] getCol(String[][] a, int col) {
+	private static String[] getCol(String[][] a, int col) {
 		String[] result = new String[a.length];
 		for (int i = 0; i < result.length; i++) {
 			result[i] = a[i][col];
@@ -48,7 +48,7 @@ public class AES {
 		return result;
 	}
 
-	public static void setCol(String[][] a, int col, String[] column) {
+	private static void setCol(String[][] a, int col, String[] column) {
 		String[] result = new String[a.length];
 		for (int i = 0; i < result.length; i++) {
 			a[i][col] = column[i];
@@ -56,7 +56,7 @@ public class AES {
 		return;
 	}
 
-	public static String[] rotWord(String[] a) {
+	private static String[] rotWord(String[] a) {
 		String tmp = a[0];
 		a[0] = a[1];
 		a[1] = a[2];
@@ -117,13 +117,13 @@ public class AES {
 		return stataMatrix;
 	}
 
-	public static String[] subByte(String[] a, String[] LookUp) {
+	private static String[] subByte(String[] a, String[] LookUp) {
 		for (int i = 0; i < a.length; i++)
 			a[i] = subByte(a[i], LookUp);
 		return a;
 	}
 
-	public static String subByte(String a, String[] LookUp) {
+	private static String subByte(String a, String[] LookUp) {
 		int col = Utils.BinToDez(Utils.splitIntoChunksOf(a, 4)[1]);
 		int row = Utils.BinToDez(Utils.splitIntoChunksOf(a, 4)[0]);
 
@@ -134,11 +134,11 @@ public class AES {
 		return ShiftRows(sMatrix, false);
 	}
 
-	public static String[][] InvShiftRows(String[][] sMatrix) {
+	private static String[][] InvShiftRows(String[][] sMatrix) {
 		return ShiftRows(sMatrix, true);
 	}
 
-	public static String[][] ShiftRows(String[][] a, boolean inv) {
+	private static String[][] ShiftRows(String[][] a, boolean inv) {
 		for (int i = 1; i < 4; i++) {
 			if (inv)
 				a[i] = rotWord(a[i], 4 - i);
@@ -148,7 +148,7 @@ public class AES {
 		return a;
 	}
 
-	public static String[] rotWord(String[] a, int times) {
+	private static String[] rotWord(String[] a, int times) {
 		for (int i = 0; i < times; i++) {
 			a = rotWord(a);
 		}
@@ -159,7 +159,7 @@ public class AES {
 		return MixColumns(sMatrix, AESD.Mix);
 	}
 
-	public static String[][] InvMixColumns(String[][] sMatrix) {
+	private static String[][] InvMixColumns(String[][] sMatrix) {
 		return MixColumns(sMatrix, AESD.InvMix);
 	}
 
@@ -179,28 +179,9 @@ public class AES {
 	private static String GF8Col(String[] s, String[] mix) {
 		String result = "";
 		for (int i = 0; i < 4; i++) {
-			result = Utils.XOR(result, GF8(s[i], mix[i]));
+			result = Utils.XOR(result, Utils.GF8(s[i], mix[i]));
 		}
 		return result;
-	}
-
-	public static String GF8(String a, String b) {
-		String p = "";
-		boolean h_bit = false;
-
-		for (int i = 0; i < 8; i++) {
-			if (b.charAt(7) == '1')
-				p = Utils.XOR(a, p);
-
-			h_bit = (a.charAt(0) == '1') ? true : false;
-
-			a = a.substring(1) + '0';
-			if (h_bit)
-				a = Utils.XOR(a, "11011"); // 0x1b
-
-			b = '0' + b.substring(0, 7);
-		}
-		return p;
 	}
 
 	public static String[][] getStateMatrix(String a) {

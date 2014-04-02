@@ -61,14 +61,14 @@ class Utils {
 		return min + r.nextInt(max - min);
 	}
 
-	public static final String[][] HexBinLookUp = {
+	private static final String[][] HexBinLookUp = {
 			{ "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "a", "b", "c",
 					"d", "e", "f" },
 			{ "0000", "0001", "0010", "0011", "0100", "0101", "0110", "0111",
 					"1000", "1001", "1010", "1011", "1100", "1101", "1110",
 					"1111" } };
 
-	public static final String[][] ASCII = new String[][] {
+	private static final String[][] ASCII = new String[][] {
 			{ "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "A", "B", "C",
 					"D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O",
 					"P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "a",
@@ -323,9 +323,5 @@ class Utils {
 			}
 		}
 		return result;
-	}
-
-	public static void main(String[] args) {
-		System.out.println(binMult("1100", "1101"));
 	}
 }

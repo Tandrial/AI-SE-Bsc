@@ -27,12 +27,7 @@ public class Aufgabe04 {
 			}
 		}
 
-		StringBuilder result = new StringBuilder();
-		result.append(faktors[0]);
-		for (int i = 1; i < faktors.length; i++) {
-			result.append("*" + faktors[i]);
-		}
-		return result.toString();
+		return Utils.IntArrayToString(faktors, "*");
 	}
 
 	/**

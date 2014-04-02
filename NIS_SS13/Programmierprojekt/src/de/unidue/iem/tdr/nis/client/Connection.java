@@ -247,18 +247,17 @@ public class Connection {
 	 */
 	private String hashPw(String password) {
 		MessageDigest md;
-		Formatter fmt = new Formatter();
-		try {
+		try (Formatter fmt = new Formatter()) {
 			md = MessageDigest.getInstance("SHA-1");
 			byte[] encryptPw = md.digest(password.getBytes());
 			for (int i = 0; i < encryptPw.length; i++) {
 				fmt.format("%02x", encryptPw[i] & 0xff);
 			}
+			return fmt.toString();
 		} catch (NoSuchAlgorithmException e) {
 			e.printStackTrace();
+			return "";
 		}
-
-		return fmt.toString();
 	}
 
 	/**

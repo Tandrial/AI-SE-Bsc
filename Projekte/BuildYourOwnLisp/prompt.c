@@ -1,8 +1,4 @@
 #include "defs.h"
-/* If we are compiling on Windows compile these functions */
-#ifdef _WIN32
-
-#include <string.h>
 
 static char buffer[2048];
 
@@ -14,14 +10,6 @@ char* readline(char* prompt) {
 	cpy[strlen(cpy) - 1] = '\0';
 	return cpy;
 }
-
-void add_history(char* unused) { }
-
-#else
-	#include <editline/readline.h>
-	#include <editline/history.h>
-#endif
-
 
 int main(int argc, char** argv) {
 
@@ -37,11 +25,9 @@ int main(int argc, char** argv) {
 		/* Output our prompt and get input */
 		char* input = readline("lispy> ");
 
-		/* Add input to history */
-		add_history(input);
-
 		/* Attempt to Parse the user Input */
 		parse(input);
+
 		/* Free retrived input */
 		free(input);
 	}

@@ -1,5 +1,13 @@
 #include "defs.h"
 
+mpc_parser_t* Number;
+mpc_parser_t* Operator;
+mpc_parser_t* Expr;
+mpc_parser_t* Lispy;
+
+mpc_result_t r;
+
+
 void setupParser() {
 	/* Create Some Parsers */
 	Number   = mpc_new("number");
@@ -24,7 +32,7 @@ void parserCleanUp() {
 }
 
 void parse(char* input) {
-	mpc_result_t r;
+
 	if(mpc_parse("<stdin>", input, Lispy, &r)) {
 		/* On Success */
 		mpc_ast_print(r.output);

@@ -35,8 +35,8 @@ void parse(char* input) {
 
 	if(mpc_parse("<stdin>", input, Lispy, &r)) {
 		/* On Success */
-		long result = eval(r.output);
-		printf("%li\n", result);
+		lval result = eval(r.output);
+		lval_println(result);
 		mpc_ast_delete(r.output);
 	} else {
 		/* Error */
@@ -46,18 +46,17 @@ void parse(char* input) {
 }
 
 
-long eval(mpc_ast_t* t) {
+lval eval(mpc_ast_t* t) {
 
 	/* If tagged as number return it directly, otherwise ==> Expr */
 	if (strstr(t->tag, "number")) { 
-		return atoi(t->contents);
+		long x = strtol(t->contents, NULL, 10);
+		return errno != ERANGE ? lval_num(x) : lval_err(LERR_BAD_NUM);
 	}
 
 	/* The Operator is the second child */
-	char* op = t->children[1]->contents;
-
-	/* Third Child either 2nd number or Expr */
-	long x = eval(t->children[2]);
+	char* op = t->children[1]->contents;	
+	lval x = eval(t->children[2]);
 
 	/* Iterate over remaining children, combine with operator */
 	int i = 3;
@@ -67,14 +66,20 @@ long eval(mpc_ast_t* t) {
 	return x;
 }
 
-long eval_op(long x, char* op, long y) {
-	if (strcmp(op, "+") == 0) { return x + y;}
-	if (strcmp(op, "-") == 0) { return x - y;}
-	if (strcmp(op, "*") == 0) { return x * y;}
-	if (strcmp(op, "/") == 0) { return x / y;}
-	if (strcmp(op, "\%") == 0) { return x % y;}
-	if (strcmp(op, "^") == 0) { return pow(x, y);}
-	if (strcmp(op, "min") == 0) { return x < y ? x : y;}
-	if (strcmp(op, "max") == 0) { return x > y ? x : y;}
-	return 0;
+lval eval_op(lval x, char* op, lval y) {
+
+	if (x.type == LVAL_ERR) return x;
+	if (y.type == LVAL_ERR) return y;
+
+	if (strcmp(op, "+") == 0) { return lval_num(x.num + y.num); }
+	if (strcmp(op, "-") == 0) { return lval_num(x.num - y.num); }
+	if (strcmp(op, "*") == 0) { return lval_num(x.num * y.num); }
+	if (strcmp(op, "/") == 0) { 
+		return y.num == 0 ? lval_err(LERR_DIV_ZERO) : lval_num(x.num / y.num); }
+	if (strcmp(op, "\%") == 0) { return lval_num(x.num % y.num); }
+	if (strcmp(op, "^") == 0) { return lval_num(pow(x.num, y.num)); }
+	if (strcmp(op, "min") == 0) { return x.num < y.num ? lval_num(x.num) : lval_num(y.num);}
+	if (strcmp(op, "max") == 0) { return x.num > y.num ? lval_num(x.num) : lval_num(y.num);}
+
+	return lval_err(LERR_BAD_OP);
 }

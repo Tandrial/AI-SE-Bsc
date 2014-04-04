@@ -1,5 +1,5 @@
 all:
-	cc -std=c99 -Wall prompt.c -o prompt
+	cc -std=c99 -Wall prompt.c mpc.c parser.c -o lispy
 
 clean:
-	del prompt.exe
+	del lispy.exe

@@ -1,6 +1,6 @@
 #include "defs.h"
 
-lval lval_num(long x) {
+lval lval_num(double x) {
 	lval v;
 	v.type = LVAL_NUM;
 	v.num = x;

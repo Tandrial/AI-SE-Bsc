@@ -17,8 +17,8 @@ void setupParser() {
 
 	/* Define them with the following Language */
 	mpca_lang(MPC_LANG_DEFAULT,
-  	"                                                       \
-	    number   : /-?[0-9]+/ ;                             \
+  	"  	                        \
+	    number   : ^[\\+\\-]{0,1}([ 0-9]+\\.){0,1}[0-9]+$ ;                             \
 	    operator : '+' | '-' | '*' | '/' | '\%' | '^' | \"min\" | \"max\" ;            \
 	    expr     : <number> | '(' <operator> <expr>+ ')' ;  \
 	    lispy    : /^/ <operator> <expr>+ /$/ ;             \
@@ -50,7 +50,7 @@ lval eval(mpc_ast_t* t) {
 
 	/* If tagged as number return it directly, otherwise ==> Expr */
 	if (strstr(t->tag, "number")) { 
-		long x = strtol(t->contents, NULL, 10);
+		double x = strtod(t->contents,&t->contents);
 		return errno != ERANGE ? lval_num(x) : lval_err(LERR_BAD_NUM);
 	}
 
@@ -76,7 +76,7 @@ lval eval_op(lval x, char* op, lval y) {
 	if (strcmp(op, "*") == 0) { return lval_num(x.num * y.num); }
 	if (strcmp(op, "/") == 0) { 
 		return y.num == 0 ? lval_err(LERR_DIV_ZERO) : lval_num(x.num / y.num); }
-	if (strcmp(op, "\%") == 0) { return lval_num(x.num % y.num); }
+	//if (strcmp(op, "\%") == 0) { return lval_num(x.num % y.num); }
 	if (strcmp(op, "^") == 0) { return lval_num(pow(x.num, y.num)); }
 	if (strcmp(op, "min") == 0) { return x.num < y.num ? lval_num(x.num) : lval_num(y.num);}
 	if (strcmp(op, "max") == 0) { return x.num > y.num ? lval_num(x.num) : lval_num(y.num);}

@@ -17,7 +17,7 @@ enum { LERR_DIV_ZERO, LERR_BAD_OP, LERR_BAD_NUM };
 typedef struct 
 {
 	int type;
-	long num;
+	double num;
 	int err;
 } lval;
 
@@ -32,7 +32,7 @@ extern lval eval(mpc_ast_t* t);
 extern lval eval_op(lval x, char* op, lval y);
 
 // lval.c
-extern lval lval_num(long x);
+extern lval lval_num(double x);
 extern lval lval_err(int x);
 extern void lval_print(lval v);
 extern void lval_println(lval v);

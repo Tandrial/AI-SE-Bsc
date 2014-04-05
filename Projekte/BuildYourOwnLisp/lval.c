@@ -7,11 +7,12 @@ lval* lval_num(double x) {
 	return v;
 }
 
-lval* lval_err(char* m) {
+lval* lval_err(char* m, char* func) {
 	lval* v = malloc(sizeof(lval));
 	v->type = LVAL_ERR;
-	v->err = malloc(strlen(m) + 1);
+	v->err = malloc(strlen(m) + strlen(func) + 1);
 	strcpy(v->err, m);
+	strcat(v->err, func);
 	return v;
 }
 
@@ -31,14 +32,22 @@ lval* lval_sexpr(void) {
 	return v;
 }
 
+lval* lval_qexpr(void) {
+	lval* v = malloc(sizeof(lval));
+	v->type = LVAL_QEXPR;
+	v->count = 0;
+	v->cell = NULL;
+	return v;
+}
+
 void lval_del(lval* v) {
 	switch(v->type) {
 		case LVAL_NUM: break;
-
 		case LVAL_ERR: free(v->err); break;		
 		case LVAL_SYM: free(v->sym); break;
 
 		case LVAL_SEXPR:
+		case LVAL_QEXPR:
 			for (int i = 0; i < v->count; i++) {
 				lval_del(v->cell[i]);
 			}
@@ -57,7 +66,7 @@ lval* lval_add(lval* v, lval* x) {
 
 lval* lval_read_num(mpc_ast_t* t) {
 	double x = strtod(t->contents,&t->contents);
-	return errno != ERANGE ? lval_num(x) : lval_err("invalid number");
+	return errno != ERANGE ? lval_num(x) : lval_err("invalid number", NULL);
 }
 
 lval* lval_read(mpc_ast_t* t) {
@@ -67,6 +76,7 @@ lval* lval_read(mpc_ast_t* t) {
 	lval* x = NULL;
 	if (strcmp(t->tag, ">") == 0) { x = lval_sexpr(); }
 	if (strstr(t->tag, "sexpr")) { x = lval_sexpr(); }
+	if (strstr(t->tag, "qexpr")) { x = lval_qexpr();}
 
 	for (int i = 0; i < t->children_num; i++) {
 		if (strcmp(t->children[i]->contents, "(") == 0) { continue; }
@@ -108,59 +118,14 @@ lval* lval_eval_sexpr(lval* v) {
 	if(f->type != LVAL_SYM) {
 		lval_del(f); 
 		lval_del(v);
-		return lval_err("S-expression doesn't start with symbol!");
+		return lval_err("S-expression doesn't start with symbol!", NULL);
 	}
 
 	/* Call builtin  with op */
-	lval* result = builtin_op(v, f->sym);
+	lval* result = builtin(v, f->sym);
 	lval_del(f);
 	return result;
 }
-
-lval* builtin_op(lval* a, char* op) {
-	/* Ensure all arguments are numbers */
-	for (int i = 0; i < a->count; i++) {
-		if (a->cell[i]->type != LVAL_NUM) {
-			lval_del(a);
-			return lval_err("Cannot operate on non number!");
-		}
-	}
-	/* pop first elem */
-	lval* x = lval_pop(a, 0);
-
-	/* - as a singleOp */
-	if (strcmp(op, "-") == 0 && a->count == 0) { x->num = -x->num; }
-
-	while (a->count > 0) {
-
-		lval* y = lval_pop(a, 0);
-
-		if (strcmp(op, "+") == 0) { x->num += y->num; }
-		if (strcmp(op, "-") == 0) { x->num -= y->num; }
-		if (strcmp(op, "*") == 0) { x->num *= y->num; }
-		if (strcmp(op, "/") == 0) { 
-			if (y->num == 0) {
-				lval_del(x); lval_del(y); lval_del(a);
-				x = lval_err("Division By Zero!");
-				break;
-			} else {
-				x->num /= y->num;
-			}
-		}
-
-		if (strcmp(op, "\%") == 0) { x->num = (int)x->num % (int)y->num; }
-		if (strcmp(op, "^") == 0) { x->num = pow(x->num, y->num); }
-		if (strcmp(op, "min") == 0) { x->num = x->num < y->num ? x->num : y->num;}
-		if (strcmp(op, "max") == 0) { x->num = x->num > y->num ? x->num : y->num;}
-
-
-		lval_del(y);
-	}
-
-	lval_del(a);
-	return x;
-}
-
 
 lval* lval_take(lval* v, int i) {
 	lval* x = lval_pop(v, i);
@@ -201,6 +166,7 @@ void lval_print(lval* v) {
 		case LVAL_NUM: 	 printf("%g", v->num); break;
 		case LVAL_ERR: 	 printf("Error: %s", v->err); break;
 		case LVAL_SYM: 	 printf("%s", v->sym); break;
-		case LVAL_SEXPR: lval_expr_print(v, '(',')'); break;		
+		case LVAL_SEXPR: lval_expr_print(v, '(', ')'); break;
+		case LVAL_QEXPR: lval_expr_print(v, '{', '}'); break;
 	}
 }

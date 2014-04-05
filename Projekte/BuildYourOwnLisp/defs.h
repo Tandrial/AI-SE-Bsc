@@ -8,7 +8,7 @@
 #include "mpc.h"
 
 /* lVal Types */
-enum { LVAL_ERR, LVAL_NUM, LVAL_SYM, LVAL_SEXPR };
+enum { LVAL_ERR, LVAL_NUM, LVAL_SYM, LVAL_SEXPR, LVAL_QEXPR };
 
 /* Error Types */
 enum { LERR_DIV_ZERO, LERR_BAD_OP, LERR_BAD_NUM };
@@ -26,6 +26,7 @@ typedef struct lval {
 
 } lval;
 
+#define LASSERT(args, cond, err) if (!(cond)) { lval_del(args); return lval_err(err, NULL); }
 
 // parser.c
 extern void setupParser();
@@ -38,7 +39,7 @@ extern lval eval_op(lval x, char* op, lval y);
 
 // lval.c
 extern lval* lval_num(double x);
-extern lval* lval_err(char* m);
+extern lval* lval_err(char* m, char* func);
 extern lval* lval_sym(char* s);
 extern lval* lval_sexpr(void);
 
@@ -50,7 +51,6 @@ extern lval* lval_read(mpc_ast_t* t);
 
 extern lval* lval_eval(lval* v);
 extern lval* lval_eval_sexpr(lval* v);
-extern lval* builtin_op(lval* a, char* op);
 
 extern lval* lval_take(lval* v, int i);
 extern lval* lval_pop(lval* v, int i);
@@ -58,5 +58,19 @@ extern lval* lval_pop(lval* v, int i);
 extern void lval_print(lval* v);
 extern void lval_println(lval* v);
 extern void lval_expr_print(lval* v, char open, char close);
+
+// ops.c 
+extern lval* builtin(lval* a, char* func);
+extern lval* builtin_op(lval* a, char* op);
+extern lval* builtin_head(lval* a);
+extern lval* builtin_tail(lval* a);
+extern lval* builtin_list(lval* a);
+extern lval* builtin_eval(lval* a);
+extern lval* builtin_join(lval* a);
+extern lval* lval_join(lval* x, lval* y);
+extern lval* builtin_cons(lval* a);
+extern lval* builtin_len(lval* a);
+extern lval* builtin_init(lval* a);
+
 
 #endif

@@ -120,7 +120,16 @@ lval* lval_join(lval* x, lval* y) {
 	return x;
 }
 
-lval* builtin_cons(lval* a) { return lval_err("Function 'cons' missing implementation!", ""); }
+lval* builtin_cons(lval* a) { 
+	LASSERT(a, (a->count == 2					), "Function 'len' passed to many arguments!");
+	LASSERT(a, (a->cell[0]->count == 1			), "Use 'join' to join 2 lists together!");
+	for (int i = 0; i < a->count; i++) {
+		LASSERT(a, (a->cell[i]->type == LVAL_QEXPR	), "Function 'join' passed incorrect tpye!");
+	}
+
+	lval* x = lval_join(a->cell[0], a->cell[1]);
+	return x;
+}
 
 lval* builtin_len(lval* a) { 
  	LASSERT(a, (a->count == 1					), "Function 'len' passed to many arguments!");
@@ -146,7 +155,7 @@ lval* builtin_last(lval* a) {
 	LASSERT(a, (a->cell[0]->type == LVAL_QEXPR	), "Function 'last' passed incorrect tpye!");
 	LASSERT(a, (a->cell[0]->count != 0			), "Function 'last' passed {}!");
 
-	lval* v = lval_take(a, a->count - 1);
+	lval* v = lval_take(a, 0);
 	while (v->count > 1) {lval_del(lval_pop(v, 0)); }
 	return v;
 }

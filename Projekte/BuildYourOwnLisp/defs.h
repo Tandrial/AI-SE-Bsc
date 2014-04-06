@@ -26,7 +26,7 @@ typedef struct lval {
 
 } lval;
 
-#define LASSERT(args, cond, err) if (!(cond)) { lval_del(args); return lval_err(err, NULL); }
+#define LASSERT(args, cond, err) if (!(cond)) { lval_del(args); return lval_err(err, ""); }
 
 // parser.c
 extern void setupParser();
@@ -71,6 +71,7 @@ extern lval* lval_join(lval* x, lval* y);
 extern lval* builtin_cons(lval* a);
 extern lval* builtin_len(lval* a);
 extern lval* builtin_init(lval* a);
+extern lval* builtin_last(lval* a);
 
 
 #endif

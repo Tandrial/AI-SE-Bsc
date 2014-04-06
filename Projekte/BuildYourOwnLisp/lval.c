@@ -66,7 +66,7 @@ lval* lval_add(lval* v, lval* x) {
 
 lval* lval_read_num(mpc_ast_t* t) {
 	double x = strtod(t->contents,&t->contents);
-	return errno != ERANGE ? lval_num(x) : lval_err("invalid number", NULL);
+	return errno != ERANGE ? lval_num(x) : lval_err("invalid number", "");
 }
 
 lval* lval_read(mpc_ast_t* t) {
@@ -118,7 +118,7 @@ lval* lval_eval_sexpr(lval* v) {
 	if(f->type != LVAL_SYM) {
 		lval_del(f); 
 		lval_del(v);
-		return lval_err("S-expression doesn't start with symbol!", NULL);
+		return lval_err("S-expression doesn't start with symbol!", "");
 	}
 
 	/* Call builtin  with op */

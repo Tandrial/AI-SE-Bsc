@@ -4,11 +4,14 @@ lval* builtin(lval* a, char* func) {
 	if (strcmp("list", func) == 0) { return builtin_list(a); }
 	if (strcmp("head", func) == 0) { return builtin_head(a); }
 	if (strcmp("tail", func) == 0) { return builtin_tail(a); }
+	if (strcmp("last", func) == 0) { return builtin_last(a); }
+	if (strcmp("init", func) == 0) { return builtin_init(a); }
+
 	if (strcmp("join", func) == 0) { return builtin_join(a); }
 	if (strcmp("eval", func) == 0) { return builtin_eval(a); }
-	if (strcmp("cons" , func) == 0) { return builtin_cons(a);  }
+	if (strcmp("cons", func) == 0) { return builtin_cons(a); }
 	if (strcmp("len" , func) == 0) { return builtin_len(a);  }
-	if (strcmp("init" , func) == 0) { return builtin_init(a);  }
+	
 
 	if (strstr("+-/*^\%minmax", func)) { return builtin_op(a, func); }
 
@@ -21,7 +24,7 @@ lval* builtin_op(lval* a, char* op) {
 	for (int i = 0; i < a->count; i++) {
 		if (a->cell[i]->type != LVAL_NUM) {
 			lval_del(a);
-			return lval_err("Cannot operate on non number! - ", NULL);
+			return lval_err("Cannot operate on non number! - ", "");
 		}
 	}
 	/* pop first elem */
@@ -40,7 +43,7 @@ lval* builtin_op(lval* a, char* op) {
 		if (strcmp(op, "/") == 0) { 
 			if (y->num == 0) {
 				lval_del(x); lval_del(y); lval_del(a);
-				x = lval_err("Division By Zero!", NULL);
+				x = lval_err("Division By Zero!", "");
 				break;
 			} else {
 				x->num /= y->num;
@@ -117,8 +120,33 @@ lval* lval_join(lval* x, lval* y) {
 	return x;
 }
 
-lval* builtin_cons(lval* a) { return NULL; }
+lval* builtin_cons(lval* a) { return lval_err("Function 'cons' missing implementation!", ""); }
 
-lval* builtin_len(lval* a) { return NULL; }
+lval* builtin_len(lval* a) { 
+ 	LASSERT(a, (a->count == 1					), "Function 'len' passed to many arguments!");
+	LASSERT(a, (a->cell[0]->type == LVAL_QEXPR	), "Function 'len' passed incorrect tpye!");
+	LASSERT(a, (a->cell[0]->count != 0			), "Function 'len' passed {}!");
 
-lval* builtin_init(lval* a) {return NULL; }
+	lval* v = lval_take(a,0);	
+	return lval_num(v->count);  
+}
+
+lval* builtin_init(lval* a) {
+ 	LASSERT(a, (a->count == 1					), "Function 'init' passed to many arguments!");
+	LASSERT(a, (a->cell[0]->type == LVAL_QEXPR	), "Function 'init' passed incorrect tpye!");
+	LASSERT(a, (a->cell[0]->count != 0			), "Function 'init' passed {}!");
+
+	lval* v = lval_take(a, a->count - 1);
+	lval_del(lval_pop(v, v->count - 1 ));
+	return v; 
+}
+
+lval* builtin_last(lval* a) { 
+	LASSERT(a, (a->count == 1					), "Function 'last' passed to many arguments!");
+	LASSERT(a, (a->cell[0]->type == LVAL_QEXPR	), "Function 'last' passed incorrect tpye!");
+	LASSERT(a, (a->cell[0]->count != 0			), "Function 'last' passed {}!");
+
+	lval* v = lval_take(a, a->count - 1);
+	while (v->count > 1) {lval_del(lval_pop(v, 0)); }
+	return v;
+}

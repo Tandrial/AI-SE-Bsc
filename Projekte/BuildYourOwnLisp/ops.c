@@ -1,6 +1,16 @@
 #include "defs.h"
 
-lval* builtin(lval* a, char* func) {
+lval* builtin_add(lenv* e, lval* a) { return builtin_op(e, a, "+"); }
+lval* builtin_sub(lenv* e, lval* a) { return builtin_op(e, a, "-"); }
+lval* builtin_mul(lenv* e, lval* a) { return builtin_op(e, a, "*"); }
+lval* builtin_div(lenv* e, lval* a) { return builtin_op(e, a, "/"); }
+
+lval* builtin_mod(lenv* e, lval* a) { return builtin_op(e, a, "\%"); }
+lval* builtin_pow(lenv* e, lval* a) { return builtin_op(e, a, "^"); }
+lval* builtin_min(lenv* e, lval* a) { return builtin_op(e, a, "min"); }
+lval* builtin_max(lenv* e, lval* a) { return builtin_op(e, a, "max"); }
+
+/*lval* builtin(lval* a, char* func) {
 	if (strcmp("list", func) == 0) { return builtin_list(a); }
 	if (strcmp("head", func) == 0) { return builtin_head(a); }
 	if (strcmp("tail", func) == 0) { return builtin_tail(a); }
@@ -17,7 +27,7 @@ lval* builtin(lval* a, char* func) {
 
 	lval_del(a);
 	return lval_err("Unknown Function! ", func);
-}
+}*/
 
 lval* builtin_op(lval* a, char* op) {
 	/* Ensure all arguments are numbers */
@@ -62,7 +72,7 @@ lval* builtin_op(lval* a, char* op) {
 	return x;
 }
 
-lval* builtin_head(lval* a) { 
+lval* builtin_head(lenv* e, lval* a) { 
 	LASSERT(a, (a->count == 1					), "Function 'head' passed to many arguments!");
 	LASSERT(a, (a->cell[0]->type == LVAL_QEXPR	), "Function 'head' passed incorrect tpye!");
 	LASSERT(a, (a->cell[0]->count != 0			), "Function 'head' passed {}!");
@@ -72,7 +82,7 @@ lval* builtin_head(lval* a) {
 	return v;
 }
 
-lval* builtin_tail(lval* a) { 
+lval* builtin_tail(lenv* e, lval* a) { 
 	LASSERT(a, (a->count == 1					), "Function 'tail' passed to many arguments!");
 	LASSERT(a, (a->cell[0]->type == LVAL_QEXPR	), "Function 'tail' passed incorrect tpye!");
 	LASSERT(a, (a->cell[0]->count != 0			), "Function 'tail' passed {}!");
@@ -82,12 +92,12 @@ lval* builtin_tail(lval* a) {
 	return v;
 }
 
-lval* builtin_list(lval* a) { 
+lval* builtin_list(lenv* e, lval* a) { 
 	a->type = LVAL_QEXPR;
 	return a;
 }
 
-lval* builtin_eval(lval* a) {
+lval* builtin_eval(lenv* e, lval* a) {
 	LASSERT(a, (a->count == 1					), "Function 'eval' passed to many arguments!");
 	LASSERT(a, (a->cell[0]->type == LVAL_QEXPR	), "Function 'eval' passed incorrect tpye!");
 
@@ -96,7 +106,7 @@ lval* builtin_eval(lval* a) {
 	return lval_eval(x);
 }
 
-lval* builtin_join(lval* a){
+lval* builtin_join(lenv* e, lval* a){
 	for (int i = 0; i < a->count; i++) {
 		LASSERT(a, (a->cell[i]->type == LVAL_QEXPR	), "Function 'join' passed incorrect tpye!");
 	}
@@ -120,7 +130,7 @@ lval* lval_join(lval* x, lval* y) {
 	return x;
 }
 
-lval* builtin_cons(lval* a) { 
+lval* builtin_cons(lenv* e, lval* a) { 
 	LASSERT(a, (a->count == 2					), "Function 'len' passed to many arguments!");
 	LASSERT(a, (a->cell[0]->count == 1			), "Use 'join' to join 2 lists together!");
 	for (int i = 0; i < a->count; i++) {
@@ -131,7 +141,7 @@ lval* builtin_cons(lval* a) {
 	return x;
 }
 
-lval* builtin_len(lval* a) { 
+lval* builtin_len(lenv* e, lval* a) { 
  	LASSERT(a, (a->count == 1					), "Function 'len' passed to many arguments!");
 	LASSERT(a, (a->cell[0]->type == LVAL_QEXPR	), "Function 'len' passed incorrect tpye!");
 	LASSERT(a, (a->cell[0]->count != 0			), "Function 'len' passed {}!");
@@ -140,7 +150,7 @@ lval* builtin_len(lval* a) {
 	return lval_num(v->count);  
 }
 
-lval* builtin_init(lval* a) {
+lval* builtin_init(lenv* e, lval* a) {
  	LASSERT(a, (a->count == 1					), "Function 'init' passed to many arguments!");
 	LASSERT(a, (a->cell[0]->type == LVAL_QEXPR	), "Function 'init' passed incorrect tpye!");
 	LASSERT(a, (a->cell[0]->count != 0			), "Function 'init' passed {}!");
@@ -150,7 +160,7 @@ lval* builtin_init(lval* a) {
 	return v; 
 }
 
-lval* builtin_last(lval* a) { 
+lval* builtin_last(lenv* e, lval* a) { 
 	LASSERT(a, (a->count == 1					), "Function 'last' passed to many arguments!");
 	LASSERT(a, (a->cell[0]->type == LVAL_QEXPR	), "Function 'last' passed incorrect tpye!");
 	LASSERT(a, (a->cell[0]->count != 0			), "Function 'last' passed {}!");

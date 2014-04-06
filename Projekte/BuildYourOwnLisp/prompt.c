@@ -2,6 +2,7 @@
 
 static char buffer[2048];
 
+
 char* readline(char* prompt) {
 	fputs("lispy> ", stdout);
 	fgets(buffer, 2048, stdin);
@@ -12,9 +13,8 @@ char* readline(char* prompt) {
 }
 
 int main(int argc, char** argv) {
-
-	/* Print Version and Exit Information */
-	puts("Lispy Version 0.0.0.0.6\n");
+	
+	puts("Lispy Version 0.0.0.0.7\n");
 	puts("Type q to Exit\n");
 
 	setupParser();
@@ -22,11 +22,10 @@ int main(int argc, char** argv) {
 	/* In a never ending loop */
 	while (1) {
 
-		/* Output our prompt and get input */
 		char* input = readline("lispy> ");
 
 		if (strcmp(input, "q") == 0) { 
-			free(input);
+			free(input);			
 			break; 
 		}
 

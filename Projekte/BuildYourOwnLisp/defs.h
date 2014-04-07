@@ -89,6 +89,7 @@ extern void lval_del(lval* v);
 extern lval* lval_add(lval* v, lval* x);
 extern lval* lval_copy(lval* v);
 extern lval* lval_join(lval* x, lval* y);
+extern int lval_eq(lval* x, lval* y);
 
 extern lval* lval_call(lenv* e, lval* f, lval* a);
 extern lval* lval_eval(lenv* e, lval* v);
@@ -118,6 +119,8 @@ extern void lenv_add_builtins(lenv* e);
 extern void lenv_add_builtin(lenv* e, char*name, lbuiltin func);
 extern lval* builtin(lval* a, char* func);
 extern lval* builtin_op(lenv*e, lval* a, char* op);
+extern lval* builtin_ord(lenv* e, lval* a, char* op);
+extern lval* builtin_cmp(lenv* e, lval* a, char* op);
 
 extern lval* builtin_lambda(lenv* e, lval* a);
 extern lval* builtin_def(lenv* e, lval* a);
@@ -133,6 +136,16 @@ extern lval* builtin_mod(lenv* e, lval* a);
 extern lval* builtin_pow(lenv* e, lval* a);
 extern lval* builtin_min(lenv* e, lval* a);
 extern lval* builtin_max(lenv* e, lval* a);
+
+extern lval* builtin_gt(lenv* e, lval* a);
+extern lval* builtin_lt(lenv* e, lval* a);
+extern lval* builtin_ge(lenv* e, lval* a);
+extern lval* builtin_le(lenv* e, lval* a);
+
+extern lval* builtin_eq(lenv* e, lval* a);
+extern lval* builtin_ne(lenv* e, lval* a);
+
+extern lval* builtin_if(lenv* e, lval* a);
 
 extern lval* builtin_head(lenv* e, lval* a);
 extern lval* builtin_tail(lenv* e, lval* a);

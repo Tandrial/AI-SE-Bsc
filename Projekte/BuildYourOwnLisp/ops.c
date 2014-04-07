@@ -44,7 +44,7 @@ lval* builtin_op(lenv*e, lval* a, char* op) {
 	for (int i = 0; i < a->count; i++) {
 		LASSERT_TYPE(op, a, i, LVAL_NUM);
 		}
-	
+
 	lval* x = lval_pop(a, 0);
 
 	/* - as a singleOp */
@@ -59,7 +59,7 @@ lval* builtin_op(lenv*e, lval* a, char* op) {
 		if (strcmp(op, "*") == 0) { x->num *= y->num; }
 		if (strcmp(op, "/") == 0) { 
 			if (y->num == 0) {
-				lval_del(x); lval_del(y); lval_del(a);
+				lval_del(x); lval_del(y);
 				x = lval_err("%s", "Division By Zero!");
 				break;
 			} else {
@@ -67,8 +67,8 @@ lval* builtin_op(lenv*e, lval* a, char* op) {
 			}
 		}
 
-		if (strcmp(op, "\%") == 0) { x->num = (int)x->num % (int)y->num; }
-		if (strcmp(op, "^") == 0) { x->num = pow(x->num, y->num); }
+		if (strcmp(op, "\%") == 0)	{ x->num = (int)x->num % (int)y->num; }
+		if (strcmp(op, "^") == 0)	{ x->num = pow(x->num, y->num); }
 		if (strcmp(op, "min") == 0) { x->num = x->num < y->num ? x->num : y->num; }
 		if (strcmp(op, "max") == 0) { x->num = x->num > y->num ? x->num : y->num; }
 
@@ -113,8 +113,11 @@ lval* builtin_var(lenv* e, lval* a, char* func) {
 		func, syms->count, a->count - 1);
 
 	for (int i = 0; i < syms->count; i++) {
-		if (strcmp(func, "def") == 0) { lenv_def(e, syms->cell[i], a ->cell[i + 1]);}
-		if (strcmp(func, "=")   == 0) { lenv_put(e, syms->cell[i], a ->cell[i + 1]);}
+		if (strcmp(func, "def") == 0) { 
+			
+
+			lenv_def(e, syms->cell[i], a->cell[i + 1]);}
+		if (strcmp(func, "=")   == 0) { lenv_put(e, syms->cell[i], a->cell[i + 1]);}
 	}
 
 	lval_del(a);

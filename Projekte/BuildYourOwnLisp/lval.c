@@ -94,6 +94,7 @@ lval* lval_copy(lval* v) {
 			if (v->builtin) {
 				x->builtin = v->builtin;
 			} else {
+				x->builtin = NULL;
 				x->env = lenv_copy(v->env);
 				x->formals = lval_copy(v->formals);
 				x->body = lval_copy(v->body);
@@ -277,8 +278,8 @@ void lval_print(lval* v) {
 		case LVAL_SYM: 	 printf("%s", v->sym); break;
 		case LVAL_FUN:
 			if (v->builtin) {
-				printf("<function>");
-			} else  {
+				printf("<builtin>");
+			} else {
 				printf("(\\ "); lval_print(v->formals); putchar(' '); lval_print(v->body); putchar(')');
 			}
 		break;

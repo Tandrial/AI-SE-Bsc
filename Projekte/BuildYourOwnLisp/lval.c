@@ -7,12 +7,17 @@ lval* lval_num(double x) {
 	return v;
 }
 
-lval* lval_err(char* m, char* func) {
+lval* lval_err(char* fmt, ...) {
 	lval* v = malloc(sizeof(lval));
 	v->type = LVAL_ERR;
-	v->err = malloc(strlen(m) + strlen(func) + 1);
-	strcpy(v->err, m);
-	strcat(v->err, func);
+
+	va_list va;
+	va_start(va, fmt);
+	v->err = malloc(512);
+
+	vsnprintf(v->err, 511, fmt, va);
+	v->err = realloc(v->err, strlen(v->err) + 1);
+	va_end(va);	
 	return v;
 }
 
@@ -47,6 +52,18 @@ lval* lval_qexpr(void) {
 	return v;
 }
 
+char* ltype_name(int t) {
+	switch (t) {
+		case LVAL_FUN: return "Function";
+		case LVAL_NUM: return "Number";
+		case LVAL_ERR: return "Error";
+		case LVAL_SYM: return "Symbol";
+		case LVAL_SEXPR: return "S-Expression";
+		case LVAL_QEXPR: return "Q-Expression";
+		default: return "Unknown";
+	}
+}
+
 // ---- Hängt x and das Ende von v an
 lval* lval_add(lval* v, lval* x) {
 	v->count++;
@@ -79,6 +96,15 @@ lval* lval_copy(lval* v) {
 	return x;
 }
 
+lval* lval_join(lval* x, lval* y) {
+	while (y->count) {
+		x = lval_add(x, lval_pop(y, 0));
+	}
+
+	lval_del(y);
+	return x;
+}
+
 // ---- Löscht v
 void lval_del(lval* v) {
 	switch(v->type) {
@@ -101,7 +127,7 @@ void lval_del(lval* v) {
 // ---- liest einen Double aus dem AST aus
 lval* lval_read_num(mpc_ast_t* t) {
 	double x = strtod(t->contents,&t->contents);
-	return errno != ERANGE ? lval_num(x) : lval_err("invalid number", "");
+	return errno != ERANGE ? lval_num(x) : lval_err("%s", "invalid number");
 }
 
 // ---- Wandelt einen AST in eine lVAL um
@@ -154,7 +180,7 @@ lval* lval_eval_sexpr(lenv* e, lval* v) {
 	if(f->type != LVAL_FUN) {
 		lval_del(f); 
 		lval_del(v);
-		return lval_err("First element is not a function!", "");
+		return lval_err("%s", "First element is not a function!");
 	}
 
 	/* Call builtin  with op */

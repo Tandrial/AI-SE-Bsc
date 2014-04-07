@@ -9,6 +9,8 @@ mpc_parser_t* Lispy;
 
 lenv* env;
 
+int running  = 1;
+
 void setupParser() {
 	/* Create Some Parsers */
 	Number 	= mpc_new("number");
@@ -19,19 +21,18 @@ void setupParser() {
 	Lispy 	= mpc_new("lispy");
 
 	/* Define them with the following Language */
-
-	//TODO cons len init
+	
 	mpca_lang(MPC_LANG_DEFAULT,
-  	"   number 	: /-?([0-9]+\\.)?[0-9]+/																						;\
-	    symbol 	: /[a-zA-Z0-9_+\\-*\\/\\\\=<>!&^\%]+/																			;\
-	    sexpr   : '(' <expr>* ')'																								;\
-	    qexpr   : '{' <expr>* '}' 																								;\
-	    expr    : <number> | <symbol> | <sexpr>	| <qexpr>																		;\
-	    lispy   : /^/ <expr>* /$/																								;"
+  	"   number 	: /-?([0-9]+\\.)?[0-9]+/					;\
+	    symbol 	: /[a-zA-Z0-9_+\\-*\\/\\\\=<>!&^\%]+/		;\
+	    sexpr   : '(' <expr>* ')'							;\
+	    qexpr   : '{' <expr>* '}' 							;\
+	    expr    : <number> | <symbol> | <sexpr>	| <qexpr>	;\
+	    lispy   : /^/ <expr>* /$/							;"
   	, 	Number, Symbol, Sexpr, Qexpr, Expr, Lispy);
 
 	env = lenv_new();
-	lenv_add_builtins(env);
+	lenv_add_builtins(env);	
 }
 
 void parserCleanUp() {

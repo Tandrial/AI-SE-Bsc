@@ -25,7 +25,7 @@ lval* lenv_get(lenv* e, lval* k) {
 			return lval_copy(e->vals[i]);
 		}
 	}
-	return lval_err("unbound symbol!", "");
+	return lval_err("unbound symbol '%s'", k->sym);
 }
 
 // ---- Setze die Variable k auf den Wert v
@@ -59,21 +59,17 @@ void lenv_add_builtin(lenv* e, char*name, lbuiltin func) {
 
 void lenv_add_builtins(lenv* e) {
 
-	lenv_add_builtin(e, "list", builtin_list);
-  	lenv_add_builtin(e, "head", builtin_head); lenv_add_builtin(e, "tail",  builtin_tail);
-  	lenv_add_builtin(e, "eval", builtin_eval); lenv_add_builtin(e, "join",  builtin_join);
+	lenv_add_builtin(e, "def",  builtin_def);	lenv_add_builtin(e, "list", builtin_list);
+  	lenv_add_builtin(e, "head", builtin_head); 	lenv_add_builtin(e, "tail",  builtin_tail);
+  	lenv_add_builtin(e, "eval", builtin_eval); 	lenv_add_builtin(e, "join",  builtin_join);
 
-	lenv_add_builtin(e, "last", builtin_last); lenv_add_builtin(e, "init", builtin_init); 
-	lenv_add_builtin(e, "cons", builtin_cons); lenv_add_builtin(e, "len" , builtin_len);  
+	lenv_add_builtin(e, "last", builtin_last); 	lenv_add_builtin(e, "init", builtin_init); 
+	lenv_add_builtin(e, "cons", builtin_cons); 	lenv_add_builtin(e, "len" , builtin_len);  
 
 
-	lenv_add_builtin(e, "+", builtin_add);
-	lenv_add_builtin(e, "-", builtin_sub);
-	lenv_add_builtin(e, "*", builtin_mul);
-	lenv_add_builtin(e, "/", builtin_div);
+	lenv_add_builtin(e, "+", builtin_add);		lenv_add_builtin(e, "-", builtin_sub);
+	lenv_add_builtin(e, "*", builtin_mul);		lenv_add_builtin(e, "/", builtin_div);
 
-	lenv_add_builtin(e, "\%", builtin_mod);
-	lenv_add_builtin(e, "^", builtin_pow);
-	lenv_add_builtin(e, "min", builtin_min);
-	lenv_add_builtin(e, "max", builtin_max);
+	lenv_add_builtin(e, "\%", builtin_mod);		lenv_add_builtin(e, "^", builtin_pow);
+	lenv_add_builtin(e, "min", builtin_min);	lenv_add_builtin(e, "max", builtin_max);
 }

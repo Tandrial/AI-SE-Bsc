@@ -36,8 +36,7 @@ struct lenv {
 	lval** vals;
 };
 
-
-#define LASSERT(args, cond, err) if (!(cond)) { lval_del(args); return lval_err(err, ""); }
+#define LASSERT(args, cond, fmt, ...) if (!cond) {lval* err = lval_err(fmt, ##__VA_ARGS__); lval_del(args); return err; }
 
 // parser.c
 extern void setupParser(void);
@@ -50,16 +49,20 @@ extern lval eval_op(lval x, char* op, lval y);
 
 // lval.c
 extern lval* lval_num(double x);
-extern lval* lval_err(char* m, char* func);
+extern lval* lval_err(char* fmt, ...);
 extern lval* lval_sym(char* s);
 extern lval* lval_fun(lbuiltin func);
 extern lval* lval_sexpr(void);
 extern lval* lval_qexpr(void);
 
+extern char* ltype_name(int t);
+
 extern void lval_del(lval* v);
 
 extern lval* lval_add(lval* v, lval* x);
 extern lval* lval_copy(lval* v);
+extern lval* lval_join(lval* x, lval* y);
+
 extern lval* lval_read_num(mpc_ast_t* t);
 extern lval* lval_read(mpc_ast_t* t);
 
@@ -89,6 +92,7 @@ extern void lenv_add_builtins(lenv* e);
 extern lval* builtin(lval* a, char* func);
 extern lval* builtin_op(lenv*e, lval* a, char* op);
 
+extern lval* builtin_def(lenv* e, lval* a);
 extern lval* builtin_add(lenv* e, lval* a);
 extern lval* builtin_sub(lenv* e, lval* a);
 extern lval* builtin_mul(lenv* e, lval* a);
@@ -104,7 +108,7 @@ extern lval* builtin_tail(lenv* e, lval* a);
 extern lval* builtin_list(lenv* e, lval* a);
 extern lval* builtin_eval(lenv* e, lval* a);
 extern lval* builtin_join(lenv* e, lval* a);
-extern lval* lval_join(lval* x, lval* y);
+
 extern lval* builtin_cons(lenv* e, lval* a);
 extern lval* builtin_len(lenv* e, lval* a);
 extern lval* builtin_init(lenv* e, lval* a);

@@ -15,27 +15,24 @@ char* readline(char* prompt) {
 int main(int argc, char** argv) {
 	
 	puts("Lispy Version 0.0.0.0.7\n");
-	puts("Type q to Exit\n");
+	puts("Type exit to Exit\n");
 
 	setupParser();
-
-	/* In a never ending loop */
+	
 	while (1) {
 
 		char* input = readline("lispy> ");
 
-		if (strcmp(input, "q") == 0) { 
+		if (strcmp(input, "exit") == 0) { 
+			puts("Exiting...");
 			free(input);			
 			break; 
 		}
-
-		/* Attempt to Parse the user Input */
-		parse(input);
-
-		/* Free retrived input */
+		
+		parse(input);		
 		free(input);
 	}
-	/* Undefine and Delete our Parsers */
+	
 	parserCleanUp();
 
 	return 0;

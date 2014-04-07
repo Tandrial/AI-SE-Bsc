@@ -14,7 +14,7 @@ char* readline(char* prompt) {
 
 int main(int argc, char** argv) {
 	
-	puts("Lispy Version 0.0.0.0.7\n");
+	puts("Lispy Version 0.0.0.0.8\n");
 	puts("Type exit to Exit\n");
 
 	setupParser();
@@ -23,13 +23,13 @@ int main(int argc, char** argv) {
 
 		char* input = readline("lispy> ");
 
-		if (strcmp(input, "exit") == 0) { 
+		if (strcmp(input, "exit") == 0) {
 			puts("Exiting...");
-			free(input);			
+			free(input);
 			break; 
 		}
 		
-		parse(input);		
+		parse(input);
 		free(input);
 	}
 	

@@ -59,6 +59,7 @@ extern lval* lval_qexpr(void);
 extern void lval_del(lval* v);
 
 extern lval* lval_add(lval* v, lval* x);
+extern lval* lval_copy(lval* v);
 extern lval* lval_read_num(mpc_ast_t* t);
 extern lval* lval_read(mpc_ast_t* t);
 
@@ -75,10 +76,10 @@ extern void lval_expr_print(lval* v, char open, char close);
 // lenv.c
 
 extern lenv* lenv_new(void);
-extern lenv* lenv_del(lenv* e);
+extern void lenv_del(lenv* e);
 
-extern lenv* lenv_get(lenv* e, lval* k);
-extern lenv* lenv_put(lenv* e, lval* k, lval* v);
+extern lval* lenv_get(lenv* e, lval* k);
+extern void lenv_put(lenv* e, lval* k, lval* v);
 
 extern void lenv_add_builtin(lenv* e, char*name, lbuiltin func);
 extern void lenv_add_builtins(lenv* e);
@@ -86,7 +87,7 @@ extern void lenv_add_builtins(lenv* e);
 // ops.c 
 
 extern lval* builtin(lval* a, char* func);
-extern lval* builtin_op(lval* a, char* op);
+extern lval* builtin_op(lenv*e, lval* a, char* op);
 
 extern lval* builtin_add(lenv* e, lval* a);
 extern lval* builtin_sub(lenv* e, lval* a);

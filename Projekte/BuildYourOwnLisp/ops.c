@@ -23,13 +23,13 @@ lval* builtin_max(lenv* e, lval* a) { return builtin_op(e, a, "max"); }
 	if (strcmp("len" , func) == 0) { return builtin_len(a);  }
 	
 
-	if (strstr("+-/*^\%minmax", func)) { return builtin_op(a, func); }
+	if (strstr("+-/ *^\%minmax", func)) { return builtin_op(a, func); }
 
 	lval_del(a);
 	return lval_err("Unknown Function! ", func);
 }*/
 
-lval* builtin_op(lval* a, char* op) {
+lval* builtin_op(lenv*e, lval* a, char* op) {
 	/* Ensure all arguments are numbers */
 	for (int i = 0; i < a->count; i++) {
 		if (a->cell[i]->type != LVAL_NUM) {
@@ -103,7 +103,7 @@ lval* builtin_eval(lenv* e, lval* a) {
 
 	lval* x = lval_take(a, 0);
 	x->type = LVAL_SEXPR;
-	return lval_eval(x);
+	return lval_eval(e, x);
 }
 
 lval* builtin_join(lenv* e, lval* a){

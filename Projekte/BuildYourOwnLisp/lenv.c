@@ -1,6 +1,6 @@
 #include "defs.h"
 
-levn* lenv_new(void) {
+lenv* lenv_new(void) {
 	lenv* e = malloc(sizeof(lenv));
 	e->count = 0;
 	e->syms = NULL;
@@ -19,9 +19,9 @@ void lenv_del(lenv* e) {
 }
 
 // --- Liefert dne Wert der Variabale k
-lenv* lenv_get(lenv* e, lval* k) {
+lval* lenv_get(lenv* e, lval* k) {
 	for (int i = 0; i < e->count; i++) {
-		if (strcmp(e->syms[i], k->syms) == 0) {
+		if (strcmp(e->syms[i], k->sym) == 0) {
 			return lval_copy(e->vals[i]);
 		}
 	}
@@ -29,7 +29,7 @@ lenv* lenv_get(lenv* e, lval* k) {
 }
 
 // ---- Setze die Variable k auf den Wert v
-lenv* lenv_put(lenv* e, lval* k, lval* v) {
+void lenv_put(lenv* e, lval* k, lval* v) {
 	for (int i = 0; i < e->count; i++) {
 		if (strcmp(e->syms[i], k->sym) == 0) {
 			lval_del(e->vals[i]);

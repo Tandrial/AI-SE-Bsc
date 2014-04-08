@@ -52,7 +52,6 @@ void parse(char* input) {
 		lval* x = lval_eval(env, lval_read(r.output));
 		lval_println(x);
 		lval_del(x);
-		mpc_ast_print(r.output);
 		mpc_ast_delete(r.output);
 	} else {
 		/* Error */
@@ -69,7 +68,7 @@ lval* lval_read_num(mpc_ast_t* t) {
 
 lval* lval_read_str(mpc_ast_t* t) {
 	t->contents[strlen(t->contents) - 1] = '\0';
-	char* unescaped = malloc(strlen(t->contents + 1));
+	char* unescaped = malloc(strlen(t->contents + 1) + 1);
 	strcpy(unescaped, t->contents + 1);
 
 	unescaped = mpcf_unescape(unescaped);

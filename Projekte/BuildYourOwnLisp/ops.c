@@ -8,9 +8,7 @@ void lenv_add_builtins(lenv* e) {
 	lenv_add_builtin(e, "head", builtin_head);	lenv_add_builtin(e, "tail",  builtin_tail);
 	lenv_add_builtin(e, "eval", builtin_eval);	lenv_add_builtin(e, "join",  builtin_join);
 
-	lenv_add_builtin(e, "last", builtin_last);	lenv_add_builtin(e, "init", builtin_init);
-	lenv_add_builtin(e, "cons", builtin_cons);	lenv_add_builtin(e, "len" , builtin_len);
-
+	lenv_add_builtin(e, "init", builtin_init);	lenv_add_builtin(e, "cons", builtin_cons);
 
 	lenv_add_builtin(e, "+", builtin_add);		lenv_add_builtin(e, "-", builtin_sub);
 	lenv_add_builtin(e, "*", builtin_mul);		lenv_add_builtin(e, "/", builtin_div);
@@ -296,15 +294,6 @@ lval* builtin_cons(lenv* e, lval* a) {
 	return x;
 }
 
-lval* builtin_len(lenv* e, lval* a) {
-	LASSERT_NUM("len", a, 1);
-	LASSERT_TYPE("len", a, 0, LVAL_QEXPR);
-	LASSERT_NOT_EMPTY("len", a, 0);
-
-	lval* v = lval_take(a,0);
-	return lval_num(v->count);
-}
-
 lval* builtin_init(lenv* e, lval* a) {
 	LASSERT_NUM("init", a, 1);
 	LASSERT_TYPE("init", a, 0, LVAL_QEXPR);
@@ -312,15 +301,5 @@ lval* builtin_init(lenv* e, lval* a) {
 
 	lval* v = lval_take(a, a->count - 1);
 	lval_del(lval_pop(v, v->count - 1 ));
-	return v;
-}
-
-lval* builtin_last(lenv* e, lval* a) {
-	LASSERT_NUM("last", a, 1);
-	LASSERT_TYPE("last", a, 0, LVAL_QEXPR);
-	LASSERT_NOT_EMPTY("last", a, 0);
-
-	lval* v = lval_take(a, 0);
-	while (v->count > 1) {lval_del(lval_pop(v, 0)); }
 	return v;
 }

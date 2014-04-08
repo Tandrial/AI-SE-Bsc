@@ -171,8 +171,6 @@ extern lval* builtin_eval(lenv* e, lval* a);
 extern lval* builtin_join(lenv* e, lval* a);
 
 extern lval* builtin_cons(lenv* e, lval* a);
-extern lval* builtin_len(lenv* e, lval* a);
 extern lval* builtin_init(lenv* e, lval* a);
-extern lval* builtin_last(lenv* e, lval* a);
 
 #endif

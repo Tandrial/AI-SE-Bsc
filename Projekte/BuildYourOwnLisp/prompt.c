@@ -13,10 +13,11 @@ char* readline(char* prompt) {
 }
 
 int main(int argc, char** argv) {
-	puts("Lispy Version 0.0.0.1.0\n");
+	puts("Lispy Version 0.0.0.1.1\n");
 	setupParser();
 
 	if (argc == 1) {
+	printf("Loading stdlib ...");
 	lval* args = lval_add(lval_sexpr(), lval_str("s.lspy"));
 
 	lval_println(args); 

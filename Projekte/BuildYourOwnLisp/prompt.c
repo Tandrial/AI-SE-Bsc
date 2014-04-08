@@ -15,7 +15,15 @@ char* readline(char* prompt) {
 int main(int argc, char** argv) {
 	puts("Lispy Version 0.0.0.1.0\n");
 	setupParser();
+
 	if (argc == 1) {
+	lval* args = lval_add(lval_sexpr(), lval_str("s.lspy"));
+
+	lval_println(args); 
+	lval* x = builtin_load(env, args);
+	if (x->type == LVAL_ERR) { lval_println(x); }
+	lval_del(args); lval_del(x);
+
 		puts("Type exit to Exit\n");
 
 		while (1) {
@@ -31,7 +39,7 @@ int main(int argc, char** argv) {
 			free(input);
 		}
 	} else if (argc >= 2) {
-		for (int i = 0; i < argc; i++) {
+		for (int i = 1; i < argc; i++) {			
 			lval* args = lval_add(lval_sexpr(), lval_str(argv[i]));
 			lval* x = builtin_load(env, args);
 			if (x->type == LVAL_ERR) { lval_println(x); }

@@ -46,15 +46,11 @@ lval* builtin_load(lenv* e, lval* a) {
 		mpc_ast_delete(r.output);
 
 		while (expr->count) {
-			lval* x = lval_eval(e, lval_pop(a, 0));
-
+			lval* x = lval_eval(e, lval_pop(expr, 0));
 			if (x->type == LVAL_ERR) { lval_println(x); }
 			lval_del(x);
 		}
-
-		lval_del(expr);
-		lval_del(a);
-
+		lval_del(expr);	lval_del(a);
 		return lval_sexpr();
 	} else {
 		char *err_msg = mpc_err_string(r.error);

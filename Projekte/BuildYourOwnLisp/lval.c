@@ -29,6 +29,14 @@ lval* lval_sym(char* s) {
 	return v;
 }
 
+lval* lval_str(char* s) {
+	lval* v = malloc(sizeof(lval));
+	v->type = LVAL_STR;
+	v->str = malloc(strlen(s) + 1);
+	strcpy(v->str, s);
+	return v;
+}
+
 lval* lval_builtin(lbuiltin func) {
 	lval* v = malloc(sizeof(lval));
 	v->type = LVAL_FUN;
@@ -69,6 +77,7 @@ char* ltype_name(int t) {
 		case LVAL_FUN: return "Function";
 		case LVAL_NUM: return "Number";
 		case LVAL_ERR: return "Error";
+		case LVAL_STR: return "String";
 		case LVAL_SYM: return "Symbol";
 		case LVAL_SEXPR: return "S-Expression";
 		case LVAL_QEXPR: return "Q-Expression";
@@ -104,6 +113,7 @@ lval* lval_copy(lval* v) {
 
 		case LVAL_ERR: x->err = malloc(strlen(v->err) + 1); strcpy(x->err, v->err); break;
 		case LVAL_SYM: x->sym = malloc(strlen(v->sym) + 1); strcpy(x->sym, v->sym); break;
+		case LVAL_STR: x->str = malloc(strlen(v->str) + 1); strcpy(x->str, v->str); break;
 
 		case LVAL_SEXPR:
 		case LVAL_QEXPR:
@@ -132,6 +142,7 @@ void lval_del(lval* v) {
 		case LVAL_NUM: break;
 		case LVAL_ERR: free(v->err); break;
 		case LVAL_SYM: free(v->sym); break;
+		case LVAL_STR: free(v->str); break;
 		case LVAL_FUN:
 			if (!v->builtin) {
 				lenv_del(v->env);
@@ -214,6 +225,7 @@ int lval_eq(lval* x, lval* y) {
 		case LVAL_NUM: return (x->num == y->num);
 		case LVAL_ERR: return (strcmp(x->err, y->err) == 0);
 		case LVAL_SYM: return (strcmp(x->sym, y->sym) == 0);
+		case LVAL_STR: return (strcmp(x->str, y->str) == 0);
 
 		case LVAL_FUN:
 		if (x->builtin) {
@@ -295,14 +307,23 @@ void lval_expr_print(lval* v, char open, char close) {
 	putchar(close);
 }
 
+void lval_print_str(lval* v) {
+	char* escaped = malloc(strlen(v->str) + 1);
+	strcpy(escaped, v->str);
+	escaped = mpcf_escape(escaped);
+	printf("\"%s\"", escaped);
+	free(escaped);
+}
+
 // ---- Druck lVals mit und ohne newline
 void lval_println(lval* v) { lval_print(v); putchar('\n'); }
 
 void lval_print(lval* v) {
 	switch (v->type) {
-		case LVAL_NUM: 	 printf("%g", v->num); break;
-		case LVAL_ERR: 	 printf("Error: %s", v->err); break;
-		case LVAL_SYM: 	 printf("%s", v->sym); break;
+		case LVAL_NUM: printf("%g", v->num); break;
+		case LVAL_ERR: printf("Error: %s", v->err); break;
+		case LVAL_SYM: printf("%s", v->sym); break;
+		case LVAL_STR: lval_print_str(v); break;
 		case LVAL_FUN:
 			if (v->builtin) {
 				printf("<builtin>");

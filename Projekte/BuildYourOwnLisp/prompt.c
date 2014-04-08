@@ -13,26 +13,32 @@ char* readline(char* prompt) {
 }
 
 int main(int argc, char** argv) {
-	
-	puts("Lispy Version 0.0.0.0.9\n");
-	puts("Type exit to Exit\n");
-
+	puts("Lispy Version 0.0.0.1.0\n");
 	setupParser();
-	
-	while (1) {
+	if (argc == 1) {
+		puts("Type exit to Exit\n");
 
-		char* input = readline("lispy> ");
+		while (1) {
+			char* input = readline("lispy> ");
 
-		if (strcmp(input, "exit") == 0) {
-			puts("Exiting...");
+			if (strcmp(input, "exit") == 0) {
+				puts("Exiting...");
+				free(input);
+				break;
+			}
+
+			parse(input);
 			free(input);
-			break; 
 		}
-		
-		parse(input);
-		free(input);
+	} else if (argc >= 2) {
+		for (int i = 0; i < argc; i++) {
+			lval* args = lval_add(lval_sexpr(), lval_str(argv[i]));
+			lval* x = builtin_load(env, args);
+			if (x->type == LVAL_ERR) { lval_println(x); }
+			lval_del(args); lval_del(x);
+		}
 	}
-	
+
 	parserCleanUp();
 
 	return 0;

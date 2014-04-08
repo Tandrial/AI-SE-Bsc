@@ -8,7 +8,7 @@
 #include "mpc.h"
 
 /* lVal Types */
-enum { LVAL_ERR, LVAL_NUM, LVAL_SYM, LVAL_FUN, LVAL_SEXPR, LVAL_QEXPR };
+enum { LVAL_ERR, LVAL_NUM, LVAL_SYM, LVAL_STR, LVAL_FUN, LVAL_SEXPR, LVAL_QEXPR };
 
 struct lval;
 struct lenv;
@@ -24,6 +24,7 @@ struct lval {
 	double num;
 	char* err;
 	char* sym;
+	char* str;
 
 	/* Function */
 	lbuiltin builtin;
@@ -62,21 +63,31 @@ struct lenv {
 		"Function '%s' passed {} for argument %i.", func, index);
 
 // parser.c
+
+extern mpc_parser_t* Number;
+extern mpc_parser_t* Symbol;
+extern mpc_parser_t* String;
+extern mpc_parser_t* Comment;
+extern mpc_parser_t* Sexpr;
+extern mpc_parser_t* Qexpr;
+extern mpc_parser_t* Expr;
+extern mpc_parser_t* Lispy;
+extern lenv* env;
+
 extern void setupParser(void);
 extern void parserCleanUp(void);
 extern void parse(char* input);
 
 // parser.c
-//extern lval eval(mpc_ast_t* t);
-//extern lval eval_op(lval x, char* op, lval y);
-
 extern lval* lval_read_num(mpc_ast_t* t);
+extern lval* lval_read_str(mpc_ast_t* t);
 extern lval* lval_read(mpc_ast_t* t);
 
 // lval.c
 extern lval* lval_num(double x);
 extern lval* lval_err(char* fmt, ...);
 extern lval* lval_sym(char* s);
+extern lval* lval_str(char* s);
 extern lval* lval_builtin(lbuiltin func);
 extern lval* lval_sexpr(void);
 extern lval* lval_qexpr(void);
@@ -101,6 +112,7 @@ extern lval* lval_pop(lval* v, int i);
 extern void lval_print(lval* v);
 extern void lval_println(lval* v);
 extern void lval_expr_print(lval* v, char open, char close);
+extern void lval_print_str(lval* v);
 
 // lenv.c
 
@@ -117,10 +129,15 @@ extern void lenv_put(lenv* e, lval* k, lval* v);
 
 extern void lenv_add_builtins(lenv* e);
 extern void lenv_add_builtin(lenv* e, char*name, lbuiltin func);
+extern lval* builtin_load(lenv* e, lval* a);
+
 extern lval* builtin(lval* a, char* func);
 extern lval* builtin_op(lenv*e, lval* a, char* op);
 extern lval* builtin_ord(lenv* e, lval* a, char* op);
 extern lval* builtin_cmp(lenv* e, lval* a, char* op);
+
+extern lval* builtin_error(lenv* e, lval* a);
+extern lval* builtin_print(lenv* e, lval* a);
 
 extern lval* builtin_lambda(lenv* e, lval* a);
 extern lval* builtin_def(lenv* e, lval* a);

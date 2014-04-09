@@ -48,6 +48,11 @@
 
 ;;; Numeric Functions
 
+; Power
+(fun {pow n x} {
+	if (== n 0) {1} {* x ( pow (- n 1) x )}
+})
+
 ; Minimum of Arguments
 (fun {min & xs} {
 	if (== (tail xs) nil) {fst xs}

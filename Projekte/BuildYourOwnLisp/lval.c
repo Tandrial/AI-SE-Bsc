@@ -128,6 +128,13 @@ lval* lval_copy(lval* v) {
 }
 
 lval* lval_join(lval* x, lval* y) {
+	if (x->type == LVAL_STR && y->type ==LVAL_STR) {
+		x->str = realloc(x->str, strlen(x->str) + strlen(y->str) +1);
+		x->str = strcat(x->str, y->str);
+		lval_del(y);
+		return x;
+	}
+
 	for (int i = 0; i < y->count; i++) {
 		x = lval_add(x, y->cell[i]);
 	}

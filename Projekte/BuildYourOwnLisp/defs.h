@@ -148,11 +148,7 @@ extern lval* builtin_add(lenv* e, lval* a);
 extern lval* builtin_sub(lenv* e, lval* a);
 extern lval* builtin_mul(lenv* e, lval* a);
 extern lval* builtin_div(lenv* e, lval* a);
-
 extern lval* builtin_mod(lenv* e, lval* a);
-extern lval* builtin_pow(lenv* e, lval* a);
-extern lval* builtin_min(lenv* e, lval* a);
-extern lval* builtin_max(lenv* e, lval* a);
 
 extern lval* builtin_gt(lenv* e, lval* a);
 extern lval* builtin_lt(lenv* e, lval* a);

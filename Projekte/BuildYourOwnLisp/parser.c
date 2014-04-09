@@ -62,6 +62,7 @@ void parse(char* input) {
 
 // ---- liest einen Double aus dem AST aus
 lval* lval_read_num(mpc_ast_t* t) {
+	errno = 0;
 	double x = strtod(t->contents,&t->contents);
 	return errno != ERANGE ? lval_num(x) : lval_err("Invalid number: %s", t->contents);
 }

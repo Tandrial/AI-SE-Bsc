@@ -13,10 +13,7 @@ void lenv_add_builtins(lenv* e) {
 	lenv_add_builtin(e, "+", builtin_add);		lenv_add_builtin(e, "-", builtin_sub);
 	lenv_add_builtin(e, "*", builtin_mul);		lenv_add_builtin(e, "/", builtin_div);
 
-	lenv_add_builtin(e, "\%", builtin_mod);		lenv_add_builtin(e, "^", builtin_pow);
-	lenv_add_builtin(e, "min", builtin_min);	lenv_add_builtin(e, "max", builtin_max);
-
-	lenv_add_builtin(e, "if", builtin_if);
+	lenv_add_builtin(e, "\%", builtin_mod);		lenv_add_builtin(e, "if", builtin_if);
 	
 	lenv_add_builtin(e, ">", builtin_gt);		lenv_add_builtin(e, ">=", builtin_ge);
 	lenv_add_builtin(e, "<", builtin_gt);		lenv_add_builtin(e, "<=", builtin_le);
@@ -90,9 +87,6 @@ lval* builtin_mul(lenv* e, lval* a) { return builtin_op(e, a, "*"); }
 lval* builtin_div(lenv* e, lval* a) { return builtin_op(e, a, "/"); }
 
 lval* builtin_mod(lenv* e, lval* a) { return builtin_op(e, a, "\%"); }
-lval* builtin_pow(lenv* e, lval* a) { return builtin_op(e, a, "^"); }
-lval* builtin_min(lenv* e, lval* a) { return builtin_op(e, a, "min"); }
-lval* builtin_max(lenv* e, lval* a) { return builtin_op(e, a, "max"); }
 
 lval* builtin_gt(lenv* e, lval* a) { return builtin_ord(e, a, ">"); }
 lval* builtin_lt(lenv* e, lval* a) { return builtin_ord(e, a, "<"); }
@@ -129,9 +123,6 @@ lval* builtin_op(lenv*e, lval* a, char* op) {
 		}
 
 		if (strcmp(op, "\%") == 0)	{ x->num = (int)x->num % (int)y->num; }
-		if (strcmp(op, "^") == 0)	{ x->num = pow(x->num, y->num); }
-		if (strcmp(op, "min") == 0) { x->num = x->num < y->num ? x->num : y->num; }
-		if (strcmp(op, "max") == 0) { x->num = x->num > y->num ? x->num : y->num; }
 
 		lval_del(y);
 	}
@@ -265,9 +256,9 @@ lval* builtin_eval(lenv* e, lval* a) {
 }
 
 lval* builtin_join(lenv* e, lval* a){
-	for (int i = 0; i < a->count; i++) {
-		LASSERT_TYPE("join", a, i, LVAL_QEXPR);
-	}
+//	for (int i = 0; i < a->count; i++) {
+//		LASSERT_TYPE("join", a, i, LVAL_QEXPR);
+//	}
 
 	lval* x = lval_pop(a, 0);
 

@@ -1,0 +1,15 @@
+package de.krane.mse.littledragons;
+
+import android.graphics.Bitmap;
+
+public class Sprite {
+	private int x = 0;
+	private int y = 0;
+	private int xSpeed;
+	private int ySpeed;
+	private int width;
+	private int height;
+	private Bitmap bmp;
+	private GameView theGameView;
+
+}

@@ -1,0 +1,7 @@
+package de.krane.mse.littledragons;
+
+import android.view.View;
+
+public class GameView extends View {
+
+}

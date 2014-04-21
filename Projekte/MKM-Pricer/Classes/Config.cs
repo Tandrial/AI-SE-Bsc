@@ -65,7 +65,7 @@ namespace MKM_Pricer {
         internal static string CardBaseError = "Datenbank nicht gefunden/corrupt. Bitte Okay drückem um den Download zubeginnen.";
         internal static string EditionListError = "Editienliste nicht gefunden/corrupt. Bitte Okay drückem um den Download zubeginnen.";
 
-        public static string DataBaseUrl = "https://mkm-pricer.googlecode.com/files/";
+        public static string DataBaseUrl = "https://raw.githubusercontent.com/Tandrial/AI-SE-Bsc/master/Projekte/MKM-Pricer/data/";
         internal static string BaseUrl = "http://www.magickartenmarkt.de/";
         internal static string ShoppingUrl = BaseUrl + "?idRarity=&condition=&idLanguage=&isFoil=0&cardName={0}&mainPage=browseUserProducts&idCategory=1&idUser={1}";
         internal static string SearchUrl = BaseUrl + "index.php?mainPage=browseCategory&idCategory=1&idExpansion={0}&resultsPage={1}";

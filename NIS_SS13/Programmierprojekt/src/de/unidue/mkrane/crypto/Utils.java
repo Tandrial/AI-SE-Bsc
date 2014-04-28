@@ -3,7 +3,7 @@ package de.unidue.mkrane.crypto;
 import java.util.Random;
 
 class Utils {
-	
+
 	public static String GF8(String a, String b) {
 		String p = "";
 		boolean h_bit = false;
@@ -114,25 +114,25 @@ class Utils {
 	}
 
 	public static String HexToBin(String a) {
-		String result = "";
+		StringBuilder result = new StringBuilder();
 		for (int i = 0; i < a.length(); i++) {
 			for (int j = 0; j < HexBinLookUp[0].length; j++) {
 				if ((a.charAt(i) + "").equals(HexBinLookUp[0][j])) {
-					result += HexBinLookUp[1][j];
+					result.append(HexBinLookUp[1][j]);
 				}
 			}
 		}
-		return result;
+		return result.toString();
 	}
 
 	public static String BinToHex(String a) {
 		String[] tmp = Utils.splitIntoChunksOf(a, 4);
 
-		String result = "";
+		StringBuilder result = new StringBuilder();
 		for (int i = 0; i < tmp.length; i++) {
-			result += HexBinLookUp[0][BinToDez(tmp[i])];
+			result.append(HexBinLookUp[0][BinToDez(tmp[i])]);
 		}
-		return result;
+		return result.toString();
 	}
 
 	public static String DezToBin(int a) {
@@ -236,14 +236,14 @@ class Utils {
 			b = "0" + b;
 		while (a.length() < b.length())
 			a = "0" + a;
-		String result = "";
+		StringBuilder result = new StringBuilder();
 		for (int i = 0; i < a.length(); i++) {
 			if (a.charAt(i) == b.charAt(i))
-				result += "0";
+				result.append("0");
 			else
-				result += "1";
+				result.append("1");
 		}
-		return result;
+		return result.toString();
 	}
 
 	public static int Modulo(int a, int b) {
@@ -271,32 +271,31 @@ class Utils {
 		else
 			a = addPadding(a, b.length());
 
-		String result = "";
+		StringBuilder result = new StringBuilder();
 		for (int i = 0; i < a.length(); i++) {
 			if (a.charAt(i) == b.charAt(i))
-				result += "1";
+				result.append("1");
 			else
-				result += "0";
+				result.append("0");
 		}
 
-		result = paddTo(result, 8);
-		return result;
+		return paddTo(result.toString(), 8);
 	}
 
 	public static String Faktor(int a) {
-		String result = "";
+		StringBuilder result = new StringBuilder();
 		int max = (int) Math.sqrt(a);
 
 		for (int i = 2; i < max; i++) {
 			if (Modulo(a, i) == 0) {
 				a /= i;
-				result += i + ",";
+				result.append(i + ",");
 				i = 1;
 			}
 		}
 		if (a != 1)
-			result += a;
-		return result;
+			result.append(a);
+		return result.toString();
 	}
 
 	public static int[] GetPrimes(int max) {

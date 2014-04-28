@@ -57,8 +57,8 @@ namespace MKM_Pricer {
             return porto;
         }
 
-        public static string CardHash = "87E69529994C249FAB15B9ABA81F0849C8FBAC00";
-        public static string EditionHash = "9C8E58E6ABBE38DEA7515B341B0AB91BEADA0CC6";
+        public static string CardHash = "";
+        public static string EditionHash = "";
 
         internal static string SearchFinished = "Es wurden keine Artikel gefunden die auf deine Suche zutreffen";
         internal static string ShoppingKosten = "Das Deck kostet {0:0.00}€, davon {1:0.00}€ Karten und {2:0.00}€ Porto.";
@@ -116,6 +116,9 @@ namespace MKM_Pricer {
 
         public static void RestoreEditionList() {
             CompleteEditionList.Clear();
+            CompleteEditionList.Add(new Edition("JOU", "Journey_into_Nyx", 1481));
+            CompleteEditionList.Add(new Edition("BNG", "Born_of_the_Gods", 1469));
+            CompleteEditionList.Add(new Edition("THS", "Theros", 1457));
             CompleteEditionList.Add(new Edition("M14", "Magic_2014", 1449));
             CompleteEditionList.Add(new Edition("MMA", "Modern_Masters", 1444));
             CompleteEditionList.Add(new Edition("DGM", "Dragons_Maze", 1435));

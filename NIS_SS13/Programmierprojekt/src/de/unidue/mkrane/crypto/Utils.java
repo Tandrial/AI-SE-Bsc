@@ -323,10 +323,4 @@ class Utils {
 		}
 		return result;
 	}
-
-	public static void main(String[] args) {
-		String a = "1111";
-		String b = "10";
-		System.out.println(binMult(a, b));
-	}
 }

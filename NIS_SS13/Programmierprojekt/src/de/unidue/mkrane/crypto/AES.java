@@ -140,10 +140,7 @@ public class AES {
 
 	private static String[][] ShiftRows(String[][] a, boolean inv) {
 		for (int i = 1; i < 4; i++) {
-			if (inv)
-				a[i] = rotWord(a[i], 4 - i);
-			else
-				a[i] = rotWord(a[i], i);
+			a[i] = rotWord(a[i], inv ? 4 - i : i);
 		}
 		return a;
 	}

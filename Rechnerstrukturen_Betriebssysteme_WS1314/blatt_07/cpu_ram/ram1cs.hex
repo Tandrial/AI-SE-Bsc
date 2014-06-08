@@ -1,0 +1,41 @@
+@00:2F8F; 		LOAD 0x04
+@01:3500; 		NEG
+@02:FF01; 		PUSH ACC
+@03:2F8F; 		LOAD 0x05
+@04:3500; 		NEG
+@05:FF01; 		PUSH ACC
+@06:FF00; 		PUSH PC
+@07:4F40; 		JMP @ MULTS
+@08:AFFE; 		STORE @PROD
+@09:2FFF; 		LOAD 0xFF
+@0a:AFFF; 		STORE @ENDSIM
+
+; Mult @OP1 * @OP2 = ERG
+@40:EF01; MULTS:	POP @ACC 		-|
+@41:AF55; 			STORE @RETADR	Retrunadresse vom Stack lesen und speichern
+@42:EF01; 			POP @ACC 		--
+@43:3500;			NEG				 |
+@44:AF56; 			STORE @OP1		Multiplikand 1 vom Stack lesen, negieren und speichern
+@45:EF01; 			POP @ACC 		--
+@46:AF57; 			STORE @OP2		Multiplikand 2/Counter vom Stack lesen und speichern
+@47:8F56; LOOPS:	LOAD @OP1		--
+@48:9058;			ADD @ERG 		 |
+@49:AF58;			WRITE @ERG		Erg += Op1
+@4a:8F57;			LOAD @B 		--
+@4b:1001;			ADD 0x01 		 |
+@4c:AF57;			WRITE @B		Counter++
+@4d:6001;			JZ @RTN 		if Counter == 0 goto RTN
+@4e:4F47;			JMP @LOOPS		Schleifenende
+@4f:8F55; RTN:		LOAD @RETADR 	
+@50:FF01; 			PUSH ACC 		Returnadresse von Speicher --> ACC --> Stack
+@51:8F58;			LOAD @ERG   	Erg in ACC
+@52:EF00;			POP @PC  		Returnadresse von Stack --> PC
+; 55  58 Variablen
+@55:0000; @RETADR
+@56:0000; @OP1
+@57:0000; @OP2
+@58:0000; @ERG
+
+;ENDSIM
+@fe:0000; @PROD
+@ff:0000; @ENDSIM

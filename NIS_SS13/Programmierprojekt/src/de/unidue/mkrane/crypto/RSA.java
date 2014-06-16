@@ -27,10 +27,8 @@ public class RSA {
 	}
 
 	private static int[] crypt(int n, int power, int[] text) {
-
 		for (int i = 0; i < text.length; i++) {
-			text[i] = Utils.powerModulo(text[i], power, n);
-		}
+			text[i] = Utils.powerModulo(text[i], power, n);		
 		return text;
 	}
 
@@ -71,6 +69,5 @@ public class RSA {
 		System.out.println("Decrypted: " + klar2);
 
 		System.out.println("Equals? " + klar.equals(klar2));
-
 	}
 }

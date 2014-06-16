@@ -45,7 +45,8 @@ lval* builtin_load(lenv* e, lval* a) {
 			if (x->type == LVAL_ERR) { lval_println(x); }
 			lval_del(x);
 		}
-		lval_del(expr);	lval_del(a);
+		lval_del(expr);
+		lval_del(a);
 		return lval_sexpr();
 	} else {
 		char *err_msg = mpc_err_string(r.error);

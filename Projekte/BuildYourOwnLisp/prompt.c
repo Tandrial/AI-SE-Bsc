@@ -17,13 +17,12 @@ int main(int argc, char** argv) {
 	setupParser();
 
 	if (argc == 1) {
-	printf("Loading stdlib ...");
-	lval* args = lval_add(lval_sexpr(), lval_str("s.lspy"));
+//	puts("Loading stdlib ...");
+//	lval* args = lval_add(lval_sexpr(), lval_str("s.lspy"));
 
-	lval_println(args); 
-	lval* x = builtin_load(env, args);
-	if (x->type == LVAL_ERR) { lval_println(x); }
-	lval_del(args); lval_del(x);
+//	lval* x = builtin_load(env, args);
+//	if (x->type == LVAL_ERR) { lval_println(x); }
+//	lval_del(args); lval_del(x);
 
 		puts("Type exit to Exit\n");
 

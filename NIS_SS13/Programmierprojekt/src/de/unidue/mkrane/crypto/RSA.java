@@ -3,8 +3,6 @@ package de.unidue.mkrane.crypto;
 public class RSA {
 
 	public static int[] genKeys(int p, int q) {
-		int[] result = new int[3];
-
 		int n = p * q;
 
 		int phiN = (p - 1) * (q - 1);
@@ -17,11 +15,7 @@ public class RSA {
 		while (Utils.Modulo(e * d, phiN) != 1 || e == d)
 			d++;
 
-		result[0] = n;
-		result[1] = e;
-		result[2] = d;
-
-		return result;
+		return new int[] {n, e, d};
 	}
 
 	public static int[] encrypt(int[] params, int[] text) {

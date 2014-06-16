@@ -52,10 +52,7 @@ public class DES {
 
 		for (int i = 0; i < subkeys.length; i++) {
 			String tmpR = r;
-			if (encrypt)
-				r = feistel(r, subkeys[i]);
-			else
-				r = feistel(r, subkeys[15 - i]);
+			r = feistel(r, subkeys[encrypt ? i : 15 - i]);
 
 			r = Utils.XOR(l, r);
 			l = tmpR;

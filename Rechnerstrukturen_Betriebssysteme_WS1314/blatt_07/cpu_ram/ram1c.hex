@@ -1,0 +1,52 @@
+;@F0 * @F1 = @F2
+; 00 ... 19 Programm
+@00:2F04; LOAD 0x04
+@01:3500; NEG
+@02:FF01; PUSH ACC
+@03:2F05; LOAD 0x05
+@04:3500; NEG
+@05:FF01; PUSH ACC
+@06:FF00; PUSH PC
+@07:4F40; JMP @ MULTS
+@08:AFFE; STORE @PROD
+@09:2FFF; LOAD 0xFF
+@0a:AFFF; STORE @ENDSIM
+@40:EF01; MULTS:	POP @ACC 		-|
+@41:AF61; 			STORE @RETADR	Retrunadresse vom Stack lesen und speichern
+@42:EF01; 			POP @ACC 		-|
+@43:AF62; 			STORE @OP1 		Multiplikand 1 vom Stack lesen und speichern
+@44:EF01; 			POP @ACC 		-|
+@45:AF63; 			STORE @OP2 		Multiplikand 1 vom Stack lesen und speichern
+@46:2F10; 			LOAD 0x10 		-|
+@47:AF60; 			STORE @LOOPCNT	LOOPCNT wird auf 16 gesetzt
+@48:8F60; LOOPS:	LOAD @LOOPCNT   -|
+@49:6010; 			JZ @ENDE 		Abbruch wenn LOOPCNT = 0 ist.
+@4a:1401; 			SUB 0x01  		  |	
+@4b:AF60; 			STORE @LOOPCNT 	LOOTCNT--;
+@4c:8F63; 			LOAD @OP2       --
+@4d:1101; 			AND 0x01 		  |	
+@4e:6003; 			JZ @SHIFT 		Sprung wenn NICHT addiert wird (OP2 && 0x01 = 0)
+@4f:8F64; 			LOAD @RES    	--
+@50:9062; 			ADD @OP1  		  |
+@51:AF64; 			STORE @RES 		RES += OPS1S
+@52:8F63; SHIFT:	LOAD @OP2  		--
+@53:1800; 			SHR		 		  |
+@54:AF63; 			STORE @OP2  	OP2 wird durch einen Shift nach rechts halbiert
+@55:6004; 			JZ @ENDE		Abbruch wenn OPS2 == 0 ist
+@56:8F62; 			LOAD @OP1  		--
+@57:1900; 			SHL		   		  |
+@58:AF62; 			STORE @OP1  	OP1 wird durch einen Shift nach links verdoppelt	
+@59:4F48; 			JMP @LOOPS 		Sprung zum Schleifenstart
+@5a:8F61; ENDE:		LOAD @RETADR	-|
+@5b:FF01; 			PUSH ACC 		Returnaddresse vom Speicher lesen und im Stack speichern
+@5c:8F64;			LOAD @RES 		Ergebniss in Akku
+@5d:EF00;			POP @PC 		Returnaddresse vom Stack --> PC
+; 60 ... 64 Variablen
+@60:0000; @LOOPCNT
+@61:0000; @RETADR
+@62:FFFB; @OP1 vom Stack
+@63:FFFC; @OP2 vom Stack
+@64:0000; @RES 
+;ENDSIM
+@fe:0000; @PROD
+@ff:0000; @ENDSIM

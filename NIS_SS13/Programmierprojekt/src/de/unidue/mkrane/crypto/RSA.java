@@ -1,7 +1,6 @@
 package de.unidue.mkrane.crypto;
 
 public class RSA {
-
 	public static int[] genKeys(int p, int q) {
 		int n = p * q;
 
@@ -27,7 +26,7 @@ public class RSA {
 	}
 
 	private static int[] crypt(int n, int power, int[] text) {
-		for (int i = 0; i < text.length; i++) {
+		for (int i = 0; i < text.length; i++) 
 			text[i] = Utils.powerModulo(text[i], power, n);		
 		return text;
 	}

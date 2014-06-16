@@ -3,14 +3,13 @@ package de.unidue.mkrane.crypto;
 public class RSA {
 	public static int[] genKeys(int p, int q) {
 		int n = p * q;
-
 		int phiN = (p - 1) * (q - 1);
-
 		int e = 1;
+		int d = 1;
+
 		while (Utils.Modulo(e, phiN) == 0)
 			e++;
 
-		int d = 1;
 		while (Utils.Modulo(e * d, phiN) != 1 || e == d)
 			d++;
 

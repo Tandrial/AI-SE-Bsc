@@ -1,6 +1,6 @@
 #Projekte
 
-## C\#
+## C-Sharp
 	MKM-Pricer
 		Tool to optimize buying magic cards from magickartenmarkt.de
 

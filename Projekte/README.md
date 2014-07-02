@@ -1,8 +1,5 @@
 #Projekte
 
-## Android
-	Lil'Dragons - http://panjutorials.de/tutorials/android-gameapp-entwicklungstutorial-lazy-pudding/
-
 ## C #
 	MKM-Pricer
 		Tool to optimize buying magic cards from magickartenmarkt.de
@@ -33,3 +30,7 @@
 		› Write some documentation for your standard library, explaining what each of the functions do.
 		› Write some example programs using your standard library, for users to learn from.
 		› Write some test cases for each of the functions in your standard library.
+
+## Java
+
+	LED-Engine - 3D Engine written for a 12x12 LED-Board

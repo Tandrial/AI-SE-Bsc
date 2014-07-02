@@ -1,8 +1,0 @@
-package de.krane.mse.littledragons;
-
-public class GameLoopThread extends Thread {
-
-	private GameView theView;
-	private boolean isRunning = false;
-
-}

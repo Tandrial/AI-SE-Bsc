@@ -1,20 +1,21 @@
 /*
- * Copyright © 2014 Michael Krane <Michael.Krane@stud.uni-due.de>
+ * Copyright Â© 2014 Michael Krane <Michael.Krane@stud.uni-due.de>
  * This work is free. You can redistribute it and/or modify it under the
  * terms of the Do What The Fuck You Want To Public License, Version 2,
  * as published by Sam Hocevar. See the COPYING file for more details.
  */
 
-package RAM;
+package ram;
 
 import java.io.*;
+import dataTypes.Types;
 
 public class Ram {
 
 	private short[] data;
 
 	public Ram(File f) {
-		data = new short[1 << 8];
+		data = new short[Types.RAM_SIZE];
 		// ;Code 00 ... 0D *
 		// @00:2F00; LOAD 0x00
 
@@ -40,7 +41,7 @@ public class Ram {
 	}
 
 	public Ram(short[] data) {
-		if (data.length <= (1 << 8))
+		if (data.length <= (Types.RAM_SIZE))
 			this.data = data;
 	}
 
@@ -56,10 +57,5 @@ public class Ram {
 		for (int i = 0; i < data.length; i++) {
 			System.out.printf("0x%02X:0x%04X\n", i, data[i]);
 		}
-	}
-
-	public static void main(String[] args) {
-		Ram r = new Ram(new File("ram1b.hex"));
-		r.dumpMemory();
 	}
 }

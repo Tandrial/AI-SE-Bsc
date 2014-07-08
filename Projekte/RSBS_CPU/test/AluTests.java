@@ -15,6 +15,7 @@ public class AluTests {
 	short res;
 	short res_cor;
 	boolean c_o;
+	boolean c_o_cor;
 
 	@Before
 	public void setUp() throws Exception {
@@ -170,6 +171,27 @@ public class AluTests {
 
 	@Test
 	public void BYPASSModeTest() {
-		fail("Not yet implemented");
+		mode = 0;
+		c_i = true;
+		op1 = 10;
+		op2 = 35;
+		res_cor = (short) (op1 + op2);
+		alu.operate(mode, op1, op2, c_i);
+		res = alu.getResult();
+		c_o = alu.getCarry_out();
+
+		mode = 15;
+		op1 = 80;
+		op2 = 15;
+		c_i = false;
+		res_cor = res;
+		c_o_cor = c_o;
+
+		alu.operate(mode, op1, op2, c_i);
+		res = alu.getResult();
+		c_o = alu.getCarry_out();
+
+		if (res != res_cor || c_o != c_o_cor)
+			fail("BYPASS failed, previous result was overwritten.");
 	}
 }

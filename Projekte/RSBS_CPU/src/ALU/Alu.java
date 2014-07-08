@@ -29,7 +29,7 @@ public class Alu {
 		switch (mode) {
 		case 0: // ADD
 			int res = op1 + op2;
-			if (res > Short.MAX_VALUE)
+			if (res > Short.MAX_VALUE || res < Short.MIN_VALUE)
 				carry_out = true;
 			result = (short) res;
 			break;
@@ -49,28 +49,39 @@ public class Alu {
 			result = (short) res;
 			break;
 		case 4: // SUB
-
+			res = op1 - op2;
+			if (res < Short.MIN_VALUE)
+				carry_out = true;
+			result = (short) res;
 			break;
 		case 5: // NEG
-
+			result = (short) -op1;
 			break;
 		case 6: // OR
 			result = (short) (op1 | op2);
 			break;
 		case 7: // NOR
-
+			result = (short) (~op1 & ~op2);
 			break;
 		case 8: // SHR
-
+			carry_out = (result & 0x1) == 1;
+			result = (short) (result >>> 1);
 			break;
 		case 9: // SHL
-
+			carry_out = (result & 0x80) == 1;
+			result = (short) (result << 1);
 			break;
 		case 10: // RCR
-
+			carry_out = (result & 0x1) == 1;
+			result = (short) (result >>> 1);
+			if (carry_in)
+				result = (short) (result | 0x1);
 			break;
 		case 11: // RCL
-
+			carry_out = (result & 0x80) == 1;
+			result = (short) (result << 1);
+			if (carry_in)
+				result = (short) (result | 0x80);
 			break;
 		case 12:
 
@@ -93,15 +104,4 @@ public class Alu {
 	public boolean getCarry_out() {
 		return carry_out;
 	}
-
-	public static void main(String[] args) {
-		int test = Short.MAX_VALUE;
-		System.out.println(test);
-		test++;
-		System.out.println(test);
-		short t = (short) test;
-		System.out.println(t);
-
-	}
-
 }

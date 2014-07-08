@@ -1,3 +1,10 @@
+/*
+ * Copyright © 2014 Michael Krane <Michael.Krane@stud.uni-due.de>
+ * This work is free. You can redistribute it and/or modify it under the
+ * terms of the Do What The Fuck You Want To Public License, Version 2,
+ * as published by Sam Hocevar. See the COPYING file for more details.
+ */
+
 import static org.junit.Assert.*;
 
 import org.junit.Before;
@@ -30,7 +37,8 @@ public class AluTests {
 		op1 = 0;
 		op2 = 0;
 		res_cor = (short) (op1 + op2);
-		alu.operate(mode, op1, op2, c_i);
+		alu.setMode(mode);
+		alu.operate(op1, op2, c_i);
 		res = alu.getResult();
 		c_o = alu.getCarry_out();
 		if (res != res_cor || c_o)
@@ -41,7 +49,8 @@ public class AluTests {
 		op1 = 10;
 		op2 = 35;
 		res_cor = (short) (op1 + op2);
-		alu.operate(mode, op1, op2, c_i);
+		alu.setMode(mode);
+		alu.operate(op1, op2, c_i);
 		res = alu.getResult();
 		c_o = alu.getCarry_out();
 		if (res != res_cor || c_o)
@@ -52,7 +61,8 @@ public class AluTests {
 		op1 = 10;
 		op2 = -35;
 		res_cor = (short) (op1 + op2);
-		alu.operate(mode, op1, op2, c_i);
+		alu.setMode(mode);
+		alu.operate(op1, op2, c_i);
 		res = alu.getResult();
 		c_o = alu.getCarry_out();
 		if (res != res_cor || c_o)
@@ -63,7 +73,8 @@ public class AluTests {
 		op1 = -1;
 		op2 = Short.MIN_VALUE;
 		res_cor = (short) (op1 + op2);
-		alu.operate(mode, op1, op2, c_i);
+		alu.setMode(mode);
+		alu.operate(op1, op2, c_i);
 		res = alu.getResult();
 		c_o = alu.getCarry_out();
 		if (!c_o)
@@ -73,7 +84,8 @@ public class AluTests {
 		op1 = 1;
 		op2 = Short.MAX_VALUE;
 		res_cor = (short) (op1 + op2);
-		alu.operate(mode, op1, op2, c_i);
+		alu.setMode(mode);
+		alu.operate(op1, op2, c_i);
 		res = alu.getResult();
 		c_o = alu.getCarry_out();
 		if (!c_o)
@@ -90,7 +102,8 @@ public class AluTests {
 		op1 = 0;
 		op2 = 0;
 		res_cor = (short) (op1 & op2);
-		alu.operate(mode, op1, op2, c_i);
+		alu.setMode(mode);
+		alu.operate(op1, op2, c_i);
 		res = alu.getResult();
 		if (res != res_cor)
 			fail(String.format("AND failed %d & %d = %d (should be %d)", op1,
@@ -99,7 +112,8 @@ public class AluTests {
 		op1 = 0xAA;
 		op2 = 0x55;
 		res_cor = (short) (op1 & op2);
-		alu.operate(mode, op1, op2, c_i);
+		alu.setMode(mode);
+		alu.operate(op1, op2, c_i);
 		res = alu.getResult();
 		if (res != res_cor)
 			fail(String.format("AND failed %d & %d = %d (should be %d)", op1,
@@ -108,7 +122,8 @@ public class AluTests {
 		op1 = 0xFF;
 		op2 = 0xFF;
 		res_cor = (short) (op1 & op2);
-		alu.operate(mode, op1, op2, c_i);
+		alu.setMode(mode);
+		alu.operate(op1, op2, c_i);
 		res = alu.getResult();
 		if (res != res_cor)
 			fail(String.format("AND failed %d & %d = %d (should be %d)", op1,
@@ -117,7 +132,8 @@ public class AluTests {
 		op1 = 0x0F;
 		op2 = 0x0F;
 		res_cor = (short) (op1 & op2);
-		alu.operate(mode, op1, op2, c_i);
+		alu.setMode(mode);
+		alu.operate(op1, op2, c_i);
 		res = alu.getResult();
 		if (res != res_cor)
 			fail(String.format("AND failed %d & %d = %d (should be %d)", op1,
@@ -176,7 +192,8 @@ public class AluTests {
 		op1 = 10;
 		op2 = 35;
 		res_cor = (short) (op1 + op2);
-		alu.operate(mode, op1, op2, c_i);
+		alu.setMode(mode);
+		alu.operate(op1, op2, c_i);
 		res = alu.getResult();
 		c_o = alu.getCarry_out();
 
@@ -187,7 +204,8 @@ public class AluTests {
 		res_cor = res;
 		c_o_cor = c_o;
 
-		alu.operate(mode, op1, op2, c_i);
+		alu.setMode(mode);
+		alu.operate(op1, op2, c_i);
 		res = alu.getResult();
 		c_o = alu.getCarry_out();
 

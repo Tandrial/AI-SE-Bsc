@@ -1,3 +1,10 @@
+/*
+ * Copyright © 2014 Michael Krane <Michael.Krane@stud.uni-due.de>
+ * This work is free. You can redistribute it and/or modify it under the
+ * terms of the Do What The Fuck You Want To Public License, Version 2,
+ * as published by Sam Hocevar. See the COPYING file for more details.
+ */
+
 package ALU;
 
 public class Alu {
@@ -13,8 +20,11 @@ public class Alu {
 	private short result;
 	private boolean carry_out;
 
-	public void operate(byte mode, short op1, short op2, boolean carry_in) {
+	public void setMode(byte mode) {
 		this.mode = mode;
+	}
+
+	public void operate(short op1, short op2, boolean carry_in) {
 		if (mode == 0xF)
 			return;
 		this.op1 = op1;
@@ -22,10 +32,10 @@ public class Alu {
 		this.carry_in = carry_in;
 		result = 0;
 		carry_out = false;
-		setResult();
+		calcResult();
 	}
 
-	private void setResult() {
+	private void calcResult() {
 		switch (mode) {
 		case 0: // ADD
 			int res = op1 + op2;

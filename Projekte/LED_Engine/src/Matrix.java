@@ -5,7 +5,7 @@ public class Matrix {
 	static Matrix rotX_M(double alpha) {
 		return new Matrix(new double[][] { { 1, 0, 0 },
 				{ 0, Math.cos(alpha), -Math.sin(alpha) },
-				{ 0, Math.sin(alpha), Math.cos(alpha)} });
+				{ 0, Math.sin(alpha), Math.cos(alpha) } });
 	}
 
 	static Matrix rotY_M(double alpha) {
@@ -62,10 +62,7 @@ public class Matrix {
 		return res;
 	}
 
-	public static float crossProduct(Vector3D v1, Vector3D v2) {
-		
-		
-		
-		return 0;
+	public static double prepDot(Vector3D v1, Vector3D v2) {
+		return (v1.x * v2.y - v1.y * v2.x);
 	}
 }

@@ -38,7 +38,6 @@ public class OBJ_Parser {
 				default:
 					break;
 				}
-
 			}
 			br.close();
 		} catch (IOException e) {

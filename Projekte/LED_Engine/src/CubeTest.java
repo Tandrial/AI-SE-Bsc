@@ -7,6 +7,8 @@ import ledControl.KeyBuffer;
 
 public class CubeTest {
 
+	private final String ip = "192.168.69.11";
+
 	private long lastTimeFPS = 0;
 	private int frames = 0;
 
@@ -30,8 +32,8 @@ public class CubeTest {
 	private static LedScreen leds;
 	private static KeyControl keys;
 
-	RenderMode rMode = RenderMode.POINTS;
-	DisplayMode dMode = DisplayMode.NETWORK;
+	RenderMode rMode = RenderMode.FACES;
+	DisplayMode dMode = DisplayMode.EMU;
 	Model model = Model.CUBE;
 	boolean running = false;
 
@@ -42,7 +44,7 @@ public class CubeTest {
 		if (controller == null)
 			controller = BoardController.getBoardController();
 		if (mode == DisplayMode.NETWORK)
-			controller.addNetWorkHost("192.168.69.11");
+			controller.addNetWorkHost(ip);
 
 		if (input == null)
 			input = controller.getKeyBuffer();
@@ -53,8 +55,9 @@ public class CubeTest {
 	}
 
 	public void initScene() {
+//		StdDraw.setScale(-2, 2);
 		if (dMode == DisplayMode.DEBUG) {
-			StdDraw.setScale(-4, 4);
+			StdDraw.setScale(-2, 2);
 			StdDraw.setTitle("0 FPS");
 			lastTimeFPS = System.nanoTime();
 		}
@@ -63,10 +66,10 @@ public class CubeTest {
 			faces.addAll(Geometry.Cube(0, 0, 0, 1));
 			break;
 		case OBJFILE:
-			faces.addAll(OBJ_Parser.readFile(new File("cube.obj")));
+			faces.addAll(OBJ_Parser.readFile(new File("tri.obj")));
 			break;
-		case PYRAMID:
-			faces.addAll(Geometry.Pyramid(0, 0, 0, 1));
+		case MONKEY:
+			faces.addAll(OBJ_Parser.readFile(new File("monkey.obj")));
 			break;
 		default:
 			break;
@@ -89,6 +92,7 @@ public class CubeTest {
 				e.printStackTrace();
 			}
 		}
+
 		leds.clearLED();
 		leds.update();
 		System.out.println("Exiting.");
@@ -144,6 +148,7 @@ public class CubeTest {
 			t = new CubeTest(DisplayMode.DEBUG);
 		else
 			t = new CubeTest(DisplayMode.NETWORK);
+
 		t.initScene();
 		t.startLoop();
 	}

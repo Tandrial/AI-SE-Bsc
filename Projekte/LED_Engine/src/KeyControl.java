@@ -37,7 +37,6 @@ public class KeyControl {
 			case KeyEvent.VK_NUMPAD8:
 				c.xOff += 1;
 				break;
-
 			case KeyEvent.VK_N:
 				c.model = c.model.getNext();
 				c.rMode = RenderMode.POINTS;
@@ -54,24 +53,22 @@ public class KeyControl {
 					c.faces.addAll(Geometry.Cube(0, 0, 0, 1));
 					break;
 				case OBJFILE:
-					c.faces.addAll(OBJ_Parser.readFile(new File("cube.obj")));
+					c.faces.addAll(OBJ_Parser.readFile(new File("tri.obj")));
 					break;
-				case PYRAMID:
-					c.faces.addAll(Geometry.Pyramid(0, 0, 0, 1));
+				case MONKEY:
+					c.faces.addAll(OBJ_Parser.readFile(new File("monkey.obj")));
 				default:
 					break;
 				}
-				c.forceDraw = true;
+
 				break;
 			case KeyEvent.VK_Q:
 				for (Face face : c.faces)
 					face.scale(1 / c.scale, 1 / c.scale, 1 / c.scale);
 				c.scale = 1;
-				c.forceDraw = true;
 				break;
 			case KeyEvent.VK_L:
 				c.rMode = c.rMode.getNext();
-				c.forceDraw = true;
 				break;
 			case KeyEvent.VK_W:
 				c.scale += .1;
@@ -96,6 +93,7 @@ public class KeyControl {
 				c.running = false;
 				break;
 			}
+			c.forceDraw = true;
 		}
 	}
 }

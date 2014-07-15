@@ -28,6 +28,7 @@ public class Vector3D {
 
 	@Override
 	public String toString() {
-		return String.format("x=%f y=%f z=%f w=%f\n", x, y, z);
+		// return String.format("x=%s y=%s z=%s w=%s\n", x, y, z);
+		return "x=" + x + " y=" + y + " z=" + z + "\n";
 	}
 }

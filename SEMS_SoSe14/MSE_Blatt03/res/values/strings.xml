@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">MSE_Blatt03</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="linlayout">Linear Layout</string>
+    <string name="rellayout">Relative Layout</string>
+    <string name="listview">Goto ListView/GridView</string>
+    <string name="gomain">GoTo Main Activity</string>
+    <string name="s1">Spalte 1</string>
+    <string name="s2">Spalte 2</string>
+    <string name="s3">Spalte 3</string>
+
+    <string-array name="items">
+        <item>item1</item>
+        <item>item2</item>
+        <item>item3</item>
+        <item>item4</item>
+        <item>item5</item>
+        <item>item6</item>
+        <item>item7</item>
+    </string-array>
+
+</resources>

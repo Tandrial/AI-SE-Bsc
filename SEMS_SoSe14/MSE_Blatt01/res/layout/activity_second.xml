@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <TextView
+        android:id="@+id/txtCounter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="36dp"
+        android:text="@+string/txtCounter" />
+
+    <Button
+        android:id="@+id/btnPlus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/btnMinus"
+        android:layout_alignBottom="@+id/btnMinus"
+        android:layout_marginLeft="25dp"
+        android:layout_toRightOf="@+id/txtCounter"
+        android:onClick="inc"
+        android:text="@+string/btnPlus" />
+
+    <Button
+        android:id="@+id/btnNull"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/btnPlus"
+        android:layout_alignBottom="@+id/btnPlus"
+        android:layout_centerHorizontal="true"
+        android:onClick="nul"
+        android:text="@+string/btnNull" />
+
+    <Button
+        android:id="@+id/btnMinus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txtCounter"
+        android:layout_marginTop="29dp"
+        android:layout_toLeftOf="@+id/btnNull"
+        android:onClick="dec"
+        android:text="@+string/btnMinus" />
+
+</RelativeLayout>

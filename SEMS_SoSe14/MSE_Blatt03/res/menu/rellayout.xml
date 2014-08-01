@@ -1,0 +1,11 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="de.mkrane.mse_blatt03.MainActivity" >
+
+    <item
+        android:id="@+id/rellayout"
+        android:orderInCategory="100"
+        android:showAsAction="never"
+        android:title="@string/rellayout"/>
+
+</menu>

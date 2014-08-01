@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">MSE_Blatt06</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_world">Hello world!</string>
+    
+    <string name="label_personalData">Persönliche Daten</string>
+    <string name="string_firstname">Vorname:</string>
+    <string name="string_lastname">Nachname:</string>
+    <string name="string_matrikel">Matrikel-nummer:</string>
+    <string name="GeoNamesData">GeoNames Daten</string>
+    <string name="string_username">Benutzername:</string>
+    <string name="string_minvalue">0</string>
+    <string name="string_maxvalue">200</string>
+    <string name="button_save">Speichern</string>
+
+</resources>

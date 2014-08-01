@@ -1,0 +1,255 @@
+<resources>
+
+    <string-array name="country_array_a">
+        <item>Abchasien</item>
+        <item>Afghanistan</item>
+        <item>Ägypten</item>
+        <item>Albanien</item>
+        <item>Algerien</item>
+        <item>Andorra</item>
+        <item>Angola</item>
+        <item>Antigua und Barbuda</item>
+        <item>Äquatorialguinea</item>
+        <item>Argentinien</item>
+        <item>Armenien</item>
+        <item>Aserbaidschan</item>
+        <item>Äthiopien</item>
+        <item>Australien</item>
+    </string-array>
+    <string-array name="country_array_b">
+        <item>Bahamas</item>
+        <item>Bahrain</item>
+        <item>Bangladesch</item>
+        <item>Barbados</item>
+        <item>Belgien</item>
+        <item>Belize</item>
+        <item>Benin</item>
+        <item>Bergkarabach</item>
+        <item>Bhutan</item>
+        <item>Bolivien</item>
+        <item>Bosnien und Herzegowina</item>
+        <item>Botswana</item>
+        <item>Brasilien</item>
+        <item>Brunei</item>
+        <item>Bulgarien</item>
+        <item>Burkina Faso</item>
+        <item>Burundi</item>
+    </string-array>
+    <string-array name="country_array_c">
+        <item>Chile</item>
+        <item>Volksrepublik China</item>
+        <item>Cookinseln</item>
+        <item>Costa Rica</item>
+    </string-array>
+    <string-array name="country_array_d">
+        <item>Dänemark</item>
+        <item>Deutschland</item>
+        <item>Dominica</item>
+        <item>Dominikanische Republik</item>
+        <item>Dschibuti</item>
+    </string-array>
+    <string-array name="country_array_e">
+        <item>Ecuador</item>
+        <item>El Salvador</item>
+        <item>Elfenbeinküste</item>
+        <item>Eritrea</item>
+        <item>Estland</item>
+    </string-array>
+    <string-array name="country_array_f">
+        <item>Fidschi</item>
+        <item>Finnland</item>
+        <item>Frankreich</item>
+    </string-array>
+    <string-array name="country_array_g">
+        <item>Gabun</item>
+        <item>Gambia</item>
+        <item>Georgien</item>
+        <item>Ghana</item>
+        <item>Grenada</item>
+        <item>Griechenland</item>
+        <item>Guatemala</item>
+        <item>Guinea</item>
+        <item>Guinea-Bissau</item>
+        <item>Guyana</item>
+    </string-array>
+    <string-array name="country_array_h">
+        <item>Haiti</item>
+        <item>Honduras</item>
+    </string-array>
+    <string-array name="country_array_i">
+        <item>Indien</item>
+        <item>Indonesien</item>
+        <item>Irak</item>
+        <item>Iran</item>
+        <item>Irland</item>
+        <item>Island</item>
+        <item>Israel</item>
+        <item>Italien</item>
+    </string-array>
+    <string-array name="country_array_j">
+        <item>Jamaika</item>
+        <item>Japan</item>
+        <item>Jemen</item>
+        <item>Jordanien</item>
+    </string-array>
+    <string-array name="country_array_k">
+        <item>Kambodscha</item>
+        <item>Kamerun</item>
+        <item>Kanada</item>
+        <item>Kap Verde</item>
+        <item>Kasachstan</item>
+        <item>Katar</item>
+        <item>Kenia</item>
+        <item>Kirgisistan</item>
+        <item>Kiribati</item>
+        <item>Kolumbien</item>
+        <item>Komoren</item>
+        <item>Kongo, Demokratische Republik</item>
+        <item>Kongo, Republik</item>
+        <item>Korea, Nord</item>
+        <item>Korea, Süd</item>
+        <item>Kosovo</item>
+        <item>Kroatien</item>
+        <item>Kuba</item>
+        <item>Kuwait</item>
+    </string-array>
+    <string-array name="country_array_l">
+        <item>Laos</item>
+        <item>Lesotho</item>
+        <item>Lettland</item>
+        <item>Libanon</item>
+        <item>Liberia</item>
+        <item>Libyen</item>
+        <item>Liechtenstein</item>
+        <item>Litauen</item>
+        <item>Luxemburg</item>
+    </string-array>
+    <string-array name="country_array_m">
+        <item>Madagaskar</item>
+        <item>Malawi</item>
+        <item>Malaysia</item>
+        <item>Malediven</item>
+        <item>Mali</item>
+        <item>Malta</item>
+        <item>Marokko</item>
+        <item>Marshallinseln</item>
+        <item>Mauretanien</item>
+        <item>Mauritius</item>
+        <item>Mazedonien</item>
+        <item>Mexiko</item>
+        <item>Mikronesien</item>
+        <item>Moldawien</item>
+        <item>Monaco</item>
+        <item>Mongolei</item>
+        <item>Montenegro</item>
+        <item>Mosambik</item>
+        <item>Myanmar</item>
+    </string-array>
+    <string-array name="country_array_n">
+        <item>Namibia</item>
+        <item>Nauru</item>
+        <item>Nepal</item>
+        <item>Neuseeland</item>
+        <item>Nicaragua</item>
+        <item>Niederlande</item>
+        <item>Niger</item>
+        <item>Nigeria</item>
+        <item>Niue</item>
+        <item>Nordzypern</item>
+        <item>Norwegen</item>
+    </string-array>
+    <string-array name="country_array_o">
+        <item>Oman</item>
+        <item>Österreich</item>
+        <item>Osttimor / Timor-Leste</item>
+    </string-array>
+    <string-array name="country_array_p">
+        <item>Pakistan</item>
+        <item>Palästina</item>
+        <item>Palau</item>
+        <item>Panama</item>
+        <item>Papua-Neuguinea</item>
+        <item>Paraguay</item>
+        <item>Peru</item>
+        <item>Philippinen</item>
+        <item>Polen</item>
+        <item>Portugal</item>
+    </string-array>
+    <string-array name="country_array_r">
+        <item>Ruanda</item>
+        <item>Rumänien</item>
+        <item>Russland</item>
+    </string-array>
+    <string-array name="country_array_s">
+        <item>Salomonen</item>
+        <item>Sambia</item>
+        <item>Samoa</item>
+        <item>San Marino</item>
+        <item>São Tomé und Príncipe</item>
+        <item>Saudi-Arabien</item>
+        <item>Schweden</item>
+        <item>Schweiz</item>
+        <item>Senegal</item>
+        <item>Serbien</item>
+        <item>Seychellen</item>
+        <item>Sierra Leone</item>
+        <item>Simbabwe</item>
+        <item>Singapur</item>
+        <item>Slowakei</item>
+        <item>Slowenien</item>
+        <item>Somalia</item>
+        <item>Somaliland</item>
+        <item>Spanien</item>
+        <item>Sri Lanka</item>
+        <item>St. Kitts und Nevis</item>
+        <item>St. Lucia</item>
+        <item>St. Vincent und die Grenadinen</item>
+        <item>Südafrika</item>
+        <item>Sudan</item>
+        <item>Südossetien</item>
+        <item>Südsudan</item>
+        <item>Suriname</item>
+        <item>Swasiland</item>
+        <item>Syrien</item>
+    </string-array>
+    <string-array name="country_array_t">
+        <item>Tadschikistan</item>
+        <item>Tansania</item>
+        <item>Thailand</item>
+        <item>Togo</item>
+        <item>Tonga</item>
+        <item>Transnistrien</item>
+        <item>Trinidad und Tobago</item>
+        <item>Tschad</item>
+        <item>Tschechien</item>
+        <item>Tunesien</item>
+        <item>Türkei</item>
+        <item>Turkmenistan</item>
+        <item>Tuvalu</item>
+    </string-array>
+    <string-array name="country_array_u">
+        <item>Uganda</item>
+        <item>Ukraine</item>
+        <item>Ungarn</item>
+        <item>Uruguay</item>
+        <item>Usbekistan</item>
+    </string-array>
+    <string-array name="country_array_v">
+        <item>Vanuatu</item>
+        <item>Vatikanstadt</item>
+        <item>Venezuela</item>
+        <item>Vereinigte Arabische Emirate</item>
+        <item>Vereinigte Staaten</item>
+        <item>Vereinigtes Königreich</item>
+        <item>Vietnam</item>
+    </string-array>
+    <string-array name="country_array_w">
+        <item>Weißrussland</item>
+        <item>Westsahara</item>
+    </string-array>
+    <string-array name="country_array_z">
+        <item>Zentralafrikanische Republik</item>
+        <item>Zypern</item>
+    </string-array>
+
+</resources>

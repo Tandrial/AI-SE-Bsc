@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">MSE_Blatt08_A13a</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="string_sensor_name">Name:</string>
+    <string name="string_sensor_vendor">Anbieter:</string>
+    <string name="string_sensor_type">Typ:</string>
+    <string name="string_sensor_version">Version:</string>
+    <string name="string_sensor_maxRange">Maximale Reichweite:</string>
+	<string name="string_sensor_value1">Wert 1:</string>
+	<string name="string_sensor_value2">Wert 2:</string>
+	<string name="string_sensor_value3">Wert 3:</string>
+	
+</resources>

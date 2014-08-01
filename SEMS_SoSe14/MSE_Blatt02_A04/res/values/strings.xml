@@ -1,0 +1,8 @@
+<resources>
+
+    <string name="app_name">MSE_Blatt02_A04</string>
+    <string name="inc_count">Inkrement</string>
+    <string name="dec_count">Dekrement</string>
+    <string name="Wechsel">Wechsel</string>
+
+</resources>

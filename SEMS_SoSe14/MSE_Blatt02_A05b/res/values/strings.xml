@@ -1,0 +1,7 @@
+<resources>
+
+    <string name="app_name">MSE_Blatt02_A05b</string>
+    <string name="SuccText">Making a note here &#8230; huge success!</string>
+    <string name="btnSend">Sending a message to outta Space!</string>
+
+</resources>

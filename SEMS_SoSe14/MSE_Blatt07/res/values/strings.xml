@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">MSE_Blatt07</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="string_hint_searchrequest">Gerlingstrasse 16, 45127 Essen</string>
+    <string name="string_button_go">Go!</string>
+    <string name="string_locationinfo"></string>
+    <string name="string_loreipsum">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum non laoreet diam. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Fusce eros nibh, aliquet in vehicula at, pharetra non sem. Quisque eu risus at leo lacinia porttitor vel et augue. Pellentesque in accumsan mauris. Curabitur dictum condimentum metus at lacinia. Ut nec turpis augue, in suscipit erat. Morbi malesuada tortor et arcu vulputate scelerisque. Donec interdum, urna id consectetur vestibulum, neque justo condimentum augue, sed condimentum dolor eros et odio. Cras eros est, pretium porta malesuada in, scelerisque sit amet enim. Etiam ipsum nunc, luctus et tincidunt sit amet, ultricies id turpis.</string>
+    <string name="string_error_geocoder">Entschuldigung. Zu dieser Adresse konnten keine Geo-Koordinaten ermittelt werden.</string>
+    <string name="string_error_geonames">Entschuldigung. Es ist ein Fehler beim Abruf von GeoNames aufgetreten.</string>
+    <string name="string_intent_title">TITLE</string>
+    <string name="string_intent_wikiurl">WIKIURL</string>
+    <string name="string_intent_summary">SUMMARY</string>
+    <string name="string_intent_image">IMAGE</string>
+    
+    <string name="string_toggleButton_GPS_ON">GPS ON</string>
+    <string name="string_toggleButton_GPS_OFF">GPS OFF</string>
+    <string name="string_toggleButton_Network_ON">Netzwerk ON</string>
+    <string name="string_toggleButton_Network_OFF">Netzwerk OFF</string>
+    
+</resources>

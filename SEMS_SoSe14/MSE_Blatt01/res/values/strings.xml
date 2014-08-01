@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">MSE_Blatt01</string>
+    <string name="hello_world">Hello paluno</string>
+    <string name="alt_test">Change is working!!</string>
+    <string name="btnChangeText">Change</string>
+    <string name="btnSwitchText">Change Activity</string>
+    <string name="txtCounter">0</string>
+    <string name="btnMinus">-</string>
+    <string name="btnNull">Null</string>
+    <string name="btnPlus">+</string>
+    
+    <string name="saved_count">de.krane.mse_blatt01.count</string>
+
+</resources>

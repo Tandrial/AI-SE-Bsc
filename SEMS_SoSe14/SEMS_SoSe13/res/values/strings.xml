@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">SEMS_SoSe13</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="btn_Threading">Threading</string>
+    <string name="btn_sharedPrefs">SharedPrefs</string>
+    
+    <string name="btn_Start">Start/Stop</string>
+    <string name="auf">Aufwärts</string>
+    <string name="ab">Abwärts</string>
+    
+
+</resources>

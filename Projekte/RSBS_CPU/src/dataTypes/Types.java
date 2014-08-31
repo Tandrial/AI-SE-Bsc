@@ -11,10 +11,10 @@ public class Types {
 
 	public static int RAM_SIZE = 1 << 8; // 256;
 
-	public static byte FETCH = 0;
-	public static byte DECODE = 1;
-	public static byte READ_MEM = 2;
-	public static byte OPERATE = 3;
-	public static byte WRITE_MEM = 4;
+	public static final byte FETCH = 0;
+	public static final byte DECODE = 1;
+	public static final byte READ_MEM = 2;
+	public static final byte OPERATE = 3;
+	public static final byte WRITE_MEM = 4;
 
 }

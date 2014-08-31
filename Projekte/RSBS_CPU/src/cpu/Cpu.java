@@ -15,16 +15,19 @@ import alu.Alu;
 
 public class Cpu {
 
-	private File file;
-
-	private Alu alu;
-	private Ram ram;
 	private Cntrl steuerwerk;
 
 	public Cpu(File f) {
-		file = f;
-		alu = new Alu();
-		ram = new Ram(file);
-		steuerwerk = new Cntrl();
+		steuerwerk = new Cntrl(f);
+	}
+
+	public void startSim() {
+		steuerwerk.work();
+
+	}
+
+	public static void main(String[] args) {
+		Cpu c = new Cpu(new File("ram1b.hex"));
+		c.startSim();
 	}
 }

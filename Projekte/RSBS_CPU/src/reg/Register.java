@@ -51,6 +51,26 @@ public class Register {
 		this.phase = phase;
 	}
 
+	public byte getPhase() {
+		return phase;
+	}
+
+	public byte getPC() {
+		return pc;
+	}
+
+	public void incPC() {
+		pc++;
+	}
+
+	public void setInst(short inst) {
+		this.inst = inst;
+	}
+
+	public short getInst() {
+		return inst;
+	}
+
 	public void reset() {
 		status = new boolean[] { false, true };
 		acc = 0;
@@ -60,5 +80,10 @@ public class Register {
 		mdr = 0;
 		mar = 0;
 		phase = Types.FETCH;
+	}
+
+	public void nextPhase() {
+		phase = (byte) ((phase + 1) % 5);
+
 	}
 }

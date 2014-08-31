@@ -36,9 +36,10 @@ public class Alu {
 	}
 
 	private void calcResult() {
+		int res;
 		switch (mode) {
 		case 0: // ADD
-			int res = op1 + op2;
+			res = op1 + op2;
 			if (res > Short.MAX_VALUE || res < Short.MIN_VALUE)
 				carry_out = true;
 			result = (short) res;

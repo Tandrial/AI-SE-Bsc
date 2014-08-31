@@ -45,11 +45,15 @@ public class Ram {
 			this.data = data;
 	}
 
+	public Ram() {
+		this.data = new short[Types.RAM_SIZE];
+	}
+
 	public short readData(byte adr) {
 		return data[adr];
 	}
 
-	public void writeData(byte data, short adr) {
+	public void writeData(short data, byte adr) {
 		this.data[adr] = data;
 	}
 

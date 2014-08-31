@@ -51,7 +51,10 @@ public class Ram {
 	}
 
 	public short readData(byte adr) {
-		return data[adr];
+		if (adr < 0)
+			return data[adr + 256];
+		else
+			return data[adr];
 	}
 
 	public void writeData(short data, byte adr) {

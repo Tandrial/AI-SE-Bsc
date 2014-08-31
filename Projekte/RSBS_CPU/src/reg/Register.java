@@ -79,6 +79,11 @@ public class Register {
 		return status[0];
 	}
 
+	public void setCarry(boolean carry) {
+		this.status[0] = carry;
+
+	}
+
 	public void reset() {
 		status = new boolean[] { false, true };
 		acc = 0;
@@ -102,5 +107,13 @@ public class Register {
 
 	public short getACC() {
 		return acc;
+	}
+
+	public boolean getZero() {
+		return status[1];
+	}
+
+	public void setZero(boolean zero) {
+		this.status[1] = zero;
 	}
 }

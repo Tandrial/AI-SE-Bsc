@@ -27,7 +27,6 @@ public class Cntrl {
 	}
 
 	public void work() {
-		boolean running = true;
 		byte adr = 0;
 		byte aluMode = 0;
 		byte adrMode = 0;
@@ -37,11 +36,15 @@ public class Cntrl {
 		short op2 = 0;
 		short out = 0;
 
-		while (running) {
+		while (true) {
+
+			if (ram.readData((byte) 0xFF) == 0xFF || reg.getPC() > 255)
+				break;
 
 			switch (reg.getPhase()) {
 			case Types.FETCH:
 				adr = reg.getPC();
+				System.out.println("[DEBUG] PC = " + reg.getPC());
 				reg.incPC();
 				reg.nextPhase();
 				break;
@@ -57,9 +60,11 @@ public class Cntrl {
 				}
 
 				reg.nextPhase();
-				System.out.println("[DEBUG] inst= " + reg.getInst() + " adr = "
-						+ adrMode + " alu= " + aluMode + " direktValue = "
-						+ direktValue);
+				System.out
+						.println(String
+								.format("[DEBUG] inst= 0x%04X adr = %s alu= %s direktValue = %s",
+										reg.getInst(), adrMode, aluMode,
+										direktValue));
 				break;
 
 			case Types.READ_MEM:
@@ -67,6 +72,7 @@ public class Cntrl {
 				op1 = getOp1(adrMode, direktValue);
 				op2 = getOp2(adrMode, direktValue);
 
+				System.out.println("[DEBUG] op1 = " + op1 + " op2 = " + op2);
 				reg.nextPhase();
 				break;
 
@@ -74,9 +80,14 @@ public class Cntrl {
 				alu.setMode(aluMode);
 				alu.operate(op1, op2, reg.getCarry());
 				out = alu.getResult();
-				if (aluMode != 15)
+				if (aluMode != 15) {
 					reg.setAcc(out);
+				}
+
 				reg.nextPhase();
+				System.out.println("[DEBUG] out = " + out + " ACC = "
+						+ reg.getACC());
+
 				break;
 
 			case Types.WRITE_MEM:
@@ -85,24 +96,44 @@ public class Cntrl {
 
 				switch (adrMode) {
 
-				case 0:
 				case 1:
-				case 2:
-				case 8:
 				case 9:
-				case 11:
 				case 12:
+					reg.setCarry(alu.getCarry_out());
 					reg.setAcc(out);
+					System.out.println("[DEBUG] ACC = " + out);
 					break;
 
-				case 4:
+				case 0:
+				case 2:
+				case 8:
+				case 11:
+					reg.setAcc(out);
+					System.out.println("[DEBUG] ACC = " + out);
+					break;
+
 				case 5:
+					if (reg.getCarry()) {
+						reg.setPC((byte) out);
+						System.out.println("[DEBUG] PC = " + out);
+					}
+					break;
 				case 6:
+					if (reg.getZero()) {
+						reg.setPC((byte) out);
+						System.out.println("[DEBUG] PC = " + out);
+					}
+					break;
+				case 4:
 					reg.setPC((byte) out);
+					System.out.println("[DEBUG] PC = " + out);
 					break;
 
 				case 10:
 					ram.writeData(out, (byte) direktValue);
+					System.out.println(String.format(
+							"[DEBUG] Writing Mem @ 0x%02X = %s", direktValue,
+							out));
 					break;
 
 				case 13:
@@ -111,10 +142,9 @@ public class Cntrl {
 				default:
 					break;
 				}
-
-				if (reg.getInst() == 0)
-					running = false;
+				reg.setZero(reg.getACC() == 0);
 				reg.nextPhase();
+				System.out.println();
 				break;
 
 			default:
@@ -144,6 +174,7 @@ public class Cntrl {
 			return direktValue;
 
 		case 8:
+			return ram.readData((byte) direktValue);
 		case 11:
 		case 14:
 		case 15:
@@ -176,6 +207,7 @@ public class Cntrl {
 			return reg.getACC();
 
 		case 9:
+			return ram.readData((byte) direktValue);
 		case 12:
 		default:
 			return 0;

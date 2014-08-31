@@ -16,16 +16,14 @@ public class MainActivity extends Activity {
 		findViewById(R.id.btnThreading).setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				Intent i = new Intent(MainActivity.this, ThreadActivity.class);
-				startActivity(i);
+				startActivity(new Intent(MainActivity.this, ThreadActivity.class));
 			}
 		});
 
 		findViewById(R.id.btnShared).setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				startActivity(new Intent(MainActivity.this,
-						SharedPrefsActivity.class));
+				startActivity(new Intent(MainActivity.this,SharedPrefsActivity.class));
 			}
 		});
 	}

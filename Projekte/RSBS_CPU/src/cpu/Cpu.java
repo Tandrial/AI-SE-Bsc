@@ -27,7 +27,7 @@ public class Cpu {
 	}
 
 	public static void main(String[] args) {
-		Cpu c = new Cpu(new File("ram1b.hex"));
+		Cpu c = new Cpu(new File("mul_test.hex"));
 		c.startSim();
 	}
 }

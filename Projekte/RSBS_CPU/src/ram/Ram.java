@@ -24,7 +24,7 @@ public class Ram {
 
 			String line = null;
 			while ((line = br.readLine()) != null) {
-				if (line.startsWith(";"))
+				if (!line.startsWith("@"))
 					continue;
 
 				String[] words = line.split(";")[0].split(":");

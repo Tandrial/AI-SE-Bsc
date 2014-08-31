@@ -1,0 +1,4 @@
+; Segment: 0x0..0x3
+@00:0f00 ; 	NOP
+@01:2fff ; 	LOAD 0xFF
+@02:afff ; 	STORE @0xFF

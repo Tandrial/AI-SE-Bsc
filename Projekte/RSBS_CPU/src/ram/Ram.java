@@ -28,8 +28,9 @@ public class Ram {
 					continue;
 
 				String[] words = line.split(";")[0].split(":");
-				short a = (short) Integer.parseInt(words[0].substring(1), 16);
-				short v = (short) Integer.parseInt(words[1], 16);
+				short a = (short) Integer.parseInt(
+						words[0].substring(1).trim(), 16);
+				short v = (short) Integer.parseInt(words[1].trim(), 16);
 				data[a] = v;
 			}
 
@@ -54,7 +55,10 @@ public class Ram {
 	}
 
 	public void writeData(short data, byte adr) {
-		this.data[adr] = data;
+		if (adr < 0)
+			this.data[adr + 256] = data;
+		else
+			this.data[adr] = data;
 	}
 
 	public void dumpMemory() {

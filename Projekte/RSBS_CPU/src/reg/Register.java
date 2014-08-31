@@ -67,8 +67,16 @@ public class Register {
 		this.inst = inst;
 	}
 
+	public void setAcc(short acc) {
+		this.acc = acc;
+	}
+
 	public short getInst() {
 		return inst;
+	}
+
+	public boolean getCarry() {
+		return status[0];
 	}
 
 	public void reset() {
@@ -85,5 +93,14 @@ public class Register {
 	public void nextPhase() {
 		phase = (byte) ((phase + 1) % 5);
 
+	}
+
+	public void setPC(byte pc) {
+		this.pc = pc;
+
+	}
+
+	public short getACC() {
+		return acc;
 	}
 }

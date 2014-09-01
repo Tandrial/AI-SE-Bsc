@@ -116,4 +116,16 @@ public class Register {
 	public void setZero(boolean zero) {
 		this.status[1] = zero;
 	}
+
+	public int getSP() {
+		return sp;
+	}
+
+	public void incSP() {
+		sp++;
+	}
+
+	public void decSP() {
+		sp--;
+	}
 }

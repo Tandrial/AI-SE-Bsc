@@ -20,10 +20,13 @@ public class Cntrl {
 	private Alu alu;
 	private Ram ram;
 
+	private short[] stack;
+
 	public Cntrl(File f) {
 		reg = new Register();
 		ram = new Ram(f);
 		alu = new Alu();
+		stack = new short[Types.RAM_SIZE];
 	}
 
 	public void work() {
@@ -37,7 +40,7 @@ public class Cntrl {
 		short out = 0;
 		int count = 0;
 
-		while (true && count++ < 400) {
+		while (true ){//&& count++ < 32000) {
 
 			if (ram.readData((byte) 0xFF) == 0xFF || reg.getPC() > 255)
 				break;
@@ -81,14 +84,10 @@ public class Cntrl {
 				alu.setMode(aluMode);
 				alu.operate(op1, op2, reg.getACC(), reg.getCarry());
 				out = alu.getResult();
-				if (aluMode != 15) {
-					reg.setAcc(out);
-				}
-
-				reg.nextPhase();
 				System.out.println("[DEBUG] out = " + out + " ACC = "
 						+ reg.getACC());
 
+				reg.nextPhase();
 				break;
 
 			case Types.WRITE_MEM:
@@ -143,9 +142,22 @@ public class Cntrl {
 							"[DEBUG] Writing Mem @ 0x%02X = %s", direktValue,
 							out));
 					break;
-					
+
 				case 14:
+					if (direktValue == 0) {
+						reg.setPC((byte) out);
+						System.out.println("[DEBUG] PC = " + out);
+					} else {
+						reg.setAcc(out);
+						System.out.println("[DEBUG] ACC = " + out);
+					}
+					break;
 				case 15:
+					stack[reg.getSP()] = out;
+					reg.incSP();
+					System.out.println(String.format(
+							"[DEBUG] Pushing onto STACK [size = %s] = %s",
+							reg.getSP() - 1, out));
 				default:
 					break;
 				}
@@ -159,7 +171,7 @@ public class Cntrl {
 				break;
 			}
 		}
-		 ram.dumpMemory();
+		ram.dumpMemory();
 
 	}
 
@@ -187,7 +199,13 @@ public class Cntrl {
 			return ram.readData((byte) (reg.getPC() + direktValue + 1));
 
 		case 14:
+			short value = stack[reg.getSP()];
+			reg.decSP();
+			return value;
+
 		case 15:
+			return direktValue == 0 ? reg.getPC() : reg.getACC();
+
 		default:
 			return 0;
 		}

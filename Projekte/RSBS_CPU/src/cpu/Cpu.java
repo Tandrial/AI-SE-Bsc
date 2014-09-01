@@ -21,11 +21,10 @@ public class Cpu {
 
 	public void startSim() {
 		steuerwerk.work();
-
 	}
 
 	public static void main(String[] args) {
-		Cpu c = new Cpu(new File("ram1b.hex"));
+		Cpu c = new Cpu(new File("ram1c.hex"));
 		c.startSim();
 	}
 }

@@ -11,13 +11,13 @@ public class Alu {
 
 	// Input from Ctrl
 	private byte mode;
-	private short op1;
-	private short op2;
+	private int op1;
+	private int op2;
 	private boolean carry_in;
 
 	// Output to Ctrl
 
-	private short result;
+	private int result;
 	private boolean carry_out;
 
 	public void setMode(byte mode) {
@@ -44,57 +44,57 @@ public class Alu {
 			res = op1 + op2;
 			if (res > Short.MAX_VALUE || res < Short.MIN_VALUE)
 				carry_out = true;
-			result = (short) res;
+			result = res;
 			break;
 		case 1: // AND
-			result = (short) (op1 & op2);
+			result = op1 & op2;
 			break;
 		case 2: // MUL
 			res = op1 * op2;
 			if (res > Short.MAX_VALUE || res < Short.MIN_VALUE)
 				carry_out = true;
-			result = (short) res;
+			result = res;
 			break;
 		case 3: // ADC
 			res = op1 + op2 + (carry_in ? 1 : 0);
 			if (res > Short.MAX_VALUE || res < Short.MIN_VALUE)
 				carry_out = true;
-			result = (short) res;
+			result = res;
 			break;
 		case 4: // SUB
 			res = op1 - op2;
 			if (res > Short.MAX_VALUE || res < Short.MIN_VALUE)
 				carry_out = true;
-			result = (short) res;
+			result = res;
 			break;
 		case 5: // NEG
-			result = (short) -op1;
+			result = -acc;
 			break;
 		case 6: // OR
-			result = (short) (op1 | op2);
+			result = (op1 | op2);
 			break;
 		case 7: // NOR
-			result = (short) (~op1 & ~op2);
+			result = ~op1 & ~op2;
 			break;
 		case 8: // SHR
 			carry_out = (acc & 0x1) == 1;
-			result = (short) (acc >>> 1);
+			result = acc >> 1;
 			break;
 		case 9: // SHL
 			carry_out = (acc & 0x80) == 1;
-			result = (short) (acc << 1);
+			result = acc << 1;
 			break;
 		case 10: // RCR
 			carry_out = (acc & 0x1) == 1;
-			result = (short) (acc >>> 1);
+			result = acc >>> 1;
 			if (carry_in)
-				result = (short) (acc | 0x1);
+				result |= 0x1;
 			break;
 		case 11: // RCL
 			carry_out = (acc & 0x80) == 1;
-			result = (short) (acc << 1);
+			result = acc << 1;
 			if (carry_in)
-				result = (short) (acc | 0x80);
+				result |= 0x80;
 			break;
 		case 12:
 		case 13:
@@ -105,7 +105,7 @@ public class Alu {
 	}
 
 	public short getResult() {
-		return result;
+		return (short) result;
 	}
 
 	public boolean getCarry_out() {
@@ -115,12 +115,17 @@ public class Alu {
 	public static void main(String[] args) {
 		Alu a = new Alu();
 
-		short op = (short) 8;
-		short acc = (short) 8;
+		short op = (short) 3;
+		short op2 = (short) 20000;
+		short acc = (short) 20000;
 
-		a.setMode((byte) 9); // SHR
-		a.operate(op, op, acc, false);
-		System.out.println(a.getResult());
+		a.setMode((byte) 2); // SHR
+		a.operate(op, op2, acc, false);
+		System.out.println(a.getCarry_out() + " " + a.getResult());
+		op2 = (short) 10000;
+
+		a.operate(op, op2, acc, false);
+		System.out.println(a.getCarry_out() + " " + a.getResult());
 
 	}
 }

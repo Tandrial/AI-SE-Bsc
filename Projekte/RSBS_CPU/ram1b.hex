@@ -25,8 +25,8 @@
 ; e0 Temp Variablen
 @e0:0000; @LOOPCNT
 ; f0 ... f2 Parameter und Ergebnis
-@f0:0010;FFFB; @OP1 -5 
-@f1:0012;FFFC; @OP2 -4
+@f0:FFFB; @OP1 -5 
+@f1:FFFC; @OP2 -4
 @f2:0000; @RES -5 * -4 = 20:10 = 14 :16
 ;ENDSIM
 @ff:0000; @ENDSIM

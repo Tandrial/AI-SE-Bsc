@@ -59,12 +59,12 @@ public class Cntrl {
 					adrMode += 16;
 				}
 
-				reg.nextPhase();
 				System.out
 						.println(String
 								.format("[DEBUG] inst= 0x%04X adr = %s alu= %s direktValue = %s",
 										reg.getInst(), adrMode, aluMode,
 										direktValue));
+				reg.nextPhase();
 				break;
 
 			case Types.READ_MEM:
@@ -175,6 +175,7 @@ public class Cntrl {
 
 		case 8:
 			return ram.readData((byte) direktValue);
+
 		case 11:
 		case 14:
 		case 15:
@@ -208,6 +209,7 @@ public class Cntrl {
 
 		case 9:
 			return ram.readData((byte) direktValue);
+
 		case 12:
 		default:
 			return 0;

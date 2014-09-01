@@ -1,4 +1,4 @@
-;--Zahlen im normalen Bereicht
+--Zahlen im normalen Bereicht
 @00:8FE0; 			LOAD @4
 @01:92E1; 			MUL @5
 @02:AFF0; 			STORE @ERG0
@@ -15,7 +15,7 @@
 @0a:92E5; 			MUL @-5
 @0b:AFF3; 			STORE @ERG3
 
-;-- Grenzen testen
+-- Grenzen testen
 @0c:8FE3; 			LOAD @2
 @0d:92E2; 			MUL @16384
 @0e:5F10:			JC next ohne store
@@ -43,6 +43,7 @@
 
 @20:2FFF; ENDE:		LOAD 0xFF  		Simulation wird durch Schreiben von 0xFF @0xFF gestopt
 @21:AFFF; 			STORE @ENDSIM   -|
+
 @e0:0004; 4
 @e1:0005; 5
 @e2:4000; 16384

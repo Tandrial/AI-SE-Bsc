@@ -19,14 +19,21 @@ public class Cntrl {
 	private Register reg;
 	private Alu alu;
 	private Ram ram;
+	private File f;
 
 	private short[] stack;
 
 	public Cntrl(File f) {
+		this.f = f;
 		reg = new Register();
-		ram = new Ram(f);
 		alu = new Alu();
+		reset();
+	}
+
+	public void reset() {
+		reg.reset();
 		stack = new short[Types.RAM_SIZE];
+		ram = new Ram(f);
 	}
 
 	public void work() {
@@ -38,9 +45,8 @@ public class Cntrl {
 		short op1 = 0;
 		short op2 = 0;
 		short out = 0;
-		int count = 0;
 
-		while (true ){//&& count++ < 32000) {
+		while (true) {
 
 			if (ram.readData((byte) 0xFF) == 0xFF || reg.getPC() > 255)
 				break;
@@ -145,7 +151,7 @@ public class Cntrl {
 
 				case 14:
 					if (direktValue == 0) {
-						reg.setPC((byte) out);
+						reg.setPC((byte) (out + 1));
 						System.out.println("[DEBUG] PC = " + out);
 					} else {
 						reg.setAcc(out);
@@ -153,11 +159,11 @@ public class Cntrl {
 					}
 					break;
 				case 15:
-					stack[reg.getSP()] = out;
 					reg.incSP();
+					stack[reg.getSP()] = out;
 					System.out.println(String.format(
 							"[DEBUG] Pushing onto STACK [size = %s] = %s",
-							reg.getSP() - 1, out));
+							reg.getSP(), out));
 				default:
 					break;
 				}

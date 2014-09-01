@@ -111,21 +111,4 @@ public class Alu {
 	public boolean getCarry_out() {
 		return carry_out;
 	}
-
-	public static void main(String[] args) {
-		Alu a = new Alu();
-
-		short op = (short) 3;
-		short op2 = (short) 20000;
-		short acc = (short) 20000;
-
-		a.setMode((byte) 2); // SHR
-		a.operate(op, op2, acc, false);
-		System.out.println(a.getCarry_out() + " " + a.getResult());
-		op2 = (short) 10000;
-
-		a.operate(op, op2, acc, false);
-		System.out.println(a.getCarry_out() + " " + a.getResult());
-
-	}
 }

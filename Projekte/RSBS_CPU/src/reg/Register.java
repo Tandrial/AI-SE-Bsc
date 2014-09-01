@@ -88,7 +88,7 @@ public class Register {
 		status = new boolean[] { false, true };
 		acc = 0;
 		pc = 0;
-		sp = 0;
+		sp = -1;
 		inst = 0;
 		mdr = 0;
 		mar = 0;
@@ -126,6 +126,7 @@ public class Register {
 	}
 
 	public void decSP() {
-		sp--;
+		if (sp > 0)
+			sp--;
 	}
 }

@@ -24,18 +24,20 @@ public class Alu {
 		this.mode = mode;
 	}
 
-	public void operate(short op1, short op2, boolean carry_in) {
-		if (mode == 0xF)
+	public void operate(short op1, short op2, short acc, boolean carry_in) {
+		if (mode == 0xF) {
+			result = acc;
 			return;
+		}
 		this.op1 = op1;
 		this.op2 = op2;
 		this.carry_in = carry_in;
 		result = 0;
 		carry_out = false;
-		calcResult();
+		calcResult(acc);
 	}
 
-	private void calcResult() {
+	private void calcResult(short acc) {
 		int res;
 		switch (mode) {
 		case 0: // ADD
@@ -75,34 +77,28 @@ public class Alu {
 			result = (short) (~op1 & ~op2);
 			break;
 		case 8: // SHR
-			carry_out = (result & 0x1) == 1;
-			result = (short) (result >>> 1);
+			carry_out = (acc & 0x1) == 1;
+			result = (short) (acc >>> 1);
 			break;
 		case 9: // SHL
-			carry_out = (result & 0x80) == 1;
-			result = (short) (result << 1);
+			carry_out = (acc & 0x80) == 1;
+			result = (short) (acc << 1);
 			break;
 		case 10: // RCR
-			carry_out = (result & 0x1) == 1;
-			result = (short) (result >>> 1);
+			carry_out = (acc & 0x1) == 1;
+			result = (short) (acc >>> 1);
 			if (carry_in)
-				result = (short) (result | 0x1);
+				result = (short) (acc | 0x1);
 			break;
 		case 11: // RCL
-			carry_out = (result & 0x80) == 1;
-			result = (short) (result << 1);
+			carry_out = (acc & 0x80) == 1;
+			result = (short) (acc << 1);
 			if (carry_in)
-				result = (short) (result | 0x80);
+				result = (short) (acc | 0x80);
 			break;
 		case 12:
-
-			break;
 		case 13:
-
-			break;
 		case 14:
-
-			break;
 		default: // BYPASS
 			break;
 		}
@@ -114,5 +110,17 @@ public class Alu {
 
 	public boolean getCarry_out() {
 		return carry_out;
+	}
+
+	public static void main(String[] args) {
+		Alu a = new Alu();
+
+		short op = (short) 8;
+		short acc = (short) 8;
+
+		a.setMode((byte) 9); // SHR
+		a.operate(op, op, acc, false);
+		System.out.println(a.getResult());
+
 	}
 }

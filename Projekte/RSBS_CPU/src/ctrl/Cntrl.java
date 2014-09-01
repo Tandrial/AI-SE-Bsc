@@ -35,8 +35,9 @@ public class Cntrl {
 		short op1 = 0;
 		short op2 = 0;
 		short out = 0;
+		int count = 0;
 
-		while (true) {
+		while (true && count++ < 400) {
 
 			if (ram.readData((byte) 0xFF) == 0xFF || reg.getPC() > 255)
 				break;
@@ -78,7 +79,7 @@ public class Cntrl {
 
 			case Types.OPERATE:
 				alu.setMode(aluMode);
-				alu.operate(op1, op2, reg.getCarry());
+				alu.operate(op1, op2, reg.getACC(), reg.getCarry());
 				out = alu.getResult();
 				if (aluMode != 15) {
 					reg.setAcc(out);
@@ -137,6 +138,12 @@ public class Cntrl {
 					break;
 
 				case 13:
+					ram.writeData(out, (byte) (reg.getPC() + direktValue + 1));
+					System.out.println(String.format(
+							"[DEBUG] Writing Mem @ 0x%02X = %s", direktValue,
+							out));
+					break;
+					
 				case 14:
 				case 15:
 				default:
@@ -152,7 +159,7 @@ public class Cntrl {
 				break;
 			}
 		}
-		ram.dumpMemory();
+		 ram.dumpMemory();
 
 	}
 
@@ -177,6 +184,8 @@ public class Cntrl {
 			return ram.readData((byte) direktValue);
 
 		case 11:
+			return ram.readData((byte) (reg.getPC() + direktValue + 1));
+
 		case 14:
 		case 15:
 		default:
@@ -211,6 +220,7 @@ public class Cntrl {
 			return ram.readData((byte) direktValue);
 
 		case 12:
+			return ram.readData((byte) (reg.getPC() + direktValue + 1));
 		default:
 			return 0;
 		}

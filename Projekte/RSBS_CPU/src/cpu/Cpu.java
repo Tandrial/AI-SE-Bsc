@@ -9,9 +9,7 @@ package cpu;
 
 import java.io.File;
 
-import ram.Ram;
 import ctrl.Cntrl;
-import alu.Alu;
 
 public class Cpu {
 
@@ -27,7 +25,7 @@ public class Cpu {
 	}
 
 	public static void main(String[] args) {
-		Cpu c = new Cpu(new File("mul_test.hex"));
+		Cpu c = new Cpu(new File("ram1b.hex"));
 		c.startSim();
 	}
 }

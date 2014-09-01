@@ -126,7 +126,7 @@ public class Register {
 	}
 
 	public void decSP() {
-		if (sp > 0)
+		if (sp >= 0)
 			sp--;
 	}
 }

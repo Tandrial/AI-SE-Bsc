@@ -5,10 +5,11 @@
  * as published by Sam Hocevar. See the COPYING file for more details.
  */
 
-package ram;
+package mkrane.cpu;
 
 import java.io.*;
-import dataTypes.Types;
+
+import mkrane.cpu.types.Types;
 
 public class Ram {
 
@@ -31,7 +32,9 @@ public class Ram {
 				short a = (short) Integer.parseInt(
 						words[0].substring(1).trim(), 16);
 				short v = (short) Integer.parseInt(words[1].trim(), 16);
-				data[a] = v;
+				
+				if (a >= 0 && a <= 255)
+					data[a] = v;
 			}
 
 			br.close();

@@ -5,18 +5,16 @@
  * as published by Sam Hocevar. See the COPYING file for more details.
  */
 
-package cpu;
+package mkrane.cpu;
 
 import java.io.File;
 
-import ctrl.Cntrl;
-
 public class Cpu {
 
-	private Cntrl steuerwerk;
+	private Ctrl steuerwerk;
 
 	public Cpu(File f) {
-		steuerwerk = new Cntrl(f);
+		steuerwerk = new Ctrl(f);
 	}
 
 	public void startSim() {
@@ -24,7 +22,12 @@ public class Cpu {
 	}
 
 	public static void main(String[] args) {
-		Cpu c = new Cpu(new File("ram1c.hex"));
+		Cpu c;
+		if (args.length == 1)
+			c = new Cpu(new File(args[0]));
+		else
+			c = new Cpu(new File("mul_test.hex"));
+		
 		c.startSim();
 	}
 }

@@ -2,16 +2,16 @@ import static org.junit.Assert.fail;
 
 import java.io.File;
 
-import org.junit.Test;
+import mkrane.cpu.Ram;
 
-import ram.Ram;
+import org.junit.Test;
 
 public class RamTest {
 	private static Ram ram;
 
 	@Test
 	public void LoadFile() {
-		ram = new Ram(new File("test/ram_hex/ram1a.hex"));
+		ram = new Ram(new File("ram1a.hex"));
 		short correct = (short) 0xAFFF;
 		short is = ram.readData((byte) 0x0d);
 
@@ -30,8 +30,8 @@ public class RamTest {
 		ram.writeData(write, adr);
 		short is = ram.readData(adr);
 		if (is != write)
-			fail(String.format(
-					"Write to RAM failed RAM@00 = %d (should be %d)", is,
-					write));
+			fail(String
+					.format("Write to RAM failed RAM@00 = %d (should be %d)",
+							is, write));
 	}
 }

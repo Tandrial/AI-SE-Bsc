@@ -5,7 +5,9 @@
  * as published by Sam Hocevar. See the COPYING file for more details.
  */
 
-package alu;
+package mkrane.cpu;
+
+import mkrane.cpu.types.AluMode;
 
 public class Alu {
 
@@ -25,14 +27,10 @@ public class Alu {
 	}
 
 	public void operate(short op1, short op2, short acc, boolean carry_in) {
-		if (mode == 0xF) {
-			result = acc;
-			return;
-		}
 		this.op1 = op1;
 		this.op2 = op2;
 		this.carry_in = carry_in;
-		result = 0;
+		result = acc;
 		carry_out = false;
 		calcResult(acc);
 	}
@@ -40,66 +38,64 @@ public class Alu {
 	private void calcResult(short acc) {
 		int res;
 		switch (mode) {
-		case 0: // ADD
+		case AluMode.ADD:
 			res = op1 + op2;
 			if (res > Short.MAX_VALUE || res < Short.MIN_VALUE)
 				carry_out = true;
 			result = res;
 			break;
-		case 1: // AND
+		case AluMode.AND:
 			result = op1 & op2;
 			break;
-		case 2: // MUL
+		case AluMode.MUL:
 			res = op1 * op2;
 			if (res > Short.MAX_VALUE || res < Short.MIN_VALUE)
 				carry_out = true;
 			result = res;
 			break;
-		case 3: // ADC
+		case AluMode.ADC:
 			res = op1 + op2 + (carry_in ? 1 : 0);
 			if (res > Short.MAX_VALUE || res < Short.MIN_VALUE)
 				carry_out = true;
 			result = res;
 			break;
-		case 4: // SUB
+		case AluMode.SUB:
 			res = op1 - op2;
 			if (res > Short.MAX_VALUE || res < Short.MIN_VALUE)
 				carry_out = true;
 			result = res;
 			break;
-		case 5: // NEG
+		case AluMode.NEG:
 			result = -acc;
 			break;
-		case 6: // OR
+		case AluMode.OR:
 			result = (op1 | op2);
 			break;
-		case 7: // NOR
+		case AluMode.NOR:
 			result = ~op1 & ~op2;
 			break;
-		case 8: // SHR
+		case AluMode.SHR:
 			carry_out = (acc & 0x1) == 1;
 			result = acc >> 1;
 			break;
-		case 9: // SHL
+		case AluMode.SHL:
 			carry_out = (acc & 0x80) == 1;
 			result = acc << 1;
 			break;
-		case 10: // RCR
+		case AluMode.RCR:
 			carry_out = (acc & 0x1) == 1;
 			result = acc >>> 1;
 			if (carry_in)
 				result |= 0x1;
 			break;
-		case 11: // RCL
+		case AluMode.RCL:
 			carry_out = (acc & 0x80) == 1;
 			result = acc << 1;
 			if (carry_in)
 				result |= 0x80;
 			break;
-		case 12:
-		case 13:
-		case 14:
-		default: // BYPASS
+		case AluMode.BYPASS:
+		default:
 			break;
 		}
 	}

@@ -5,11 +5,12 @@
  * as published by Sam Hocevar. See the COPYING file for more details.
  */
 
-package dataTypes;
+package mkrane.cpu.types;
 
 public class Types {
 
 	public static int RAM_SIZE = 1 << 8; // 256;
+	public static int STACK_SIZE = 1 << 8; // 256;
 
 	public static final byte FETCH = 0;
 	public static final byte DECODE = 1;
@@ -26,4 +27,10 @@ public class Types {
 	public static final byte SMEM = 6;
 	public static final byte IREG = 7;
 
+	public static final byte UPCOND_ALWAYS = 0;
+	public static final byte UPCOND_CARRY = 1;
+	public static final byte UPCOND_ZERO = 2;
+
+	public static final byte UPCARRY_FALSE = 0;
+	public static final byte UPCARRY_TRUE = 1;
 }

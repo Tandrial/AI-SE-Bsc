@@ -6,11 +6,10 @@
  */
 
 import static org.junit.Assert.*;
+import mkrane.cpu.Alu;
 
 import org.junit.Before;
 import org.junit.Test;
-
-import alu.Alu;
 
 public class AluTests {
 	private static Alu alu;

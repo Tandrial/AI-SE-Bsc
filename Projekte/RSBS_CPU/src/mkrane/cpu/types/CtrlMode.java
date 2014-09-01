@@ -1,54 +1,45 @@
+/*
+ * Copyright © 2014 Michael Krane <Michael.Krane@stud.uni-due.de>
+ * This work is free. You can redistribute it and/or modify it under the
+ * terms of the Do What The Fuck You Want To Public License, Version 2,
+ * as published by Sam Hocevar. See the COPYING file for more details.
+ */
+
 package mkrane.cpu.types;
 
 public class CtrlMode {
 
+	public static final byte NONE = 0;
+	public static final byte ACC = 1;
+	public static final byte PC = 2;
+	public static final byte INST = 3;
+	public static final byte AMEM = 4;
+	public static final byte RMEM = 5;
+	public static final byte SMEM = 6;
+	public static final byte IREG = 7;
+
+	public static final byte UPCOND_ALWAYS = 0;
+	public static final byte UPCOND_CARRY = 1;
+	public static final byte UPCOND_ZERO = 2;
+
+	public static final byte UPCARRY_FALSE = 0;
+	public static final byte UPCARRY_TRUE = 1;
+
 	public static final byte[][] MODES = {
-			// MODE1
-			{ Types.ACC, Types.INST, Types.ACC, Types.UPCOND_ALWAYS,
-					Types.UPCARRY_FALSE },
-			// MODE2
-			{ Types.ACC, Types.INST, Types.ACC, Types.UPCOND_ALWAYS,
-					Types.UPCARRY_TRUE },
-			// MODE2
-			{ Types.INST, Types.NONE, Types.ACC, Types.UPCOND_ALWAYS,
-					Types.UPCARRY_FALSE },
-			// MODE4
-			{ Types.ACC, Types.NONE, Types.ACC, Types.UPCOND_ALWAYS,
-					Types.UPCARRY_FALSE },
-			// MODE5
-			{ Types.INST, Types.PC, Types.PC, Types.UPCOND_ALWAYS,
-					Types.UPCARRY_FALSE },
-			// MODE6
-			{ Types.INST, Types.PC, Types.PC, Types.UPCOND_CARRY,
-					Types.UPCARRY_FALSE },
-			// MODE7
-			{ Types.INST, Types.PC, Types.PC, Types.UPCOND_ZERO,
-					Types.UPCARRY_FALSE },
-			// MODE16 TODO MISSING
-			{ Types.NONE, Types.NONE, Types.NONE, Types.UPCOND_ALWAYS,
-					Types.UPCARRY_FALSE },
-			// MODE8
-			{ Types.AMEM, Types.ACC, Types.ACC, Types.UPCOND_ALWAYS,
-					Types.UPCARRY_FALSE },
-			// MODE9
-			{ Types.ACC, Types.AMEM, Types.ACC, Types.UPCOND_ALWAYS,
-					Types.UPCARRY_TRUE },
-			// MODE10
-			{ Types.ACC, Types.NONE, Types.AMEM, Types.UPCOND_ALWAYS,
-					Types.UPCARRY_FALSE },
-			// MODE11
-			{ Types.RMEM, Types.ACC, Types.ACC, Types.UPCOND_ALWAYS,
-					Types.UPCARRY_FALSE },
-			// MODE12
-			{ Types.ACC, Types.RMEM, Types.ACC, Types.UPCOND_ALWAYS,
-					Types.UPCARRY_TRUE },
-			// MODE13
-			{ Types.ACC, Types.NONE, Types.RMEM, Types.UPCOND_ALWAYS,
-					Types.UPCARRY_FALSE },
-			// MODE14
-			{ Types.SMEM, Types.NONE, Types.IREG, Types.UPCOND_ALWAYS,
-					Types.UPCARRY_FALSE },
-			// MODE15
-			{ Types.IREG, Types.NONE, Types.SMEM, Types.UPCOND_ALWAYS,
-					Types.UPCARRY_FALSE } };
+			{ ACC, INST, ACC, UPCOND_ALWAYS, UPCARRY_FALSE },		// MODE1
+			{ ACC, INST, ACC, UPCOND_ALWAYS, UPCARRY_TRUE },		// MODE2
+			{ INST, NONE, ACC, UPCOND_ALWAYS, UPCARRY_FALSE },		// MODE3
+			{ ACC, NONE, ACC, UPCOND_ALWAYS, UPCARRY_FALSE },		// MODE4
+			{ INST, PC, PC, UPCOND_ALWAYS, UPCARRY_FALSE }, 		// MODE5
+			{ INST, PC, PC, UPCOND_CARRY, UPCARRY_FALSE }, 			// MODE6
+			{ INST, PC, PC, UPCOND_ZERO, UPCARRY_FALSE }, 			// MODE7
+			{ NONE, NONE, NONE, UPCOND_ALWAYS, UPCARRY_FALSE }, 	// MODE16  TODO MISSING
+			{ AMEM, ACC, ACC, UPCOND_ALWAYS, UPCARRY_FALSE }, 		// MODE8
+			{ ACC, AMEM, ACC, UPCOND_ALWAYS, UPCARRY_TRUE }, 		// MODE9
+			{ ACC, NONE, AMEM, UPCOND_ALWAYS, UPCARRY_FALSE }, 		// MODE10
+			{ RMEM, ACC, ACC, UPCOND_ALWAYS, UPCARRY_FALSE }, 		// MODE11
+			{ ACC, RMEM, ACC, UPCOND_ALWAYS, UPCARRY_TRUE }, 		// MODE12
+			{ ACC, NONE, RMEM, UPCOND_ALWAYS, UPCARRY_FALSE }, 		// MODE13
+			{ SMEM, NONE, IREG, UPCOND_ALWAYS, UPCARRY_FALSE }, 	// MODE14
+			{ IREG, NONE, SMEM, UPCOND_ALWAYS, UPCARRY_FALSE } }; 	// MODE15
 }

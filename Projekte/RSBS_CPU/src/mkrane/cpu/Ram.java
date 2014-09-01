@@ -9,14 +9,12 @@ package mkrane.cpu;
 
 import java.io.*;
 
-import mkrane.cpu.types.Types;
-
 public class Ram {
 
 	private short[] data;
 
 	public Ram(File f) {
-		data = new short[Types.RAM_SIZE];
+		data = new short[Ctrl.RAM_SIZE];
 		// ;Code 00 ... 0D *
 		// @00:2F00; LOAD 0x00
 
@@ -32,7 +30,7 @@ public class Ram {
 				short a = (short) Integer.parseInt(
 						words[0].substring(1).trim(), 16);
 				short v = (short) Integer.parseInt(words[1].trim(), 16);
-				
+
 				if (a >= 0 && a <= 255)
 					data[a] = v;
 			}
@@ -45,12 +43,12 @@ public class Ram {
 	}
 
 	public Ram(short[] data) {
-		if (data.length <= (Types.RAM_SIZE))
+		if (data.length <= (Ctrl.RAM_SIZE))
 			this.data = data;
 	}
 
 	public Ram() {
-		this.data = new short[Types.RAM_SIZE];
+		this.data = new short[Ctrl.RAM_SIZE];
 	}
 
 	public short readData(byte adr) {

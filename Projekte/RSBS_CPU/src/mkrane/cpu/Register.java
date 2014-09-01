@@ -7,7 +7,7 @@
 
 package mkrane.cpu;
 
-import mkrane.cpu.types.Types;
+import mkrane.cpu.types.Phases;
 
 public class Register {
 
@@ -143,6 +143,6 @@ public class Register {
 		inst = 0;
 		mdr = 0;
 		mar = 0;
-		phase = Types.FETCH;
+		phase = Phases.FETCH;
 	}
 }

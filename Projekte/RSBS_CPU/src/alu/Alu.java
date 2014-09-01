@@ -49,19 +49,19 @@ public class Alu {
 			break;
 		case 2: // MUL
 			res = op1 * op2;
-			if (res > Short.MAX_VALUE)
+			if (res > Short.MAX_VALUE || res < Short.MIN_VALUE)
 				carry_out = true;
 			result = (short) res;
 			break;
 		case 3: // ADC
 			res = op1 + op2 + (carry_in ? 1 : 0);
-			if (res > Short.MAX_VALUE)
+			if (res > Short.MAX_VALUE || res < Short.MIN_VALUE)
 				carry_out = true;
 			result = (short) res;
 			break;
 		case 4: // SUB
 			res = op1 - op2;
-			if (res < Short.MIN_VALUE)
+			if (res > Short.MAX_VALUE || res < Short.MIN_VALUE)
 				carry_out = true;
 			result = (short) res;
 			break;

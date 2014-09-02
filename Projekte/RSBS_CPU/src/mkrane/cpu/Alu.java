@@ -26,46 +26,41 @@ public class Alu {
 		this.mode = mode;
 	}
 
-	public void operate(short op1, short op2,/*short acc, */boolean carry_in) {
+	public void operate(short op1, short op2, boolean carry_in) {
 		if (mode == AluMode.BYPASS)
 			return;
 		this.op1 = op1;
 		this.op2 = op2;
 		this.carry_in = carry_in;
-		result = 0;//;acc;
+		result = 0;
 		carry_out = false;
-		calcResult();//acc);
+		calcResult();
 	}
 
-	private void calcResult() {// short acc) {
-		int res;
+	private void calcResult() {
 		switch (mode) {
 		case AluMode.ADD:
-			res = op1 + op2;
-			if (res > Short.MAX_VALUE || res < Short.MIN_VALUE)
+			result = op1 + op2;
+			if (result > Short.MAX_VALUE || result < Short.MIN_VALUE)
 				carry_out = true;
-			result = res;
 			break;
 		case AluMode.AND:
 			result = op1 & op2;
 			break;
 		case AluMode.MUL:
-			res = op1 * op2;
-			if (res > Short.MAX_VALUE || res < Short.MIN_VALUE)
+			result = op1 * op2;
+			if (result > Short.MAX_VALUE || result < Short.MIN_VALUE)
 				carry_out = true;
-			result = res;
 			break;
 		case AluMode.ADC:
-			res = op1 + op2 + (carry_in ? 1 : 0);
-			if (res > Short.MAX_VALUE || res < Short.MIN_VALUE)
+			result = op1 + op2 + (carry_in ? 1 : 0);
+			if (result > Short.MAX_VALUE || result < Short.MIN_VALUE)
 				carry_out = true;
-			result = res;
 			break;
 		case AluMode.SUB:
-			res = op1 - op2;
-			if (res > Short.MAX_VALUE || res < Short.MIN_VALUE)
+			result = op1 - op2;
+			if (result > Short.MAX_VALUE || result < Short.MIN_VALUE)
 				carry_out = true;
-			result = res;
 			break;
 		case AluMode.NEG:
 			result = -op1;

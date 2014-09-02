@@ -3,8 +3,8 @@
 @01:af42 ; 		STORE @res0 ; Abs. store
 @02:8f40 ; 		LOAD @const1; Abs. Load
 @03:af43 ; 		STORE @res1	; Abs. store
-@04:bf3c ; 		LOAD &const2; Rel. Load
-@05:df3e ; 		STORE &res2	; Rel. Store
+@04:bf3b ; 		LOAD &const2; Rel. Load   04 + 3C + 1 = 42
+@05:df3d ; 		STORE &res2	; Rel. Store  05 + 3E + 1 = 45
 @06:4f09 ; 		JMP @skip1	; Abs. Sprung
 @07:2fff ; 		LOAD 0xFF	; Dieses Sequenz soll
 @08:af50 ; 		STORE @keep1; uebersprungen werden

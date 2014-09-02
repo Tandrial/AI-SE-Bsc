@@ -74,13 +74,13 @@ public class Ctrl {
 				System.out
 						.println(String
 								.format("[DEBUG] inst= 0x%04X adr = %s alu= %s direktValue = %s",
-										reg.getINST(), ctrl_mode, alu_mode,
-										direktOp));
+										reg.getINST(), mode, alu_mode, direktOp));
 				break;
 
 			case Phases.READ_MEM:
-
+				System.out.print("[DEBUG] Op1");
 				alu_op1 = getOp(ctrl_mode[0], direktOp);
+				System.out.print("[DEBUG] Op2");
 				alu_op2 = getOp(ctrl_mode[1], direktOp);
 
 				System.out.println("[DEBUG] op1 = " + alu_op1 + " op2 = "
@@ -90,16 +90,15 @@ public class Ctrl {
 			case Phases.OPERATE:
 				alu.setMode(alu_mode);
 				alu.operate(alu_op1, alu_op2, reg.getCarry());
-				alu_result = alu.getResult();
+				if (alu_mode == 15)
+					alu_result = alu_op1;
+				else
+					alu_result = alu.getResult();
 				System.out.println("[DEBUG] out = " + alu_result + " ACC = "
 						+ reg.getAcc());
 				break;
 
 			case Phases.WRITE_MEM:
-				if (alu_mode == 15)
-					alu_result = alu_op1;
-				
-
 				if (updateCond(ctrl_mode[3]))
 					writeData(ctrl_mode[2], alu_result, direktOp);
 
@@ -132,24 +131,28 @@ public class Ctrl {
 		switch (adrMode) {
 		case CtrlMode.ACC:
 			reg.setAcc(aluResult);
-			System.out.println("[DEBUG] ACC = " + aluResult);
+			System.out.println("[DEBUG] Setting ACC = " + aluResult);
 			break;
+
 		case CtrlMode.PC:
 			reg.setPC((byte) aluResult);
-			System.out.println("[DEBUG] PC = " + aluResult);
+			System.out.println("[DEBUG] Setting PC = " + aluResult);
 			break;
+
 		case CtrlMode.AMEM:
 			ram.writeData(aluResult, (byte) direktValue);
 			System.out.println(String
 					.format("[DEBUG] Writing Mem @ 0x%02X = %s", direktValue,
 							aluResult));
 			break;
+
 		case CtrlMode.RMEM:
 			ram.writeData(aluResult, (byte) (reg.getPC() + direktValue + 1));
 			System.out.println(String
 					.format("[DEBUG] Writing Mem @ 0x%02X = %s", direktValue,
 							aluResult));
 			break;
+
 		case CtrlMode.SMEM:
 			reg.incSP();
 			stack[reg.getSP()] = aluResult;
@@ -157,15 +160,17 @@ public class Ctrl {
 					"[DEBUG] Pushing onto STACK [size = %s] = %s", reg.getSP(),
 					aluResult));
 			break;
+
 		case CtrlMode.IREG:
 			if (direktValue == 0) {
 				reg.setPC((byte) (aluResult + 1));
-				System.out.println("[DEBUG] PC = " + aluResult);
+				System.out.println("[DEBUG] Setting PC = " + aluResult);
 			} else {
 				reg.setAcc(aluResult);
-				System.out.println("[DEBUG] ACC = " + aluResult);
+				System.out.println("[DEBUG] Setting ACC = " + aluResult);
 			}
 			break;
+
 		default:
 			break;
 		}
@@ -175,24 +180,36 @@ public class Ctrl {
 		short tmp;
 		switch (adrMode) {
 		case CtrlMode.NONE:
+			System.out.println(" NONE");
 			return 0;
 		case CtrlMode.ACC:
+			System.out.println(" loading from ACC");
 			return reg.getAcc();
 		case CtrlMode.PC:
+			System.out.println(" loading from PC");
 			return reg.getPC();
 		case CtrlMode.INST:
+			System.out.println(" loading 8bit direkt Value");
 			return value;
 		case CtrlMode.AMEM:
+			System.out.println(String.format(" loading from Mem @ 0x%02X",
+					value));
 			return ram.readData((byte) value);
 		case CtrlMode.RMEM:
+			System.out.println(String.format(" loading from Mem @ 0x%02X",
+					reg.getPC() + value + 1));
 			return ram.readData((byte) (reg.getPC() + value + 1));
 		case CtrlMode.SMEM:
+			System.out.println(" loading from Stack @ " + reg.getSP());
 			tmp = stack[reg.getSP()];
 			reg.decSP();
 			return tmp;
 		case CtrlMode.IREG:
+			System.out.println(value == 0 ? " loading from PC"
+					: " loading from ACC");
 			return value == 0 ? reg.getPC() : reg.getAcc();
 		case CtrlMode.PMEM:
+			System.out.println(" loading 16bit direkt Value");
 			tmp = ram.readData((byte) reg.getPC());
 			reg.incPC();
 			return tmp;

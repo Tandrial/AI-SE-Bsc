@@ -1,0 +1,13 @@
+; Segment: 0x0..0xA
+@00:2f0d ; 		LOAD 13
+@01:1019 ; 		ADD	25
+@02:1425 ; 		SUB 37
+@03:3500 ; 		NEG
+@04:1900 ; 		SHL
+@05:130a ; 		ADC 10
+@06:160a ; 		OR	10
+@07:1103 ; 		AND 0x03
+@08:2fff ; 		LOAD 0xff
+@09:afff ; 		STORE @endsim_addr
+; Segment: 0xFF..0x100
+@ff:0000 ; endsim_addr: .def16 0x0000

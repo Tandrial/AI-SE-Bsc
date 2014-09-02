@@ -26,16 +26,18 @@ public class Alu {
 		this.mode = mode;
 	}
 
-	public void operate(short op1, short op2, short acc, boolean carry_in) {
+	public void operate(short op1, short op2,/*short acc, */boolean carry_in) {
+		if (mode == AluMode.BYPASS)
+			return;
 		this.op1 = op1;
 		this.op2 = op2;
 		this.carry_in = carry_in;
-		result = acc;
+		result = 0;//;acc;
 		carry_out = false;
-		calcResult(acc);
+		calcResult();//acc);
 	}
 
-	private void calcResult(short acc) {
+	private void calcResult() {// short acc) {
 		int res;
 		switch (mode) {
 		case AluMode.ADD:
@@ -66,7 +68,7 @@ public class Alu {
 			result = res;
 			break;
 		case AluMode.NEG:
-			result = -acc;
+			result = -op1;
 			break;
 		case AluMode.OR:
 			result = (op1 | op2);
@@ -75,22 +77,22 @@ public class Alu {
 			result = ~op1 & ~op2;
 			break;
 		case AluMode.SHR:
-			carry_out = (acc & 0x1) == 1;
-			result = acc >> 1;
+			carry_out = (op1 & 0x1) == 1;
+			result = op1 >> 1;
 			break;
 		case AluMode.SHL:
-			carry_out = (acc & 0x80) == 1;
-			result = acc << 1;
+			carry_out = (op1 & 0x80) == 1;
+			result = op1 << 1;
 			break;
 		case AluMode.RCR:
-			carry_out = (acc & 0x1) == 1;
-			result = acc >>> 1;
+			carry_out = (op1 & 0x1) == 1;
+			result = op1 >>> 1;
 			if (carry_in)
 				result |= 0x1;
 			break;
 		case AluMode.RCL:
-			carry_out = (acc & 0x80) == 1;
-			result = acc << 1;
+			carry_out = (op1 & 0x80) == 1;
+			result = op1 << 1;
 			if (carry_in)
 				result |= 0x80;
 			break;

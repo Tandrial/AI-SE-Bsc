@@ -17,6 +17,8 @@ public class CtrlMode {
 	public static final byte RMEM = 5;
 	public static final byte SMEM = 6;
 	public static final byte IREG = 7;
+	public static final byte PMEM = 8;
+	
 
 	public static final byte UPCOND_ALWAYS = 0;
 	public static final byte UPCOND_CARRY = 1;
@@ -33,7 +35,7 @@ public class CtrlMode {
 			{ INST, PC, PC, UPCOND_ALWAYS, UPCARRY_FALSE }, 		// MODE5
 			{ INST, PC, PC, UPCOND_CARRY, UPCARRY_FALSE }, 			// MODE6
 			{ INST, PC, PC, UPCOND_ZERO, UPCARRY_FALSE }, 			// MODE7
-			{ NONE, NONE, NONE, UPCOND_ALWAYS, UPCARRY_FALSE }, 	// MODE16  TODO MISSING
+			{ ACC, PMEM, ACC, UPCOND_ALWAYS, UPCARRY_TRUE }, 		// MODE16
 			{ AMEM, ACC, ACC, UPCOND_ALWAYS, UPCARRY_FALSE }, 		// MODE8
 			{ ACC, AMEM, ACC, UPCOND_ALWAYS, UPCARRY_TRUE }, 		// MODE9
 			{ ACC, NONE, AMEM, UPCOND_ALWAYS, UPCARRY_FALSE }, 		// MODE10

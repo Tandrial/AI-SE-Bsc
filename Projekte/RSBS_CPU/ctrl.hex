@@ -1,0 +1,10 @@
+; Segment: 0x0..0x9
+@00:2f05 ; 	LOAD 5
+@01:1a00 ; 	RCR
+@02:4f04 ; 	JC @l1
+@03:4f07 ; 	JMP @endsim
+@04:1401 ; l1:	SUB 1
+@05:4f07 ; 	JZ @endsim
+@06:4f04 ; 	JMP @l1
+@07:2fff ; 	LOAD 0xFF
+@08:afff ; 	STORE @0xFF

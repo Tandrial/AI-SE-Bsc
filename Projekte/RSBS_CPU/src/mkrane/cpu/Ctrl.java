@@ -38,14 +38,13 @@ public class Ctrl {
 	}
 
 	public void work() {
-		byte adr = 0;
-		byte aluMode = 0;
-		byte[] adrMode = { 0, 0, 0, 0 };
-		short direktValue = 0;
-		short inst = 0;
-		short op1 = 0;
-		short op2 = 0;
-		short out = 0;
+		byte[] ctrl_mode = { 0, 0, 0, 0 };
+		short direktOp = 0;
+
+		byte alu_mode = 0;
+		short alu_op1 = 0;
+		short alu_op2 = 0;
+		short alu_result = 0;
 
 		while (true) {
 
@@ -55,71 +54,68 @@ public class Ctrl {
 			switch (reg.getPhase()) {
 
 			case Phases.FETCH:
-				adr = reg.getPC();
+				reg.setMAR(reg.getPC());
 				System.out.println("[DEBUG] PC = " + reg.getPC());
 				reg.incPC();
-				reg.nextPhase();
 				break;
 
 			case Phases.DECODE:
-				inst = ram.readData(adr);
-				reg.setInst(inst);
-				byte mode = (byte) (inst >> 12);
-				if (inst < 0) {
+				short mdr = ram.readData(reg.getMAR());
+				reg.setINST(mdr);
+
+				byte mode = (byte) (mdr >> 12);
+				if (mdr < 0) {
 					mode += 16;
 				}
-				adrMode = CtrlMode.MODES[mode];
-				aluMode = (byte) ((inst >> 8) & 0xF);
-				direktValue = (short) (inst & 0xFF);
+				ctrl_mode = CtrlMode.MODES[mode];
+				alu_mode = (byte) ((mdr >> 8) & 0xF);
+				direktOp = (short) (mdr & 0xFF);
 
 				System.out
 						.println(String
 								.format("[DEBUG] inst= 0x%04X adr = %s alu= %s direktValue = %s",
-										reg.getInst(), adrMode, aluMode,
-										direktValue));
-				reg.nextPhase();
+										reg.getINST(), ctrl_mode, alu_mode,
+										direktOp));
 				break;
 
 			case Phases.READ_MEM:
 
-				op1 = getOp(adrMode[0], direktValue);
-				op2 = getOp(adrMode[1], direktValue);
+				alu_op1 = getOp(ctrl_mode[0], direktOp);
+				alu_op2 = getOp(ctrl_mode[1], direktOp);
 
-				System.out.println("[DEBUG] op1 = " + op1 + " op2 = " + op2);
-				reg.nextPhase();
+				System.out.println("[DEBUG] op1 = " + alu_op1 + " op2 = "
+						+ alu_op2);
 				break;
 
 			case Phases.OPERATE:
-				alu.setMode(aluMode);
-				alu.operate(op1, op2, reg.getAcc(), reg.getCarry());
-				out = alu.getResult();
-				System.out.println("[DEBUG] out = " + out + " ACC = "
+				alu.setMode(alu_mode);
+				alu.operate(alu_op1, alu_op2, reg.getCarry());
+				alu_result = alu.getResult();
+				System.out.println("[DEBUG] out = " + alu_result + " ACC = "
 						+ reg.getAcc());
-
-				reg.nextPhase();
 				break;
 
 			case Phases.WRITE_MEM:
-				if (aluMode == 15)
-					out = op1;
-				if (updateCond(adrMode[3]))
-					writeData(adrMode[2], out, direktValue);
+				if (alu_mode == 15)
+					alu_result = alu_op1;
+				
 
-				if (adrMode[4] == CtrlMode.UPCARRY_TRUE)
+				if (updateCond(ctrl_mode[3]))
+					writeData(ctrl_mode[2], alu_result, direktOp);
+
+				if (ctrl_mode[4] == CtrlMode.UPCARRY_TRUE)
 					reg.setCarry(alu.getCarry_out());
 
 				reg.setZero(reg.getAcc() == 0);
-				reg.nextPhase();
 				System.out.println();
 				break;
 
 			default:
-				reg.nextPhase();
 				break;
 			}
+			reg.nextPhase();
 		}
 		ram.dumpMemory();
-
 	}
 
 	private boolean updateCond(byte adrMode) {
@@ -176,6 +172,7 @@ public class Ctrl {
 	}
 
 	private short getOp(byte adrMode, short value) {
+		short tmp;
 		switch (adrMode) {
 		case CtrlMode.NONE:
 			return 0;
@@ -190,11 +187,15 @@ public class Ctrl {
 		case CtrlMode.RMEM:
 			return ram.readData((byte) (reg.getPC() + value + 1));
 		case CtrlMode.SMEM:
-			short s = stack[reg.getSP()];
+			tmp = stack[reg.getSP()];
 			reg.decSP();
-			return s;
+			return tmp;
 		case CtrlMode.IREG:
 			return value == 0 ? reg.getPC() : reg.getAcc();
+		case CtrlMode.PMEM:
+			tmp = ram.readData((byte) reg.getPC());
+			reg.incPC();
+			return tmp;
 		default:
 			return 0;
 		}

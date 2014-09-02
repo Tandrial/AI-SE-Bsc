@@ -1,0 +1,26 @@
+; Segment: 0x0..0xE
+@00:2fab ; 		LOAD 0xAB	; Direkt Load
+@01:af42 ; 		STORE @res0 ; Abs. store
+@02:8f40 ; 		LOAD @const1; Abs. Load
+@03:af43 ; 		STORE @res1	; Abs. store
+@04:bf3c ; 		LOAD &const2; Rel. Load
+@05:df3e ; 		STORE &res2	; Rel. Store
+@06:4f09 ; 		JMP @skip1	; Abs. Sprung
+@07:2fff ; 		LOAD 0xFF	; Dieses Sequenz soll
+@08:af50 ; 		STORE @keep1; uebersprungen werden
+@09:4002 ; 		JMP &skip2	; Rel. Sprung
+@0a:2fff ; 		LOAD 0xFF	; Dieses Sequenz soll
+@0b:af51 ; 		STORE @keep2; uebersprungen werden
+@0c:2fff ; end: 	LOAD 0xFF
+@0d:afff ; 		STORE @endsim
+; Segment: 0x40..0x45
+@40:abcd ; const1:	.def16 0xABCD
+@41:1234 ; const2:	.def16 0x1234
+@42:0000 ; res0:	.def16 0x0000 ; Endwert: 0x00AB
+@43:0000 ; res1:	.def16 0x0000 ; Endwert: 0xABCD
+@44:0000 ; res2:	.def16 0x0000 ; Endwert: 0x1234
+; Segment: 0x50..0x52
+@50:1111 ; keep1:	.def16 0x1111 ; Endwert: 0x1111
+@51:1111 ; keep2:	.def16 0x1111 ; Endwert: 0x1111
+; Segment: 0xFF..0x100
+@ff:0000 ; endsim: .def16 0x0000 ; Schreiben von 0x00FF fuehrt zum Ende der Simulation

@@ -77,33 +77,33 @@ public class Register {
 	// OpCode
 	private short inst;
 
-	public short getInst() {
+	public short getINST() {
 		return inst;
 	}
 
-	public void setInst(short inst) {
+	public void setINST(short inst) {
 		this.inst = inst;
 	}
 
 	// READ_MEM value
 	private short mdr;
 
-	public short getMdr() {
+	public short getMDR() {
 		return mdr;
 	}
 
-	public void setMdr(short mdr) {
+	public void setMDR(short mdr) {
 		this.mdr = mdr;
 	}
 
 	// READ_MEM adr
 	private byte mar;
 
-	public byte getMar() {
+	public byte getMAR() {
 		return mar;
 	}
 
-	public void setMar(byte mar) {
+	public void setMAR(byte mar) {
 		this.mar = mar;
 	}
 

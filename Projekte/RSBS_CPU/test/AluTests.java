@@ -23,8 +23,6 @@ public class AluTests {
 	boolean c_o;
 	boolean c_o_cor;
 
-	short acc = 0;
-
 	@Before
 	public void setUp() throws Exception {
 		alu = new Alu();
@@ -39,7 +37,7 @@ public class AluTests {
 		op2 = 0;
 		res_cor = (short) (op1 + op2);
 		alu.setMode(mode);
-		alu.operate(op1, op2, acc, c_i);
+		alu.operate(op1, op2, c_i);
 		res = alu.getResult();
 		c_o = alu.getCarry_out();
 		if (res != res_cor || c_o)
@@ -51,7 +49,7 @@ public class AluTests {
 		op2 = 35;
 		res_cor = (short) (op1 + op2);
 		alu.setMode(mode);
-		alu.operate(op1, op2, acc, c_i);
+		alu.operate(op1, op2, c_i);
 		res = alu.getResult();
 		c_o = alu.getCarry_out();
 		if (res != res_cor || c_o)
@@ -63,7 +61,7 @@ public class AluTests {
 		op2 = -35;
 		res_cor = (short) (op1 + op2);
 		alu.setMode(mode);
-		alu.operate(op1, op2, acc, c_i);
+		alu.operate(op1, op2, c_i);
 		res = alu.getResult();
 		c_o = alu.getCarry_out();
 		if (res != res_cor || c_o)
@@ -75,7 +73,7 @@ public class AluTests {
 		op2 = Short.MIN_VALUE;
 		res_cor = (short) (op1 + op2);
 		alu.setMode(mode);
-		alu.operate(op1, op2, acc, c_i);
+		alu.operate(op1, op2, c_i);
 		res = alu.getResult();
 		c_o = alu.getCarry_out();
 		if (!c_o)
@@ -86,7 +84,7 @@ public class AluTests {
 		op2 = Short.MAX_VALUE;
 		res_cor = (short) (op1 + op2);
 		alu.setMode(mode);
-		alu.operate(op1, op2, acc, c_i);
+		alu.operate(op1, op2, c_i);
 		res = alu.getResult();
 		c_o = alu.getCarry_out();
 		if (!c_o)
@@ -104,7 +102,7 @@ public class AluTests {
 		op2 = 0;
 		res_cor = (short) (op1 & op2);
 		alu.setMode(mode);
-		alu.operate(op1, op2, acc, c_i);
+		alu.operate(op1, op2, c_i);
 		res = alu.getResult();
 		if (res != res_cor)
 			fail(String.format("AND failed %d & %d = %d (should be %d)", op1,
@@ -114,7 +112,7 @@ public class AluTests {
 		op2 = 0x55;
 		res_cor = (short) (op1 & op2);
 		alu.setMode(mode);
-		alu.operate(op1, op2, acc, c_i);
+		alu.operate(op1, op2, c_i);
 		res = alu.getResult();
 		if (res != res_cor)
 			fail(String.format("AND failed %d & %d = %d (should be %d)", op1,
@@ -124,7 +122,7 @@ public class AluTests {
 		op2 = 0xFF;
 		res_cor = (short) (op1 & op2);
 		alu.setMode(mode);
-		alu.operate(op1, op2, acc, c_i);
+		alu.operate(op1, op2, c_i);
 		res = alu.getResult();
 		if (res != res_cor)
 			fail(String.format("AND failed %d & %d = %d (should be %d)", op1,
@@ -134,7 +132,7 @@ public class AluTests {
 		op2 = 0x0F;
 		res_cor = (short) (op1 & op2);
 		alu.setMode(mode);
-		alu.operate(op1, op2, acc, c_i);
+		alu.operate(op1, op2, c_i);
 		res = alu.getResult();
 		if (res != res_cor)
 			fail(String.format("AND failed %d & %d = %d (should be %d)", op1,
@@ -194,7 +192,7 @@ public class AluTests {
 		op2 = 35;
 		res_cor = (short) (op1 + op2);
 		alu.setMode(mode);
-		alu.operate(op1, op2, acc, c_i);
+		alu.operate(op1, op2, c_i);
 		res = alu.getResult();
 		c_o = alu.getCarry_out();
 
@@ -206,7 +204,7 @@ public class AluTests {
 		c_o_cor = c_o;
 
 		alu.setMode(mode);
-		alu.operate(op1, op2, acc, c_i);
+		alu.operate(op1, op2, c_i);
 		res = alu.getResult();
 		c_o = alu.getCarry_out();
 

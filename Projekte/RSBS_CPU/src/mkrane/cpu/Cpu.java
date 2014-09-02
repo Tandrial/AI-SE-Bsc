@@ -26,7 +26,7 @@ public class Cpu {
 		if (args.length == 1)
 			c = new Cpu(new File(args[0]));
 		else
-			c = new Cpu(new File("mul_test.hex"));
+			c = new Cpu(new File("reg.hex"));
 		
 		c.startSim();
 	}

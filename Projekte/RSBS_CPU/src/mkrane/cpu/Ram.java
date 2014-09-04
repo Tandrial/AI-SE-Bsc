@@ -13,6 +13,15 @@ public class Ram {
 
 	private short[] data;
 
+	public Ram() {
+		this.data = new short[Ctrl.RAM_SIZE];
+	}
+
+	public Ram(short[] data) {
+		if (data.length <= (Ctrl.RAM_SIZE))
+			this.data = data;
+	}
+
 	public Ram(File f) {
 		data = new short[Ctrl.RAM_SIZE];
 		// ;Code 00 ... 0D *
@@ -40,15 +49,6 @@ public class Ram {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-	}
-
-	public Ram(short[] data) {
-		if (data.length <= (Ctrl.RAM_SIZE))
-			this.data = data;
-	}
-
-	public Ram() {
-		this.data = new short[Ctrl.RAM_SIZE];
 	}
 
 	public short readData(byte adr) {

@@ -22,12 +22,7 @@ public class Cpu {
 	}
 
 	public static void main(String[] args) {
-		Cpu c;
-		if (args.length == 1)
-			c = new Cpu(new File(args[0]));
-		else
-			c = new Cpu(new File("reg.hex"));
-		
+		Cpu c = new Cpu(new File("ram1c.hex"));
 		c.startSim();
 	}
 }

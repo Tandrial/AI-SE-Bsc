@@ -129,6 +129,7 @@ public class Ctrl {
 	}
 
 	private boolean updateCond(byte adrMode) {
+
 		if (adrMode == CtrlMode.UPCOND_ALWAYS)
 			return true;
 		else if (adrMode == CtrlMode.UPCOND_CARRY)
@@ -151,13 +152,13 @@ public class Ctrl {
 			break;
 
 		case CtrlMode.AMEM:
-			ram.writeData(aluResult, (byte) direktValue);
+			ram.writeData((byte) direktValue, aluResult);
 			debug(String.format("[DEBUG] Writing Mem @ 0x%02X = %s",
 					direktValue, aluResult));
 			break;
 
 		case CtrlMode.RMEM:
-			ram.writeData(aluResult, (byte) (reg.getPC() + direktValue + 1));
+			ram.writeData((byte) (reg.getPC() + direktValue + 1), aluResult);
 			debug(String.format("[DEBUG] Writing Mem @ 0x%02X = %s",
 					direktValue, aluResult));
 			break;

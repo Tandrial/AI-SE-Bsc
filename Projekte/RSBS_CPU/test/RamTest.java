@@ -27,7 +27,7 @@ public class RamTest {
 		short write = (short) 0xAFFF;
 		byte adr = 0;
 
-		ram.writeData(write, adr);
+		ram.writeData(adr, write);
 		short is = ram.readData(adr);
 		if (is != write)
 			fail(String

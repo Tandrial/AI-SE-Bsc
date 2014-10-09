@@ -40,7 +40,7 @@ public class Ram {
 						words[0].substring(1).trim(), 16);
 				short v = (short) Integer.parseInt(words[1].trim(), 16);
 
-				if (a >= 0 && a <= 255)
+				if (a >= 0 && a < data.length)
 					data[a] = v;
 			}
 
@@ -53,16 +53,16 @@ public class Ram {
 
 	public short readData(byte adr) {
 		if (adr < 0)
-			return data[adr + 256];
+			return data[adr + data.length];
 		else
 			return data[adr];
 	}
 
-	public void writeData(short data, byte adr) {
+	public void writeData(byte adr, short value) {
 		if (adr < 0)
-			this.data[adr + 256] = data;
+			this.data[adr + data.length] = value;
 		else
-			this.data[adr] = data;
+			this.data[adr] = value;
 	}
 
 	public void dumpMemory() {

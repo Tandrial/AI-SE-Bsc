@@ -1,0 +1,66 @@
+Michael Krane - 2233018
+
+1) Win7 x64 - gcc v4.6.3					ArchLinux - gcc v4.9.1 mit -m32 flag
+	size of char         =  1 bytes 		size of char         =  1 bytes
+	size of short        =  2 bytes 		size of short        =  2 bytes
+	size of int          =  4 bytes 		size of int          =  4 bytes
+	size of long         =  4 bytes 		size of long         =  4 bytes
+	size of long long    =  8 bytes 		size of long long    =  8 bytes
+	size of float        =  4 bytes 		size of float        =  4 bytes
+	size of double       =  8 bytes 		size of double       =  8 bytes
+	size of long double  = 16 bytes 		size of long double  = 12 bytes
+	size of pointer      =  8 bytes 		size of pointer      =  4 bytes
+
+	Unterschiede gibt es bei "long double" und bei "pointer". Der Unterschied beim
+	Pointer lässt sich darauf zurück führen, dass die Adresse jeweils 64 bzw. 32bit
+	lang sind.
+
+3) MemoryLayout cube
+
+	Adr cube[0][0][0] = 0000000000403000
+	Adr cube[0][0][1] = 0000000000403004 | + 0x04 / sizeof(int) ==> 0 + 0 + 1 =  1
+	Adr cube[0][1][0] = 0000000000403010 | + 0x10 / sizeof(int) ==> 0 + 4 + 0 =  4
+	Adr cube[0][1][1] = 0000000000403014 | + 0x14 / sizeof(int) ==> 4 + 1 + 0 =  5
+	Adr cube[1][0][0] = 0000000000403020 | + 0x20 / sizeof(int) ==> 8 + 0 + 0 =  8
+	Adr cube[1][1][0] = 0000000000403030 | + 0x30 / sizeof(int) ==> 8 + 4 + 0 = 12
+	Adr cube[1][1][2] = 0000000000403038 | + 0x38 / sizeof(int) ==> 8 + 4 + 2 = 14
+
+		x hat einen Wert von 8 (= SIZE_Y * SIZE_Z)
+		y hat einen Wert von 4 (= SIZE_Z) 
+		z hat einen Wert von 1
+
+	Mehrdimensionale Arrays werden im Speicher als 1D-Array representiert.
+
+5)  
+	Alle(??) x86 CPUs sind little endian, d. h. das 1. Byte einer "Mehr-Byte-Struktur" kommt im
+	Speicher am Ende der Struktur. Das Speicherlayout eines Floats nach IEEE754 sieht also so aus
+		Mantisse Byte 3 | Mantisse  Byte 2 | Mantisse  Byte 1 | S/Expo Byte
+	Es muss also zuest das Bitfield für die Mantisse, dann das Bitfield für den Exponenten und 
+	am Schluss das Bitfield für das Vorzeichen im Struct sein.
+
+	Bonus: Um den helper (siehe void prettyprint_IEEE(IEEE754 *val) (Zeile 36)) korrekt zusetzen,
+	werden bitwise-OR und bitwise-AND benutzt.
+
+	Alles bis auf Mantisse raus:
+	//S|EEE EEEE E|MMM MMMM MMMM MMMM MMMM MMMM   <<< ein float besteht auf 32bit
+	//0|000 0000 0|111 1111 1111 1111 1111 1111   <<< AND Bit-Mask
+	//  0    0     7    F    F    F    F    F 	
+	//0|000 0000 0|MMM MMMM MMMM MMMM MMMM MMMM   <<< Ergebnisse
+
+	Um am Ende auf einen Exponenten von 0 zu kommen muss der Bias von 127 berücksichtig werden
+	E ==> 127
+	//0|000 0000 0|MMM MMMM MMMM MMMM MMMM MMMM
+	//0|011 1111 1|000 0000 0000 0000 0000 0000   <<< OR Bit-Mask
+	//  3    F     8    0    0    0    0    0 
+	//0|011 1111 1|MMM MMMM MMMM MMMM MMMM MMMM
+	//      127   
+
+	Alternativ kann einfach über den struct der Exponent und Sign direkt gesetzt werden.
+	
+6)
+	Auf das Ergebnis von scanf() kann erst reagiert werden, wenn alle übergebenen
+	Parameter gefüllt sind. Dadurch ist der Abbruch mit einer einzelnder 0 nur
+	umständlich möglich.
+
+	Mit einer Kombination auf fgets() und sscanf() kann zuerst die gesamte Eingabe
+	einglesen werden und danach weiter verarbeitet werden.

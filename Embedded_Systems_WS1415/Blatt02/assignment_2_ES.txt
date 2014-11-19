@@ -1,0 +1,58 @@
+To read this file properly, turn the dynamic word wrap on in your editor.
+
+Second assignment for Embedded Systems 2013-2014
+
+The main goal of this assignment is to understand how to use the keyboard (using the BIOS) and how to use variables in memory. You will write a program that takes user input from the keyboard and display the typed key on the screen.
+
+- start your Unix system (GNU-Linux, free BSD...).
+
+- download the archive with the tools and explanations: download assign2.zip from the moodle page and unzip it.
+
+- compile the given example and run it:
+
+./g mbr_key.asm
+qemu mbr_key.bin
+
+Ignore the warnings: they appear due to the way the assembler checks the validity of the jump(s). This behavior will be enhanced in the next version.
+
+- Check the code and be ready to answer the following questions:
+  1) What does the program do to get the information about keypresses.
+  2) What type of information do you get?
+  3) Why is the ASCII code of a key not always matching what is actually printed on the key?
+
+- The scan code is saved in "mn_key". For now, this variable is not used. Modify the program
+  to display the scan code of the key at the beginning of the second line in hexadecimal.
+
+The algorithm for displaying a byte in hexadecimal is as follows:
+
+display the byte B:
+  1) shift B four bits to the right. If we assume the byte B to disply is in the AL register, you could do:
+
+SHR(AL,IM8(4))
+
+  2) if the result is > 9, add the ASCII code of 'A', else add the ASCII code of '0'.
+     Be ready to explain why you have to make that test. To add the ASCII value of A, this would work:
+
+ADD(AL,IM8('A'-10))
+
+     To add the ASCII value of 0:
+
+ADD(AL,IM8('0'))
+
+Please note IM8('0') is the ASCII value of zero, which is 48. IM8(0) is the value zero (one minus one).
+
+  3) write the computed value in the video RAM.
+  4) reload B again and mask the four lower bits. Let's assume the byte B is in the AL register, you could write:
+
+AND( AL, IM8( 0b00001111 ) )
+
+That would keep only the four lowest significant bits of the byte you want to display.
+
+  5) do as in step (2).
+  6) write the computed value in the video RAM.
+
+Please make sure you understand how and why that algorithm works. For example, it would not work if the ASCII code for '1' would not be one more than the ASCII code of zero etc. Look at the ASCII code table to understand why the test is needed to tell if a digit is between 0 and 9, or between A and F (in hexadecimal).
+
+Comment your (working) implementation using ";".
+
+Good luck!

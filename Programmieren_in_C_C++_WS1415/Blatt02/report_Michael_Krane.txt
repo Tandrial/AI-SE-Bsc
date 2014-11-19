@@ -1,0 +1,31 @@
+Programmieren in C/C++ Blatt 02 - Michael Krane - 2233018
+
+1)
+	Die erwartet Ausgabe ist 1, da sich globalvar aus scope2.c sich auf eine andere Variable als globalvar aus scope1.c beziehen "sollte". Die tatsächliche Ausgabe ist 1073741824, die IEEE754 Darstellung von 2.0. Das bedeutet, dass sich die globalvar aus scope1.c und scope2.c denselben Speicherplatz teilen, diesen aber unterschiedlich benutzten.
+
+	Mit der Flat "-Wl,--warn-common" wird beim Linken eine Warnung ausgegeben, wenn eine globale Variable an mehreren Stellen mit unterschiedlichen Typen existiert.
+
+	[michael@xps]$ gcc -Wl,--warn-common scope1.c scope2.c -o task1
+   		/tmp/cc9LjJmm.o: warning: common of `globalvar' overridden by definition
+   		/tmp/ccmn0w6k.o: warning: defined here
+
+
+	Mit der Flag "-fno-common" kann das oben beschriebene Verhalten verhindern werden. Dafür werden alle globalen Variablen (initialisiert oder nicht) in der .data Sektion des Programms gespeichert. Dadurch wird verhindert das zwei (nicht externe) Variablen denselben Namen haben.
+
+	[michael@xps]$ gcc -fno-common scope1.c scope2.c -o task1
+   		scope2.o:(.bss+0x0): multiple definition of `globalvar'
+   		scope1.o:(.data+0x0): first defined here
+   		collect2: Fehler: ld gab 1 als Ende-Status zurück
+
+2)
+	int (*x[])(int, int)
+		x is array of pointer to function expecting (int, int) returning int
+
+	int *(*x(int*))()
+		x is function expecting (pointer to int) returning pointer to function returning pointer to int
+
+	int *(*(*x())[])(int)
+		x is a function returning pointer to array of pointer to function expecting (int) returning pointer to int
+
+	int (*x)(int *(*)(int))
+		x is pointer to function expecting (pointer to function expecting (int) returning pointer to int) returning int

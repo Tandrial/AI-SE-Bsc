@@ -1,0 +1,333 @@
+To read this file properly, turn the dynamic word wrap on in your editor.
+
+Assignments for Embedded Systems 2013-2014
+
+1) The main goal is to get used to the tools for producing low level code, inspecting and testing it.
+
+- start your Unix system (GNU-Linux, free BSD...).
+
+- download the archive with the tools and explanations: download assign1.zip from the moodle page and unzip it using:
+
+unzip assign1.zip
+
+- first test:
+
+  a) Open a text editor of your choice and create a file named, for example, "test1.asm".
+  b) Type the following numbers (type only what is between the quotes): "1 2 42", and save the file.
+  c) We will use a byte generator (called GeA) that makes it easier to output a sequence of bytes from a human readable format. Here, this byte generator will be used to assemble code so let's call it "assembler" from now on. This assembler reads an input file and outputs some bytes according to what is specified in the input file. By default, the assembler outputs a file with the same name as the input file, but it changes the extension of the input file into "bin". The assembler (with its executable simply called "g" here) can interpret numeric values that are given in ASCII and generate the corresponding values. That means that the ASCII character '1', which is actually equal to 49 in the text file and occupies one byte in the source file, will be read by the assembler, interpreted as a number (here, the number 1, the integer successor of zero) and output as such: a byte with the value one will be output to the output file. In the case of "42", there two characters or bytes in the input file (the ASCII representation of "4", which is the value 52, and the ASCII representation of "2", which is the value 50). These two ASCII characters are interpreted by the assembler as the value 42 (two times twenty plus two) and a byte with that value is output to the output file. To produce "test1.bin", type:
+
+./g test1.asm
+
+The "./" tells the system to look in the current directory.
+
+  d) To check what is really in the output file, you can use "hexdump", a tool that shows in a human-readable way the actual bytes contained in the specified file. The "-C" option stands for "classic" and makes hexdump output the position of the bytes in the file, their actual values, shown in hexadecimal, and the ASCII representations of the bytes. Type:
+
+hexdump -C test1.bin
+
+This should show you something like this:
+
+00000000  01 02 2a                                          |..*|
+00000003
+
+Here, we see "01" in hexadecimal that stands for one byte (the first of the file), with the value 1. "02" is the second byte with the value 2. And "2a" in hexadecimal is 42 in decimal (two times 16 plus 10, 10 being 'a' in hexadecimal). The ASCII character corresponding to 42 is the "*" that we can see on the right. The two "." before that represent unprintable characters since 1 and 2 are unprintable ASCII values (the first printable one being 32, the space character).
+
+  e) With this knowledge, create a file called "test2.asm" and fill it such that, when assembled, the output contains the letters "ABC". That means that:
+
+cat test2.bin
+
+would produce:
+
+ABC
+
+The ASCII value of "A" is 65, "B" is 66 and "C" is 67.
+
+  f) The assembler can also accept numbers input in hexadecimal or in binary: 0x41 will be interpreted as 65 (in decimal) by the assembler. 0b10100000 would represent 160, if written in binary. Please do the exercise (e) again but in hexadecimal then in binary (do not use a calculator).
+
+  g) The assembler can also read and compute constant arithmetic expressions, including the classic operations ('+', '-', '*' and '/'), as well as braces and logic operators ('.or', '.and', '.xor' etc). Constants can also be given names, like so:
+
+whatever = 5 + (256 - 2 * 67) * 4
+
+  h) Try it out! Write the following in an input file and assemble it:
+
+whatever = 5 + (256 - 2 * 67) * 4
+whatever
+
+If you use hexdump on the output, you should get the value 0xed (in hexadecimal). The assembler first computes the expression "5 + (256 - 2 * 67) * 4" and stores it into "whatever"; then "whatever" on the second line outputs that value to your output file (without the second line, the assembler would output nothing at all). We will use increasingly complex commands to generate the bytes in the output file such that they represent a program for a given processor. So far we have only output bytes to a file. It could be a drawing, poetry or the decimals of Pi. Now we will produce bytes with a meaning that is specific to a certain microprocessor.
+
+It is important that you understand that "whatever" is a variable at compile time, that is: it can be assigned different values. But at running time, it does not exist at all anymore.
+
+  i) The assembler includes a macro processor, similar to the macro processor used for the C language. The difference is that as soon as the macro expansions produce a numeric value, it is truncated such that only the least significant byte is kept and output to the output file. Let's try some macro definition and expansion:
+
+.macro a(a,b) a+b
+a(8,2) a(4,5) + 6 42
+
+Store this example in "test1.asm", then assemble it:
+
+bash-3.1# ./g test1.asm
+
+Then make sure you get:
+
+bash-3.1# hexdump -C test1.bin
+00000000  0a 0f 2a                                          |..*|
+00000003
+bash-3.1#
+
+The "0a" represents 10 in decimal and is the result of the expansion of "a(8,2)", which led to "8+2", evaluated by the assembler as 10, output as one byte. The "0f" is more tricky to understand: "a(4,5)" was expanded as "4+5" but the "+ 6" that followed that expression turned it into "4+5 + 6", evaluated as 15, leading to the "0f", or 15 in hexadecimal (make sure you remember that in the file, 15 occupies only one byte, not two).
+
+To preserve your mental health, the file 'x86_16b.inc' contains many macro definitions to turn GeA, the generic byte generator, into an x86 code assembler. This file will allow you to produce code for the i8086, the first member of the x86 ever growing family, as well as for its successors. Since it is macro-based, the syntax is not the same as for target specific assemblers: for example, the instruction that loads a constant into the x86 AX register, has the following Intel syntax:
+
+MOV AX,56
+
+For us, it would be written:
+
+MOV(AX,IM16(56))
+
+"IM16(x)" turns "x" into a typed 16-bit numeric constant. Here "MOV" and "IM16" are macros. It is very simple to write a converter (using the Unix 'sed' for example) to turn the Intel (the creator of the x86 family) instruction syntax into our syntax. However, the exercises should be implemented with the macro-oriented syntax since they force you to understand the exact types of the entities you are dealing with in your code. To test our code, we will generate a boot sector containing our program, create a virtual hard disk with it and start an x86 PC simulator on it (Qemu or VirtualBox, for example). It is also possible to write the created boot sector to, say, a memory stick, and to run the program directly at boot time on a real machine. Before all that, some rehearsal of x86 architecture basics is needed.
+
+The basic concepts that you will need to revise for this set of exercises are the following:
+
+  - 8086 register architecture:
+
+The registers are:
+
+<--------- 16 bits --------->     special role
+
+<-- 8 bits -->|<-- 8 bits -->
+
++----------- AX ------------+
+|     AH      |     AL      |     accumulator (has dedicated instructions using it implicitly).       |      The first four registers are made of two
++---------------------------+                                                                          |      parts that can also be addressed individually
+                                                                                                       |      as 8-bit registers.
++----------- BX ------------+                                                                          |
+|     BH      |     BL      |     can be used for based addressing.                                    |
++---------------------------+                                                                          |
+                                                                                                       |
++----------- CX ------------+                                                                          |
+|     CH      |     CL      |     can be used as a counter.                                            |
++---------------------------+                                                                          |
+                                                                                                       +------ can all be used as general purpose registers.
++----------- DX ------------+                                                                          |       On 386+, all of these are 32-bit wide.
+|     DH      |     DL      |     used implicitly for some arithmetic operations.                     |       On x64, they are 64-bit registers. And there
++---------------------------+                                                                          |       are more of them...
+                                                                                                       |
++---------------------------+                                                                          |
+|            SI             |     can be used as index and as source address.                          |
++---------------------------+                                                                          |
+                                                                                                       |
++---------------------------+                                                                          |
+|            DI             |     can be used as index and as destination address.                     |
++---------------------------+                                                                          |
+
++---------------------------+
+|            IP             |     current instruction address register.
++---------------------------+
+
++---------------------------+
+|            CS             |     code segment register.
++---------------------------+
+
++---------------------------+
+|            DS             |     data segement register.
++---------------------------+
+
++---------------------------+
+|            SS             |     stack segment register.
++---------------------------+
+
++---------------------------+
+|            ES             |     extra segment register, implicit segment register for destination in string operations.
++---------------------------+
+
++---------------------------+
+|            FS             |     386+, extra segment register.
++---------------------------+
+
++---------------------------+
+|            GS             |     386+, extra segment register.
++---------------------------+
+
+  - memory addressing (segment arithmetic and addressing modes):
+
+In the 8086, the addressing of the memory is done like this:
+
+   +-------------------------+
+   | 16-bit Segment register |  0
+   +-------------------------+
+
+        +------------------------+
++   0   |     16-bit Offset      |
+        +------------------------+
+
+ ----------------------------------
+
+   +-----------------------------+
+   | Physical address on 20 bits |
+   +-----------------------------+
+
+This is written "Segment register : Offset"
+
+The physical address can be computed from the following (using the specified default segment registers):
+
+Default DS: BX,SI,DI,BX+SI,BX+DI plus zero or an unsigned 16-bit value, or an 8-bit signed value, or a given offset.
+Default SS: BP plus a given offset (may be zero),BP+SI,BP+DI plus same as above.
+
+On 386+, it gets crazy and many more addressing modes exist, plus scaling and 32 bit offsets. We will discuss this topic in the lab.
+
+Flags: the flags available to the programmer are carry (C), parity (P), auxiliary carry (A), overflow for signed numbers (V), sign (S), the direction flag for string operations (D), the interrupt enable flag (I) and the zero flag (Z).
+
+  - data movement:
+
+To move an immediate value to a register:
+
+MOV(BX,IM16(127))      ; BX <- 127d
+MOV(CL,IM8(0x67))      ; CL <- 67h
+
+To move a register to another:
+
+MOV(AX,BX)             ; AX <- (BX), that means: put the content of the register BX in the register AX.
+MOV(DS,AX)             ; DS <- (AX)
+
+To move data to and from memory:
+
+MOV(AX,AT_BX)              ; AX <- ((BX)): move the content of the memory cell pointed to by  [ the value contained in BX plus the content of DS times 16 ], into the register AX.
+MOV(CX,AT_BX_SI_DISP8(8))  ; CX <- ( (BX)+(SI)+8 ): multiply the content of DS by 16, add the content of BX and SI, add 8 and load CX with the memory cell at the computed address.
+
+Here are all the possible encoding schemes for addresses:
+
+AT_BX_SI
+AT_BX_DI
+AT_BP_SI
+AT_BP_DI
+AT_SI
+AT_DI
+AT_DISP16(disp)
+AT_BX
+
+AT_BX_SI_DISP8(disp)
+AT_BX_DI_DISP8(disp)
+AT_BP_SI_DISP8(disp)
+AT_BP_DI_DISP8(disp)
+AT_SI_DISP8(disp)
+AT_DI_DISP8(disp)
+AT_BP_DISP8(disp)
+AT_BX_DISP8(disp)
+
+AT_BX_SI_DISP16(disp)
+AT_BX_DI_DISP16(disp)
+AT_BP_SI_DISP16(disp)
+AT_BP_DI_DISP16(disp)
+AT_SI_DISP16(disp)
+AT_DI_DISP16(disp)
+AT_BP_DISP16(disp)
+AT_BX_DISP16(disp)
+
+  - arithmetic and logic instructions:
+
+The most important operations that are available are:
+
+addition (8-bit and 16-bit):
+
+ADD(AX,BX)             ; load AX with the sum of the value in BX and AX.
+
+subtraction: SUB
+addition with carry from previous operation: ADC
+subtraction with borrow from previous operation: SBB
+logical AND, OR, XOR, NOT.
+
+All those instructions also support the addressing modes presented in the section about data movement, above. For example, the following AND operation between a register and a location in RAM is valid:
+
+AND( AT_BX_DISP16( 56 ), AL )
+
+The semantics of this is: the logical "and" operation between the value in AL and the value in the RAM at the address DS times 16 plus the content of BX plus 56 (in decimal) is stored at the address (let's do it again) DS times 16 plus the content of BX plus 56.
+
+  - stack operations:
+
+The stack support is provided with almost every architecture. Its purpose is to store local data for a short time without requiring any form of static or dynamic allocation of memory. Since it is a stack, the last item put in it is the first one to come out of it. This is very useful to store return addresses for sub-routine calls (and is used internally by the processor in that case), to save and restore registers when needed etc.
+
+On the x86, the PUSH instruction is used to push the content of a register or a memory location on the stack. POP is provided to remove the top element of the stack. The address of the last saved element on the stack is given by SS:SP (remember: that means SS*16+SP). SP is updated implicitly by PUSH and POP. The stack grows down on the x86 (on other architecture, the MCS51 for example, it grows up).
+
+CALL calls a sub-routine: it pushes the address of the instruction after CALL and loads IP (the instruction pointer) with the address of the sub-routine. RET pop the top of the stack into IP, resuming the execution after the CALL.
+
+  - control instructions:
+
+Normally, the CPU executes the instructions sequentially, one after the other, as the are read from the memory at the address in the IP register. After each byte is read, IP is incremented. That mechanism alone would not allow the CPU to make decisions or to loop over a set of instructions to repeat their combined effect. To achieve that, jumping instructions that change IP conditionally are provided. CALL and RET (above) do just that and allow using sub-routines (using the stack), which saves code space: the same code can be used over and over again. There are also many types of jumping instructions that test a condition (flags, value of a certain register) and reload IP or not, depending on the result of the test.
+
+JCXZ(target), for example, makes the CPU continue the execution at the code location "target" if the content of the CX register is zero.
+
+JC(target) tests the carry flag (set after an addition lead to a result too big to fit the destination, among other cases) and jumps if it is set.
+
+There are many more and we will use some of them as we progress through the exercises.
+
+A simple loop that loops 50 times could look like this:
+
+  MOV(CX,IM16(50))
+loop_50x:
+  ...                   ; do something that need to be repeated 50 times (comments are put after ',').
+  LOOP(loop_50x)        ; decrement CX and jump to the label 'loop_50x' if it is not zero.
+
+In C, it could be coded like this:
+
+  { int i;
+    for(i = 0, i < 50, i++){...}
+  }
+
+  - PC boot sequence, basic BIOS calls:
+
+When the PC is turned on for the first time, the BIOS code (in Read Only Memory or ROM) is the first code to be executed. This code tests and initializes the hardware (RAM controller, video hardware, keyboard controller etc). After the initialization is complete, it looks for all the devices specified by the user in the setup, in sequence. It loads the first 512 bytes (one sector) of each candidate device at the physical address 07C00h. The first loaded sector that has 55h and AAh at address 7DFEh and 7DFFh is assumed to contain executable code and the BIOS jumps at 7C00h, starting for the first time code that can be entirely specified by the user, because it is not in ROM but on a writable medium.
+
+The BIOS also provides services. Some of them will be very useful to us, like printing a character on the screen or reading a character from the keyboard.
+
+  j) Now we are going to generate instructions for an x86 processor and put it in a boot sector.
+
+Type the following:
+
+./g mbr_hello.asm
+qemu mbr_hello.bin
+
+You should see a simulated PC screen with some text on it. On the top left of the screen, you can see a printed message in black on white background: this message has been printed by our boot sector code. Open 'mbr_hello.asm' and inspect the source code carefully. To display the characters, the BIOS function 13h, service 10h, has been used. Please read the documentation at the end of the file and google it to understand how to use it.
+
+Type:
+
+./disassemble.sh mbr_hello.bin | less
+
+Can you tell the address of the infinite loop at the end of the program?
+
+  k) Enhance 'mbr_hello.asm' to erase the screen before you print your screen, to make sure the screen only displays your string, and not machine boot related text that has been printed by the BIOS before your boot sector was loaded. Use loops and BIOS function 13h, service 10h. This function prints text at the current cursor position, which is updated when the function prints characters. Find out which BIOS service can be used to set the cursor where your want it to be and after your erased the screen, use that function to position the cursor at the top left of the screen before you display your welcome message (choose it freely).
+
+  l) The video memory for the default text mode is at the address B8000h. There, you will find 4000 bytes or video RAM. Each pair of bytes represent the ASCII code of a character and its color attribute. At B8000h, you specify the top left character. Repeat the above exercise but this time do not use the BIOS at all: erase the screen and print a text using loops and writing directly to the memory from B8000h to B8000h + 3999d.
+
+The attribute byte is structured as follows:
+
+7  6   5  4  3  2  1  0
+|  <- BG ->  <-- FG -->
+|
++-> 1 for blinking and 0 for not blinking (in Qemu, it never blinks but on a real PC, a one here would make the character blink).
+
+FG can take a value from 0 to 15 and represent the foreground color of the character. BG is the background color or the character. The color values are:
+
+black   = 0
+blue    = 1
+green   = 2
+cyan    = 3
+red     = 4
+magenta = 5
+brown   = 6
+gray   = 7
+light_gray    = 8
+light_blue    = 9
+light_green   = 10
+light_cyan    = 11
+light_red     = 12
+light_magenta = 13
+yellow        = 14
+white         = 15
+
+To help you, a macro ATTRIBUTE() is provided in 'IBM_PC.inc'.
+
+The following sequence of code displays a 'H' character in light cyan on a green background in the top left character:
+
+MOV( AX, IM16( 0xB800 ) )
+MOV( DS, AX )
+MOV( AT_DISP16( 0 ), IM16( ( ATTRIBUTE( light_cyan, green ) << 8 ) + 'H' ) )
+
+Good luck!

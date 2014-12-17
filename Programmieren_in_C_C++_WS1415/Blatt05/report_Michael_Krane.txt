@@ -1,0 +1,10 @@
+Programmieren in C/C++ Exercise 05 - Michael Krane
+
+3)
+	After subtracting the time it takes to create a new Stack each iteration 
+	for the move assignment operator the programs prints the following times:
+
+		Copying 10,000,000 stacks took = 0.646s
+		Moving  10,000,000 stacks took = 0.093s
+
+	So using move instead of copy is roughly 6 times faster.

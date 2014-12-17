@@ -1,0 +1,7 @@
+Programmieren in C/C++ Exercise 06 - Michael Krane
+
+1)
+	Comparison operators are no necessary to implement, because MyTime can be converted to int. That means that C++ implicitly converts the two MyTime-objects being compared into ints and then does the comparison.
+
+2)
+	With pre-increments and decrement you get a reference to the object back. That allows for correct operator chaining, e. g.  *(++(++sArray)). *((sArray++)++) prints the same result, but the value of the sArray object is not increased twice, since the second ++ is applied to a copy of the original object.

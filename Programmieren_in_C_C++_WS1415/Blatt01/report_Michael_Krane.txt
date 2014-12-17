@@ -1,4 +1,4 @@
-Michael Krane - 2233018
+Programmieren in C/C++ Blatt 01 - Michael Krane
 
 1) Win7 x64 - gcc v4.6.3					ArchLinux - gcc v4.9.1 mit -m32 flag
 	size of char         =  1 bytes 		size of char         =  1 bytes

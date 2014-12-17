@@ -1,0 +1,524 @@
+task1.exe:     file format pei-x86-64
+
+Characteristics 0x27
+	relocations stripped
+	executable
+	line numbers stripped
+	large address aware
+
+Time/Date		Thu Nov 20 20:37:26 2014
+Magic			020b	(PE32+)
+MajorLinkerVersion	2
+MinorLinkerVersion	23
+SizeOfCode		00001e00
+SizeOfInitializedData	00001e00
+SizeOfUninitializedData	00000a00
+AddressOfEntryPoint	00000000000014d0
+BaseOfCode		0000000000001000
+ImageBase		0000000000400000
+SectionAlignment	0000000000001000
+FileAlignment		0000000000000200
+MajorOSystemVersion	4
+MinorOSystemVersion	0
+MajorImageVersion	0
+MinorImageVersion	0
+MajorSubsystemVersion	5
+MinorSubsystemVersion	2
+Win32Version		00000000
+SizeOfImage		00022000
+SizeOfHeaders		00000600
+CheckSum		00021bcd
+Subsystem		00000003	(Windows CUI)
+DllCharacteristics	00000000
+SizeOfStackReserve	0000000000200000
+SizeOfStackCommit	0000000000001000
+SizeOfHeapReserve	0000000000100000
+SizeOfHeapCommit	0000000000001000
+LoaderFlags		00000000
+NumberOfRvaAndSizes	00000010
+
+The Data Directory
+Entry 0 0000000000000000 00000000 Export Directory [.edata (or where ever we found it)]
+Entry 1 0000000000008000 000007c8 Import Directory [parts of .idata]
+Entry 2 0000000000000000 00000000 Resource Directory [.rsrc]
+Entry 3 0000000000005000 00000240 Exception Directory [.pdata]
+Entry 4 0000000000000000 00000000 Security Directory
+Entry 5 0000000000000000 00000000 Base Relocation Directory [.reloc]
+Entry 6 0000000000000000 00000000 Debug Directory
+Entry 7 0000000000000000 00000000 Description Directory
+Entry 8 0000000000000000 00000000 Special Directory
+Entry 9 000000000000a000 00000028 Thread Storage Directory [.tls]
+Entry a 0000000000000000 00000000 Load Configuration Directory
+Entry b 0000000000000000 00000000 Bound Import Directory
+Entry c 00000000000081ec 000001b0 Import Address Table Directory
+Entry d 0000000000000000 00000000 Delay Import Directory
+Entry e 0000000000000000 00000000 CLR Runtime Header
+Entry f 0000000000000000 00000000 Reserved
+
+There is an import table in .idata at 0x408000
+
+The Import Tables (interpreted .idata section contents)
+ vma:            Hint    Time      Forward  DLL       First
+                 Table   Stamp     Chain    Name      Thunk
+ 00008000	0000803c 00000000 00000000 00008738 000081ec
+
+	DLL Name: KERNEL32.dll
+	vma:  Hint/Ord Member-Name Bound-To
+	839c	  216  DeleteCriticalSection
+	83b4	  248  EnterCriticalSection
+	83cc	  461  GetCurrentProcess
+	83e0	  462  GetCurrentProcessId
+	83f6	  466  GetCurrentThreadId
+	840c	  528  GetLastError
+	841c	  627  GetStartupInfoA
+	842e	  650  GetSystemTimeAsFileTime
+	8448	  677  GetTickCount
+	8458	  761  InitializeCriticalSection
+	8474	  843  LeaveCriticalSection
+	848c	  955  QueryPerformanceCounter
+	84a6	 1025  RtlAddFunctionTable
+	84bc	 1026  RtlCaptureContext
+	84d0	 1033  RtlLookupFunctionEntry
+	84ea	 1040  RtlVirtualUnwind
+	84fe	 1183  SetUnhandledExceptionFilter
+	851c	 1196  Sleep
+	8524	 1210  TerminateProcess
+	8538	 1217  TlsGetValue
+	8546	 1230  UnhandledExceptionFilter
+	8562	 1260  VirtualProtect
+	8574	 1262  VirtualQuery
+
+ 00008014	000080fc 00000000 00000000 000087bc 000082ac
+
+	DLL Name: msvcrt.dll
+	vma:  Hint/Ord Member-Name Bound-To
+	8584	   55  __C_specific_handler
+	859c	   78  __dllonexit
+	85aa	   81  __getmainargs
+	85ba	   82  __initenv
+	85c6	   83  __iob_func
+	85d4	   91  __lconv_init
+	85e4	   97  __set_app_type
+	85f6	   99  __setusermatherr
+	860a	  115  _acmdln
+	8614	  123  _amsg_exit
+	8622	  141  _cexit
+	862c	  253  _fmode
+	8636	  330  _initterm
+	8642	  438  _lock
+	864a	  610  _onexit
+	8654	  818  _unlock
+	865e	 1030  abort
+	8666	 1044  calloc
+	8670	 1055  exit
+	8678	 1072  fprintf
+	8682	 1079  free
+	868a	 1090  fwrite
+	8694	 1137  malloc
+	869e	 1145  memcpy
+	86a8	 1152  printf
+	86b2	 1174  signal
+	86bc	 1195  strlen
+	86c6	 1198  strncmp
+	86d0	 1229  vfprintf
+
+ 00008028	00000000 00000000 00000000 00000000 00000000
+
+The Function Table (interpreted .pdata section contents)
+vma:			BeginAddress	 EndAddress	  UnwindData
+ 0000000000405000:	0000000000001000 0000000000001001 0000000000006000
+ 000000000040500c:	0000000000001010 000000000000112f 0000000000006004
+ 0000000000405018:	0000000000001130 0000000000001178 000000000000600c
+ 0000000000405024:	0000000000001180 00000000000014a6 0000000000006014
+ 0000000000405030:	00000000000014b0 00000000000014cf 0000000000006028
+ 000000000040503c:	00000000000014d0 00000000000014ef 0000000000006048
+ 0000000000405048:	00000000000014f0 0000000000001541 0000000000006068
+ 0000000000405054:	0000000000001541 0000000000001563 0000000000006074
+ 0000000000405060:	0000000000001570 000000000000159f 0000000000006080
+ 000000000040506c:	00000000000015a0 0000000000001609 0000000000006088
+ 0000000000405078:	0000000000001610 0000000000001613 0000000000006094
+ 0000000000405084:	0000000000001620 000000000000162a 0000000000006098
+ 0000000000405090:	0000000000001630 0000000000001634 000000000000609c
+ 000000000040509c:	0000000000001640 0000000000001644 00000000000060a0
+ 00000000004050a8:	0000000000001650 00000000000016f4 00000000000060a4
+ 00000000004050b4:	0000000000001700 0000000000001719 00000000000060ac
+ 00000000004050c0:	0000000000001720 00000000000018d2 00000000000060b4
+ 00000000004050cc:	00000000000018e0 00000000000019cc 00000000000060bc
+ 00000000004050d8:	00000000000019d0 0000000000001b7d 00000000000060cc
+ 00000000004050e4:	0000000000001b80 0000000000001b83 00000000000060d8
+ 00000000004050f0:	0000000000001b90 0000000000001bd1 00000000000060dc
+ 00000000004050fc:	0000000000001be0 0000000000001bec 00000000000060e4
+ 0000000000405108:	0000000000001bf0 0000000000001cec 00000000000060e8
+ 0000000000405114:	0000000000001cf0 0000000000001d51 0000000000006100
+ 0000000000405120:	0000000000001d60 0000000000001f8d 000000000000610c
+ 000000000040512c:	0000000000001f90 00000000000022aa 0000000000006120
+ 0000000000405138:	00000000000022b0 00000000000022b3 0000000000006138
+ 0000000000405144:	00000000000022c0 00000000000022f5 000000000000613c
+ 0000000000405150:	0000000000002300 0000000000002360 0000000000006144
+ 000000000040515c:	0000000000002360 000000000000237c 0000000000006150
+ 0000000000405168:	0000000000002380 000000000000244b 0000000000006154
+ 0000000000405174:	0000000000002450 000000000000254b 0000000000006164
+ 0000000000405180:	0000000000002550 00000000000025bd 0000000000006174
+ 000000000040518c:	00000000000025c0 000000000000263f 0000000000006184
+ 0000000000405198:	0000000000002640 00000000000026df 0000000000006194
+ 00000000004051a4:	00000000000026e0 0000000000002777 000000000000619c
+ 00000000004051b0:	0000000000002780 000000000000279f 00000000000061a4
+ 00000000004051bc:	00000000000027a0 00000000000027b2 00000000000061a8
+ 00000000004051c8:	00000000000027c0 0000000000002804 00000000000061ac
+ 00000000004051d4:	0000000000002810 00000000000028bc 00000000000061b0
+ 00000000004051e0:	00000000000028c0 0000000000002904 00000000000061bc
+ 00000000004051ec:	0000000000002910 0000000000002954 00000000000061c8
+ 00000000004051f8:	0000000000002960 00000000000029fe 00000000000061d4
+ 0000000000405204:	0000000000002a00 0000000000002a3c 00000000000061e0
+ 0000000000405210:	0000000000002a40 0000000000002a96 00000000000061e8
+ 000000000040521c:	0000000000002aa0 0000000000002b4e 00000000000061f4
+ 0000000000405228:	0000000000002bb0 0000000000002bb8 0000000000006204
+ 0000000000405234:	0000000000002bc0 0000000000002bcb 0000000000006208
+
+Dump of .xdata
+ 0000000000006000:
+	Flags: UNW_FLAG_NHANDLER.
+	Prologue size: 0, Frame offset = 0x0.
+	Frame register is none.
+ 0000000000006004:
+	Flags: UNW_FLAG_NHANDLER.
+	Entry has 1 codes.	Prologue size: 4, Frame offset = 0x0.
+	Frame register is none.
+	 At pc 0x0000000000401010 there are the following saves (in logical order).
+	  insn ends at pc+0x04: save stack region of size 0x0000000000000028.
+ 000000000000600c:
+	Flags: UNW_FLAG_NHANDLER.
+	Entry has 1 codes.	Prologue size: 4, Frame offset = 0x0.
+	Frame register is none.
+	 At pc 0x0000000000401130 there are the following saves (in logical order).
+	  insn ends at pc+0x04: save stack region of size 0x0000000000000038.
+ 0000000000006014:
+	Flags: UNW_FLAG_NHANDLER.
+	Entry has 8 codes.	Prologue size: 15, Frame offset = 0x0.
+	Frame register is none.
+	 At pc 0x0000000000401180 there are the following saves (in logical order).
+	  insn ends at pc+0x02: push r13.
+	  insn ends at pc+0x04: push r12.
+	  insn ends at pc+0x05: push rbp.
+	  insn ends at pc+0x06: push rdi.
+	  insn ends at pc+0x07: push rsi.
+	  insn ends at pc+0x08: push rbx.
+	  insn ends at pc+0x0f: save stack region of size 0x0000000000000098.
+ 0000000000006028:
+	Flags: UNW_FLAG_EHANDLER.
+	Entry has 1 codes.	Prologue size: 4, Frame offset = 0x0.
+	Frame register is none.
+	 At pc 0x00000000004014b0 there are the following saves (in logical order).
+	  insn ends at pc+0x04: save stack region of size 0x0000000000000028.
+	User data:
+	  000: 90 2b 00 00 01 00 00 00 b4 14 00 00 c9 14 00 00
+	  010: d0 19 00 00 c9 14 00 00
+ 0000000000006048:
+	Flags: UNW_FLAG_EHANDLER.
+	Entry has 1 codes.	Prologue size: 4, Frame offset = 0x0.
+	Frame register is none.
+	 At pc 0x00000000004014d0 there are the following saves (in logical order).
+	  insn ends at pc+0x04: save stack region of size 0x0000000000000028.
+	User data:
+	  000: 90 2b 00 00 01 00 00 00 d4 14 00 00 e9 14 00 00
+	  010: d0 19 00 00 e9 14 00 00
+ 0000000000006068:
+	Flags: UNW_FLAG_NHANDLER.
+	Entry has 4 codes.	Prologue size: 16, Frame offset = 0x8.
+	Frame register is rbp.
+	 At pc 0x00000000004014f0 there are the following saves (in logical order).
+	  insn ends at pc+0x01: push rbp.
+	  insn ends at pc+0x08: save stack region of size 0x00000000000007f0.
+	  insn ends at pc+0x10: FPReg = (FrameReg) + 0x0000000000000000.
+ 0000000000006074:
+	Flags: UNW_FLAG_NHANDLER.
+	Entry has 3 codes.	Prologue size: 8, Frame offset = 0x0.
+	Frame register is rbp.
+	 At pc 0x0000000000401541 there are the following saves (in logical order).
+	  insn ends at pc+0x01: push rbp.
+	  insn ends at pc+0x04: FPReg = (FrameReg) + 0x0000000000000000.
+	  insn ends at pc+0x08: save stack region of size 0x0000000000000020.
+ 0000000000006080:
+	Flags: UNW_FLAG_NHANDLER.
+	Entry has 1 codes.	Prologue size: 4, Frame offset = 0x0.
+	Frame register is none.
+	 At pc 0x0000000000401570 there are the following saves (in logical order).
+	  insn ends at pc+0x04: save stack region of size 0x0000000000000028.
+ 0000000000006088:
+	Flags: UNW_FLAG_NHANDLER.
+	Entry has 3 codes.	Prologue size: 6, Frame offset = 0x0.
+	Frame register is none.
+	 At pc 0x00000000004015a0 there are the following saves (in logical order).
+	  insn ends at pc+0x01: push rsi.
+	  insn ends at pc+0x02: push rbx.
+	  insn ends at pc+0x06: save stack region of size 0x0000000000000028.
+ 0000000000006094:
+	Flags: UNW_FLAG_NHANDLER.
+	Prologue size: 0, Frame offset = 0x0.
+	Frame register is none.
+ 0000000000006098:
+	Flags: UNW_FLAG_NHANDLER.
+	Prologue size: 0, Frame offset = 0x0.
+	Frame register is none.
+ 000000000000609c:
+	Flags: UNW_FLAG_NHANDLER.
+	Prologue size: 0, Frame offset = 0x0.
+	Frame register is none.
+ 00000000000060a0:
+	Flags: UNW_FLAG_NHANDLER.
+	Prologue size: 0, Frame offset = 0x0.
+	Frame register is none.
+ 00000000000060a4:
+	Flags: UNW_FLAG_NHANDLER.
+	Entry has 2 codes.	Prologue size: 5, Frame offset = 0x0.
+	Frame register is none.
+	 At pc 0x0000000000401650 there are the following saves (in logical order).
+	  insn ends at pc+0x01: push rbx.
+	  insn ends at pc+0x05: save stack region of size 0x0000000000000030.
+ 00000000000060ac:
+	Flags: UNW_FLAG_NHANDLER.
+	Entry has 1 codes.	Prologue size: 4, Frame offset = 0x0.
+	Frame register is none.
+	 At pc 0x0000000000401700 there are the following saves (in logical order).
+	  insn ends at pc+0x04: save stack region of size 0x0000000000000028.
+ 00000000000060b4:
+	Flags: UNW_FLAG_NHANDLER.
+	Entry has 2 codes.	Prologue size: 5, Frame offset = 0x0.
+	Frame register is none.
+	 At pc 0x0000000000401720 there are the following saves (in logical order).
+	  insn ends at pc+0x01: push rbx.
+	  insn ends at pc+0x05: save stack region of size 0x0000000000000030.
+ 00000000000060bc:
+	Flags: UNW_FLAG_NHANDLER.
+	Entry has 6 codes.	Prologue size: 10, Frame offset = 0x0.
+	Frame register is none.
+	 At pc 0x00000000004018e0 there are the following saves (in logical order).
+	  insn ends at pc+0x02: push r12.
+	  insn ends at pc+0x03: push rbp.
+	  insn ends at pc+0x04: push rdi.
+	  insn ends at pc+0x05: push rsi.
+	  insn ends at pc+0x06: push rbx.
+	  insn ends at pc+0x0a: save stack region of size 0x0000000000000020.
+ 00000000000060cc:
+	Flags: UNW_FLAG_NHANDLER.
+	Entry has 3 codes.	Prologue size: 6, Frame offset = 0x0.
+	Frame register is none.
+	 At pc 0x00000000004019d0 there are the following saves (in logical order).
+	  insn ends at pc+0x01: push rsi.
+	  insn ends at pc+0x02: push rbx.
+	  insn ends at pc+0x06: save stack region of size 0x0000000000000028.
+ 00000000000060d8:
+	Flags: UNW_FLAG_NHANDLER.
+	Prologue size: 0, Frame offset = 0x0.
+	Frame register is none.
+ 00000000000060dc:
+	Flags: UNW_FLAG_NHANDLER.
+	Entry has 1 codes.	Prologue size: 4, Frame offset = 0x0.
+	Frame register is none.
+	 At pc 0x0000000000401b90 there are the following saves (in logical order).
+	  insn ends at pc+0x04: save stack region of size 0x0000000000000058.
+ 00000000000060e4:
+	Flags: UNW_FLAG_NHANDLER.
+	Prologue size: 0, Frame offset = 0x0.
+	Frame register is none.
+ 00000000000060e8:
+	Flags: UNW_FLAG_NHANDLER.
+	Entry has 9 codes.	Prologue size: 22, Frame offset = 0x0.
+	Frame register is none.
+	 At pc 0x0000000000401bf0 there are the following saves (in logical order).
+	  insn ends at pc+0x01: push rsi.
+	  insn ends at pc+0x02: push rbx.
+	  insn ends at pc+0x06: save stack region of size 0x0000000000000078.
+	  insn ends at pc+0x0b: mov xmm6 at 0x0000000000000040.
+	  insn ends at pc+0x10: mov xmm7 at 0x0000000000000050.
+	  insn ends at pc+0x16: mov xmm8 at 0x0000000000000060.
+ 0000000000006100:
+	Flags: UNW_FLAG_NHANDLER.
+	Entry has 3 codes.	Prologue size: 6, Frame offset = 0x0.
+	Frame register is none.
+	 At pc 0x0000000000401cf0 there are the following saves (in logical order).
+	  insn ends at pc+0x01: push rsi.
+	  insn ends at pc+0x02: push rbx.
+	  insn ends at pc+0x06: save stack region of size 0x0000000000000038.
+ 000000000000610c:
+	Flags: UNW_FLAG_NHANDLER.
+	Entry has 8 codes.	Prologue size: 14, Frame offset = 0x0.
+	Frame register is none.
+	 At pc 0x0000000000401d60 there are the following saves (in logical order).
+	  insn ends at pc+0x02: push r14.
+	  insn ends at pc+0x04: push r13.
+	  insn ends at pc+0x06: push r12.
+	  insn ends at pc+0x07: push rbp.
+	  insn ends at pc+0x08: push rdi.
+	  insn ends at pc+0x09: push rsi.
+	  insn ends at pc+0x0a: push rbx.
+	  insn ends at pc+0x0e: save stack region of size 0x0000000000000060.
+ 0000000000006120:
+	Flags: UNW_FLAG_NHANDLER.
+	Entry has 9 codes.	Prologue size: 17, Frame offset = 0x0.
+	Frame register is rbp.
+	 At pc 0x0000000000401f90 there are the following saves (in logical order).
+	  insn ends at pc+0x01: push rbp.
+	  insn ends at pc+0x03: push r14.
+	  insn ends at pc+0x05: push r13.
+	  insn ends at pc+0x07: push r12.
+	  insn ends at pc+0x08: push rdi.
+	  insn ends at pc+0x09: push rsi.
+	  insn ends at pc+0x0a: push rbx.
+	  insn ends at pc+0x0d: FPReg = (FrameReg) + 0x0000000000000000.
+	  insn ends at pc+0x11: save stack region of size 0x0000000000000060.
+ 0000000000006138:
+	Flags: UNW_FLAG_NHANDLER.
+	Prologue size: 0, Frame offset = 0x0.
+	Frame register is none.
+ 000000000000613c:
+	Flags: UNW_FLAG_NHANDLER.
+	Entry has 1 codes.	Prologue size: 4, Frame offset = 0x0.
+	Frame register is none.
+	 At pc 0x00000000004022c0 there are the following saves (in logical order).
+	  insn ends at pc+0x04: save stack region of size 0x0000000000000028.
+ 0000000000006144:
+	Flags: UNW_FLAG_NHANDLER.
+	Entry has 3 codes.	Prologue size: 6, Frame offset = 0x0.
+	Frame register is none.
+	 At pc 0x0000000000402300 there are the following saves (in logical order).
+	  insn ends at pc+0x01: push rsi.
+	  insn ends at pc+0x02: push rbx.
+	  insn ends at pc+0x06: save stack region of size 0x0000000000000028.
+ 0000000000006150:
+	Flags: UNW_FLAG_NHANDLER.
+	Prologue size: 0, Frame offset = 0x0.
+	Frame register is none.
+ 0000000000006154:
+	Flags: UNW_FLAG_NHANDLER.
+	Entry has 6 codes.	Prologue size: 10, Frame offset = 0x0.
+	Frame register is none.
+	 At pc 0x0000000000402380 there are the following saves (in logical order).
+	  insn ends at pc+0x02: push r12.
+	  insn ends at pc+0x03: push rbp.
+	  insn ends at pc+0x04: push rdi.
+	  insn ends at pc+0x05: push rsi.
+	  insn ends at pc+0x06: push rbx.
+	  insn ends at pc+0x0a: save stack region of size 0x0000000000000040.
+ 0000000000006164:
+	Flags: UNW_FLAG_NHANDLER.
+	Entry has 5 codes.	Prologue size: 10, Frame offset = 0x0.
+	Frame register is rbp.
+	 At pc 0x0000000000402450 there are the following saves (in logical order).
+	  insn ends at pc+0x01: push rbp.
+	  insn ends at pc+0x02: push rsi.
+	  insn ends at pc+0x03: push rbx.
+	  insn ends at pc+0x06: FPReg = (FrameReg) + 0x0000000000000000.
+	  insn ends at pc+0x0a: save stack region of size 0x0000000000000070.
+ 0000000000006174:
+	Flags: UNW_FLAG_NHANDLER.
+	Entry has 5 codes.	Prologue size: 8, Frame offset = 0x0.
+	Frame register is none.
+	 At pc 0x0000000000402550 there are the following saves (in logical order).
+	  insn ends at pc+0x01: push rbp.
+	  insn ends at pc+0x02: push rdi.
+	  insn ends at pc+0x03: push rsi.
+	  insn ends at pc+0x04: push rbx.
+	  insn ends at pc+0x08: save stack region of size 0x0000000000000028.
+ 0000000000006184:
+	Flags: UNW_FLAG_NHANDLER.
+	Entry has 5 codes.	Prologue size: 8, Frame offset = 0x0.
+	Frame register is none.
+	 At pc 0x00000000004025c0 there are the following saves (in logical order).
+	  insn ends at pc+0x01: push rbp.
+	  insn ends at pc+0x02: push rdi.
+	  insn ends at pc+0x03: push rsi.
+	  insn ends at pc+0x04: push rbx.
+	  insn ends at pc+0x08: save stack region of size 0x0000000000000028.
+ 0000000000006194:
+	Flags: UNW_FLAG_NHANDLER.
+	Entry has 2 codes.	Prologue size: 5, Frame offset = 0x0.
+	Frame register is none.
+	 At pc 0x0000000000402640 there are the following saves (in logical order).
+	  insn ends at pc+0x01: push rbx.
+	  insn ends at pc+0x05: save stack region of size 0x0000000000000020.
+ 000000000000619c:
+	Flags: UNW_FLAG_NHANDLER.
+	Entry has 1 codes.	Prologue size: 4, Frame offset = 0x0.
+	Frame register is none.
+	 At pc 0x00000000004026e0 there are the following saves (in logical order).
+	  insn ends at pc+0x04: save stack region of size 0x0000000000000028.
+ 00000000000061a4:
+	Flags: UNW_FLAG_NHANDLER.
+	Prologue size: 0, Frame offset = 0x0.
+	Frame register is none.
+ 00000000000061a8:
+	Flags: UNW_FLAG_NHANDLER.
+	Prologue size: 0, Frame offset = 0x0.
+	Frame register is none.
+ 00000000000061ac:
+	Flags: UNW_FLAG_NHANDLER.
+	Prologue size: 0, Frame offset = 0x0.
+	Frame register is none.
+ 00000000000061b0:
+	Flags: UNW_FLAG_NHANDLER.
+	Entry has 4 codes.	Prologue size: 7, Frame offset = 0x0.
+	Frame register is none.
+	 At pc 0x0000000000402810 there are the following saves (in logical order).
+	  insn ends at pc+0x01: push rdi.
+	  insn ends at pc+0x02: push rsi.
+	  insn ends at pc+0x03: push rbx.
+	  insn ends at pc+0x07: save stack region of size 0x0000000000000020.
+ 00000000000061bc:
+	Flags: UNW_FLAG_NHANDLER.
+	Entry has 3 codes.	Prologue size: 6, Frame offset = 0x0.
+	Frame register is none.
+	 At pc 0x00000000004028c0 there are the following saves (in logical order).
+	  insn ends at pc+0x01: push rsi.
+	  insn ends at pc+0x02: push rbx.
+	  insn ends at pc+0x06: save stack region of size 0x0000000000000028.
+ 00000000000061c8:
+	Flags: UNW_FLAG_NHANDLER.
+	Entry has 3 codes.	Prologue size: 6, Frame offset = 0x0.
+	Frame register is none.
+	 At pc 0x0000000000402910 there are the following saves (in logical order).
+	  insn ends at pc+0x01: push rsi.
+	  insn ends at pc+0x02: push rbx.
+	  insn ends at pc+0x06: save stack region of size 0x0000000000000028.
+ 00000000000061d4:
+	Flags: UNW_FLAG_NHANDLER.
+	Entry has 4 codes.	Prologue size: 7, Frame offset = 0x0.
+	Frame register is none.
+	 At pc 0x0000000000402960 there are the following saves (in logical order).
+	  insn ends at pc+0x01: push rdi.
+	  insn ends at pc+0x02: push rsi.
+	  insn ends at pc+0x03: push rbx.
+	  insn ends at pc+0x07: save stack region of size 0x0000000000000020.
+ 00000000000061e0:
+	Flags: UNW_FLAG_NHANDLER.
+	Entry has 1 codes.	Prologue size: 4, Frame offset = 0x0.
+	Frame register is none.
+	 At pc 0x0000000000402a00 there are the following saves (in logical order).
+	  insn ends at pc+0x04: save stack region of size 0x0000000000000028.
+ 00000000000061e8:
+	Flags: UNW_FLAG_NHANDLER.
+	Entry has 3 codes.	Prologue size: 6, Frame offset = 0x0.
+	Frame register is none.
+	 At pc 0x0000000000402a40 there are the following saves (in logical order).
+	  insn ends at pc+0x01: push rsi.
+	  insn ends at pc+0x02: push rbx.
+	  insn ends at pc+0x06: save stack region of size 0x0000000000000028.
+ 00000000000061f4:
+	Flags: UNW_FLAG_NHANDLER.
+	Entry has 5 codes.	Prologue size: 8, Frame offset = 0x0.
+	Frame register is none.
+	 At pc 0x0000000000402aa0 there are the following saves (in logical order).
+	  insn ends at pc+0x01: push rbp.
+	  insn ends at pc+0x02: push rdi.
+	  insn ends at pc+0x03: push rsi.
+	  insn ends at pc+0x04: push rbx.
+	  insn ends at pc+0x08: save stack region of size 0x0000000000000028.
+ 0000000000006204:
+	Flags: UNW_FLAG_NHANDLER.
+	Prologue size: 0, Frame offset = 0x0.
+	Frame register is none.
+ 0000000000006208:
+	Flags: UNW_FLAG_NHANDLER.
+	Prologue size: 0, Frame offset = 0x0.
+	Frame register is none.
+

@@ -1,0 +1,91 @@
+Programmieren in C/C++ Blatt 05 - Michael Krane
+1)
+    Ausgabe:
+    ...
+    Iter: 1014,   0/500 neue Int
+    Iter: 1014,   1/500 Int@ 000000000003561C
+    Iter: 1014, 500/500 Int@ 0000000000034E50
+    [Programm Abbruch]
+    
+    Nach der 1014. Iteration ist der Stack komplett voll. 
+    Ingesamt wurden 2028000 byte (1014 * 500 * 4 Byte) an ints erzeugt.
+    Der Stack ist also ca. 2 MB groß.
+
+    objdump -p task1.exe liefert:
+    ...
+    SizeOfStackReserve  0x0000000000200000 =>  2097152 byte = 2MB
+    SizeOfStackCommit   0x0000000000001000 => +   4096 byte = 4kb
+                                               2101248 byte
+
+    Die Differenz der beiden Werte kann darauf zurück geführt werden, das für jeden Funktionsaufruf
+    zusätzliche Informationen auf dem Stack gespeichert werden müssen.
+
+    Um die Größe des Stacks unter Windows zu kontrollieren wird die flag --stack,<byte> benutzt:
+
+    Stack = 1 MB = 1 byte * 1024 * 1024 = 1048576 byte = 0x100000 byte
+        gcc -Wl,--stack,0x100000 -o task1_1mb task1.c
+
+    Ausgabe:
+    ...
+    Iter:  502,   0/500 neue Int
+    Iter:  502,   1/500 Int@ 000000000003561C
+    Iter:  502, 500/500 Int@ 0000000000034E50
+    [Programm Abbruch]
+
+    Nach der 502. Iteration ist der Stack komplett voll.
+    Ingesamt wurden 1004000 byte (502 * 500 * 4 Byte) an ints erzeugt.
+    Der Stack ist also tatsächlich ca. 1MB groß.
+
+    objdump -p task1_1mb.exe liefert:
+    ...
+    SizeOfStackReserve  0x0000000000100000 =>  1048576  byte = 1MB
+    SizeOfStackCommit   0x0000000000001000 => +   4096  byte = 4kb
+                                               1052672
+
+
+3)
+    Lösung funktioniert nur mit 64bit Systemen, da angenommen wird das Adresse 8 Byte groß sind.
+
+        &i : 000000000022FE08
+      &ptr : 000000000022FE00
+    --------------------------------------
+    i + 10 : 000000000022FE58 : 4013b5
+    i +  9 : 000000000022FE50 : 337280
+    i +  8 : 000000000022FE48 : 2a00000001
+    i +  7 : 000000000022FE40 : 76c61560
+    i +  6 : 000000000022FE38 : a
+    i +  5 : 000000000022FE30 : 3
+    i +  4 : 000000000022FE28 : 401769
+    i +  3 : 000000000022FE20 : 1
+    i +  2 : 000000000022FE18 : 4015aa  <<< ret addr
+    i +  1 : 000000000022FE10 : 22fe50  <<< old_EBP
+    i +  0 : 000000000022FE08 : 0       <<< i
+    i + -1 : 000000000022FE00 : 22fe00  <<< ptr
+    The answer is 42!
+
+    Die Variable i wird dazu genutzt um den Stack nach der Returnadresse zu durchsuchen.
+    Laut Skript (Kapitel 2 - Folie 83) ist die ret addr vor dem old EBP und allen in der
+    Funktion erzeugten Variable, also ist die ret addr bei 0x22FE18 (+2 relativ zu i).
+    Um den Wert zuberechnen um den ret addr verändert werden muss wird gdb genutzt:
+
+    ...
+    (gdb) disas
+    Dump of assembler code for function main:
+        0x0000000000401596 <+0>:     push   %rbp
+        0x0000000000401597 <+1>:     mov    %rsp,%rbp
+        0x000000000040159a <+4>:     sub    $0x30,%rsp
+        0x000000000040159e <+8>:     callq  0x4023d0 <__main>
+    =>  0x00000000004015a3 <+13>:    movl   $0x2a,-0x4(%rbp)
+        0x00000000004015aa <+20>:    callq  0x4014f0 <modify>      <<< Modify Aufruf
+        0x00000000004015af <+25>:    movl   $0x0,-0x4(%rbp)        <<< i = 0 | ret addr
+        0x00000000004015b6 <+32>:    mov    -0x4(%rbp),%eax        <<< Vorbereitung printf
+        0x00000000004015b9 <+35>:    mov    %eax,%edx
+        0x00000000004015bb <+37>:    lea    0x2a64(%rip),%rcx        # 0x404026
+        0x00000000004015c2 <+44>:    callq  0x402c78 <printf>
+        0x00000000004015c7 <+49>:    mov    $0x0,%eax
+        0x00000000004015cc <+54>:    add    $0x30,%rsp
+        0x00000000004015d0 <+58>:    pop    %rbp
+        0x00000000004015d1 <+59>:    retq
+    End of assembler dump.
+
+    Der Inhalt der ret adresse muss also von 0x4015af auf 0x4015b6 geändert werden (+7).

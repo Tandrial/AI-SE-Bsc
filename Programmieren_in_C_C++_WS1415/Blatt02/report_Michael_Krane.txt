@@ -1,4 +1,4 @@
-Programmieren in C/C++ Blatt 02 - Michael Krane - 2233018
+Programmieren in C/C++ Blatt 02 - Michael Krane
 
 1)
 	Die erwartet Ausgabe ist 1, da sich globalvar aus scope2.c sich auf eine andere Variable als globalvar aus scope1.c beziehen "sollte". Die tatsächliche Ausgabe ist 1073741824, die IEEE754 Darstellung von 2.0. Das bedeutet, dass sich die globalvar aus scope1.c und scope2.c denselben Speicherplatz teilen, diesen aber unterschiedlich benutzten.

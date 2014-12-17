@@ -1,0 +1,77 @@
+Programmieren in C/C++ Exercise 04 - Michael Krane
+
+1)
+    Advantages Macro:
+        - no extra compile time
+        - faster, since there is no function to be called
+        - One Macro fits all types
+        
+    Disadvantages Macro:
+        - harder to debug ( MAXM(a, b++) does unexpected things)
+        - filesize is bigger, since the whole Macro is reproduced for each call
+
+    Advantages Function:
+        - easier to debug
+        - No code repetition        
+
+    Disadvantages Function:
+        - slower, since each function call takes time
+        - needs to worry about types of arguments/return value
+
+    The commented line does not compile because there is no overloaded function for
+    maxf(int, double) [The second parameter is a double because: (int + double) is a double].
+
+    maxf1 uses maxf(int, int) because both a and b are ints.
+    maxf2 uses maxf(double, double) because (a + 0.1) and (b + 0.2) are doubles (see above).
+    maxf3 uses maxf(int, int) because a and b are ints.
+
+3)
+    The output of the program is:
+        top = 1, bottom = 42
+
+    Which means that s.bottom is overwritten somewhere, the exact location can be located using gdb:
+
+    ...
+    x:\Users\tan\Desktop>gdb task3.exe
+    GNU gdb (GDB) 7.6.1
+    Copyright (C) 2013 Free Software Foundation, Inc.
+    License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+    This is free software: you are free to change and redistribute it.
+    There is NO WARRANTY, to the extent permitted by law.  Type "show copying"
+    and "show warranty" for details.
+    This GDB was configured as "x86_64-w64-mingw32".
+    For bug reporting instructions, please see:
+    <http://www.gnu.org/software/gdb/bugs/>...
+    Reading symbols from x:\Users\tan\Desktop\task3.exe...done.
+    (gdb) b main                                            <<< SET A BREAKPOINT AT THE BEGINNING OF MAIN
+    Breakpoint 1 at 0x4014fd: file ex4task3.c, line 11.
+    (gdb) run                                               <<< START THE PROGRAM
+    Starting program: x:\Users\tan\Desktop\task3.exe
+    [New Thread 12940.0x3418]
+
+    Breakpoint 1, main () at ex4task3.c:11
+    11        s.top = 1;
+    (gdb) watch s.bottom                                    <<< GDB BREAKS IF s.bottom IS CHANGED
+    Hardware watchpoint 2: s.bottom
+    (gdb) continue                                          <<< CONTINUE THE EXECUTION
+    Continuing.
+    Hardware watchpoint 2: s.bottom
+
+    Old value = 1
+    New value = 2
+    main () at ex4task3.c:14                                <<< s.bottom CHANGES FROM 1 TO 2
+    14        for (i = 0; i <= 5; i++) {
+    (gdb) continue                                          <<< CONTINUE THE EXECUTION
+    Continuing.
+    Hardware watchpoint 2: s.bottom
+
+    Old value = 2
+    New value = 42
+    main () at ex4task3.c:14                                <<< s.bottom CHANGES FROM 2 TO 42
+    14        for (i = 0; i <= 5; i++) {
+    (gdb)
+    ...
+
+    That means the for-loop changes s.bottom, upon closer inspection is turns out that there is
+    an ArrayOutOfBounds-Error in line 14, with the result that with i = 5 s.arr[i] = 42 overrides s.bottom,
+    which is located directly behind arr in memory.

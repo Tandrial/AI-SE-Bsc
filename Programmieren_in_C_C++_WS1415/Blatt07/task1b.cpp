@@ -30,8 +30,7 @@ class VirtDer : public VirtBase {
 private:
 	int derN;
 public:
-	VirtDer() : 
-			VirtBase() {
+	VirtDer() : VirtBase() {
 		derN = 0;
 	}
 	virtual void virtInc() {
@@ -52,15 +51,14 @@ int main() {
 	// Method 1: dynamic_cast checks whether a conversion is possible
 	//           if it is it returns a pointer of the chosen type to the argument
 	//           if not it returns a NULL pointer
-	TIME(
-			castvder = dynamic_cast<VirtDer*>(pvbaseder); if (castvder != NULL) castvder->inc();)
+	TIME(castvder = dynamic_cast<VirtDer*>(pvbaseder); 
+		 if (castvder != NULL)
+		 	castvder->inc();)
 
 	// Method 2: typeid expects an object or class and returns the name of it
 	//           a static_cast returns a pointer of the chosen type to the argument
 	//           compared to dynamic_cast there are NO runtime-checks performed.
 	TIME(if (typeid(*pvbaseder) == typeid(VirtDer))
-		static_cast<VirtDer*>(pvbaseder)->derInc()
-		;)
-
+			static_cast<VirtDer*>(pvbaseder)->derInc();)
 	return 0;
 }

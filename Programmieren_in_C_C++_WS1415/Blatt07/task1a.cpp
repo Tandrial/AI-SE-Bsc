@@ -42,9 +42,11 @@ public:
 	VirtBase() {
 		n = 0;
 	}
+	
 	virtual void virtInc() {
 		n++;
 	}
+
 	void inc() {
 		n++;
 	}
@@ -55,13 +57,14 @@ class VirtDer: public VirtBase {
 private:
 	int derN;
 public:
-	VirtDer() :
-			VirtBase() {
+	VirtDer() :	VirtBase() {
 		derN = 0;
 	}
+
 	virtual void virtInc() {
 		derN++;
 	}
+
 	void derInc() {
 		derN++;
 	}
@@ -78,59 +81,44 @@ int main() {
 	for (int i = 1; i <= 5; i++) {
 		std::cout << "Round " << i << std::endl;
 		// PureBase non-virtual member function call: directly and with a pointer
-		TIME(pure.inc()
-		;)
-		TIME(ppure->inc()
-		;)
+		TIME(pure.inc();)
+		TIME(ppure->inc();)
 		std::cout << std::endl;
 
 		// VirtBase non-virtual member function call: directly and with a pointer
-		TIME(vbase.inc()
-		;)
-		TIME(pvbase->inc()
-		;)
+		TIME(vbase.inc();)
+		TIME(pvbase->inc();)
 		std::cout << std::endl;
 
 		// VirtBase virtual member function call: directly and with a pointer
-		TIME(vbase.virtInc()
-		;)
-		TIME(pvbase->virtInc()
-		;)
+		TIME(vbase.virtInc();)
+		TIME(pvbase->virtInc();)
 		std::cout << std::endl;
 
 		// VirtDer virtual member function call: directly and with a pointer
-		TIME(vder.virtInc()
-		;)
-		TIME(pvder->virtInc()
-		;)
+		TIME(vder.virtInc();)
+		TIME(pvder->virtInc();)
 		std::cout << std::endl;
 
 		// VirtDer non-virtual member function call inside the base class: directly and with a pointer
-		TIME(vder.inc()
-		;)
-		TIME(pvder->inc()
-		;)
+		TIME(vder.inc();)
+		TIME(pvder->inc();)
 		std::cout << std::endl;
 
 		// VirtDer non-virtual member function call: directly and with a pointer
-		TIME(vder.derInc()
-		;)
-		TIME(pvder->derInc()
-		;)
+		TIME(vder.derInc();)
+		TIME(pvder->derInc();)
 		std::cout << std::endl;
 
 		// VirtBase pointer to a VirtDer object
 		// calls VirtBase::inc()
-		TIME(pvbaseder->inc()
-		;)
+		TIME(pvbaseder->inc();)
 		// calls VirtDer::virtInc()
-		TIME(pvbaseder->virtInc()
-		;)
+		TIME(pvbaseder->virtInc();)
 		std::cout << std::endl;
 
 		// StaticBase static function call
-		TIME(StaticBase::inc()
-		;)
+		TIME(StaticBase::inc();)
 	}
 	return 0;
 }

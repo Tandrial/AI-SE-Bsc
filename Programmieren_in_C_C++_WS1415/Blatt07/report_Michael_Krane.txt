@@ -1,0 +1,64 @@
+Programmieren in C/C++ Exercise 07 - Michael Krane
+
+1a) Results:
+    pure.inc()           0.047
+    ppure->inc()         0.050
+
+    vbase.inc()          0.045
+    pvbase->inc()        0.049
+
+    vbase.virtInc()      0.045
+    pvbase->virtInc()    0.064
+
+    vder.virtInc()       0.046
+    pvder->virtInc()     0.065
+
+    vder.inc()           0.046
+    pvder->inc()         0.049
+
+    vder.derInc()        0.045
+    pvder->derInc()      0.051
+
+    pvbaseder->inc()     0.049
+    pvbaseder->virtInc() 0.064
+
+    StaticBase::inc()    0.019
+
+    The results can be sorted into 4 different groups:
+
+    static methods:                 StaticBase::inc();      0.019
+
+    member function from object:    pure.inc();             0.047
+                                    vbase.inc();            0.045
+                                    vbase.virtInc();        0.045
+                                    vder.inc();             0.046
+                                    vder.derInc();          0.045
+                                    vder.virtInc();         0.046
+
+    non virt method from pointer:   ppure->inc();           0.050
+                                    pvbase->inc();          0.049
+                                    pvder->inc();           0.049
+                                    pvder->derInc();        0.051
+                                    pvbaseder->inc();       0.049
+
+    virtual method from pointer:    pvbase->virtInc();      0.064
+                                    pvder->virtInc();       0.065
+                                    pvbaseder->virtInc();   0.064
+
+    The static methods is by far the fastest, which makes sense since the function only exists once and is thus like a "non-member" function.
+
+    The second fastest type are member functions directly from an object, since there is an implicit "this" argument there is no need to lookup the method in a vtable.
+
+    The only difference between non-virt methods from a pointer and methods from an object is that the pointer needs to be dereferenced. So the different measurements are almost the same. 
+
+    The slowest calls are the calls to virtual methods via pointer, this is because method needs to be determined with a vtable lookup.
+
+1b) Results:
+    pvder = dynamic_cast<VirtDer*>(pvbaseder); 
+        if (pvder != NULL) pvder->inc()                                     0.179
+    if (typeid(*pvbaseder) == typeid(VirtDer)) 
+        static_cast<VirtDer*>(pvbaseder)->derInc()                          0.059
+    
+    Using a dynamic_cast is ~3 times slower the using a combination of typeid/static_cast.
+
+    The problem with typeid is that it only evaluates to true if the given class has that EXACT type i.e., dynamic_casts also work for subtypes of the type, as long as the object publicly inherites from the given type. This doesn't work with typeid, since it returns the actual type of the object.

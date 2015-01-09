@@ -39,15 +39,15 @@ bool Stack<T, size>::isempty() {
 template <typename T, int size>
 void Stack<T, size>::push(T v) {
 	if (!isfull())
-	stack[count++] = v;
+		stack[count++] = v;
 	else
-	throw StackException("Stack is full");
+		throw StackException("Stack is full");
 }
 
 template <typename T, int size>
 T Stack<T, size>::pop() {
 	if (!isempty())
-	return stack[--count];
+		return stack[--count];
 	throw StackException("Stack is empty");
 }
 

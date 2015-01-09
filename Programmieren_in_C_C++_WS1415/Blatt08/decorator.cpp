@@ -90,10 +90,11 @@ public:
 
 void StringCompress::doPrint(std::string& s) {
 	size_t pos;
-	// string::find() returns the index of the first occurance of the argument
+	// string::find() returns the index of the first occurance of the argument as a size_t
 	// if it doesn't find any string::npos (= -1) is returned
+	// we search for a double whitespace
 	while ((pos = s.find("  ")) !=  std::string::npos) {
-		// the first of the two whitespaces is deleted
+		// then the  first of the two whitespaces is deleted
 		s.erase(pos, 1);
 	}
 	// method call in the super class, to pass the modified string on
@@ -113,7 +114,7 @@ void StringAlphaNum::doPrint(std::string& s) {
 	std::string::iterator iter;
 	// we iterate over the whole string
 	for(iter = s.begin(); iter < s.end(); iter++) {
-		// if the current char isn't a whitespace or alphanumeric-char		
+		// if the current char isn't a whitespace and alphanumeric-char		
 		if (!isspace(*iter) && !isalnum(*iter)) {
 			// it is replaced with a whitespace
 			*iter = ' ';

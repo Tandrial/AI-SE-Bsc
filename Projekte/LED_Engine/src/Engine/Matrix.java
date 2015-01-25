@@ -1,7 +1,5 @@
 package Engine;
 
-import java.util.Random;
-
 public class Matrix {
 
 	private double[][] values;

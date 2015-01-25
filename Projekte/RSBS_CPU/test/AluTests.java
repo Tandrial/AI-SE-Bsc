@@ -5,7 +5,7 @@
  * as published by Sam Hocevar. See the COPYING file for more details.
  */
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.fail;
 import mkrane.cpu.Alu;
 
 import org.junit.Before;

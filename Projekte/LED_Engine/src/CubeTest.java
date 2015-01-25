@@ -55,7 +55,7 @@ public class CubeTest {
 	}
 
 	public void initScene() {
-//		StdDraw.setScale(-2, 2);
+		// StdDraw.setScale(-2, 2);
 		if (dMode == DisplayMode.DEBUG) {
 			StdDraw.setScale(-2, 2);
 			StdDraw.setTitle("0 FPS");
@@ -69,7 +69,7 @@ public class CubeTest {
 			faces.addAll(OBJ_Parser.readFile(new File("plane.obj")));
 			break;
 		case MONKEY:
-			//faces.addAll(OBJ_Parser.readFile(new File("monkey.obj")));
+			// faces.addAll(OBJ_Parser.readFile(new File("monkey.obj")));
 			break;
 		default:
 			break;
@@ -100,7 +100,7 @@ public class CubeTest {
 	}
 
 	private void draw() {
-//		leds.draw(faces, rMode);
+		// leds.draw(faces, rMode);
 
 		if (dMode == DisplayMode.DEBUG) {
 			frames++;
@@ -141,7 +141,7 @@ public class CubeTest {
 
 	public static void main(String[] args) {
 		CubeTest t;
-		 args = new String[] { "d" };
+		args = new String[] { "d" };
 		if (args.length == 1 && args[0].charAt(0) == 'b')
 			t = new CubeTest(DisplayMode.EMU);
 		else if (args.length == 1 && args[0].charAt(0) == 'd')

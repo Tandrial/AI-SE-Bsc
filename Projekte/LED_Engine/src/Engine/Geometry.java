@@ -1,4 +1,5 @@
 package Engine;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -74,9 +75,9 @@ public class Geometry {
 		List<Face> faces = new ArrayList<Face>();
 
 		faces.add(Geometry.TriangleXY(x, y, z, size));
-//		Face f = Geometry.TriangleXY(x, y, z, size);
-//		f.rotX(Math.PI / 4);
-//		faces.add(f);
+		// Face f = Geometry.TriangleXY(x, y, z, size);
+		// f.rotX(Math.PI / 4);
+		// faces.add(f);
 
 		return faces;
 	}

@@ -1,5 +1,7 @@
 package Engine;
 
+import java.util.Random;
+
 public class Matrix {
 
 	private double[][] values;
@@ -58,17 +60,30 @@ public class Matrix {
 		return null;
 	}
 
+	// see: https://ivosklenar.net/Blog/Post/19
+	// 1000x1000 Matrix mult from 16.8s downto 0.4s
 	private Matrix mult(Matrix m) {
 
 		Matrix res = new Matrix(values.length, m.values[0].length);
+		int uf = 4;
 
 		for (int i = 0; i < res.values.length; i++) {
-			for (int j = 0; j < res.values[0].length; j++) {
-				for (int k = 0; k < m.values.length; k++) {
-					res.values[i][j] += this.values[i][k] * m.values[k][j];
+			for (int k = 0; k < m.values.length; k++) {
+				double tmp = this.values[i][k];
+				int size = res.values[0].length;
+				for (int j = 0; j < size / uf; j += uf) {
+					res.values[i][j] += tmp * m.values[k][j];
+					res.values[i][j + 1] += tmp * m.values[k][j + 1];
+					res.values[i][j + 2] += tmp * m.values[k][j + 2];
+					res.values[i][j + 3] += tmp * m.values[k][j + 3];
+				}
+
+				for (int j = size - (size % uf); j < size; j++) {
+					res.values[i][j] += tmp * m.values[k][j];
 				}
 			}
 		}
+
 		return res;
 	}
 

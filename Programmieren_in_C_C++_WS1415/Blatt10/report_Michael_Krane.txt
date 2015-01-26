@@ -1,0 +1,16 @@
+Programmieren in C/C++ Exercise 10 - Michael Krane
+
+1)	After insert() and printnext3() this is the result:
+	
+	30 32 34  // <-- Vector
+	31 32 34  // <-- Deque
+	30 31 32  // <-- List
+
+	The expected result is:
+	30 31 32  // <-- Vector
+	30 31 32  // <-- Deque
+	30 31 32  // <-- List
+
+	The reason for this is, that for some STL-Container iterators become invalid after insertion.
+	According to the C++-Standard this is the case for vector (see 23.3.6.5)	and deque(see 23.3.3.4) but not for the list (see 23.3.5.4).
+	The fix is that iterators should not be reused after insertion, in this specific example we can use the iterator that insert() returns.

@@ -1,7 +1,7 @@
 #include <iostream>
 // MAXM-Macro: replaces MAXM with a simple ternary-Operation
 // e. g.  MAXM(3, 5) becomes (3 > 5 ? 3 : 5)
-#define MAXM(X, Y) (X > Y ? X : Y)
+#define MAXM(X, Y) ((X) > (Y) ? (X) : (Y))
 
 // the overloaded maxf functions, one for int and another one for double
 int    maxf(int    x, int    y) { return (x > y) ? x : y;}

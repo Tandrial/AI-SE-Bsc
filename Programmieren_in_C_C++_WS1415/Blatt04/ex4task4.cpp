@@ -6,10 +6,8 @@ class StopWatch {
 		// holds the startpoint
 		clock_t start_t;
 	public:
-		StopWatch() {
-			// explicitly set to -1 so we can check if StopWatch is running
-			start_t = -1;
-		}
+		// explicitly set to -1 so we can check if StopWatch is running
+		StopWatch() : start_t(-1) {	}
 
 		void start() {
 			if (start_t != -1) {
@@ -41,7 +39,7 @@ int main(void) {
 	sw.stop();	
 	sw.start();
 	sw.start();
-	for (int i=0; i <100000000; i++) ;
+	for (int i=0; i <100000000; i++);
 	std::cout << "Duration: " << sw.stop() << std::endl;
 	return 0;
 }

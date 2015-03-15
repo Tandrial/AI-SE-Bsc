@@ -15,5 +15,5 @@ int main(void) {
   set_weight(100);
   set_price(1.25);
   std::cout << "Weight: " << get_weight() << ", Price: " << get_price() << std::endl;
-  return 0
+  return 0;
 }

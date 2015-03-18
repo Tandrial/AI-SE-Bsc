@@ -1,0 +1,196 @@
+How to Write a new Language (by adding a new language construct)
+================================================================
+
+0. How to start
+===============
+If you want to write for example a new language "v04t_if_simple" add a new package such as lala.v04t_if_simple (the v04 is just used to get a quick overview of existing languages).
+
+When writing a new language with a new construct, three things need to be done. 
+
+1. The syntax of the language needs to be defined
+2. The semantics (reduction rules) needs to be defined
+3. The type system needs to be defined.
+
+For defining the syntax, a (new) parser for the whole new language is required, then a definition of the language construct (the if).
+
+
+1. Write a Parser
+=================
+Add a new package lala.v04t_if_simple.parser and add a new class "ParserV42" that extends an existing parser (for example ParserV03T). The new parser class requires a method "keywords" (which are the keywords that you need for the new language). For example, if you need the new keyword "if" and your new language should contain all keywords of a previous language, just copy from a previous language the keywords and add the keyword "if".
+
+  public class ParserV04T extends ParserV03T {
+	public String[] keywords() { return new String[]{
+			"and", "or", "false", "true", "not", "or", "succ", "plus", "if"
+		}; 
+	};
+  }
+
+Then, add a method "parseExpression"....this method is slightly more complicated. The method just parses an expression. For convenience reasons (and since in lambda all terms are valid start nodes),
+there is a method Or, that takes parser Objects as parameters. For example, the following method is such as parser method.
+
+	public Term parseExpression() {
+		return (Term) or(new ObjectParser[]{
+				new VariableParser(keywordSet()),
+				new ApplicationParser(),
+				new AbstractionParser(),
+				new NumParser(),
+				new BoolParser(),
+				new OrParser(),
+				new IfParser(),				
+		});
+
+This language will consist of variables, abstractions, applications, numbers, booleans, the (operation) or and the new if that is about to be defined.
+
+(note: The class IfParser does not yet exist).
+
+2. Write the syntax for the new language construct (SyntaxTreeNode)
+===================================================================
+Add a new package "parsetree" as a subpackage to parser. Add two new classes to it. First, add a class If (that extends the class Term). This class is used in the parse tree. Then, add a new class IfParser that implements the interface TermParser. The last class is the one that has been previously already used and that defines the parser for the language construct.
+
+The parse tree class is trivial: it just consists of a field for three expressions (one of the condition, one for the then branch, and one for the else branch). Additionally, it is required to implement a certain method (replaceFreeVariable). This method describes what happens, if a free variable should be replaced. For the if-Expression it just means that the free variables of the condition, the then and the else branch need to be replaced. This method returns the if itself.
+
+Note: in fact, the replacement of free variables is already part of the semantics. Just to make the code not too complicated, it is contained in the syntax tree node.
+
+3. Write the syntax for the new language construct (Parser)
+===================================================================
+Now, the IfParser needs to be defined. The if consists of surrounding brackets, then the if-keyword, then the condition, the then expression and finally the else expression.
+
+The code code is quite straight forward:
+
+	public Term parse(Parser parser) {
+		If ifNode = new If();
+		parser.eatChars("(if");
+		ifNode.condition = ((ParserV04T) parser).parseExpression();
+		ifNode.thenBranch = ((ParserV04T) parser).parseExpression();
+		ifNode.elseBranch = ((ParserV04T) parser).parseExpression();
+		parser.eatChar(')');
+		return ifNode;
+	}
+
+4. Write a test for the syntax
+==============================
+It is time to write a test for the syntax. Here, we add another class to the parser package that extends TestCase. We add a test method to it that creates a parser, passes a string to the parser and checks whether the result is a ifNode.
+
+public class ParserV04TTests extends TestCase {
+	public void parseString(String s) {
+		LanguageParser p = new ParserV04T();
+		assertTrue(p.start(s) instanceof Term);
+	}
+	public void testIf() {
+		ParserV04T p = new ParserV04T();
+		p.init("(if(true)(true)(false))");
+		assertTrue(p.start() instanceof If);
+	}
+}
+
+It is desirable to add some more tests, but we skip it here.
+
+4. Write the semantics
+======================
+With the replaceFreeVariables, we have already written a method that contributes to the semantics. Now, we need to write the rest of the semantics. The semantics for lambda expressions are contained in reduction rules. While there are possible strategies to reduce lambda-expressions, we just implement our if in combination with the call by value reduction strategy. 
+
+We add anoter package lala.v04t_if_simple.reduction.callbyvalue. There, we add a class CallByValue that extends the CallByValue class from the previous language:
+
+package lala.v04t_if_simple.reduction.callbyvalue;
+
+public class CallByValue extends lala.v03t_boolsAndInts.reduction.callbyvalue.CallByValue {
+}
+
+Additionally, we add a class that describes whether a term is reducible or not.
+
+public class IsReducibleCallByValue extends lala.v03t_boolsAndInts.reduction.callbyvalue.IsReducibleCallByValue {
+}
+
+We start with the IsReducibleCallByValue class. We need to add there a Boolean method that says whether or not a if expression is reducible. The if expression is reducible, if either the condition can no longer be reduced (and the then or else branch is returned) or if the condition can be reduced (in that case, the condition is just reduced). Hence, we add a method:
+
+	public Boolean isReducible(If t) {
+		return true;
+	}
+
+Now, we need to say how the reduction actually occurs. The reduction of the if expression depends on the condition. In case, the condition can be reduced, the condition just will be reduced. If the condition is a true, the reduction is just the then branch, otherwise the else branch. 
+
+	public Term reduce(If t) {
+		if (isReducible(t.condition)) {
+			t.condition = reduce(t.condition);
+			return t;
+		} else {
+			// The condition should be now true or false
+			if (t.condition.equals(Bool.TRUE)) {
+				return t.thenBranch;
+			} else {
+				return t.elseBranch;
+			}
+		}
+	}
+	
+We need to add one more convenience method to the CallByValue, that forwards to isReducible method to the IsReducible class:
+
+
+	public Boolean isReducible(Term t) {
+		return new IsReducibleCallByValue().isReducible(t);
+	}
+
+Done. The semantics of the if expressions is finished. 
+
+4. Write tests for semantics
+============================
+We should add some tests to the code now. Thereto, we just add a new class EvaluationTests to the class lala.v04t_if_simple and let it extend TestCase. For reasons of simplicity, we just add one method (should be more!):
+
+public class EvaluationTests extends TestCase {
+	
+	
+	public void test_UntypedIf() throws Exception {
+		Language l;
+		Term t;
+		l = new Language(new ParserV04T(), new CallByValue());
+		t = l.run("(if(true)(true)(false))");
+		assertEquals(Bool.TRUE, t);
+	}
+
+5. Write the type checker
+=========================
+Now, it is time to write the type checker. The if expression requires the condition to be a boolean type, the then and else branch must have the same type:
+
+public class TypeCheck extends lala.v03t_boolsAndInts.typecheck.TypeCheck{
+	public Type typeOf(If t, Environment e) {
+		Type type = (BoolType) typeOf(t.condition);
+		if(!(type instanceof BoolType))
+			throw new TypeError("If requires a BoolType in the condition" + t.condition);
+		Type type2 = typeOf(t.thenBranch);
+		Type type3 = typeOf(t.elseBranch);
+		if(!type2.equals(type3))
+			throw new TypeError("Then and else in if require the same type");
+		
+		return type2;
+	}
+	
+}
+
+....DONE.
+
+6. Write tests for the type checker
+===================================
+Go again to the EvaluationTests and now add tests for the types
+
+	public void test_typedIf() throws Exception {
+		TypedLanguage l;
+		Term t;
+		l = new TypedLanguage(new ParserV04T(), new CallByValue(), new TypeCheck());
+		t = l.run("(if(true)(true)(false))");
+		assertEquals(Bool.TRUE, t);
+		assertEquals(new BoolType(), l.typeOf("(if(true)(true)(false))"));
+	}
+
+....DONE.....
+
+
+.....and now it's up to you.
+
+
+
+
+
+
+
+
+

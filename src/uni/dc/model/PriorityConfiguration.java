@@ -1,4 +1,4 @@
-package networkGenerator.model;
+package uni.dc.model;
 
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import networkGenerator.util.DeterministicHashSet;
+import uni.dc.util.DeterministicHashSet;
 
 public class PriorityConfiguration implements Cloneable {
 

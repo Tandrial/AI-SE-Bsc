@@ -1,4 +1,4 @@
-package networkGenerator;
+package uni.dc.networkGenerator;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -8,11 +8,11 @@ import java.util.Map;
 import java.util.Random;
 import java.util.Set;
 
-import networkGenerator.model.EgressPort;
-import networkGenerator.model.EgressTopology;
-import networkGenerator.model.Flow;
-import networkGenerator.model.Traffic;
-import networkGenerator.util.DeterministicHashSet;
+import uni.dc.model.EgressPort;
+import uni.dc.model.EgressTopology;
+import uni.dc.model.Flow;
+import uni.dc.model.Traffic;
+import uni.dc.util.DeterministicHashSet;
 
 public class RandomMulticastPathGenerator {
 

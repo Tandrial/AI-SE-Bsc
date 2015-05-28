@@ -1,4 +1,4 @@
-package networkGenerator.model;
+package uni.dc.model;
 
 import java.util.Collection;
 import java.util.HashSet;
@@ -9,8 +9,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import networkGenerator.util.DeterministicHashSet;
-import networkGenerator.view.graphviz.GraphViz;
+import uni.dc.networkGenerator.swingUI.graphviz.GraphViz;
+import uni.dc.util.DeterministicHashSet;
 
 public class EgressTopology {
 

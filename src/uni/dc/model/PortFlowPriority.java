@@ -1,4 +1,4 @@
-package networkGenerator.model;
+package uni.dc.model;
 
 public class PortFlowPriority implements Cloneable {
 	private EgressPort port;

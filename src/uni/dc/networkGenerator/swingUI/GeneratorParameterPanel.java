@@ -1,4 +1,4 @@
-package networkGenerator.view;
+package uni.dc.networkGenerator.swingUI;
 
 import javax.swing.JPanel;
 

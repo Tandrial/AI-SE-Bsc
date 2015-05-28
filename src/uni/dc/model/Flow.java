@@ -1,4 +1,4 @@
-package networkGenerator.model;
+package uni.dc.model;
 
 import java.util.Arrays;
 import java.util.List;

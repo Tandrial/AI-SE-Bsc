@@ -1,8 +1,8 @@
-package networkGenerator.model;
+package uni.dc.model;
 
 import java.util.Set;
 
-import networkGenerator.util.DeterministicHashSet;
+import uni.dc.util.DeterministicHashSet;
 
 public class EgressPort implements Cloneable {
 

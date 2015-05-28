@@ -1,4 +1,4 @@
-package networkGenerator.view;
+package uni.dc.networkGenerator.swingUI;
 
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;

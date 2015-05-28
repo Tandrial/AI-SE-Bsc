@@ -1,4 +1,4 @@
-package UBSOpti.DelayCalc;
+package uni.dc.ubsOpti.DelayCalc;
 
 import java.util.List;
 import java.util.Map;
@@ -6,14 +6,14 @@ import java.util.Map.Entry;
 import java.util.Random;
 import java.util.Set;
 
-import networkGenerator.model.EgressPort;
-import networkGenerator.model.Flow;
-import networkGenerator.model.PriorityConfiguration;
-import networkGenerator.model.UbsDestParameters;
-import networkGenerator.util.DeterministicHashSet;
-
 import org.goataa.impl.OptimizationModule;
 import org.goataa.spec.IObjectiveFunction;
+
+import uni.dc.model.EgressPort;
+import uni.dc.model.Flow;
+import uni.dc.model.PriorityConfiguration;
+import uni.dc.model.UbsDestParameters;
+import uni.dc.util.DeterministicHashSet;
 
 public class UbsV0DelayCalc extends OptimizationModule implements
 		IObjectiveFunction<int[]> {

@@ -1,4 +1,4 @@
-package networkGenerator.util;
+package uni.dc.util;
 
 import java.util.Collection;
 import java.util.LinkedHashSet;

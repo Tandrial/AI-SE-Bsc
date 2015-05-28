@@ -1,4 +1,4 @@
-package networkGenerator;
+package uni.dc.networkGenerator;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -10,9 +10,9 @@ import java.util.Random;
 import java.util.Set;
 import java.util.TreeMap;
 
-import networkGenerator.model.EgressPort;
-import networkGenerator.model.EgressTopology;
-import networkGenerator.util.DeterministicHashSet;
+import uni.dc.model.EgressPort;
+import uni.dc.model.EgressTopology;
+import uni.dc.util.DeterministicHashSet;
 
 public class RandomTopologyGenerator {
 

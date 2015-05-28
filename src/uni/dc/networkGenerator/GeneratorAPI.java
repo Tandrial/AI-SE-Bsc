@@ -1,13 +1,11 @@
-package networkGenerator.view;
+package uni.dc.networkGenerator;
 
 import java.util.Random;
 
-import networkGenerator.RandomMulticastPathGenerator;
-import networkGenerator.RandomTopologyGenerator;
-import networkGenerator.model.EgressTopology;
-import networkGenerator.model.Flow;
-import networkGenerator.model.PriorityConfiguration;
-import networkGenerator.model.Traffic;
+import uni.dc.model.EgressTopology;
+import uni.dc.model.Flow;
+import uni.dc.model.PriorityConfiguration;
+import uni.dc.model.Traffic;
 
 public class GeneratorAPI {
 

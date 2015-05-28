@@ -1,4 +1,4 @@
-package networkGenerator.model;
+package uni.dc.model;
 
 import java.awt.Color;
 import java.util.Collection;
@@ -10,9 +10,9 @@ import java.util.Map;
 import java.util.Random;
 import java.util.Set;
 
-import networkGenerator.util.DeterministicHashSet;
-import networkGenerator.view.HSLColorGenerator;
-import networkGenerator.view.graphviz.GraphViz;
+import uni.dc.networkGenerator.swingUI.HSLColorGenerator;
+import uni.dc.networkGenerator.swingUI.graphviz.GraphViz;
+import uni.dc.util.DeterministicHashSet;
 
 public class Traffic extends DeterministicHashSet<Flow> {
 

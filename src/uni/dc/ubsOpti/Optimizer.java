@@ -1,14 +1,8 @@
-package UBSOpti;
+package uni.dc.ubsOpti;
 
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-
-import networkGenerator.model.EgressPort;
-import networkGenerator.model.Flow;
-import networkGenerator.model.PriorityConfiguration;
-import networkGenerator.model.Traffic;
-import networkGenerator.view.GeneratorAPI;
 
 import org.goataa.impl.algorithms.hc.HillClimbing;
 import org.goataa.impl.searchOperations.strings.integer.nullary.IntArrayAllZerosCreation;
@@ -20,7 +14,12 @@ import org.goataa.spec.INullarySearchOperation;
 import org.goataa.spec.ISOOptimizationAlgorithm;
 import org.goataa.spec.IUnarySearchOperation;
 
-import UBSOpti.DelayCalc.UbsV0DelayCalc;
+import uni.dc.model.EgressPort;
+import uni.dc.model.Flow;
+import uni.dc.model.PriorityConfiguration;
+import uni.dc.model.Traffic;
+import uni.dc.networkGenerator.GeneratorAPI;
+import uni.dc.ubsOpti.DelayCalc.UbsV0DelayCalc;
 
 public class Optimizer {
 	public static void main(String[] args) {

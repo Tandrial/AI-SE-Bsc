@@ -21,6 +21,14 @@ public class UbsV0DelayCalc extends OptimizationModule implements
 	private Set<Flow> flows = null;
 	private PriorityConfiguration prio = null;
 
+	public PriorityConfiguration getPrio() {
+		return prio;
+	}
+
+	public void setPrio(PriorityConfiguration prio) {
+		this.prio = prio;
+	}
+
 	public UbsV0DelayCalc(Map<EgressPort, Set<Flow>> traffic) {
 		flows = new DeterministicHashSet<Flow>();
 		for (Entry<EgressPort, Set<Flow>> x : traffic.entrySet()) {
@@ -34,8 +42,13 @@ public class UbsV0DelayCalc extends OptimizationModule implements
 		this.flows = flows;
 	}
 
-	public void calcuateDelays(PriorityConfiguration prio) {
+	public void calculateDelays(PriorityConfiguration prio) {
 		this.prio = prio;
+		calculateDelays();
+	}
+
+	public void calculateDelays(int[] prios) {
+		prio.fromIntArray(prios);
 		calculateDelays();
 	}
 
@@ -53,8 +66,8 @@ public class UbsV0DelayCalc extends OptimizationModule implements
 			for (int i = 1; i < path.size(); i++) {
 				EgressPort lastEgress = path.get(i - 1);
 
-				double sizeBiggerEq = 0;
-				double maxSmaller = 0;
+				double sizeBiggerEq = 0.0;
+				double maxSmaller = 0.0;
 				double shaperHigher = 0.0;
 
 				double rate = prio.getTraffic().getNetworkSpeed();
@@ -62,6 +75,8 @@ public class UbsV0DelayCalc extends OptimizationModule implements
 				int prioF = prio.getPriority(lastEgress, f);
 
 				for (Flow other : lastEgress.getFlowList()) {
+					if (f == other)
+						continue;
 					int prioOther = prio.getPriority(lastEgress, other);
 					if (prioOther > prioF) {
 						sizeBiggerEq += other.getMaxFrameLength();
@@ -117,7 +132,6 @@ public class UbsV0DelayCalc extends OptimizationModule implements
 	@Override
 	public double compute(int[] x, Random r) {
 		prio.fromIntArray(x);
-		System.out.println(prio);
 		calculateDelays();
 		double delay = 0.0d;
 		for (Flow f : flows) {
@@ -126,9 +140,9 @@ public class UbsV0DelayCalc extends OptimizationModule implements
 				if (j.getValue().getActualDelay() > j.getValue()
 						.getMaxLatencyRequirement())
 					// TODO: Strafe für Delay > maxLatencyReq
-					delay += f.getTotalDelay();
+					delay += 1;
 				else
-					delay -= f.getTotalDelay();
+					delay += f.getTotalDelay();
 			}
 		}
 		return delay;

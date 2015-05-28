@@ -23,8 +23,8 @@ import uni.dc.ubsOpti.DelayCalc.UbsV0DelayCalc;
 
 public class Optimizer {
 	public static void main(String[] args) {
-		int depth = 20;
-		int portCount = 21;
+		int depth = 2;
+		int portCount = 4;
 
 		GeneratorAPI.generateNetwork(depth, portCount);
 
@@ -35,25 +35,31 @@ public class Optimizer {
 
 		UbsV0DelayCalc delays = new UbsV0DelayCalc(flowMap);
 		// delays.printDelays();
-		delays.calcuateDelays(prio);
+		delays.calculateDelays(prio);
 		delays.printDelays();
 		System.out.println("delays okay = " + delays.checkDelays());
+		System.out.println(prio);
+		System.out.println("starting brute Force");
+		BruteForce BF = new BruteForce(flowMap);
+		BF.optimize(prio, 2);
 
-		HillClimbing<int[], int[]> HC = new HillClimbing<int[], int[]>();
-
-		int dim = prio.tointArray().length;
-		int maxSteps = 10;
-		int runs = 10;
-
-		INullarySearchOperation<int[]> create = new IntArrayAllZerosCreation(
-				dim, 0, 5);
-		IUnarySearchOperation<int[]> mutate = new IntArrayAllNormalMutation(0,
-				5);
-
-		HC.setObjectiveFunction(delays);
-		HC.setNullarySearchOperation(create);
-		HC.setUnarySearchOperation(mutate);
-		testRuns(HC, runs, maxSteps);
+		System.out.println(BF.getBestConfig());
+		
+//		HillClimbing<int[], int[]> HC = new HillClimbing<int[], int[]>();
+//
+//		int dim = prio.toIntArray().length;
+//		int maxSteps = 10;
+//		int runs = 10;
+//
+//		INullarySearchOperation<int[]> create = new IntArrayAllZerosCreation(
+//				dim, 0, 5);
+//		IUnarySearchOperation<int[]> mutate = new IntArrayAllNormalMutation(0,
+//				5);
+//
+//		HC.setObjectiveFunction(delays);
+//		HC.setNullarySearchOperation(create);
+//		HC.setUnarySearchOperation(mutate);
+//		testRuns(HC, runs, maxSteps);
 
 	}
 

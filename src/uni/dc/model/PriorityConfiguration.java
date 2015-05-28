@@ -115,7 +115,7 @@ public class PriorityConfiguration implements Cloneable {
 		return stringTable(table);
 	}
 
-	public int[] tointArray() {
+	public int[] toIntArray() {
 		List<Integer> resList = new ArrayList<Integer>();
 
 		for (Flow flow : traffic) {

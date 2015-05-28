@@ -5,16 +5,16 @@ import java.util.Map;
 import java.util.Set;
 
 import org.goataa.impl.algorithms.RandomWalk;
+import org.goataa.impl.algorithms.de.DifferentialEvolution1;
 import org.goataa.impl.algorithms.ea.SimpleGenerationalEA;
 import org.goataa.impl.algorithms.ea.selection.TournamentSelection;
-import org.goataa.impl.algorithms.ea.selection.TruncationSelection;
+import org.goataa.impl.algorithms.es.EvolutionStrategy;
 import org.goataa.impl.algorithms.hc.HillClimbing;
 import org.goataa.impl.algorithms.sa.SimulatedAnnealing;
 import org.goataa.impl.algorithms.sa.temperatureSchedules.Logarithmic;
 import org.goataa.impl.searchOperations.strings.integer.binary.IntArrayWeightedMeanCrossover;
 import org.goataa.impl.searchOperations.strings.integer.nullary.IntArrayAllOnesCreation;
 import org.goataa.impl.searchOperations.strings.integer.unary.IntArrayAllNormalMutation;
-import org.goataa.impl.searchOperations.strings.real.binary.DoubleArrayWeightedMeanCrossover;
 import org.goataa.impl.termination.StepLimit;
 import org.goataa.impl.utils.BufferedStatistics;
 import org.goataa.impl.utils.Individual;
@@ -59,8 +59,8 @@ public class Optimizer {
 		RandomWalk<int[], int[]> RW = new RandomWalk<int[], int[]>();
 
 		int dim = prio.toIntArray().length;
-		int maxSteps = 10;
-		int runs = 10;
+		int maxSteps = 10000;
+		int runs = 20;
 		int maxPrio = 2;
 
 		INullarySearchOperation<int[]> create = new IntArrayAllOnesCreation(
@@ -87,8 +87,7 @@ public class Optimizer {
 
 		System.out.println("================================================");
 		// Simulated Annealing (Algorithm 27.1)
-		// and Simulated Quenching
-		// (Section 27.3.2)
+		// and Simulated Quenching (Section 27.3.2)
 		SA.setObjectiveFunction(delays);
 		SA.setNullarySearchOperation(create);
 		SA.setTemperatureSchedule(schedule);

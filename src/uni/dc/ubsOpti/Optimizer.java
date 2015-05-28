@@ -23,8 +23,8 @@ import uni.dc.ubsOpti.DelayCalc.UbsV0DelayCalc;
 
 public class Optimizer {
 	public static void main(String[] args) {
-		int depth = 2;
-		int portCount = 4;
+		int depth = 4;
+		int portCount = 6;
 
 		GeneratorAPI.generateNetwork(depth, portCount);
 
@@ -41,8 +41,8 @@ public class Optimizer {
 		System.out.println(prio);
 		System.out.println("starting brute Force");
 		BruteForce BF = new BruteForce(flowMap);
-		BF.optimize(prio, 2);
-
+		BF.optimize(prio, 3);
+System.out.println("================================================");
 		System.out.println(BF.getBestConfig());
 		
 //		HillClimbing<int[], int[]> HC = new HillClimbing<int[], int[]>();

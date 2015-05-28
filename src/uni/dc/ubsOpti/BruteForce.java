@@ -21,13 +21,12 @@ public class BruteForce {
 
 	public void optimize(PriorityConfiguration prio, int maxPrio) {
 		int[] prios = prio.toIntArray();
-		bestPrio = prio;
+		bestPrio = (PriorityConfiguration) prio.clone();
 		delayCalc.setPrio(prio);
 		minDelay = delayCalc.compute(prios, null);
 		genPermutations(new int[prios.length], 0, maxPrio);
-		
+		delayCalc.setPrio(bestPrio);
 		System.out.println("minDelay = " + minDelay);
-		System.out.println(bestPrio);
 	}
 
 	private void genPermutations(int[] n, int pos, int max) {
@@ -40,7 +39,7 @@ public class BruteForce {
 			}
 			return;
 		} else {
-			for (int i = 0; i <= max; i++) {
+			for (int i = 1; i <= max; i++) {
 				n[pos] = i;
 				genPermutations(n, pos + 1, max);
 			}

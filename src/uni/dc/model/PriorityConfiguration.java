@@ -84,6 +84,7 @@ public class PriorityConfiguration implements Cloneable {
 		for (PortFlowPriority e : this.tripleSet) {
 			rv.add((PortFlowPriority) e.clone());
 		}
+		rv.traffic = traffic;
 		return rv;
 	}
 

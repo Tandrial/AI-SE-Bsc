@@ -135,14 +135,13 @@ public class UbsV0DelayCalc extends OptimizationModule implements
 		calculateDelays();
 		double delay = 0.0d;
 		for (Flow f : flows) {
+			delay += f.getTotalDelay();
 			for (Entry<EgressPort, UbsDestParameters> j : f
 					.getDestPortParameterMap().entrySet()) {
 				if (j.getValue().getActualDelay() > j.getValue()
 						.getMaxLatencyRequirement())
 					// TODO: Strafe für Delay > maxLatencyReq
 					delay += 1;
-				else
-					delay += f.getTotalDelay();
 			}
 		}
 		return delay;

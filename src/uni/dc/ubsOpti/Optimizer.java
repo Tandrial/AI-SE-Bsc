@@ -5,14 +5,23 @@ import java.util.Map;
 import java.util.Set;
 
 import org.goataa.impl.algorithms.RandomWalk;
+import org.goataa.impl.algorithms.ea.SimpleGenerationalEA;
+import org.goataa.impl.algorithms.ea.selection.TournamentSelection;
+import org.goataa.impl.algorithms.ea.selection.TruncationSelection;
 import org.goataa.impl.algorithms.hc.HillClimbing;
+import org.goataa.impl.algorithms.sa.SimulatedAnnealing;
+import org.goataa.impl.algorithms.sa.temperatureSchedules.Logarithmic;
+import org.goataa.impl.searchOperations.strings.integer.binary.IntArrayWeightedMeanCrossover;
 import org.goataa.impl.searchOperations.strings.integer.nullary.IntArrayAllOnesCreation;
 import org.goataa.impl.searchOperations.strings.integer.unary.IntArrayAllNormalMutation;
+import org.goataa.impl.searchOperations.strings.real.binary.DoubleArrayWeightedMeanCrossover;
 import org.goataa.impl.termination.StepLimit;
 import org.goataa.impl.utils.BufferedStatistics;
 import org.goataa.impl.utils.Individual;
 import org.goataa.spec.INullarySearchOperation;
 import org.goataa.spec.ISOOptimizationAlgorithm;
+import org.goataa.spec.ISelectionAlgorithm;
+import org.goataa.spec.ITemperatureSchedule;
 import org.goataa.spec.IUnarySearchOperation;
 
 import uni.dc.model.EgressPort;
@@ -23,6 +32,8 @@ import uni.dc.networkGenerator.GeneratorAPI;
 import uni.dc.ubsOpti.DelayCalc.UbsV0DelayCalc;
 
 public class Optimizer {
+	static PriorityConfiguration prio;
+
 	public static void main(String[] args) {
 		int depth = 4;
 		int portCount = 6;
@@ -31,7 +42,7 @@ public class Optimizer {
 
 		Traffic network = GeneratorAPI.getTraffic();
 		Map<EgressPort, Set<Flow>> flowMap = network.getPortFlowMap();
-		PriorityConfiguration prio = GeneratorAPI.getPriorityConfiguration();
+		prio = GeneratorAPI.getPriorityConfiguration();
 		// GeneratorAPI.printGeneratedNetwork();
 
 		UbsV0DelayCalc delays = new UbsV0DelayCalc(flowMap);
@@ -43,28 +54,55 @@ public class Optimizer {
 
 		BruteForce BF = new BruteForce(flowMap);
 		HillClimbing<int[], int[]> HC = new HillClimbing<int[], int[]>();
+		SimulatedAnnealing<int[], int[]> SA = new SimulatedAnnealing<int[], int[]>();
+		SimpleGenerationalEA<int[], int[]> GA = new SimpleGenerationalEA<int[], int[]>();
 		RandomWalk<int[], int[]> RW = new RandomWalk<int[], int[]>();
 
 		int dim = prio.toIntArray().length;
 		int maxSteps = 10;
 		int runs = 10;
+		int maxPrio = 2;
 
 		INullarySearchOperation<int[]> create = new IntArrayAllOnesCreation(
-				dim, 1, 5);
+				dim, 1, maxPrio);
 		IUnarySearchOperation<int[]> mutate = new IntArrayAllNormalMutation(1,
-				5);
+				maxPrio);
+
+		ITemperatureSchedule schedule = new Logarithmic(1d);
+
+		GA.setBinarySearchOperation(IntArrayWeightedMeanCrossover.INT_ARRAY_WEIGHTED_MEAN_CROSSOVER);
+		ISelectionAlgorithm sel = new TournamentSelection(2);
 
 		System.out.println("================================================");
 		// Brute Force
-		BF.optimize(prio, 2);
-		System.out.println(BF.getBestConfig());		
-		
+		BF.optimize(prio, maxPrio);
+		System.out.println(BF.getBestConfig());
+
 		System.out.println("================================================");
 		// Hill Climbing (Algorithm 26.1)
 		HC.setObjectiveFunction(delays);
 		HC.setNullarySearchOperation(create);
 		HC.setUnarySearchOperation(mutate);
 		testRuns(HC, runs, maxSteps);
+
+		System.out.println("================================================");
+		// Simulated Annealing (Algorithm 27.1)
+		// and Simulated Quenching
+		// (Section 27.3.2)
+		SA.setObjectiveFunction(delays);
+		SA.setNullarySearchOperation(create);
+		SA.setTemperatureSchedule(schedule);
+		SA.setUnarySearchOperation(mutate);
+		testRuns(SA, runs, maxSteps);
+
+		System.out.println("================================================");
+		// Generational Genetic/Evolutionary Algorithm
+		// (Chapter 28, Section 28.1.4.1, Section 29.3)
+		GA.setObjectiveFunction(delays);
+		GA.setNullarySearchOperation(create);
+		GA.setSelectionAlgorithm(sel);
+		GA.setUnarySearchOperation(mutate);
+		testRuns(GA, runs, maxSteps);
 
 		System.out.println("================================================");
 		// Random Walks (Section 8.2)
@@ -79,22 +117,26 @@ public class Optimizer {
 	private static final void testRuns(
 			final ISOOptimizationAlgorithm<?, int[], ?> algorithm,
 			final int runs, final int steps) {
-		int i;
+
 		BufferedStatistics stat;
 		List<Individual<?, int[]>> solutions;
-		Individual<?, int[]> individual;
+		Individual<?, int[]> individual = null;
+		double bestValue = Double.MAX_VALUE;
 
 		stat = new BufferedStatistics();
 		algorithm.setTerminationCriterion(new StepLimit(steps));
-		for (i = 0; i < runs; i++) {
-			System.out.println("run = " + i);
+		for (int i = 0; i < runs; i++) {
 			algorithm.setRandSeed(i);
 			solutions = ((List<Individual<?, int[]>>) (algorithm.call()));
-			individual = solutions.get(0);
-			stat.add(individual.v);
-			System.out.println(individual);
+			if (solutions.get(0).v < bestValue) {
+				individual = solutions.get(0);
+				stat.add(individual.v);
+			}
 		}
-		System.out.println(stat.getConfiguration(false) + "|"
-				+ algorithm.toString(false));
+		System.out.println(algorithm.toString(false) + " delay = "
+				+ individual.v);
+		prio.fromIntArray(individual.x);
+		System.out.println(prio);
+
 	}
 }

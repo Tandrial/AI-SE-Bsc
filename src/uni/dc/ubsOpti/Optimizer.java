@@ -41,25 +41,25 @@ public class Optimizer {
 		System.out.println(prio);
 		System.out.println("starting brute Force");
 		BruteForce BF = new BruteForce(flowMap);
-		BF.optimize(prio, 3);
-System.out.println("================================================");
+		BF.optimize(prio, 2);
 		System.out.println(BF.getBestConfig());
-		
-//		HillClimbing<int[], int[]> HC = new HillClimbing<int[], int[]>();
-//
-//		int dim = prio.toIntArray().length;
-//		int maxSteps = 10;
-//		int runs = 10;
-//
-//		INullarySearchOperation<int[]> create = new IntArrayAllZerosCreation(
-//				dim, 0, 5);
-//		IUnarySearchOperation<int[]> mutate = new IntArrayAllNormalMutation(0,
-//				5);
-//
-//		HC.setObjectiveFunction(delays);
-//		HC.setNullarySearchOperation(create);
-//		HC.setUnarySearchOperation(mutate);
-//		testRuns(HC, runs, maxSteps);
+
+		System.out.println("================================================");
+		HillClimbing<int[], int[]> HC = new HillClimbing<int[], int[]>();
+
+		int dim = prio.toIntArray().length;
+		int maxSteps = 10;
+		int runs = 10;
+
+		INullarySearchOperation<int[]> create = new IntArrayAllZerosCreation(
+				dim, 1, 5);
+		IUnarySearchOperation<int[]> mutate = new IntArrayAllNormalMutation(1,
+				5);
+
+		HC.setObjectiveFunction(delays);
+		HC.setNullarySearchOperation(create);
+		HC.setUnarySearchOperation(mutate);
+		testRuns(HC, runs, maxSteps);
 
 	}
 

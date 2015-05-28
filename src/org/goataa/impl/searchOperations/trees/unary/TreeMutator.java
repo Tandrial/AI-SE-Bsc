@@ -33,7 +33,6 @@ public class TreeMutator extends TreeOperation implements
    * @param md
    *          the maximum tree depth
    */
-  @SuppressWarnings("unchecked")
   public TreeMutator(final int md) {
     super(md);
     this.path = new TreePath();

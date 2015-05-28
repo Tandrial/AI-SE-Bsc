@@ -138,7 +138,6 @@ public class Traffic extends DeterministicHashSet<Flow> {
 				Set<Flow> destOnlyFlows = new DeterministicHashSet<Flow>(
 						portFlowMap.get(pDest));
 				destOnlyFlows.removeAll(portFlowMap.get(pSrc));
-				String destOnlyLabel = buildflowDotLabelString(destOnlyFlows);
 
 				r.append(String.format("\t%s->%s[label=%s,color=%s];\n",
 						GraphViz.dotUid(pSrc), GraphViz.dotUid(pDest),

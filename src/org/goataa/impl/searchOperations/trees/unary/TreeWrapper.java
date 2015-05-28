@@ -30,7 +30,6 @@ public class TreeWrapper extends TreeOperation implements
    * @param md
    *          the maximum tree depth
    */
-  @SuppressWarnings("unchecked")
   public TreeWrapper(final int md) {
     super(md);
     this.path = new TreePath();

@@ -4,8 +4,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import org.goataa.impl.algorithms.RandomWalk;
 import org.goataa.impl.algorithms.hc.HillClimbing;
-import org.goataa.impl.searchOperations.strings.integer.nullary.IntArrayAllZerosCreation;
+import org.goataa.impl.searchOperations.strings.integer.nullary.IntArrayAllOnesCreation;
 import org.goataa.impl.searchOperations.strings.integer.unary.IntArrayAllNormalMutation;
 import org.goataa.impl.termination.StepLimit;
 import org.goataa.impl.utils.BufferedStatistics;
@@ -39,28 +40,39 @@ public class Optimizer {
 		delays.printDelays();
 		System.out.println("delays okay = " + delays.checkDelays());
 		System.out.println(prio);
-		System.out.println("starting brute Force");
-		BruteForce BF = new BruteForce(flowMap);
-		BF.optimize(prio, 2);
-		System.out.println(BF.getBestConfig());
 
-		System.out.println("================================================");
+		BruteForce BF = new BruteForce(flowMap);
 		HillClimbing<int[], int[]> HC = new HillClimbing<int[], int[]>();
+		RandomWalk<int[], int[]> RW = new RandomWalk<int[], int[]>();
 
 		int dim = prio.toIntArray().length;
 		int maxSteps = 10;
 		int runs = 10;
 
-		INullarySearchOperation<int[]> create = new IntArrayAllZerosCreation(
+		INullarySearchOperation<int[]> create = new IntArrayAllOnesCreation(
 				dim, 1, 5);
 		IUnarySearchOperation<int[]> mutate = new IntArrayAllNormalMutation(1,
 				5);
 
+		System.out.println("================================================");
+		// Brute Force
+		BF.optimize(prio, 2);
+		System.out.println(BF.getBestConfig());		
+		
+		System.out.println("================================================");
+		// Hill Climbing (Algorithm 26.1)
 		HC.setObjectiveFunction(delays);
 		HC.setNullarySearchOperation(create);
 		HC.setUnarySearchOperation(mutate);
 		testRuns(HC, runs, maxSteps);
 
+		System.out.println("================================================");
+		// Random Walks (Section 8.2)
+		RW.setObjectiveFunction(delays);
+		RW.setNullarySearchOperation(create);
+		RW.setUnarySearchOperation(mutate);
+		testRuns(RW, runs, maxSteps);
+		RW.getConfiguration(true);
 	}
 
 	@SuppressWarnings("unchecked")
@@ -74,7 +86,6 @@ public class Optimizer {
 
 		stat = new BufferedStatistics();
 		algorithm.setTerminationCriterion(new StepLimit(steps));
-		System.out.println("starting HillClimbing!");
 		for (i = 0; i < runs; i++) {
 			System.out.println("run = " + i);
 			algorithm.setRandSeed(i);
@@ -83,7 +94,7 @@ public class Optimizer {
 			stat.add(individual.v);
 			System.out.println(individual);
 		}
-		System.out.println(stat.getConfiguration(false) + ' '
+		System.out.println(stat.getConfiguration(false) + "|"
 				+ algorithm.toString(false));
 	}
 }

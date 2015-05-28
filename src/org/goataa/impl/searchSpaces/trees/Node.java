@@ -228,7 +228,6 @@ public class Node<CT extends Node<CT>> extends OptimizationModule
    * @return true if the objects are equal
    */
   @Override
-  @SuppressWarnings("unchecked")
   public boolean equals(final Object o) {
     if (o == null) {
       return false;

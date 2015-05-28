@@ -37,7 +37,6 @@ public class TreeRecombination extends TreeOperation implements
    * @param md
    *          the maximum tree depth
    */
-  @SuppressWarnings("unchecked")
   public TreeRecombination(final int md) {
     super(md);
     this.pa1 = new TreePath();

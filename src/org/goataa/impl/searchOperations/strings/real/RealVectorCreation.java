@@ -72,7 +72,7 @@ public class RealVectorCreation extends
       final double mi, final double ma) {
     return (longVersion ? "G=[" : "[")//$NON-NLS-1$//$NON-NLS-2$
         + TextUtils.formatNumber(mi) + ','
-        + TextUtils.formatNumber(mi)
+        + TextUtils.formatNumber(ma)
         + "]"; //$NON-NLS-1$
   }
 }

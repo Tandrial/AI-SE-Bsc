@@ -11,7 +11,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
 public class GraphVizPanel extends JPanel {
-
+	private static final long serialVersionUID = 1L;
 	private JScrollPane 	scrollPane 	= new JScrollPane();
 	private JLabel			imageLabel	= new JLabel("No GraphViz output generated");
 	private StringBuilder 	dotString 	= null;

@@ -68,7 +68,7 @@ public abstract class EABase<G, X> extends
     this.ps = DEFAULT_POPULATION_SIZE;
     this.mps = DEFAULT_MATING_POOL_SIZE;
     this.selectionAlgorithm = RandomSelection.RANDOM_SELECTION;
-    this.o2 = ((IBinarySearchOperation) (BinarySearchOperation.IDENTITY_CROSSOVER));
+    this.o2 = ((IBinarySearchOperation<G>) (BinarySearchOperation.IDENTITY_CROSSOVER));
   }
 
   /**
@@ -84,7 +84,7 @@ public abstract class EABase<G, X> extends
   public final void setBinarySearchOperation(
       final IBinarySearchOperation<G> op) {
     this.o2 = ((op != null) ? op
-        : ((IBinarySearchOperation) (BinarySearchOperation.IDENTITY_CROSSOVER)));
+        : ((IBinarySearchOperation<G>) (BinarySearchOperation.IDENTITY_CROSSOVER)));
   }
 
   /**

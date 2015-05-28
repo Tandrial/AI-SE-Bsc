@@ -60,7 +60,7 @@ abstract class MOEABase<G, X> extends MOLocalSearchAlgorithm<G, X> {
     this.mps = EABase.DEFAULT_MATING_POOL_SIZE;
     this.selectionAlgorithm = RandomSelection.RANDOM_SELECTION;
     this.fap = ParetoRanking.PARETO_RANKING;
-    this.o2 = ((IBinarySearchOperation) (BinarySearchOperation.IDENTITY_CROSSOVER));
+    this.o2 = ((IBinarySearchOperation<G>) (BinarySearchOperation.IDENTITY_CROSSOVER));
   }
 
   /**
@@ -76,7 +76,7 @@ abstract class MOEABase<G, X> extends MOLocalSearchAlgorithm<G, X> {
   public final void setBinarySearchOperation(
       final IBinarySearchOperation<G> op) {
     this.o2 = ((op != null) ? op
-        : ((IBinarySearchOperation) (BinarySearchOperation.IDENTITY_CROSSOVER)));
+        : ((IBinarySearchOperation<G>) (BinarySearchOperation.IDENTITY_CROSSOVER)));
   }
 
   /**

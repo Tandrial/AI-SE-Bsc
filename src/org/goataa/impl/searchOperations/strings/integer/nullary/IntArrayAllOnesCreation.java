@@ -14,7 +14,7 @@ import org.goataa.impl.searchOperations.strings.integer.IntVectorCreation;
  *
  * @author Michael Krane
  */
-public class IntArrayAllZerosCreation extends IntVectorCreation {
+public class IntArrayAllOnesCreation extends IntVectorCreation {
 
 	/** a constant required by Java serialization */
 	private static final long serialVersionUID = 1;
@@ -29,8 +29,8 @@ public class IntArrayAllZerosCreation extends IntVectorCreation {
 	 * @param ma
 	 *            the maximum value of the allele of a gene
 	 */
-	public IntArrayAllZerosCreation(final int dim, final int mi, final int ma) {
-		super(dim, 0, 0);
+	public IntArrayAllOnesCreation(final int dim, final int mi, final int ma) {
+		super(dim, 1, 1);
 	}
 
 	/**
@@ -49,6 +49,10 @@ public class IntArrayAllZerosCreation extends IntVectorCreation {
 		// dimension n with all 0s
 		g = new int[this.n];
 
+		for (int i = 0; i < g.length; i++) {
+			g[i] = 1;
+		}
+		
 		return g;
 	}
 

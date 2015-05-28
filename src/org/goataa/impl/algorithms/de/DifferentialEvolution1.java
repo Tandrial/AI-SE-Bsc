@@ -45,7 +45,7 @@ public class DifferentialEvolution1<X> extends
   @SuppressWarnings("unchecked")
   public DifferentialEvolution1() {
     super();
-    this.o0 = (INullarySearchOperation) (NullarySearchOperation.NULL_CREATION);
+    this.o0 = (INullarySearchOperation<double[]>) (NullarySearchOperation.NULL_CREATION);
     this.ps = 100;
   }
 
@@ -61,7 +61,7 @@ public class DifferentialEvolution1<X> extends
   public void setNullarySearchOperation(
       final INullarySearchOperation<double[]> op) {
     this.o0 = ((op != null) ? op
-        : ((INullarySearchOperation) (NullarySearchOperation.NULL_CREATION)));
+        : ((INullarySearchOperation<double[]>) (NullarySearchOperation.NULL_CREATION)));
   }
 
   /**

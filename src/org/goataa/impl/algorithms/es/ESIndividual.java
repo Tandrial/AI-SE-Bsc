@@ -35,7 +35,6 @@ public class ESIndividual<X> extends Individual<double[], X> {
    *          the individual to copy
    */
   @Override
-  @SuppressWarnings("unchecked")
   public void assign(final Individual<double[], X> to) {
     super.assign(to);
     if (to instanceof ESIndividual) {

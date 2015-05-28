@@ -34,8 +34,8 @@ public class MOLocalSearchAlgorithm<G, X> extends
   @SuppressWarnings("unchecked")
   protected MOLocalSearchAlgorithm() {
     super();
-    this.o0 = (INullarySearchOperation) (NullarySearchOperation.NULL_CREATION);
-    this.o1 = (IUnarySearchOperation) (UnarySearchOperation.IDENTITY_MUTATION);
+    this.o0 = (INullarySearchOperation<G>) (NullarySearchOperation.NULL_CREATION);
+    this.o1 = (IUnarySearchOperation<G>) (UnarySearchOperation.IDENTITY_MUTATION);
   }
 
   /**
@@ -49,7 +49,7 @@ public class MOLocalSearchAlgorithm<G, X> extends
   @SuppressWarnings("unchecked")
   public void setNullarySearchOperation(final INullarySearchOperation<G> op) {
     this.o0 = ((op != null) ? op
-        : ((INullarySearchOperation) (NullarySearchOperation.NULL_CREATION)));
+        : ((INullarySearchOperation<G>) (NullarySearchOperation.NULL_CREATION)));
   }
 
   /**
@@ -74,7 +74,7 @@ public class MOLocalSearchAlgorithm<G, X> extends
   @SuppressWarnings("unchecked")
   public void setUnarySearchOperation(final IUnarySearchOperation<G> op) {
     this.o1 = ((op != null) ? op
-        : (IUnarySearchOperation) (UnarySearchOperation.IDENTITY_MUTATION));
+        : (IUnarySearchOperation<G>) (UnarySearchOperation.IDENTITY_MUTATION));
   }
 
   /**

@@ -15,12 +15,14 @@ import org.json.JSONObject;
 import uni.dc.model.EgressPort;
 import uni.dc.model.EgressTopology;
 import uni.dc.model.Flow;
+import uni.dc.model.PriorityConfiguration;
 import uni.dc.model.Traffic;
 
 public class NetworkParser {
 	private JSONObject jsonObj = null;
 	private EgressTopology topology = null;
 	private Traffic traffic = null;
+	private PriorityConfiguration prio = null;
 
 	public NetworkParser(File fileName) {
 		this.jsonObj = getJSONFromFile(fileName);
@@ -46,12 +48,19 @@ public class NetworkParser {
 	// TODO: network speed in bps
 	private double networdSpeed = 1e9;
 
+	public PriorityConfiguration getPriorityConfig() {
+		if (prio != null)
+			return prio;
+		prio = new PriorityConfiguration(getTraffic());
+		return prio;
+	}
+
 	public Traffic getTraffic() {
 		if (traffic != null)
 			return traffic;
-		traffic = new Traffic();
+		traffic = new Traffic();		
 
-		traffic.setTopology(topology);
+		traffic.setTopology(getTopology());
 		traffic.setNetworkSpeed(networdSpeed);
 		Map<EgressPort, Set<Flow>> portFlowMap = new LinkedHashMap<EgressPort, Set<Flow>>();
 

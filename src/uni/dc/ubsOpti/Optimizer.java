@@ -1,5 +1,6 @@
 package uni.dc.ubsOpti;
 
+import java.io.File;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -26,8 +27,8 @@ import uni.dc.model.EgressPort;
 import uni.dc.model.Flow;
 import uni.dc.model.PriorityConfiguration;
 import uni.dc.model.Traffic;
-import uni.dc.networkGenerator.GeneratorAPI;
 import uni.dc.ubsOpti.DelayCalc.UbsV0DelayCalc;
+import uni.dc.util.NetworkParser;
 
 public class Optimizer {
 	static PriorityConfiguration prio;
@@ -35,13 +36,20 @@ public class Optimizer {
 	public static void main(String[] args) {
 		int depth = 4;
 		int portCount = 6;
+		Map<EgressPort, Set<Flow>> flowMap;
 
-		GeneratorAPI.generateNetwork(depth, portCount);
-
-		Traffic network = GeneratorAPI.getTraffic();
-		Map<EgressPort, Set<Flow>> flowMap = network.getPortFlowMap();
-		prio = GeneratorAPI.getPriorityConfiguration();
-		// GeneratorAPI.printGeneratedNetwork();
+//		GeneratorAPI.generateNetwork(depth, portCount);
+//		Traffic network = GeneratorAPI.getTraffic();
+//		flowMap = network.getPortFlowMap();
+//		prio = GeneratorAPI.getPriorityConfiguration();
+//		GeneratorAPI.printGeneratedNetwork();
+		
+		NetworkParser parser = new NetworkParser(new File("./Topologies/Linear.json"));
+		Traffic traffic = parser.getTraffic();
+		flowMap = traffic.getPortFlowMap();
+		prio = parser.getPriorityConfig();
+		
+		
 
 		UbsV0DelayCalc delays = new UbsV0DelayCalc(flowMap);
 		// delays.printDelays();
@@ -65,6 +73,10 @@ public class Optimizer {
 		// Brute Force
 		BF.optimize(prio, maxPrio);
 		System.out.println(BF.getBestConfig());
+		delays.calculateDelays(BF.getBestConfig());
+		delays.printDelays();
+		System.out.println("delays okay = " + delays.checkDelays());
+		
 		
 		maxPrio = 5;
 		INullarySearchOperation<int[]> create = new IntArrayAllOnesCreation(
@@ -137,5 +149,8 @@ public class Optimizer {
 		prio.fromIntArray(individual.x);
 		System.out.println(prio);
 
+	}
+
+	public void optimize(NetworkParser parser, String selectedAlgo) {
 	}
 }

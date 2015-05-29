@@ -1,8 +1,9 @@
 package uni.dc.ubsOpti;
 
 import java.awt.BorderLayout;
+import java.awt.Dimension;
+import java.awt.EventQueue;
 import java.awt.FlowLayout;
-import java.awt.HeadlessException;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
@@ -16,6 +17,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.UIManager;
+import javax.swing.border.EmptyBorder;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
 import uni.dc.model.EgressTopology;
@@ -23,23 +25,22 @@ import uni.dc.model.Traffic;
 import uni.dc.networkGenerator.swingUI.graphviz.GraphVizPanel;
 import uni.dc.util.NetworkParser;
 
-public class OptimizerGui extends JFrame {
+import javax.swing.JList;
+import javax.swing.AbstractListModel;
 
+import java.awt.Choice;
+
+public class OptimizerGUI extends JFrame {
 	private static final long serialVersionUID = 1L;
+	private JPanel contentPane;
+	private JRadioButton topologyImageRadioButton;
+	private JRadioButton flowImageRadioButton;
+	private GraphVizPanel imagePanel;
+	private JLabel statusLabel;
+	private Choice choice;
 
-	JLabel statusLabel;
-	JButton loadButton;
-
-	GraphVizPanel imagePanel;
-	JRadioButton topologyImageRadioButton;
-	JRadioButton flowImageRadioButton;
-
-	NetworkParser parser;
-
-	public OptimizerGui(String title) throws HeadlessException {
-		super(title);
-		initComponents();
-	}
+	private NetworkParser parser;
+	private Optimizer optimizer = new Optimizer();
 
 	private class UpdateActionListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
@@ -47,58 +48,86 @@ public class OptimizerGui extends JFrame {
 		}
 	}
 
-	private void initComponents() {
-		this.getContentPane().setLayout(new BorderLayout());
+	public OptimizerGUI(String title) {
+		super(title);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 450, 300);
+		setSize(1024, 768);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		contentPane.setLayout(new BorderLayout(0, 0));
+		setContentPane(contentPane);
 
 		JPanel topologyPanel = new JPanel(new BorderLayout());
-		imagePanel = new GraphVizPanel();
-		topologyPanel.add(imagePanel, BorderLayout.CENTER);
 
 		statusLabel = new JLabel("");
-		this.getContentPane().add(topologyPanel, BorderLayout.CENTER);
+		contentPane.add(topologyPanel, BorderLayout.CENTER);
 
-		this.getContentPane().add(statusLabel, BorderLayout.PAGE_END);
-
+		contentPane.add(statusLabel, BorderLayout.PAGE_END);
 		JPanel topologyParameterPanel = new JPanel(new FlowLayout());
 
-		loadButton = new JButton("Load from file");
+		JButton loadButton = new JButton("Load from file");
 		loadButton.addActionListener(new ActionListener() {
 			@Override
-			public void actionPerformed(ActionEvent e) {
+			public void actionPerformed(ActionEvent arg0) {
 				JFileChooser c = new JFileChooser();
 				c.setCurrentDirectory(new File("./Topologies/"));
 				c.setFileFilter(new FileNameExtensionFilter(
 						"UBS Optimizer file", "json"));
-				int rVal = c.showOpenDialog(OptimizerGui.this);
+				int rVal = c.showOpenDialog(OptimizerGUI.this);
 				if (rVal == JFileChooser.APPROVE_OPTION)
 					loadFromFile(c.getSelectedFile());
 			}
 		});
-
 		topologyParameterPanel.add(loadButton);
-
-		JPanel viewTypeSelectionPanel = new JPanel();
+		JPanel viewTypeSelectionPanel = new JPanel(new FlowLayout());
 
 		viewTypeSelectionPanel.setLayout(new BoxLayout(viewTypeSelectionPanel,
 				BoxLayout.PAGE_AXIS));
 
-		ButtonGroup viewTypeSelectionGroup = new ButtonGroup();
-
-		viewTypeSelectionGroup.add(topologyImageRadioButton = new JRadioButton(
-				"Ports"));
-		viewTypeSelectionPanel.add(topologyImageRadioButton);
+		topologyImageRadioButton = new JRadioButton("Ports");
 		topologyImageRadioButton.addActionListener(new UpdateActionListener());
 		topologyImageRadioButton.setSelected(true);
-		viewTypeSelectionGroup.add(flowImageRadioButton = new JRadioButton(
-				"Flows"));
-		viewTypeSelectionPanel.add(flowImageRadioButton);
+		flowImageRadioButton = new JRadioButton("Flows");
 		flowImageRadioButton.addActionListener(new UpdateActionListener());
+		
+		ButtonGroup viewTypeSelectionGroup = new ButtonGroup();
+		viewTypeSelectionGroup.add(topologyImageRadioButton);
+		viewTypeSelectionGroup.add(flowImageRadioButton);
+		
+		viewTypeSelectionPanel.add(topologyImageRadioButton);		
+		viewTypeSelectionPanel.add(flowImageRadioButton);		
 		topologyParameterPanel.add(viewTypeSelectionPanel);
 
 		topologyPanel.add(topologyParameterPanel, BorderLayout.PAGE_START);
+
+		choice = new Choice();
+		choice.addItem("Brute Force");
+		choice.addItem("Hill Climbing");
+		choice.addItem("Simulated Annealing");
+		choice.addItem("Generational Genetic/Evolutionary Algorithm");
+		choice.addItem("Random Walks");
+		
+		topologyParameterPanel.add(choice);
+		
+		JButton btnOptimize = new JButton("Optimize");
+		btnOptimize.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				optimizer.optimize(parser,choice.getSelectedItem());				
+			}
+		});
+		
+		topologyParameterPanel.add(btnOptimize);
+
+		imagePanel = new GraphVizPanel();
+		topologyPanel.add(imagePanel, BorderLayout.CENTER);
+
 	}
 
 	public void updateDisplay() {
+		if (parser == null)
+			return;
 		long t1, t2;
 		t1 = System.nanoTime();
 
@@ -146,11 +175,18 @@ public class OptimizerGui extends JFrame {
 		statusLabel.validate();
 	}
 
-	public static void main(String[] args) throws Exception {
-		UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-		OptimizerGui gui = new OptimizerGui("UBS Optimizer");
-		gui.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		gui.setSize(1024, 768);
-		gui.setVisible(true);
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					UIManager.setLookAndFeel(UIManager
+							.getSystemLookAndFeelClassName());
+					OptimizerGUI gui = new OptimizerGUI("UBS Optimizer");
+					gui.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
 	}
 }

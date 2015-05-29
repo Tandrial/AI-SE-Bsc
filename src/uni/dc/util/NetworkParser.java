@@ -1,5 +1,6 @@
 package uni.dc.util;
 
+import java.io.File;
 import java.io.IOException;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
@@ -19,12 +20,12 @@ import uni.dc.model.Flow;
 import uni.dc.model.Traffic;
 
 public class NetworkParser {
-	private String fileName;
+	private File fileName;
 	private JSONObject jsonObj = null;
 	private EgressTopology topology = null;
 	private Traffic traffic = null;
 
-	public NetworkParser(String fileName) {
+	public NetworkParser(File fileName) {
 		this.fileName = fileName;
 		this.jsonObj = getJSONFromFile(fileName);
 	}
@@ -48,11 +49,6 @@ public class NetworkParser {
 
 	// TODO: network speed in bps
 	private double networdSpeed = 1e9;
-
-	// TODO: maxFrameLength in bit
-	private int maxFrameLength = 12350;
-
-	private Random rng = new Random();
 
 	public Traffic getTraffic() {
 		if (traffic != null)
@@ -78,14 +74,9 @@ public class NetworkParser {
 			String dest = route.getJSONArray(src).getString(0);
 
 			JSONObject tspec = curr.getJSONObject("tspec");
-			String rate = tspec.getString("leakRate");
-			String maxPacketLength = tspec.getString("maxPacketLength");
-			System.out.println(flowID);
-			System.out.println(src);
-			System.out.println(dest);
-			System.out.println(rate);
-			System.out.println(maxPacketLength);
-			System.out.println();
+			int rate = convertSpeed(tspec.getString("leakRate"));
+			int maxPacketLength = convertLength(tspec
+					.getString("maxPacketLength"));
 
 			Flow flow = new Flow();
 			flow.setName(String.format("F%d", flowID));
@@ -94,9 +85,8 @@ public class NetworkParser {
 			DeterministicHashSet<EgressPort> dests = new DeterministicHashSet<EgressPort>();
 			dests.add(topology.getPortFromName(dest));
 			flow.setDestPortSet(dests);
-			// max rate = 10% of full networkspeed
-			flow.setRate(networdSpeed * ((rng.nextInt(10) + 1)) / 100);
-			flow.setMaxFrameLength(rng.nextInt(maxFrameLength) + 1);
+			flow.setRate(rate);
+			flow.setMaxFrameLength(maxPacketLength);
 			traffic.add(flow);
 
 			List<EgressPort> path = topology.getPath(src, dest);
@@ -114,13 +104,35 @@ public class NetworkParser {
 		return traffic;
 	}
 
-	private static JSONObject getJSONFromFile(String path) {
+	private static JSONObject getJSONFromFile(File file) {
 		try {
-			byte[] encoded = Files.readAllBytes(Paths.get(path));
+			byte[] encoded = Files.readAllBytes(file.toPath());
 			return new JSONObject(new String(encoded, Charset.defaultCharset()));
 		} catch (IOException e) {
 			e.printStackTrace();
 			return null;
 		}
+	}
+
+	private static int convertLength(String str) {
+		int result = Integer.parseInt(str.replaceAll("[^0-9]", ""));
+		String SI = str.replaceAll("[0-9]", "");
+		if (SI.equalsIgnoreCase("mb"))
+			return result * 1000 * 1000;
+		if (SI.equalsIgnoreCase("kb"))
+			return result * 1000;
+		else
+			return result;
+	}
+
+	private static int convertSpeed(String str) {
+		int result = Integer.parseInt(str.replaceAll("[^0-9]", ""));
+		String SI = str.replaceAll("[0-9]", "");
+		if (SI.equalsIgnoreCase("mbps"))
+			return result * 1000 * 1000;
+		if (SI.equalsIgnoreCase("kbps"))
+			return result * 1000;
+		else
+			return result;
 	}
 }

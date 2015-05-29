@@ -2,73 +2,69 @@
 	"streams" : [
 	{
 		"streamID" 		: 1,		
-		"route" : {	"dijkstra" : { "**.n0" : ["**.n6"] } },	
-		"source" : [{"base.sourcesink.LeakRateSource" : { 	"leakRate":"30Mbps" , "packetLength"	:"6b"}}],
-		"tspec" : {											"leakRate":"30Mbps" , "maxPacketLength":"6b"}
+		"route"  : {	"dijkstra" : { "**.n0" : ["**.n6"] } },	
+		"source" : [{"base.sourcesink.LeakRateSource" : {"leakRate":"30Mbps" , "packetLength"	:"6b"}}],
+		"tspec"  : {									 "leakRate":"30Mbps" , "maxPacketLength":"6b"}
 	},
 	{
 		"streamID" 		: 2,		
-		"route" : {	"dijkstra" : { "**.n0" : ["**.n6"] } },	
-		"source" : [{"base.sourcesink.LeakRateSource" : { 	"leakRate":"45Mbps" , "packetLength"	:"2b"}}],
-		"tspec" : {											"leakRate":"45Mbps" , "maxPacketLength":"2b"}
+		"route"  : {	"dijkstra" : { "**.n0" : ["**.n6"] } },	
+		"source" : [{"base.sourcesink.LeakRateSource" : {"leakRate":"45Mbps" , "packetLength"	:"2b"}}],
+		"tspec"  : {									 "leakRate":"45Mbps" , "maxPacketLength":"2b"}
 	},
 	{
 		"streamID" 		: 3,		
-		"route" : {	"dijkstra" : { "**.n0" : ["**.n6"] } },	
-		"source" : [{"base.sourcesink.LeakRateSource" : { 	"leakRate":"15Mbps" , "packetLength"	:"9b"}}],
-		"tspec" : {											"leakRate":"15Mbps" , "maxPacketLength":"9b"}
-	},
-	
+		"route"  : {	"dijkstra" : { "**.n0" : ["**.n6"] } },	
+		"source" : [{"base.sourcesink.LeakRateSource" : {"leakRate":"15Mbps" , "packetLength"	:"9b"}}],
+		"tspec"  : {									 "leakRate":"15Mbps" , "maxPacketLength":"9b"}
+	},	
 	{
 		"streamID" 		: 12,		
-		"route" : {	"dijkstra" : { "**.n1" : ["**.n2"] } },	
-		"source" : [{"base.sourcesink.LeakRateSource" : { 	"leakRate":"300Mbps" , "packetLength"	:"7b"}}],
-		"tspec" : {											"leakRate":"300Mbps" , "maxPacketLength":"7b"}
+		"route"  : {"dijkstra" : { "**.n1" : ["**.n2"] } },	
+		"source" : [{"base.sourcesink.LeakRateSource" : {"leakRate":"300Mbps" , "packetLength"	:"7b"}}],
+		"tspec"  : {									 "leakRate":"300Mbps" , "maxPacketLength":"7b"}
 	},
 	{
 		"streamID" 		: 13,		
-		"route" : {	"dijkstra" : { "**.n1" : ["**.n3"] } },	
-		"source" : [{"base.sourcesink.LeakRateSource" : { 	"leakRate":"400Mbps" , "packetLength"	:"4b"}}],
-		"tspec" : {											"leakRate":"400Mbps" , "maxPacketLength":"4b"}
-	},
-	
+		"route"  : {"dijkstra" : { "**.n1" : ["**.n3"] } },	
+		"source" : [{"base.sourcesink.LeakRateSource" : {"leakRate":"400Mbps" , "packetLength"	:"4b"}}],
+		"tspec"  : {									 "leakRate":"400Mbps" , "maxPacketLength":"4b"}
+	},	
 	{
 		"streamID" 		: 23,		
-		"route" : {	"dijkstra" : { "**.n2" : ["**.n3"] } },	
-		"source" : [{"base.sourcesink.LeakRateSource" : { 	"leakRate":"200Mbps" , "packetLength"	:"9b"}}],
-		"tspec" : {											"leakRate":"200Mbps" , "maxPacketLength":"9b"}
+		"route"  : {	"dijkstra" : { "**.n2" : ["**.n3"] } },	
+		"source" : [{"base.sourcesink.LeakRateSource" : {"leakRate":"200Mbps" , "packetLength"	:"9b"}}],
+		"tspec"  : {									 "leakRate":"200Mbps" , "maxPacketLength":"9b"}
 	},
 	{
 		"streamID" 		: 24,		
-		"route" : {	"dijkstra" : { "**.n2" : ["**.n4"] } },	
-		"source" : [{"base.sourcesink.LeakRateSource" : { 	"leakRate":"300Mbps" , "packetLength"	:"3b"}}],
-		"tspec" : {											"leakRate":"300Mbps" , "maxPacketLength":"3b"}
+		"route"  : {"dijkstra" : { "**.n2" : ["**.n4"] } },	
+		"source" : [{"base.sourcesink.LeakRateSource" : {"leakRate":"300Mbps" , "packetLength"	:"3b"}}],
+		"tspec"  : {									 "leakRate":"300Mbps" , "maxPacketLength":"3b"}
 	},
-
 	{
 		"streamID" 		: 34,		
-		"route" : {	"dijkstra" : { "**.n3" : ["**.n4"] } },	
-		"source" : [{"base.sourcesink.LeakRateSource" : { 	"leakRate":"400Mbps" , "packetLength"	:"6b"}}],
-		"tspec" : {											"leakRate":"400Mbps" , "maxPacketLength":"6b"}
+		"route"  : {"dijkstra" : { "**.n3" : ["**.n4"] } },	
+		"source" : [{"base.sourcesink.LeakRateSource" : {"leakRate":"400Mbps" , "packetLength"	:"6b"}}],
+		"tspec"  : {									 "leakRate":"400Mbps" , "maxPacketLength":"6b"}
 	},
 	{
 		"streamID" 		: 35,		
-		"route" : {	"dijkstra" : { "**.n3" : ["**.n5"] } },	
-		"source" : [{"base.sourcesink.LeakRateSource" : { 	"leakRate":"150Mbps" , "packetLength"	:"5b"}}],
-		"tspec" : {											"leakRate":"150Mbps" , "maxPacketLength":"5b"}
+		"route"  : {	"dijkstra" : { "**.n3" : ["**.n5"] } },	
+		"source" : [{"base.sourcesink.LeakRateSource" : {"leakRate":"150Mbps" , "packetLength"	:"5b"}}],
+		"tspec"  : {									 "leakRate":"150Mbps" , "maxPacketLength":"5b"}
 	},
-
 	{
 		"streamID" 		: 45,		
-		"route" : {	"dijkstra" : { "**.n4" : ["**.n5"] } },	
-		"source" : [{"base.sourcesink.LeakRateSource" : { 	"leakRate":"500Mbps" , "packetLength"	:"8b"}}],
-		"tspec" : {											"leakRate":"500Mbps" , "maxPacketLength":"8b"}
+		"route"  : {	"dijkstra" : { "**.n4" : ["**.n5"] } },	
+		"source" : [{"base.sourcesink.LeakRateSource" : {"leakRate":"500Mbps" , "packetLength"	:"8b"}}],
+		"tspec"  : {									 "leakRate":"500Mbps" , "maxPacketLength":"8b"}
 	},
 	{
 		"streamID" 		: 46,		
-		"route" : {	"dijkstra" : { "**.n4" : ["**.n6"] } },	
-		"source" : [{"base.sourcesink.LeakRateSource" : { 	"leakRate":"100Mbps" , "packetLength"	:"2b"}}],
-		"tspec" : {											"leakRate":"100Mbps" , "maxPacketLength":"2b"}
+		"route"  : {	"dijkstra" : { "**.n4" : ["**.n6"] } },	
+		"source" : [{"base.sourcesink.LeakRateSource" : {"leakRate":"100Mbps" , "packetLength"	:"2b"}}],
+		"tspec"  : {									 "leakRate":"100Mbps" , "maxPacketLength":"2b"}
 	}
 	]
 }

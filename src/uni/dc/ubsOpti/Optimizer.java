@@ -63,6 +63,12 @@ public class Optimizer {
 		int runs = 20;
 		int maxPrio = 2;
 
+		System.out.println("================================================");
+		// Brute Force
+		BF.optimize(prio, maxPrio);
+		System.out.println(BF.getBestConfig());
+		
+		maxPrio = 5;
 		INullarySearchOperation<int[]> create = new IntArrayAllOnesCreation(
 				dim, 1, maxPrio);
 		IUnarySearchOperation<int[]> mutate = new IntArrayAllNormalMutation(1,
@@ -73,10 +79,6 @@ public class Optimizer {
 		GA.setBinarySearchOperation(IntArrayWeightedMeanCrossover.INT_ARRAY_WEIGHTED_MEAN_CROSSOVER);
 		ISelectionAlgorithm sel = new TournamentSelection(2);
 
-		System.out.println("================================================");
-		// Brute Force
-		BF.optimize(prio, maxPrio);
-		System.out.println(BF.getBestConfig());
 
 		System.out.println("================================================");
 		// Hill Climbing (Algorithm 26.1)

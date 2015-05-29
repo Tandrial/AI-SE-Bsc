@@ -49,10 +49,22 @@ public class EgressTopology {
 		linkMap.get(srcPort).addAll(destPorts);
 	}
 
+	public void addLink(String src, String dest) {
+		addLink(getPortFromName(src), getPortFromName(dest));
+	}
+
 	public void addLinks(Collection<? extends EgressPort> srcPorts,
 			EgressPort destPort) {
 		for (EgressPort pSrc : srcPorts)
 			linkMap.get(pSrc).add(destPort);
+	}
+
+	public EgressPort getPortFromName(String name) {
+		for (EgressPort port : portSet) {
+			if (port.getName().equals(name))
+				return port;
+		}
+		return null;
 	}
 
 	/**
@@ -90,8 +102,7 @@ public class EgressTopology {
 	}
 
 	/**
-	 * Returns all ports reachable from srcPort.
-	 * infinite recursion.
+	 * Returns all ports reachable from srcPort. infinite recursion.
 	 * 
 	 * @param srcPort
 	 * @return A set of reachable ports, not including srcPort.
@@ -135,5 +146,4 @@ public class EgressTopology {
 		}
 		return rv;
 	}
-
 }

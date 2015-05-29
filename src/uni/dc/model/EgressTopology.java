@@ -31,7 +31,8 @@ public class EgressTopology {
 
 	public void add(EgressPort p) {
 		portSet.add(p);
-		linkMap.put(p, new HashSet<EgressPort>());
+		if (!linkMap.containsKey(p))
+			linkMap.put(p, new HashSet<EgressPort>());
 	}
 
 	public void addAll(Collection<? extends EgressPort> ports) {
@@ -117,6 +118,11 @@ public class EgressTopology {
 		return rv;
 	}
 
+	public List<EgressPort> getPath(String src, String dest) {
+		return getPath(getPortFromName(src), getPortFromName(dest));
+	}
+	
+	
 	/**
 	 * Finds a path from src to dest, if present.
 	 * 

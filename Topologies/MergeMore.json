@@ -1,0 +1,33 @@
+{
+	"connections" : [
+        {"n0" : "b0"},
+        {"b0" : "b1"},
+        {"b1" : "b2"},
+        {"n1" : "b0"},
+        {"b2" : "n4"},
+        {"n2" : "b0"},
+        {"n3" : "b0"},
+	],
+	"streams" : [
+	{
+		"streamID" : 1,
+		"route"  : {"dijkstra" : { "n0" : ["n4"] }},
+		"tspec"  : {"leakRate" : "100Mbps","maxPacketLength" : "1b"}
+	},
+	{
+		"streamID" : 2,
+		"route"  : {"dijkstra" : { "n1" : ["n4"] }},
+		"tspec"  : {"leakRate" : "150Mbps", "maxPacketLength" : "4b"}
+	},
+	{
+		"streamID" : 3,
+		"route"  : {"dijkstra" : { "n2" : ["n4"] }},
+		"tspec"  : {"leakRate" : "200Mbps", "maxPacketLength" : "3b"}
+	},
+	{
+		"streamID" : 4,
+		"route"  : {"dijkstra" : { "n3" : ["n4"] }},
+		"tspec"  : {"leakRate" : "250Mbps", "maxPacketLength" : "7b"}
+	}
+	]
+}

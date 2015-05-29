@@ -104,7 +104,7 @@ public class Traffic extends DeterministicHashSet<Flow> {
 			r.append(String.format("\t\tlabel=\"%s\"", p.getName()));
 			r.append(String.format("\t\t%s_src[label=\"%s\"];\n", portUid,
 					"src"));
-			// r.append(String.format("\t\t%s[label=\"%s\"];\n",portUid,p.getName()));
+			r.append(String.format("\t\t%s[label=\"%s\"];\n",portUid,p.getName()));
 			r.append(String.format("\t\t%s_src->%s[label=%s];\n", portUid,
 					portUid, "Fx"));
 			r.append(String.format("\t\t%s_sink[label=\"%s\"]\n;", portUid,

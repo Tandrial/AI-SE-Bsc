@@ -54,7 +54,13 @@ public class GeneratorGui extends JFrame {
 		super(title);
 		initComponents();
 		// this.updateOnParameterChange();
-		String fileName = "./Topologies/Linear.json";
+		String fileName;
+		fileName = "./Topologies/Linear.json";
+//		fileName = "./Topologies/MergeAndSplit.json";
+//		fileName = "./Topologies/Split.json";
+//		fileName = "./Topologies/MergeMore.json";
+//		fileName = "./Topologies/Merge.json";
+//		fileName = "./Topologies/Chain.json";
 		loadFromFile(fileName);
 	}
 
@@ -99,18 +105,12 @@ public class GeneratorGui extends JFrame {
 
 		this.getContentPane().add(statusLabel, BorderLayout.PAGE_END);
 
-		topologySeedSpinner = new JSpinner(new SpinnerNumberModel(1, 0,
-				10000000, 1));
-		topologySeedSpinner.addChangeListener(new ParameterChangeListener(
-				topologySeedSpinner));
-		topologyDepthSpinner = new JSpinner(
-				new SpinnerNumberModel(3, 2, 100, 1));
-		topologyDepthSpinner.addChangeListener(new ParameterChangeListener(
-				topologyDepthSpinner));
-		topologyPortsSpinner = new JSpinner(new SpinnerNumberModel(9, 2, 1000,
-				1));
-		topologyPortsSpinner.addChangeListener(new ParameterChangeListener(
-				topologyPortsSpinner));
+		topologySeedSpinner = new JSpinner(new SpinnerNumberModel(1, 0, 10000000, 1));
+		topologySeedSpinner.addChangeListener(new ParameterChangeListener(topologySeedSpinner));
+		topologyDepthSpinner = new JSpinner(new SpinnerNumberModel(3, 2, 100, 1));
+		topologyDepthSpinner.addChangeListener(new ParameterChangeListener(topologyDepthSpinner));
+		topologyPortsSpinner = new JSpinner(new SpinnerNumberModel(9, 2, 1000, 1));
+		topologyPortsSpinner.addChangeListener(new ParameterChangeListener(topologyPortsSpinner));
 
 		JPanel topologyParameterPanel = new JPanel(new FlowLayout());
 		topologyParameterPanel.add(new JLabel("Seed:"));
@@ -121,35 +121,28 @@ public class GeneratorGui extends JFrame {
 		topologyParameterPanel.add(topologyPortsSpinner);
 
 		generateButton = new JButton("Generate");
-		generateButton.addActionListener(new GenerateActionListener(
-				generateButton));
+		generateButton.addActionListener(new GenerateActionListener(generateButton));
 
 		topologyParameterPanel.add(generateButton);
 		autoGenerateCheckBox = new JCheckBox("Generate automatically");
-		autoGenerateCheckBox.addActionListener(new GenerateActionListener(
-				autoGenerateCheckBox));
+		autoGenerateCheckBox.addActionListener(new GenerateActionListener(autoGenerateCheckBox));
 
 		topologyParameterPanel.add(autoGenerateCheckBox);
 
 		JPanel viewTypeSelectionPanel = new JPanel();
 
-		viewTypeSelectionPanel.setLayout(new BoxLayout(viewTypeSelectionPanel,
-				BoxLayout.PAGE_AXIS));
+		viewTypeSelectionPanel.setLayout(new BoxLayout(viewTypeSelectionPanel, BoxLayout.PAGE_AXIS));
 
 		ButtonGroup viewTypeSelectionGroup = new ButtonGroup();
 
-		viewTypeSelectionGroup.add(topologyImageRadioButton = new JRadioButton(
-				"Ports"));
+		viewTypeSelectionGroup.add(topologyImageRadioButton = new JRadioButton("Ports"));
 		viewTypeSelectionPanel.add(topologyImageRadioButton);
-		topologyImageRadioButton.addActionListener(new GenerateActionListener(
-				topologyImageRadioButton));
-		topologyImageRadioButton.setSelected(true);
-		viewTypeSelectionGroup.add(flowImageRadioButton = new JRadioButton(
-				"Flows"));
+		topologyImageRadioButton.addActionListener(new GenerateActionListener(topologyImageRadioButton));
+//		topologyImageRadioButton.setSelected(true);
+		viewTypeSelectionGroup.add(flowImageRadioButton = new JRadioButton("Flows"));
 		viewTypeSelectionPanel.add(flowImageRadioButton);
-		flowImageRadioButton.addActionListener(new GenerateActionListener(
-				flowImageRadioButton));
-
+		flowImageRadioButton.addActionListener(new GenerateActionListener(flowImageRadioButton));
+		flowImageRadioButton.setSelected(true);
 		topologyParameterPanel.add(viewTypeSelectionPanel);
 
 		topologyPanel.add(topologyParameterPanel, BorderLayout.PAGE_START);
@@ -216,14 +209,20 @@ public class GeneratorGui extends JFrame {
 			EgressTopology topology = parser.getTopology();
 			Traffic traffic = parser.getTraffic();
 
-			PriorityConfiguration cfg;
+			for (Flow f : traffic) {
+				System.out.printf("Flow %s: %s -> %s\n", f.getName(),
+						f.getSrcPort(), f.getDestPortSet());
+			}
 
+			System.out.printf("Port -> Set<Flow> map: %s\n",
+					traffic.getPortFlowMap());
+			
 			t2 = System.nanoTime();
 
-			// if (topologyImageRadioButton.isSelected())
-			imagePanel.setDot(topology.toDot());
-			// if (flowImageRadioButton.isSelected())
-			// imagePanel.setDot(traffic.toDot());
+			if (topologyImageRadioButton.isSelected())
+				imagePanel.setDot(topology.toDot());
+			if (flowImageRadioButton.isSelected())
+				imagePanel.setDot(traffic.toDot());
 
 			t3 = System.nanoTime();
 

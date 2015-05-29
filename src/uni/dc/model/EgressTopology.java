@@ -11,11 +11,13 @@ import java.util.Set;
 
 import uni.dc.networkGenerator.swingUI.graphviz.GraphViz;
 import uni.dc.util.DeterministicHashSet;
+import uni.dc.util.Dijkstra;
 
 public class EgressTopology {
 
 	private Set<EgressPort> portSet;
 	private Map<EgressPort, Set<EgressPort>> linkMap;
+	private Dijkstra dijkstra;
 
 	public EgressTopology() {
 		super();
@@ -111,18 +113,33 @@ public class EgressTopology {
 	 */
 	public Set<EgressPort> getReachablePorts(EgressPort srcPort) {
 		DeterministicHashSet<EgressPort> rv = new DeterministicHashSet<EgressPort>();
+		DeterministicHashSet<EgressPort> visited = new DeterministicHashSet<EgressPort>();
+		visited.add(srcPort);
 		rv.addAll(linkMap.get(srcPort));
 		for (EgressPort dest : linkMap.get(srcPort)) {
-			rv.addAll(getReachablePorts(dest));
+			rv.addAll(getReachablePorts(dest, visited));
 		}
+		return rv;
+	}
+
+	private Set<EgressPort> getReachablePorts(EgressPort srcPort,
+			Set<EgressPort> visited) {
+		if (visited.contains(srcPort))
+			return new DeterministicHashSet<EgressPort>();
+		DeterministicHashSet<EgressPort> rv = new DeterministicHashSet<EgressPort>();
+		visited.add(srcPort);
+		for (EgressPort dest : linkMap.get(srcPort)) {
+			visited.add(dest);
+			rv.addAll(getReachablePorts(dest, visited));
+		}
+
 		return rv;
 	}
 
 	public List<EgressPort> getPath(String src, String dest) {
 		return getPath(getPortFromName(src), getPortFromName(dest));
 	}
-	
-	
+
 	/**
 	 * Finds a path from src to dest, if present.
 	 * 
@@ -137,19 +154,24 @@ public class EgressTopology {
 	 * 
 	 */
 	public List<EgressPort> getPath(EgressPort src, EgressPort dest) {
-		List<EgressPort> rv = null;
-		if (dest == src) {
-			rv = new LinkedList<EgressPort>();
-			rv.add(dest);
-		} else {
-			for (EgressPort p : linkMap.get(src)) {
-				rv = getPath(p, dest);
-				if (rv != null) {
-					rv.add(0, src);
-					break;
-				}
-			}
-		}
-		return rv;
+		// List<EgressPort> rv = null;
+		// if (dest == src) {
+		// rv = new LinkedList<EgressPort>();
+		// rv.add(dest);
+		// } else {
+		// for (EgressPort p : linkMap.get(src)) {
+		// rv = getPath(p, dest);
+		// if (rv != null) {
+		// rv.add(0, src);
+		// break;
+		// }
+		// }
+		// }
+		// return rv;
+
+		dijkstra = new Dijkstra(this);
+		dijkstra.execute(src);
+		return dijkstra.getPath(dest);
+
 	}
 }

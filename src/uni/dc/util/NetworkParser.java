@@ -41,6 +41,7 @@ public class NetworkParser {
 			topology.add(new EgressPort(n1));
 			topology.add(new EgressPort(n2));
 			topology.addLink(n1, n2);
+			topology.addLink(n2, n1);
 		}
 		return topology;
 	}

@@ -31,25 +31,26 @@ import uni.dc.ubsOpti.DelayCalc.UbsV0DelayCalc;
 import uni.dc.util.NetworkParser;
 
 public class Optimizer {
-	static PriorityConfiguration prio;
+
+	private UbsV0DelayCalc delayCalc;
 
 	public static void main(String[] args) {
+		PriorityConfiguration prio;
 		int depth = 4;
 		int portCount = 6;
 		Map<EgressPort, Set<Flow>> flowMap;
 
-//		GeneratorAPI.generateNetwork(depth, portCount);
-//		Traffic network = GeneratorAPI.getTraffic();
-//		flowMap = network.getPortFlowMap();
-//		prio = GeneratorAPI.getPriorityConfiguration();
-//		GeneratorAPI.printGeneratedNetwork();
-		
-		NetworkParser parser = new NetworkParser(new File("./Topologies/Linear.json"));
+		// GeneratorAPI.generateNetwork(depth, portCount);
+		// Traffic network = GeneratorAPI.getTraffic();
+		// flowMap = network.getPortFlowMap();
+		// prio = GeneratorAPI.getPriorityConfiguration();
+		// GeneratorAPI.printGeneratedNetwork();
+
+		NetworkParser parser = new NetworkParser(new File(
+				"./Topologies/Linear.json"));
 		Traffic traffic = parser.getTraffic();
 		flowMap = traffic.getPortFlowMap();
 		prio = parser.getPriorityConfig();
-		
-		
 
 		UbsV0DelayCalc delays = new UbsV0DelayCalc(flowMap);
 		// delays.printDelays();
@@ -76,35 +77,15 @@ public class Optimizer {
 		delays.calculateDelays(BF.getBestConfig());
 		delays.printDelays();
 		System.out.println("delays okay = " + delays.checkDelays());
-		
-		
+
 		maxPrio = 5;
 		INullarySearchOperation<int[]> create = new IntArrayAllOnesCreation(
 				dim, 1, maxPrio);
 		IUnarySearchOperation<int[]> mutate = new IntArrayAllNormalMutation(1,
 				maxPrio);
 
-		ITemperatureSchedule schedule = new Logarithmic(1d);
-
 		GA.setBinarySearchOperation(IntArrayWeightedMeanCrossover.INT_ARRAY_WEIGHTED_MEAN_CROSSOVER);
 		ISelectionAlgorithm sel = new TournamentSelection(2);
-
-
-		System.out.println("================================================");
-		// Hill Climbing (Algorithm 26.1)
-		HC.setObjectiveFunction(delays);
-		HC.setNullarySearchOperation(create);
-		HC.setUnarySearchOperation(mutate);
-		testRuns(HC, runs, maxSteps);
-
-		System.out.println("================================================");
-		// Simulated Annealing (Algorithm 27.1)
-		// and Simulated Quenching (Section 27.3.2)
-		SA.setObjectiveFunction(delays);
-		SA.setNullarySearchOperation(create);
-		SA.setTemperatureSchedule(schedule);
-		SA.setUnarySearchOperation(mutate);
-		testRuns(SA, runs, maxSteps);
 
 		System.out.println("================================================");
 		// Generational Genetic/Evolutionary Algorithm
@@ -125,7 +106,7 @@ public class Optimizer {
 	}
 
 	@SuppressWarnings("unchecked")
-	private static final void testRuns(
+	private static final int[] testRuns(
 			final ISOOptimizationAlgorithm<?, int[], ?> algorithm,
 			final int runs, final int steps) {
 
@@ -142,15 +123,64 @@ public class Optimizer {
 			if (solutions.get(0).v < bestValue) {
 				individual = solutions.get(0);
 				stat.add(individual.v);
+				System.out.println("found better solution " + individual.v);
 			}
 		}
-		System.out.println(algorithm.toString(false) + " delay = "
-				+ individual.v);
-		prio.fromIntArray(individual.x);
-		System.out.println(prio);
+		return individual.x;
 
 	}
 
 	public void optimize(NetworkParser parser, String selectedAlgo) {
+		PriorityConfiguration config = (PriorityConfiguration) parser
+				.getPriorityConfig();
+		delayCalc = new UbsV0DelayCalc(parser.getTraffic().getPortFlowMap());
+		if (selectedAlgo.equals("Brute Force")) {
+			config = optimizeBruteForce(parser, 2);
+		} else if (selectedAlgo.equals("SimulatedAnnealing")) {
+			config.fromIntArray(optimizeSimulatedAnnealing(parser, 2, parser
+					.getPriorityConfig().toIntArray().length, 100, 10000));
+		} else if (selectedAlgo.equals("HillClimbing")) {
+			config.fromIntArray(optimizeHillClimbing(parser, 2, parser
+					.getPriorityConfig().toIntArray().length, 100, 10000));
+		}
+		System.out.println(config);
+		delayCalc.calculateDelays(config);
+		delayCalc.printDelays();
+		System.out.println("delays okay = " + delayCalc.checkDelays());
+	}
+
+	public PriorityConfiguration optimizeBruteForce(NetworkParser parser,
+			int maxPrio) {
+		BruteForce BF = new BruteForce(parser.getTraffic().getPortFlowMap());
+		BF.optimize(parser.getPriorityConfig(), maxPrio);
+		return BF.getBestConfig();
+	}
+
+	public int[] optimizeHillClimbing(NetworkParser parser, int maxPrio,
+			int dim, int runs, int maxSteps) {
+		INullarySearchOperation<int[]> create = new IntArrayAllOnesCreation(
+				dim, 1, maxPrio);
+		IUnarySearchOperation<int[]> mutate = new IntArrayAllNormalMutation(1,
+				maxPrio);
+		HillClimbing<int[], int[]> HC = new HillClimbing<int[], int[]>();
+		HC.setObjectiveFunction(delayCalc);
+		HC.setNullarySearchOperation(create);
+		HC.setUnarySearchOperation(mutate);
+		return testRuns(HC, runs, maxSteps);
+	}
+
+	public int[] optimizeSimulatedAnnealing(NetworkParser parser, int maxPrio,
+			int dim, int runs, int maxSteps) {
+		INullarySearchOperation<int[]> create = new IntArrayAllOnesCreation(
+				dim, 1, maxPrio);
+		IUnarySearchOperation<int[]> mutate = new IntArrayAllNormalMutation(1,
+				maxPrio);
+		ITemperatureSchedule schedule = new Logarithmic(1d);
+		SimulatedAnnealing<int[], int[]> SA = new SimulatedAnnealing<int[], int[]>();
+		SA.setObjectiveFunction(delayCalc);
+		SA.setNullarySearchOperation(create);
+		SA.setTemperatureSchedule(schedule);
+		SA.setUnarySearchOperation(mutate);
+		return testRuns(SA, runs, maxSteps);
 	}
 }

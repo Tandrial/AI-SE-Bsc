@@ -90,13 +90,13 @@ public class OptimizerGUI extends JFrame {
 		topologyImageRadioButton.setSelected(true);
 		flowImageRadioButton = new JRadioButton("Flows");
 		flowImageRadioButton.addActionListener(new UpdateActionListener());
-		
+
 		ButtonGroup viewTypeSelectionGroup = new ButtonGroup();
 		viewTypeSelectionGroup.add(topologyImageRadioButton);
 		viewTypeSelectionGroup.add(flowImageRadioButton);
-		
-		viewTypeSelectionPanel.add(topologyImageRadioButton);		
-		viewTypeSelectionPanel.add(flowImageRadioButton);		
+
+		viewTypeSelectionPanel.add(topologyImageRadioButton);
+		viewTypeSelectionPanel.add(flowImageRadioButton);
 		topologyParameterPanel.add(viewTypeSelectionPanel);
 
 		topologyPanel.add(topologyParameterPanel, BorderLayout.PAGE_START);
@@ -107,17 +107,24 @@ public class OptimizerGUI extends JFrame {
 		choice.addItem("Simulated Annealing");
 		choice.addItem("Generational Genetic/Evolutionary Algorithm");
 		choice.addItem("Random Walks");
-		
+
 		topologyParameterPanel.add(choice);
-		
+
 		JButton btnOptimize = new JButton("Optimize");
 		btnOptimize.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				optimizer.optimize(parser,choice.getSelectedItem());				
+				long t1, t2;
+				t1 = System.nanoTime();
+				optimizer.optimize(parser, choice.getSelectedItem());
+
+				t2 = System.nanoTime();
+
+				setStatusMsg("Done (optimized with %s in %.4f sec.)",
+						choice.getSelectedItem(), (t2 - t1) / 1.0E9);
 			}
 		});
-		
+
 		topologyParameterPanel.add(btnOptimize);
 
 		imagePanel = new GraphVizPanel();
@@ -151,6 +158,7 @@ public class OptimizerGUI extends JFrame {
 			parser = new NetworkParser(file);
 			EgressTopology topology = parser.getTopology();
 			Traffic traffic = parser.getTraffic();
+			
 			t2 = System.nanoTime();
 
 			if (topologyImageRadioButton.isSelected())

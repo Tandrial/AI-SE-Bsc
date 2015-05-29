@@ -5,10 +5,8 @@ import java.util.Map;
 import java.util.Set;
 
 import org.goataa.impl.algorithms.RandomWalk;
-import org.goataa.impl.algorithms.de.DifferentialEvolution1;
 import org.goataa.impl.algorithms.ea.SimpleGenerationalEA;
 import org.goataa.impl.algorithms.ea.selection.TournamentSelection;
-import org.goataa.impl.algorithms.es.EvolutionStrategy;
 import org.goataa.impl.algorithms.hc.HillClimbing;
 import org.goataa.impl.algorithms.sa.SimulatedAnnealing;
 import org.goataa.impl.algorithms.sa.temperatureSchedules.Logarithmic;

@@ -4,11 +4,9 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Random;
 import java.util.Set;
 
 import org.json.JSONArray;
@@ -20,13 +18,11 @@ import uni.dc.model.Flow;
 import uni.dc.model.Traffic;
 
 public class NetworkParser {
-	private File fileName;
 	private JSONObject jsonObj = null;
 	private EgressTopology topology = null;
 	private Traffic traffic = null;
 
 	public NetworkParser(File fileName) {
-		this.fileName = fileName;
 		this.jsonObj = getJSONFromFile(fileName);
 	}
 

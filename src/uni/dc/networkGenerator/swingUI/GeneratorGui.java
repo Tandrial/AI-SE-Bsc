@@ -25,7 +25,6 @@ import uni.dc.model.EgressTopology;
 import uni.dc.model.Flow;
 import uni.dc.model.PriorityConfiguration;
 import uni.dc.model.Traffic;
-import uni.dc.model.UbsDestParameters;
 import uni.dc.networkGenerator.RandomMulticastPathGenerator;
 import uni.dc.networkGenerator.RandomTopologyGenerator;
 import uni.dc.networkGenerator.swingUI.graphviz.GraphVizPanel;

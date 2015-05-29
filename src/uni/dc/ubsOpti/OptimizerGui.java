@@ -19,8 +19,6 @@ import javax.swing.UIManager;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
 import uni.dc.model.EgressTopology;
-import uni.dc.model.Flow;
-import uni.dc.model.PriorityConfiguration;
 import uni.dc.model.Traffic;
 import uni.dc.networkGenerator.swingUI.graphviz.GraphVizPanel;
 import uni.dc.util.NetworkParser;
@@ -41,20 +39,6 @@ public class OptimizerGui extends JFrame {
 	public OptimizerGui(String title) throws HeadlessException {
 		super(title);
 		initComponents();
-	}
-
-	class OpenActionListener implements ActionListener {
-		public void actionPerformed(ActionEvent e) {
-			JFileChooser c = new JFileChooser();
-			c.setCurrentDirectory(new File("./Topologies/"));
-			c.setFileFilter(new FileNameExtensionFilter("UBS Optimizer file",
-					"json"));
-			int rVal = c.showOpenDialog(OptimizerGui.this);
-			if (rVal == JFileChooser.APPROVE_OPTION) {
-				File file = c.getSelectedFile();
-				loadFromFile(file);
-			}
-		}
 	}
 
 	private class UpdateActionListener implements ActionListener {
@@ -78,7 +62,18 @@ public class OptimizerGui extends JFrame {
 		JPanel topologyParameterPanel = new JPanel(new FlowLayout());
 
 		loadButton = new JButton("Load from file");
-		loadButton.addActionListener(new OpenActionListener());
+		loadButton.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				JFileChooser c = new JFileChooser();
+				c.setCurrentDirectory(new File("./Topologies/"));
+				c.setFileFilter(new FileNameExtensionFilter(
+						"UBS Optimizer file", "json"));
+				int rVal = c.showOpenDialog(OptimizerGui.this);
+				if (rVal == JFileChooser.APPROVE_OPTION)
+					loadFromFile(c.getSelectedFile());
+			}
+		});
 
 		topologyParameterPanel.add(loadButton);
 
@@ -107,12 +102,11 @@ public class OptimizerGui extends JFrame {
 		long t1, t2;
 		t1 = System.nanoTime();
 
-		if (topologyImageRadioButton.isSelected()) {
+		if (topologyImageRadioButton.isSelected())
 			imagePanel.setDot(parser.getTopology().toDot());
-		}
-		if (flowImageRadioButton.isSelected()) {
+
+		if (flowImageRadioButton.isSelected())
 			imagePanel.setDot(parser.getTraffic().toDot());
-		}
 
 		t2 = System.nanoTime();
 
@@ -128,18 +122,6 @@ public class OptimizerGui extends JFrame {
 			parser = new NetworkParser(file);
 			EgressTopology topology = parser.getTopology();
 			Traffic traffic = parser.getTraffic();
-
-			for (Flow f : traffic) {
-				System.out.printf("Flow %s: %s -> %s\n", f.getName(),
-						f.getSrcPort(), f.getDestPortSet());
-			}
-
-			System.out.printf("Port -> Set<Flow> map: %s\n",
-					traffic.getPortFlowMap());
-
-			PriorityConfiguration cfg = new PriorityConfiguration(traffic);
-			System.out.print(cfg);
-
 			t2 = System.nanoTime();
 
 			if (topologyImageRadioButton.isSelected())
@@ -170,6 +152,5 @@ public class OptimizerGui extends JFrame {
 		gui.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		gui.setSize(1024, 768);
 		gui.setVisible(true);
-
 	}
 }

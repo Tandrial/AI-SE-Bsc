@@ -16,7 +16,6 @@ public class Dijkstra {
 
 	EgressTopology topo;
 
-	private Set<EgressPort> settledNodes;
 	private Set<EgressPort> unSettledNodes;
 	private Map<EgressPort, EgressPort> predecessors;
 	private Map<EgressPort, Float> distance;
@@ -32,7 +31,6 @@ public class Dijkstra {
 	 *            - Legt den Startpunkt fest
 	 */
 	public void execute(EgressPort quelle) {
-		settledNodes = new HashSet<EgressPort>();
 		unSettledNodes = new HashSet<EgressPort>();
 		distance = new HashMap<EgressPort, Float>();
 		predecessors = new HashMap<EgressPort, EgressPort>();
@@ -41,7 +39,6 @@ public class Dijkstra {
 
 		while (unSettledNodes.size() > 0) {
 			EgressPort node = getMinimum(unSettledNodes);
-			settledNodes.add(node);
 			unSettledNodes.remove(node);
 			findMinimalDistances(node);
 		}
@@ -71,7 +68,8 @@ public class Dijkstra {
 	}
 
 	private void findMinimalDistances(EgressPort knoten) {
-		List<EgressPort> adjacentNodes = getNeighbors(knoten);
+		List<EgressPort> adjacentNodes = new ArrayList<EgressPort>(
+				topo.getReachablePorts(knoten));
 		for (EgressPort target : adjacentNodes) {
 			if (getShortestDistance(target) > getShortestDistance(knoten) + 1f) {
 				distance.put(target, getShortestDistance(knoten) + 1f);
@@ -79,12 +77,6 @@ public class Dijkstra {
 				unSettledNodes.add(target);
 			}
 		}
-	}
-
-	private List<EgressPort> getNeighbors(EgressPort knoten) {
-		List<EgressPort> neighbors = new ArrayList<EgressPort>(
-				topo.getReachablePorts(knoten));
-		return neighbors;
 	}
 
 	private EgressPort getMinimum(Set<EgressPort> knoten) {
@@ -99,10 +91,6 @@ public class Dijkstra {
 			}
 		}
 		return minimum;
-	}
-
-	private boolean isSettled(EgressPort knoten) {
-		return settledNodes.contains(knoten);
 	}
 
 	private float getShortestDistance(EgressPort destination) {

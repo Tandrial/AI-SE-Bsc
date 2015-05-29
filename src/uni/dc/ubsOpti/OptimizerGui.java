@@ -1,7 +1,7 @@
 package uni.dc.ubsOpti;
 
 import java.awt.BorderLayout;
-import java.awt.Dimension;
+import java.awt.Choice;
 import java.awt.EventQueue;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
@@ -24,11 +24,6 @@ import uni.dc.model.EgressTopology;
 import uni.dc.model.Traffic;
 import uni.dc.networkGenerator.swingUI.graphviz.GraphVizPanel;
 import uni.dc.util.NetworkParser;
-
-import javax.swing.JList;
-import javax.swing.AbstractListModel;
-
-import java.awt.Choice;
 
 public class OptimizerGUI extends JFrame {
 	private static final long serialVersionUID = 1L;

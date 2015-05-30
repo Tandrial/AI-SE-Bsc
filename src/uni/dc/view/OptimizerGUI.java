@@ -1,16 +1,12 @@
 package uni.dc.view;
 
 import java.awt.BorderLayout;
-import java.awt.Choice;
 import java.awt.EventQueue;
-import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 
-import javax.swing.BoxLayout;
 import javax.swing.ButtonGroup;
-import javax.swing.JButton;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -31,10 +27,8 @@ import uni.dc.util.NetworkParser;
 public class OptimizerGUI extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private GraphVizPanel imagePanel;
-	private Choice choice;
 	private JLabel statusLabel;
 	private NetworkParser parser;
-	private Optimizer optimizer;
 
 	private boolean portDisplay = true;
 
@@ -91,14 +85,14 @@ public class OptimizerGUI extends JFrame {
 		JMenu mnDisplay = new JMenu("Display");
 		menuBar.add(mnDisplay);
 
-		JRadioButtonMenuItem rdbtnmntmPorts = new JRadioButtonMenuItem("Ports");
+		JRadioButtonMenuItem rdbtnmntmPorts = new JRadioButtonMenuItem("Ports",
+				true);
 		rdbtnmntmPorts.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				portDisplay = true;
 				updateDisplay(parser.getTopology().toDot());
 			}
 		});
-		rdbtnmntmPorts.setSelected(true);
 		mnDisplay.add(rdbtnmntmPorts);
 
 		JRadioButtonMenuItem rdbtnmntmFlows = new JRadioButtonMenuItem("Flows");
@@ -114,52 +108,67 @@ public class OptimizerGUI extends JFrame {
 		viewTypeSelectionGroup.add(rdbtnmntmPorts);
 		viewTypeSelectionGroup.add(rdbtnmntmFlows);
 
+		JMenu mnOptimize = new JMenu("Optimize");
+		menuBar.add(mnOptimize);
+
+		JMenuItem mntmBruteforce = new JMenuItem("BruteForce");
+		mntmBruteforce.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+			}
+		});
+		mnOptimize.add(mntmBruteforce);
+
+		JMenuItem mntmHillclimbing = new JMenuItem("Hillclimbing");
+		mntmHillclimbing.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		mnOptimize.add(mntmHillclimbing);
+
+		JMenuItem mntmSimulatedAnnealing = new JMenuItem("Simulated Annealing");
+		mntmSimulatedAnnealing.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		mnOptimize.add(mntmSimulatedAnnealing);
+
+		JMenuItem mntmGeneticevolutionaryAlgorithm = new JMenuItem(
+				"simple Genetic/Evolutionary Algorithm");
+		mntmGeneticevolutionaryAlgorithm.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		mnOptimize.add(mntmGeneticevolutionaryAlgorithm);
+
+		JMenuItem mntmRandomWalks = new JMenuItem("Random Walks");
+		mntmRandomWalks.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		mnOptimize.add(mntmRandomWalks);
+
+		mnOptimize.add(new JSeparator());
+
+		JMenuItem mntmAllnoBruteforce = new JMenuItem("All (no BruteForce)");
+		mntmAllnoBruteforce.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		mnOptimize.add(mntmAllnoBruteforce);
+
 		JPanel contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
 
-		JPanel topologyPanel = new JPanel(new BorderLayout());
-
 		statusLabel = new JLabel("");
-		contentPane.add(topologyPanel, BorderLayout.CENTER);
-
 		contentPane.add(statusLabel, BorderLayout.PAGE_END);
-		JPanel topologyParameterPanel = new JPanel(new FlowLayout());
-		JPanel viewTypeSelectionPanel = new JPanel(new FlowLayout());
 
-		viewTypeSelectionPanel.setLayout(new BoxLayout(viewTypeSelectionPanel,
-				BoxLayout.PAGE_AXIS));
-
-		topologyPanel.add(topologyParameterPanel, BorderLayout.PAGE_START);
-
-		choice = new Choice();
-		choice.addItem("Brute Force");
-		choice.addItem("Hill Climbing");
-		choice.addItem("Simulated Annealing");
-		choice.addItem("Generational Genetic/Evolutionary Algorithm");
-		choice.addItem("Random Walks");
-
-		topologyParameterPanel.add(choice);
-
-		JButton btnOptimize = new JButton("Optimize");
-		btnOptimize.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent arg0) {
-				long t1, t2;
-				t1 = System.nanoTime();
-				optimizer.optimize(parser, choice.getSelectedItem());
-				t2 = System.nanoTime();
-
-				setStatusMsg("Done (optimized with %s in %.4f sec.)",
-						choice.getSelectedItem(), (t2 - t1) / 1.0E9);
-			}
-		});
-
-		topologyParameterPanel.add(btnOptimize);
-
+		JPanel topologyPanel = new JPanel(new BorderLayout());
 		imagePanel = new GraphVizPanel();
 		topologyPanel.add(imagePanel, BorderLayout.CENTER);
+
+		contentPane.add(topologyPanel, BorderLayout.CENTER);
 	}
 
 	private void updateDisplay(StringBuilder content) {

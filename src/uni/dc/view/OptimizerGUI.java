@@ -94,6 +94,7 @@ public class OptimizerGUI extends JFrame {
 		JRadioButtonMenuItem rdbtnmntmPorts = new JRadioButtonMenuItem("Ports");
 		rdbtnmntmPorts.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				portDisplay = true;
 				updateDisplay(parser.getTopology().toDot());
 			}
 		});
@@ -103,6 +104,7 @@ public class OptimizerGUI extends JFrame {
 		JRadioButtonMenuItem rdbtnmntmFlows = new JRadioButtonMenuItem("Flows");
 		rdbtnmntmFlows.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				portDisplay = false;
 				updateDisplay(parser.getTraffic().toDot());
 			}
 		});

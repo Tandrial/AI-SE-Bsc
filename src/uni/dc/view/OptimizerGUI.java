@@ -33,9 +33,10 @@ public class OptimizerGUI extends JFrame {
 	private GraphVizPanel imagePanel;
 	private Choice choice;
 	private JLabel statusLabel;
-
 	private NetworkParser parser;
-	private Optimizer optimizer = new Optimizer();
+	private Optimizer optimizer;
+
+	private boolean portDisplay = true;
 
 	public OptimizerGUI(String title) {
 		super(title);
@@ -71,7 +72,7 @@ public class OptimizerGUI extends JFrame {
 				String fileName = parser.getFileName();
 				imagePanel.saveToFile(new File("./Topologies/"
 						+ fileName.substring(0, fileName.lastIndexOf("."))
-						+ ".png"));
+						+ (portDisplay ? "_port" : "_flow") + ".png"));
 			}
 		});
 		mnFile.add(mntmSaveJpg);

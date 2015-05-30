@@ -1,4 +1,4 @@
-package uni.dc.networkGenerator.swingUI;
+package uni.dc.view;
 
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
@@ -27,7 +27,6 @@ import uni.dc.model.PriorityConfiguration;
 import uni.dc.model.Traffic;
 import uni.dc.networkGenerator.RandomMulticastPathGenerator;
 import uni.dc.networkGenerator.RandomTopologyGenerator;
-import uni.dc.networkGenerator.swingUI.graphviz.GraphVizPanel;
 
 public class GeneratorGui extends JFrame {
 

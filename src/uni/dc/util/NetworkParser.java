@@ -93,21 +93,21 @@ public class NetworkParser {
 			flow.setMaxFrameLength(maxPacketLength);
 			traffic.add(flow);
 
-//			List<EgressPort> path = topology.getPath(src, dest);
-//			for (EgressPort p : path) {
-//				if (!portFlowMap.containsKey(p))
-//					portFlowMap.put(p, new DeterministicHashSet<Flow>());
-//				portFlowMap.get(p).add(flow);
-//			}
+			List<EgressPort> path = topology.getPath(src, dest);
+			for (EgressPort p : path) {
+				if (!portFlowMap.containsKey(p))
+					portFlowMap.put(p, new DeterministicHashSet<Flow>());
+				portFlowMap.get(p).add(flow);
+			}
 		}
 
-//		for (EgressPort port : portFlowMap.keySet()) {
-//			port.setFlowList(portFlowMap.get(port));
-//		}
-//		UbsV0DelayCalc delays = new UbsV0DelayCalc(traffic.getPortFlowMap());
-//		
-//		delays.calculateDelays(getPriorityConfig());
-//		delays.printDelays();
+		for (EgressPort port : portFlowMap.keySet()) {
+			port.setFlowList(portFlowMap.get(port));
+		}
+		UbsV0DelayCalc delays = new UbsV0DelayCalc(traffic.getPortFlowMap());
+		
+		delays.calculateDelays(getPriorityConfig());
+		delays.printDelays();
 		
 		return traffic;
 	}

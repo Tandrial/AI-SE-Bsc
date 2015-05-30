@@ -1,4 +1,4 @@
-package uni.dc.ubsOpti;
+package uni.dc.view;
 
 import java.awt.BorderLayout;
 import java.awt.Choice;
@@ -22,7 +22,7 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 
 import uni.dc.model.EgressTopology;
 import uni.dc.model.Traffic;
-import uni.dc.networkGenerator.swingUI.graphviz.GraphVizPanel;
+import uni.dc.ubsOpti.Optimizer;
 import uni.dc.util.NetworkParser;
 
 public class OptimizerGUI extends JFrame {
@@ -112,7 +112,6 @@ public class OptimizerGUI extends JFrame {
 				long t1, t2;
 				t1 = System.nanoTime();
 				optimizer.optimize(parser, choice.getSelectedItem());
-
 				t2 = System.nanoTime();
 
 				setStatusMsg("Done (optimized with %s in %.4f sec.)",
@@ -124,11 +123,6 @@ public class OptimizerGUI extends JFrame {
 
 		imagePanel = new GraphVizPanel();
 		topologyPanel.add(imagePanel, BorderLayout.CENTER);
-		
-		//StringBuilder dotString = new StringBuilder("digraph G {	graph[center=1 rankdir=LR]	ranksep=1.0;	subgraph cluster_EgressPort3490 {		label=\"E0\"			EgressPort2103151[label=\"E0,1\"];	EgressPort2103152[label=\"E0,2\"];	EgressPort2103153[label=\"E0,3\"];		{rank=same EgressPort2103151 EgressPort2103152 EgressPort2103153};	}		EgressPort2104112[label=\"E1,1\"];	EgressPort2104113[label=\"E1,2\"];	EgressPort2104114[label=\"E1,3\"];	EgressPort2104115[label=\"E1,4\"];		EgressPort2105073[label=\"E2,1\"];	EgressPort2105074[label=\"E2,2\"];	EgressPort2103151->EgressPort2104114;	EgressPort2103152->EgressPort2104114;	EgressPort2103153->EgressPort2104112;	EgressPort2103153->EgressPort2104114;	EgressPort2103153->EgressPort2104113;	EgressPort2104113->EgressPort2105073;	EgressPort2104114->EgressPort2105074;	EgressPort2104115->EgressPort2105073;}");
-		
-		//imagePanel.setDot(dotString);
-
 	}
 
 	public void updateDisplay() {

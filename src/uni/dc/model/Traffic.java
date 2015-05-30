@@ -11,18 +11,14 @@ import java.util.Map;
 import java.util.Random;
 import java.util.Set;
 
-import uni.dc.networkGenerator.swingUI.HSLColorGenerator;
-import uni.dc.networkGenerator.swingUI.graphviz.GraphViz;
 import uni.dc.util.DeterministicHashSet;
+import uni.dc.util.GraphViz;
+import uni.dc.view.HSLColorGenerator;
 
 public class Traffic extends DeterministicHashSet<Flow> {
 
 	private static final long serialVersionUID = 1L;
-	// TODO: maxDelay in s
-	private static final double maxDelay = 0.0001;
-	private Random rnd = new Random();
-
-	private double networkSpeed = 0;
+	private double networkSpeed;
 
 	private EgressTopology topology;
 
@@ -70,10 +66,8 @@ public class Traffic extends DeterministicHashSet<Flow> {
 
 			Map<EgressPort, UbsDestParameters> maxLat = new HashMap<EgressPort, UbsDestParameters>();
 			for (EgressPort destPort : f.getDestPortSet()) {
-				// max rate = 10% of full networkspeed
-				maxLat.put(destPort,
-						new UbsDestParameters(maxDelay
-								* ((rnd.nextInt(70) + 1)) / 100));
+				//TODO
+				maxLat.put(destPort,new UbsDestParameters(0.1d));
 				List<EgressPort> path = topology.getPath(srcPort, destPort);
 				maxLat.get(destPort).setPath(path);
 				for (EgressPort p : path)

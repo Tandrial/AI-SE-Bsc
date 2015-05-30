@@ -1,4 +1,4 @@
-package uni.dc.networkGenerator.swingUI.graphviz;
+package uni.dc.view;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
@@ -9,6 +9,8 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+
+import uni.dc.util.GraphViz;
 
 public class GraphVizPanel extends JPanel {
 	private static final long serialVersionUID = 1L;

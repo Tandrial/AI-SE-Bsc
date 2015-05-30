@@ -1,4 +1,4 @@
-package uni.dc.networkGenerator.swingUI;
+package uni.dc.view;
 
 import java.awt.Color;
 

@@ -69,7 +69,7 @@ public class OptimizerGUI extends JFrame {
 				if (parser == null)
 					return;
 				String fileName = parser.getFileName();
-				imagePanel.saveToFile(new File("./"
+				imagePanel.saveToFile(new File("./Topologies/"
 						+ fileName.substring(0, fileName.lastIndexOf("."))
 						+ ".png"));
 			}

@@ -14,6 +14,9 @@ import javax.swing.JButton;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.UIManager;
@@ -27,12 +30,11 @@ import uni.dc.util.NetworkParser;
 
 public class OptimizerGUI extends JFrame {
 	private static final long serialVersionUID = 1L;
-	private JPanel contentPane;
 	private JRadioButton topologyImageRadioButton;
 	private JRadioButton flowImageRadioButton;
 	private GraphVizPanel imagePanel;
-	private JLabel statusLabel;
 	private Choice choice;
+	private JLabel statusLabel;
 
 	private NetworkParser parser;
 	private Optimizer optimizer = new Optimizer();
@@ -48,7 +50,50 @@ public class OptimizerGUI extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		setSize(1024, 768);
-		contentPane = new JPanel();
+
+		JMenuBar menuBar = new JMenuBar();
+		setJMenuBar(menuBar);
+
+		JMenu mnFile = new JMenu("File");
+		menuBar.add(mnFile);
+
+		JMenuItem mntmLoad = new JMenuItem("Load");
+		mntmLoad.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				JFileChooser c = new JFileChooser();
+				c.setCurrentDirectory(new File("./Topologies/"));
+				c.setFileFilter(new FileNameExtensionFilter(
+						"UBS Optimizer file", "json"));
+				int rVal = c.showOpenDialog(OptimizerGUI.this);
+				if (rVal == JFileChooser.APPROVE_OPTION)
+					loadFromFile(c.getSelectedFile());
+			}
+		});
+		mnFile.add(mntmLoad);
+
+		JMenuItem mntmSaveJpg = new JMenuItem("Save picture");
+		mntmSaveJpg.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (parser == null)
+					return;
+				String fileName = parser.getFileName();
+				imagePanel.saveToFile(new File("./"
+						+ fileName.substring(0, fileName.lastIndexOf("."))
+						+ ".png"));
+			}
+		});
+		mnFile.add(mntmSaveJpg);
+
+		JMenuItem mntmExit = new JMenuItem("Exit");
+		mntmExit.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				setVisible(false);
+				dispose();
+				System.exit(0);
+			}
+		});
+		mnFile.add(mntmExit);
+		JPanel contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
@@ -60,21 +105,6 @@ public class OptimizerGUI extends JFrame {
 
 		contentPane.add(statusLabel, BorderLayout.PAGE_END);
 		JPanel topologyParameterPanel = new JPanel(new FlowLayout());
-
-		JButton loadButton = new JButton("Load from file");
-		loadButton.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent arg0) {
-				JFileChooser c = new JFileChooser();
-				c.setCurrentDirectory(new File("./Topologies/"));
-				c.setFileFilter(new FileNameExtensionFilter(
-						"UBS Optimizer file", "json"));
-				int rVal = c.showOpenDialog(OptimizerGUI.this);
-				if (rVal == JFileChooser.APPROVE_OPTION)
-					loadFromFile(c.getSelectedFile());
-			}
-		});
-		topologyParameterPanel.add(loadButton);
 		JPanel viewTypeSelectionPanel = new JPanel(new FlowLayout());
 
 		viewTypeSelectionPanel.setLayout(new BoxLayout(viewTypeSelectionPanel,
@@ -151,7 +181,7 @@ public class OptimizerGUI extends JFrame {
 			parser = new NetworkParser(file);
 			EgressTopology topology = parser.getTopology();
 			Traffic traffic = parser.getTraffic();
-			
+
 			t2 = System.nanoTime();
 
 			if (topologyImageRadioButton.isSelected())

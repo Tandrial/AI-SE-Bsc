@@ -2,9 +2,11 @@ package uni.dc.view;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
-import java.awt.Image;
+import java.awt.image.BufferedImage;
+import java.io.File;
 import java.io.IOException;
 
+import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -14,29 +16,38 @@ import uni.dc.util.GraphViz;
 
 public class GraphVizPanel extends JPanel {
 	private static final long serialVersionUID = 1L;
-	private JScrollPane 	scrollPane 	= new JScrollPane();
-	private JLabel			imageLabel	= new JLabel("No GraphViz output generated");
-	private StringBuilder 	dotString 	= null;
-	private GraphViz		graphViz	= new GraphViz();
-	
+	private JScrollPane scrollPane = new JScrollPane();
+	private JLabel imageLabel = new JLabel("No GraphViz output generated");
+	private StringBuilder dotString = null;
+	private GraphViz graphViz = new GraphViz();
+	private BufferedImage img = null;
+
 	public GraphVizPanel() {
 		super(new BorderLayout());
 		this.scrollPane = new JScrollPane(imageLabel);
-		this.add(scrollPane,BorderLayout.CENTER);
+		this.add(scrollPane, BorderLayout.CENTER);
 		imageLabel.setMinimumSize(new Dimension(128, 128));
 	}
-	
-	public void setDot(StringBuilder dotString){
-		this.dotString = dotString;		
+
+	public void setDot(StringBuilder dotString) {
+		this.dotString = dotString;
 		updateImage();
 	}
-	
-	private void updateImage(){
+
+	public void saveToFile(File filename) {
 		try {
-			Image img = graphViz.renderToImage(dotString);			
+			ImageIO.write(img, "png", filename);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
+	private void updateImage() {
+		try {
+			img = graphViz.renderToImage(dotString);
 			imageLabel.setIcon(new ImageIcon(img));
 			imageLabel.setText(null);
-		} catch (IOException e){
+		} catch (IOException e) {
 			imageLabel.setText(e.getMessage());
 			e.printStackTrace();
 		}

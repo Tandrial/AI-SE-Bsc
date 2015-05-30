@@ -1,6 +1,6 @@
 package uni.dc.util;
 
-import java.awt.Image;
+import java.awt.image.BufferedImage;
 import java.io.BufferedInputStream;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -66,8 +66,9 @@ public class GraphViz {
 		return rv;
 	}
 
-	public Image renderToImage(StringBuilder dotString) throws IOException {
-		Image rv = ImageIO.read(createDiagramStream(dotString,
+	public BufferedImage renderToImage(StringBuilder dotString)
+			throws IOException {
+		BufferedImage rv = ImageIO.read(createDiagramStream(dotString,
 				OutputFormatEnum.BMP));
 		return rv;
 	}

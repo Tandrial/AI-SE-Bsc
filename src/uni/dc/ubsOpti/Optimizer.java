@@ -5,13 +5,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import org.goataa.impl.algorithms.RandomWalk;
-import org.goataa.impl.algorithms.ea.SimpleGenerationalEA;
-import org.goataa.impl.algorithms.ea.selection.TournamentSelection;
 import org.goataa.impl.algorithms.hc.HillClimbing;
 import org.goataa.impl.algorithms.sa.SimulatedAnnealing;
 import org.goataa.impl.algorithms.sa.temperatureSchedules.Logarithmic;
-import org.goataa.impl.searchOperations.strings.integer.binary.IntArrayWeightedMeanCrossover;
 import org.goataa.impl.searchOperations.strings.integer.nullary.IntArrayAllOnesCreation;
 import org.goataa.impl.searchOperations.strings.integer.unary.IntArrayAllNormalMutation;
 import org.goataa.impl.termination.StepLimit;
@@ -19,7 +15,6 @@ import org.goataa.impl.utils.BufferedStatistics;
 import org.goataa.impl.utils.Individual;
 import org.goataa.spec.INullarySearchOperation;
 import org.goataa.spec.ISOOptimizationAlgorithm;
-import org.goataa.spec.ISelectionAlgorithm;
 import org.goataa.spec.ITemperatureSchedule;
 import org.goataa.spec.IUnarySearchOperation;
 

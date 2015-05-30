@@ -5,7 +5,6 @@ import java.io.IOException;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.util.LinkedHashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -18,16 +17,21 @@ import uni.dc.model.Flow;
 import uni.dc.model.Node;
 import uni.dc.model.PriorityConfiguration;
 import uni.dc.model.Traffic;
-import uni.dc.ubsOpti.DelayCalc.UbsV0DelayCalc;
 
 public class NetworkParser {
 	private JSONObject jsonObj = null;
 	private EgressTopology topology = null;
 	private Traffic traffic = null;
 	private PriorityConfiguration prio = null;
+	private File fileName;
 
 	public NetworkParser(File fileName) {
 		this.jsonObj = getJSONFromFile(fileName);
+		this.fileName = fileName;
+	}
+	
+	public String getFileName() {
+		return fileName.getName();
 	}
 
 	public EgressTopology getTopology() {
@@ -93,22 +97,22 @@ public class NetworkParser {
 			flow.setMaxFrameLength(maxPacketLength);
 			traffic.add(flow);
 
-			List<EgressPort> path = topology.getPath(src, dest);
-			for (EgressPort p : path) {
-				if (!portFlowMap.containsKey(p))
-					portFlowMap.put(p, new DeterministicHashSet<Flow>());
-				portFlowMap.get(p).add(flow);
-			}
+//			List<EgressPort> path = topology.getPath(src, dest);
+//			for (EgressPort p : path) {
+//				if (!portFlowMap.containsKey(p))
+//					portFlowMap.put(p, new DeterministicHashSet<Flow>());
+//				portFlowMap.get(p).add(flow);
+//			}
 		}
-
-		for (EgressPort port : portFlowMap.keySet()) {
-			port.setFlowList(portFlowMap.get(port));
-		}
-		UbsV0DelayCalc delays = new UbsV0DelayCalc(traffic.getPortFlowMap());
-		
-		delays.calculateDelays(getPriorityConfig());
-		delays.printDelays();
-		
+//
+//		for (EgressPort port : portFlowMap.keySet()) {
+//			port.setFlowList(portFlowMap.get(port));
+//		}
+//		UbsV0DelayCalc delays = new UbsV0DelayCalc(traffic.getPortFlowMap());
+//		
+//		delays.calculateDelays(getPriorityConfig());
+//		delays.printDelays();
+//		
 		return traffic;
 	}
 

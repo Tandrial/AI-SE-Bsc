@@ -88,10 +88,8 @@ public class UbsV0DelayCalc extends OptimizationModule implements
 								other.getMaxFrameLength());
 					}
 				}
-
 				delay += (sizeBiggerEq + maxSmaller) / (rate - shaperHigher)
 						+ size / rate;
-
 			}
 			f.setTotalDelay(delay);
 		}
@@ -106,10 +104,10 @@ public class UbsV0DelayCalc extends OptimizationModule implements
 			for (Entry<EgressPort, UbsDestParameters> j : x
 					.getDestPortParameterMap().entrySet()) {
 				System.out
-						.printf("Destination %s has maxLat of %f, actual delay is %fs\n",
+						.printf("Destination %s has maxLat of %.3e ms, actual delay is %.3e ms\n",
 								j.getKey(), j.getValue()
-										.getMaxLatencyRequirement(), j
-										.getValue().getActualDelay());
+										.getMaxLatencyRequirement()*1000, j
+										.getValue().getActualDelay() * 1000);
 			}
 			System.out.println();
 		}

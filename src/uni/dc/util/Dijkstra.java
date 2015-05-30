@@ -24,18 +24,12 @@ public class Dijkstra {
 		this.topo = topo;
 	}
 
-	/**
-	 * Berechnet die Kantengewichte für die gegebene Quelle
-	 * 
-	 * @param quelle
-	 *            - Legt den Startpunkt fest
-	 */
-	public void execute(EgressPort quelle) {
+	public void execute(EgressPort src) {
 		unSettledNodes = new HashSet<EgressPort>();
 		distance = new HashMap<EgressPort, Float>();
 		predecessors = new HashMap<EgressPort, EgressPort>();
-		distance.put(quelle, 0f);
-		unSettledNodes.add(quelle);
+		distance.put(src, 0f);
+		unSettledNodes.add(src);
 
 		while (unSettledNodes.size() > 0) {
 			EgressPort node = getMinimum(unSettledNodes);
@@ -44,18 +38,9 @@ public class Dijkstra {
 		}
 	}
 
-	/**
-	 * Berechnet die günstige Route durch den Graphen
-	 * 
-	 * @param ziel
-	 *            - Legt das Ziel fest
-	 * 
-	 * @return route - Die Route als LinkedList<EgressPort>
-	 */
-
-	public LinkedList<EgressPort> getPath(EgressPort ziel) {
+	public LinkedList<EgressPort> getPath(EgressPort dest) {
 		LinkedList<EgressPort> path = new LinkedList<EgressPort>();
-		EgressPort step = ziel;
+		EgressPort step = dest;
 		if (predecessors.get(step) == null)
 			return null;
 		path.add(step);
@@ -67,21 +52,21 @@ public class Dijkstra {
 		return path;
 	}
 
-	private void findMinimalDistances(EgressPort knoten) {
+	private void findMinimalDistances(EgressPort dest) {
 		List<EgressPort> adjacentNodes = new ArrayList<EgressPort>(
-				topo.getReachablePorts(knoten));
+				topo.getReachablePorts(dest));
 		for (EgressPort target : adjacentNodes) {
-			if (getShortestDistance(target) > getShortestDistance(knoten) + 1f) {
-				distance.put(target, getShortestDistance(knoten) + 1f);
-				predecessors.put(target, knoten);
+			if (getShortestDistance(target) > getShortestDistance(dest) + 1f) {
+				distance.put(target, getShortestDistance(dest) + 1f);
+				predecessors.put(target, dest);
 				unSettledNodes.add(target);
 			}
 		}
 	}
 
-	private EgressPort getMinimum(Set<EgressPort> knoten) {
+	private EgressPort getMinimum(Set<EgressPort> dest) {
 		EgressPort minimum = null;
-		for (EgressPort k : knoten) {
+		for (EgressPort k : dest) {
 			if (minimum == null) {
 				minimum = k;
 			} else {
@@ -93,8 +78,8 @@ public class Dijkstra {
 		return minimum;
 	}
 
-	private float getShortestDistance(EgressPort destination) {
-		Float d = distance.get(destination);
+	private float getShortestDistance(EgressPort dest) {
+		Float d = distance.get(dest);
 		if (d == null)
 			return Float.MAX_VALUE;
 		else

@@ -15,8 +15,10 @@ import org.json.JSONObject;
 import uni.dc.model.EgressPort;
 import uni.dc.model.EgressTopology;
 import uni.dc.model.Flow;
+import uni.dc.model.Node;
 import uni.dc.model.PriorityConfiguration;
 import uni.dc.model.Traffic;
+import uni.dc.ubsOpti.DelayCalc.UbsV0DelayCalc;
 
 public class NetworkParser {
 	private JSONObject jsonObj = null;
@@ -38,16 +40,12 @@ public class NetworkParser {
 			String n1 = JSONObject.getNames(curr)[0];
 			String n2 = curr.getString(n1);
 
-			topology.add(new EgressPort(n1));
-			topology.add(new EgressPort(n2));
-			topology.addLink(n1, n2);
-			topology.addLink(n2, n1);
+			topology.add(new Node(n1),  new Node(n2));
+			topology.add(new Node(n2),  new Node(n1));
+			
 		}
 		return topology;
 	}
-
-	// TODO: network speed in bps
-	private double networdSpeed = 1e9;
 
 	public PriorityConfiguration getPriorityConfig() {
 		if (prio != null)
@@ -59,10 +57,10 @@ public class NetworkParser {
 	public Traffic getTraffic() {
 		if (traffic != null)
 			return traffic;
-		traffic = new Traffic();		
+		traffic = new Traffic();
 
 		traffic.setTopology(getTopology());
-		traffic.setNetworkSpeed(networdSpeed);
+		traffic.setNetworkSpeed(convertSpeed(jsonObj.getString("networkSpeed")));
 		Map<EgressPort, Set<Flow>> portFlowMap = new LinkedHashMap<EgressPort, Set<Flow>>();
 
 		/*
@@ -95,18 +93,22 @@ public class NetworkParser {
 			flow.setMaxFrameLength(maxPacketLength);
 			traffic.add(flow);
 
-			List<EgressPort> path = topology.getPath(src, dest);
-			for (EgressPort p : path) {
-				if (!portFlowMap.containsKey(p))
-					portFlowMap.put(p, new DeterministicHashSet<Flow>());
-				portFlowMap.get(p).add(flow);
-			}
+//			List<EgressPort> path = topology.getPath(src, dest);
+//			for (EgressPort p : path) {
+//				if (!portFlowMap.containsKey(p))
+//					portFlowMap.put(p, new DeterministicHashSet<Flow>());
+//				portFlowMap.get(p).add(flow);
+//			}
 		}
 
-		for (EgressPort port : portFlowMap.keySet()) {
-			port.setFlowList(portFlowMap.get(port));
-		}
-
+//		for (EgressPort port : portFlowMap.keySet()) {
+//			port.setFlowList(portFlowMap.get(port));
+//		}
+//		UbsV0DelayCalc delays = new UbsV0DelayCalc(traffic.getPortFlowMap());
+//		
+//		delays.calculateDelays(getPriorityConfig());
+//		delays.printDelays();
+		
 		return traffic;
 	}
 
@@ -134,9 +136,11 @@ public class NetworkParser {
 	private static int convertSpeed(String str) {
 		int result = Integer.parseInt(str.replaceAll("[^0-9]", ""));
 		String SI = str.replaceAll("[0-9]", "");
-		if (SI.equalsIgnoreCase("mbps"))
+		if (SI.equalsIgnoreCase("gbps"))
+			return result * 1000 * 1000 * 1000;
+		else if (SI.equalsIgnoreCase("mbps"))
 			return result * 1000 * 1000;
-		if (SI.equalsIgnoreCase("kbps"))
+		else if (SI.equalsIgnoreCase("kbps"))
 			return result * 1000;
 		else
 			return result;

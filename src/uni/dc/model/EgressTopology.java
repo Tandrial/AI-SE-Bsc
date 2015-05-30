@@ -4,6 +4,7 @@ import java.util.Collection;
 import java.util.HashSet;
 import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -14,12 +15,16 @@ import uni.dc.util.Dijkstra;
 
 public class EgressTopology {
 
+	private Map<Node, Set<EgressPort>> nodeMap;
+	private Map<EgressPort, Node> portNodeMap;
 	private Set<EgressPort> portSet;
 	private Map<EgressPort, Set<EgressPort>> linkMap;
 	private Dijkstra dijkstra;
 
 	public EgressTopology() {
 		super();
+		nodeMap = new LinkedHashMap<Node, Set<EgressPort>>();
+		portNodeMap = new LinkedHashMap<EgressPort, Node>();
 		portSet = new LinkedHashSet<EgressPort>();
 		linkMap = new LinkedHashMap<EgressPort, Set<EgressPort>>();
 	}
@@ -34,6 +39,37 @@ public class EgressTopology {
 		portSet.add(p);
 		if (!linkMap.containsKey(p))
 			linkMap.put(p, new HashSet<EgressPort>());
+	}
+
+	public void addNode(Node n) {
+		nodeMap.put(n, new DeterministicHashSet<EgressPort>());
+	}
+
+	public void add(Node n1, Node n2) {
+		if (!nodeMap.containsKey(n1))
+			addNode(n1);
+		if (!nodeMap.containsKey(n2))
+			addNode(n2);
+
+		// 1. Check of link existiert : Ja ==> done
+
+		// Nein => 2. 2 neue Ports in n1 und n2 erzeugen und verlinken
+		n1 = getNodeFromName(n1.getName());
+		n2 = getNodeFromName(n2.getName());
+
+		EgressPort src = new EgressPort();
+		n1.addPort(src);
+		add(src);
+		nodeMap.get(n1).add(src);
+		portNodeMap.put(src, n1);
+
+		EgressPort dest = new EgressPort();
+		n2.addPort(dest);
+		add(dest);
+		nodeMap.get(n2).add(dest);
+		portNodeMap.put(dest, n2);
+		addLink(src, dest);
+
 	}
 
 	public void addAll(Collection<? extends EgressPort> ports) {
@@ -69,6 +105,14 @@ public class EgressTopology {
 		return null;
 	}
 
+	public Node getNodeFromName(String name) {
+		for (Node n : nodeMap.keySet()) {
+			if (n.getName().equals(name))
+				return n;
+		}
+		return null;
+	}
+
 	/**
 	 * 
 	 * @return
@@ -84,10 +128,29 @@ public class EgressTopology {
 		r.append(String.format("\tgraph[center=1 rankdir=LR]\n"));
 		r.append(String.format("\tranksep=1.0;\n"));
 
-		// Ports
-		for (EgressPort p : portSet) {
-			r.append(String.format("\t%s[label=\"%s\"];\n", GraphViz.dotUid(p),
-					p.getName()));
+		if (nodeMap.size() > 0) {
+			for (Node n : nodeMap.keySet()) {
+				
+				r.append(String.format("subgraph cluster_%s {\n",GraphViz.dotUid(n)));
+				r.append(String.format("label=\"%s\"",n.getName()));
+				String ranking = "{rank=same ";
+				// Ports
+				for (EgressPort p : nodeMap.get(n)) {
+					String uID = GraphViz.dotUid(p);
+					r.append(String.format("\t%s[label=\"%s\"];\n",
+							uID, p.getName()));
+					ranking += uID + " ";
+				}
+				ranking += "};\n\t}";
+				r.append(ranking);
+			}
+		} else {
+
+			// Ports
+			for (EgressPort p : portSet) {
+				r.append(String.format("\t%s[label=\"%s\"];\n",
+						GraphViz.dotUid(p), p.getName()));
+			}
 		}
 
 		// Links
@@ -104,13 +167,14 @@ public class EgressTopology {
 	}
 
 	/**
-	 * Returns all ports reachable from srcPort. infinite recursion.
+	 * Returns all ports reachable from srcPort.
 	 * 
 	 * @param srcPort
 	 * @return A set of reachable ports, not including srcPort.
 	 * 
 	 */
 	public Set<EgressPort> getReachablePorts(EgressPort srcPort) {
+
 		DeterministicHashSet<EgressPort> rv = new DeterministicHashSet<EgressPort>();
 		DeterministicHashSet<EgressPort> visited = new DeterministicHashSet<EgressPort>();
 		visited.add(srcPort);
@@ -119,6 +183,7 @@ public class EgressTopology {
 			rv.addAll(getReachablePorts(dest, visited));
 		}
 		return rv;
+
 	}
 
 	private Set<EgressPort> getReachablePorts(EgressPort srcPort,
@@ -127,6 +192,7 @@ public class EgressTopology {
 			return new DeterministicHashSet<EgressPort>();
 		DeterministicHashSet<EgressPort> rv = new DeterministicHashSet<EgressPort>();
 		visited.add(srcPort);
+
 		for (EgressPort dest : linkMap.get(srcPort)) {
 			visited.add(dest);
 			rv.addAll(getReachablePorts(dest, visited));
@@ -153,24 +219,24 @@ public class EgressTopology {
 	 * 
 	 */
 	public List<EgressPort> getPath(EgressPort src, EgressPort dest) {
-		// List<EgressPort> rv = null;
-		// if (dest == src) {
-		// rv = new LinkedList<EgressPort>();
-		// rv.add(dest);
-		// } else {
-		// for (EgressPort p : linkMap.get(src)) {
-		// rv = getPath(p, dest);
-		// if (rv != null) {
-		// rv.add(0, src);
-		// break;
-		// }
-		// }
-		// }
-		// return rv;
+		List<EgressPort> rv = null;
+		if (dest == src) {
+			rv = new LinkedList<EgressPort>();
+			rv.add(dest);
+		} else {
+			for (EgressPort p : linkMap.get(src)) {
+				rv = getPath(p, dest);
+				if (rv != null) {
+					rv.add(0, src);
+					break;
+				}
+			}
+		}
+		return rv;
 
-		dijkstra = new Dijkstra(this);
-		dijkstra.execute(src);
-		return dijkstra.getPath(dest);
+		// dijkstra = new Dijkstra(this);
+		// dijkstra.execute(src);
+		// return dijkstra.getPath(dest);
 
 	}
 }

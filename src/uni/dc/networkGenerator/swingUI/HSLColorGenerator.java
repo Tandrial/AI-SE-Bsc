@@ -1,11 +1,6 @@
 package uni.dc.networkGenerator.swingUI;
 
 import java.awt.Color;
-import java.awt.FlowLayout;
-import java.awt.Font;
-
-import javax.swing.JFrame;
-import javax.swing.JLabel;
 
 public class HSLColorGenerator {
 
@@ -81,40 +76,5 @@ public class HSLColorGenerator {
 				+ ((float) maskAndPack(B_REVERSE_MASK, reverseIndex) / B_RANGE)
 				* (B_END - H_BEGIN);
 		return Color.getHSBColor(h, s, b);
-	}
-
-	public static void main(String[] args) {
-		HSLColorGenerator gen = new HSLColorGenerator();
-		for (int i = 0; i < 100; i++) {
-			Color c = gen.getColor(i);
-			System.out.printf("i=%d, r=0x%02x, g=0x%02x, b=0x%02x\n", i,
-					c.getRed(), c.getGreen(), c.getBlue());
-		}
-
-		JFrame frame = new JFrame();
-		frame.setLayout(new FlowLayout());
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		for (int i = 0; i < 300; i++) {
-			JLabel l = new JLabel(String.format("%03d", i));
-			Color c = gen.getColor(i);
-			l.setBackground(c);
-			l.setOpaque(true);
-			l.setToolTipText(String.format("r=0x%02x, g=0x%02x, b=0x%02x",
-					c.getRed(), c.getGreen(), c.getBlue()));
-			l.setFont(new Font("monospaced", Font.PLAIN, 16));
-			frame.add(l);
-		}
-		frame.setSize(640, 480);
-		frame.setVisible(true);
-		/*
-		 * System.out.println(maskValueRange(H_MASK));
-		 * 
-		 * int range = maskValueRange(H_MASK); int reverseMask =
-		 * revertBits(H_MASK); for (int i=0;i<300;i++){ int reverseValue =
-		 * revertBits(i); int extracted = maskAndPack(reverseMask,
-		 * reverseValue);
-		 * System.out.printf("i=%d, extracted=%d, %.4f\n",i,extracted
-		 * ,(double)extracted/range); }
-		 */
 	}
 }

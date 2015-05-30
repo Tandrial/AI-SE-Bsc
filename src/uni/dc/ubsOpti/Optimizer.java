@@ -36,10 +36,10 @@ public class Optimizer {
 
 	public static void main(String[] args) {
 		PriorityConfiguration prio;
-		int depth = 4;
-		int portCount = 6;
 		Map<EgressPort, Set<Flow>> flowMap;
 
+		// int depth = 4;
+		// int portCount = 6;
 		// GeneratorAPI.generateNetwork(depth, portCount);
 		// Traffic network = GeneratorAPI.getTraffic();
 		// flowMap = network.getPortFlowMap();
@@ -58,51 +58,49 @@ public class Optimizer {
 		delays.printDelays();
 		System.out.println("delays okay = " + delays.checkDelays());
 		System.out.println(prio);
-
-		BruteForce BF = new BruteForce(flowMap);
-		HillClimbing<int[], int[]> HC = new HillClimbing<int[], int[]>();
-		SimulatedAnnealing<int[], int[]> SA = new SimulatedAnnealing<int[], int[]>();
-		SimpleGenerationalEA<int[], int[]> GA = new SimpleGenerationalEA<int[], int[]>();
-		RandomWalk<int[], int[]> RW = new RandomWalk<int[], int[]>();
-
-		int dim = prio.toIntArray().length;
-		int maxSteps = 10000;
-		int runs = 20;
 		int maxPrio = 2;
 
-		System.out.println("================================================");
-		// Brute Force
+		BruteForce BF = new BruteForce(flowMap);
 		BF.optimize(prio, maxPrio);
 		System.out.println(BF.getBestConfig());
 		delays.calculateDelays(BF.getBestConfig());
 		delays.printDelays();
 		System.out.println("delays okay = " + delays.checkDelays());
-
-		maxPrio = 5;
-		INullarySearchOperation<int[]> create = new IntArrayAllOnesCreation(
-				dim, 1, maxPrio);
-		IUnarySearchOperation<int[]> mutate = new IntArrayAllNormalMutation(1,
-				maxPrio);
-
-		GA.setBinarySearchOperation(IntArrayWeightedMeanCrossover.INT_ARRAY_WEIGHTED_MEAN_CROSSOVER);
-		ISelectionAlgorithm sel = new TournamentSelection(2);
-
-		System.out.println("================================================");
-		// Generational Genetic/Evolutionary Algorithm
-		// (Chapter 28, Section 28.1.4.1, Section 29.3)
-		GA.setObjectiveFunction(delays);
-		GA.setNullarySearchOperation(create);
-		GA.setSelectionAlgorithm(sel);
-		GA.setUnarySearchOperation(mutate);
-		testRuns(GA, runs, maxSteps);
-
-		System.out.println("================================================");
-		// Random Walks (Section 8.2)
-		RW.setObjectiveFunction(delays);
-		RW.setNullarySearchOperation(create);
-		RW.setUnarySearchOperation(mutate);
-		testRuns(RW, runs, maxSteps);
-		RW.getConfiguration(true);
+//		SimpleGenerationalEA<int[], int[]> GA = new SimpleGenerationalEA<int[], int[]>();
+//		RandomWalk<int[], int[]> RW = new RandomWalk<int[], int[]>();
+//
+//		int dim = prio.toIntArray().length;
+//		int maxSteps = 10000;
+//		int runs = 20;
+//
+//		System.out.println("================================================");
+//		// Brute Force
+//
+//		maxPrio = 5;
+//		INullarySearchOperation<int[]> create = new IntArrayAllOnesCreation(
+//				dim, 1, maxPrio);
+//		IUnarySearchOperation<int[]> mutate = new IntArrayAllNormalMutation(1,
+//				maxPrio);
+//
+//		GA.setBinarySearchOperation(IntArrayWeightedMeanCrossover.INT_ARRAY_WEIGHTED_MEAN_CROSSOVER);
+//		ISelectionAlgorithm sel = new TournamentSelection(2);
+//
+//		System.out.println("================================================");
+//		// Generational Genetic/Evolutionary Algorithm
+//		// (Chapter 28, Section 28.1.4.1, Section 29.3)
+//		GA.setObjectiveFunction(delays);
+//		GA.setNullarySearchOperation(create);
+//		GA.setSelectionAlgorithm(sel);
+//		GA.setUnarySearchOperation(mutate);
+//		testRuns(GA, runs, maxSteps);
+//
+//		System.out.println("================================================");
+//		// Random Walks (Section 8.2)
+//		RW.setObjectiveFunction(delays);
+//		RW.setNullarySearchOperation(create);
+//		RW.setUnarySearchOperation(mutate);
+//		testRuns(RW, runs, maxSteps);
+//		RW.getConfiguration(true);
 	}
 
 	@SuppressWarnings("unchecked")

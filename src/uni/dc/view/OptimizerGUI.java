@@ -18,32 +18,24 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
-import javax.swing.JRadioButton;
+import javax.swing.JRadioButtonMenuItem;
+import javax.swing.JSeparator;
 import javax.swing.UIManager;
 import javax.swing.border.EmptyBorder;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
 import uni.dc.model.EgressTopology;
-import uni.dc.model.Traffic;
 import uni.dc.ubsOpti.Optimizer;
 import uni.dc.util.NetworkParser;
 
 public class OptimizerGUI extends JFrame {
 	private static final long serialVersionUID = 1L;
-	private JRadioButton topologyImageRadioButton;
-	private JRadioButton flowImageRadioButton;
 	private GraphVizPanel imagePanel;
 	private Choice choice;
 	private JLabel statusLabel;
 
 	private NetworkParser parser;
 	private Optimizer optimizer = new Optimizer();
-
-	private class UpdateActionListener implements ActionListener {
-		public void actionPerformed(ActionEvent e) {
-			updateDisplay();
-		}
-	}
 
 	public OptimizerGUI(String title) {
 		super(title);
@@ -83,6 +75,7 @@ public class OptimizerGUI extends JFrame {
 			}
 		});
 		mnFile.add(mntmSaveJpg);
+		mnFile.add(new JSeparator());
 
 		JMenuItem mntmExit = new JMenuItem("Exit");
 		mntmExit.addActionListener(new ActionListener() {
@@ -93,6 +86,31 @@ public class OptimizerGUI extends JFrame {
 			}
 		});
 		mnFile.add(mntmExit);
+
+		JMenu mnDisplay = new JMenu("Display");
+		menuBar.add(mnDisplay);
+
+		JRadioButtonMenuItem rdbtnmntmPorts = new JRadioButtonMenuItem("Ports");
+		rdbtnmntmPorts.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				updateDisplay(parser.getTopology().toDot());
+			}
+		});
+		rdbtnmntmPorts.setSelected(true);
+		mnDisplay.add(rdbtnmntmPorts);
+
+		JRadioButtonMenuItem rdbtnmntmFlows = new JRadioButtonMenuItem("Flows");
+		rdbtnmntmFlows.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				updateDisplay(parser.getTraffic().toDot());
+			}
+		});
+		mnDisplay.add(rdbtnmntmFlows);
+
+		ButtonGroup viewTypeSelectionGroup = new ButtonGroup();
+		viewTypeSelectionGroup.add(rdbtnmntmPorts);
+		viewTypeSelectionGroup.add(rdbtnmntmFlows);
+
 		JPanel contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));
@@ -109,20 +127,6 @@ public class OptimizerGUI extends JFrame {
 
 		viewTypeSelectionPanel.setLayout(new BoxLayout(viewTypeSelectionPanel,
 				BoxLayout.PAGE_AXIS));
-
-		topologyImageRadioButton = new JRadioButton("Ports");
-		topologyImageRadioButton.addActionListener(new UpdateActionListener());
-		topologyImageRadioButton.setSelected(true);
-		flowImageRadioButton = new JRadioButton("Flows");
-		flowImageRadioButton.addActionListener(new UpdateActionListener());
-
-		ButtonGroup viewTypeSelectionGroup = new ButtonGroup();
-		viewTypeSelectionGroup.add(topologyImageRadioButton);
-		viewTypeSelectionGroup.add(flowImageRadioButton);
-
-		viewTypeSelectionPanel.add(topologyImageRadioButton);
-		viewTypeSelectionPanel.add(flowImageRadioButton);
-		topologyParameterPanel.add(viewTypeSelectionPanel);
 
 		topologyPanel.add(topologyParameterPanel, BorderLayout.PAGE_START);
 
@@ -155,18 +159,12 @@ public class OptimizerGUI extends JFrame {
 		topologyPanel.add(imagePanel, BorderLayout.CENTER);
 	}
 
-	public void updateDisplay() {
+	private void updateDisplay(StringBuilder content) {
 		if (parser == null)
 			return;
 		long t1, t2;
 		t1 = System.nanoTime();
-
-		if (topologyImageRadioButton.isSelected())
-			imagePanel.setDot(parser.getTopology().toDot());
-
-		if (flowImageRadioButton.isSelected())
-			imagePanel.setDot(parser.getTraffic().toDot());
-
+		imagePanel.setDot(content);
 		t2 = System.nanoTime();
 
 		setStatusMsg("Done (rendered in %.4f sec.)", (t2 - t1) / 1.0E9);
@@ -180,20 +178,14 @@ public class OptimizerGUI extends JFrame {
 			t1 = System.nanoTime();
 			parser = new NetworkParser(file);
 			EgressTopology topology = parser.getTopology();
-			Traffic traffic = parser.getTraffic();
 
 			t2 = System.nanoTime();
-
-			if (topologyImageRadioButton.isSelected())
-				imagePanel.setDot(topology.toDot());
-			if (flowImageRadioButton.isSelected())
-				imagePanel.setDot(traffic.toDot());
-
+			imagePanel.setDot(topology.toDot());
 			t3 = System.nanoTime();
 
-			setStatusMsg(
-					"Done (loaded %s in %.4f sec., rendered in %.4f sec.)",
-					file.toString(), (t2 - t1) / 1.0E9, (t3 - t2) / 1.0E9);
+			setStatusMsg("Done (loaded in %.4f sec., rendered in %.4f sec.)",
+					(t2 - t1) / 1.0E9, (t3 - t2) / 1.0E9);
+			setTitle("UBS Optimizer - " + parser.getFileName());
 		} catch (Exception e) {
 			e.printStackTrace();
 			setStatusMsg("Load from File failed!");

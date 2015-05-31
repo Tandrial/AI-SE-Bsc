@@ -71,7 +71,11 @@ public class PriorityConfiguration implements Cloneable {
 	}
 
 	public boolean hasPriority(EgressPort port, Flow flow) {
-		return this.portFlowPriorityMap.get(port).get(flow) != null;
+		if (this.portFlowPriorityMap.get(port) != null) {
+			return this.portFlowPriorityMap.get(port).get(flow) != null;
+		} else {
+			return false;
+		}
 	}
 
 	/**

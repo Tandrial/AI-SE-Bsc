@@ -116,6 +116,7 @@ public class NetworkParser {
 		}
 		UbsV0DelayCalc delays = new UbsV0DelayCalc(traffic.getPortFlowMap());
 
+		System.out.println(getPriorityConfig());		
 		delays.calculateDelays(getPriorityConfig());
 		delays.printDelays();
 

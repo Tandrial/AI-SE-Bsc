@@ -203,7 +203,6 @@ public class Traffic extends DeterministicHashSet<Flow> {
 		}
 
 		r.append(String.format("}\n"));
-		System.out.println(r.toString());
 		return r;
 	}
 

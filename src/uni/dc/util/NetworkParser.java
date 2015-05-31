@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -17,6 +18,7 @@ import uni.dc.model.Flow;
 import uni.dc.model.Node;
 import uni.dc.model.PriorityConfiguration;
 import uni.dc.model.Traffic;
+import uni.dc.ubsOpti.DelayCalc.UbsV0DelayCalc;
 
 public class NetworkParser {
 	private JSONObject jsonObj = null;
@@ -29,7 +31,7 @@ public class NetworkParser {
 		this.jsonObj = getJSONFromFile(fileName);
 		this.fileName = fileName;
 	}
-	
+
 	public String getFileName() {
 		return fileName.getName();
 	}
@@ -44,9 +46,9 @@ public class NetworkParser {
 			String n1 = JSONObject.getNames(curr)[0];
 			String n2 = curr.getString(n1);
 
-			topology.add(new Node(n1),  new Node(n2));
-			topology.add(new Node(n2),  new Node(n1));
-			
+			topology.add(new Node(n1), new Node(n2));
+			topology.add(new Node(n2), new Node(n1));
+
 		}
 		return topology;
 	}
@@ -89,30 +91,34 @@ public class NetworkParser {
 			Flow flow = new Flow();
 			flow.setName(String.format("F%d", flowID));
 			flow.setTopology(topology);
-			flow.setSrcPort(topology.getPortFromName(src));
 			DeterministicHashSet<EgressPort> dests = new DeterministicHashSet<EgressPort>();
-			dests.add(topology.getPortFromName(dest));
-			flow.setDestPortSet(dests);
 			flow.setRate(rate);
 			flow.setMaxFrameLength(maxPacketLength);
 			traffic.add(flow);
+			List<EgressPort> path = topology.getPath(src, dest);
 
-//			List<EgressPort> path = topology.getPath(src, dest);
-//			for (EgressPort p : path) {
-//				if (!portFlowMap.containsKey(p))
-//					portFlowMap.put(p, new DeterministicHashSet<Flow>());
-//				portFlowMap.get(p).add(flow);
-//			}
+			flow.setSrcPort(path.get(0));
+			EgressPort lastEgress = path.get(path.size() - 1);
+			for (EgressPort x : topology.getLinkMap().get(lastEgress)) {
+				dests.add(x);
+			}
+			flow.setDestPortSet(dests);
+
+			for (EgressPort p : path) {
+				if (!portFlowMap.containsKey(p))
+					portFlowMap.put(p, new DeterministicHashSet<Flow>());
+				portFlowMap.get(p).add(flow);
+			}
 		}
-//
-//		for (EgressPort port : portFlowMap.keySet()) {
-//			port.setFlowList(portFlowMap.get(port));
-//		}
-//		UbsV0DelayCalc delays = new UbsV0DelayCalc(traffic.getPortFlowMap());
-//		
-//		delays.calculateDelays(getPriorityConfig());
-//		delays.printDelays();
-//		
+
+		for (EgressPort port : portFlowMap.keySet()) {
+			port.setFlowList(portFlowMap.get(port));
+		}
+		UbsV0DelayCalc delays = new UbsV0DelayCalc(traffic.getPortFlowMap());
+
+		delays.calculateDelays(getPriorityConfig());
+		delays.printDelays();
+
 		return traffic;
 	}
 

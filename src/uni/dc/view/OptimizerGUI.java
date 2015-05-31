@@ -21,7 +21,6 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
 import uni.dc.model.EgressTopology;
-import uni.dc.ubsOpti.Optimizer;
 import uni.dc.util.NetworkParser;
 
 public class OptimizerGUI extends JFrame {
@@ -31,6 +30,7 @@ public class OptimizerGUI extends JFrame {
 	private NetworkParser parser;
 
 	private boolean portDisplay = true;
+	private boolean UBSv0 = true;
 
 	public OptimizerGUI(String title) {
 		super(title);
@@ -82,32 +82,6 @@ public class OptimizerGUI extends JFrame {
 		});
 		mnFile.add(mntmExit);
 
-		JMenu mnDisplay = new JMenu("Display");
-		menuBar.add(mnDisplay);
-
-		JRadioButtonMenuItem rdbtnmntmPorts = new JRadioButtonMenuItem("Ports",
-				true);
-		rdbtnmntmPorts.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				portDisplay = true;
-				updateDisplay(parser.getTopology().toDot());
-			}
-		});
-		mnDisplay.add(rdbtnmntmPorts);
-
-		JRadioButtonMenuItem rdbtnmntmFlows = new JRadioButtonMenuItem("Flows");
-		rdbtnmntmFlows.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				portDisplay = false;
-				updateDisplay(parser.getTraffic().toDot());
-			}
-		});
-		mnDisplay.add(rdbtnmntmFlows);
-
-		ButtonGroup viewTypeSelectionGroup = new ButtonGroup();
-		viewTypeSelectionGroup.add(rdbtnmntmPorts);
-		viewTypeSelectionGroup.add(rdbtnmntmFlows);
-
 		JMenu mnOptimize = new JMenu("Optimize");
 		menuBar.add(mnOptimize);
 
@@ -134,10 +108,11 @@ public class OptimizerGUI extends JFrame {
 
 		JMenuItem mntmGeneticevolutionaryAlgorithm = new JMenuItem(
 				"simple Genetic/Evolutionary Algorithm");
-		mntmGeneticevolutionaryAlgorithm.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
+		mntmGeneticevolutionaryAlgorithm
+				.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+					}
+				});
 		mnOptimize.add(mntmGeneticevolutionaryAlgorithm);
 
 		JMenuItem mntmRandomWalks = new JMenuItem("Random Walks");
@@ -155,6 +130,59 @@ public class OptimizerGUI extends JFrame {
 			}
 		});
 		mnOptimize.add(mntmAllnoBruteforce);
+
+		JMenu mnSettings = new JMenu("Settings");
+		menuBar.add(mnSettings);
+
+		JMenu mnTrafficModel = new JMenu("Traffic Model");
+		mnSettings.add(mnTrafficModel);
+
+		ButtonGroup trafficTypeSelectionGroup = new ButtonGroup();
+
+		JRadioButtonMenuItem rdbtnmntmUbsV0 = new JRadioButtonMenuItem(
+				"UBS V0", true);
+		rdbtnmntmUbsV0.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				UBSv0 = true;
+			}
+		});
+		mnTrafficModel.add(rdbtnmntmUbsV0);
+		trafficTypeSelectionGroup.add(rdbtnmntmUbsV0);
+
+		JRadioButtonMenuItem rdbtnmntmUbsV3 = new JRadioButtonMenuItem("UBS V3");
+		rdbtnmntmUbsV3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				UBSv0 = false;
+			}
+		});
+		mnTrafficModel.add(rdbtnmntmUbsV3);
+		trafficTypeSelectionGroup.add(rdbtnmntmUbsV3);
+
+		JMenu mnDisplaytype = new JMenu("Displaytype");
+		mnSettings.add(mnDisplaytype);
+
+		ButtonGroup viewTypeSelectionGroup = new ButtonGroup();
+
+		JRadioButtonMenuItem rdbtnmntmPorts = new JRadioButtonMenuItem("Ports",
+				true);
+		mnDisplaytype.add(rdbtnmntmPorts);
+		rdbtnmntmPorts.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				portDisplay = true;
+				updateDisplay(parser.getTopology().toDot());
+			}
+		});
+		viewTypeSelectionGroup.add(rdbtnmntmPorts);
+
+		JRadioButtonMenuItem rdbtnmntmFlows = new JRadioButtonMenuItem("Flows");
+		mnDisplaytype.add(rdbtnmntmFlows);
+		rdbtnmntmFlows.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				portDisplay = false;
+				updateDisplay(parser.getTraffic().toDot());
+			}
+		});
+		viewTypeSelectionGroup.add(rdbtnmntmFlows);
 
 		JPanel contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));

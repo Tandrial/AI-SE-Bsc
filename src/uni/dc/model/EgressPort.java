@@ -9,6 +9,8 @@ public class EgressPort implements Cloneable {
 	private Set<Flow> flowList = new DeterministicHashSet<Flow>();
 
 	private String name;
+	
+	private Node node;
 
 	public EgressPort() {
 		super();
@@ -63,5 +65,13 @@ public class EgressPort implements Cloneable {
 		} else if (!name.equals(other.name))
 			return false;
 		return true;
+	}
+
+	public Node getNode() {
+		return node;
+	}
+
+	public void setNode(Node node) {
+		this.node = node;
 	}
 }

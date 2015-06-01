@@ -33,13 +33,19 @@ public class Flow {
 
 	public void speedUp(double inc) {
 		for (UbsDestParameters iter : destPortParameterMap.values()) {
-			iter.incSpeedFactor(inc);
+			iter.decSpeedFactor(inc);
 		}
 	}
 
 	public void slowDown(double dec) {
 		for (UbsDestParameters iter : destPortParameterMap.values()) {
-			iter.decSpeedFactor(dec);
+			iter.incSpeedFactor(dec);
+		}
+	}
+	
+	public void resetSpeed() {
+		for (UbsDestParameters iter : destPortParameterMap.values()) {
+			iter.resetSpeed();;
 		}
 	}
 

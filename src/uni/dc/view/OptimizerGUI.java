@@ -21,10 +21,12 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
 import uni.dc.model.EgressTopology;
+import uni.dc.model.Flow;
 import uni.dc.ubsOpti.Optimizer;
 import uni.dc.ubsOpti.DelayCalc.UbsDelayCalc;
 import uni.dc.ubsOpti.DelayCalc.UbsV0DelayCalc;
 import uni.dc.ubsOpti.DelayCalc.UbsV3DelayCalc;
+import uni.dc.util.DeterministicHashSet;
 import uni.dc.util.NetworkParser;
 
 public class OptimizerGUI extends JFrame {
@@ -93,59 +95,67 @@ public class OptimizerGUI extends JFrame {
 		JMenu mnOptimize = new JMenu("Optimize");
 		menuBar.add(mnOptimize);
 
-		JMenuItem mntmBruteforce = new JMenuItem("Brute Force");
-		mntmBruteforce.addActionListener(new ActionListener() {
+		JMenuItem mntmBF = new JMenuItem("BruteForce");
+		mntmBF.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				if (parser != null) {
-					optimizer.optimize(parser, delayCalc, "Brute Force");
+					resetForOptimizerRun();
+					optimizer.optimize(parser, delayCalc, "BruteForce",
+							new DeterministicHashSet<Flow>());
 				}
 			}
 		});
-		mnOptimize.add(mntmBruteforce);
+		mnOptimize.add(mntmBF);
 
-		JMenuItem mntmHillclimbing = new JMenuItem("Hillclimbing");
-		mntmHillclimbing.addActionListener(new ActionListener() {
+		JMenuItem mntmHC = new JMenuItem("Hillclimbing");
+		mntmHC.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (parser != null) {
-					optimizer.optimize(parser, delayCalc, "Hillclimbing");
+					resetForOptimizerRun();
+					optimizer.optimize(parser, delayCalc, "HillClimbing",
+							new DeterministicHashSet<Flow>());
 				}
 			}
 		});
-		mnOptimize.add(mntmHillclimbing);
+		mnOptimize.add(mntmHC);
 
-		JMenuItem mntmSimulatedAnnealing = new JMenuItem("Simulated Annealing");
-		mntmSimulatedAnnealing.addActionListener(new ActionListener() {
+		JMenuItem mntmSA = new JMenuItem("SimulatedAnnealing");
+		mntmSA.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (parser != null) {
-					optimizer
-							.optimize(parser, delayCalc, "Simulated Annealing");
+					resetForOptimizerRun();
+					optimizer.optimize(parser, delayCalc, "SimulatedAnnealing",
+							new DeterministicHashSet<Flow>());
 				}
 			}
 		});
-		mnOptimize.add(mntmSimulatedAnnealing);
+		mnOptimize.add(mntmSA);
 
-		JMenuItem mntmGeneticevolutionaryAlgorithm = new JMenuItem(
+		JMenuItem mntmGA = new JMenuItem(
 				"SimpleGenerational Evolutionary Algorithm");
-		mntmGeneticevolutionaryAlgorithm
-				.addActionListener(new ActionListener() {
-					public void actionPerformed(ActionEvent e) {
-						if (parser != null) {
-							optimizer.optimize(parser, delayCalc,
-									"SimpleGenerationalEA");
-						}
-					}
-				});
-		mnOptimize.add(mntmGeneticevolutionaryAlgorithm);
-
-		JMenuItem mntmRandomWalks = new JMenuItem("Random Walks");
-		mntmRandomWalks.addActionListener(new ActionListener() {
+		mntmGA.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (parser != null) {
-					optimizer.optimize(parser, delayCalc, "Random Walks");
+					resetForOptimizerRun();
+					optimizer.optimize(parser, delayCalc,
+							"SimpleGenerationalEA",
+							new DeterministicHashSet<Flow>());
 				}
 			}
 		});
-		mnOptimize.add(mntmRandomWalks);
+		mnOptimize.add(mntmGA);
+
+		JMenuItem mntmRW = new JMenuItem("RandomWalks");
+		mntmRW.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (parser != null) {
+					resetForOptimizerRun();
+					optimizer.optimize(parser, delayCalc, "RandomWalks",
+							new DeterministicHashSet<Flow>());
+				}
+			}
+		});
+		mnOptimize.add(mntmRW);
 
 		mnOptimize.add(new JSeparator());
 
@@ -153,12 +163,14 @@ public class OptimizerGUI extends JFrame {
 		mntmAllnoBruteforce.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (parser != null) {
-					optimizer.optimize(parser, delayCalc, "Hillclimbing");
-					optimizer
-							.optimize(parser, delayCalc, "Simulated Annealing");
-					optimizer.optimize(parser, delayCalc,
-							"SimpleGenerationalEA");
-					optimizer.optimize(parser, delayCalc, "Random Walks");
+					String[] algos = new String[] { "Hillclimbing",
+							"SimulatedAnnealing", "SimpleGenerationalEA",
+							"RandomWalks" };
+					for (int i = 0; i < algos.length; i++) {
+						resetForOptimizerRun();
+						optimizer.optimize(parser, delayCalc, algos[i],
+								new DeterministicHashSet<Flow>());
+					}
 				}
 			}
 		});
@@ -280,6 +292,13 @@ public class OptimizerGUI extends JFrame {
 		statusLabel.setText(String.format(fmt, args));
 		statusLabel.repaint();
 		statusLabel.validate();
+	}
+
+	private void resetForOptimizerRun() {
+		for (Flow f : parser.getTraffic()) {
+			f.resetSpeed();
+		}
+		delayCalc.setInitialDelays(parser.getPriorityConfig());
 	}
 
 	public static void main(String[] args) {

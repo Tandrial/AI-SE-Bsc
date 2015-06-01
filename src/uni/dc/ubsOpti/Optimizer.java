@@ -1,6 +1,7 @@
 package uni.dc.ubsOpti;
 
 import java.util.List;
+import java.util.Set;
 
 import org.goataa.impl.algorithms.RandomWalk;
 import org.goataa.impl.algorithms.ea.SimpleGenerationalEA;
@@ -18,6 +19,7 @@ import org.goataa.spec.INullarySearchOperation;
 import org.goataa.spec.ISOOptimizationAlgorithm;
 import org.goataa.spec.IUnarySearchOperation;
 
+import uni.dc.model.Flow;
 import uni.dc.model.PriorityConfiguration;
 import uni.dc.ubsOpti.DelayCalc.UbsDelayCalc;
 import uni.dc.util.NetworkParser;
@@ -37,7 +39,6 @@ public class Optimizer {
 	@SuppressWarnings("unchecked")
 	private final int[] testRuns(
 			final ISOOptimizationAlgorithm<?, int[], ?> algorithm) {
-
 		BufferedStatistics stat;
 		List<Individual<?, int[]>> solutions;
 		Individual<?, int[]> individual = null;
@@ -51,29 +52,36 @@ public class Optimizer {
 			if (solutions.get(0).v < bestValue) {
 				individual = solutions.get(0);
 				stat.add(individual.v);
-				System.out.println("found better solution " + individual.v);
 			}
 		}
 		return individual.x;
-
 	}
 
 	public PriorityConfiguration optimize(NetworkParser parser,
-			UbsDelayCalc delayCalc, String selectedAlgo) {
+			UbsDelayCalc delayCalc, String selectedAlgo, Set<Flow> flowsToSpeedUp) {
+		//TODO: Multply runs, move 
 		this.delayCalc = delayCalc;
-		PriorityConfiguration config = parser.resetPriorityConfig();
+		PriorityConfiguration config = parser.getPriorityConfig();
+		int cnt = 0;
+		for (Flow f : parser.getTraffic()) {
+			if (cnt++ % 2 == 0)
+				f.speedUp(0.10);
+			else
+				f.slowDown(0.2);
+		}
+
 		maxPrio = 2;
 		dim = config.toIntArray().length;
 		create = new IntArrayAllOnesCreation(dim, 1, maxPrio);
 		mutate = new IntArrayAllNormalMutation(1, maxPrio);
 
-		if (selectedAlgo.equals("Brute Force")) {
+		if (selectedAlgo.equals("BruteForce")) {
 			config = optimizeBruteForce(parser);
-		} else if (selectedAlgo.equals("Simulated Annealing")) {
+		} else if (selectedAlgo.equals("SimulatedAnnealing")) {
 			config.fromIntArray(optimizeSimulatedAnnealing(parser));
 		} else if (selectedAlgo.equals("HillClimbing")) {
 			config.fromIntArray(optimizeHillClimbing(parser));
-		} else if (selectedAlgo.equals("Random Walks")) {
+		} else if (selectedAlgo.equals("RandomWalks")) {
 			config.fromIntArray(optimizeRandomWalks(parser));
 		} else if (selectedAlgo.equals("SimpleGenerationalEA")) {
 			config.fromIntArray(optimizeSimpleGenerationalEA(parser));

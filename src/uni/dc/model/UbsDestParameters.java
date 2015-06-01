@@ -44,4 +44,8 @@ public class UbsDestParameters {
 	public void setPath(List<EgressPort> path) {
 		this.path = path;
 	}
+
+	public void resetSpeed() {
+		speedUpFactor = 1.0d;
+	}
 }

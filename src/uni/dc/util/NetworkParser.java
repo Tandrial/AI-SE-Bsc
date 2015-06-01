@@ -72,7 +72,7 @@ public class NetworkParser {
 		traffic.setTopology(getTopology());
 		traffic.setNetworkSpeed(convertSpeed(jsonObj.getString("networkSpeed")));
 		Map<EgressPort, Set<Flow>> portFlowMap = new LinkedHashMap<EgressPort, Set<Flow>>();
-
+		
 		/*
 		 * Parse streams: need : streamID path tspec
 		 */

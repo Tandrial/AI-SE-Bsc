@@ -24,7 +24,7 @@ public class BruteForce {
 			int maxPrio) {
 		int[] prios = prio.toIntArray();
 		bestPrio = (PriorityConfiguration) prio.clone();
-		delayCalc.setPrio(prio);
+		delayCalc.setPrio(bestPrio);
 		minDelay = delayCalc.compute(prios, null);
 		genPermutations(new int[prios.length], 0, maxPrio);
 		delayCalc.setPrio(bestPrio);

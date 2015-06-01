@@ -6,11 +6,12 @@ import java.util.Set;
 import uni.dc.model.EgressPort;
 import uni.dc.model.Flow;
 import uni.dc.model.PriorityConfiguration;
+import uni.dc.ubsOpti.DelayCalc.UBSDelayCalc;
 import uni.dc.ubsOpti.DelayCalc.UbsV0DelayCalc;
 
 public class BruteForce {
 
-	private UbsV0DelayCalc delayCalc;
+	private UBSDelayCalc delayCalc;
 
 	private PriorityConfiguration bestPrio = null;
 	private double minDelay = Double.MAX_VALUE;

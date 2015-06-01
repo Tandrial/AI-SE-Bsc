@@ -70,7 +70,6 @@ public class GraphViz {
 		} else {
 			return false;
 		}
-
 	}
 
 	public StringBuilder renderToString(StringBuilder dotString,

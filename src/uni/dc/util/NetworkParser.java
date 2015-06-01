@@ -60,6 +60,11 @@ public class NetworkParser {
 		return prio;
 	}
 
+	public PriorityConfiguration resetPriorityConfig() {
+		prio = new PriorityConfiguration(getTraffic());
+		return prio;
+	}
+
 	public Traffic getTraffic() {
 		if (traffic != null)
 			return traffic;
@@ -116,7 +121,7 @@ public class NetworkParser {
 		}
 		UbsV0DelayCalc delays = new UbsV0DelayCalc(traffic.getPortFlowMap());
 
-		System.out.println(getPriorityConfig());		
+		System.out.println(getPriorityConfig());
 		delays.calculateDelays(getPriorityConfig());
 		delays.printDelays();
 

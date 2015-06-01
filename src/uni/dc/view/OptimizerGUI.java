@@ -21,6 +21,8 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
 import uni.dc.model.EgressTopology;
+import uni.dc.ubsOpti.Optimizer;
+import uni.dc.ubsOpti.DelayCalc.UbsV0DelayCalc;
 import uni.dc.util.NetworkParser;
 
 public class OptimizerGUI extends JFrame {
@@ -28,15 +30,18 @@ public class OptimizerGUI extends JFrame {
 	private GraphVizPanel imagePanel;
 	private JLabel statusLabel;
 	private NetworkParser parser;
+	private Optimizer optimizer;
+	private UbsV0DelayCalc delayCalc;
 
 	private boolean portDisplay = true;
-	private boolean UBSv0 = true;
 
 	public OptimizerGUI(String title) {
 		super(title);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		setSize(1024, 768);
+
+		optimizer = new Optimizer();
 
 		JMenuBar menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
@@ -85,9 +90,12 @@ public class OptimizerGUI extends JFrame {
 		JMenu mnOptimize = new JMenu("Optimize");
 		menuBar.add(mnOptimize);
 
-		JMenuItem mntmBruteforce = new JMenuItem("BruteForce");
+		JMenuItem mntmBruteforce = new JMenuItem("Brute Force");
 		mntmBruteforce.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				if (parser != null) {
+					optimizer.optimize(parser, delayCalc, "Brute Force");
+				}
 			}
 		});
 		mnOptimize.add(mntmBruteforce);
@@ -95,6 +103,9 @@ public class OptimizerGUI extends JFrame {
 		JMenuItem mntmHillclimbing = new JMenuItem("Hillclimbing");
 		mntmHillclimbing.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				if (parser != null) {
+					optimizer.optimize(parser, delayCalc, "Hillclimbing");
+				}
 			}
 		});
 		mnOptimize.add(mntmHillclimbing);
@@ -102,15 +113,23 @@ public class OptimizerGUI extends JFrame {
 		JMenuItem mntmSimulatedAnnealing = new JMenuItem("Simulated Annealing");
 		mntmSimulatedAnnealing.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				if (parser != null) {
+					optimizer
+							.optimize(parser, delayCalc, "Simulated Annealing");
+				}
 			}
 		});
 		mnOptimize.add(mntmSimulatedAnnealing);
 
 		JMenuItem mntmGeneticevolutionaryAlgorithm = new JMenuItem(
-				"simple Genetic/Evolutionary Algorithm");
+				"SimpleGenerational Evolutionary Algorithm");
 		mntmGeneticevolutionaryAlgorithm
 				.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
+						if (parser != null) {
+							optimizer.optimize(parser, delayCalc,
+									"SimpleGenerationalEA");
+						}
 					}
 				});
 		mnOptimize.add(mntmGeneticevolutionaryAlgorithm);
@@ -118,6 +137,9 @@ public class OptimizerGUI extends JFrame {
 		JMenuItem mntmRandomWalks = new JMenuItem("Random Walks");
 		mntmRandomWalks.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				if (parser != null) {
+					optimizer.optimize(parser, delayCalc, "Random Walks");
+				}
 			}
 		});
 		mnOptimize.add(mntmRandomWalks);
@@ -127,6 +149,14 @@ public class OptimizerGUI extends JFrame {
 		JMenuItem mntmAllnoBruteforce = new JMenuItem("All (no BruteForce)");
 		mntmAllnoBruteforce.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				if (parser != null) {
+					optimizer.optimize(parser, delayCalc, "Hillclimbing");
+					optimizer
+							.optimize(parser, delayCalc, "Simulated Annealing");
+					optimizer.optimize(parser, delayCalc,
+							"SimpleGenerationalEA");
+					optimizer.optimize(parser, delayCalc, "Random Walks");
+				}
 			}
 		});
 		mnOptimize.add(mntmAllnoBruteforce);
@@ -143,7 +173,7 @@ public class OptimizerGUI extends JFrame {
 				"UBS V0", true);
 		rdbtnmntmUbsV0.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				UBSv0 = true;
+				delayCalc = new UbsV0DelayCalc(parser.getTraffic());
 			}
 		});
 		mnTrafficModel.add(rdbtnmntmUbsV0);
@@ -152,7 +182,6 @@ public class OptimizerGUI extends JFrame {
 		JRadioButtonMenuItem rdbtnmntmUbsV3 = new JRadioButtonMenuItem("UBS V3");
 		rdbtnmntmUbsV3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				UBSv0 = false;
 			}
 		});
 		mnTrafficModel.add(rdbtnmntmUbsV3);

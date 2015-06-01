@@ -198,8 +198,10 @@ public class OptimizerGUI extends JFrame {
 		mnDisplaytype.add(rdbtnmntmPorts);
 		rdbtnmntmPorts.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				if (parser != null && !portDisplay) {
+					updateDisplay(parser.getTopology().toDot());
+				}
 				portDisplay = true;
-				updateDisplay(parser.getTopology().toDot());
 			}
 		});
 		viewTypeSelectionGroup.add(rdbtnmntmPorts);
@@ -208,8 +210,10 @@ public class OptimizerGUI extends JFrame {
 		mnDisplaytype.add(rdbtnmntmFlows);
 		rdbtnmntmFlows.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				if (parser != null && portDisplay) {
+					updateDisplay(parser.getTraffic().toDot());
+				}
 				portDisplay = false;
-				updateDisplay(parser.getTraffic().toDot());
 			}
 		});
 		viewTypeSelectionGroup.add(rdbtnmntmFlows);
@@ -269,10 +273,10 @@ public class OptimizerGUI extends JFrame {
 			delayCalc = ubsV0 ? new UbsV0DelayCalc(parser.getTraffic())
 					: new UbsV3DelayCalc(parser.getTraffic());
 			delayCalc.setInitialDelays(parser.getPriorityConfig());
-			EgressTopology topology = parser.getTopology();
 
 			t2 = System.nanoTime();
-			imagePanel.setDot(topology.toDot());
+			imagePanel.setDot(portDisplay ? parser.getTopology().toDot()
+					: parser.getTraffic().toDot());
 			t3 = System.nanoTime();
 
 			setStatusMsg("Done (loaded in %.4f sec., rendered in %.4f sec.)",

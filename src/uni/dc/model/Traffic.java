@@ -65,7 +65,6 @@ public class Traffic extends DeterministicHashSet<Flow> {
 
 			Map<EgressPort, UbsDestParameters> maxLat = new HashMap<EgressPort, UbsDestParameters>();
 			for (EgressPort destPort : f.getDestPortSet()) {
-				// TODO
 				maxLat.put(destPort, new UbsDestParameters(0.0d));
 
 				List<EgressPort> path = topology.getPath(srcPort.getNode(),
@@ -115,12 +114,8 @@ public class Traffic extends DeterministicHashSet<Flow> {
 			// Links
 			for (EgressPort pSrc : portSet) {
 				Set<EgressPort> outLinks = linkMap.get(pSrc);
-
-				//TODO copmplete rewrite
-				
 				Set<Flow> srcOnlyFlows = new DeterministicHashSet<Flow>(
 						portFlowMap.get(pSrc));
-
 				for (EgressPort pDest : outLinks) {
 					if (done.contains(pDest))
 						continue;
@@ -128,11 +123,8 @@ public class Traffic extends DeterministicHashSet<Flow> {
 
 					Set<Flow> srcDestFlows = new DeterministicHashSet<Flow>(
 							portFlowMap.get(pSrc));
-					
-					//Set<Flow> bla = portFlowMap.get(pDest);
-					//srcDestFlows.retainAll(bla);
-					String srcDestLabel = buildflowDotLabelString(srcDestFlows);
 
+					String srcDestLabel = buildflowDotLabelString(srcDestFlows);
 					Set<Flow> destOnlyFlows = new DeterministicHashSet<Flow>(
 							portFlowMap.get(pDest));
 					destOnlyFlows.removeAll(portFlowMap.get(pSrc));
@@ -141,6 +133,7 @@ public class Traffic extends DeterministicHashSet<Flow> {
 							GraphViz.dotUid(pSrc), GraphViz.dotUid(pDest),
 							srcDestLabel,
 							buildDotColorString(srcDestFlows, flowColorMap)));
+					done.add(pDest);
 				}
 				done.add(pSrc);
 			}
@@ -170,38 +163,38 @@ public class Traffic extends DeterministicHashSet<Flow> {
 						portUid, portUid, portUid, portUid));
 				r.append("\t}\n");
 			}
-		}
-		List<EgressPort> done = new LinkedList<EgressPort>();
 
-		// Links
-		for (EgressPort pSrc : portSet) {
-			Set<EgressPort> outLinks = linkMap.get(pSrc);
+			List<EgressPort> done = new LinkedList<EgressPort>();
 
-			Set<Flow> srcOnlyFlows = new DeterministicHashSet<Flow>(
-					portFlowMap.get(pSrc));
+			// Links
+			for (EgressPort pSrc : portSet) {
+				Set<EgressPort> outLinks = linkMap.get(pSrc);
 
-			for (EgressPort pDest : outLinks) {
-				if (done.contains(pDest))
-					continue;
-				srcOnlyFlows.removeAll(portFlowMap.get(pDest));
-
-				Set<Flow> srcDestFlows = new DeterministicHashSet<Flow>(
+				Set<Flow> srcOnlyFlows = new DeterministicHashSet<Flow>(
 						portFlowMap.get(pSrc));
-				srcDestFlows.retainAll(portFlowMap.get(pDest));
-				String srcDestLabel = buildflowDotLabelString(srcDestFlows);
 
-				Set<Flow> destOnlyFlows = new DeterministicHashSet<Flow>(
-						portFlowMap.get(pDest));
-				destOnlyFlows.removeAll(portFlowMap.get(pSrc));
+				for (EgressPort pDest : outLinks) {
+					if (done.contains(pDest))
+						continue;
+					srcOnlyFlows.removeAll(portFlowMap.get(pDest));
 
-				r.append(String.format("\t%s->%s[label=%s,color=%s];\n",
-						GraphViz.dotUid(pSrc), GraphViz.dotUid(pDest),
-						srcDestLabel,
-						buildDotColorString(srcDestFlows, flowColorMap)));
+					Set<Flow> srcDestFlows = new DeterministicHashSet<Flow>(
+							portFlowMap.get(pSrc));
+					srcDestFlows.retainAll(portFlowMap.get(pDest));
+					String srcDestLabel = buildflowDotLabelString(srcDestFlows);
+
+					Set<Flow> destOnlyFlows = new DeterministicHashSet<Flow>(
+							portFlowMap.get(pDest));
+					destOnlyFlows.removeAll(portFlowMap.get(pSrc));
+
+					r.append(String.format("\t%s->%s[label=%s,color=%s];\n",
+							GraphViz.dotUid(pSrc), GraphViz.dotUid(pDest),
+							srcDestLabel,
+							buildDotColorString(srcDestFlows, flowColorMap)));
+				}
+				done.add(pSrc);
 			}
-			done.add(pSrc);
 		}
-
 		r.append(String.format("}\n"));
 		return r;
 	}

@@ -42,10 +42,10 @@ public class Flow {
 			iter.incSpeedFactor(dec);
 		}
 	}
-	
+
 	public void resetSpeed() {
 		for (UbsDestParameters iter : destPortParameterMap.values()) {
-			iter.resetSpeed();;
+			iter.resetSpeed();
 		}
 	}
 

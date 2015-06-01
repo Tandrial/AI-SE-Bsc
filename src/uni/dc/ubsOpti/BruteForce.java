@@ -27,7 +27,7 @@ public class BruteForce {
 			double delay = delayCalc.compute(n, null);
 			if (delay < minDelay) {
 				minDelay = delay;
-				bestPrio = n.clone();
+				bestPrio = Arrays.copyOf(n, n.length);
 			}
 			return;
 		} else {

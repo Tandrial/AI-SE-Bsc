@@ -24,6 +24,7 @@ import uni.dc.model.EgressTopology;
 import uni.dc.ubsOpti.Optimizer;
 import uni.dc.ubsOpti.DelayCalc.UbsDelayCalc;
 import uni.dc.ubsOpti.DelayCalc.UbsV0DelayCalc;
+import uni.dc.ubsOpti.DelayCalc.UbsV3DelayCalc;
 import uni.dc.util.NetworkParser;
 
 public class OptimizerGUI extends JFrame {
@@ -183,6 +184,7 @@ public class OptimizerGUI extends JFrame {
 		JRadioButtonMenuItem rdbtnmntmUbsV3 = new JRadioButtonMenuItem("UBS V3");
 		rdbtnmntmUbsV3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				delayCalc = new UbsV3DelayCalc(parser.getTraffic());
 			}
 		});
 		mnTrafficModel.add(rdbtnmntmUbsV3);

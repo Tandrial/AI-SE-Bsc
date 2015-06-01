@@ -271,17 +271,24 @@ public class OptimizerGUI extends JFrame {
 	}
 
 	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					UIManager.setLookAndFeel(UIManager
-							.getSystemLookAndFeelClassName());
-					OptimizerGUI gui = new OptimizerGUI("UBS Optimizer");
-					gui.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
+		if (args.length > 0) {
+			System.out.println("Opens GUI if no parameters are passed:");
+			System.out.printf(
+					"Usage : %s <network.json> <trafficClass> <AlgoType>\n",
+					args[0]);
+		} else {
+			EventQueue.invokeLater(new Runnable() {
+				public void run() {
+					try {
+						UIManager.setLookAndFeel(UIManager
+								.getSystemLookAndFeelClassName());
+						OptimizerGUI gui = new OptimizerGUI("UBS Optimizer");
+						gui.setVisible(true);
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
 				}
-			}
-		});
+			});
+		}
 	}
 }

@@ -36,6 +36,7 @@ public class OptimizerGUI extends JFrame {
 	private UbsDelayCalc delayCalc;
 
 	private boolean portDisplay = true;
+	private boolean ubsV0 = true;
 
 	public OptimizerGUI(String title) {
 		super(title);
@@ -175,7 +176,11 @@ public class OptimizerGUI extends JFrame {
 				"UBS V0", true);
 		rdbtnmntmUbsV0.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				delayCalc = new UbsV0DelayCalc(parser.getTraffic());
+				if (!ubsV0) {
+					ubsV0 = true;
+					delayCalc = new UbsV0DelayCalc(parser.getTraffic());
+					delayCalc.setInitialDelays(parser.getPriorityConfig());
+				}
 			}
 		});
 		mnTrafficModel.add(rdbtnmntmUbsV0);
@@ -184,7 +189,11 @@ public class OptimizerGUI extends JFrame {
 		JRadioButtonMenuItem rdbtnmntmUbsV3 = new JRadioButtonMenuItem("UBS V3");
 		rdbtnmntmUbsV3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				delayCalc = new UbsV3DelayCalc(parser.getTraffic());
+				if (ubsV0) {
+					ubsV0 = false;
+					delayCalc = new UbsV3DelayCalc(parser.getTraffic());
+					delayCalc.setInitialDelays(parser.getPriorityConfig());
+				}
 			}
 		});
 		mnTrafficModel.add(rdbtnmntmUbsV3);
@@ -249,6 +258,9 @@ public class OptimizerGUI extends JFrame {
 		try {
 			t1 = System.nanoTime();
 			parser = new NetworkParser(file);
+			delayCalc = ubsV0 ? new UbsV0DelayCalc(parser.getTraffic())
+					: new UbsV3DelayCalc(parser.getTraffic());
+			delayCalc.setInitialDelays(parser.getPriorityConfig());
 			EgressTopology topology = parser.getTopology();
 
 			t2 = System.nanoTime();

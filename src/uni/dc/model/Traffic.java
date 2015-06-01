@@ -66,7 +66,7 @@ public class Traffic extends DeterministicHashSet<Flow> {
 			Map<EgressPort, UbsDestParameters> maxLat = new HashMap<EgressPort, UbsDestParameters>();
 			for (EgressPort destPort : f.getDestPortSet()) {
 				// TODO
-				maxLat.put(destPort, new UbsDestParameters(0.1d));
+				maxLat.put(destPort, new UbsDestParameters(0.0d));
 
 				List<EgressPort> path = topology.getPath(srcPort.getNode(),
 						destPort.getNode(), new DeterministicHashSet<Node>());
@@ -129,8 +129,8 @@ public class Traffic extends DeterministicHashSet<Flow> {
 					Set<Flow> srcDestFlows = new DeterministicHashSet<Flow>(
 							portFlowMap.get(pSrc));
 					
-					Set<Flow> bla = portFlowMap.get(pDest);
-					srcDestFlows.retainAll(bla);
+					//Set<Flow> bla = portFlowMap.get(pDest);
+					//srcDestFlows.retainAll(bla);
 					String srcDestLabel = buildflowDotLabelString(srcDestFlows);
 
 					Set<Flow> destOnlyFlows = new DeterministicHashSet<Flow>(

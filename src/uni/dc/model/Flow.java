@@ -31,6 +31,18 @@ public class Flow {
 		return name;
 	}
 
+	public void speedUp(double inc) {
+		for (UbsDestParameters iter : destPortParameterMap.values()) {
+			iter.incSpeedFactor(inc);
+		}
+	}
+
+	public void slowDown(double dec) {
+		for (UbsDestParameters iter : destPortParameterMap.values()) {
+			iter.decSpeedFactor(dec);
+		}
+	}
+
 	public void setName(String name) {
 		this.name = name;
 	}
@@ -66,6 +78,12 @@ public class Flow {
 	public void setDestPortParameterMap(
 			Map<EgressPort, UbsDestParameters> destPortParameterMap) {
 		this.destPortParameterMap = destPortParameterMap;
+	}
+
+	public void setInitialMaxLatencyRequirement() {
+		for (UbsDestParameters iter : destPortParameterMap.values()) {
+			iter.setMaxLatencyRequirement(iter.getActualDelay());
+		}
 	}
 
 	public double getTotalDelay() {

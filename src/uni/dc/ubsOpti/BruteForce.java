@@ -20,21 +20,21 @@ public class BruteForce {
 		delayCalc = new UbsV0DelayCalc(traffic);
 	}
 
-	public void optimize(PriorityConfiguration prio, int maxPrio) {
+	public PriorityConfiguration optimize(PriorityConfiguration prio,
+			int maxPrio) {
 		int[] prios = prio.toIntArray();
 		bestPrio = (PriorityConfiguration) prio.clone();
 		delayCalc.setPrio(prio);
 		minDelay = delayCalc.compute(prios, null);
 		genPermutations(new int[prios.length], 0, maxPrio);
 		delayCalc.setPrio(bestPrio);
-		System.out.println("minDelay = " + minDelay);
+		return bestPrio;
 	}
 
 	private void genPermutations(int[] n, int pos, int max) {
 		if (pos == n.length) {
 			double delay = delayCalc.compute(n, null);
 			if (delay < minDelay) {
-				System.out.println("found better solution " + delay);
 				minDelay = delay;
 				bestPrio.fromIntArray(n);
 			}
@@ -46,12 +46,4 @@ public class BruteForce {
 			}
 		}
 	}
-
-	public PriorityConfiguration getBestConfig() {
-		if (bestPrio != null)
-			return bestPrio;
-		else
-			return null;
-	}
-
 }

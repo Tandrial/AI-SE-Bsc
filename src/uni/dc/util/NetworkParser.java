@@ -18,8 +18,6 @@ import uni.dc.model.Flow;
 import uni.dc.model.Node;
 import uni.dc.model.PriorityConfiguration;
 import uni.dc.model.Traffic;
-import uni.dc.ubsOpti.DelayCalc.UbsDelayCalc;
-import uni.dc.ubsOpti.DelayCalc.UbsV0DelayCalc;
 
 public class NetworkParser {
 	private JSONObject jsonObj = null;
@@ -120,12 +118,6 @@ public class NetworkParser {
 		for (EgressPort port : portFlowMap.keySet()) {
 			port.setFlowList(portFlowMap.get(port));
 		}
-		UbsDelayCalc delays = new UbsV0DelayCalc(traffic.getPortFlowMap());
-
-		System.out.println(getPriorityConfig());
-		delays.calculateDelays(getPriorityConfig());
-		delays.printDelays();
-
 		return traffic;
 	}
 

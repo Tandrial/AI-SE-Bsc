@@ -53,6 +53,14 @@ public abstract class UbsDelayCalc extends OptimizationModule implements
 
 	public abstract void calculateDelays();
 
+	public void setInitialDelays(PriorityConfiguration prio) {
+		this.prio = prio;
+		calculateDelays();
+		for (Flow f : flows) {
+			f.setInitialMaxLatencyRequirement();
+		}
+	}
+
 	public void printDelays() {
 		for (Flow x : flows) {
 			System.out.printf("%s : %.0f Mbps, %d bit\n", x.getName(),

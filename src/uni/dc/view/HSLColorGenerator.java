@@ -39,7 +39,6 @@ public class HSLColorGenerator {
 	}
 
 	protected static int revertBits(int x) {
-
 		int r = 0;
 		for (int i = 0; i < 32; i++) {
 			r = (r << 1) | x & 0b1;

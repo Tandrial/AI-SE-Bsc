@@ -98,11 +98,7 @@ public class OptimizerGUI extends JFrame {
 		JMenuItem mntmBF = new JMenuItem("BruteForce");
 		mntmBF.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				if (parser != null) {
-					resetForOptimizerRun();
-					optimizer.optimize(parser, delayCalc, "BruteForce",
-							new DeterministicHashSet<Flow>());
-				}
+				optimize("BruteForce");
 			}
 		});
 		mnOptimize.add(mntmBF);
@@ -110,11 +106,7 @@ public class OptimizerGUI extends JFrame {
 		JMenuItem mntmHC = new JMenuItem("Hillclimbing");
 		mntmHC.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if (parser != null) {
-					resetForOptimizerRun();
-					optimizer.optimize(parser, delayCalc, "HillClimbing",
-							new DeterministicHashSet<Flow>());
-				}
+				optimize("HillClimbing");
 			}
 		});
 		mnOptimize.add(mntmHC);
@@ -122,11 +114,7 @@ public class OptimizerGUI extends JFrame {
 		JMenuItem mntmSA = new JMenuItem("SimulatedAnnealing");
 		mntmSA.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if (parser != null) {
-					resetForOptimizerRun();
-					optimizer.optimize(parser, delayCalc, "SimulatedAnnealing",
-							new DeterministicHashSet<Flow>());
-				}
+				optimize("SimulatedAnnealing");
 			}
 		});
 		mnOptimize.add(mntmSA);
@@ -135,12 +123,7 @@ public class OptimizerGUI extends JFrame {
 				"SimpleGenerational Evolutionary Algorithm");
 		mntmGA.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if (parser != null) {
-					resetForOptimizerRun();
-					optimizer.optimize(parser, delayCalc,
-							"SimpleGenerationalEA",
-							new DeterministicHashSet<Flow>());
-				}
+				optimize("SimpleGenerationalEA");
 			}
 		});
 		mnOptimize.add(mntmGA);
@@ -148,11 +131,7 @@ public class OptimizerGUI extends JFrame {
 		JMenuItem mntmRW = new JMenuItem("RandomWalks");
 		mntmRW.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if (parser != null) {
-					resetForOptimizerRun();
-					optimizer.optimize(parser, delayCalc, "RandomWalks",
-							new DeterministicHashSet<Flow>());
-				}
+				optimize("RandomWalks");
 			}
 		});
 		mnOptimize.add(mntmRW);
@@ -167,9 +146,7 @@ public class OptimizerGUI extends JFrame {
 							"SimulatedAnnealing", "SimpleGenerationalEA",
 							"RandomWalks" };
 					for (int i = 0; i < algos.length; i++) {
-						resetForOptimizerRun();
-						optimizer.optimize(parser, delayCalc, algos[i],
-								new DeterministicHashSet<Flow>());
+						optimize(algos[i]);
 					}
 				}
 			}
@@ -252,6 +229,25 @@ public class OptimizerGUI extends JFrame {
 		contentPane.add(topologyPanel, BorderLayout.CENTER);
 	}
 
+	private void optimize(String algo) {
+		if (parser == null)
+			return;
+		long t1, t2;
+		t1 = System.nanoTime();
+		for (Flow f : parser.getTraffic()) {
+			f.resetSpeed();
+		}
+		delayCalc.setInitialDelays(parser.getPriorityConfig());
+		setStatusMsg("Optimizing Priorities! This might take a while ...");
+
+		optimizer.optimize(parser, delayCalc, algo,
+				new DeterministicHashSet<Flow>());
+
+		t2 = System.nanoTime();
+
+		setStatusMsg("Done (optimized in %.4f sec.)", (t2 - t1) / 1.0E9);
+	}
+
 	private void updateDisplay(StringBuilder content) {
 		if (parser == null)
 			return;
@@ -292,13 +288,6 @@ public class OptimizerGUI extends JFrame {
 		statusLabel.setText(String.format(fmt, args));
 		statusLabel.repaint();
 		statusLabel.validate();
-	}
-
-	private void resetForOptimizerRun() {
-		for (Flow f : parser.getTraffic()) {
-			f.resetSpeed();
-		}
-		delayCalc.setInitialDelays(parser.getPriorityConfig());
 	}
 
 	public static void main(String[] args) {

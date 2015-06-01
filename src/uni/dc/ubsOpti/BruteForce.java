@@ -1,33 +1,24 @@
 package uni.dc.ubsOpti;
 
-import java.util.Map;
-import java.util.Set;
+import java.util.Arrays;
 
-import uni.dc.model.EgressPort;
-import uni.dc.model.Flow;
 import uni.dc.model.PriorityConfiguration;
 import uni.dc.ubsOpti.DelayCalc.UbsDelayCalc;
-import uni.dc.ubsOpti.DelayCalc.UbsV0DelayCalc;
 
 public class BruteForce {
 
 	private UbsDelayCalc delayCalc;
-
-	private PriorityConfiguration bestPrio = null;
+	private int[] bestPrio;
 	private double minDelay = Double.MAX_VALUE;
 
-	public BruteForce(Map<EgressPort, Set<Flow>> traffic) {
-		delayCalc = new UbsV0DelayCalc(traffic);
+	public BruteForce(UbsDelayCalc delayCalc) {
+		this.delayCalc = delayCalc;
 	}
 
-	public PriorityConfiguration optimize(PriorityConfiguration prio,
-			int maxPrio) {
-		int[] prios = prio.toIntArray();
-		bestPrio = (PriorityConfiguration) prio.clone();
-		delayCalc.setPrio(bestPrio);
-		minDelay = delayCalc.compute(prios, null);
-		genPermutations(new int[prios.length], 0, maxPrio);
-		delayCalc.setPrio(bestPrio);
+	public int[] optimize(PriorityConfiguration prio, int maxPrio) {
+		bestPrio = prio.toIntArray();
+		minDelay = delayCalc.compute(bestPrio, null);
+		genPermutations(new int[bestPrio.length], 0, maxPrio);
 		return bestPrio;
 	}
 
@@ -36,7 +27,7 @@ public class BruteForce {
 			double delay = delayCalc.compute(n, null);
 			if (delay < minDelay) {
 				minDelay = delay;
-				bestPrio.fromIntArray(n);
+				bestPrio = n.clone();
 			}
 			return;
 		} else {

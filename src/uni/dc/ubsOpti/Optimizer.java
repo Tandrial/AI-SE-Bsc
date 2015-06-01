@@ -58,8 +58,9 @@ public class Optimizer {
 	}
 
 	public PriorityConfiguration optimize(NetworkParser parser,
-			UbsDelayCalc delayCalc, String selectedAlgo, Set<Flow> flowsToSpeedUp) {
-		//TODO: Multply runs, move 
+			UbsDelayCalc delayCalc, String selectedAlgo,
+			Set<Flow> flowsToSpeedUp) {
+		// TODO: Multply runs, move
 		this.delayCalc = delayCalc;
 		PriorityConfiguration config = parser.getPriorityConfig();
 		int cnt = 0;
@@ -76,7 +77,7 @@ public class Optimizer {
 		mutate = new IntArrayAllNormalMutation(1, maxPrio);
 
 		if (selectedAlgo.equals("BruteForce")) {
-			config = optimizeBruteForce(parser);
+			config.fromIntArray(optimizeBruteForce(parser));
 		} else if (selectedAlgo.equals("SimulatedAnnealing")) {
 			config.fromIntArray(optimizeSimulatedAnnealing(parser));
 		} else if (selectedAlgo.equals("HillClimbing")) {
@@ -94,8 +95,8 @@ public class Optimizer {
 		return (PriorityConfiguration) config.clone();
 	}
 
-	private PriorityConfiguration optimizeBruteForce(NetworkParser parser) {
-		BruteForce BF = new BruteForce(parser.getTraffic().getPortFlowMap());
+	private int[] optimizeBruteForce(NetworkParser parser) {
+		BruteForce BF = new BruteForce(delayCalc);
 		return BF.optimize(parser.getPriorityConfig(), maxPrio);
 	}
 

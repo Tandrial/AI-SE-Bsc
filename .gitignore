@@ -3,6 +3,7 @@
 ### Java ###
 *.class
 bin/
+graphviz-2.38/
 
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/

@@ -9,14 +9,13 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
-import java.util.ArrayList;
-import java.util.List;
 
 import javax.imageio.ImageIO;
+import javax.swing.JFileChooser;
 
 public class GraphViz {
 
-	public static final String GRAPHVIZ_BIN_DIR = "./bin/graphviz-2.38/";
+	public static String GRAPHVIZ_BIN_DIR = "";
 
 	public static enum OutputFormatEnum {
 		BMP("bmp"), PNG("png"), DOT("dot");
@@ -34,24 +33,44 @@ public class GraphViz {
 
 	private InputStream createDiagramStream(StringBuilder dotString,
 			OutputFormatEnum fmt) throws IOException {
-		List<String> command = new ArrayList<String>();
+		try {
+			ProcessBuilder builder = new ProcessBuilder(GRAPHVIZ_BIN_DIR
+					+ "dot", "-T", fmt.getName());
+			builder.directory(new File(System.getenv("temp")));
+			Process process = builder.start();
 
-		command.add(GRAPHVIZ_BIN_DIR + "dot.exe");
-		command.add(String.format("-T"));
-		command.add(fmt.getName());
-		ProcessBuilder builder = new ProcessBuilder(command);
-		builder.directory(new File(System.getenv("temp")));
-		final Process process = builder.start();
+			BufferedWriter stdin = new BufferedWriter(new OutputStreamWriter(
+					process.getOutputStream()));
+			InputStream rv = new BufferedInputStream(process.getInputStream());
 
-		BufferedWriter stdin = new BufferedWriter(new OutputStreamWriter(
-				process.getOutputStream()));
-		InputStream rv = new BufferedInputStream(process.getInputStream());
+			stdin.append(dotString);
+			stdin.newLine();
+			stdin.close();
 
-		stdin.append(dotString);
-		stdin.newLine();
-		stdin.close();
+			return rv;
+		} catch (Exception e) {
+			if (setGraphVizLocation()) {
+				return createDiagramStream(dotString, fmt);
+			} else {
+				e.printStackTrace();
+				return null;
+			}
+		}
+	}
 
-		return rv;
+	private boolean setGraphVizLocation() {
+		JFileChooser c = new JFileChooser();
+		c.setCurrentDirectory(new java.io.File("."));
+		c.setDialogTitle("Please select the GraphViz Folder!");
+		c.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+		c.setAcceptAllFileFilterUsed(false);
+		if (c.showOpenDialog(c) == JFileChooser.APPROVE_OPTION) {
+			GRAPHVIZ_BIN_DIR = c.getSelectedFile().getAbsolutePath() + "\\";
+			return true;
+		} else {
+			return false;
+		}
+
 	}
 
 	public StringBuilder renderToString(StringBuilder dotString,
@@ -77,5 +96,4 @@ public class GraphViz {
 		return String
 				.format("%s%d", o.getClass().getSimpleName(), o.hashCode());
 	}
-
 }

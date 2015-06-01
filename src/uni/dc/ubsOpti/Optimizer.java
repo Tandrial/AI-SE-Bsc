@@ -19,12 +19,12 @@ import org.goataa.spec.ISOOptimizationAlgorithm;
 import org.goataa.spec.IUnarySearchOperation;
 
 import uni.dc.model.PriorityConfiguration;
-import uni.dc.ubsOpti.DelayCalc.UBSDelayCalc;
+import uni.dc.ubsOpti.DelayCalc.UbsDelayCalc;
 import uni.dc.util.NetworkParser;
 
 public class Optimizer {
 
-	private UBSDelayCalc delayCalc;
+	private UbsDelayCalc delayCalc;
 
 	private INullarySearchOperation<int[]> create;
 	private IUnarySearchOperation<int[]> mutate;
@@ -60,7 +60,7 @@ public class Optimizer {
 	}
 
 	public PriorityConfiguration optimize(NetworkParser parser,
-			UBSDelayCalc delayCalc, String selectedAlgo) {
+			UbsDelayCalc delayCalc, String selectedAlgo) {
 		this.delayCalc = delayCalc;
 		PriorityConfiguration config = parser.resetPriorityConfig();
 		maxPrio = 2;

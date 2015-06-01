@@ -6,9 +6,8 @@ import java.util.Set;
 
 import uni.dc.model.EgressPort;
 import uni.dc.model.Flow;
-import uni.dc.model.PriorityConfiguration;
 
-public class UbsV0DelayCalc extends UBSDelayCalc {
+public class UbsV0DelayCalc extends UbsDelayCalc {
 	private static final long serialVersionUID = 1L;
 
 	public UbsV0DelayCalc(Map<EgressPort, Set<Flow>> traffic) {
@@ -28,8 +27,6 @@ public class UbsV0DelayCalc extends UBSDelayCalc {
 				f.setTotalDelay(0.0);
 				continue;
 			}
-			// System.out.printf("%s : %.0f Mbps, %d bit\n", f.getName(),
-			// f.getRate() / 1e6, f.getMaxFrameLength());
 			double delay = 0.0;
 			for (int i = 1; i < path.size(); i++) {
 				EgressPort lastEgress = path.get(i - 1);
@@ -62,17 +59,4 @@ public class UbsV0DelayCalc extends UBSDelayCalc {
 			f.setTotalDelay(delay);
 		}
 	}
-
-	@Override
-	public void calculateDelays(PriorityConfiguration prio) {
-		this.prio = prio;
-		calculateDelays();
-	}
-
-	@Override
-	public void calculateDelays(int[] prios) {
-		prio.fromIntArray(prios);
-		calculateDelays();
-	}
-
 }

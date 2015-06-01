@@ -22,7 +22,7 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 
 import uni.dc.model.EgressTopology;
 import uni.dc.ubsOpti.Optimizer;
-import uni.dc.ubsOpti.DelayCalc.UBSDelayCalc;
+import uni.dc.ubsOpti.DelayCalc.UbsDelayCalc;
 import uni.dc.ubsOpti.DelayCalc.UbsV0DelayCalc;
 import uni.dc.util.NetworkParser;
 
@@ -32,7 +32,7 @@ public class OptimizerGUI extends JFrame {
 	private JLabel statusLabel;
 	private NetworkParser parser;
 	private Optimizer optimizer;
-	private UBSDelayCalc delayCalc;
+	private UbsDelayCalc delayCalc;
 
 	private boolean portDisplay = true;
 

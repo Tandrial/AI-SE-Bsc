@@ -14,7 +14,7 @@ import uni.dc.model.PriorityConfiguration;
 import uni.dc.model.UbsDestParameters;
 import uni.dc.util.DeterministicHashSet;
 
-public abstract class UBSDelayCalc extends OptimizationModule implements
+public abstract class UbsDelayCalc extends OptimizationModule implements
 		IObjectiveFunction<int[]> {
 	private static final long serialVersionUID = 1L;
 	protected Set<Flow> flows = null;
@@ -28,7 +28,7 @@ public abstract class UBSDelayCalc extends OptimizationModule implements
 		this.prio = prio;
 	}
 
-	public UBSDelayCalc(Map<EgressPort, Set<Flow>> traffic) {
+	public UbsDelayCalc(Map<EgressPort, Set<Flow>> traffic) {
 		flows = new DeterministicHashSet<Flow>();
 		for (Entry<EgressPort, Set<Flow>> x : traffic.entrySet()) {
 			for (Flow bla : x.getValue()) {
@@ -37,13 +37,19 @@ public abstract class UBSDelayCalc extends OptimizationModule implements
 		}
 	}
 
-	public UBSDelayCalc(Set<Flow> flows) {
+	public UbsDelayCalc(Set<Flow> flows) {
 		this.flows = flows;
 	}
 
-	public abstract void calculateDelays(PriorityConfiguration prio);
+	public void calculateDelays(PriorityConfiguration prio) {
+		this.prio = prio;
+		calculateDelays();
+	}
 
-	public abstract void calculateDelays(int[] prios);
+	public void calculateDelays(int[] prios) {
+		prio.fromIntArray(prios);
+		calculateDelays();
+	}
 
 	public abstract void calculateDelays();
 

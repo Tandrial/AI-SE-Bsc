@@ -1,9 +1,9 @@
 package uni.dc.ubsOpti.DelayCalc;
 
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Random;
 import java.util.Set;
-import java.util.Map.Entry;
 
 import org.goataa.impl.OptimizationModule;
 import org.goataa.spec.IObjectiveFunction;

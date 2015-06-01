@@ -20,7 +20,6 @@ import org.goataa.spec.IUnarySearchOperation;
 
 import uni.dc.model.PriorityConfiguration;
 import uni.dc.ubsOpti.DelayCalc.UBSDelayCalc;
-import uni.dc.ubsOpti.DelayCalc.UbsV0DelayCalc;
 import uni.dc.util.NetworkParser;
 
 public class Optimizer {

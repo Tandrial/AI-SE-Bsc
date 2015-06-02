@@ -5,6 +5,7 @@ import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
+import java.util.Set;
 
 import javax.swing.ButtonGroup;
 import javax.swing.JFileChooser;
@@ -20,13 +21,11 @@ import javax.swing.UIManager;
 import javax.swing.border.EmptyBorder;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
-import uni.dc.model.EgressTopology;
 import uni.dc.model.Flow;
 import uni.dc.ubsOpti.Optimizer;
 import uni.dc.ubsOpti.DelayCalc.UbsDelayCalc;
 import uni.dc.ubsOpti.DelayCalc.UbsV0DelayCalc;
 import uni.dc.ubsOpti.DelayCalc.UbsV3DelayCalc;
-import uni.dc.util.DeterministicHashSet;
 import uni.dc.util.NetworkParser;
 
 public class OptimizerGUI extends JFrame {
@@ -236,6 +235,14 @@ public class OptimizerGUI extends JFrame {
 	private void optimize(String algo) {
 		if (parser == null)
 			return;
+		SpeedUpGui s = new SpeedUpGui(parser.getTraffic());
+		s.setModal(true);
+		s.setVisible(true);
+
+		Set<Flow> speedUp = s.getflowsToSpeedUp();
+		if (speedUp == null)
+			return;
+
 		long t1, t2;
 		t1 = System.nanoTime();
 		for (Flow f : parser.getTraffic()) {
@@ -244,12 +251,12 @@ public class OptimizerGUI extends JFrame {
 		delayCalc.setInitialDelays(parser.getPriorityConfig());
 		setStatusMsg("Optimizing Priorities! This might take a while ...");
 
-		optimizer.optimize(parser, delayCalc, algo,
-				new DeterministicHashSet<Flow>());
+		optimizer.optimize(parser, delayCalc, algo, speedUp);
 
 		t2 = System.nanoTime();
 
 		setStatusMsg("Done (optimized in %.4f sec.)", (t2 - t1) / 1.0E9);
+
 	}
 
 	private void updateDisplay(StringBuilder content) {
@@ -295,24 +302,17 @@ public class OptimizerGUI extends JFrame {
 	}
 
 	public static void main(String[] args) {
-		if (args.length > 0) {
-			System.out.println("Opens GUI if no parameters are passed:");
-			System.out.printf(
-					"Usage : %s <network.json> <trafficClass> <AlgoType>\n",
-					args[0]);
-		} else {
-			EventQueue.invokeLater(new Runnable() {
-				public void run() {
-					try {
-						UIManager.setLookAndFeel(UIManager
-								.getSystemLookAndFeelClassName());
-						OptimizerGUI gui = new OptimizerGUI("UBS Optimizer");
-						gui.setVisible(true);
-					} catch (Exception e) {
-						e.printStackTrace();
-					}
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					UIManager.setLookAndFeel(UIManager
+							.getSystemLookAndFeelClassName());
+					OptimizerGUI gui = new OptimizerGUI("UBS Optimizer");
+					gui.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
 				}
-			});
-		}
+			}
+		});
 	}
 }

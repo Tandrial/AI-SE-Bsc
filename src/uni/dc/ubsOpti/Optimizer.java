@@ -63,12 +63,16 @@ public class Optimizer {
 		// TODO: Multply runs, move
 		this.delayCalc = delayCalc;
 		PriorityConfiguration config = parser.getPriorityConfig();
-		int cnt = 0;
-		for (Flow f : parser.getTraffic()) {
-			if (cnt++ % 2 == 0)
-				f.speedUp(0.10);
-			else
-				f.slowDown(0.2);
+		// int cnt = 0;
+		// for (Flow f : parser.getTraffic()) {
+		// if (cnt++ % 2 == 0)
+		// f.speedUp(0.10);
+		// else
+		// f.slowDown(0.2);
+		// }
+
+		for (Flow f : flowsToSpeedUp) {
+			System.out.println(f.getName() + " " + f);
 		}
 
 		maxPrio = 2;

@@ -27,6 +27,7 @@ import uni.dc.ubsOpti.DelayCalc.UbsDelayCalc;
 import uni.dc.ubsOpti.DelayCalc.UbsV0DelayCalc;
 import uni.dc.ubsOpti.DelayCalc.UbsV3DelayCalc;
 import uni.dc.util.NetworkParser;
+import uni.dc.util.OptimizerConfig;
 
 public class OptimizerGUI extends JFrame {
 	private static final long serialVersionUID = 1L;
@@ -34,6 +35,7 @@ public class OptimizerGUI extends JFrame {
 	private JLabel statusLabel;
 	private NetworkParser parser;
 	private Optimizer optimizer;
+	private OptimizerConfig optiConfig = new OptimizerConfig();
 	private UbsDelayCalc delayCalc;
 
 	private boolean portDisplay = true;
@@ -59,7 +61,7 @@ public class OptimizerGUI extends JFrame {
 				JFileChooser c = new JFileChooser();
 				c.setCurrentDirectory(new File("./Topologies/"));
 				c.setFileFilter(new FileNameExtensionFilter(
-						"UBS Optimizer file", "json"));
+						"UBS Optimizer Network file", "ubsNetwork"));
 				int rVal = c.showOpenDialog(OptimizerGUI.this);
 				if (rVal == JFileChooser.APPROVE_OPTION)
 					loadFromFile(c.getSelectedFile());
@@ -242,6 +244,7 @@ public class OptimizerGUI extends JFrame {
 		Set<Flow> speedUp = s.getflowsToSpeedUp();
 		if (speedUp == null)
 			return;
+		setStatusMsg("Optimizing Priorities! This might take a while ...");
 
 		long t1, t2;
 		t1 = System.nanoTime();
@@ -249,19 +252,22 @@ public class OptimizerGUI extends JFrame {
 			f.resetSpeed();
 		}
 		delayCalc.setInitialDelays(parser.getPriorityConfig());
-		setStatusMsg("Optimizing Priorities! This might take a while ...");
-
-		optimizer.optimize(parser, delayCalc, algo, speedUp);
+		
+		optiConfig.setFlows(speedUp);
+		optiConfig.setDelayCalc(delayCalc);
+		optiConfig.setParser(parser);
+		
+		optimizer.optimize(optiConfig, algo);
 
 		t2 = System.nanoTime();
 
 		setStatusMsg("Done (optimized in %.4f sec.)", (t2 - t1) / 1.0E9);
-
 	}
 
 	private void updateDisplay(StringBuilder content) {
 		if (parser == null)
 			return;
+
 		long t1, t2;
 		t1 = System.nanoTime();
 		imagePanel.setDot(content);

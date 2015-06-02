@@ -5,6 +5,7 @@ import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
+import java.util.Random;
 import java.util.Set;
 
 import javax.swing.ButtonGroup;
@@ -21,7 +22,12 @@ import javax.swing.UIManager;
 import javax.swing.border.EmptyBorder;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
+import uni.dc.model.EgressTopology;
 import uni.dc.model.Flow;
+import uni.dc.model.PriorityConfiguration;
+import uni.dc.model.Traffic;
+import uni.dc.networkGenerator.RandomMulticastPathGenerator;
+import uni.dc.networkGenerator.RandomTopologyGenerator;
 import uni.dc.ubsOpti.Optimizer;
 import uni.dc.ubsOpti.DelayCalc.UbsDelayCalc;
 import uni.dc.ubsOpti.DelayCalc.UbsV0DelayCalc;
@@ -38,8 +44,13 @@ public class OptimizerGUI extends JFrame {
 	private OptimizerConfig optiConfig = new OptimizerConfig();
 	private UbsDelayCalc delayCalc;
 
+	private EgressTopology rndTopology;
+	private Traffic rndTraffic;
+	private PriorityConfiguration rndPrio;
+
 	private boolean portDisplay = true;
 	private boolean ubsV0 = true;
+	private boolean randomNetwork = false;
 
 	public OptimizerGUI(String title) {
 		super(title);
@@ -63,10 +74,21 @@ public class OptimizerGUI extends JFrame {
 				c.setFileFilter(new FileNameExtensionFilter(
 						"UBS Optimizer Network file", "ubsNetwork"));
 				int rVal = c.showOpenDialog(OptimizerGUI.this);
-				if (rVal == JFileChooser.APPROVE_OPTION)
+				if (rVal == JFileChooser.APPROVE_OPTION) {
 					loadFromFile(c.getSelectedFile());
+					randomNetwork = false;
+				}
 			}
 		});
+
+		JMenuItem mntmRandomNetwork = new JMenuItem("Random Network");
+		mntmRandomNetwork.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				randomNetwork = true;
+				generateRandom();
+			}
+		});
+		mnFile.add(mntmRandomNetwork);
 		mnFile.add(mntmLoad);
 
 		JMenuItem mntmSaveJpg = new JMenuItem("Save picture");
@@ -201,6 +223,8 @@ public class OptimizerGUI extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				if (parser != null && !portDisplay) {
 					updateDisplay(parser.getTopology().toDot());
+				} else if (randomNetwork && !portDisplay) {
+					updateDisplay(rndTopology.toDot());
 				}
 				portDisplay = true;
 			}
@@ -213,6 +237,8 @@ public class OptimizerGUI extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				if (parser != null && portDisplay) {
 					updateDisplay(parser.getTraffic().toDot());
+				} else if (randomNetwork && !portDisplay) {
+					updateDisplay(rndTraffic.toDot());
 				}
 				portDisplay = false;
 			}
@@ -252,11 +278,11 @@ public class OptimizerGUI extends JFrame {
 			f.resetSpeed();
 		}
 		delayCalc.setInitialDelays(parser.getPriorityConfig());
-		
+
 		optiConfig.setFlows(speedUp);
 		optiConfig.setDelayCalc(delayCalc);
 		optiConfig.setParser(parser);
-		
+
 		optimizer.optimize(optiConfig, algo);
 
 		t2 = System.nanoTime();
@@ -295,10 +321,50 @@ public class OptimizerGUI extends JFrame {
 			setStatusMsg("Done (loaded in %.4f sec., rendered in %.4f sec.)",
 					(t2 - t1) / 1.0E9, (t3 - t2) / 1.0E9);
 			setTitle("UBS Optimizer - " + parser.getFileName());
+			randomNetwork = false;
 		} catch (Exception e) {
 			e.printStackTrace();
 			setStatusMsg("Load from File failed!");
 		}
+	}
+
+	private void generateRandom() {
+		long t1, t2, t3;
+
+		setStatusMsg("Generating topology ...");
+		try {
+			t1 = System.nanoTime();
+
+			RandomTopologyGenerator topologyGen = new RandomTopologyGenerator();
+			topologyGen.setRng(new Random(0x1337));
+			topologyGen.setDepth(5);
+			topologyGen.setPorts(12);
+			rndTopology = topologyGen.generate();
+
+			RandomMulticastPathGenerator flowPathGen = new RandomMulticastPathGenerator();
+			flowPathGen.setTopology(rndTopology);
+			flowPathGen.setRng(new Random(0));
+			flowPathGen.setMinFlowPerPort(3);
+			flowPathGen.setMaxDestPerFlow(2);
+
+			rndTraffic = flowPathGen.generate();
+
+			rndPrio = new PriorityConfiguration(rndTraffic);
+
+			t2 = System.nanoTime();
+			imagePanel.setDot(portDisplay ? rndTopology.toDot() : rndTraffic
+					.toDot());
+			t3 = System.nanoTime();
+			randomNetwork = true;
+
+			setStatusMsg(
+					"Done (generated in %.4f sec., rendered in %.4f sec.)",
+					(t2 - t1) / 1.0E9, (t3 - t2) / 1.0E9);
+		} catch (Exception e) {
+			e.printStackTrace();
+			setStatusMsg("Generation failed!");
+		}
+
 	}
 
 	private void setStatusMsg(String fmt, Object... args) {

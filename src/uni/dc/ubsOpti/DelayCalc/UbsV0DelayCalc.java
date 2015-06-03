@@ -33,9 +33,9 @@ public class UbsV0DelayCalc extends UbsDelayCalc {
 
 				double sizeBiggerEq = 0.0;
 				double maxSmaller = 0.0;
-				double shaperHigher = 0.0;
+				double rateHigher = 0.0;
 
-				double rate = prio.getTraffic().getNetworkSpeed();
+				double linkSpeed = lastEgress.getLinkSpeed();
 				double size = f.getMaxFrameLength();
 				int prioF = prio.getPriority(lastEgress, f);
 
@@ -45,7 +45,7 @@ public class UbsV0DelayCalc extends UbsDelayCalc {
 					int prioOther = prio.getPriority(lastEgress, other);
 					if (prioOther > prioF) {
 						sizeBiggerEq += other.getMaxFrameLength();
-						shaperHigher += other.getRate();
+						rateHigher += other.getRate();
 					} else if (prioOther == prioF) {
 						sizeBiggerEq += other.getMaxFrameLength();
 					} else {
@@ -53,8 +53,8 @@ public class UbsV0DelayCalc extends UbsDelayCalc {
 								other.getMaxFrameLength());
 					}
 				}
-				delay += (sizeBiggerEq + maxSmaller) / (rate - shaperHigher)
-						+ size / rate;
+				delay += (sizeBiggerEq + maxSmaller) / (linkSpeed - rateHigher)
+						+ size / linkSpeed;
 			}
 			f.setTotalDelay(delay);
 		}

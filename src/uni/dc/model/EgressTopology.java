@@ -52,7 +52,7 @@ public class EgressTopology {
 		nodeMap.put(n, new DeterministicHashSet<EgressPort>());
 	}
 
-	public void add(Node n1, Node n2) {
+	public void add(Node n1, Node n2, double linkSpeed) {
 		if (!nodeMap.containsKey(n1)) {
 			addNode(n1);
 			nodeLinkMap.put(n1, new DeterministicHashSet<Node>());
@@ -67,6 +67,7 @@ public class EgressTopology {
 
 		EgressPort src = new EgressPort();
 		src.setNode(n1);
+		src.setLinkSpeed(linkSpeed);
 		n1.addPort(src);
 		add(src);
 		nodeMap.get(n1).add(src);
@@ -74,6 +75,7 @@ public class EgressTopology {
 
 		EgressPort dest = new EgressPort();
 		dest.setNode(n2);
+		dest.setLinkSpeed(linkSpeed);
 		n2.addPort(dest);
 		add(dest);
 		nodeMap.get(n2).add(dest);

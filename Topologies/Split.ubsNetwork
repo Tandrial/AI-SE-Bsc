@@ -1,13 +1,13 @@
 {   
 	"networkSpeed" : "1Gbps",
 	"connections" : [
-        {"n0" : "b0"},
-        {"b0" : "b1"},
-        {"b1" : "b2"},
-        {"b2" : "n1"},
-        {"b0" : "b3"},
-        {"b3" : "b4"},
-        {"b4" : "n2"},
+		{"n0" : {"dest" : "b0", "linkSpeed" : "1Gbps"}},
+		{"n0" : {"dest" : "b1", "linkSpeed" : "1Gbps"}},
+		{"b1" : {"dest" : "b2", "linkSpeed" : "1Gbps"}},
+		{"b2" : {"dest" : "n1", "linkSpeed" : "1Gbps"}},
+		{"b0" : {"dest" : "b3", "linkSpeed" : "1Gbps"}},
+		{"b3" : {"dest" : "b4", "linkSpeed" : "1Gbps"}},
+		{"b4" : {"dest" : "n2", "linkSpeed" : "1Gbps"}},
     ],
 	"streams" : [
 	{

@@ -9,6 +9,7 @@ public class EgressPort implements Cloneable {
 	private Set<Flow> flowList = new DeterministicHashSet<Flow>();
 
 	private String name;
+	private double linkSpeed = 1e9;
 	
 	private Node node;
 
@@ -73,5 +74,13 @@ public class EgressPort implements Cloneable {
 
 	public void setNode(Node node) {
 		this.node = node;
+	}
+
+	public double getLinkSpeed() {
+		return linkSpeed;
+	}
+
+	public void setLinkSpeed(double linkSpeed) {
+		this.linkSpeed = linkSpeed;
 	}
 }

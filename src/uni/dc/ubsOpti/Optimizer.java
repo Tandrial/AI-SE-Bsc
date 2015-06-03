@@ -19,10 +19,8 @@ import org.goataa.spec.INullarySearchOperation;
 import org.goataa.spec.ISOOptimizationAlgorithm;
 import org.goataa.spec.IUnarySearchOperation;
 
-import uni.dc.model.Flow;
 import uni.dc.model.PriorityConfiguration;
 import uni.dc.ubsOpti.DelayCalc.UbsDelayCalc;
-import uni.dc.util.NetworkParser;
 import uni.dc.util.OptimizerConfig;
 
 public class Optimizer {
@@ -35,54 +33,31 @@ public class Optimizer {
 	public PriorityConfiguration optimize(OptimizerConfig optiConfig,
 			String selectedAlgo) {
 		this.optiConfig = optiConfig;
-		PriorityConfiguration config = optiConfig.getParser()
-				.getPriorityConfig();
+		PriorityConfiguration config = optiConfig.getPriorityConfig();
 		int[] prio = config.toIntArray();
 		int[] bestPrio = prio;
 		dim = config.toIntArray().length;
 		create = new IntArrayAllOnesCreation(dim, 1, optiConfig.getMaxPrio());
 		mutate = new IntArrayAllNormalMutation(1, optiConfig.getMaxPrio());
-		boolean firstRun = true;
-		NetworkParser parser = optiConfig.getParser();
 		UbsDelayCalc delayCalc = optiConfig.getDelayCalc();
 
-		while (firstRun || delayCalc.checkDelays()) {
-			firstRun = false;
-			bestPrio = Arrays.copyOf(prio, prio.length);
-			for (Flow f : parser.getTraffic()) {
-				if (optiConfig.getFlows().contains(f)) {
-					f.speedUp(optiConfig.getSpeedFactor());
-				} else {
-					f.slowDown(2 * optiConfig.getSpeedFactor());
-				}
-			}
-			if (selectedAlgo.equals("BruteForce")) {
-				prio = Arrays
-						.copyOf(optimizeBruteForce(parser, delayCalc), dim);
-			} else if (selectedAlgo.equals("SimulatedAnnealing")) {
-				prio = Arrays.copyOf(
-						optimizeSimulatedAnnealing(parser, delayCalc), dim);
-			} else if (selectedAlgo.equals("HillClimbing")) {
-				prio = Arrays.copyOf(optimizeHillClimbing(parser, delayCalc),
-						dim);
-			} else if (selectedAlgo.equals("RandomWalks")) {
-				prio = Arrays.copyOf(optimizeRandomWalks(parser, delayCalc),
-						dim);
-			} else if (selectedAlgo.equals("SimpleGenerationalEA")) {
-				prio = Arrays.copyOf(
-						optimizeSimpleGenerationalEA(parser, delayCalc), dim);
-			}
+		bestPrio = Arrays.copyOf(prio, prio.length);
 
-			config.fromIntArray(prio);
-			delayCalc.calculateDelays(config);
+		if (selectedAlgo.equals("BruteForce")) {
+			prio = Arrays.copyOf(optimizeBruteForce(config, delayCalc), dim);
+		} else if (selectedAlgo.equals("SimulatedAnnealing")) {
+			prio = Arrays.copyOf(optimizeSimulatedAnnealing(delayCalc), dim);
+		} else if (selectedAlgo.equals("HillClimbing")) {
+			prio = Arrays.copyOf(optimizeHillClimbing(delayCalc), dim);
+		} else if (selectedAlgo.equals("RandomWalks")) {
+			prio = Arrays.copyOf(optimizeRandomWalks(delayCalc), dim);
+		} else if (selectedAlgo.equals("SimpleGenerationalEA")) {
+			prio = Arrays.copyOf(optimizeSimpleGenerationalEA(delayCalc), dim);
 		}
-		for (Flow f : parser.getTraffic()) {
-			if (optiConfig.getFlows().contains(f)) {
-				f.slowDown(optiConfig.getSpeedFactor());
-			} else {
-				f.speedUp(2 * optiConfig.getSpeedFactor());
-			}
-		}
+
+		config.fromIntArray(prio);
+		delayCalc.calculateDelays(config);
+
 		config.fromIntArray(bestPrio);
 		System.out.println(config);
 		delayCalc.calculateDelays(config);
@@ -91,14 +66,13 @@ public class Optimizer {
 		return (PriorityConfiguration) config.clone();
 	}
 
-	private int[] optimizeBruteForce(NetworkParser parser,
+	private int[] optimizeBruteForce(PriorityConfiguration prio,
 			UbsDelayCalc delayCalc) {
 		BruteForce BF = new BruteForce(delayCalc);
-		return BF.optimize(parser.getPriorityConfig(), optiConfig.getMaxPrio());
+		return BF.optimize(prio, optiConfig.getMaxPrio());
 	}
 
-	private int[] optimizeHillClimbing(NetworkParser parser,
-			UbsDelayCalc delayCalc) {
+	private int[] optimizeHillClimbing(UbsDelayCalc delayCalc) {
 		HillClimbing<int[], int[]> HC = new HillClimbing<int[], int[]>();
 		HC.setObjectiveFunction(delayCalc);
 		HC.setNullarySearchOperation(create);
@@ -106,8 +80,7 @@ public class Optimizer {
 		return testRuns(HC);
 	}
 
-	private int[] optimizeSimulatedAnnealing(NetworkParser parser,
-			UbsDelayCalc delayCalc) {
+	private int[] optimizeSimulatedAnnealing(UbsDelayCalc delayCalc) {
 		SimulatedAnnealing<int[], int[]> SA = new SimulatedAnnealing<int[], int[]>();
 		SA.setObjectiveFunction(delayCalc);
 		SA.setNullarySearchOperation(create);
@@ -116,8 +89,7 @@ public class Optimizer {
 		return testRuns(SA);
 	}
 
-	private int[] optimizeSimpleGenerationalEA(NetworkParser parser,
-			UbsDelayCalc delayCalc) {
+	private int[] optimizeSimpleGenerationalEA(UbsDelayCalc delayCalc) {
 		SimpleGenerationalEA<int[], int[]> GA = new SimpleGenerationalEA<int[], int[]>();
 		GA.setBinarySearchOperation(IntArrayWeightedMeanCrossover.INT_ARRAY_WEIGHTED_MEAN_CROSSOVER);
 		GA.setObjectiveFunction(delayCalc);
@@ -127,8 +99,7 @@ public class Optimizer {
 		return testRuns(GA);
 	}
 
-	private int[] optimizeRandomWalks(NetworkParser parser,
-			UbsDelayCalc delayCalc) {
+	private int[] optimizeRandomWalks(UbsDelayCalc delayCalc) {
 		RandomWalk<int[], int[]> RW = new RandomWalk<int[], int[]>();
 		RW.setObjectiveFunction(delayCalc);
 		RW.setNullarySearchOperation(create);

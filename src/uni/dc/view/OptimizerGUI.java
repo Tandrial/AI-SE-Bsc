@@ -5,8 +5,6 @@ import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
-import java.util.Random;
-import java.util.Set;
 
 import javax.swing.ButtonGroup;
 import javax.swing.JFileChooser;
@@ -23,11 +21,9 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
 import uni.dc.model.EgressTopology;
-import uni.dc.model.Flow;
 import uni.dc.model.PriorityConfiguration;
 import uni.dc.model.Traffic;
-import uni.dc.networkGenerator.RandomMulticastPathGenerator;
-import uni.dc.networkGenerator.RandomTopologyGenerator;
+import uni.dc.networkGenerator.GeneratorAPI;
 import uni.dc.ubsOpti.Optimizer;
 import uni.dc.ubsOpti.DelayCalc.UbsDelayCalc;
 import uni.dc.ubsOpti.DelayCalc.UbsV0DelayCalc;
@@ -41,12 +37,11 @@ public class OptimizerGUI extends JFrame {
 	private JLabel statusLabel;
 	private NetworkParser parser;
 	private Optimizer optimizer;
-	private OptimizerConfig optiConfig = new OptimizerConfig();
 	private UbsDelayCalc delayCalc;
 
-	private EgressTopology rndTopology;
-	private Traffic rndTraffic;
-	private PriorityConfiguration rndPrio;
+	private EgressTopology topology;
+	private Traffic traffic;
+	private PriorityConfiguration prio;
 
 	private boolean portDisplay = true;
 	private boolean ubsV0 = true;
@@ -66,7 +61,16 @@ public class OptimizerGUI extends JFrame {
 		JMenu mnFile = new JMenu("File");
 		menuBar.add(mnFile);
 
-		JMenuItem mntmLoad = new JMenuItem("Load");
+		JMenuItem mntmRandomNetwork = new JMenuItem("New Random Network");
+		mntmRandomNetwork.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				randomNetwork = true;
+				generateRandom();
+			}
+		});
+		mnFile.add(mntmRandomNetwork);
+
+		JMenuItem mntmLoad = new JMenuItem("Load Network");
 		mntmLoad.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				JFileChooser c = new JFileChooser();
@@ -80,15 +84,6 @@ public class OptimizerGUI extends JFrame {
 				}
 			}
 		});
-
-		JMenuItem mntmRandomNetwork = new JMenuItem("Random Network");
-		mntmRandomNetwork.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				randomNetwork = true;
-				generateRandom();
-			}
-		});
-		mnFile.add(mntmRandomNetwork);
 		mnFile.add(mntmLoad);
 
 		JMenuItem mntmSaveJpg = new JMenuItem("Save picture");
@@ -159,23 +154,6 @@ public class OptimizerGUI extends JFrame {
 		});
 		mnOptimize.add(mntmRW);
 
-		mnOptimize.add(new JSeparator());
-
-		JMenuItem mntmAllnoBruteforce = new JMenuItem("All (no BruteForce)");
-		mntmAllnoBruteforce.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				if (parser != null) {
-					String[] algos = new String[] { "Hillclimbing",
-							"SimulatedAnnealing", "SimpleGenerationalEA",
-							"RandomWalks" };
-					for (int i = 0; i < algos.length; i++) {
-						optimize(algos[i]);
-					}
-				}
-			}
-		});
-		mnOptimize.add(mntmAllnoBruteforce);
-
 		JMenu mnSettings = new JMenu("Settings");
 		menuBar.add(mnSettings);
 
@@ -188,11 +166,11 @@ public class OptimizerGUI extends JFrame {
 				"UBS V0", true);
 		rdbtnmntmUbsV0.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				if (!ubsV0) {
-					ubsV0 = true;
+				if (parser != null && !ubsV0) {
 					delayCalc = new UbsV0DelayCalc(parser.getTraffic());
 					delayCalc.setInitialDelays(parser.getPriorityConfig());
 				}
+				ubsV0 = true;
 			}
 		});
 		mnTrafficModel.add(rdbtnmntmUbsV0);
@@ -201,11 +179,11 @@ public class OptimizerGUI extends JFrame {
 		JRadioButtonMenuItem rdbtnmntmUbsV3 = new JRadioButtonMenuItem("UBS V3");
 		rdbtnmntmUbsV3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if (ubsV0) {
-					ubsV0 = false;
+				if (parser != null && ubsV0) {
 					delayCalc = new UbsV3DelayCalc(parser.getTraffic());
 					delayCalc.setInitialDelays(parser.getPriorityConfig());
 				}
+				ubsV0 = false;
 			}
 		});
 		mnTrafficModel.add(rdbtnmntmUbsV3);
@@ -224,7 +202,7 @@ public class OptimizerGUI extends JFrame {
 				if (parser != null && !portDisplay) {
 					updateDisplay(parser.getTopology().toDot());
 				} else if (randomNetwork && !portDisplay) {
-					updateDisplay(rndTopology.toDot());
+					updateDisplay(topology.toDot());
 				}
 				portDisplay = true;
 			}
@@ -238,7 +216,7 @@ public class OptimizerGUI extends JFrame {
 				if (parser != null && portDisplay) {
 					updateDisplay(parser.getTraffic().toDot());
 				} else if (randomNetwork && !portDisplay) {
-					updateDisplay(rndTraffic.toDot());
+					updateDisplay(traffic.toDot());
 				}
 				portDisplay = false;
 			}
@@ -261,37 +239,23 @@ public class OptimizerGUI extends JFrame {
 	}
 
 	private void optimize(String algo) {
-		if (parser == null)
+		if (topology == null)
 			return;
-		SpeedUpGui s = new SpeedUpGui(parser.getTraffic());
-		s.setModal(true);
-		s.setVisible(true);
 
-		Set<Flow> speedUp = s.getflowsToSpeedUp();
-		if (speedUp == null)
-			return;
 		setStatusMsg("Optimizing Priorities! This might take a while ...");
 
 		long t1, t2;
 		t1 = System.nanoTime();
-		for (Flow f : parser.getTraffic()) {
-			f.resetSpeed();
-		}
-		delayCalc.setInitialDelays(parser.getPriorityConfig());
-
-		optiConfig.setFlows(speedUp);
-		optiConfig.setDelayCalc(delayCalc);
-		optiConfig.setParser(parser);
-
+		OptimizerConfig optiConfig = new OptimizerConfig(topology, traffic,
+				delayCalc);
 		optimizer.optimize(optiConfig, algo);
-
 		t2 = System.nanoTime();
 
 		setStatusMsg("Done (optimized in %.4f sec.)", (t2 - t1) / 1.0E9);
 	}
 
 	private void updateDisplay(StringBuilder content) {
-		if (parser == null)
+		if (topology == null)
 			return;
 
 		long t1, t2;
@@ -309,13 +273,15 @@ public class OptimizerGUI extends JFrame {
 		try {
 			t1 = System.nanoTime();
 			parser = new NetworkParser(file);
-			delayCalc = ubsV0 ? new UbsV0DelayCalc(parser.getTraffic())
-					: new UbsV3DelayCalc(parser.getTraffic());
-			delayCalc.setInitialDelays(parser.getPriorityConfig());
+			topology = parser.getTopology();
+			traffic = parser.getTraffic();
+			prio = parser.getPriorityConfig();
+			delayCalc = ubsV0 ? new UbsV0DelayCalc(traffic)
+					: new UbsV3DelayCalc(traffic);
+			delayCalc.setInitialDelays(prio);
 
 			t2 = System.nanoTime();
-			imagePanel.setDot(portDisplay ? parser.getTopology().toDot()
-					: parser.getTraffic().toDot());
+			imagePanel.setDot(portDisplay ? topology.toDot() : traffic.toDot());
 			t3 = System.nanoTime();
 
 			setStatusMsg("Done (loaded in %.4f sec., rendered in %.4f sec.)",
@@ -335,25 +301,17 @@ public class OptimizerGUI extends JFrame {
 		try {
 			t1 = System.nanoTime();
 
-			RandomTopologyGenerator topologyGen = new RandomTopologyGenerator();
-			topologyGen.setRng(new Random(0x1337));
-			topologyGen.setDepth(5);
-			topologyGen.setPorts(12);
-			rndTopology = topologyGen.generate();
+			GeneratorAPI.generateNetwork(5, 12);
+			topology = GeneratorAPI.getTopology();
+			traffic = GeneratorAPI.getTraffic();
 
-			RandomMulticastPathGenerator flowPathGen = new RandomMulticastPathGenerator();
-			flowPathGen.setTopology(rndTopology);
-			flowPathGen.setRng(new Random(0));
-			flowPathGen.setMinFlowPerPort(3);
-			flowPathGen.setMaxDestPerFlow(2);
-
-			rndTraffic = flowPathGen.generate();
-
-			rndPrio = new PriorityConfiguration(rndTraffic);
+			prio = new PriorityConfiguration(traffic);
+			delayCalc = ubsV0 ? new UbsV0DelayCalc(traffic)
+					: new UbsV3DelayCalc(traffic);
+			delayCalc.setInitialDelays(prio);
 
 			t2 = System.nanoTime();
-			imagePanel.setDot(portDisplay ? rndTopology.toDot() : rndTraffic
-					.toDot());
+			imagePanel.setDot(portDisplay ? topology.toDot() : traffic.toDot());
 			t3 = System.nanoTime();
 			randomNetwork = true;
 
@@ -364,7 +322,6 @@ public class OptimizerGUI extends JFrame {
 			e.printStackTrace();
 			setStatusMsg("Generation failed!");
 		}
-
 	}
 
 	private void setStatusMsg(String fmt, Object... args) {

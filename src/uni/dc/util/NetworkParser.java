@@ -43,10 +43,12 @@ public class NetworkParser {
 		for (int i = 0; i < connections.length(); i++) {
 			JSONObject curr = connections.getJSONObject(i);
 			String n1 = JSONObject.getNames(curr)[0];
-			String n2 = curr.getString(n1);
+			curr = curr.getJSONObject(n1);
+			String n2 = curr.getString("dest");
+			long linkSpeed = convertSpeed(curr.getString("linkSpeed"));
 
-			topology.add(new Node(n1), new Node(n2));
-			topology.add(new Node(n2), new Node(n1));
+			topology.add(new Node(n1), new Node(n2), linkSpeed);
+			topology.add(new Node(n2), new Node(n1), linkSpeed);
 
 		}
 		return topology;
@@ -70,12 +72,7 @@ public class NetworkParser {
 		traffic = new Traffic();
 
 		traffic.setTopology(getTopology());
-		traffic.setNetworkSpeed(convertSpeed(jsonObj.getString("networkSpeed")));
 		Map<EgressPort, Set<Flow>> portFlowMap = new LinkedHashMap<EgressPort, Set<Flow>>();
-		
-		/*
-		 * Parse streams: need : streamID path tspec
-		 */
 
 		JSONArray connections = jsonObj.getJSONArray("streams");
 		for (int i = 0; i < connections.length(); i++) {
@@ -88,7 +85,7 @@ public class NetworkParser {
 			String dest = route.getJSONArray(src).getString(0);
 
 			JSONObject tspec = curr.getJSONObject("tspec");
-			int rate = convertSpeed(tspec.getString("leakRate"));
+			long rate = convertSpeed(tspec.getString("leakRate"));
 			int maxPacketLength = convertLength(tspec
 					.getString("maxPacketLength"));
 
@@ -142,8 +139,8 @@ public class NetworkParser {
 			return result;
 	}
 
-	private static int convertSpeed(String str) {
-		int result = Integer.parseInt(str.replaceAll("[^0-9]", ""));
+	private static long convertSpeed(String str) {
+		long result = Long.parseLong(str.replaceAll("[^0-9]", ""));
 		String SI = str.replaceAll("[0-9]", "");
 		if (SI.equalsIgnoreCase("gbps"))
 			return result * 1000 * 1000 * 1000;

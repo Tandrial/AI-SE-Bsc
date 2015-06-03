@@ -11,6 +11,11 @@ public class GeneratorAPI {
 
 	private static Traffic traffic = null;
 	private static PriorityConfiguration cfg = null;
+	private static EgressTopology topology = null;
+	
+	public static EgressTopology getTopology() {
+		return topology;
+	}
 
 	public static Traffic getTraffic() {
 		return traffic;
@@ -43,7 +48,7 @@ public class GeneratorAPI {
 			topologyGen.setRng(new Random(0));
 			topologyGen.setDepth(depth);
 			topologyGen.setPorts(portCount);
-			EgressTopology topology = topologyGen.generate();
+			topology = topologyGen.generate();
 
 			RandomMulticastPathGenerator flowPathGen = new RandomMulticastPathGenerator();
 			flowPathGen.setTopology(topology);
@@ -58,10 +63,4 @@ public class GeneratorAPI {
 			e.printStackTrace();
 		}
 	}
-
-	public static void main(String[] args) {
-		generateNetwork(4, 10);
-		printGeneratedNetwork();
-	}
-
 }

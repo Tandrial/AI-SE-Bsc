@@ -1,11 +1,10 @@
 {
-	"networkSpeed" : "1Gbps",
 	"connections" : [
-        {"n0" : "b0"},
-        {"b0" : "b1"},
-        {"b1" : "b2"},
-        {"n1" : "b0"},
-        {"b2" : "n2"},
+		{"n0" : {"dest" : "b0", "linkSpeed" : "1Gbps"}},
+		{"b0" : {"dest" : "b1", "linkSpeed" : "1Gbps"}},
+		{"b1" : {"dest" : "b2", "linkSpeed" : "1Gbps"}},
+		{"n1" : {"dest" : "b0", "linkSpeed" : "1Gbps"}},
+		{"b2" : {"dest" : "n2", "linkSpeed" : "1Gbps"}},
 	],
 	"streams" : [
 	{

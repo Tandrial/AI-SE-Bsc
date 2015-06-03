@@ -36,7 +36,7 @@ public class GraphViz {
 		try {
 			ProcessBuilder builder = new ProcessBuilder(GRAPHVIZ_BIN_DIR
 					+ "dot", "-T", fmt.getName());
-			builder.directory(new File(System.getenv("temp")));
+			builder.directory(new File("."));
 			Process process = builder.start();
 
 			BufferedWriter stdin = new BufferedWriter(new OutputStreamWriter(

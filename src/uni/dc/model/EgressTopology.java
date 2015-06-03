@@ -9,9 +9,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import javafx.util.Pair;
 import uni.dc.util.DeterministicHashSet;
 import uni.dc.util.GraphViz;
+import uni.dc.util.Pair;
 
 public class EgressTopology {
 

@@ -2,6 +2,7 @@ package uni.dc.ubsOpti;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.concurrent.Delayed;
 
 import org.goataa.impl.algorithms.RandomWalk;
 import org.goataa.impl.algorithms.ea.SimpleGenerationalEA;
@@ -13,6 +14,7 @@ import org.goataa.impl.searchOperations.strings.integer.binary.IntArrayWeightedM
 import org.goataa.impl.searchOperations.strings.integer.nullary.IntArrayAllOnesCreation;
 import org.goataa.impl.searchOperations.strings.integer.unary.IntArrayAllNormalMutation;
 import org.goataa.impl.termination.StepLimit;
+import org.goataa.impl.termination.UbsOptTermination;
 import org.goataa.impl.utils.BufferedStatistics;
 import org.goataa.impl.utils.Individual;
 import org.goataa.spec.INullarySearchOperation;
@@ -116,8 +118,8 @@ public class Optimizer {
 		double bestValue = Double.MAX_VALUE;
 
 		stat = new BufferedStatistics();
-		algorithm.setTerminationCriterion(new StepLimit(optiConfig
-				.getMaxSteps()));
+		algorithm.setTerminationCriterion(new UbsOptTermination(optiConfig
+				.getDelayCalc(), optiConfig.getMaxSteps()));
 		for (int i = 0; i < optiConfig.getRuns(); i++) {
 			algorithm.setRandSeed(i);
 			solutions = ((List<Individual<?, int[]>>) (algorithm.call()));

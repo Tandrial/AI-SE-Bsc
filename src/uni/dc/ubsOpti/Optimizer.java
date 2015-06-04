@@ -2,7 +2,6 @@ package uni.dc.ubsOpti;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.concurrent.Delayed;
 
 import org.goataa.impl.algorithms.RandomWalk;
 import org.goataa.impl.algorithms.ea.SimpleGenerationalEA;
@@ -13,7 +12,6 @@ import org.goataa.impl.algorithms.sa.temperatureSchedules.Logarithmic;
 import org.goataa.impl.searchOperations.strings.integer.binary.IntArrayWeightedMeanCrossover;
 import org.goataa.impl.searchOperations.strings.integer.nullary.IntArrayAllOnesCreation;
 import org.goataa.impl.searchOperations.strings.integer.unary.IntArrayAllNormalMutation;
-import org.goataa.impl.termination.StepLimit;
 import org.goataa.impl.termination.UbsOptTermination;
 import org.goataa.impl.utils.BufferedStatistics;
 import org.goataa.impl.utils.Individual;

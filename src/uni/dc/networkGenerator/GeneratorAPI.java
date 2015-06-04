@@ -45,20 +45,19 @@ public class GeneratorAPI {
 	public static void generateNetwork(int depth, int portCount) {
 		try {
 			RandomTopologyGenerator topologyGen = new RandomTopologyGenerator();
-			topologyGen.setRng(new Random(0));
+			topologyGen.setRng(new Random());
 			topologyGen.setDepth(depth);
 			topologyGen.setPorts(portCount);
 			topology = topologyGen.generate();
 
 			RandomMulticastPathGenerator flowPathGen = new RandomMulticastPathGenerator();
 			flowPathGen.setTopology(topology);
-			flowPathGen.setRng(new Random(0));
+			flowPathGen.setRng(new Random());
 			flowPathGen.setMinFlowPerPort(3);
 			flowPathGen.setMaxDestPerFlow(1);
 
 			traffic = flowPathGen.generate();
-			cfg = new PriorityConfiguration(traffic);
-
+			cfg = new PriorityConfiguration(traffic);	
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

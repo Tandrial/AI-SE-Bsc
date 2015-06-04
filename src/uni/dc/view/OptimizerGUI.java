@@ -39,13 +39,12 @@ public class OptimizerGUI extends JFrame {
 	private Optimizer optimizer;
 	private UbsDelayCalc delayCalc;
 
-	private EgressTopology topology;
-	private Traffic traffic;
-	private PriorityConfiguration prio;
+	private EgressTopology topology = null;
+	private Traffic traffic = null;
+	private PriorityConfiguration prio = null;
 
 	private boolean portDisplay = true;
 	private boolean ubsV0 = true;
-	private boolean randomNetwork = false;
 
 	public OptimizerGUI(String title) {
 		super(title);
@@ -64,7 +63,6 @@ public class OptimizerGUI extends JFrame {
 		JMenuItem mntmRandomNetwork = new JMenuItem("New Random Network");
 		mntmRandomNetwork.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				randomNetwork = true;
 				generateRandom();
 			}
 		});
@@ -80,7 +78,6 @@ public class OptimizerGUI extends JFrame {
 				int rVal = c.showOpenDialog(OptimizerGUI.this);
 				if (rVal == JFileChooser.APPROVE_OPTION) {
 					loadFromFile(c.getSelectedFile());
-					randomNetwork = false;
 				}
 			}
 		});
@@ -89,7 +86,7 @@ public class OptimizerGUI extends JFrame {
 		JMenuItem mntmSaveJpg = new JMenuItem("Save picture");
 		mntmSaveJpg.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if (parser == null)
+				if (topology == null)
 					return;
 				String fileName = parser.getFileName();
 				imagePanel.saveToFile(new File("./Topologies/"
@@ -166,9 +163,9 @@ public class OptimizerGUI extends JFrame {
 				"UBS V0", true);
 		rdbtnmntmUbsV0.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				if (parser != null && !ubsV0) {
-					delayCalc = new UbsV0DelayCalc(parser.getTraffic());
-					delayCalc.setInitialDelays(parser.getPriorityConfig());
+				if (topology != null && !ubsV0) {
+					delayCalc = new UbsV0DelayCalc(traffic);
+					delayCalc.setInitialDelays(prio);
 				}
 				ubsV0 = true;
 			}
@@ -179,9 +176,9 @@ public class OptimizerGUI extends JFrame {
 		JRadioButtonMenuItem rdbtnmntmUbsV3 = new JRadioButtonMenuItem("UBS V3");
 		rdbtnmntmUbsV3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if (parser != null && ubsV0) {
-					delayCalc = new UbsV3DelayCalc(parser.getTraffic());
-					delayCalc.setInitialDelays(parser.getPriorityConfig());
+				if (topology != null && ubsV0) {
+					delayCalc = new UbsV3DelayCalc(traffic);
+					delayCalc.setInitialDelays(prio);
 				}
 				ubsV0 = false;
 			}
@@ -199,9 +196,7 @@ public class OptimizerGUI extends JFrame {
 		mnDisplaytype.add(rdbtnmntmPorts);
 		rdbtnmntmPorts.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if (parser != null && !portDisplay) {
-					updateDisplay(parser.getTopology().toDot());
-				} else if (randomNetwork && !portDisplay) {
+				if (topology != null && !portDisplay) {
 					updateDisplay(topology.toDot());
 				}
 				portDisplay = true;
@@ -213,9 +208,7 @@ public class OptimizerGUI extends JFrame {
 		mnDisplaytype.add(rdbtnmntmFlows);
 		rdbtnmntmFlows.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if (parser != null && portDisplay) {
-					updateDisplay(parser.getTraffic().toDot());
-				} else if (randomNetwork && !portDisplay) {
+				if (traffic != null && portDisplay) {
 					updateDisplay(traffic.toDot());
 				}
 				portDisplay = false;
@@ -287,7 +280,6 @@ public class OptimizerGUI extends JFrame {
 			setStatusMsg("Done (loaded in %.4f sec., rendered in %.4f sec.)",
 					(t2 - t1) / 1.0E9, (t3 - t2) / 1.0E9);
 			setTitle("UBS Optimizer - " + parser.getFileName());
-			randomNetwork = false;
 		} catch (Exception e) {
 			e.printStackTrace();
 			setStatusMsg("Load from File failed!");
@@ -313,7 +305,6 @@ public class OptimizerGUI extends JFrame {
 			t2 = System.nanoTime();
 			imagePanel.setDot(portDisplay ? topology.toDot() : traffic.toDot());
 			t3 = System.nanoTime();
-			randomNetwork = true;
 
 			setStatusMsg(
 					"Done (generated in %.4f sec., rendered in %.4f sec.)",

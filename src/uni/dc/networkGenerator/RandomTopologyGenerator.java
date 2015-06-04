@@ -15,7 +15,9 @@ import uni.dc.model.EgressTopology;
 import uni.dc.util.DeterministicHashSet;
 
 public class RandomTopologyGenerator {
-
+	
+	public static final double LINK_SPEED = 1e9;
+	
 	private int ports;
 	private int depth;
 	private Random rng;
@@ -81,6 +83,9 @@ public class RandomTopologyGenerator {
 
 	private void connect(EgressPort src, EgressPort dest) {
 		topo.addLink(src, dest);
+		
+		src.setLinkSpeed(LINK_SPEED);
+		dest.setLinkSpeed(LINK_SPEED);
 
 		// System.out.printf("Connecting %s -> %s\n",src,dest);
 		// System.out.printf(" - clusterSet before: %s\n",clusterSet);

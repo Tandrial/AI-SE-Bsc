@@ -17,7 +17,6 @@ import uni.dc.view.HSLColorGenerator;
 public class Traffic extends DeterministicHashSet<Flow> {
 
 	private static final long serialVersionUID = 1L;
-	private double networkSpeed;
 
 	private EgressTopology topology;
 
@@ -41,14 +40,6 @@ public class Traffic extends DeterministicHashSet<Flow> {
 		return topology;
 	}
 
-	public void setNetworkSpeed(double networdSpeed) {
-		this.networkSpeed = networdSpeed;
-	}
-
-	public double getNetworkSpeed() {
-		return networkSpeed;
-	}
-
 	public void setTopology(EgressTopology topology) {
 		this.topology = topology;
 	}
@@ -67,8 +58,16 @@ public class Traffic extends DeterministicHashSet<Flow> {
 			for (EgressPort destPort : f.getDestPortSet()) {
 				maxLat.put(destPort, new UbsDestParameters(0.0d));
 
-				List<EgressPort> path = topology.getPath(srcPort.getNode(),
-						destPort.getNode(), new DeterministicHashSet<Node>());
+				List<EgressPort> path;
+
+				if (srcPort.getNode() == null) {
+					path = topology.getPath(srcPort, destPort);
+				} else {
+					path = topology.getPath(srcPort.getNode(),
+							destPort.getNode(),
+							new DeterministicHashSet<Node>());
+				}
+
 				maxLat.get(destPort).setPath(path);
 				for (EgressPort p : path)
 					rv.get(p).add(f);

@@ -27,8 +27,6 @@ public class RandomMulticastPathGenerator {
 
 	// TODO: maxFrameLength in bit
 	private int maxFrameLength = 12350;
-	// TODO: network speed in bps
-	private double networdSpeed = 1e9;
 
 	public EgressTopology getTopology() {
 		return topology;
@@ -65,11 +63,9 @@ public class RandomMulticastPathGenerator {
 	public Traffic generate() {
 		Traffic rv = new Traffic();
 		rv.setTopology(topology);
-		rv.setNetworkSpeed(networdSpeed);
 
 		int flowId = 0;
 		Map<EgressPort, Set<Flow>> portFlowMap = new LinkedHashMap<EgressPort, Set<Flow>>();
-
 
 		for (EgressPort src : topology.getPorts()) {
 			portFlowMap.put(src, new DeterministicHashSet<Flow>());
@@ -86,7 +82,7 @@ public class RandomMulticastPathGenerator {
 					destPorts.remove(rng.nextInt(destPorts.size() - 1));
 				}
 
-				//TODO single hop???
+				// TODO single hop???
 				destPorts.add(src); // Add src to allow single hop flows
 				Collections.shuffle(destPorts);
 
@@ -102,7 +98,8 @@ public class RandomMulticastPathGenerator {
 				flow.setDestPortSet(new DeterministicHashSet<EgressPort>(
 						destPorts));
 				// max rate = 10% of full networkspeed
-				flow.setRate(networdSpeed * ((rng.nextInt(10) + 1)) / 100);
+				flow.setRate(RandomTopologyGenerator.LINK_SPEED
+						* ((rng.nextInt(10) + 1)) / 100);
 				flow.setMaxFrameLength(rng.nextInt(maxFrameLength) + 1);
 
 				rv.add(flow);

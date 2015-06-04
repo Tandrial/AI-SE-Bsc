@@ -50,6 +50,10 @@ public final class UbsOptTermination extends TerminationCriterion {
 	public final boolean terminationCriterion() {
 		return (delayCalc.checkDelays() || (--this.remaining) <= 0);
 	}
+	
+	public boolean foundDelay() {
+		return this.remaining > 0;
+	}
 
 	/** Reset the termination criterion to make it useable more than once */
 	@Override

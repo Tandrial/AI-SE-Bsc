@@ -82,14 +82,15 @@ public class RandomMulticastPathGenerator {
 					destPorts.remove(rng.nextInt(destPorts.size() - 1));
 				}
 
-				// TODO single hop???
-				destPorts.add(src); // Add src to allow single hop flows
+				if (destPorts.size() == 0)
+					break;
+				
 				Collections.shuffle(destPorts);
 
 				if (destPorts.size() > 1) {
 					destPorts = destPorts.subList(0,
 							1 + rng.nextInt(destPorts.size() - 1));
-				}
+				} 
 
 				Flow flow = new Flow();
 				flow.setName(String.format("F%d", flowId++));

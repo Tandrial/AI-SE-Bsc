@@ -1,4 +1,4 @@
-package uni.dc.util;
+package uni.dc.ubsOpti;
 
 import uni.dc.model.EgressTopology;
 import uni.dc.model.PriorityConfiguration;
@@ -7,7 +7,7 @@ import uni.dc.ubsOpti.DelayCalc.UbsDelayCalc;
 
 public class OptimizerConfig {
 	private int maxPrio = 2;
-	private int maxSteps = 1000;
+	private int maxSteps = 10000;
 	private int runs = 20;
 
 	private double speedFactor = 0.1d;
@@ -16,10 +16,11 @@ public class OptimizerConfig {
 	private PriorityConfiguration prio;
 	private UbsDelayCalc delayCalc;
 
-	public OptimizerConfig(EgressTopology topology, Traffic traffic,
+	public OptimizerConfig(EgressTopology topology, Traffic traffic, PriorityConfiguration prio,
 			UbsDelayCalc delayCalc) {
 		this.topology = topology;
 		this.traffic = traffic;
+		this.prio = prio;
 		this.delayCalc = delayCalc;
 	}
 

@@ -56,8 +56,13 @@ public class Traffic extends DeterministicHashSet<Flow> {
 
 			Map<EgressPort, UbsDestParameters> maxLat = new HashMap<EgressPort, UbsDestParameters>();
 			for (EgressPort destPort : f.getDestPortSet()) {
-				maxLat.put(destPort, new UbsDestParameters(0.0d));
-
+				if (f.getDestPortParameterMap() == null) {
+					maxLat.put(destPort, new UbsDestParameters(0.0d));
+				} else {
+					UbsDestParameters portPara = f.getDestPortParameterMap()
+							.get(destPort);
+					maxLat.put(destPort, portPara);
+				}
 				List<EgressPort> path;
 
 				if (srcPort.getNode() == null) {

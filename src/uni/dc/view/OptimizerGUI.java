@@ -24,12 +24,12 @@ import uni.dc.model.EgressTopology;
 import uni.dc.model.PriorityConfiguration;
 import uni.dc.model.Traffic;
 import uni.dc.networkGenerator.GeneratorAPI;
+import uni.dc.ubsOpti.NetworkParser;
 import uni.dc.ubsOpti.Optimizer;
+import uni.dc.ubsOpti.OptimizerConfig;
 import uni.dc.ubsOpti.DelayCalc.UbsDelayCalc;
 import uni.dc.ubsOpti.DelayCalc.UbsV0DelayCalc;
 import uni.dc.ubsOpti.DelayCalc.UbsV3DelayCalc;
-import uni.dc.util.NetworkParser;
-import uni.dc.util.OptimizerConfig;
 
 public class OptimizerGUI extends JFrame {
 	private static final long serialVersionUID = 1L;
@@ -165,7 +165,6 @@ public class OptimizerGUI extends JFrame {
 			public void actionPerformed(ActionEvent arg0) {
 				if (topology != null && !ubsV0) {
 					delayCalc = new UbsV0DelayCalc(traffic);
-					delayCalc.setInitialDelays(prio);
 				}
 				ubsV0 = true;
 			}
@@ -178,7 +177,6 @@ public class OptimizerGUI extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				if (topology != null && ubsV0) {
 					delayCalc = new UbsV3DelayCalc(traffic);
-					delayCalc.setInitialDelays(prio);
 				}
 				ubsV0 = false;
 			}
@@ -236,11 +234,12 @@ public class OptimizerGUI extends JFrame {
 			return;
 
 		setStatusMsg("Optimizing Priorities! This might take a while ...");
-
+		prio = new PriorityConfiguration(traffic);
 		long t1, t2;
 		t1 = System.nanoTime();
 		OptimizerConfig optiConfig = new OptimizerConfig(topology, traffic,
-				delayCalc);
+				prio, delayCalc);
+
 		optimizer.optimize(optiConfig, algo);
 		t2 = System.nanoTime();
 
@@ -293,11 +292,15 @@ public class OptimizerGUI extends JFrame {
 		try {
 			t1 = System.nanoTime();
 
-			GeneratorAPI.generateNetwork(5, 12);
+			GeneratorAPI.generateNetwork(5, 12, 2);
 			topology = GeneratorAPI.getTopology();
 			traffic = GeneratorAPI.getTraffic();
+			prio = GeneratorAPI.getPriorityConfiguration();
 
-			prio = new PriorityConfiguration(traffic);
+			System.out
+					.println("Generated the following Priority Configuration: \n"
+							+ prio);
+
 			delayCalc = ubsV0 ? new UbsV0DelayCalc(traffic)
 					: new UbsV3DelayCalc(traffic);
 			delayCalc.setInitialDelays(prio);

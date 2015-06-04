@@ -4,8 +4,8 @@ import java.util.List;
 
 public class UbsDestParameters {
 
-	private double maxLatencyRequirement;
-	private double actualDelay;
+	private double maxLatencyRequirement = 0.0d;
+	private double actualDelay = 0.0d;
 	private List<EgressPort> path;
 
 	public UbsDestParameters(double maxLatencyRequirement) {
@@ -34,5 +34,10 @@ public class UbsDestParameters {
 
 	public void setPath(List<EgressPort> path) {
 		this.path = path;
+	}
+
+	public String toString() {
+		return "maxLat = " + maxLatencyRequirement + ", actualDelay = "
+				+ actualDelay;
 	}
 }

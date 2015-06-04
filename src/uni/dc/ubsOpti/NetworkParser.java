@@ -1,4 +1,4 @@
-package uni.dc.util;
+package uni.dc.ubsOpti;
 
 import java.io.File;
 import java.io.IOException;
@@ -18,6 +18,7 @@ import uni.dc.model.Flow;
 import uni.dc.model.Node;
 import uni.dc.model.PriorityConfiguration;
 import uni.dc.model.Traffic;
+import uni.dc.util.DeterministicHashSet;
 
 public class NetworkParser {
 	private JSONObject jsonObj = null;

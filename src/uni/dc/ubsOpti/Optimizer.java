@@ -13,7 +13,6 @@ import org.goataa.impl.searchOperations.strings.integer.binary.IntArrayWeightedM
 import org.goataa.impl.searchOperations.strings.integer.nullary.IntArrayAllOnesCreation;
 import org.goataa.impl.searchOperations.strings.integer.unary.IntArrayAllNormalMutation;
 import org.goataa.impl.termination.UbsOptTermination;
-import org.goataa.impl.utils.BufferedStatistics;
 import org.goataa.impl.utils.Individual;
 import org.goataa.spec.INullarySearchOperation;
 import org.goataa.spec.ISOOptimizationAlgorithm;
@@ -21,7 +20,6 @@ import org.goataa.spec.IUnarySearchOperation;
 
 import uni.dc.model.PriorityConfiguration;
 import uni.dc.ubsOpti.DelayCalc.UbsDelayCalc;
-import uni.dc.util.OptimizerConfig;
 
 public class Optimizer {
 	private INullarySearchOperation<int[]> create;
@@ -33,15 +31,12 @@ public class Optimizer {
 	public PriorityConfiguration optimize(OptimizerConfig optiConfig,
 			String selectedAlgo) {
 		this.optiConfig = optiConfig;
+		UbsDelayCalc delayCalc = optiConfig.getDelayCalc();
 		PriorityConfiguration config = optiConfig.getPriorityConfig();
 		int[] prio = config.toIntArray();
-		int[] bestPrio = prio;
 		dim = config.toIntArray().length;
 		create = new IntArrayAllOnesCreation(dim, 1, optiConfig.getMaxPrio());
 		mutate = new IntArrayAllNormalMutation(1, optiConfig.getMaxPrio());
-		UbsDelayCalc delayCalc = optiConfig.getDelayCalc();
-
-		bestPrio = Arrays.copyOf(prio, prio.length);
 
 		if (selectedAlgo.equals("BruteForce")) {
 			prio = Arrays.copyOf(optimizeBruteForce(config, delayCalc), dim);
@@ -58,9 +53,7 @@ public class Optimizer {
 		config.fromIntArray(prio);
 		delayCalc.calculateDelays(config);
 
-		config.fromIntArray(bestPrio);
 		System.out.println(config);
-		delayCalc.calculateDelays(config);
 		delayCalc.printDelays();
 		System.out.println("delays okay = " + delayCalc.checkDelays());
 		return (PriorityConfiguration) config.clone();
@@ -110,21 +103,22 @@ public class Optimizer {
 	@SuppressWarnings("unchecked")
 	private final int[] testRuns(
 			final ISOOptimizationAlgorithm<?, int[], ?> algorithm) {
-		BufferedStatistics stat;
 		List<Individual<?, int[]>> solutions;
 		Individual<?, int[]> individual = null;
 		double bestValue = Double.MAX_VALUE;
 
-		stat = new BufferedStatistics();
-		algorithm.setTerminationCriterion(new UbsOptTermination(optiConfig
-				.getDelayCalc(), optiConfig.getMaxSteps()));
+		UbsOptTermination term = new UbsOptTermination(
+				optiConfig.getDelayCalc(), optiConfig.getMaxSteps());
+
+		algorithm.setTerminationCriterion(term);
 		for (int i = 0; i < optiConfig.getRuns(); i++) {
 			algorithm.setRandSeed(i);
 			solutions = ((List<Individual<?, int[]>>) (algorithm.call()));
 			if (solutions.get(0).v < bestValue) {
 				individual = solutions.get(0);
-				stat.add(individual.v);
 			}
+			if (term.foundDelay())
+				return individual.x;
 		}
 		return individual.x;
 	}

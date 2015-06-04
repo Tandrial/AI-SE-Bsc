@@ -12,7 +12,6 @@ public class PriorityConfiguration implements Cloneable {
 
 	public static final int DEFAULT_PRIORITY = 1;
 	public static final String NO_PRIORITY_STRING = "";
-	public static final int NO_PRIORITY_INT = -1;
 
 	private Traffic traffic;
 	private Set<PortFlowPriority> tripleSet;
@@ -137,7 +136,7 @@ public class PriorityConfiguration implements Cloneable {
 		int pos = 0;
 		for (Flow flow : traffic) {
 			for (EgressPort port : traffic.getTopology().getPorts()) {
-				if (hasPriority(port, flow) && pos < prio.length)
+				if (hasPriority(port, flow))
 					this.setPriority(port, flow, prio[pos++]);
 			}
 		}

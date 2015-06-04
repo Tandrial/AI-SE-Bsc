@@ -38,11 +38,10 @@ public class GeneratorAPI {
 		System.out.printf("Port -> Set<Flow> map: %s\n",
 				traffic.getPortFlowMap());
 
-		cfg = new PriorityConfiguration(traffic);
 		System.out.print(cfg);
 	}
 
-	public static void generateNetwork(int depth, int portCount) {
+	public static void generateNetwork(int depth, int portCount, int maxPrio) {
 		try {
 			RandomTopologyGenerator topologyGen = new RandomTopologyGenerator();
 			topologyGen.setRng(new Random());
@@ -57,7 +56,12 @@ public class GeneratorAPI {
 			flowPathGen.setMaxDestPerFlow(1);
 
 			traffic = flowPathGen.generate();
-			cfg = new PriorityConfiguration(traffic);	
+			
+			RandomPriorityGenerator prioGen = new RandomPriorityGenerator();
+			prioGen.setTraffic(traffic);
+			prioGen.setMaxPrio(maxPrio);
+			
+			cfg = prioGen.generate();				
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

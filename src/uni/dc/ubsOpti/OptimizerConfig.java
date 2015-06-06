@@ -10,14 +10,13 @@ public class OptimizerConfig {
 	private int maxSteps = 10000;
 	private int runs = 20;
 
-	private double speedFactor = 0.1d;
 	private Traffic traffic;
 	private EgressTopology topology;
 	private PriorityConfiguration prio;
 	private UbsDelayCalc delayCalc;
 
-	public OptimizerConfig(EgressTopology topology, Traffic traffic, PriorityConfiguration prio,
-			UbsDelayCalc delayCalc) {
+	public OptimizerConfig(EgressTopology topology, Traffic traffic,
+			PriorityConfiguration prio, UbsDelayCalc delayCalc) {
 		this.topology = topology;
 		this.traffic = traffic;
 		this.prio = prio;
@@ -46,14 +45,6 @@ public class OptimizerConfig {
 
 	public void setRuns(int runs) {
 		this.runs = runs;
-	}
-
-	public double getSpeedFactor() {
-		return speedFactor;
-	}
-
-	public void setSpeedFactor(double speedFactor) {
-		this.speedFactor = speedFactor;
 	}
 
 	public Traffic getTraffic() {

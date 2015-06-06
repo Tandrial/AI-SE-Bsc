@@ -37,7 +37,7 @@ public class UbsDestParameters {
 	}
 
 	public String toString() {
-		return "maxLat = " + maxLatencyRequirement + ", actualDelay = "
+		return " maxLat = " + maxLatencyRequirement + ", actualDelay = "
 				+ actualDelay;
 	}
 }

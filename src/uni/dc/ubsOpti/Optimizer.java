@@ -20,6 +20,7 @@ import org.goataa.spec.IUnarySearchOperation;
 
 import uni.dc.model.PriorityConfiguration;
 import uni.dc.ubsOpti.DelayCalc.UbsDelayCalc;
+import uni.dc.ubsOpti.Tracer.DelayTrace;
 
 public class Optimizer {
 	private INullarySearchOperation<int[]> create;
@@ -107,6 +108,8 @@ public class Optimizer {
 		Individual<?, int[]> individual = null;
 		double bestValue = Double.MAX_VALUE;
 
+		DelayTrace trace = new DelayTrace(algorithm.getName(true), optiConfig);
+
 		UbsOptTermination term = new UbsOptTermination(
 				optiConfig.getDelayCalc(), optiConfig.getMaxSteps());
 
@@ -116,10 +119,13 @@ public class Optimizer {
 			solutions = ((List<Individual<?, int[]>>) (algorithm.call()));
 			if (solutions.get(0).v < bestValue) {
 				individual = solutions.get(0);
+				trace.addDataPoint(i, individual.v);
 			}
-			if (term.foundDelay())
-				return individual.x;
+			if (term.foundDelay()) {
+				break;
+			}
 		}
+		System.out.println(trace);
 		return individual.x;
 	}
 }

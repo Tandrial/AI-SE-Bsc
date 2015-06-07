@@ -6,8 +6,8 @@ import java.util.List;
 import org.goataa.impl.algorithms.RandomWalk;
 import org.goataa.impl.algorithms.ea.SimpleGenerationalEA;
 import org.goataa.impl.algorithms.ea.selection.TournamentSelection;
-import org.goataa.impl.algorithms.hc.HillClimbing;
-import org.goataa.impl.algorithms.sa.SimulatedAnnealing;
+import org.goataa.impl.algorithms.hc.TraceHillClimbing;
+import org.goataa.impl.algorithms.sa.TraceSimulatedAnnealing;
 import org.goataa.impl.algorithms.sa.temperatureSchedules.Logarithmic;
 import org.goataa.impl.searchOperations.strings.integer.binary.IntArrayWeightedMeanCrossover;
 import org.goataa.impl.searchOperations.strings.integer.nullary.IntArrayAllOnesCreation;
@@ -20,7 +20,6 @@ import org.goataa.spec.IUnarySearchOperation;
 
 import uni.dc.model.PriorityConfiguration;
 import uni.dc.ubsOpti.DelayCalc.UbsDelayCalc;
-import uni.dc.ubsOpti.Tracer.DelayTrace;
 
 public class Optimizer {
 	private INullarySearchOperation<int[]> create;
@@ -67,20 +66,26 @@ public class Optimizer {
 	}
 
 	private int[] optimizeHillClimbing(UbsDelayCalc delayCalc) {
-		HillClimbing<int[], int[]> HC = new HillClimbing<int[], int[]>();
+		TraceHillClimbing<int[], int[]> HC = new TraceHillClimbing<int[], int[]>();
+		HC.setUpTrace(optiConfig);
 		HC.setObjectiveFunction(delayCalc);
 		HC.setNullarySearchOperation(create);
 		HC.setUnarySearchOperation(mutate);
-		return testRuns(HC);
+		int[] result = testRuns(HC);
+		System.out.println(HC.getTrace());
+		return result;
 	}
 
 	private int[] optimizeSimulatedAnnealing(UbsDelayCalc delayCalc) {
-		SimulatedAnnealing<int[], int[]> SA = new SimulatedAnnealing<int[], int[]>();
+		TraceSimulatedAnnealing<int[], int[]> SA = new TraceSimulatedAnnealing<int[], int[]>();
+		SA.setUpTrace(optiConfig);
 		SA.setObjectiveFunction(delayCalc);
 		SA.setNullarySearchOperation(create);
 		SA.setTemperatureSchedule(new Logarithmic(1d));
 		SA.setUnarySearchOperation(mutate);
-		return testRuns(SA);
+		int[] result = testRuns(SA);
+		System.out.println(SA.getTrace());
+		return result;
 	}
 
 	private int[] optimizeSimpleGenerationalEA(UbsDelayCalc delayCalc) {
@@ -108,8 +113,6 @@ public class Optimizer {
 		Individual<?, int[]> individual = null;
 		double bestValue = Double.MAX_VALUE;
 
-		DelayTrace trace = new DelayTrace(algorithm.getName(true), optiConfig);
-
 		UbsOptTermination term = new UbsOptTermination(
 				optiConfig.getDelayCalc(), optiConfig.getMaxSteps());
 
@@ -119,13 +122,11 @@ public class Optimizer {
 			solutions = ((List<Individual<?, int[]>>) (algorithm.call()));
 			if (solutions.get(0).v < bestValue) {
 				individual = solutions.get(0);
-				trace.addDataPoint(i, individual.v);
 			}
 			if (term.foundDelay()) {
 				break;
 			}
 		}
-		System.out.println(trace);
 		return individual.x;
 	}
 }

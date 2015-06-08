@@ -88,10 +88,17 @@ public class OptimizerGUI extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				if (topology == null)
 					return;
-				String fileName = parser.getFileName();
-				imagePanel.saveToFile(new File("./Topologies/"
-						+ fileName.substring(0, fileName.lastIndexOf("."))
-						+ (portDisplay ? "_port" : "_flow") + ".png"));
+				String fileName;
+				if (parser != null) {
+					fileName = parser.getFileName();
+					fileName = fileName.substring(0, fileName.lastIndexOf("."));
+				} else
+					fileName = "" + topology;
+
+				imagePanel.saveToFile(topology.toDot(), new File(
+						"./Topologies/" + fileName + "_port.png"));
+				imagePanel.saveToFile(traffic.toDot(prio), new File(
+						"./Topologies/" + fileName + "_flow.png"));
 			}
 		});
 		mnFile.add(mntmSaveJpg);
@@ -142,11 +149,12 @@ public class OptimizerGUI extends JFrame {
 			}
 		});
 		mnOptimize.add(mntmGA);
-		
+
 		JSeparator separator = new JSeparator();
 		mnOptimize.add(separator);
-		
-		JMenuItem mntmRunAllexcept = new JMenuItem("Run All (except BruteForce)");
+
+		JMenuItem mntmRunAllexcept = new JMenuItem(
+				"Run All (except BruteForce)");
 		mntmRunAllexcept.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				optimize("HillClimbing");
@@ -275,7 +283,8 @@ public class OptimizerGUI extends JFrame {
 			delayCalc.setInitialDelays(prio);
 
 			t2 = System.nanoTime();
-			imagePanel.setDot(portDisplay ? topology.toDot() : traffic.toDot(prio));
+			imagePanel.setDot(portDisplay ? topology.toDot() : traffic
+					.toDot(prio));
 			t3 = System.nanoTime();
 
 			setStatusMsg("Done (loaded in %.4f sec., rendered in %.4f sec.)",
@@ -294,7 +303,7 @@ public class OptimizerGUI extends JFrame {
 		try {
 			t1 = System.nanoTime();
 
-//			GeneratorAPI.generateNetwork(5, 12, 2);
+			// GeneratorAPI.generateNetwork(5, 12, 2);
 			GeneratorAPI.generateNetwork(4, 7, 2);
 			topology = GeneratorAPI.getTopology();
 			traffic = GeneratorAPI.getTraffic();
@@ -309,7 +318,8 @@ public class OptimizerGUI extends JFrame {
 			delayCalc.setInitialDelays(prio);
 
 			t2 = System.nanoTime();
-			imagePanel.setDot(portDisplay ? topology.toDot() : traffic.toDot(prio));
+			imagePanel.setDot(portDisplay ? topology.toDot() : traffic
+					.toDot(prio));
 			t3 = System.nanoTime();
 
 			setStatusMsg(

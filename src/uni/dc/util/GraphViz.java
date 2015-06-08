@@ -58,7 +58,7 @@ public class GraphViz {
 		}
 	}
 
-	private boolean setGraphVizLocation() {
+	private  boolean setGraphVizLocation() {
 		JFileChooser c = new JFileChooser();
 		c.setCurrentDirectory(new java.io.File("."));
 		c.setDialogTitle("Please select the GraphViz Folder!");
@@ -72,7 +72,7 @@ public class GraphViz {
 		}
 	}
 
-	public StringBuilder renderToString(StringBuilder dotString,
+	public StringBuilder renderTodString(StringBuilder dotString,
 			OutputFormatEnum fmt) throws IOException {
 		BufferedReader stdout = new BufferedReader(new InputStreamReader(
 				createDiagramStream(dotString, fmt)));
@@ -87,7 +87,7 @@ public class GraphViz {
 	public BufferedImage renderToImage(StringBuilder dotString)
 			throws IOException {
 		BufferedImage rv = ImageIO.read(createDiagramStream(dotString,
-				OutputFormatEnum.BMP));
+				OutputFormatEnum.PNG));
 		return rv;
 	}
 

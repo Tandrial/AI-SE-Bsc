@@ -34,9 +34,9 @@ public class GraphVizPanel extends JPanel {
 		updateImage();
 	}
 
-	public void saveToFile(File filename) {
+	public void saveToFile(StringBuilder dotString, File filename) {
 		try {
-			ImageIO.write(img, "png", filename);
+			ImageIO.write(graphViz.renderToImage(dotString), "png", filename);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

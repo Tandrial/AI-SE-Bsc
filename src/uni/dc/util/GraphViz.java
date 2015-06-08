@@ -72,18 +72,6 @@ public class GraphViz {
 		}
 	}
 
-	public StringBuilder renderTodString(StringBuilder dotString,
-			OutputFormatEnum fmt) throws IOException {
-		BufferedReader stdout = new BufferedReader(new InputStreamReader(
-				createDiagramStream(dotString, fmt)));
-		String outLine;
-		StringBuilder rv = new StringBuilder();
-		while ((outLine = stdout.readLine()) != null) {
-			rv.append(outLine + "\n");
-		}
-		return rv;
-	}
-
 	public BufferedImage renderToImage(StringBuilder dotString)
 			throws IOException {
 		BufferedImage rv = ImageIO.read(createDiagramStream(dotString,

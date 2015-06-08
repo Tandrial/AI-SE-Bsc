@@ -248,15 +248,19 @@ public class OptimizerGUI extends JFrame {
 
 		setStatusMsg("Optimizing Priorities! This might take a while ...");
 		prio = new PriorityConfiguration(traffic);
-		long t1, t2;
+		long t1, t2, t3;
 		t1 = System.nanoTime();
 		OptimizerConfig optiConfig = new OptimizerConfig(topology, traffic,
 				prio, delayCalc);
 
-		optimizer.optimize(optiConfig, algo);
+		optiConfig.setPriorityConfig(optimizer.optimize(optiConfig, algo));		
 		t2 = System.nanoTime();
-
-		setStatusMsg("Done (optimized in %.4f sec.)", (t2 - t1) / 1.0E9);
+		
+		imagePanel.setDot(portDisplay ? topology.toDot() : traffic
+				.toDot(prio));
+		t3 = System.nanoTime();
+		setStatusMsg("Done (optimized in %.4f sec., rendered in %.4f sec.)",
+				(t2 - t1) / 1.0E9, (t3 - t2) / 1.0E9);
 	}
 
 	private void updateDisplay(StringBuilder content) {
@@ -309,9 +313,7 @@ public class OptimizerGUI extends JFrame {
 			traffic = GeneratorAPI.getTraffic();
 			prio = GeneratorAPI.getPriorityConfiguration();
 
-			System.out
-					.println("Generated the following Priority Configuration: \n"
-							+ prio);
+			System.out.println("Generated Priority Configuration: \n" + prio);
 
 			delayCalc = ubsV0 ? new UbsV0DelayCalc(traffic)
 					: new UbsV3DelayCalc(traffic);

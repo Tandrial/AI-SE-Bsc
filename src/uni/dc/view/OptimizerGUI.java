@@ -212,7 +212,7 @@ public class OptimizerGUI extends JFrame {
 		rdbtnmntmFlows.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (traffic != null && portDisplay) {
-					updateDisplay(traffic.toDot());
+					updateDisplay(traffic.toDot(prio));
 				}
 				portDisplay = false;
 			}
@@ -252,9 +252,6 @@ public class OptimizerGUI extends JFrame {
 	}
 
 	private void updateDisplay(StringBuilder content) {
-		if (topology == null)
-			return;
-
 		long t1, t2;
 		t1 = System.nanoTime();
 		imagePanel.setDot(content);
@@ -278,7 +275,7 @@ public class OptimizerGUI extends JFrame {
 			delayCalc.setInitialDelays(prio);
 
 			t2 = System.nanoTime();
-			imagePanel.setDot(portDisplay ? topology.toDot() : traffic.toDot());
+			imagePanel.setDot(portDisplay ? topology.toDot() : traffic.toDot(prio));
 			t3 = System.nanoTime();
 
 			setStatusMsg("Done (loaded in %.4f sec., rendered in %.4f sec.)",
@@ -312,7 +309,7 @@ public class OptimizerGUI extends JFrame {
 			delayCalc.setInitialDelays(prio);
 
 			t2 = System.nanoTime();
-			imagePanel.setDot(portDisplay ? topology.toDot() : traffic.toDot());
+			imagePanel.setDot(portDisplay ? topology.toDot() : traffic.toDot(prio));
 			t3 = System.nanoTime();
 
 			setStatusMsg(

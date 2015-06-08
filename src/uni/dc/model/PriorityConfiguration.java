@@ -38,9 +38,11 @@ public class PriorityConfiguration implements Cloneable {
 	private void constructFromTraffic() {
 		for (EgressPort port : traffic.getTopology().getPorts()) {
 			for (Flow flow : traffic.getPortFlowMap().get(port)) {
-				PortFlowPriority pfp = new PortFlowPriority(port, flow,
-						DEFAULT_PRIORITY);
-				this.add(pfp);
+				if (!flow.getDestPortSet().contains(port)) {
+					PortFlowPriority pfp = new PortFlowPriority(port, flow,
+							DEFAULT_PRIORITY);
+					this.add(pfp);
+				}
 			}
 		}
 	}

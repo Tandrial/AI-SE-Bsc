@@ -169,7 +169,7 @@ public class GeneratorGui extends JFrame {
 		t2 = System.nanoTime();
 		
 		if (topologyImageRadioButton.isSelected()) 	imagePanel.setDot(topology.toDot());
-		if (flowImageRadioButton.isSelected())		imagePanel.setDot(traffic.toDot());
+		if (flowImageRadioButton.isSelected())		imagePanel.setDot(traffic.toDot(cfg));
 
 		t3 = System.nanoTime();
 

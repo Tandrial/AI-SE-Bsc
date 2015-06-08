@@ -82,7 +82,7 @@ public class Traffic extends DeterministicHashSet<Flow> {
 		return rv;
 	}
 
-	public StringBuilder toDot() {
+	public StringBuilder toDot(PriorityConfiguration prio) {
 
 		StringBuilder r = new StringBuilder();
 
@@ -98,18 +98,16 @@ public class Traffic extends DeterministicHashSet<Flow> {
 
 		if (nodeMap.size() > 0) {
 			for (Node n : nodeMap.keySet()) {
-				r.append(String.format("subgraph cluster_%s {\n",
-						GraphViz.dotUid(n)));
-				r.append(String.format("label=\"%s\"", n.getName()));
-				String ranking = "{rank=same ";
+				r.append(String.format("subgraph cluster_%s {\n", GraphViz.dotUid(n)));
+				r.append(String.format("\tlabel=\"%s\"", n.getName()));
+				String ranking = "\t{rank=same ";
 				// Ports
 				for (EgressPort p : nodeMap.get(n)) {
 					String portUid = GraphViz.dotUid(p);
-					r.append(String.format("\t%s[label=\"%s\"];\n", portUid,
-							p.getName()));
+					r.append(String.format("\t%s[label=\"%s\"];\n", portUid, p.getName()));
 					ranking += portUid + " ";
 				}
-				ranking += "};\n\t}";
+				ranking += "};\n\t}\n";
 				r.append(ranking);
 			}
 
@@ -125,12 +123,10 @@ public class Traffic extends DeterministicHashSet<Flow> {
 						continue;
 					srcOnlyFlows.removeAll(portFlowMap.get(pDest));
 
-					Set<Flow> srcDestFlows = new DeterministicHashSet<Flow>(
-							portFlowMap.get(pSrc));
+					Set<Flow> srcDestFlows = new DeterministicHashSet<Flow>(portFlowMap.get(pSrc));
 
 					String srcDestLabel = buildflowDotLabelString(srcDestFlows);
-					Set<Flow> destOnlyFlows = new DeterministicHashSet<Flow>(
-							portFlowMap.get(pDest));
+					Set<Flow> destOnlyFlows = new DeterministicHashSet<Flow>(portFlowMap.get(pDest));
 					destOnlyFlows.removeAll(portFlowMap.get(pSrc));
 
 					r.append(String.format("\t%s->%s[label=%s,color=%s];\n",
@@ -143,28 +139,13 @@ public class Traffic extends DeterministicHashSet<Flow> {
 			}
 
 		} else {
-
 			// Ports
 
 			for (EgressPort p : portSet) {
 				String portUid = GraphViz.dotUid(p);
 				r.append(String.format("\tsubgraph cluster_%s {\n", portUid));
 				r.append(String.format("\t\tlabel=\"%s\"", p.getName()));
-				r.append(String.format("\t\t%s_src[label=\"%s\"];\n", portUid,
-						"src"));
-				r.append(String.format("\t\t%s[label=\"%s\"];\n", portUid,
-						p.getName()));
-				r.append(String.format("\t\t%s_src->%s[label=%s];\n", portUid,
-						portUid, "Fx"));
-				r.append(String.format("\t\t%s_sink[label=\"%s\"];\n", portUid,
-						"sink"));
-				r.append(String.format("\t\t%s->%s_sink[label=%s];\n", portUid,
-						portUid, "Fx"));
-				String prioTableString = "<<FONT POINT-SIZE=\"8\"><TABLE BORDER=\"0\" CELLBORDER=\"1\" CELLSPACING=\"0\"><TR><TD>F1</TD><TD>F2</TD></TR><TR><TD>X</TD><TD></TD></TR></TABLE></FONT>>";
-				r.append(String.format("\t\t %s[shape=none, label=%s];\n",
-						portUid, prioTableString));
-				r.append(String.format("\t\t{rank=same %s_sink %s %s_src};\n",
-						portUid, portUid, portUid, portUid));
+				r.append(String.format("\t\t %s[shape=none, label=%s];\n", portUid, genratePrioTable(p, prio)));
 				r.append("\t}\n");
 			}
 
@@ -182,13 +163,11 @@ public class Traffic extends DeterministicHashSet<Flow> {
 						continue;
 					srcOnlyFlows.removeAll(portFlowMap.get(pDest));
 
-					Set<Flow> srcDestFlows = new DeterministicHashSet<Flow>(
-							portFlowMap.get(pSrc));
+					Set<Flow> srcDestFlows = new DeterministicHashSet<Flow>(portFlowMap.get(pSrc));
 					srcDestFlows.retainAll(portFlowMap.get(pDest));
 					String srcDestLabel = buildflowDotLabelString(srcDestFlows);
 
-					Set<Flow> destOnlyFlows = new DeterministicHashSet<Flow>(
-							portFlowMap.get(pDest));
+					Set<Flow> destOnlyFlows = new DeterministicHashSet<Flow>(portFlowMap.get(pDest));
 					destOnlyFlows.removeAll(portFlowMap.get(pSrc));
 
 					r.append(String.format("\t%s->%s[label=%s,color=%s];\n",
@@ -200,7 +179,31 @@ public class Traffic extends DeterministicHashSet<Flow> {
 			}
 		}
 		r.append(String.format("}\n"));
+		System.out.println(r.toString());
 		return r;
+	}
+
+	private String genratePrioTable(EgressPort p, PriorityConfiguration prio) {
+		Set<Flow> flows = p.getFlowList();
+		boolean hasFlow = false;
+
+		if (flows.size() > 0) {
+			StringBuilder sb = new StringBuilder();
+			sb.append("<<FONT POINT-SIZE=\"8\"><TABLE BORDER=\"0\" CELLBORDER=\"1\" CELLSPACING=\"0\">\n");
+			for (Flow f : flows) {
+				if (!f.getDestPortSet().contains(p)) {
+					sb.append(String.format("<TR><TD>%s</TD><TD>%d</TD></TR>\n",
+							f.getName(),prio.getPriority(p, f)));
+					hasFlow = true;
+				}
+			}
+			sb.append("</TABLE></FONT>>");
+			
+			return hasFlow ? sb.toString() : "\"\"";
+		} else {
+			return "\"\"";
+		}
+
 	}
 
 	private String buildflowDotLabelString(Set<Flow> flows) {

@@ -3,8 +3,7 @@ package uni.dc.ubsOpti;
 import java.util.Arrays;
 import java.util.List;
 
-import org.goataa.impl.algorithms.RandomWalk;
-import org.goataa.impl.algorithms.ea.SimpleGenerationalEA;
+import org.goataa.impl.algorithms.ea.TraceSimpleGenerationalEA;
 import org.goataa.impl.algorithms.ea.selection.TournamentSelection;
 import org.goataa.impl.algorithms.hc.TraceHillClimbing;
 import org.goataa.impl.algorithms.sa.TraceSimulatedAnnealing;
@@ -12,7 +11,7 @@ import org.goataa.impl.algorithms.sa.temperatureSchedules.Logarithmic;
 import org.goataa.impl.searchOperations.strings.integer.binary.IntArrayWeightedMeanCrossover;
 import org.goataa.impl.searchOperations.strings.integer.nullary.IntArrayAllOnesCreation;
 import org.goataa.impl.searchOperations.strings.integer.unary.IntArrayAllNormalMutation;
-import org.goataa.impl.termination.UbsOptTermination;
+import org.goataa.impl.termination.UbsDelayTermination;
 import org.goataa.impl.utils.Individual;
 import org.goataa.spec.INullarySearchOperation;
 import org.goataa.spec.ISOOptimizationAlgorithm;
@@ -44,8 +43,6 @@ public class Optimizer {
 			prio = Arrays.copyOf(optimizeSimulatedAnnealing(delayCalc), dim);
 		} else if (selectedAlgo.equals("HillClimbing")) {
 			prio = Arrays.copyOf(optimizeHillClimbing(delayCalc), dim);
-		} else if (selectedAlgo.equals("RandomWalks")) {
-			prio = Arrays.copyOf(optimizeRandomWalks(delayCalc), dim);
 		} else if (selectedAlgo.equals("SimpleGenerationalEA")) {
 			prio = Arrays.copyOf(optimizeSimpleGenerationalEA(delayCalc), dim);
 		}
@@ -62,7 +59,10 @@ public class Optimizer {
 	private int[] optimizeBruteForce(PriorityConfiguration prio,
 			UbsDelayCalc delayCalc) {
 		BruteForce BF = new BruteForce(delayCalc);
-		return BF.optimize(prio, optiConfig.getMaxPrio());
+		BF.setUpTrace(optiConfig);
+		int[] result = BF.optimize(prio, optiConfig.getMaxPrio());
+		System.out.println(BF.getTrace());
+		return result;
 	}
 
 	private int[] optimizeHillClimbing(UbsDelayCalc delayCalc) {
@@ -89,21 +89,16 @@ public class Optimizer {
 	}
 
 	private int[] optimizeSimpleGenerationalEA(UbsDelayCalc delayCalc) {
-		SimpleGenerationalEA<int[], int[]> GA = new SimpleGenerationalEA<int[], int[]>();
+		TraceSimpleGenerationalEA<int[], int[]> GA = new TraceSimpleGenerationalEA<int[], int[]>();
+		GA.setUpTrace(optiConfig);
 		GA.setBinarySearchOperation(IntArrayWeightedMeanCrossover.INT_ARRAY_WEIGHTED_MEAN_CROSSOVER);
 		GA.setObjectiveFunction(delayCalc);
 		GA.setNullarySearchOperation(create);
 		GA.setSelectionAlgorithm(new TournamentSelection(2));
 		GA.setUnarySearchOperation(mutate);
-		return testRuns(GA);
-	}
-
-	private int[] optimizeRandomWalks(UbsDelayCalc delayCalc) {
-		RandomWalk<int[], int[]> RW = new RandomWalk<int[], int[]>();
-		RW.setObjectiveFunction(delayCalc);
-		RW.setNullarySearchOperation(create);
-		RW.setUnarySearchOperation(mutate);
-		return testRuns(RW);
+		int[] result = testRuns(GA);
+		System.out.println(GA.getTrace());
+		return result;
 	}
 
 	@SuppressWarnings("unchecked")
@@ -113,7 +108,7 @@ public class Optimizer {
 		Individual<?, int[]> individual = null;
 		double bestValue = Double.MAX_VALUE;
 
-		UbsOptTermination term = new UbsOptTermination(
+		UbsDelayTermination term = new UbsDelayTermination(
 				optiConfig.getDelayCalc(), optiConfig.getMaxSteps());
 
 		algorithm.setTerminationCriterion(term);
@@ -123,9 +118,9 @@ public class Optimizer {
 			if (solutions.get(0).v < bestValue) {
 				individual = solutions.get(0);
 			}
-			if (term.foundDelay()) {
-				break;
-			}
+			if (term.foundDelay())
+				return individual.x;
+			term.reset();
 		}
 		return individual.x;
 	}

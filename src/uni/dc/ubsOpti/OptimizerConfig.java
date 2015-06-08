@@ -7,8 +7,8 @@ import uni.dc.ubsOpti.DelayCalc.UbsDelayCalc;
 
 public class OptimizerConfig {
 	private int maxPrio = 2;
-	private int maxSteps = 10000;
-	private int runs = 20;
+	private int maxSteps = 3000000;
+	private int runs = 2;
 
 	private Traffic traffic;
 	private EgressTopology topology;

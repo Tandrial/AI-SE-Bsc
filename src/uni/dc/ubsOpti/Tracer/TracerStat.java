@@ -1,6 +1,5 @@
 package uni.dc.ubsOpti.Tracer;
 
-
 public class TracerStat {
 
 	private long step;
@@ -29,6 +28,7 @@ public class TracerStat {
 
 	@Override
 	public String toString() {
-		return String.format("Step %d - delay = %.8f s\n", step, delay);
+		// return String.format("Step %d - delay = %.8f s\n", step, delay);
+		return String.format("%d;%.8f\n", step, delay);
 	}
 }

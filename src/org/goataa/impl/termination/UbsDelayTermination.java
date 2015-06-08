@@ -12,7 +12,7 @@ import uni.dc.ubsOpti.DelayCalc.UbsDelayCalc;
  *
  * @author Thomas Weise
  */
-public final class UbsOptTermination extends TerminationCriterion {
+public final class UbsDelayTermination extends TerminationCriterion {
 
 	/** a constant required by Java serialization */
 	private static final long serialVersionUID = 1;
@@ -31,7 +31,7 @@ public final class UbsOptTermination extends TerminationCriterion {
 	 * @param steps
 	 *            the number of steps
 	 */
-	public UbsOptTermination(UbsDelayCalc delayCalc, final int steps) {
+	public UbsDelayTermination(UbsDelayCalc delayCalc, final int steps) {
 		this.maxSteps = steps;
 		this.delayCalc = delayCalc;
 	}

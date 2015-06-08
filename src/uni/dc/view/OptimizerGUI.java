@@ -142,14 +142,19 @@ public class OptimizerGUI extends JFrame {
 			}
 		});
 		mnOptimize.add(mntmGA);
-
-		JMenuItem mntmRW = new JMenuItem("RandomWalks");
-		mntmRW.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				optimize("RandomWalks");
+		
+		JSeparator separator = new JSeparator();
+		mnOptimize.add(separator);
+		
+		JMenuItem mntmRunAllexcept = new JMenuItem("Run All (except BruteForce)");
+		mntmRunAllexcept.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				optimize("HillClimbing");
+				optimize("SimulatedAnnealing");
+				optimize("SimpleGenerationalEA");
 			}
 		});
-		mnOptimize.add(mntmRW);
+		mnOptimize.add(mntmRunAllexcept);
 
 		JMenu mnSettings = new JMenu("Settings");
 		menuBar.add(mnSettings);
@@ -292,7 +297,8 @@ public class OptimizerGUI extends JFrame {
 		try {
 			t1 = System.nanoTime();
 
-			GeneratorAPI.generateNetwork(5, 12, 2);
+//			GeneratorAPI.generateNetwork(5, 12, 2);
+			GeneratorAPI.generateNetwork(4, 7, 2);
 			topology = GeneratorAPI.getTopology();
 			traffic = GeneratorAPI.getTraffic();
 			prio = GeneratorAPI.getPriorityConfiguration();

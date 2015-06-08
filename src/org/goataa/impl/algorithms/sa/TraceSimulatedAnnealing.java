@@ -55,7 +55,7 @@ public final class TraceSimulatedAnnealing<G, X> extends
   @Override
   public void setUpTrace(OptimizerConfig config) {
 	  delays = new DelayTrace(getName(true), config);
-	  step = 0;
+	  step = 1;
   }
 
   /**
@@ -169,10 +169,11 @@ public final class TraceSimulatedAnnealing<G, X> extends
     pbest.assign(pcur);
     t = 1;
 	if (delays != null)
-		delays.addDataPoint(step++, pbest.v);
+		delays.addDataPoint(step, pbest.v);
 
     // check the termination criterion
     while (!(term.terminationCriterion())) {
+      step++;
 
       // compute the current temperature
       T = temperature.getTemperature(t);
@@ -195,7 +196,7 @@ public final class TraceSimulatedAnnealing<G, X> extends
         if (pnew.v < pbest.v) {
           pbest.assign(pnew);
       	if (delays != null)
-    		delays.addDataPoint(step++, pbest.v);
+    		delays.addDataPoint(step, pbest.v);
         }
       } else {
         // otherwise, use

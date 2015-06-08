@@ -284,7 +284,7 @@ public class OptimizerGUI extends JFrame {
 			prio = parser.getPriorityConfig();
 			delayCalc = ubsV0 ? new UbsV0DelayCalc(traffic)
 					: new UbsV3DelayCalc(traffic);
-			delayCalc.setInitialDelays(prio);
+			delayCalc.calculateDelays(prio);
 
 			t2 = System.nanoTime();
 			imagePanel.setDot(portDisplay ? topology.toDot() : traffic

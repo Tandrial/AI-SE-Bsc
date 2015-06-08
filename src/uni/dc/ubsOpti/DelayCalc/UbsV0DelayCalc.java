@@ -43,7 +43,7 @@ public class UbsV0DelayCalc extends UbsDelayCalc {
 					if (f == other)
 						continue;
 					int prioOther = prio.getPriority(lastEgress, other);
-					if (prioOther > prioF) {
+					if (prioOther < prioF) {
 						sizeBiggerEq += other.getMaxFrameLength();
 						rateHigher += other.getRate();
 					} else if (prioOther == prioF) {

@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
+import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -18,6 +19,7 @@ import uni.dc.model.Flow;
 import uni.dc.model.Node;
 import uni.dc.model.PriorityConfiguration;
 import uni.dc.model.Traffic;
+import uni.dc.model.UbsDestParameters;
 import uni.dc.util.DeterministicHashSet;
 
 public class NetworkParser {
@@ -89,22 +91,29 @@ public class NetworkParser {
 			long rate = convertSpeed(tspec.getString("leakRate"));
 			int maxPacketLength = convertLength(tspec
 					.getString("maxPacketLength"));
+			double maxLatency = convertTime(tspec.getString("maxLatency"));
 
 			Flow flow = new Flow();
 			flow.setName(String.format("F%d", flowID));
 			flow.setTopology(topology);
-			DeterministicHashSet<EgressPort> dests = new DeterministicHashSet<EgressPort>();
 			flow.setRate(rate);
 			flow.setMaxFrameLength(maxPacketLength);
 			traffic.add(flow);
-			List<EgressPort> path = topology.getPath(src, dest);
 
+			List<EgressPort> path = topology.getPath(src, dest);
 			flow.setSrcPort(path.get(0));
 			EgressPort lastEgress = path.get(path.size() - 1);
-			for (EgressPort x : topology.getLinkMap().get(lastEgress)) {
-				dests.add(x);
+			
+			DeterministicHashSet<EgressPort> dests = new DeterministicHashSet<EgressPort>();
+			Map<EgressPort, UbsDestParameters> destPortParameterMap = new HashMap<EgressPort, UbsDestParameters>();
+			
+			for (EgressPort p : topology.getLinkMap().get(lastEgress)) {
+				dests.add(p);
+				destPortParameterMap.put(p, new UbsDestParameters(maxLatency));
 			}
 			flow.setDestPortSet(dests);
+			flow.setDestPortParameterMap(destPortParameterMap);
+			
 
 			for (EgressPort p : path) {
 				if (!portFlowMap.containsKey(p))
@@ -149,6 +158,19 @@ public class NetworkParser {
 			return result * 1000 * 1000;
 		else if (SI.equalsIgnoreCase("kbps"))
 			return result * 1000;
+		else
+			return result;
+	}
+
+	private static double convertTime(String str) {
+		long result = Long.parseLong(str.replaceAll("[^0-9]", ""));
+		String SI = str.replaceAll("[0-9]", "");
+		if (SI.equalsIgnoreCase("ns"))
+			return result / 10e9;
+		else if (SI.equalsIgnoreCase("µs"))
+			return result / 10e6;
+		else if (SI.equalsIgnoreCase("ms"))
+			return result / 10e3;
 		else
 			return result;
 	}

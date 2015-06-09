@@ -1,8 +1,9 @@
 package uni.dc.model;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class UbsDestParameters {
+public class UbsDestParameters implements Serializable{
 
 	private double maxLatencyRequirement = 0.0d;
 	private double actualDelay = 0.0d;
@@ -39,5 +40,9 @@ public class UbsDestParameters {
 	public String toString() {
 		return " maxLat = " + maxLatencyRequirement + ", actualDelay = "
 				+ actualDelay;
+	}
+
+	public boolean checkDelay() {
+		return maxLatencyRequirement > actualDelay;
 	}
 }

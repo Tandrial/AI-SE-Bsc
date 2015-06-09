@@ -25,7 +25,7 @@ public class BruteForce implements Tracable {
 	public int[] optimize(PriorityConfiguration prio, int maxPrio) {
 		bestPrio = prio.toIntArray();
 		minDelay = delayCalc.compute(bestPrio, null);
-		delays.addDataPoint(step, delayCalc.compute(bestPrio, null));
+		delays.addDataPoint(step, delayCalc.compute(bestPrio, null), bestPrio);
 		genPermutations(new int[bestPrio.length], 0, maxPrio);		
 		return bestPrio;
 	}
@@ -37,7 +37,7 @@ public class BruteForce implements Tracable {
 			if (delay < minDelay) {
 				minDelay = delay;
 				bestPrio = Arrays.copyOf(n, n.length);
-				delays.addDataPoint(step, delay);
+				delays.addDataPoint(step, delay, n);
 				if (delayCalc.checkDelays())
 					stopRecursion = true;
 			}

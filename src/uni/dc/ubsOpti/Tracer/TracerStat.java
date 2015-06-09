@@ -1,29 +1,29 @@
 package uni.dc.ubsOpti.Tracer;
 
-public class TracerStat {
+import java.util.Arrays;
+
+public class TracerStat{
 
 	private long step;
 	private double delay;
+	private int[] prio;
 
-	public TracerStat(long step, double delay) {
+	public TracerStat(long step, double delay, int[] prio) {
 		this.step = step;
 		this.delay = delay;
+		this.prio = Arrays.copyOf(prio, prio.length);
 	}
 
 	public long getStep() {
 		return step;
 	}
 
-	public void setStep(long step) {
-		this.step = step;
-	}
-
 	public double getDelay() {
 		return delay;
 	}
 
-	public void setDelay(double delay) {
-		this.delay = delay;
+	public int[] getPrio() {
+		return prio;
 	}
 
 	@Override

@@ -127,7 +127,7 @@ public final class TraceSimpleGenerationalEA<G, X> extends EABase<G, X> implemen
       p.g = create.create(r);
     }
 	if (delays != null)
-		delays.addDataPoint(step++, pop[0].v);
+		delays.addDataPoint(step++, pop[0].v, (int[]) pop[0].g);
 
     // the basic loop of the Evolutionary Algorithm 28.1
     for (;;) {
@@ -146,6 +146,8 @@ public final class TraceSimpleGenerationalEA<G, X> extends EABase<G, X> implemen
         // is the current individual the best one so far?
         if (p.v < best.v) {
           best.assign(p);
+          if (delays != null)
+      		delays.addDataPoint(step, best.v, (int[]) pop[0].g);
         }
 
         // after each objective function evaluation, check if we should
@@ -153,14 +155,11 @@ public final class TraceSimpleGenerationalEA<G, X> extends EABase<G, X> implemen
         if (term.terminationCriterion()) {
           // if we should stop, return the best individual found
           	if (delays != null)
-        		delays.addDataPoint(step, best.v);
+        		delays.addDataPoint(step, best.v, (int[]) pop[0].g);
             
           return best;
         }
       }
-
-      if (delays != null)
-  		delays.addDataPoint(step, best.v);
       
       // perform the selection step
       sel.select(pop, 0, pop.length, mate, 0, mate.length, r);

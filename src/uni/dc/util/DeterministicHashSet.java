@@ -1,11 +1,12 @@
 package uni.dc.util;
 
+import java.io.Serializable;
 import java.util.Collection;
 import java.util.LinkedHashSet;
 import java.util.LinkedList;
 import java.util.List;
 
-public class DeterministicHashSet<T> extends LinkedHashSet<T> {
+public class DeterministicHashSet<T> extends LinkedHashSet<T> implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 

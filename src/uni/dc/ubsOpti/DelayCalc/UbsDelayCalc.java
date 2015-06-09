@@ -1,5 +1,6 @@
 package uni.dc.ubsOpti.DelayCalc;
 
+import java.io.Serializable;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Random;
@@ -15,7 +16,7 @@ import uni.dc.model.UbsDestParameters;
 import uni.dc.util.DeterministicHashSet;
 
 public abstract class UbsDelayCalc extends OptimizationModule implements
-		IObjectiveFunction<int[]> {
+		IObjectiveFunction<int[]>, Serializable {
 	private static final long serialVersionUID = 1L;
 	protected Set<Flow> flows = null;
 	protected PriorityConfiguration prio = null;
@@ -24,7 +25,7 @@ public abstract class UbsDelayCalc extends OptimizationModule implements
 	public PriorityConfiguration getPrio() {
 		return prio;
 	}
-	
+
 	public double getFitness() {
 		return fitness;
 	}
@@ -67,31 +68,24 @@ public abstract class UbsDelayCalc extends OptimizationModule implements
 	}
 
 	public void printDelays() {
-		for (Flow x : flows) {
-			System.out.printf("%s : %.0f Mbps, %d bit\n", x.getName(),
-					x.getRate() / 1e6, x.getMaxFrameLength());
-			System.out.printf("Path : %s\n", x);
+		for (Flow flow : flows) {
+			System.out.printf("%s : %.0f Mbps, %d bit\n", flow.getName(),
+					flow.getRate() / 1e6, flow.getMaxFrameLength());
+			System.out.printf("Path : %s\n", flow);
 
-			for (Entry<EgressPort, UbsDestParameters> j : x
-					.getDestPortParameterMap().entrySet()) {
-				System.out
-						.printf("Destination %s has maxLat of %.3e ms, actual delay is %.3e ms\n",
-								j.getKey(), j.getValue()
-										.getMaxLatencyRequirement() * 1000, j
-										.getValue().getActualDelay() * 1000);
-			}
+			System.out
+					.printf("Destination %s has maxLat of %.3e ms, actual delay is %.3e ms\n",
+							flow.getDestPort(), flow.getDestPortParameter()
+									.getMaxLatencyRequirement() * 1000,
+							flow.getDestPortParameter().getActualDelay() * 1000);
 			System.out.println();
 		}
 	}
 
 	public boolean checkDelays() {
-		for (Flow x : flows) {
-			for (Entry<EgressPort, UbsDestParameters> j : x
-					.getDestPortParameterMap().entrySet()) {
-				if (j.getValue().getActualDelay() > j.getValue()
-						.getMaxLatencyRequirement())
-					return false;
-			}
+		for (Flow flow : flows) {
+			if (!flow.checkDelay())
+				return false;
 		}
 		return true;
 	}
@@ -103,12 +97,9 @@ public abstract class UbsDelayCalc extends OptimizationModule implements
 		double delay = 0.0d;
 		for (Flow f : flows) {
 			delay += f.getTotalDelay();
-			for (Entry<EgressPort, UbsDestParameters> j : f
-					.getDestPortParameterMap().entrySet()) {
-				if (j.getValue().getActualDelay() > j.getValue()
-						.getMaxLatencyRequirement())
-					// TODO: Strafe fÃ¼r Delay > maxLatencyReq
-					delay += 1;
+			if (!f.checkDelay()) {
+				// TODO: Strafe für Delay > maxLatencyReq
+				delay += 1;
 			}
 		}
 		fitness = delay;

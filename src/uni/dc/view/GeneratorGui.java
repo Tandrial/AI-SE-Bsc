@@ -158,7 +158,7 @@ public class GeneratorGui extends JFrame {
 		
 		Traffic traffic = flowPathGen.generate();
 		for (Flow f : traffic){
-			System.out.printf("Flow %s: %s -> %s\n", f.getName(),f.getSrcPort(),f.getDestPortSet());
+			System.out.printf("Flow %s: %s -> %s\n", f.getName(),f.getSrcPort(),f.getDestPort());
 		}
 		
 		System.out.printf("Port -> Set<Flow> map: %s\n", traffic.getPortFlowMap());

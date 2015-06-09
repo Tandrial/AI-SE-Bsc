@@ -1,10 +1,11 @@
 package uni.dc.model;
 
+import java.io.Serializable;
 import java.util.Set;
 
 import uni.dc.util.DeterministicHashSet;
 
-public class EgressPort implements Cloneable {
+public class EgressPort implements Cloneable, Serializable {
 
 	private Set<Flow> flowList = new DeterministicHashSet<Flow>();
 

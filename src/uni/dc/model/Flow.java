@@ -1,30 +1,27 @@
 package uni.dc.model;
 
+import java.io.Serializable;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-public class Flow {
+public class Flow implements Serializable {
 
 	private String name;
 
 	private EgressTopology topology;
 	private EgressPort srcPort;
 
-	private Set<EgressPort> destPortSet;
-	private Map<EgressPort, UbsDestParameters> destPortParameterMap;
+	private EgressPort destPort;
+	private UbsDestParameters destPortParameter;
 
 	private double rate;
 	private int maxFrameLength;
 
 	@Override
 	public String toString() {
-		for (EgressPort iter : destPortParameterMap.keySet()) {
-			return Arrays.toString(destPortParameterMap.get(iter).getPath()
-					.toArray());
-		}
-		return "";
+		return Arrays.toString(destPortParameter.getPath().toArray());
 	}
 
 	public String getName() {
@@ -51,51 +48,37 @@ public class Flow {
 		this.srcPort = srcPort;
 	}
 
-	public Set<EgressPort> getDestPortSet() {
-		return destPortSet;
+	public EgressPort getDestPort() {
+		return destPort;
 	}
 
-	public void setDestPortSet(Set<EgressPort> destPortSet) {
-		this.destPortSet = destPortSet;
+	public void setDestPort(EgressPort destPort) {
+		this.destPort = destPort;
 	}
 
-	public Map<EgressPort, UbsDestParameters> getDestPortParameterMap() {
-		return destPortParameterMap;
+	public UbsDestParameters getDestPortParameter() {
+		return destPortParameter;
 	}
 
-	public void setDestPortParameterMap(
-			Map<EgressPort, UbsDestParameters> destPortParameterMap) {
-		this.destPortParameterMap = destPortParameterMap;
+	public void setDestPortParameter(UbsDestParameters destPortParameter) {
+		this.destPortParameter = destPortParameter;
 	}
 
 	public void setInitialMaxLatencyRequirement() {
-		for (UbsDestParameters iter : destPortParameterMap.values()) {
-			iter.setMaxLatencyRequirement(iter.getActualDelay());
-		}
+		destPortParameter.setMaxLatencyRequirement(destPortParameter
+				.getActualDelay());
 	}
 
 	public double getTotalDelay() {
-		// For now no multicast
-		double delay = 0.0;
-		for (UbsDestParameters iter : destPortParameterMap.values()) {
-			delay = iter.getActualDelay();
-		}
-		return delay;
+		return destPortParameter.getActualDelay();
 	}
 
 	public void setTotalDelay(double totalDelay) {
-		for (UbsDestParameters iter : destPortParameterMap.values()) {
-			iter.setActualDelay(totalDelay);
-		}
+		destPortParameter.setActualDelay(totalDelay);
 	}
 
 	public List<EgressPort> getPath() {
-		// For now no multicast
-		List<EgressPort> delay = null;
-		for (UbsDestParameters iter : destPortParameterMap.values()) {
-			delay = iter.getPath();
-		}
-		return delay;
+		return destPortParameter.getPath();
 	}
 
 	public double getRate() {
@@ -113,4 +96,9 @@ public class Flow {
 	public void setMaxFrameLength(int maxFrameLength) {
 		this.maxFrameLength = maxFrameLength;
 	}
+
+	public boolean checkDelay() {
+		return destPortParameter.checkDelay();
+	}
+
 }

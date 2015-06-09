@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import uni.dc.model.EgressTopology;
+import uni.dc.model.PriorityConfiguration;
 import uni.dc.model.Traffic;
 import uni.dc.ubsOpti.OptimizerConfig;
 
@@ -14,11 +15,13 @@ public class DelayTrace {
 
 	private EgressTopology topology;
 	private Traffic traffic;
+	private PriorityConfiguration prio;
 
 	public DelayTrace(String algoName, OptimizerConfig config) {
 		this.name = algoName;
 		this.topology = config.getTopology();
 		this.traffic = config.getTraffic();
+		this.prio = config.getPriorityConfig();
 	}
 
 	public String getAlgoName() {
@@ -41,8 +44,8 @@ public class DelayTrace {
 		return stats;
 	}
 
-	public void addDataPoint(long step, double delay) {
-		stats.add(new TracerStat(step, delay));
+	public void addDataPoint(long step, double delay, int[] prio) {
+		stats.add(new TracerStat(step, delay, prio));
 	}
 
 	@Override

@@ -169,7 +169,7 @@ public final class TraceSimulatedAnnealing<G, X> extends
     pbest.assign(pcur);
     t = 1;
 	if (delays != null)
-		delays.addDataPoint(step, pbest.v);
+		delays.addDataPoint(step, pbest.v, (int[]) pbest.x);
 
     // check the termination criterion
     while (!(term.terminationCriterion())) {
@@ -196,7 +196,7 @@ public final class TraceSimulatedAnnealing<G, X> extends
         if (pnew.v < pbest.v) {
           pbest.assign(pnew);
       	if (delays != null)
-    		delays.addDataPoint(step, pbest.v);
+    		delays.addDataPoint(step, pbest.v, (int[]) pbest.x);
         }
       } else {
         // otherwise, use

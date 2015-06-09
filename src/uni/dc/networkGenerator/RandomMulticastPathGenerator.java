@@ -2,7 +2,7 @@ package uni.dc.networkGenerator;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.LinkedHashMap;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
@@ -65,7 +65,7 @@ public class RandomMulticastPathGenerator {
 		rv.setTopology(topology);
 
 		int flowId = 0;
-		Map<EgressPort, Set<Flow>> portFlowMap = new LinkedHashMap<EgressPort, Set<Flow>>();
+		Map<EgressPort, Set<Flow>> portFlowMap = new HashMap<EgressPort, Set<Flow>>();
 
 		for (EgressPort src : topology.getPorts()) {
 			portFlowMap.put(src, new DeterministicHashSet<Flow>());
@@ -84,20 +84,19 @@ public class RandomMulticastPathGenerator {
 
 				if (destPorts.size() == 0)
 					break;
-				
+
 				Collections.shuffle(destPorts);
 
 				if (destPorts.size() > 1) {
 					destPorts = destPorts.subList(0,
 							1 + rng.nextInt(destPorts.size() - 1));
-				} 
+				}
 
 				Flow flow = new Flow();
 				flow.setName(String.format("F%d", flowId++));
 				flow.setTopology(topology);
 				flow.setSrcPort(src);
-				flow.setDestPortSet(new DeterministicHashSet<EgressPort>(
-						destPorts));
+				flow.setDestPort(destPorts.get(0));
 				// max rate = 10% of full networkspeed
 				flow.setRate(RandomTopologyGenerator.LINK_SPEED
 						* ((rng.nextInt(10) + 1)) / 100);

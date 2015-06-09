@@ -74,7 +74,7 @@ public class OptimizerGUI extends JFrame {
 				JFileChooser c = new JFileChooser();
 				c.setCurrentDirectory(new File("./Topologies/"));
 				c.setFileFilter(new FileNameExtensionFilter(
-						"UBS Optimizer Network file", "ubsNetwork"));
+						"UBS Optimizer Network file", "ubsNetwork", "ser"));
 				int rVal = c.showOpenDialog(OptimizerGUI.this);
 				if (rVal == JFileChooser.APPROVE_OPTION) {
 					loadFromFile(c.getSelectedFile());
@@ -83,8 +83,8 @@ public class OptimizerGUI extends JFrame {
 		});
 		mnFile.add(mntmLoad);
 
-		JMenuItem mntmSaveJpg = new JMenuItem("Save picture");
-		mntmSaveJpg.addActionListener(new ActionListener() {
+		JMenuItem mntmExportPng = new JMenuItem("Export Picture");
+		mntmExportPng.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (topology == null)
 					return;
@@ -101,7 +101,20 @@ public class OptimizerGUI extends JFrame {
 						"./Topologies/" + fileName + "_flow.png"));
 			}
 		});
-		mnFile.add(mntmSaveJpg);
+		mnFile.add(mntmExportPng);
+
+		JMenuItem mntmSaveNetwork = new JMenuItem("Save Network");
+		mntmSaveNetwork.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (topology == null || parser != null)
+					return;
+				String fileName = "" + topology;
+				OptimizerConfig.saveToFile(new File("./Topologies/" + fileName
+						+ ".ser"), new OptimizerConfig(topology, traffic, prio,
+						delayCalc));
+			}
+		});
+		mnFile.add(mntmSaveNetwork);
 		mnFile.add(new JSeparator());
 
 		JMenuItem mntmExit = new JMenuItem("Exit");
@@ -253,11 +266,10 @@ public class OptimizerGUI extends JFrame {
 		OptimizerConfig optiConfig = new OptimizerConfig(topology, traffic,
 				prio, delayCalc);
 
-		optiConfig.setPriorityConfig(optimizer.optimize(optiConfig, algo));		
+		optiConfig.setPriorityConfig(optimizer.optimize(optiConfig, algo));
 		t2 = System.nanoTime();
-		
-		imagePanel.setDot(portDisplay ? topology.toDot() : traffic
-				.toDot(prio));
+
+		imagePanel.setDot(portDisplay ? topology.toDot() : traffic.toDot(prio));
 		t3 = System.nanoTime();
 		setStatusMsg("Done (optimized in %.4f sec., rendered in %.4f sec.)",
 				(t2 - t1) / 1.0E9, (t3 - t2) / 1.0E9);
@@ -277,15 +289,25 @@ public class OptimizerGUI extends JFrame {
 
 		setStatusMsg("Generating topology ...");
 		try {
-			t1 = System.nanoTime();
-			parser = new NetworkParser(file);
-			topology = parser.getTopology();
-			traffic = parser.getTraffic();
-			prio = parser.getPriorityConfig();
-			delayCalc = ubsV0 ? new UbsV0DelayCalc(traffic)
-					: new UbsV3DelayCalc(traffic);
-			delayCalc.calculateDelays(prio);
 
+			t1 = System.nanoTime();
+			String extension = file.getName().substring(
+					file.getName().lastIndexOf("."));
+			if (extension.equals(".ser")) {
+				OptimizerConfig config = OptimizerConfig.loadFromFile(file);
+				topology = config.getTopology();
+				traffic = config.getTraffic();
+				prio = config.getPriorityConfig();
+				delayCalc = config.getDelayCalc();
+			} else {
+				parser = new NetworkParser(file);
+				topology = parser.getTopology();
+				traffic = parser.getTraffic();
+				prio = parser.getPriorityConfig();
+				delayCalc = ubsV0 ? new UbsV0DelayCalc(traffic)
+						: new UbsV3DelayCalc(traffic);
+				delayCalc.calculateDelays(prio);
+			}
 			t2 = System.nanoTime();
 			imagePanel.setDot(portDisplay ? topology.toDot() : traffic
 					.toDot(prio));
@@ -293,7 +315,7 @@ public class OptimizerGUI extends JFrame {
 
 			setStatusMsg("Done (loaded in %.4f sec., rendered in %.4f sec.)",
 					(t2 - t1) / 1.0E9, (t3 - t2) / 1.0E9);
-			setTitle("UBS Optimizer - " + parser.getFileName());
+			setTitle("UBS Optimizer - " + file.getName());
 		} catch (Exception e) {
 			e.printStackTrace();
 			setStatusMsg("Load from File failed!");

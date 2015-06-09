@@ -1,8 +1,9 @@
 package uni.dc.model;
 
+import java.io.Serializable;
 import java.util.Collection;
 import java.util.HashSet;
-import java.util.LinkedHashMap;
+import java.util.HashMap;
 import java.util.LinkedHashSet;
 import java.util.LinkedList;
 import java.util.List;
@@ -13,7 +14,7 @@ import uni.dc.util.DeterministicHashSet;
 import uni.dc.util.GraphViz;
 import uni.dc.util.Pair;
 
-public class EgressTopology {
+public class EgressTopology implements Serializable{
 
 	private Map<Node, Set<EgressPort>> nodeMap;
 	private Map<EgressPort, Node> portNodeMap;
@@ -24,12 +25,12 @@ public class EgressTopology {
 
 	public EgressTopology() {
 		super();
-		nodeMap = new LinkedHashMap<Node, Set<EgressPort>>();
-		portNodeMap = new LinkedHashMap<EgressPort, Node>();
+		nodeMap = new HashMap<Node, Set<EgressPort>>();
+		portNodeMap = new HashMap<EgressPort, Node>();
 		portSet = new LinkedHashSet<EgressPort>();
-		linkMap = new LinkedHashMap<EgressPort, Set<EgressPort>>();
-		nodeLinkMap = new LinkedHashMap<Node, Set<Node>>();
-		nodeLinkEgressPortMap = new LinkedHashMap<Pair<Node, Node>, EgressPort>();
+		linkMap = new HashMap<EgressPort, Set<EgressPort>>();
+		nodeLinkMap = new HashMap<Node, Set<Node>>();
+		nodeLinkEgressPortMap = new HashMap<Pair<Node, Node>, EgressPort>();
 	}
 
 	public Set<EgressPort> getPorts() {

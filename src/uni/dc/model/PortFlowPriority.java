@@ -1,6 +1,8 @@
 package uni.dc.model;
 
-public class PortFlowPriority implements Cloneable {
+import java.io.Serializable;
+
+public class PortFlowPriority implements Cloneable, Serializable {
 	private EgressPort port;
 	private Flow flow;
 	private Integer priority;

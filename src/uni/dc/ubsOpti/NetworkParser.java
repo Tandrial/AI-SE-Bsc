@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.util.HashMap;
-import java.util.LinkedHashMap;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -75,7 +75,7 @@ public class NetworkParser {
 		traffic = new Traffic();
 
 		traffic.setTopology(getTopology());
-		Map<EgressPort, Set<Flow>> portFlowMap = new LinkedHashMap<EgressPort, Set<Flow>>();
+		Map<EgressPort, Set<Flow>> portFlowMap = new HashMap<EgressPort, Set<Flow>>();
 
 		JSONArray connections = jsonObj.getJSONArray("streams");
 		for (int i = 0; i < connections.length(); i++) {
@@ -104,15 +104,10 @@ public class NetworkParser {
 			flow.setSrcPort(path.get(0));
 			EgressPort lastEgress = path.get(path.size() - 1);
 			
-			DeterministicHashSet<EgressPort> dests = new DeterministicHashSet<EgressPort>();
-			Map<EgressPort, UbsDestParameters> destPortParameterMap = new HashMap<EgressPort, UbsDestParameters>();
-			
 			for (EgressPort p : topology.getLinkMap().get(lastEgress)) {
-				dests.add(p);
-				destPortParameterMap.put(p, new UbsDestParameters(maxLatency));
+				flow.setDestPort(p);
+				flow.setDestPortParameter(new UbsDestParameters(maxLatency));
 			}
-			flow.setDestPortSet(dests);
-			flow.setDestPortParameterMap(destPortParameterMap);
 			
 
 			for (EgressPort p : path) {

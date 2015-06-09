@@ -1,10 +1,11 @@
 package uni.dc.model;
 
 import java.awt.Color;
+import java.io.Serializable;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
-import java.util.LinkedHashMap;
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
@@ -14,9 +15,7 @@ import uni.dc.util.DeterministicHashSet;
 import uni.dc.util.GraphViz;
 import uni.dc.view.HSLColorGenerator;
 
-public class Traffic extends DeterministicHashSet<Flow> {
-
-	private static final long serialVersionUID = 1L;
+public class Traffic extends DeterministicHashSet<Flow> implements Serializable {
 
 	private EgressTopology topology;
 
@@ -45,7 +44,7 @@ public class Traffic extends DeterministicHashSet<Flow> {
 	}
 
 	public Map<EgressPort, Set<Flow>> getPortFlowMap() {
-		Map<EgressPort, Set<Flow>> rv = new LinkedHashMap<EgressPort, Set<Flow>>();
+		Map<EgressPort, Set<Flow>> rv = new HashMap<EgressPort, Set<Flow>>();
 
 		for (EgressPort p : topology.getPorts()) {
 			rv.put(p, new DeterministicHashSet<Flow>());
@@ -54,30 +53,21 @@ public class Traffic extends DeterministicHashSet<Flow> {
 		for (Flow f : this) {
 			EgressPort srcPort = f.getSrcPort();
 
-			Map<EgressPort, UbsDestParameters> maxLat = new HashMap<EgressPort, UbsDestParameters>();
-			for (EgressPort destPort : f.getDestPortSet()) {
-				if (f.getDestPortParameterMap() == null) {
-					maxLat.put(destPort, new UbsDestParameters(0.0d));
-				} else {
-					UbsDestParameters portPara = f.getDestPortParameterMap()
-							.get(destPort);
-					maxLat.put(destPort, portPara);
-				}
-				List<EgressPort> path;
+			UbsDestParameters maxLat = new UbsDestParameters(0);
+			if (f.getDestPortParameter() != null)
+				maxLat = f.getDestPortParameter();
+			List<EgressPort> path;
 
-				if (srcPort.getNode() == null) {
-					path = topology.getPath(srcPort, destPort);
-				} else {
-					path = topology.getPath(srcPort.getNode(),
-							destPort.getNode(),
-							new DeterministicHashSet<Node>());
-				}
-
-				maxLat.get(destPort).setPath(path);
-				for (EgressPort p : path)
-					rv.get(p).add(f);
+			if (srcPort.getNode() == null) {
+				path = topology.getPath(srcPort, f.getDestPort());
+			} else {
+				path = topology.getPath(srcPort.getNode(), f.getDestPort()
+						.getNode(), new DeterministicHashSet<Node>());
 			}
-			f.setDestPortParameterMap(maxLat);
+			f.setDestPortParameter(maxLat);
+			f.getDestPortParameter().setPath(path);
+			for (EgressPort p : path)
+				rv.get(p).add(f);
 		}
 		return rv;
 	}
@@ -99,18 +89,24 @@ public class Traffic extends DeterministicHashSet<Flow> {
 		// Ports
 		if (nodeMap.size() > 0) {
 			for (Node n : nodeMap.keySet()) {
-				r.append(String.format("\tsubgraph cluster%s {\n", GraphViz.dotUid(n)));
+				r.append(String.format("\tsubgraph cluster%s {\n",
+						GraphViz.dotUid(n)));
 				r.append(String.format("\t\tlabel=\"%s\";\n", n.getName()));
-				
+
 				for (EgressPort p : nodeMap.get(n)) {
 					String portUid = GraphViz.dotUid(p);
 					String prioString = generatePrioTable(p, prio);
 					if (prioString.equals("\"\"")) {
-						r.append(String.format("\t%s[label=\"%s\"];\n", portUid, p.getName()));
-					} else {					
-						r.append(String.format("\t\tsubgraph cluster%s {\n",portUid));
-						r.append(String.format("\t\t\tlabel=\"%s\";\n",p.getName()));
-						r.append(String.format("\t\t\t%s[shape=none,label=%s];\n", portUid, prioString));					
+						r.append(String.format("\t%s[label=\"%s\"];\n",
+								portUid, p.getName()));
+					} else {
+						r.append(String.format("\t\tsubgraph cluster%s {\n",
+								portUid));
+						r.append(String.format("\t\t\tlabel=\"%s\";\n",
+								p.getName()));
+						r.append(String.format(
+								"\t\t\t%s[shape=none,label=%s];\n", portUid,
+								prioString));
 						r.append("\t\t}\n");
 					}
 				}
@@ -121,34 +117,38 @@ public class Traffic extends DeterministicHashSet<Flow> {
 				String portUid = GraphViz.dotUid(p);
 				String prioString = generatePrioTable(p, prio);
 				if (prioString.equals("\"\"")) {
-					r.append(String.format("\t%s[label=\"%s\"];\n", portUid, p.getName()));
+					r.append(String.format("\t%s[label=\"%s\"];\n", portUid,
+							p.getName()));
 				} else {
-					r.append(String.format("\tsubgraph cluster_%s {\n", portUid));
+					r.append(String
+							.format("\tsubgraph cluster_%s {\n", portUid));
 					r.append(String.format("\t\tlabel=\"%s\";\n", p.getName()));
-					r.append(String.format("\t\t\t%s[shape=none, label=%s];\n", portUid, prioString));
+					r.append(String.format("\t\t\t%s[shape=none, label=%s];\n",
+							portUid, prioString));
 					r.append("\t}\n");
 				}
 			}
 		}
 
 		// Links
-			List<EgressPort> done = new LinkedList<EgressPort>();
-			for (EgressPort pSrc : portSet) {
-				for (EgressPort pDest : linkMap.get(pSrc)) {
-					if (done.contains(pDest))
-						continue;
+		List<EgressPort> done = new LinkedList<EgressPort>();
+		for (EgressPort pSrc : portSet) {
+			for (EgressPort pDest : linkMap.get(pSrc)) {
+				if (done.contains(pDest))
+					continue;
 
-					Set<Flow> srcDestFlows = new DeterministicHashSet<Flow>(portFlowMap.get(pSrc));
-					if (nodeMap.size() == 0)
-						srcDestFlows.retainAll(portFlowMap.get(pDest));
+				Set<Flow> srcDestFlows = new DeterministicHashSet<Flow>(
+						portFlowMap.get(pSrc));
+				if (nodeMap.size() == 0)
+					srcDestFlows.retainAll(portFlowMap.get(pDest));
 
-					r.append(String.format("\t%s->%s[label=%s,color=%s];\n",
-							GraphViz.dotUid(pSrc), GraphViz.dotUid(pDest),
-							buildflowDotLabelString(srcDestFlows),
-							buildDotColorString(srcDestFlows, flowColorMap)));
-				}
-				done.add(pSrc);
+				r.append(String.format("\t%s->%s[label=%s,color=%s];\n",
+						GraphViz.dotUid(pSrc), GraphViz.dotUid(pDest),
+						buildflowDotLabelString(srcDestFlows),
+						buildDotColorString(srcDestFlows, flowColorMap)));
 			}
+			done.add(pSrc);
+		}
 		r.append(String.format("}\n"));
 		return r;
 	}
@@ -161,14 +161,15 @@ public class Traffic extends DeterministicHashSet<Flow> {
 			StringBuilder sb = new StringBuilder();
 			sb.append("\n\t\t<<FONT POINT-SIZE=\"8\"><TABLE BORDER=\"0\" CELLBORDER=\"1\" CELLSPACING=\"0\">\n");
 			for (Flow f : flows) {
-				if (!f.getDestPortSet().contains(p)) {
-					sb.append(String.format("\t\t\t<TR><TD>%s</TD><TD>%d</TD></TR>\n",
-							f.getName(),prio.getPriority(p, f)));
+				if (!f.getDestPort().equals(p)) {
+					sb.append(String.format(
+							"\t\t\t<TR><TD>%s</TD><TD>%d</TD></TR>\n",
+							f.getName(), prio.getPriority(p, f)));
 					hasFlow = true;
 				}
 			}
 			sb.append("\t\t</TABLE></FONT>>");
-			
+
 			return hasFlow ? sb.toString() : "\"\"";
 		} else {
 			return "\"\"";
@@ -191,7 +192,7 @@ public class Traffic extends DeterministicHashSet<Flow> {
 	}
 
 	private static Map<Object, Color> uniqueObjectColors(Collection<?> objects) {
-		Map<Object, Color> rv = new LinkedHashMap<Object, Color>();
+		Map<Object, Color> rv = new HashMap<Object, Color>();
 
 		HSLColorGenerator colorGenerator = new HSLColorGenerator();
 

@@ -128,7 +128,7 @@ public final class TraceHillClimbing<G, X> extends
     p.x = gpm.gpm(p.g, r);
     p.v = f.compute(p.x, r);
 	if (delays != null)
-		delays.addDataPoint(step, p.v);
+		delays.addDataPoint(step, p.v, (int[]) p.x);
 
     // check the termination criterion
     while (!(term.terminationCriterion())) {
@@ -145,7 +145,7 @@ public final class TraceHillClimbing<G, X> extends
       if (pnew.v < p.v) {
         p.assign(pnew);
     	if (delays != null)
-    		delays.addDataPoint(step, p.v);
+    		delays.addDataPoint(step, p.v, (int[]) p.x);
       }
     }
 

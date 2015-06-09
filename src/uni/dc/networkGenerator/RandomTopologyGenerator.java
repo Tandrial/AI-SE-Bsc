@@ -3,7 +3,7 @@ package uni.dc.networkGenerator;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
-import java.util.LinkedHashMap;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
@@ -62,7 +62,7 @@ public class RandomTopologyGenerator {
 	EgressTopology topo = new EgressTopology();
 	Map<Integer, DeterministicHashSet<EgressPort>> rankPortMap = new TreeMap<Integer, DeterministicHashSet<EgressPort>>();
 	Set<Cluster> clusterSet = new DeterministicHashSet<Cluster>();
-	Map<EgressPort, Set<Cluster>> portClusterMap = new LinkedHashMap<EgressPort, Set<Cluster>>();
+	Map<EgressPort, Set<Cluster>> portClusterMap = new HashMap<EgressPort, Set<Cluster>>();
 
 	private void clear() {
 		topo = new EgressTopology();

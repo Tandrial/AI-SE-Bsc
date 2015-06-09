@@ -12,7 +12,6 @@ import org.goataa.spec.IObjectiveFunction;
 import uni.dc.model.EgressPort;
 import uni.dc.model.Flow;
 import uni.dc.model.PriorityConfiguration;
-import uni.dc.model.UbsDestParameters;
 import uni.dc.util.DeterministicHashSet;
 
 public abstract class UbsDelayCalc extends OptimizationModule implements

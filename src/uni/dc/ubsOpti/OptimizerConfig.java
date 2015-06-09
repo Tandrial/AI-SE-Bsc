@@ -9,7 +9,6 @@ import java.io.ObjectOutputStream;
 import java.io.Serializable;
 
 import uni.dc.model.EgressTopology;
-import uni.dc.model.Flow;
 import uni.dc.model.PriorityConfiguration;
 import uni.dc.model.Traffic;
 import uni.dc.ubsOpti.DelayCalc.UbsDelayCalc;

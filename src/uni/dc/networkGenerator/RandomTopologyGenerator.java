@@ -3,6 +3,7 @@ package uni.dc.networkGenerator;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
@@ -11,7 +12,6 @@ import java.util.TreeMap;
 
 import uni.dc.model.EgressPort;
 import uni.dc.model.EgressTopology;
-import uni.dc.util.DeterministicHashSet;
 
 public class RandomTopologyGenerator {
 	
@@ -49,7 +49,7 @@ public class RandomTopologyGenerator {
 		this.rng = rng;
 	}
 
-	private class Cluster extends DeterministicHashSet<EgressPort> {
+	private class Cluster extends LinkedHashSet<EgressPort> {
 		private static final long serialVersionUID = 2435807632577734524L;
 
 		@Override
@@ -59,8 +59,8 @@ public class RandomTopologyGenerator {
 	}
 
 	EgressTopology topo = new EgressTopology();
-	Map<Integer, DeterministicHashSet<EgressPort>> rankPortMap = new TreeMap<Integer, DeterministicHashSet<EgressPort>>();
-	Set<Cluster> clusterSet = new DeterministicHashSet<Cluster>();
+	Map<Integer, LinkedHashSet<EgressPort>> rankPortMap = new TreeMap<Integer, LinkedHashSet<EgressPort>>();
+	Set<Cluster> clusterSet = new LinkedHashSet<Cluster>();
 	Map<EgressPort, Set<Cluster>> portClusterMap = new HashMap<EgressPort, Set<Cluster>>();
 
 	private void clear() {
@@ -76,7 +76,7 @@ public class RandomTopologyGenerator {
 	 * 
 	 * @return
 	 */
-	public Map<Integer, DeterministicHashSet<EgressPort>> getRankPortMap() {
+	public Map<Integer, LinkedHashSet<EgressPort>> getRankPortMap() {
 		return rankPortMap;
 	}
 
@@ -154,7 +154,7 @@ public class RandomTopologyGenerator {
 
 		// Initialize rank port map with ports per rank
 		for (int rank = 0; rank < depth; rank++) {
-			rankPortMap.put(rank, new DeterministicHashSet<EgressPort>());
+			rankPortMap.put(rank, new LinkedHashSet<EgressPort>());
 			rankPortMap.get(rank).add(
 					new EgressPort(String.format("E%d,1", rank)));
 		}
@@ -174,7 +174,7 @@ public class RandomTopologyGenerator {
 		// Initialize port->cluster map: No port belongs to a cluster
 		for (Set<EgressPort> portsAtRank : rankPortMap.values())
 			for (EgressPort p : portsAtRank)
-				portClusterMap.put(p, new DeterministicHashSet<Cluster>());
+				portClusterMap.put(p, new LinkedHashSet<Cluster>());
 
 		// Add all ports to topology
 		for (Set<EgressPort> rankPorts : rankPortMap.values()) {
@@ -185,9 +185,9 @@ public class RandomTopologyGenerator {
 		for (int rank = 0; rank < depth - 1; rank++) {
 
 			// System.out.printf("## Rank = %d\n",rank);
-			DeterministicHashSet<EgressPort> portsAtCurrentRank = rankPortMap
+			LinkedHashSet<EgressPort> portsAtCurrentRank = rankPortMap
 					.get(rank);
-			DeterministicHashSet<EgressPort> portsAtNextRank = rankPortMap
+			LinkedHashSet<EgressPort> portsAtNextRank = rankPortMap
 					.get(rank + 1);
 
 			// Identify new clusters at current rank:
@@ -281,7 +281,7 @@ public class RandomTopologyGenerator {
 
 		// Initialize rank port map with ports per rank
 		for (int rank = 0; rank < depth; rank++) {
-			rankPortMap.put(rank, new DeterministicHashSet<EgressPort>());
+			rankPortMap.put(rank, new LinkedHashSet<EgressPort>());
 			rankPortMap.get(rank).add(
 					new EgressPort(String.format("E%d,1", rank)));
 		}
@@ -301,7 +301,7 @@ public class RandomTopologyGenerator {
 		// Initialize port->cluster map: No port belongs to a cluster
 		for (Set<EgressPort> portsAtRank : rankPortMap.values())
 			for (EgressPort p : portsAtRank)
-				portClusterMap.put(p, new DeterministicHashSet<Cluster>());
+				portClusterMap.put(p, new LinkedHashSet<Cluster>());
 
 		// Add all ports to topology
 		for (Set<EgressPort> rankPorts : rankPortMap.values()) {
@@ -312,9 +312,9 @@ public class RandomTopologyGenerator {
 		for (int rank = 0; rank < depth - 1; rank++) {
 
 			// System.out.printf("## Rank = %d\n",rank);
-			DeterministicHashSet<EgressPort> portsAtCurrentRank = rankPortMap
+			LinkedHashSet<EgressPort> portsAtCurrentRank = rankPortMap
 					.get(rank);
-			DeterministicHashSet<EgressPort> portsAtNextRank = rankPortMap
+			LinkedHashSet<EgressPort> portsAtNextRank = rankPortMap
 					.get(rank + 1);
 
 			// Identify new clusters at current rank:

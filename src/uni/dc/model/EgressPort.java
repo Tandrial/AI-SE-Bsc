@@ -1,17 +1,14 @@
 package uni.dc.model;
 
 import java.io.Serializable;
+import java.util.LinkedHashSet;
 import java.util.Set;
 
-import uni.dc.util.DeterministicHashSet;
-
 public class EgressPort implements Cloneable, Serializable {
-
-	private Set<Flow> flowList = new DeterministicHashSet<Flow>();
-
+	private static final long serialVersionUID = 1L;
+	private Set<Flow> flowList = new LinkedHashSet<Flow>();
 	private String name;
-	private double linkSpeed = 1e9;
-	
+	private double linkSpeed = 1e9;	
 	private Node node;
 
 	public EgressPort() {

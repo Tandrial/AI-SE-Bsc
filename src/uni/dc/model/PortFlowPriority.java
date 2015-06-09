@@ -3,6 +3,7 @@ package uni.dc.model;
 import java.io.Serializable;
 
 public class PortFlowPriority implements Cloneable, Serializable {
+	private static final long serialVersionUID = 1L;
 	private EgressPort port;
 	private Flow flow;
 	private Integer priority;

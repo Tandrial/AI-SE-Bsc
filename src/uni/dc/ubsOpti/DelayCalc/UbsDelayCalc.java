@@ -1,6 +1,7 @@
 package uni.dc.ubsOpti.DelayCalc;
 
 import java.io.Serializable;
+import java.util.LinkedHashSet;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Random;
@@ -12,7 +13,6 @@ import org.goataa.spec.IObjectiveFunction;
 import uni.dc.model.EgressPort;
 import uni.dc.model.Flow;
 import uni.dc.model.PriorityConfiguration;
-import uni.dc.util.DeterministicHashSet;
 
 public abstract class UbsDelayCalc extends OptimizationModule implements
 		IObjectiveFunction<int[]>, Serializable {
@@ -34,7 +34,7 @@ public abstract class UbsDelayCalc extends OptimizationModule implements
 	}
 
 	public UbsDelayCalc(Map<EgressPort, Set<Flow>> traffic) {
-		flows = new DeterministicHashSet<Flow>();
+		flows = new LinkedHashSet<Flow>();
 		for (Entry<EgressPort, Set<Flow>> x : traffic.entrySet()) {
 			for (Flow bla : x.getValue()) {
 				flows.add(bla);

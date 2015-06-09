@@ -3,6 +3,7 @@ package uni.dc.networkGenerator;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
@@ -12,7 +13,6 @@ import uni.dc.model.EgressPort;
 import uni.dc.model.EgressTopology;
 import uni.dc.model.Flow;
 import uni.dc.model.Traffic;
-import uni.dc.util.DeterministicHashSet;
 
 public class RandomMulticastPathGenerator {
 
@@ -68,7 +68,7 @@ public class RandomMulticastPathGenerator {
 		Map<EgressPort, Set<Flow>> portFlowMap = new HashMap<EgressPort, Set<Flow>>();
 
 		for (EgressPort src : topology.getPorts()) {
-			portFlowMap.put(src, new DeterministicHashSet<Flow>());
+			portFlowMap.put(src, new LinkedHashSet<Flow>());
 		}
 
 		for (EgressPort src : topology.getPorts()) {

@@ -10,12 +10,11 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import uni.dc.util.DeterministicHashSet;
 import uni.dc.util.GraphViz;
 import uni.dc.util.Pair;
 
 public class EgressTopology implements Serializable{
-
+	private static final long serialVersionUID = 1L;
 	private Map<Node, Set<EgressPort>> nodeMap;
 	private Map<EgressPort, Node> portNodeMap;
 	private Set<EgressPort> portSet;
@@ -34,7 +33,7 @@ public class EgressTopology implements Serializable{
 	}
 
 	public Set<EgressPort> getPorts() {
-		DeterministicHashSet<EgressPort> rv = new DeterministicHashSet<EgressPort>();
+		LinkedHashSet<EgressPort> rv = new LinkedHashSet<EgressPort>();
 		rv.addAll(this.portSet);
 		return rv;
 	}
@@ -50,17 +49,17 @@ public class EgressTopology implements Serializable{
 	}
 
 	public void addNode(Node n) {
-		nodeMap.put(n, new DeterministicHashSet<EgressPort>());
+		nodeMap.put(n, new LinkedHashSet<EgressPort>());
 	}
 
 	public void add(Node n1, Node n2, double linkSpeed) {
 		if (!nodeMap.containsKey(n1)) {
 			addNode(n1);
-			nodeLinkMap.put(n1, new DeterministicHashSet<Node>());
+			nodeLinkMap.put(n1, new LinkedHashSet<Node>());
 		}
 		if (!nodeMap.containsKey(n2)) {
 			addNode(n2);
-			nodeLinkMap.put(n2, new DeterministicHashSet<Node>());
+			nodeLinkMap.put(n2, new LinkedHashSet<Node>());
 		}
 
 		n1 = getNodeFromName(n1.getName());
@@ -187,7 +186,7 @@ public class EgressTopology implements Serializable{
 	 */
 	public Set<EgressPort> getReachablePorts(EgressPort srcPort) {
 
-		DeterministicHashSet<EgressPort> rv = new DeterministicHashSet<EgressPort>();
+		LinkedHashSet<EgressPort> rv = new LinkedHashSet<EgressPort>();
 		rv.addAll(linkMap.get(srcPort));
 		for (EgressPort dest : linkMap.get(srcPort)) {
 			rv.addAll(getReachablePorts(dest));
@@ -196,7 +195,7 @@ public class EgressTopology implements Serializable{
 	}
 
 	public List<EgressPort> getPath(Node src, Node dest,
-			DeterministicHashSet<Node> visited) {
+			LinkedHashSet<Node> visited) {
 		List<EgressPort> rv = null;
 		if (dest == src) {
 			rv = new LinkedList<EgressPort>();
@@ -231,7 +230,7 @@ public class EgressTopology implements Serializable{
 	 */
 	public List<EgressPort> getPath(String src, String dest) {
 		return getPath(getNodeFromName(src), getNodeFromName(dest),
-				new DeterministicHashSet<Node>());
+				new LinkedHashSet<Node>());
 	}
 
 	/**

@@ -1,16 +1,13 @@
 package uni.dc.model;
 
 import java.io.Serializable;
+import java.util.LinkedHashSet;
 import java.util.Set;
 
-import uni.dc.util.DeterministicHashSet;
-
 public class Node implements Cloneable, Serializable {
-
-	private Set<EgressPort> ports = new DeterministicHashSet<EgressPort>();
-
+	private static final long serialVersionUID = 1L;	
+	private Set<EgressPort> ports = new LinkedHashSet<EgressPort>();
 	private String name;
-
 	private int cnt;
 
 	public Node() {

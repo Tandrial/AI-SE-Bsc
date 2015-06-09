@@ -3,17 +3,15 @@ package uni.dc.model;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import uni.dc.util.DeterministicHashSet;
-
 public class PriorityConfiguration implements Cloneable, Serializable {
-
+	private static final long serialVersionUID = 1L;
 	public static final int DEFAULT_PRIORITY = 1;
 	public static final String NO_PRIORITY_STRING = "";
-
 	private Traffic traffic;
 	private Set<PortFlowPriority> tripleSet;
 	private Map<Flow, Map<EgressPort, PortFlowPriority>> flowPortPriorityMap;
@@ -25,7 +23,7 @@ public class PriorityConfiguration implements Cloneable, Serializable {
 
 	private PriorityConfiguration() {
 		super();
-		tripleSet = new DeterministicHashSet<PortFlowPriority>();
+		tripleSet = new LinkedHashSet<PortFlowPriority>();
 		flowPortPriorityMap = new HashMap<Flow, Map<EgressPort, PortFlowPriority>>();
 		portFlowPriorityMap = new HashMap<EgressPort, Map<Flow, PortFlowPriority>>();
 	}

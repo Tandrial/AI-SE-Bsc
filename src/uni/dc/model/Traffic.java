@@ -5,17 +5,17 @@ import java.io.Serializable;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.LinkedHashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import uni.dc.util.DeterministicHashSet;
 import uni.dc.util.GraphViz;
 import uni.dc.view.HSLColorGenerator;
 
-public class Traffic extends DeterministicHashSet<Flow> implements Serializable {
-
+public class Traffic extends LinkedHashSet<Flow> implements Serializable {
+	private static final long serialVersionUID = 1L;
 	private EgressTopology topology;
 
 	public Traffic() {
@@ -46,7 +46,7 @@ public class Traffic extends DeterministicHashSet<Flow> implements Serializable 
 		Map<EgressPort, Set<Flow>> rv = new HashMap<EgressPort, Set<Flow>>();
 
 		for (EgressPort p : topology.getPorts()) {
-			rv.put(p, new DeterministicHashSet<Flow>());
+			rv.put(p, new LinkedHashSet<Flow>());
 		}
 
 		for (Flow f : this) {
@@ -61,7 +61,7 @@ public class Traffic extends DeterministicHashSet<Flow> implements Serializable 
 				path = topology.getPath(srcPort, f.getDestPort());
 			} else {
 				path = topology.getPath(srcPort.getNode(), f.getDestPort()
-						.getNode(), new DeterministicHashSet<Node>());
+						.getNode(), new LinkedHashSet<Node>());
 			}
 			f.setDestPortParameter(maxLat);
 			f.getDestPortParameter().setPath(path);
@@ -136,7 +136,7 @@ public class Traffic extends DeterministicHashSet<Flow> implements Serializable 
 				if (done.contains(pDest))
 					continue;
 
-				Set<Flow> srcDestFlows = new DeterministicHashSet<Flow>(
+				Set<Flow> srcDestFlows = new LinkedHashSet<Flow>(
 						portFlowMap.get(pSrc));
 				if (nodeMap.size() == 0)
 					srcDestFlows.retainAll(portFlowMap.get(pDest));

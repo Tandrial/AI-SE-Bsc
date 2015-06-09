@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.util.HashMap;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -19,7 +20,6 @@ import uni.dc.model.Node;
 import uni.dc.model.PriorityConfiguration;
 import uni.dc.model.Traffic;
 import uni.dc.model.UbsDestParameters;
-import uni.dc.util.DeterministicHashSet;
 
 public class NetworkParser {
 	private JSONObject jsonObj = null;
@@ -111,7 +111,7 @@ public class NetworkParser {
 
 			for (EgressPort p : path) {
 				if (!portFlowMap.containsKey(p))
-					portFlowMap.put(p, new DeterministicHashSet<Flow>());
+					portFlowMap.put(p, new LinkedHashSet<Flow>());
 				portFlowMap.get(p).add(flow);
 			}
 		}

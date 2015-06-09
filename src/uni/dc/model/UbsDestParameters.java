@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.List;
 
 public class UbsDestParameters implements Serializable{
-
+	private static final long serialVersionUID = 1L;
 	private double maxLatencyRequirement = 0.0d;
 	private double actualDelay = 0.0d;
 	private List<EgressPort> path;

@@ -96,107 +96,78 @@ public class Traffic extends DeterministicHashSet<Flow> {
 		r.append(String.format("\tgraph[center=1 rankdir=LR]\n"));
 		r.append(String.format("\tranksep=1.0;\n"));
 
+		// Ports
 		if (nodeMap.size() > 0) {
 			for (Node n : nodeMap.keySet()) {
-				r.append(String.format("subgraph cluster_%s {\n", GraphViz.dotUid(n)));
-				r.append(String.format("\tlabel=\"%s\"", n.getName()));
-				String ranking = "\t{rank=same ";
-				// Ports
+				r.append(String.format("\tsubgraph cluster%s {\n", GraphViz.dotUid(n)));
+				r.append(String.format("\t\tlabel=\"%s\";\n", n.getName()));
+				
 				for (EgressPort p : nodeMap.get(n)) {
 					String portUid = GraphViz.dotUid(p);
-					r.append(String.format("\t%s[label=\"%s\"];\n", portUid, p.getName()));
-					ranking += portUid + " ";
+					String prioString = generatePrioTable(p, prio);
+					if (prioString.equals("\"\"")) {
+						r.append(String.format("\t%s[label=\"%s\"];\n", portUid, p.getName()));
+					} else {					
+						r.append(String.format("\t\tsubgraph cluster%s {\n",portUid));
+						r.append(String.format("\t\t\tlabel=\"%s\";\n",p.getName()));
+						r.append(String.format("\t\t\t%s[shape=none,label=%s];\n", portUid, prioString));					
+						r.append("\t\t}\n");
+					}
 				}
-				ranking += "};\n\t}\n";
-				r.append(ranking);
-			}
-
-			List<EgressPort> done = new LinkedList<EgressPort>();
-
-			// Links
-			for (EgressPort pSrc : portSet) {
-				Set<EgressPort> outLinks = linkMap.get(pSrc);
-				Set<Flow> srcOnlyFlows = new DeterministicHashSet<Flow>(
-						portFlowMap.get(pSrc));
-				for (EgressPort pDest : outLinks) {
-					if (done.contains(pDest))
-						continue;
-					srcOnlyFlows.removeAll(portFlowMap.get(pDest));
-
-					Set<Flow> srcDestFlows = new DeterministicHashSet<Flow>(portFlowMap.get(pSrc));
-
-					String srcDestLabel = buildflowDotLabelString(srcDestFlows);
-					Set<Flow> destOnlyFlows = new DeterministicHashSet<Flow>(portFlowMap.get(pDest));
-					destOnlyFlows.removeAll(portFlowMap.get(pSrc));
-
-					r.append(String.format("\t%s->%s[label=%s,color=%s];\n",
-							GraphViz.dotUid(pSrc), GraphViz.dotUid(pDest),
-							srcDestLabel,
-							buildDotColorString(srcDestFlows, flowColorMap)));
-					done.add(pDest);
-				}
-				done.add(pSrc);
-			}
-
-		} else {
-			// Ports
-
-			for (EgressPort p : portSet) {
-				String portUid = GraphViz.dotUid(p);
-				r.append(String.format("\tsubgraph cluster_%s {\n", portUid));
-				r.append(String.format("\t\tlabel=\"%s\"", p.getName()));
-				r.append(String.format("\t\t %s[shape=none, label=%s];\n", portUid, genratePrioTable(p, prio)));
 				r.append("\t}\n");
 			}
+		} else {
+			for (EgressPort p : portSet) {
+				String portUid = GraphViz.dotUid(p);
+				String prioString = generatePrioTable(p, prio);
+				if (prioString.equals("\"\"")) {
+					r.append(String.format("\t%s[label=\"%s\"];\n", portUid, p.getName()));
+				} else {
+					r.append(String.format("\tsubgraph cluster_%s {\n", portUid));
+					r.append(String.format("\t\tlabel=\"%s\";\n", p.getName()));
+					r.append(String.format("\t\t\t%s[shape=none, label=%s];\n", portUid, prioString));
+					r.append("\t}\n");
+				}
+			}
+		}
 
+		// Links
 			List<EgressPort> done = new LinkedList<EgressPort>();
-
-			// Links
 			for (EgressPort pSrc : portSet) {
-				Set<EgressPort> outLinks = linkMap.get(pSrc);
-
-				Set<Flow> srcOnlyFlows = new DeterministicHashSet<Flow>(
-						portFlowMap.get(pSrc));
-
-				for (EgressPort pDest : outLinks) {
+				for (EgressPort pDest : linkMap.get(pSrc)) {
 					if (done.contains(pDest))
 						continue;
-					srcOnlyFlows.removeAll(portFlowMap.get(pDest));
 
 					Set<Flow> srcDestFlows = new DeterministicHashSet<Flow>(portFlowMap.get(pSrc));
-					srcDestFlows.retainAll(portFlowMap.get(pDest));
-					String srcDestLabel = buildflowDotLabelString(srcDestFlows);
-
-					Set<Flow> destOnlyFlows = new DeterministicHashSet<Flow>(portFlowMap.get(pDest));
-					destOnlyFlows.removeAll(portFlowMap.get(pSrc));
+					if (nodeMap.size() == 0)
+						srcDestFlows.retainAll(portFlowMap.get(pDest));
 
 					r.append(String.format("\t%s->%s[label=%s,color=%s];\n",
 							GraphViz.dotUid(pSrc), GraphViz.dotUid(pDest),
-							srcDestLabel,
+							buildflowDotLabelString(srcDestFlows),
 							buildDotColorString(srcDestFlows, flowColorMap)));
 				}
 				done.add(pSrc);
 			}
-		}
 		r.append(String.format("}\n"));
 		return r;
 	}
 
-	private String genratePrioTable(EgressPort p, PriorityConfiguration prio) {
+	private String generatePrioTable(EgressPort p, PriorityConfiguration prio) {
 		Set<Flow> flows = p.getFlowList();
 		boolean hasFlow = false;
 
 		if (flows.size() > 0) {
 			StringBuilder sb = new StringBuilder();
-			sb.append("<<FONT POINT-SIZE=\"8\"><TABLE BORDER=\"0\" CELLBORDER=\"1\" CELLSPACING=\"0\">\n");
+			sb.append("\n\t\t<<FONT POINT-SIZE=\"8\"><TABLE BORDER=\"0\" CELLBORDER=\"1\" CELLSPACING=\"0\">\n");
 			for (Flow f : flows) {
 				if (!f.getDestPortSet().contains(p)) {
-					sb.append(String.format("<TR><TD>%s</TD><TD>%d</TD></TR>\n",
+					sb.append(String.format("\t\t\t<TR><TD>%s</TD><TD>%d</TD></TR>\n",
 							f.getName(),prio.getPriority(p, f)));
 					hasFlow = true;
 				}
 			}
-			sb.append("</TABLE></FONT>>");
+			sb.append("\t\t</TABLE></FONT>>");
 			
 			return hasFlow ? sb.toString() : "\"\"";
 		} else {

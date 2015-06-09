@@ -130,10 +130,6 @@ public class EgressTopology {
 		return null;
 	}
 
-	/**
-	 * 
-	 * @return
-	 */
 	public Map<EgressPort, Set<EgressPort>> getLinkMap() {
 		return linkMap;
 	}
@@ -147,22 +143,20 @@ public class EgressTopology {
 
 		if (nodeMap.size() > 0) {
 			for (Node n : nodeMap.keySet()) {
-				r.append(String.format("subgraph cluster_%s {\n",
-						GraphViz.dotUid(n)));
-				r.append(String.format("label=\"%s\"", n.getName()));
-				String ranking = "{rank=same ";
+				r.append(String.format("\tsubgraph cluster_%s {\n",GraphViz.dotUid(n)));
+				r.append(String.format("\t\tlabel=\"%s\";\n", n.getName()));
+				String ranking = "\t\t{ rank=same ";
 				// Ports
 				for (EgressPort p : nodeMap.get(n)) {
 					String portUid = GraphViz.dotUid(p);
-					r.append(String.format("\t%s[label=\"%s\"];\n", portUid,
+					r.append(String.format("\t\t%s[label=\"%s\"];\n", portUid,
 							p.getName()));
 					ranking += portUid + " ";
 				}
-				ranking += "};\n\t}";
+				ranking += "};\n\t}\n";
 				r.append(ranking);
 			}
 		} else {
-
 			// Ports
 			for (EgressPort p : portSet) {
 				r.append(String.format("\t%s[label=\"%s\"];\n",
@@ -221,6 +215,19 @@ public class EgressTopology {
 		return rv;
 	}
 
+	/**
+	 * Finds a path from src to dest, if present.
+	 * 
+	 * 
+	 * @param src
+	 *            The source port.
+	 * @param dest
+	 *            The destination port.
+	 * @return A list with src as the first element and dest as the last
+	 *         element, if there is a path from src to dest. Returns
+	 *         <tt>null</tt> if there is no path.
+	 * 
+	 */
 	public List<EgressPort> getPath(String src, String dest) {
 		return getPath(getNodeFromName(src), getNodeFromName(dest),
 				new DeterministicHashSet<Node>());

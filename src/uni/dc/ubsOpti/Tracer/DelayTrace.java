@@ -47,6 +47,12 @@ public class DelayTrace {
 	public void addDataPoint(long step, double delay, int[] prio) {
 		stats.add(new TracerStat(step, delay, prio));
 	}
+	
+	public PriorityConfiguration getBestConfig() {
+		PriorityConfiguration res = (PriorityConfiguration) prio.clone();
+		res.fromIntArray(stats.get(stats.size()-1).getPrio());
+		return res;
+	}
 
 	@Override
 	public String toString() {

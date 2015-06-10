@@ -266,7 +266,7 @@ public class OptimizerGUI extends JFrame {
 		OptimizerConfig optiConfig = new OptimizerConfig(topology, traffic,
 				prio, delayCalc);
 
-		optiConfig.setPriorityConfig(optimizer.optimize(optiConfig, algo));
+		optiConfig.setPriorityConfig(optimizer.optimize(optiConfig, algo).getBestConfig());
 		t2 = System.nanoTime();
 
 		imagePanel.setDot(portDisplay ? topology.toDot() : traffic.toDot(prio));

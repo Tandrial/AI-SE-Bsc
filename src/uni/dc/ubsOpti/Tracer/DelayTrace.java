@@ -17,19 +17,15 @@ public class DelayTrace {
 	private Traffic traffic;
 	private PriorityConfiguration prio;
 
-	public DelayTrace(String algoName, OptimizerConfig config) {
-		this.name = algoName;
+	public DelayTrace(String name, OptimizerConfig config) {
+		this.name = name;
 		this.topology = config.getTopology();
 		this.traffic = config.getTraffic();
 		this.prio = config.getPriorityConfig();
 	}
 
-	public String getAlgoName() {
+	public String getName() {
 		return name;
-	}
-
-	public void setAlgoName(String algoName) {
-		this.name = algoName;
 	}
 
 	public EgressTopology getTopology() {
@@ -42,6 +38,10 @@ public class DelayTrace {
 
 	public List<TracerStat> getStats() {
 		return stats;
+	}
+	
+	public PriorityConfiguration getPrio() {
+		return prio;
 	}
 
 	public void addDataPoint(long step, double delay, int[] prio) {

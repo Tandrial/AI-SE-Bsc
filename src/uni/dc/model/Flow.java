@@ -8,17 +8,12 @@ public class Flow implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	private String name;
-	private EgressTopology topology;
+	private double rate;
+	private int maxFrameLength;
 	private EgressPort srcPort;
 	private EgressPort destPort;
 	private UbsDestParameters destPortParameter;
-	private double rate;
-	private int maxFrameLength;
-
-	@Override
-	public String toString() {
-		return Arrays.toString(destPortParameter.getPath().toArray());
-	}
+	private EgressTopology topology;
 
 	public String getName() {
 		return name;
@@ -28,12 +23,20 @@ public class Flow implements Serializable {
 		this.name = name;
 	}
 
-	public EgressTopology getTopology() {
-		return topology;
+	public double getRate() {
+		return rate;
 	}
 
-	public void setTopology(EgressTopology topology) {
-		this.topology = topology;
+	public void setRate(double rate) {
+		this.rate = rate;
+	}
+
+	public int getMaxFrameLength() {
+		return maxFrameLength;
+	}
+
+	public void setMaxFrameLength(int maxFrameLength) {
+		this.maxFrameLength = maxFrameLength;
 	}
 
 	public EgressPort getSrcPort() {
@@ -60,41 +63,37 @@ public class Flow implements Serializable {
 		this.destPortParameter = destPortParameter;
 	}
 
+	public EgressTopology getTopology() {
+		return topology;
+	}
+
+	public void setTopology(EgressTopology topology) {
+		this.topology = topology;
+	}
+
 	public void setInitialMaxLatencyRequirement() {
-		destPortParameter.setMaxLatencyRequirement(destPortParameter
-				.getActualDelay());
-	}
-
-	public double getTotalDelay() {
-		return destPortParameter.getActualDelay();
-	}
-
-	public void setTotalDelay(double totalDelay) {
-		destPortParameter.setActualDelay(totalDelay);
+		destPortParameter
+				.setMaxLatencyRequirement(destPortParameter.getDelay());
 	}
 
 	public List<EgressPort> getPath() {
 		return destPortParameter.getPath();
 	}
 
-	public double getRate() {
-		return rate;
+	public double getDelay() {
+		return destPortParameter.getDelay();
 	}
 
-	public void setRate(double rate) {
-		this.rate = rate;
-	}
-
-	public int getMaxFrameLength() {
-		return maxFrameLength;
-	}
-
-	public void setMaxFrameLength(int maxFrameLength) {
-		this.maxFrameLength = maxFrameLength;
+	public void setDelay(double delay) {
+		destPortParameter.setDelay(delay);
 	}
 
 	public boolean checkDelay() {
 		return destPortParameter.checkDelay();
 	}
 
+	@Override
+	public String toString() {
+		return Arrays.toString(destPortParameter.getPath().toArray());
+	}
 }

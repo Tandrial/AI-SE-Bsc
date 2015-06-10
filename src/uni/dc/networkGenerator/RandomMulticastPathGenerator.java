@@ -61,8 +61,7 @@ public class RandomMulticastPathGenerator {
 	}
 
 	public Traffic generate() {
-		Traffic rv = new Traffic();
-		rv.setTopology(topology);
+		Traffic rv = new Traffic(topology);
 
 		int flowId = 0;
 		Map<EgressPort, Set<Flow>> portFlowMap = new HashMap<EgressPort, Set<Flow>>();

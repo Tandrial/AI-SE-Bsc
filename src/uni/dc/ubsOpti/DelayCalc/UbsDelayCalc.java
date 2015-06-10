@@ -76,7 +76,7 @@ public abstract class UbsDelayCalc extends OptimizationModule implements
 					.printf("Destination %s has maxLat of %.3e ms, actual delay is %.3e ms\n",
 							flow.getDestPort(), flow.getDestPortParameter()
 									.getMaxLatencyRequirement() * 1000,
-							flow.getDestPortParameter().getActualDelay() * 1000);
+							flow.getDestPortParameter().getDelay() * 1000);
 			System.out.println();
 		}
 	}
@@ -95,7 +95,7 @@ public abstract class UbsDelayCalc extends OptimizationModule implements
 		calculateDelays();
 		double delay = 0.0d;
 		for (Flow f : flows) {
-			delay += f.getTotalDelay();
+			delay += f.getDelay();
 			if (!f.checkDelay()) {
 				// TODO: Strafe für Delay > maxLatencyReq
 				delay += 1;

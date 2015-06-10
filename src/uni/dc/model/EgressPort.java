@@ -6,10 +6,10 @@ import java.util.Set;
 
 public class EgressPort implements Cloneable, Serializable {
 	private static final long serialVersionUID = 1L;
-	private Set<Flow> flowList = new LinkedHashSet<Flow>();
 	private String name;
-	private double linkSpeed = 1e9;	
 	private Node node;
+	private double linkSpeed = 1e9;	
+	private Set<Flow> flowList = new LinkedHashSet<Flow>();
 
 	public EgressPort() {
 		super();
@@ -19,6 +19,30 @@ public class EgressPort implements Cloneable, Serializable {
 		this();
 		this.name = name;
 	}
+	
+	public String getName() {
+		return name;
+	}
+	
+	public void setName(String name) {
+		this.name = name;
+	}
+	
+	public Node getNode() {
+		return node;
+	}
+	
+	public void setNode(Node node) {
+		this.node = node;
+	}
+
+	public double getLinkSpeed() {
+		return linkSpeed;
+	}
+	
+	public void setLinkSpeed(double linkSpeed) {
+		this.linkSpeed = linkSpeed;
+	}
 
 	public Set<Flow> getFlowList() {
 		return flowList;
@@ -26,14 +50,6 @@ public class EgressPort implements Cloneable, Serializable {
 
 	public void setFlowList(Set<Flow> flowList) {
 		this.flowList = flowList;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
 	}
 
 	@Override
@@ -64,21 +80,5 @@ public class EgressPort implements Cloneable, Serializable {
 		} else if (!name.equals(other.name))
 			return false;
 		return true;
-	}
-
-	public Node getNode() {
-		return node;
-	}
-
-	public void setNode(Node node) {
-		this.node = node;
-	}
-
-	public double getLinkSpeed() {
-		return linkSpeed;
-	}
-
-	public void setLinkSpeed(double linkSpeed) {
-		this.linkSpeed = linkSpeed;
 	}
 }

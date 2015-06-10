@@ -23,10 +23,6 @@ public class UbsV0DelayCalc extends UbsDelayCalc {
 		for (Flow f : flows) {
 			List<EgressPort> path = f.getPath();
 
-			if (path.size() == 1) {
-				f.setTotalDelay(0.0);
-				continue;
-			}
 			double delay = 0.0;
 			for (int i = 1; i < path.size(); i++) {
 				EgressPort lastEgress = path.get(i - 1);
@@ -56,7 +52,7 @@ public class UbsV0DelayCalc extends UbsDelayCalc {
 				delay += (sizeBiggerEq + maxSmaller) / (linkSpeed - rateHigher)
 						+ size / linkSpeed;
 			}
-			f.setTotalDelay(delay);
+			f.setDelay(delay);
 		}
 	}
 }

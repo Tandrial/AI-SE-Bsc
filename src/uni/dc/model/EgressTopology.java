@@ -33,23 +33,32 @@ public class EgressTopology implements Serializable{
 	}
 
 	public Set<EgressPort> getPorts() {
-		LinkedHashSet<EgressPort> rv = new LinkedHashSet<EgressPort>();
-		rv.addAll(this.portSet);
-		return rv;
+		return portSet;
 	}
 
 	public Map<Node, Set<EgressPort>> getNodeMap() {
 		return nodeMap;
 	}
 
-	public void add(EgressPort p) {
-		portSet.add(p);
-		if (!linkMap.containsKey(p))
-			linkMap.put(p, new HashSet<EgressPort>());
+	public Map<EgressPort, Set<EgressPort>> getLinkMap() {
+		return linkMap;
 	}
+
 
 	public void addNode(Node n) {
 		nodeMap.put(n, new LinkedHashSet<EgressPort>());
+	}
+
+	public void add(EgressPort p) {
+		portSet.add(p);
+		if (!linkMap.containsKey(p))
+			linkMap.put(p, new HashSet<EgressPort>());		
+	}
+
+	public void addAll(Collection<? extends EgressPort> ports) {
+		portSet.addAll(ports);
+		for (EgressPort p : ports)
+			linkMap.put(p, new LinkedHashSet<EgressPort>());
 	}
 
 	public void add(Node n1, Node n2, double linkSpeed) {
@@ -89,29 +98,12 @@ public class EgressTopology implements Serializable{
 
 	}
 
-	public void addAll(Collection<? extends EgressPort> ports) {
-		portSet.addAll(ports);
-		for (EgressPort p : ports)
-			linkMap.put(p, new LinkedHashSet<EgressPort>());
-	}
-
-	public void addLink(EgressPort srcPort, EgressPort destPort) {
-		linkMap.get(srcPort).add(destPort);
-	}
-
-	public void addLinks(EgressPort srcPort,
-			Collection<? extends EgressPort> destPorts) {
-		linkMap.get(srcPort).addAll(destPorts);
-	}
-
 	public void addLink(String src, String dest) {
 		addLink(getPortFromName(src), getPortFromName(dest));
 	}
 
-	public void addLinks(Collection<? extends EgressPort> srcPorts,
-			EgressPort destPort) {
-		for (EgressPort pSrc : srcPorts)
-			linkMap.get(pSrc).add(destPort);
+	public void addLink(EgressPort srcPort, EgressPort destPort) {
+		linkMap.get(srcPort).add(destPort);
 	}
 
 	public EgressPort getPortFromName(String name) {
@@ -128,10 +120,6 @@ public class EgressTopology implements Serializable{
 				return n;
 		}
 		return null;
-	}
-
-	public Map<EgressPort, Set<EgressPort>> getLinkMap() {
-		return linkMap;
 	}
 
 	public StringBuilder toDot() {
@@ -177,19 +165,33 @@ public class EgressTopology implements Serializable{
 		return r;
 	}
 
-	/**
-	 * Returns all ports reachable from srcPort.
-	 * 
-	 * @param srcPort
-	 * @return A set of reachable ports, not including srcPort.
-	 * 
-	 */
 	public Set<EgressPort> getReachablePorts(EgressPort srcPort) {
-
 		LinkedHashSet<EgressPort> rv = new LinkedHashSet<EgressPort>();
 		rv.addAll(linkMap.get(srcPort));
 		for (EgressPort dest : linkMap.get(srcPort)) {
 			rv.addAll(getReachablePorts(dest));
+		}
+		return rv;
+	}
+
+	public List<EgressPort> getPath(String src, String dest) {
+		return getPath(getNodeFromName(src), getNodeFromName(dest),
+				new LinkedHashSet<Node>());
+	}
+
+	public List<EgressPort> getPath(EgressPort src, EgressPort dest) {
+		List<EgressPort> rv = null;
+		if (dest == src) {
+			rv = new LinkedList<EgressPort>();
+			rv.add(dest);
+		} else {
+			for (EgressPort p : linkMap.get(src)) {
+				rv = getPath(p, dest);
+				if (rv != null) {
+					rv.add(0, src);
+					break;
+				}
+			}
 		}
 		return rv;
 	}
@@ -214,52 +216,5 @@ public class EgressTopology implements Serializable{
 		}
 		return rv;
 	}
-
-	/**
-	 * Finds a path from src to dest, if present.
-	 * 
-	 * 
-	 * @param src
-	 *            The source port.
-	 * @param dest
-	 *            The destination port.
-	 * @return A list with src as the first element and dest as the last
-	 *         element, if there is a path from src to dest. Returns
-	 *         <tt>null</tt> if there is no path.
-	 * 
-	 */
-	public List<EgressPort> getPath(String src, String dest) {
-		return getPath(getNodeFromName(src), getNodeFromName(dest),
-				new LinkedHashSet<Node>());
-	}
-
-	/**
-	 * Finds a path from src to dest, if present.
-	 * 
-	 * 
-	 * @param src
-	 *            The source port.
-	 * @param dest
-	 *            The destination port.
-	 * @return A list with src as the first element and dest as the last
-	 *         element, if there is a path from src to dest. Returns
-	 *         <tt>null</tt> if there is no path.
-	 * 
-	 */
-	public List<EgressPort> getPath(EgressPort src, EgressPort dest) {
-		List<EgressPort> rv = null;
-		if (dest == src) {
-			rv = new LinkedList<EgressPort>();
-			rv.add(dest);
-		} else {
-			for (EgressPort p : linkMap.get(src)) {
-				rv = getPath(p, dest);
-				if (rv != null) {
-					rv.add(0, src);
-					break;
-				}
-			}
-		}
-		return rv;
-	}
+	
 }

@@ -71,9 +71,8 @@ public class NetworkParser {
 	public Traffic getTraffic() {
 		if (traffic != null)
 			return traffic;
-		traffic = new Traffic();
+		traffic = new Traffic(getTopology());
 
-		traffic.setTopology(getTopology());
 		Map<EgressPort, Set<Flow>> portFlowMap = new HashMap<EgressPort, Set<Flow>>();
 
 		JSONArray connections = jsonObj.getJSONArray("streams");

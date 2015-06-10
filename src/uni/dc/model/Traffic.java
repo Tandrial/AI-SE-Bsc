@@ -17,29 +17,14 @@ import uni.dc.view.HSLColorGenerator;
 public class Traffic extends LinkedHashSet<Flow> implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private EgressTopology topology;
-
-	public Traffic() {
+	
+	public Traffic(EgressTopology topology) {
 		super();
-	}
-
-	public Traffic(Collection<? extends Flow> c) {
-		super(c);
-	}
-
-	public Traffic(int initialCapacity, float loadFactor) {
-		super(initialCapacity, loadFactor);
-	}
-
-	public Traffic(int initialCapacity) {
-		super(initialCapacity);
+		this.topology = topology;
 	}
 
 	public EgressTopology getTopology() {
 		return topology;
-	}
-
-	public void setTopology(EgressTopology topology) {
-		this.topology = topology;
 	}
 
 	public Map<EgressPort, Set<Flow>> getPortFlowMap() {

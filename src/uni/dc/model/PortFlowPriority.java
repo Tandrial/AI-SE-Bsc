@@ -6,14 +6,11 @@ public class PortFlowPriority implements Cloneable, Serializable {
 	private static final long serialVersionUID = 1L;
 	private EgressPort port;
 	private Flow flow;
-	private Integer priority;
+	private int priority;
 
-	public PortFlowPriority() {
-		super();
-	};
+	public PortFlowPriority() {	}
 
-	public PortFlowPriority(EgressPort port, Flow flow, Integer priority) {
-		super();
+	public PortFlowPriority(EgressPort port, Flow flow, int priority) {
 		this.port = port;
 		this.flow = flow;
 		this.priority = priority;
@@ -23,16 +20,8 @@ public class PortFlowPriority implements Cloneable, Serializable {
 		return port;
 	}
 
-	public void setPort(EgressPort port) {
-		this.port = port;
-	}
-
 	public Flow getFlow() {
 		return flow;
-	}
-
-	public void setFlow(Flow flow) {
-		this.flow = flow;
 	}
 
 	public Integer getPriority() {
@@ -48,7 +37,7 @@ public class PortFlowPriority implements Cloneable, Serializable {
 		PortFlowPriority rv = new PortFlowPriority();
 		rv.port = this.port;
 		rv.flow = this.flow;
-		rv.priority = new Integer(this.priority);
+		rv.priority = this.priority;
 		return rv;
 	}
 }

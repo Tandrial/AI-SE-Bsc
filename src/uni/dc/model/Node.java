@@ -5,40 +5,27 @@ import java.util.LinkedHashSet;
 import java.util.Set;
 
 public class Node implements Cloneable, Serializable {
-	private static final long serialVersionUID = 1L;	
-	private Set<EgressPort> ports = new LinkedHashSet<EgressPort>();
+	private static final long serialVersionUID = 1L;
 	private String name;
 	private int cnt;
-
-	public Node() {
-		super();
-		cnt = 0;
-	}
+	private Set<EgressPort> ports = new LinkedHashSet<EgressPort>();
 
 	public Node(String name) {
-		this();
 		this.name = name;
-	}
-
-	public Set<EgressPort> getPorts() {
-		return ports;
-	}
-
-	public void setPorts(Set<EgressPort> ports) {
-		this.ports = ports;
-	}
-
-	public void addPort(EgressPort port) {
-		port.setName(getName() + ".P" + cnt++);
-		ports.add(port);
+		cnt = 0;
 	}
 
 	public String getName() {
 		return name;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public Set<EgressPort> getPorts() {
+		return ports;
+	}
+
+	public void addPort(EgressPort port) {
+		port.setName(name + ".P" + cnt++);
+		ports.add(port);
 	}
 
 	@Override

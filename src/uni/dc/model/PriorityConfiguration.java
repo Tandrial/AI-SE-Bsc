@@ -17,12 +17,7 @@ public class PriorityConfiguration implements Cloneable, Serializable {
 	private Map<Flow, Map<EgressPort, PortFlowPriority>> flowPortPriorityMap;
 	private Map<EgressPort, Map<Flow, PortFlowPriority>> portFlowPriorityMap;
 
-	public Traffic getTraffic() {
-		return traffic;
-	}
-
 	private PriorityConfiguration() {
-		super();
 		tripleSet = new LinkedHashSet<PortFlowPriority>();
 		flowPortPriorityMap = new HashMap<Flow, Map<EgressPort, PortFlowPriority>>();
 		portFlowPriorityMap = new HashMap<EgressPort, Map<Flow, PortFlowPriority>>();

@@ -8,13 +8,12 @@ import uni.dc.ubsOpti.Tracer.DelayTrace;
 import uni.dc.ubsOpti.Tracer.Tracable;
 
 public class BruteForce implements Tracable {
-
 	private UbsDelayCalc delayCalc;
 	private int[] bestPrio;
 	private double minDelay = Double.MAX_VALUE;
 
-	private static DelayTrace delays;
-	private static long step;
+	private DelayTrace delays;
+	private long step;
 
 	private boolean stopRecursion = false;
 
@@ -40,8 +39,7 @@ public class BruteForce implements Tracable {
 				delays.addDataPoint(step, delay, n);
 				if (delayCalc.checkDelays())
 					stopRecursion = true;
-			}
-			return;
+			}			
 		} else {
 			for (int i = 1; i <= max; i++) {
 				n[pos] = i;
@@ -62,5 +60,4 @@ public class BruteForce implements Tracable {
 		delays = new DelayTrace("BruteForce", config);
 		step = 1;
 	}
-
 }

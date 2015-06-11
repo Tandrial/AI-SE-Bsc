@@ -30,6 +30,7 @@ import uni.dc.ubsOpti.OptimizerConfig;
 import uni.dc.ubsOpti.DelayCalc.UbsDelayCalc;
 import uni.dc.ubsOpti.DelayCalc.UbsV0DelayCalc;
 import uni.dc.ubsOpti.DelayCalc.UbsV3DelayCalc;
+import uni.dc.ubsOpti.Tracer.DelayTrace;
 
 public class OptimizerGUI extends JFrame {
 	private static final long serialVersionUID = 1L;
@@ -264,10 +265,10 @@ public class OptimizerGUI extends JFrame {
 		t1 = System.nanoTime();
 		OptimizerConfig optiConfig = new OptimizerConfig(topology, traffic,
 				prio, delayCalc);
-
-		optiConfig.setPriorityConfig(optimizer.optimize(optiConfig, algo).getBestConfig());
+		DelayTrace trace = optimizer.optimize(optiConfig, algo);
+		optiConfig.setPriorityConfig(trace.getBestConfig());
 		t2 = System.nanoTime();
-
+		System.out.println(trace);
 		imagePanel.setDot(portDisplay ? topology.toDot() : traffic.toDot(prio));
 		t3 = System.nanoTime();
 		setStatusMsg("Done (optimized in %.4f sec., rendered in %.4f sec.)",

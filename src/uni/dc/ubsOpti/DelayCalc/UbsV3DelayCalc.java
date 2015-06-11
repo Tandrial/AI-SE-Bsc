@@ -31,30 +31,8 @@ public class UbsV3DelayCalc extends UbsDelayCalc {
 				double delay = 0.0;
 				EgressPort lastEgress = path.get(i - 1);
 
-				double sizeBiggerEq = 0.0;
-				double maxSmaller = 0.0;
-				double rateHigher = 0.0;
-
-				double linkSpeed = lastEgress.getLinkSpeed();
-				double size = f.getMaxFrameLength();
-				int prioF = prio.getPriority(lastEgress, f);
-
-				for (Flow other : lastEgress.getFlowList()) {
-					if (f == other)
-						continue;
-					int prioOther = prio.getPriority(lastEgress, other);
-					if (prioOther < prioF) {
-						sizeBiggerEq += other.getMaxFrameLength();
-						rateHigher += other.getRate();
-					} else if (prioOther == prioF) {
-						sizeBiggerEq += other.getMaxFrameLength();
-					} else {
-						maxSmaller = Math.max(maxSmaller,
-								other.getMaxFrameLength());
-					}
-				}
-				delay = (sizeBiggerEq + maxSmaller) / (linkSpeed - rateHigher)
-						+ size / linkSpeed;
+				delay = calcDelay(lastEgress, f);
+				
 				if (!maxDelays.containsKey(lastEgress)) {
 					Double[] arr = new Double[2];
 					for (int j = 0; j < arr.length; j++) {
@@ -72,12 +50,40 @@ public class UbsV3DelayCalc extends UbsDelayCalc {
 
 		for (Flow f : flows) {
 			double delay = 0.0d;
-			for (EgressPort p : f.getPath()) {
-				Double[] delays = maxDelays.get(p);
-				if (delays != null)
-					delay += maxDelays.get(p)[prio.getPriority(p, f) - 1];
+			for (int i = 1; i < f.getPath().size()-1; i++) {
+					delay += maxDelays.get(f.getPath().get(i))[prio.getPriority(f.getPath().get(i), f) - 1];
 			}
+			delay += calcDelay(f.getPath().get(f.getPath().size()-1), f);
 			f.setDelay(delay);
 		}
+	}
+
+	private double calcDelay(EgressPort lastEgress, Flow f) {
+		double delay;
+		double sizeBiggerEq = 0.0;
+		double maxSmaller = 0.0;
+		double rateHigher = 0.0;
+
+		double linkSpeed = lastEgress.getLinkSpeed();
+		double size = f.getMaxFrameLength();
+		int prioF = prio.getPriority(lastEgress, f);
+
+		for (Flow other : lastEgress.getFlowList()) {
+			if (f == other)
+				continue;
+			int prioOther = prio.getPriority(lastEgress, other);
+			if (prioOther < prioF) {
+				sizeBiggerEq += other.getMaxFrameLength();
+				rateHigher += other.getRate();
+			} else if (prioOther == prioF) {
+				sizeBiggerEq += other.getMaxFrameLength();
+			} else {
+				maxSmaller = Math.max(maxSmaller,
+						other.getMaxFrameLength());
+			}
+		}
+		delay = (sizeBiggerEq + maxSmaller) / (linkSpeed - rateHigher)
+				+ size / linkSpeed;
+		return delay;
 	}
 }

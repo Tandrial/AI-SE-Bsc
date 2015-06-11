@@ -163,8 +163,7 @@ public class OptimizerGUI extends JFrame {
 		});
 		mnOptimize.add(mntmGA);
 
-		JSeparator separator = new JSeparator();
-		mnOptimize.add(separator);
+		mnOptimize.add(new JSeparator());
 
 		JMenuItem mntmRunAllexcept = new JMenuItem(
 				"Run All (except BruteForce)");

@@ -97,7 +97,7 @@ public abstract class UbsDelayCalc extends OptimizationModule implements
 		for (Flow f : flows) {
 			delay += f.getDelay();
 			if (!f.checkDelay()) {
-				// TODO: Strafe für Delay > maxLatencyReq
+				// TODO: Strafe fÃ¼r Delay > maxLatencyReq
 				delay += 1;
 			}
 		}

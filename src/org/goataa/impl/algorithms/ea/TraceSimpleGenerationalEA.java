@@ -126,8 +126,6 @@ public final class TraceSimpleGenerationalEA<G, X> extends EABase<G, X> implemen
       pop[i] = p;
       p.g = create.create(r);
     }
-	if (delays != null)
-		delays.addDataPoint(step++, pop[0].v, (int[]) pop[0].g);
 
     // the basic loop of the Evolutionary Algorithm 28.1
     for (;;) {

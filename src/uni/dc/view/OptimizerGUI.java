@@ -5,6 +5,8 @@ import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.ButtonGroup;
 import javax.swing.JFileChooser;
@@ -19,6 +21,8 @@ import javax.swing.JSeparator;
 import javax.swing.UIManager;
 import javax.swing.border.EmptyBorder;
 import javax.swing.filechooser.FileNameExtensionFilter;
+
+import org.jfree.ui.RefineryUtilities;
 
 import uni.dc.model.EgressTopology;
 import uni.dc.model.PriorityConfiguration;
@@ -43,6 +47,7 @@ public class OptimizerGUI extends JFrame {
 	private EgressTopology topology = null;
 	private Traffic traffic = null;
 	private PriorityConfiguration prio = null;
+	private List<DelayTrace> traces = null;
 
 	private boolean portDisplay = true;
 	private boolean ubsV0 = true;
@@ -177,6 +182,17 @@ public class OptimizerGUI extends JFrame {
 		});
 		mnOptimize.add(mntmRunAllexcept);
 
+		JMenuItem mntmDisplayGraph = new JMenuItem("Display Graph");
+		mntmDisplayGraph.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				TraceDisplay traceDisplay = new TraceDisplay("Trace Display", traces);
+				traceDisplay.pack();
+				RefineryUtilities.centerFrameOnScreen(traceDisplay);
+				traceDisplay.setVisible(true);
+			}
+		});
+		mnOptimize.add(mntmDisplayGraph);
+
 		JMenu mnSettings = new JMenu("Settings");
 		menuBar.add(mnSettings);
 
@@ -267,6 +283,7 @@ public class OptimizerGUI extends JFrame {
 				prio, delayCalc);
 		DelayTrace trace = optimizer.optimize(optiConfig, algo);
 		optiConfig.setPriorityConfig(trace.getBestConfig());
+		traces.add(trace);
 		t2 = System.nanoTime();
 		System.out.println(trace);
 		imagePanel.setDot(portDisplay ? topology.toDot() : traffic.toDot(prio));
@@ -289,7 +306,6 @@ public class OptimizerGUI extends JFrame {
 
 		setStatusMsg("Generating topology ...");
 		try {
-
 			t1 = System.nanoTime();
 			String extension = file.getName().substring(
 					file.getName().lastIndexOf("."));
@@ -306,8 +322,9 @@ public class OptimizerGUI extends JFrame {
 				prio = parser.getPriorityConfig();
 				delayCalc = ubsV0 ? new UbsV0DelayCalc(traffic)
 						: new UbsV3DelayCalc(traffic);
-				delayCalc.calculateDelays(prio);
 			}
+			delayCalc.calculateDelays(prio);
+			traces = new ArrayList<DelayTrace>();
 			t2 = System.nanoTime();
 			imagePanel.setDot(portDisplay ? topology.toDot() : traffic
 					.toDot(prio));
@@ -329,8 +346,8 @@ public class OptimizerGUI extends JFrame {
 		try {
 			t1 = System.nanoTime();
 
-			// GeneratorAPI.generateNetwork(5, 12, 2);
-			GeneratorAPI.generateNetwork(4, 7, 2);
+//			 GeneratorAPI.generateNetwork(5, 12, 2);
+			GeneratorAPI.generateNetwork(5, 9, 2);
 			topology = GeneratorAPI.getTopology();
 			traffic = GeneratorAPI.getTraffic();
 			prio = GeneratorAPI.getPriorityConfiguration();
@@ -340,6 +357,7 @@ public class OptimizerGUI extends JFrame {
 			delayCalc = ubsV0 ? new UbsV0DelayCalc(traffic)
 					: new UbsV3DelayCalc(traffic);
 			delayCalc.setInitialDelays(prio);
+			traces = new ArrayList<DelayTrace>();
 
 			t2 = System.nanoTime();
 			imagePanel.setDot(portDisplay ? topology.toDot() : traffic
@@ -368,6 +386,7 @@ public class OptimizerGUI extends JFrame {
 					UIManager.setLookAndFeel(UIManager
 							.getSystemLookAndFeelClassName());
 					OptimizerGUI gui = new OptimizerGUI("UBS Optimizer");
+					RefineryUtilities.centerFrameOnScreen(gui);
 					gui.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();

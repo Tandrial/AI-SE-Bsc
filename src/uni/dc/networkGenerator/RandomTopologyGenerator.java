@@ -211,9 +211,9 @@ public class RandomTopologyGenerator {
 			// This map is used to avoid concurrent modification by connect()
 			Map<EgressPort, EgressPort> clusterForwardPortMap = new HashMap<EgressPort, EgressPort>();
 			for (Cluster c : clusterSet) {
-				List<EgressPort> clusterPortsAtCurrentRank = new ArrayList<EgressPort>(
-						c);
+				List<EgressPort> clusterPortsAtCurrentRank = new ArrayList<EgressPort>(c);
 				clusterPortsAtCurrentRank.retainAll(portsAtCurrentRank);
+				System.out.println(clusterPortsAtCurrentRank.size());
 				EgressPort srcPort = clusterPortsAtCurrentRank.get(rng
 						.nextInt(clusterPortsAtCurrentRank.size()));
 				EgressPort destPort = new ArrayList<EgressPort>(portsAtNextRank)

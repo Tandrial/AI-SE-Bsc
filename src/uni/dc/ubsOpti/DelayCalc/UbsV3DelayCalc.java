@@ -1,5 +1,6 @@
 package uni.dc.ubsOpti.DelayCalc;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -9,6 +10,8 @@ import uni.dc.model.Flow;
 
 public class UbsV3DelayCalc extends UbsDelayCalc {
 	private static final long serialVersionUID = 1L;
+
+	private Map<EgressPort, Double[]> maxDelays;
 
 	public UbsV3DelayCalc(Map<EgressPort, Set<Flow>> traffic) {
 		super(traffic);
@@ -20,11 +23,12 @@ public class UbsV3DelayCalc extends UbsDelayCalc {
 
 	@Override
 	public void calculateDelays() {
+		maxDelays = new HashMap<EgressPort, Double[]>();
 		for (Flow f : flows) {
 			List<EgressPort> path = f.getPath();
 
-			double delay = 0.0;
 			for (int i = 1; i < path.size(); i++) {
+				double delay = 0.0;
 				EgressPort lastEgress = path.get(i - 1);
 
 				double sizeBiggerEq = 0.0;
@@ -39,7 +43,7 @@ public class UbsV3DelayCalc extends UbsDelayCalc {
 					if (f == other)
 						continue;
 					int prioOther = prio.getPriority(lastEgress, other);
-					if (prioOther > prioF) {
+					if (prioOther < prioF) {
 						sizeBiggerEq += other.getMaxFrameLength();
 						rateHigher += other.getRate();
 					} else if (prioOther == prioF) {
@@ -49,8 +53,29 @@ public class UbsV3DelayCalc extends UbsDelayCalc {
 								other.getMaxFrameLength());
 					}
 				}
-				delay += (sizeBiggerEq + maxSmaller) / (linkSpeed - rateHigher)
+				delay = (sizeBiggerEq + maxSmaller) / (linkSpeed - rateHigher)
 						+ size / linkSpeed;
+				if (!maxDelays.containsKey(lastEgress)) {
+					Double[] arr = new Double[2];
+					for (int j = 0; j < arr.length; j++) {
+						arr[j] = new Double(0.0d);
+					}
+					maxDelays.put(lastEgress, arr);
+				}
+				double currentMax = maxDelays.get(lastEgress)[prio.getPriority(
+						lastEgress, f) - 1];
+
+				maxDelays.get(lastEgress)[prio.getPriority(lastEgress, f) - 1] = Math
+						.max(delay, currentMax);
+			}
+		}
+
+		for (Flow f : flows) {
+			double delay = 0.0d;
+			for (EgressPort p : f.getPath()) {
+				Double[] delays = maxDelays.get(p);
+				if (delays != null)
+					delay += maxDelays.get(p)[prio.getPriority(p, f) - 1];
 			}
 			f.setDelay(delay);
 		}

@@ -48,6 +48,7 @@ public class MOIndividual<G, X> extends Individual<G, X> {
    * @param to
    *          the individual to copy
    */
+  @SuppressWarnings("unchecked")
   @Override
   public void assign(final Individual<G, X> to) {
     final double[] d;

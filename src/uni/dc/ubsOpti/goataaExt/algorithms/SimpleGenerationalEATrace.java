@@ -1,11 +1,9 @@
-// Copyright (c) 2010 Thomas Weise (http://www.it-weise.de/, tweise@gmx.de)
-// GNU LESSER GENERAL PUBLIC LICENSE (Version 2.1, February 1999)
-
-package org.goataa.impl.algorithms.ea;
+package uni.dc.ubsOpti.goataaExt.algorithms;
 
 import java.util.List;
 import java.util.Random;
 
+import org.goataa.impl.algorithms.ea.EABase;
 import org.goataa.impl.utils.Constants;
 import org.goataa.impl.utils.Individual;
 import org.goataa.spec.IBinarySearchOperation;
@@ -33,7 +31,7 @@ import uni.dc.ubsOpti.Tracer.Tracable;
  *          the problem space (phenome, Section 2.1)
  * @author Thomas Weise
  */
-public final class TraceSimpleGenerationalEA<G, X> extends EABase<G, X> implements Tracable{
+public final class SimpleGenerationalEATrace<G, X> extends EABase<G, X> implements Tracable{
 
   /** a constant required by Java serialization */
   private static final long serialVersionUID = 1;
@@ -42,7 +40,7 @@ public final class TraceSimpleGenerationalEA<G, X> extends EABase<G, X> implemen
   private static long step;
 
   /** instantiate the simple generational EA */
-  public TraceSimpleGenerationalEA() {
+  public SimpleGenerationalEATrace() {
     super();
   }
   
@@ -212,7 +210,7 @@ public final class TraceSimpleGenerationalEA<G, X> extends EABase<G, X> implemen
   public void call(final Random r, final ITerminationCriterion term,
       final List<Individual<G, X>> result) {
 
-    result.add(TraceSimpleGenerationalEA.evolutionaryAlgorithm(//
+    result.add(SimpleGenerationalEATrace.evolutionaryAlgorithm(//
         this.getObjectiveFunction(),//
         this.getNullarySearchOperation(), //
         this.getUnarySearchOperation(),//

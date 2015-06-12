@@ -9,12 +9,12 @@
     {
         "streamID" : 1,
         "route"  : {"dijkstra" : { "n0" : ["n1"] }},
-        "tspec"  : {"leakRate" : "100Mbps", "maxPacketLength" : "1b", "maxLatency" : "250ns"}
+        "tspec"  : {"leakRate" : "100Mbps", "maxPacketLength" : "1b", "maxLatency" : "350ns"}
     },
     {
         "streamID" : 2,
         "route"  : {"dijkstra" : { "n0" : ["n1"] }},
-        "tspec"  : {"leakRate" : "150Mbps", "maxPacketLength" : "4b", "maxLatency" : "490ns"}
+        "tspec"  : {"leakRate" : "150Mbps", "maxPacketLength" : "4b", "maxLatency" : "500ns"}
     },
     {
         "streamID" : 3,
@@ -24,7 +24,7 @@
     {
         "streamID" : 4,
         "route"  : {"dijkstra" : { "n0" : ["n1"] }},
-        "tspec"  : {"leakRate" : "250Mbps", "maxPacketLength" : "7b", "maxLatency" : "480ns"}
+        "tspec"  : {"leakRate" : "250Mbps", "maxPacketLength" : "7b", "maxLatency" : "500ns"}
     }
     ]
 }

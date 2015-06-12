@@ -60,6 +60,7 @@ public abstract class EABase<G, X> extends
 
   /** instantiate the ea base */
   @SuppressWarnings("unchecked")
+protected
   EABase() {
     super();
 

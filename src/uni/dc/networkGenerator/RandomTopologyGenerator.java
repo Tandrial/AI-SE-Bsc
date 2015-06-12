@@ -185,10 +185,10 @@ public class RandomTopologyGenerator {
 		for (int rank = 0; rank < depth - 1; rank++) {
 
 			// System.out.printf("## Rank = %d\n",rank);
-			LinkedHashSet<EgressPort> portsAtCurrentRank = rankPortMap
-					.get(rank);
-			LinkedHashSet<EgressPort> portsAtNextRank = rankPortMap
-					.get(rank + 1);
+			LinkedHashSet<EgressPort> portsAtCurrentRank = rankPortMap.get(rank);
+			LinkedHashSet<EgressPort> portsAtNextRank = rankPortMap.get(rank + 1);
+			if (portsAtNextRank.size() == 0)
+				portsAtNextRank = rankPortMap.get(rank +2);
 
 			// Identify new clusters at current rank:
 			// - Unconnected ports at current rank are clusters
@@ -213,7 +213,6 @@ public class RandomTopologyGenerator {
 			for (Cluster c : clusterSet) {
 				List<EgressPort> clusterPortsAtCurrentRank = new ArrayList<EgressPort>(c);
 				clusterPortsAtCurrentRank.retainAll(portsAtCurrentRank);
-				System.out.println(clusterPortsAtCurrentRank.size());
 				EgressPort srcPort = clusterPortsAtCurrentRank.get(rng
 						.nextInt(clusterPortsAtCurrentRank.size()));
 				EgressPort destPort = new ArrayList<EgressPort>(portsAtNextRank)
@@ -256,8 +255,7 @@ public class RandomTopologyGenerator {
 				if (rank < depth - 2)
 					C = C.subList(0, rng.nextInt(C.size() + 1));
 				for (Cluster c : C) {
-					List<EgressPort> clusterPortsAtCurrentRank = new ArrayList<EgressPort>(
-							c);
+					List<EgressPort> clusterPortsAtCurrentRank = new ArrayList<EgressPort>(c);
 					clusterPortsAtCurrentRank.retainAll(portsAtCurrentRank);
 					EgressPort s = clusterPortsAtCurrentRank.get(rng
 							.nextInt(clusterPortsAtCurrentRank.size()));

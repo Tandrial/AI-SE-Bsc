@@ -35,6 +35,7 @@ import uni.dc.ubsOpti.DelayCalc.UbsDelayCalc;
 import uni.dc.ubsOpti.DelayCalc.UbsV0DelayCalc;
 import uni.dc.ubsOpti.DelayCalc.UbsV3DelayCalc;
 import uni.dc.ubsOpti.Tracer.DelayTrace;
+import uni.dc.ubsOpti.Tracer.TraceCollection;
 
 public class OptimizerGUI extends JFrame {
 	private static final long serialVersionUID = 1L;
@@ -47,7 +48,7 @@ public class OptimizerGUI extends JFrame {
 	private EgressTopology topology = null;
 	private Traffic traffic = null;
 	private PriorityConfiguration prio = null;
-	private List<DelayTrace> traces = null;
+	private TraceCollection traces = null;
 
 	private boolean portDisplay = true;
 	private boolean ubsV0 = true;
@@ -117,7 +118,7 @@ public class OptimizerGUI extends JFrame {
 				String fileName = "" + topology;
 				OptimizerConfig.saveToFile(new File("./Topologies/" + fileName
 						+ ".ser"), new OptimizerConfig(topology, traffic, prio,
-						delayCalc));
+						delayCalc, traces));
 			}
 		});
 		mnFile.add(mntmSaveNetwork);
@@ -185,7 +186,10 @@ public class OptimizerGUI extends JFrame {
 		JMenuItem mntmDisplayGraph = new JMenuItem("Display Graph");
 		mntmDisplayGraph.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				TraceDisplay traceDisplay = new TraceDisplay("Trace Display", traces);
+				if (traces == null)
+					return;
+				TraceDisplay traceDisplay = new TraceDisplay("Trace Display",
+						traces);
 				traceDisplay.pack();
 				RefineryUtilities.centerFrameOnScreen(traceDisplay);
 				traceDisplay.setVisible(true);
@@ -280,12 +284,10 @@ public class OptimizerGUI extends JFrame {
 		long t1, t2, t3;
 		t1 = System.nanoTime();
 		OptimizerConfig optiConfig = new OptimizerConfig(topology, traffic,
-				prio, delayCalc);
-		DelayTrace trace = optimizer.optimize(optiConfig, algo);
-		optiConfig.setPriorityConfig(trace.getBestConfig());
-		traces.add(trace);
+				prio, delayCalc, traces);
+		optimizer.optimize(optiConfig, algo);
+		optiConfig.setPriorityConfig(traces.getBestConfig());
 		t2 = System.nanoTime();
-		System.out.println(trace);
 		imagePanel.setDot(portDisplay ? topology.toDot() : traffic.toDot(prio));
 		t3 = System.nanoTime();
 		setStatusMsg("Done (optimized in %.4f sec., rendered in %.4f sec.)",
@@ -324,7 +326,7 @@ public class OptimizerGUI extends JFrame {
 						: new UbsV3DelayCalc(traffic);
 			}
 			delayCalc.calculateDelays(prio);
-			traces = new ArrayList<DelayTrace>();
+			traces = new TraceCollection();
 			t2 = System.nanoTime();
 			imagePanel.setDot(portDisplay ? topology.toDot() : traffic
 					.toDot(prio));
@@ -346,8 +348,8 @@ public class OptimizerGUI extends JFrame {
 		try {
 			t1 = System.nanoTime();
 
-//			 GeneratorAPI.generateNetwork(5, 12, 2);
-			GeneratorAPI.generateNetwork(5, 9, 2);
+			// GeneratorAPI.generateNetwork(5, 12, 2);
+			GeneratorAPI.generateNetwork(4, 12, 4);
 			topology = GeneratorAPI.getTopology();
 			traffic = GeneratorAPI.getTraffic();
 			prio = GeneratorAPI.getPriorityConfiguration();
@@ -357,7 +359,7 @@ public class OptimizerGUI extends JFrame {
 			delayCalc = ubsV0 ? new UbsV0DelayCalc(traffic)
 					: new UbsV3DelayCalc(traffic);
 			delayCalc.setInitialDelays(prio);
-			traces = new ArrayList<DelayTrace>();
+			traces = new TraceCollection();
 
 			t2 = System.nanoTime();
 			imagePanel.setDot(portDisplay ? topology.toDot() : traffic

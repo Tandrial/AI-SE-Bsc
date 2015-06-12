@@ -1,7 +1,4 @@
-// Copyright (c) 2010 Thomas Weise (http://www.it-weise.de/, tweise@gmx.de)
-// GNU LESSER GENERAL PUBLIC LICENSE (Version 2.1, February 1999)
-
-package org.goataa.impl.algorithms.hc;
+package uni.dc.ubsOpti.goataaExt.algorithms;
 
 import java.util.List;
 import java.util.Random;
@@ -28,7 +25,7 @@ import uni.dc.ubsOpti.Tracer.Tracable;
  *          the problem space (phenome, Section 2.1)
  * @author Thomas Weise
  */
-public final class TraceHillClimbing<G, X> extends
+public final class HillClimbingTrace<G, X> extends
     LocalSearchAlgorithm<G, X, Individual<G, X>> implements Tracable{
 
 	private static DelayTrace delays;
@@ -38,7 +35,7 @@ public final class TraceHillClimbing<G, X> extends
   private static final long serialVersionUID = 1;
 
   /** instantiate the hill climbing class */
-  public TraceHillClimbing() {
+  public HillClimbingTrace() {
     super();
   }
   
@@ -75,7 +72,7 @@ public final class TraceHillClimbing<G, X> extends
   public void call(final Random r, final ITerminationCriterion term,
       final List<Individual<G, X>> result) {
 
-    result.add(TraceHillClimbing.hillClimbing(this.getObjectiveFunction(),//
+    result.add(HillClimbingTrace.hillClimbing(this.getObjectiveFunction(),//
         this.getNullarySearchOperation(), //
         this.getUnarySearchOperation(),//
         this.getGPM(), term, r));

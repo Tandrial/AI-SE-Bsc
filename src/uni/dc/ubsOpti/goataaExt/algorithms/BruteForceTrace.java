@@ -1,13 +1,14 @@
-package uni.dc.ubsOpti;
+package uni.dc.ubsOpti.goataaExt.algorithms;
 
 import java.util.Arrays;
 
 import uni.dc.model.PriorityConfiguration;
+import uni.dc.ubsOpti.OptimizerConfig;
 import uni.dc.ubsOpti.DelayCalc.UbsDelayCalc;
 import uni.dc.ubsOpti.Tracer.DelayTrace;
 import uni.dc.ubsOpti.Tracer.Tracable;
 
-public class BruteForce implements Tracable {
+public class BruteForceTrace implements Tracable {
 	private UbsDelayCalc delayCalc;
 	private int[] bestPrio;
 	private double minDelay = Double.MAX_VALUE;
@@ -17,7 +18,7 @@ public class BruteForce implements Tracable {
 
 	private boolean stopRecursion = false;
 
-	public BruteForce(UbsDelayCalc delayCalc) {
+	public BruteForceTrace(UbsDelayCalc delayCalc) {
 		this.delayCalc = delayCalc;
 	}
 

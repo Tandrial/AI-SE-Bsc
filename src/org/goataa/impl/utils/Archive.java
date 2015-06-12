@@ -35,6 +35,7 @@ public class Archive<G, X> extends AbstractList<MOIndividual<G, X>>
   private final int maxSize;
 
   /** the list */
+  @SuppressWarnings("unchecked")
   private MOIndividual[] lst;
 
   /** the individual comparator */
@@ -323,6 +324,7 @@ public class Archive<G, X> extends AbstractList<MOIndividual<G, X>>
    *          the individual
    * @return true if the new individual was added, false otherwise
    */
+  @SuppressWarnings("unchecked")
   protected boolean replaceOne(final MOIndividual<G, X> ind) {
     double w, deps;
     int i, j, bi, ci, z;
@@ -445,6 +447,7 @@ public class Archive<G, X> extends AbstractList<MOIndividual<G, X>>
    *          the maximum number of individuals to select
    * @return the number of selected individuals (may be less)
    */
+  @SuppressWarnings("unchecked")
   public final int copy(final Individual<?, ?>[] mate,
       final int mateStart, final int mateCount) {
     final int c;

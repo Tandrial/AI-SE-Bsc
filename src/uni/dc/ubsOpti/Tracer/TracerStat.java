@@ -1,9 +1,10 @@
 package uni.dc.ubsOpti.Tracer;
 
+import java.io.Serializable;
 import java.util.Arrays;
 
-public class TracerStat{
-
+public class TracerStat implements Serializable{
+	private static final long serialVersionUID = 1L;
 	private long step;
 	private double delay;
 	private int[] prio;

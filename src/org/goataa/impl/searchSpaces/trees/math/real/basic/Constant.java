@@ -3,8 +3,8 @@
 
 package org.goataa.impl.searchSpaces.trees.math.real.basic;
 
-import org.goataa.impl.searchSpaces.trees.math.real.RealContext;
 import org.goataa.impl.searchSpaces.trees.math.real.RealFunction;
+import org.goataa.impl.searchSpaces.trees.math.real.RealContext;
 
 /**
  * A constant always returns a specific value

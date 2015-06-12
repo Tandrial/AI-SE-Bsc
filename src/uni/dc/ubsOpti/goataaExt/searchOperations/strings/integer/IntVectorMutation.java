@@ -1,7 +1,4 @@
-// Copyright (c) 2015 Michael Krane (Michael.Krane@stud.uni-due.de)
-// GNU LESSER GENERAL PUBLIC LICENSE (Version 2.1, February 1999)
-
-package org.goataa.impl.searchOperations.strings.integer;
+package uni.dc.ubsOpti.goataaExt.searchOperations.strings.integer;
 
 import org.goataa.impl.searchOperations.UnarySearchOperation;
 

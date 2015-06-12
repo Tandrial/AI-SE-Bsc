@@ -65,7 +65,7 @@ public class SOOptimizationAlgorithm<G, X, IT extends Individual<G, X>>
   protected SOOptimizationAlgorithm() {
     super();
     this.random = new Random();
-    this.gpm = ((IGPM<G, X>) (IdentityMapping.IDENTITY_MAPPING));
+    this.gpm = ((IGPM) (IdentityMapping.IDENTITY_MAPPING));
     this.tc = TerminationCriterion.NEVER_TERMINATE;
     this.randomSeed = true;
     this.seed = SEED.nextLong();
@@ -178,6 +178,7 @@ public class SOOptimizationAlgorithm<G, X, IT extends Individual<G, X>>
 
   /** {@inheritDoc} */
   @Override
+  @SuppressWarnings("unchecked")
   public String getConfiguration(final boolean longVersion) {
     StringBuilder sb;
     IOptimizationModule o;

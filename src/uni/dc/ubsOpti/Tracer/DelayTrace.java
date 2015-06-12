@@ -1,5 +1,6 @@
 package uni.dc.ubsOpti.Tracer;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,8 +9,8 @@ import uni.dc.model.PriorityConfiguration;
 import uni.dc.model.Traffic;
 import uni.dc.ubsOpti.OptimizerConfig;
 
-public class DelayTrace {
-
+public class DelayTrace implements Serializable{
+	private static final long serialVersionUID = 1L;
 	private String name;
 	private List<TracerStat> stats = new ArrayList<TracerStat>();
 
@@ -52,6 +53,10 @@ public class DelayTrace {
 		PriorityConfiguration res = (PriorityConfiguration) prio.clone();
 		res.fromIntArray(stats.get(stats.size()-1).getPrio());
 		return res;
+	}
+	
+	public double getBestValue() {
+		return stats.get(stats.size() -1).getDelay();
 	}
 
 	@Override

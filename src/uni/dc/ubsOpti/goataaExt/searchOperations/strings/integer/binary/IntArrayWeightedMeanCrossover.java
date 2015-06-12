@@ -1,7 +1,4 @@
-// Copyright (c) 2010 Thomas Weise (http://www.it-weise.de/, tweise@gmx.de)
-// GNU LESSER GENERAL PUBLIC LICENSE (Version 2.1, February 1999)
-
-package org.goataa.impl.searchOperations.strings.integer.binary;
+package uni.dc.ubsOpti.goataaExt.searchOperations.strings.integer.binary;
 
 import java.util.Random;
 

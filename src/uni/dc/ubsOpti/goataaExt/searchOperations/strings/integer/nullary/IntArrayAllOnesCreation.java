@@ -1,11 +1,8 @@
-// Copyright (c) 2015 Michael Krane (Michael.Krane@stud.uni-due.de)
-// GNU LESSER GENERAL PUBLIC LICENSE (Version 2.1, February 1999)
-
-package org.goataa.impl.searchOperations.strings.integer.nullary;
+package uni.dc.ubsOpti.goataaExt.searchOperations.strings.integer.nullary;
 
 import java.util.Random;
 
-import org.goataa.impl.searchOperations.strings.integer.IntVectorCreation;
+import uni.dc.ubsOpti.goataaExt.searchOperations.strings.integer.IntVectorCreation;
 
 /**
  * A nullary search operation (see Section 4.2) for int vectors in a bounded

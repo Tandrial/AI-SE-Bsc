@@ -1,7 +1,4 @@
-// Copyright (c) 2010 Thomas Weise (http://www.it-weise.de/, tweise@gmx.de)
-// GNU LESSER GENERAL PUBLIC LICENSE (Version 2.1, February 1999)
-
-package org.goataa.impl.algorithms.sa;
+package uni.dc.ubsOpti.goataaExt.algorithms;
 
 import java.util.List;
 import java.util.Random;
@@ -30,7 +27,7 @@ import uni.dc.ubsOpti.Tracer.Tracable;
  *          the problem space (phenome, Section 2.1)
  * @author Thomas Weise
  */
-public final class TraceSimulatedAnnealing<G, X> extends
+public final class SimulatedAnnealingTrace<G, X> extends
     LocalSearchAlgorithm<G, X, Individual<G, X>> implements Tracable{
 
 	private static DelayTrace delays;
@@ -43,7 +40,7 @@ public final class TraceSimulatedAnnealing<G, X> extends
   private ITemperatureSchedule schedule;
 
   /** instantiate the simulated annealing class */
-  public TraceSimulatedAnnealing() {
+  public SimulatedAnnealingTrace() {
     super();
   }
   
@@ -106,7 +103,7 @@ public final class TraceSimulatedAnnealing<G, X> extends
   public void call(final Random r, final ITerminationCriterion term,
       final List<Individual<G, X>> result) {
 
-    result.add(TraceSimulatedAnnealing.simulatedAnnealing(//
+    result.add(SimulatedAnnealingTrace.simulatedAnnealing(//
         this.getObjectiveFunction(),//
         this.getNullarySearchOperation(), //
         this.getUnarySearchOperation(),//

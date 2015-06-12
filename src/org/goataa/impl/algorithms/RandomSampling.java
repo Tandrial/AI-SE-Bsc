@@ -37,7 +37,7 @@ public final class RandomSampling<G, X> extends
   @SuppressWarnings("unchecked")
   public RandomSampling() {
     super();
-    this.o0 = (INullarySearchOperation<G>) (NullarySearchOperation.NULL_CREATION);
+    this.o0 = (INullarySearchOperation) (NullarySearchOperation.NULL_CREATION);
   }
 
   /**
@@ -51,7 +51,7 @@ public final class RandomSampling<G, X> extends
   @SuppressWarnings("unchecked")
   public void setNullarySearchOperation(final INullarySearchOperation<G> op) {
     this.o0 = ((op != null) ? op
-        : ((INullarySearchOperation<G>) (NullarySearchOperation.NULL_CREATION)));
+        : ((INullarySearchOperation) (NullarySearchOperation.NULL_CREATION)));
   }
 
   /**

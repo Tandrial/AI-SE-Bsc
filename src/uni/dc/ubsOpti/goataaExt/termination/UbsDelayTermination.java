@@ -1,7 +1,6 @@
-// Copyright (c) 2015 Michael Krane (Michael.Krane@stud.uni-due.de)
-// GNU LESSER GENERAL PUBLIC LICENSE (Version 2.1, February 1999)
+package uni.dc.ubsOpti.goataaExt.termination;
 
-package org.goataa.impl.termination;
+import org.goataa.impl.termination.TerminationCriterion;
 
 import uni.dc.ubsOpti.OptimizerConfig;
 import uni.dc.ubsOpti.DelayCalc.UbsDelayCalc;

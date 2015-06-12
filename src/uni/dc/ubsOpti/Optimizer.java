@@ -2,8 +2,11 @@ package uni.dc.ubsOpti;
 
 import java.util.List;
 
+import org.goataa.impl.algorithms.de.DifferentialEvolution1;
 import org.goataa.impl.algorithms.ea.selection.TournamentSelection;
+import org.goataa.impl.algorithms.es.EvolutionStrategy;
 import org.goataa.impl.algorithms.sa.temperatureSchedules.Logarithmic;
+import org.goataa.impl.searchOperations.strings.real.ternary.DoubleArrayDEbin;
 import org.goataa.impl.utils.Individual;
 import org.goataa.spec.INullarySearchOperation;
 import org.goataa.spec.ISOOptimizationAlgorithm;
@@ -92,6 +95,35 @@ public class Optimizer {
 		GA.setUnarySearchOperation(mutate);
 		testRuns(GA);
 		return GA.getTrace();
+	}
+
+	private void optimizeEvolutionStrategies(UbsDelayCalc delayCalc) {
+		// TODO
+		EvolutionStrategy<double[]> ES = new EvolutionStrategy<double[]>();
+		// ES.setObjectiveFunction(delayCalc);
+		// ES.setNullarySearchOperation(create);
+		ES.setDimension(optiConfig.getDim());
+		ES.setMinimum(-10d);
+		ES.setMaximum(10d);
+
+		ES.setMu(20);
+		ES.setLambda(200);
+		ES.setRho(2);
+
+		ES.setPlus(true);
+		// testRuns(ES);
+		ES.setPlus(false);
+		// testRuns(ES);
+	}
+
+	private void optimizeDifferentialEvolution(UbsDelayCalc delayCalc) {
+		// TODO
+		DifferentialEvolution1<double[]> DE = new DifferentialEvolution1<double[]>();
+		// DE.setObjectiveFunction(delayCalc);
+		// DE.setNullarySearchOperation(create);
+		DE.setPopulationSize(5000);
+		DE.setTernarySearchOperation(new DoubleArrayDEbin(-10d, 10d, 0.3d, 0.7d));
+		// testRuns(DE);
 	}
 
 	@SuppressWarnings("unchecked")

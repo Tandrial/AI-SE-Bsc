@@ -23,6 +23,7 @@ public class OptimizerConfig implements Serializable {
 	private int maxPrio = 2;
 	private int maxSteps = 3000000;
 	private int runs = 2;
+	private int dim;
 
 	private Traffic traffic;
 	private EgressTopology topology;
@@ -36,6 +37,7 @@ public class OptimizerConfig implements Serializable {
 		this.topology = topology;
 		this.traffic = traffic;
 		this.prio = prio;
+		dim = prio.toIntArray().length;
 		this.delayCalc = delayCalc;
 		this.traces = traces;
 	}
@@ -62,6 +64,10 @@ public class OptimizerConfig implements Serializable {
 
 	public void setRuns(int runs) {
 		this.runs = runs;
+	}
+	
+	public int getDim() {
+		return dim;
 	}
 
 	public Traffic getTraffic() {

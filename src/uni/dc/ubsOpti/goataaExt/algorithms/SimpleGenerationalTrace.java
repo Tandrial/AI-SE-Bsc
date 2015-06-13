@@ -31,7 +31,7 @@ import uni.dc.ubsOpti.tracer.Tracable;
  *          the problem space (phenome, Section 2.1)
  * @author Thomas Weise
  */
-public final class SimpleGenerationalEATrace<G, X> extends EABase<G, X> implements Tracable{
+public final class SimpleGenerationalTrace<G, X> extends EABase<G, X> implements Tracable{
 
   /** a constant required by Java serialization */
   private static final long serialVersionUID = 1;
@@ -40,7 +40,7 @@ public final class SimpleGenerationalEATrace<G, X> extends EABase<G, X> implemen
   private static long step;
 
   /** instantiate the simple generational EA */
-  public SimpleGenerationalEATrace() {
+  public SimpleGenerationalTrace() {
     super();
   }
   
@@ -143,7 +143,7 @@ public final class SimpleGenerationalEATrace<G, X> extends EABase<G, X> implemen
         if (p.v < best.v) {
           best.assign(p);
           if (delays != null)
-      		delays.addDataPoint(step, best.v, (int[]) pop[0].g);
+      		delays.addDataPoint(step, best.v,(int[]) best.x);
         }
 
         // after each objective function evaluation, check if we should
@@ -151,7 +151,7 @@ public final class SimpleGenerationalEATrace<G, X> extends EABase<G, X> implemen
         if (term.terminationCriterion()) {
           // if we should stop, return the best individual found
           	if (delays != null)
-        		delays.addDataPoint(step, best.v, (int[]) pop[0].g);
+        		delays.addDataPoint(step, best.v, (int[]) best.x);
             
           return best;
         }
@@ -210,7 +210,7 @@ public final class SimpleGenerationalEATrace<G, X> extends EABase<G, X> implemen
   public void call(final Random r, final ITerminationCriterion term,
       final List<Individual<G, X>> result) {
 
-    result.add(SimpleGenerationalEATrace.evolutionaryAlgorithm(//
+    result.add(SimpleGenerationalTrace.evolutionaryAlgorithm(//
         this.getObjectiveFunction(),//
         this.getNullarySearchOperation(), //
         this.getUnarySearchOperation(),//

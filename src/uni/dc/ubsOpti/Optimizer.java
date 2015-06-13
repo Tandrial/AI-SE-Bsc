@@ -2,10 +2,8 @@ package uni.dc.ubsOpti;
 
 import java.util.List;
 
-import org.goataa.impl.algorithms.de.DifferentialEvolution1;
 import org.goataa.impl.algorithms.ea.selection.TournamentSelection;
 import org.goataa.impl.algorithms.sa.temperatureSchedules.Logarithmic;
-import org.goataa.impl.searchOperations.strings.real.ternary.DoubleArrayDEbin;
 import org.goataa.impl.utils.Individual;
 import org.goataa.spec.INullarySearchOperation;
 import org.goataa.spec.ISOOptimizationAlgorithm;
@@ -14,13 +12,11 @@ import org.goataa.spec.IUnarySearchOperation;
 import uni.dc.model.PriorityConfiguration;
 import uni.dc.ubsOpti.delayCalc.UbsDelayCalc;
 import uni.dc.ubsOpti.goataaExt.algorithms.BruteForceTrace;
-import uni.dc.ubsOpti.goataaExt.algorithms.EvolutionStrategyTrace;
 import uni.dc.ubsOpti.goataaExt.algorithms.HillClimbingTrace;
-import uni.dc.ubsOpti.goataaExt.algorithms.SimpleGenerationalEATrace;
+import uni.dc.ubsOpti.goataaExt.algorithms.SimpleGenerationalTrace;
 import uni.dc.ubsOpti.goataaExt.algorithms.SimulatedAnnealingTrace;
 import uni.dc.ubsOpti.goataaExt.searchOperations.strings.integer.binary.IntArrayWeightedMeanCrossover;
 import uni.dc.ubsOpti.goataaExt.searchOperations.strings.integer.nullary.IntArrayAllOnesCreation;
-import uni.dc.ubsOpti.goataaExt.searchOperations.strings.integer.nullary.IntArrayUniformCreation;
 import uni.dc.ubsOpti.goataaExt.searchOperations.strings.integer.unary.IntArrayAllNormalMutation;
 import uni.dc.ubsOpti.goataaExt.termination.UbsDelayTermination;
 import uni.dc.ubsOpti.tracer.DelayTrace;
@@ -47,7 +43,6 @@ public class Optimizer {
 			trace = optimizeHillClimbing(delayCalc);
 		} else if (selectedAlgo.equals("SimpleGenerationalEA")) {
 			trace = optimizeSimpleGenerationalEA(delayCalc);
-			// trace = optimizeEvolutionStrategies(delayCalc);
 		}
 		optiConfig.getTraces().add(trace);
 		delayCalc.calculateDelays(trace.getBestConfig());
@@ -84,7 +79,7 @@ public class Optimizer {
 	}
 
 	private DelayTrace optimizeSimpleGenerationalEA(UbsDelayCalc delayCalc) {
-		SimpleGenerationalEATrace<int[], int[]> GA = new SimpleGenerationalEATrace<int[], int[]>();
+		SimpleGenerationalTrace<int[], int[]> GA = new SimpleGenerationalTrace<int[], int[]>();
 		GA.setUpTrace(optiConfig);
 		GA.setBinarySearchOperation(IntArrayWeightedMeanCrossover.INT_ARRAY_WEIGHTED_MEAN_CROSSOVER);
 		GA.setObjectiveFunction(delayCalc);
@@ -93,36 +88,6 @@ public class Optimizer {
 		GA.setUnarySearchOperation(mutate);
 		testRuns(GA);
 		return GA.getTrace();
-	}
-
-	private DelayTrace optimizeEvolutionStrategies(UbsDelayCalc delayCalc) {
-		// TODO
-		EvolutionStrategyTrace<int[]> ES = new EvolutionStrategyTrace<int[]>();
-		ES.setUpTrace(optiConfig);
-		ES.setObjectiveFunction(delayCalc);
-		ES.setNullarySearchOperation(new IntArrayUniformCreation(optiConfig
-				.getDim(), 1, optiConfig.getMaxPrio()));
-		ES.setDimension(optiConfig.getDim());
-		ES.setMinimum(1);
-		ES.setMaximum(optiConfig.getMaxPrio());
-
-		ES.setMu(5);
-		ES.setLambda(20);
-		ES.setRho(2);
-
-		ES.setPlus(true);
-		testRuns(ES);
-		return ES.getTrace();
-	}
-
-	private void optimizeDifferentialEvolution(UbsDelayCalc delayCalc) {
-		// TODO
-		DifferentialEvolution1<double[]> DE = new DifferentialEvolution1<double[]>();
-		// DE.setObjectiveFunction(delayCalc);
-		// DE.setNullarySearchOperation(create);
-		DE.setPopulationSize(5000);
-		DE.setTernarySearchOperation(new DoubleArrayDEbin(-10d, 10d, 0.3d, 0.7d));
-		// testRuns(DE);
 	}
 
 	@SuppressWarnings("unchecked")

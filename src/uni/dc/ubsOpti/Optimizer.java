@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.goataa.impl.algorithms.de.DifferentialEvolution1;
 import org.goataa.impl.algorithms.ea.selection.TournamentSelection;
-import org.goataa.impl.algorithms.es.EvolutionStrategy;
 import org.goataa.impl.algorithms.sa.temperatureSchedules.Logarithmic;
 import org.goataa.impl.searchOperations.strings.real.ternary.DoubleArrayDEbin;
 import org.goataa.impl.utils.Individual;
@@ -16,20 +15,22 @@ import uni.dc.model.PriorityConfiguration;
 import uni.dc.ubsOpti.DelayCalc.UbsDelayCalc;
 import uni.dc.ubsOpti.Tracer.DelayTrace;
 import uni.dc.ubsOpti.goataaExt.algorithms.BruteForceTrace;
+import uni.dc.ubsOpti.goataaExt.algorithms.EvolutionStrategyTrace;
 import uni.dc.ubsOpti.goataaExt.algorithms.HillClimbingTrace;
 import uni.dc.ubsOpti.goataaExt.algorithms.SimpleGenerationalEATrace;
 import uni.dc.ubsOpti.goataaExt.algorithms.SimulatedAnnealingTrace;
 import uni.dc.ubsOpti.goataaExt.searchOperations.strings.integer.binary.IntArrayWeightedMeanCrossover;
 import uni.dc.ubsOpti.goataaExt.searchOperations.strings.integer.nullary.IntArrayAllOnesCreation;
+import uni.dc.ubsOpti.goataaExt.searchOperations.strings.integer.nullary.IntArrayUniformCreation;
 import uni.dc.ubsOpti.goataaExt.searchOperations.strings.integer.unary.IntArrayAllNormalMutation;
 import uni.dc.ubsOpti.goataaExt.termination.UbsDelayTermination;
 
 public class Optimizer {
 	private INullarySearchOperation<int[]> create;
 	private IUnarySearchOperation<int[]> mutate;
-	private OptimizerConfig optiConfig;
+	private UbsOptiConfig optiConfig;
 
-	public DelayTrace optimize(OptimizerConfig optiConfig, String selectedAlgo) {
+	public DelayTrace optimize(UbsOptiConfig optiConfig, String selectedAlgo) {
 		this.optiConfig = optiConfig;
 		UbsDelayCalc delayCalc = optiConfig.getDelayCalc();
 		PriorityConfiguration config = optiConfig.getPriorityConfig();
@@ -45,7 +46,8 @@ public class Optimizer {
 		} else if (selectedAlgo.equals("HillClimbing")) {
 			trace = optimizeHillClimbing(delayCalc);
 		} else if (selectedAlgo.equals("SimpleGenerationalEA")) {
-			trace = optimizeSimpleGenerationalEA(delayCalc);
+			// trace = optimizeSimpleGenerationalEA(delayCalc);
+			trace = optimizeEvolutionStrategies(delayCalc);
 		}
 		optiConfig.getTraces().add(trace);
 		delayCalc.calculateDelays(trace.getBestConfig());
@@ -97,23 +99,23 @@ public class Optimizer {
 		return GA.getTrace();
 	}
 
-	private void optimizeEvolutionStrategies(UbsDelayCalc delayCalc) {
+	private DelayTrace optimizeEvolutionStrategies(UbsDelayCalc delayCalc) {
 		// TODO
-		EvolutionStrategy<double[]> ES = new EvolutionStrategy<double[]>();
-		// ES.setObjectiveFunction(delayCalc);
-		// ES.setNullarySearchOperation(create);
+		EvolutionStrategyTrace<int[]> ES = new EvolutionStrategyTrace<int[]>();
+		ES.setUpTrace(optiConfig);
+		ES.setObjectiveFunction(delayCalc);
+		ES.setNullarySearchOperation(new IntArrayUniformCreation(optiConfig.getDim(), 1, optiConfig.getMaxPrio()));
 		ES.setDimension(optiConfig.getDim());
-		ES.setMinimum(-10d);
-		ES.setMaximum(10d);
+		ES.setMinimum(1);
+		ES.setMaximum(optiConfig.getMaxPrio());
 
-		ES.setMu(20);
-		ES.setLambda(200);
+		ES.setMu(5);
+		ES.setLambda(20);
 		ES.setRho(2);
 
 		ES.setPlus(true);
-		// testRuns(ES);
-		ES.setPlus(false);
-		// testRuns(ES);
+		testRuns(ES);
+		return ES.getTrace();
 	}
 
 	private void optimizeDifferentialEvolution(UbsDelayCalc delayCalc) {

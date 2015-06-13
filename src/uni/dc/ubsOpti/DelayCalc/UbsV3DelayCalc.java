@@ -57,33 +57,4 @@ public class UbsV3DelayCalc extends UbsDelayCalc {
 			f.setDelay(delay);
 		}
 	}
-
-	private double calcDelay(EgressPort lastEgress, Flow f) {
-		double delay;
-		double sizeBiggerEq = 0.0;
-		double maxSmaller = 0.0;
-		double rateHigher = 0.0;
-
-		double linkSpeed = lastEgress.getLinkSpeed();
-		double size = f.getMaxFrameLength();
-		int prioF = prio.getPriority(lastEgress, f);
-
-		for (Flow other : lastEgress.getFlowList()) {
-			if (f == other)
-				continue;
-			int prioOther = prio.getPriority(lastEgress, other);
-			if (prioOther < prioF) {
-				sizeBiggerEq += other.getMaxFrameLength();
-				rateHigher += other.getRate();
-			} else if (prioOther == prioF) {
-				sizeBiggerEq += other.getMaxFrameLength();
-			} else {
-				maxSmaller = Math.max(maxSmaller,
-						other.getMaxFrameLength());
-			}
-		}
-		delay = (sizeBiggerEq + maxSmaller) / (linkSpeed - rateHigher)
-				+ size / linkSpeed;
-		return delay;
-	}
 }

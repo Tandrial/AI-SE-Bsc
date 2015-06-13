@@ -5,8 +5,6 @@ import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
-import java.util.ArrayList;
-import java.util.List;
 
 import javax.swing.ButtonGroup;
 import javax.swing.JFileChooser;
@@ -30,11 +28,10 @@ import uni.dc.model.Traffic;
 import uni.dc.networkGenerator.GeneratorAPI;
 import uni.dc.ubsOpti.NetworkParser;
 import uni.dc.ubsOpti.Optimizer;
-import uni.dc.ubsOpti.OptimizerConfig;
+import uni.dc.ubsOpti.UbsOptiConfig;
 import uni.dc.ubsOpti.DelayCalc.UbsDelayCalc;
 import uni.dc.ubsOpti.DelayCalc.UbsV0DelayCalc;
 import uni.dc.ubsOpti.DelayCalc.UbsV3DelayCalc;
-import uni.dc.ubsOpti.Tracer.DelayTrace;
 import uni.dc.ubsOpti.Tracer.TraceCollection;
 
 public class OptimizerGUI extends JFrame {
@@ -113,11 +110,11 @@ public class OptimizerGUI extends JFrame {
 		JMenuItem mntmSaveNetwork = new JMenuItem("Save Network");
 		mntmSaveNetwork.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if (topology == null || parser != null)
+				if (topology == null)
 					return;
 				String fileName = "" + topology;
-				OptimizerConfig.saveToFile(new File("./Topologies/" + fileName
-						+ ".ser"), new OptimizerConfig(topology, traffic, prio,
+				NetworkParser.saveToFile(new File("./Topologies/" + fileName
+						+ ".ser"), new UbsOptiConfig(topology, traffic, prio,
 						delayCalc, traces));
 			}
 		});
@@ -283,10 +280,11 @@ public class OptimizerGUI extends JFrame {
 		prio = new PriorityConfiguration(traffic);
 		long t1, t2, t3;
 		t1 = System.nanoTime();
-		OptimizerConfig optiConfig = new OptimizerConfig(topology, traffic,
+		UbsOptiConfig optiConfig = new UbsOptiConfig(topology, traffic,
 				prio, delayCalc, traces);
 		optimizer.optimize(optiConfig, algo);
 		optiConfig.setPriorityConfig(traces.getBestConfig());
+		System.out.println(traces.toString());
 		t2 = System.nanoTime();
 		imagePanel.setDot(portDisplay ? topology.toDot() : traffic.toDot(prio));
 		t3 = System.nanoTime();
@@ -309,22 +307,12 @@ public class OptimizerGUI extends JFrame {
 		setStatusMsg("Generating topology ...");
 		try {
 			t1 = System.nanoTime();
-			String extension = file.getName().substring(
-					file.getName().lastIndexOf("."));
-			if (extension.equals(".ser")) {
-				OptimizerConfig config = OptimizerConfig.loadFromFile(file);
-				topology = config.getTopology();
-				traffic = config.getTraffic();
-				prio = config.getPriorityConfig();
-				delayCalc = config.getDelayCalc();
-			} else {
-				parser = new NetworkParser(file);
-				topology = parser.getTopology();
-				traffic = parser.getTraffic();
-				prio = parser.getPriorityConfig();
-				delayCalc = ubsV0 ? new UbsV0DelayCalc(traffic)
-						: new UbsV3DelayCalc(traffic);
-			}
+			parser = new NetworkParser(file);
+			topology = parser.getTopology();
+			traffic = parser.getTraffic();
+			prio = parser.getPriorityConfig();
+			delayCalc = ubsV0 ? new UbsV0DelayCalc(traffic)
+					: new UbsV3DelayCalc(traffic);
 			delayCalc.calculateDelays(prio);
 			traces = new TraceCollection();
 			t2 = System.nanoTime();
@@ -349,7 +337,8 @@ public class OptimizerGUI extends JFrame {
 			t1 = System.nanoTime();
 
 			// GeneratorAPI.generateNetwork(5, 12, 2);
-			GeneratorAPI.generateNetwork(4, 12, 4);
+			// GeneratorAPI.generateNetwork(4, 12, 4);
+			GeneratorAPI.generateNetwork(2, 4, 2);
 			topology = GeneratorAPI.getTopology();
 			traffic = GeneratorAPI.getTraffic();
 			prio = GeneratorAPI.getPriorityConfiguration();
@@ -360,6 +349,7 @@ public class OptimizerGUI extends JFrame {
 					: new UbsV3DelayCalc(traffic);
 			delayCalc.setInitialDelays(prio);
 			traces = new TraceCollection();
+			delayCalc.printDelays();
 
 			t2 = System.nanoTime();
 			imagePanel.setDot(portDisplay ? topology.toDot() : traffic

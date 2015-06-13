@@ -7,9 +7,9 @@ import java.util.List;
 import uni.dc.model.EgressTopology;
 import uni.dc.model.PriorityConfiguration;
 import uni.dc.model.Traffic;
-import uni.dc.ubsOpti.OptimizerConfig;
+import uni.dc.ubsOpti.UbsOptiConfig;
 
-public class DelayTrace implements Serializable{
+public class DelayTrace implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private String name;
 	private List<TracerStat> stats = new ArrayList<TracerStat>();
@@ -18,7 +18,7 @@ public class DelayTrace implements Serializable{
 	private Traffic traffic;
 	private PriorityConfiguration prio;
 
-	public DelayTrace(String name, OptimizerConfig config) {
+	public DelayTrace(String name, UbsOptiConfig config) {
 		this.name = name;
 		this.topology = config.getTopology();
 		this.traffic = config.getTraffic();
@@ -40,7 +40,7 @@ public class DelayTrace implements Serializable{
 	public List<TracerStat> getStats() {
 		return stats;
 	}
-	
+
 	public PriorityConfiguration getPrio() {
 		return prio;
 	}
@@ -48,15 +48,29 @@ public class DelayTrace implements Serializable{
 	public void addDataPoint(long step, double delay, int[] prio) {
 		stats.add(new TracerStat(step, delay, prio));
 	}
-	
+
 	public PriorityConfiguration getBestConfig() {
+		double best = Double.MAX_VALUE;
+		TracerStat bestStat = null;
+		for (TracerStat stat : stats) {
+			if (stat.getDelay() < best) {
+				best = stat.getDelay();
+				bestStat = stat;
+			}
+		}
 		PriorityConfiguration res = (PriorityConfiguration) prio.clone();
-		res.fromIntArray(stats.get(stats.size()-1).getPrio());
+		res.fromIntArray(bestStat.getPrio());
 		return res;
 	}
-	
+
 	public double getBestValue() {
-		return stats.get(stats.size() -1).getDelay();
+		double best = Double.MAX_VALUE;
+		for (TracerStat stat : stats) {
+			if (stat.getDelay() < best) {
+				best = stat.getDelay();
+			}
+		}
+		return best;
 	}
 
 	@Override

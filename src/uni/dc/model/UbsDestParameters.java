@@ -43,6 +43,6 @@ public class UbsDestParameters implements Serializable {
 	}
 
 	public boolean checkDelay() {
-		return maxLatencyRequirement > delay;
+		return maxLatencyRequirement >= delay;
 	}
 }

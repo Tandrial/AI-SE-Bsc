@@ -22,35 +22,9 @@ public class UbsV0DelayCalc extends UbsDelayCalc {
 	public void calculateDelays() {
 		for (Flow f : flows) {
 			List<EgressPort> path = f.getPath();
-
 			double delay = 0.0;
 			for (int i = 1; i < path.size(); i++) {
-				EgressPort lastEgress = path.get(i - 1);
-
-				double sizeBiggerEq = 0.0;
-				double maxSmaller = 0.0;
-				double rateHigher = 0.0;
-
-				double linkSpeed = lastEgress.getLinkSpeed();
-				double size = f.getMaxFrameLength();
-				int prioF = prio.getPriority(lastEgress, f);
-
-				for (Flow other : lastEgress.getFlowList()) {
-					if (f == other)
-						continue;
-					int prioOther = prio.getPriority(lastEgress, other);
-					if (prioOther < prioF) {
-						sizeBiggerEq += other.getMaxFrameLength();
-						rateHigher += other.getRate();
-					} else if (prioOther == prioF) {
-						sizeBiggerEq += other.getMaxFrameLength();
-					} else {
-						maxSmaller = Math.max(maxSmaller,
-								other.getMaxFrameLength());
-					}
-				}
-				delay += (sizeBiggerEq + maxSmaller) / (linkSpeed - rateHigher)
-						+ size / linkSpeed;
+				delay += calcDelay(path.get(i - 1), f);
 			}
 			f.setDelay(delay);
 		}

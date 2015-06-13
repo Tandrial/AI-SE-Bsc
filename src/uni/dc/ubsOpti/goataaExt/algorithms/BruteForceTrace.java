@@ -3,7 +3,7 @@ package uni.dc.ubsOpti.goataaExt.algorithms;
 import java.util.Arrays;
 
 import uni.dc.model.PriorityConfiguration;
-import uni.dc.ubsOpti.OptimizerConfig;
+import uni.dc.ubsOpti.UbsOptiConfig;
 import uni.dc.ubsOpti.DelayCalc.UbsDelayCalc;
 import uni.dc.ubsOpti.Tracer.DelayTrace;
 import uni.dc.ubsOpti.Tracer.Tracable;
@@ -31,6 +31,8 @@ public class BruteForceTrace implements Tracable {
 	}
 
 	private void genPermutations(int[] n, int pos, int max) {
+		if (stopRecursion)
+			return;
 		if (pos == n.length) {
 			double delay = delayCalc.compute(n, null);
 			step++;
@@ -45,8 +47,6 @@ public class BruteForceTrace implements Tracable {
 			for (int i = 1; i <= max; i++) {
 				n[pos] = i;
 				genPermutations(n, pos + 1, max);
-				if (stopRecursion)
-					return;
 			}
 		}
 	}
@@ -57,7 +57,7 @@ public class BruteForceTrace implements Tracable {
 	}
 
 	@Override
-	public void setUpTrace(OptimizerConfig config) {
+	public void setUpTrace(UbsOptiConfig config) {
 		delays = new DelayTrace("BruteForce", config);
 		step = 1;
 	}

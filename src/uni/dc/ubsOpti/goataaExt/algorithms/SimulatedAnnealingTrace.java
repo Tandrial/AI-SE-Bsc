@@ -13,7 +13,7 @@ import org.goataa.spec.ITemperatureSchedule;
 import org.goataa.spec.ITerminationCriterion;
 import org.goataa.spec.IUnarySearchOperation;
 
-import uni.dc.ubsOpti.OptimizerConfig;
+import uni.dc.ubsOpti.UbsOptiConfig;
 import uni.dc.ubsOpti.Tracer.DelayTrace;
 import uni.dc.ubsOpti.Tracer.Tracable;
 
@@ -50,7 +50,7 @@ public final class SimulatedAnnealingTrace<G, X> extends
   }
 
   @Override
-  public void setUpTrace(OptimizerConfig config) {
+  public void setUpTrace(UbsOptiConfig config) {
 	  delays = new DelayTrace(getName(true), config);
 	  step = 1;
   }

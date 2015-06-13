@@ -1,7 +1,11 @@
 package uni.dc.ubsOpti;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.util.HashMap;
@@ -20,6 +24,9 @@ import uni.dc.model.Node;
 import uni.dc.model.PriorityConfiguration;
 import uni.dc.model.Traffic;
 import uni.dc.model.UbsDestParameters;
+import uni.dc.ubsOpti.DelayCalc.UbsDelayCalc;
+import uni.dc.ubsOpti.DelayCalc.UbsV0DelayCalc;
+import uni.dc.ubsOpti.Tracer.TraceCollection;
 
 public class NetworkParser {
 	private JSONObject jsonObj = null;
@@ -29,8 +36,17 @@ public class NetworkParser {
 	private File fileName;
 
 	public NetworkParser(File fileName) {
-		this.jsonObj = getJSONFromFile(fileName);
 		this.fileName = fileName;
+		String extension = fileName.getName().substring(
+				fileName.getName().lastIndexOf("."));
+		if (extension.equals(".ser")) {
+			UbsOptiConfig config = NetworkParser.loadFromFile(fileName);
+			topology = config.getTopology();
+			traffic = config.getTraffic();
+			prio = config.getPriorityConfig();
+		} else {
+			this.jsonObj = getJSONFromFile(fileName);
+		}
 	}
 
 	public String getFileName() {
@@ -101,12 +117,11 @@ public class NetworkParser {
 			List<EgressPort> path = topology.getPath(src, dest);
 			flow.setSrcPort(path.get(0));
 			EgressPort lastEgress = path.get(path.size() - 1);
-			
+
 			for (EgressPort p : topology.getLinkMap().get(lastEgress)) {
 				flow.setDestPort(p);
 				flow.setDestPortParameter(new UbsDestParameters(maxLatency));
 			}
-			
 
 			for (EgressPort p : path) {
 				if (!portFlowMap.containsKey(p))
@@ -126,6 +141,42 @@ public class NetworkParser {
 			byte[] encoded = Files.readAllBytes(file.toPath());
 			return new JSONObject(new String(encoded, Charset.defaultCharset()));
 		} catch (IOException e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+
+	public static void saveToFile(File file, UbsOptiConfig config) {
+		try {
+			FileOutputStream fileOut = new FileOutputStream(file);
+			ObjectOutputStream out = new ObjectOutputStream(fileOut);
+			out.writeObject(config.getTopology());
+			out.writeObject(config.getTraffic());
+			out.writeObject(config.getPriorityConfig());
+			out.writeObject(config.getTraces());
+			out.close();
+			fileOut.close();
+		} catch (IOException i) {
+			i.printStackTrace();
+		}
+	}
+
+	public static UbsOptiConfig loadFromFile(File file) {
+		try {
+			FileInputStream fileIn = new FileInputStream(file);
+			ObjectInputStream in = new ObjectInputStream(fileIn);
+			EgressTopology topo = (EgressTopology) in.readObject();
+			Traffic traffic = (Traffic) in.readObject();
+			PriorityConfiguration prio = (PriorityConfiguration) in
+					.readObject();
+			TraceCollection traces = (TraceCollection) in.readObject();
+			UbsDelayCalc delayCalc = new UbsV0DelayCalc(traffic);
+			UbsOptiConfig config = new UbsOptiConfig(topo, traffic, prio,
+					delayCalc, traces);
+			in.close();
+			fileIn.close();
+			return config;
+		} catch (Exception e) {
 			e.printStackTrace();
 			return null;
 		}

@@ -2,7 +2,7 @@ package uni.dc.ubsOpti.goataaExt.termination;
 
 import org.goataa.impl.termination.TerminationCriterion;
 
-import uni.dc.ubsOpti.OptimizerConfig;
+import uni.dc.ubsOpti.UbsOptiConfig;
 import uni.dc.ubsOpti.DelayCalc.UbsDelayCalc;
 
 public final class UbsDelayTermination extends TerminationCriterion {
@@ -11,7 +11,7 @@ public final class UbsDelayTermination extends TerminationCriterion {
 	private final int maxSteps;
 	private int remaining;
 
-	public UbsDelayTermination(OptimizerConfig config) {
+	public UbsDelayTermination(UbsOptiConfig config) {
 		this.maxSteps = config.getMaxSteps();
 		this.delayCalc = config.getDelayCalc();
 	}

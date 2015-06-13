@@ -15,7 +15,7 @@ import org.goataa.spec.ISelectionAlgorithm;
 import org.goataa.spec.ITerminationCriterion;
 import org.goataa.spec.IUnarySearchOperation;
 
-import uni.dc.ubsOpti.OptimizerConfig;
+import uni.dc.ubsOpti.UbsOptiConfig;
 import uni.dc.ubsOpti.Tracer.DelayTrace;
 import uni.dc.ubsOpti.Tracer.Tracable;
 
@@ -50,7 +50,7 @@ public final class SimpleGenerationalEATrace<G, X> extends EABase<G, X> implemen
   }
 
   @Override
-  public void setUpTrace(OptimizerConfig config) {
+  public void setUpTrace(UbsOptiConfig config) {
 	  delays = new DelayTrace(getName(true), config);
 	  step = 1;
   }

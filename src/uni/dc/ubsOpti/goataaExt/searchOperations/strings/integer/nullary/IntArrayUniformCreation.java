@@ -51,7 +51,7 @@ public class IntArrayUniformCreation extends IntVectorCreation {
 		for (i = this.n; (--i) >= 0;) {
 			// ...by setting it to a random number uniformly distributed in
 			// [min,max] (i is the locus Definition D4.5)
-			g[i] = (int) (this.min + (r.nextDouble() * (this.max - this.min)));
+			g[i] = (r.nextInt(this.max) + this.min);
 		}
 
 		return g;

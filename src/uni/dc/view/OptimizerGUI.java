@@ -5,6 +5,10 @@ import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
+import java.util.logging.FileHandler;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import java.util.logging.SimpleFormatter;
 
 import javax.swing.ButtonGroup;
 import javax.swing.JFileChooser;
@@ -36,6 +40,10 @@ import uni.dc.ubsOpti.tracer.TraceCollection;
 
 public class OptimizerGUI extends JFrame {
 	private static final long serialVersionUID = 1L;
+
+	private static final Logger logger = Logger.getLogger(OptimizerGUI.class
+			.getName());
+
 	private GraphVizPanel imagePanel;
 	private JLabel statusLabel;
 	private NetworkParser parser;
@@ -290,21 +298,31 @@ public class OptimizerGUI extends JFrame {
 	private void optimize(String algo) {
 		if (topology == null)
 			return;
-
+		logger.entering(getClass().getName(), "optimize");
 		setStatusMsg("Optimizing Priorities! This might take a while ...");
 		prio = new PriorityConfiguration(traffic);
 		long t1, t2, t3;
 		t1 = System.nanoTime();
 		UbsOptiConfig optiConfig = new UbsOptiConfig(topology, traffic, prio,
 				delayCalc, traces);
-		optimizer.optimize(optiConfig, algo);
+		logger.log(Level.INFO, "Optimazation started with " + algo + "\n");
+		boolean result = optimizer.optimize(optiConfig, algo);
 		prio = traces.getBestConfig();
-		System.out.println(traces);
+
 		t2 = System.nanoTime();
+		if (result) {
+			logger.log(Level.INFO, String.format(
+					"Optimazation successful (in %.4f sec)! Best Prio is:\n%s",
+					(t2 - t1) / 1.0e9, prio));
+		} else {
+			logger.log(Level.INFO, String.format(
+					"Optimazation failed (in %.4f sec)!", (t2 - t1) / 1.0e9));
+		}
 		imagePanel.setDot(portDisplay ? topology.toDot() : traffic.toDot(prio));
 		t3 = System.nanoTime();
 		setStatusMsg("Done (optimized in %.4f sec., rendered in %.4f sec.)",
 				(t2 - t1) / 1.0E9, (t3 - t2) / 1.0E9);
+		logger.exiting(getClass().getName(), "optimize");
 	}
 
 	private void updateDisplay(StringBuilder content) {
@@ -321,6 +339,7 @@ public class OptimizerGUI extends JFrame {
 
 		setStatusMsg("Generating topology ...");
 		try {
+			logger.entering(getClass().getName(), "loadFromFile");
 			t1 = System.nanoTime();
 			parser = new NetworkParser(file);
 			topology = parser.getTopology();
@@ -330,6 +349,12 @@ public class OptimizerGUI extends JFrame {
 					: new UbsV3DelayCalc(traffic);
 			delayCalc.calculateDelays(prio);
 			traces = new TraceCollection();
+
+			logger.log(
+					Level.INFO,
+					String.format(
+							"Loaded network \"%s\" with these streams:\n%s\nPriorites:\n%s",
+							file.getName(), delayCalc, prio));
 			t2 = System.nanoTime();
 			imagePanel.setDot(portDisplay ? topology.toDot() : traffic
 					.toDot(prio));
@@ -341,7 +366,9 @@ public class OptimizerGUI extends JFrame {
 		} catch (Exception e) {
 			e.printStackTrace();
 			setStatusMsg("Load from File failed!");
+			logger.log(Level.SEVERE, "Load from File failed!", e);
 		}
+		logger.exiting(getClass().getName(), "loadFromFile");
 	}
 
 	private void generateRandom() {
@@ -349,6 +376,7 @@ public class OptimizerGUI extends JFrame {
 
 		setStatusMsg("Generating topology ...");
 		try {
+			logger.entering(getClass().getName(), "generateRandomNetwork");
 			t1 = System.nanoTime();
 
 			// GeneratorAPI.generateNetwork(5, 12, 2);
@@ -357,14 +385,17 @@ public class OptimizerGUI extends JFrame {
 			topology = GeneratorAPI.getTopology();
 			traffic = GeneratorAPI.getTraffic();
 			prio = GeneratorAPI.getPriorityConfiguration();
-
-			System.out.println("Generated Priority Configuration: \n" + prio);
+			traces = new TraceCollection();
 
 			delayCalc = ubsV0 ? new UbsV0DelayCalc(traffic)
 					: new UbsV3DelayCalc(traffic);
 			delayCalc.setInitialDelays(prio);
-			traces = new TraceCollection();
-			System.out.println(delayCalc);
+
+			logger.log(
+					Level.INFO,
+					String.format(
+							"Generated new network with these streams:\n%s\nStarting priorites:\n%s",
+							delayCalc, prio));
 
 			t2 = System.nanoTime();
 			imagePanel.setDot(portDisplay ? topology.toDot() : traffic
@@ -377,7 +408,9 @@ public class OptimizerGUI extends JFrame {
 		} catch (Exception e) {
 			e.printStackTrace();
 			setStatusMsg("Generation failed!");
+			logger.log(Level.SEVERE, "Generation failed!", e);
 		}
+		logger.exiting(getClass().getName(), "generateRandomNetwork");
 	}
 
 	private void setStatusMsg(String fmt, Object... args) {
@@ -395,6 +428,12 @@ public class OptimizerGUI extends JFrame {
 							.getSystemLookAndFeelClassName());
 					OptimizerGUI gui = new OptimizerGUI("UBS Optimizer");
 					RefineryUtilities.centerFrameOnScreen(gui);
+
+					FileHandler fh = new FileHandler("./ubsOpti.log");
+					OptimizerGUI.logger.addHandler(fh);
+					fh.setFormatter(new SimpleFormatter());
+					OptimizerGUI.logger.info("********************");
+
 					gui.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();

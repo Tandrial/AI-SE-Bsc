@@ -30,7 +30,7 @@ public class Optimizer {
 	private IUnarySearchOperation<int[]> mutate;
 	private UbsOptiConfig optiConfig;
 
-	public DelayTrace optimize(UbsOptiConfig optiConfig, String selectedAlgo) {
+	public boolean optimize(UbsOptiConfig optiConfig, String selectedAlgo) {
 		this.optiConfig = optiConfig;
 		UbsDelayCalc delayCalc = optiConfig.getDelayCalc();
 		PriorityConfiguration config = optiConfig.getPriorityConfig();
@@ -51,7 +51,7 @@ public class Optimizer {
 		}
 		optiConfig.getTraces().add(trace);
 		delayCalc.calculateDelays(trace.getBestConfig());
-		return trace;
+		return delayCalc.checkDelays();
 	}
 
 	private DelayTrace optimizeBruteForce(PriorityConfiguration prio,

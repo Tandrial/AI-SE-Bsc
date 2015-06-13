@@ -1,4 +1,4 @@
-package uni.dc.ubsOpti.Tracer;
+package uni.dc.ubsOpti.tracer;
 
 import java.io.Serializable;
 import java.util.ArrayList;

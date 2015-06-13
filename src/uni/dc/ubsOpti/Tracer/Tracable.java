@@ -1,4 +1,4 @@
-package uni.dc.ubsOpti.Tracer;
+package uni.dc.ubsOpti.tracer;
 
 import uni.dc.ubsOpti.UbsOptiConfig;
 

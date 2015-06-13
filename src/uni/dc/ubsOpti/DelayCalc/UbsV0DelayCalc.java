@@ -1,4 +1,4 @@
-package uni.dc.ubsOpti.DelayCalc;
+package uni.dc.ubsOpti.delayCalc;
 
 import java.util.List;
 import java.util.Map;

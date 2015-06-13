@@ -3,7 +3,7 @@ package uni.dc.ubsOpti.goataaExt.termination;
 import org.goataa.impl.termination.TerminationCriterion;
 
 import uni.dc.ubsOpti.UbsOptiConfig;
-import uni.dc.ubsOpti.DelayCalc.UbsDelayCalc;
+import uni.dc.ubsOpti.delayCalc.UbsDelayCalc;
 
 public final class UbsDelayTermination extends TerminationCriterion {
 	private static final long serialVersionUID = 1;

@@ -24,9 +24,9 @@ import uni.dc.model.Node;
 import uni.dc.model.PriorityConfiguration;
 import uni.dc.model.Traffic;
 import uni.dc.model.UbsDestParameters;
-import uni.dc.ubsOpti.DelayCalc.UbsDelayCalc;
-import uni.dc.ubsOpti.DelayCalc.UbsV0DelayCalc;
-import uni.dc.ubsOpti.Tracer.TraceCollection;
+import uni.dc.ubsOpti.delayCalc.UbsDelayCalc;
+import uni.dc.ubsOpti.delayCalc.UbsV0DelayCalc;
+import uni.dc.ubsOpti.tracer.TraceCollection;
 
 public class NetworkParser {
 	private JSONObject jsonObj = null;

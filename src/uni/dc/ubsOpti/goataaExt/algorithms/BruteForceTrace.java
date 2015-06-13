@@ -4,9 +4,9 @@ import java.util.Arrays;
 
 import uni.dc.model.PriorityConfiguration;
 import uni.dc.ubsOpti.UbsOptiConfig;
-import uni.dc.ubsOpti.DelayCalc.UbsDelayCalc;
-import uni.dc.ubsOpti.Tracer.DelayTrace;
-import uni.dc.ubsOpti.Tracer.Tracable;
+import uni.dc.ubsOpti.delayCalc.UbsDelayCalc;
+import uni.dc.ubsOpti.tracer.DelayTrace;
+import uni.dc.ubsOpti.tracer.Tracable;
 
 public class BruteForceTrace implements Tracable {
 	private UbsDelayCalc delayCalc;

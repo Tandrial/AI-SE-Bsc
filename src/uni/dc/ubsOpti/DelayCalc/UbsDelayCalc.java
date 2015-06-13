@@ -1,4 +1,4 @@
-package uni.dc.ubsOpti.DelayCalc;
+package uni.dc.ubsOpti.delayCalc;
 
 import java.io.Serializable;
 import java.util.LinkedHashSet;
@@ -56,7 +56,7 @@ public abstract class UbsDelayCalc extends OptimizationModule implements
 		calculateDelays();
 	}
 
-	public abstract void calculateDelays();	
+	public abstract void calculateDelays();
 
 	protected double calcDelay(EgressPort lastEgress, Flow f) {
 		double delay;
@@ -78,12 +78,11 @@ public abstract class UbsDelayCalc extends OptimizationModule implements
 			} else if (prioOther == prioF) {
 				sizeBiggerEq += other.getMaxFrameLength();
 			} else {
-				maxSmaller = Math.max(maxSmaller,
-						other.getMaxFrameLength());
+				maxSmaller = Math.max(maxSmaller, other.getMaxFrameLength());
 			}
 		}
-		delay = (sizeBiggerEq + maxSmaller) / (linkSpeed - rateHigher)
-				+ size / linkSpeed;
+		delay = (sizeBiggerEq + maxSmaller) / (linkSpeed - rateHigher) + size
+				/ linkSpeed;
 		return delay;
 	}
 
@@ -95,19 +94,22 @@ public abstract class UbsDelayCalc extends OptimizationModule implements
 		}
 	}
 
-	public void printDelays() {
+	@Override
+	public String toString(boolean longVersion) {
+		StringBuilder sb = new StringBuilder();
 		for (Flow flow : flows) {
-			System.out.printf("%s : %.0f Mbps, %d bit\n", flow.getName(),
-					flow.getRate() / 1e6, flow.getMaxFrameLength());
-			System.out.printf("Path : %s\n", flow);
+			sb.append(String.format("%s : %.0f Mbps, %d bit\n", flow.getName(),
+					flow.getRate() / 1e6, flow.getMaxFrameLength()));
+			sb.append(String.format("Path : %s\n", flow));
 
-			System.out
-					.printf("Destination %s has maxLat of %.3e ms, actual delay is %.3e ms\n",
+			sb.append(String
+					.format("Destination %s has maxLat of %.3e s, actual delay is %.3e s\n",
 							flow.getDestPort(), flow.getDestPortParameter()
-									.getMaxLatencyRequirement() * 1000,
-							flow.getDestPortParameter().getDelay() * 1000);
-			System.out.println();
+									.getMaxLatencyRequirement(), flow
+									.getDestPortParameter().getDelay()));
 		}
+
+		return sb.toString();
 	}
 
 	public boolean checkDelays() {

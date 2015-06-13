@@ -12,8 +12,7 @@ import org.goataa.spec.ISOOptimizationAlgorithm;
 import org.goataa.spec.IUnarySearchOperation;
 
 import uni.dc.model.PriorityConfiguration;
-import uni.dc.ubsOpti.DelayCalc.UbsDelayCalc;
-import uni.dc.ubsOpti.Tracer.DelayTrace;
+import uni.dc.ubsOpti.delayCalc.UbsDelayCalc;
 import uni.dc.ubsOpti.goataaExt.algorithms.BruteForceTrace;
 import uni.dc.ubsOpti.goataaExt.algorithms.EvolutionStrategyTrace;
 import uni.dc.ubsOpti.goataaExt.algorithms.HillClimbingTrace;
@@ -24,6 +23,7 @@ import uni.dc.ubsOpti.goataaExt.searchOperations.strings.integer.nullary.IntArra
 import uni.dc.ubsOpti.goataaExt.searchOperations.strings.integer.nullary.IntArrayUniformCreation;
 import uni.dc.ubsOpti.goataaExt.searchOperations.strings.integer.unary.IntArrayAllNormalMutation;
 import uni.dc.ubsOpti.goataaExt.termination.UbsDelayTermination;
+import uni.dc.ubsOpti.tracer.DelayTrace;
 
 public class Optimizer {
 	private INullarySearchOperation<int[]> create;
@@ -51,10 +51,6 @@ public class Optimizer {
 		}
 		optiConfig.getTraces().add(trace);
 		delayCalc.calculateDelays(trace.getBestConfig());
-		System.out.println(trace.getBestConfig());
-
-		delayCalc.printDelays();
-		System.out.println("delays okay = " + delayCalc.checkDelays());
 		return trace;
 	}
 

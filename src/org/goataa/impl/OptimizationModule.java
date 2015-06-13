@@ -82,7 +82,7 @@ public class OptimizationModule implements IOptimizationModule {
    * @return the string representation of this object.
    */
   @Override
-  public final String toString() {
+  public String toString() {
     return this.toString(false);
   }
 }

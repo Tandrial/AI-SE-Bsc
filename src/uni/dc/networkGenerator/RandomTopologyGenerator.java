@@ -206,8 +206,6 @@ public class RandomTopologyGenerator {
 			// rank
 			// Assures that all clusters cover all ranks until the last rank
 
-			// System.out.println("-- Step 1 --");
-
 			// This map is used to avoid concurrent modification by connect()
 			Map<EgressPort, EgressPort> clusterForwardPortMap = new HashMap<EgressPort, EgressPort>();
 			for (Cluster c : clusterSet) {
@@ -243,7 +241,6 @@ public class RandomTopologyGenerator {
 			//
 			// OPEN Issue:
 			// Assure that all clusters are connected at the last rank
-			// System.out.println("-- Step 2 --");
 			List<EgressPort> nextRankPortList = new ArrayList<EgressPort>(
 					portsAtNextRank);
 			Collections.shuffle(nextRankPortList, rng);

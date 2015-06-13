@@ -12,8 +12,8 @@ import org.goataa.spec.ITerminationCriterion;
 import org.goataa.spec.IUnarySearchOperation;
 
 import uni.dc.ubsOpti.UbsOptiConfig;
-import uni.dc.ubsOpti.Tracer.DelayTrace;
-import uni.dc.ubsOpti.Tracer.Tracable;
+import uni.dc.ubsOpti.tracer.DelayTrace;
+import uni.dc.ubsOpti.tracer.Tracable;
 
 /**
  * A simple implementation of the Hill Climbing algorithm introduced as

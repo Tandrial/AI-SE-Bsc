@@ -29,10 +29,10 @@ import uni.dc.networkGenerator.GeneratorAPI;
 import uni.dc.ubsOpti.NetworkParser;
 import uni.dc.ubsOpti.Optimizer;
 import uni.dc.ubsOpti.UbsOptiConfig;
-import uni.dc.ubsOpti.DelayCalc.UbsDelayCalc;
-import uni.dc.ubsOpti.DelayCalc.UbsV0DelayCalc;
-import uni.dc.ubsOpti.DelayCalc.UbsV3DelayCalc;
-import uni.dc.ubsOpti.Tracer.TraceCollection;
+import uni.dc.ubsOpti.delayCalc.UbsDelayCalc;
+import uni.dc.ubsOpti.delayCalc.UbsV0DelayCalc;
+import uni.dc.ubsOpti.delayCalc.UbsV3DelayCalc;
+import uni.dc.ubsOpti.tracer.TraceCollection;
 
 public class OptimizerGUI extends JFrame {
 	private static final long serialVersionUID = 1L;
@@ -299,7 +299,7 @@ public class OptimizerGUI extends JFrame {
 				delayCalc, traces);
 		optimizer.optimize(optiConfig, algo);
 		prio = traces.getBestConfig();
-		System.out.println(traces.toString());
+		System.out.println(traces);
 		t2 = System.nanoTime();
 		imagePanel.setDot(portDisplay ? topology.toDot() : traffic.toDot(prio));
 		t3 = System.nanoTime();
@@ -364,7 +364,7 @@ public class OptimizerGUI extends JFrame {
 					: new UbsV3DelayCalc(traffic);
 			delayCalc.setInitialDelays(prio);
 			traces = new TraceCollection();
-			delayCalc.printDelays();
+			System.out.println(delayCalc);
 
 			t2 = System.nanoTime();
 			imagePanel.setDot(portDisplay ? topology.toDot() : traffic

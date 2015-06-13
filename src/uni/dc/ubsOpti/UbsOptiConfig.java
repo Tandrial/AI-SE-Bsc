@@ -5,8 +5,8 @@ import java.io.Serializable;
 import uni.dc.model.EgressTopology;
 import uni.dc.model.PriorityConfiguration;
 import uni.dc.model.Traffic;
-import uni.dc.ubsOpti.DelayCalc.UbsDelayCalc;
-import uni.dc.ubsOpti.Tracer.TraceCollection;
+import uni.dc.ubsOpti.delayCalc.UbsDelayCalc;
+import uni.dc.ubsOpti.tracer.TraceCollection;
 
 public class UbsOptiConfig implements Serializable {
 

@@ -17,8 +17,8 @@ import org.jfree.data.xy.XYDataset;
 import org.jfree.data.xy.XYSeries;
 import org.jfree.data.xy.XYSeriesCollection;
 
-import uni.dc.ubsOpti.Tracer.DelayTrace;
-import uni.dc.ubsOpti.Tracer.TracerStat;
+import uni.dc.ubsOpti.tracer.DelayTrace;
+import uni.dc.ubsOpti.tracer.TracerStat;
 
 
 public class TraceDisplay extends JFrame {

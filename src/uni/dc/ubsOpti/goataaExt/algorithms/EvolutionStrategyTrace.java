@@ -22,13 +22,13 @@ import org.goataa.spec.ITerminationCriterion;
 import org.goataa.spec.IUnarySearchOperation;
 
 import uni.dc.ubsOpti.UbsOptiConfig;
-import uni.dc.ubsOpti.Tracer.DelayTrace;
-import uni.dc.ubsOpti.Tracer.Tracable;
 import uni.dc.ubsOpti.goataaExt.searchOperations.strings.integer.nary.IntArrayDominantRecombination;
 import uni.dc.ubsOpti.goataaExt.searchOperations.strings.integer.nary.IntArrayIntermediateRecombination;
 import uni.dc.ubsOpti.goataaExt.searchOperations.strings.integer.nullary.IntArrayUniformCreation;
 import uni.dc.ubsOpti.goataaExt.searchOperations.strings.integer.unary.IntArrayStdDevNormalMutation;
 import uni.dc.ubsOpti.goataaExt.searchOperations.strings.integer.unary.IntArrayStrategyLogNormalMutation;
+import uni.dc.ubsOpti.tracer.DelayTrace;
+import uni.dc.ubsOpti.tracer.Tracable;
 
 /**
  * An Evolution Strategy implementation which follows the definitions in

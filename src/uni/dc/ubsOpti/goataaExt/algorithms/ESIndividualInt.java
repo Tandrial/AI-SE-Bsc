@@ -32,7 +32,6 @@ public class ESIndividualInt<X> extends Individual<int[], X> {
    *          the individual to copy
    */
   @Override
-  @SuppressWarnings("unchecked")
   public void assign(final Individual<int[], X> to) {
     super.assign(to);
     if (to instanceof ESIndividualInt) {

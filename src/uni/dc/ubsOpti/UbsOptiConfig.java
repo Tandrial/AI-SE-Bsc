@@ -12,8 +12,8 @@ public class UbsOptiConfig implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	private int maxPrio = 2;
-	private int maxSteps = 3000000;
-	private int runs = 2;
+	private int maxSteps = 7500000;
+	private int runs = 1;
 	private int dim;
 
 	private Traffic traffic;

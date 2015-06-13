@@ -46,8 +46,8 @@ public class Optimizer {
 		} else if (selectedAlgo.equals("HillClimbing")) {
 			trace = optimizeHillClimbing(delayCalc);
 		} else if (selectedAlgo.equals("SimpleGenerationalEA")) {
-			// trace = optimizeSimpleGenerationalEA(delayCalc);
-			trace = optimizeEvolutionStrategies(delayCalc);
+			trace = optimizeSimpleGenerationalEA(delayCalc);
+			// trace = optimizeEvolutionStrategies(delayCalc);
 		}
 		optiConfig.getTraces().add(trace);
 		delayCalc.calculateDelays(trace.getBestConfig());
@@ -104,7 +104,8 @@ public class Optimizer {
 		EvolutionStrategyTrace<int[]> ES = new EvolutionStrategyTrace<int[]>();
 		ES.setUpTrace(optiConfig);
 		ES.setObjectiveFunction(delayCalc);
-		ES.setNullarySearchOperation(new IntArrayUniformCreation(optiConfig.getDim(), 1, optiConfig.getMaxPrio()));
+		ES.setNullarySearchOperation(new IntArrayUniformCreation(optiConfig
+				.getDim(), 1, optiConfig.getMaxPrio()));
 		ES.setDimension(optiConfig.getDim());
 		ES.setMinimum(1);
 		ES.setMaximum(optiConfig.getMaxPrio());

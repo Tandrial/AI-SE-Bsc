@@ -295,10 +295,10 @@ public class OptimizerGUI extends JFrame {
 		prio = new PriorityConfiguration(traffic);
 		long t1, t2, t3;
 		t1 = System.nanoTime();
-		UbsOptiConfig optiConfig = new UbsOptiConfig(topology, traffic,
-				prio, delayCalc, traces);
+		UbsOptiConfig optiConfig = new UbsOptiConfig(topology, traffic, prio,
+				delayCalc, traces);
 		optimizer.optimize(optiConfig, algo);
-		optiConfig.setPriorityConfig(traces.getBestConfig());
+		prio = traces.getBestConfig();
 		System.out.println(traces.toString());
 		t2 = System.nanoTime();
 		imagePanel.setDot(portDisplay ? topology.toDot() : traffic.toDot(prio));
@@ -352,8 +352,8 @@ public class OptimizerGUI extends JFrame {
 			t1 = System.nanoTime();
 
 			// GeneratorAPI.generateNetwork(5, 12, 2);
-			// GeneratorAPI.generateNetwork(4, 12, 4);
-			GeneratorAPI.generateNetwork(2, 4, 2);
+			GeneratorAPI.generateNetwork(6, 9, 4);
+			// GeneratorAPI.generateNetwork(2, 4, 2);
 			topology = GeneratorAPI.getTopology();
 			traffic = GeneratorAPI.getTraffic();
 			prio = GeneratorAPI.getPriorityConfiguration();

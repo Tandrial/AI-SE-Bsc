@@ -66,6 +66,7 @@ public class OptimizerGUI extends JFrame {
 
 		JMenuItem mntmRandomNetwork = new JMenuItem("New Random Network");
 		mntmRandomNetwork.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent e) {
 				generateRandom();
 			}
@@ -74,6 +75,7 @@ public class OptimizerGUI extends JFrame {
 
 		JMenuItem mntmLoad = new JMenuItem("Load Network");
 		mntmLoad.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				JFileChooser c = new JFileChooser();
 				c.setCurrentDirectory(new File("./Topologies/"));
@@ -89,6 +91,7 @@ public class OptimizerGUI extends JFrame {
 
 		JMenuItem mntmExportPng = new JMenuItem("Export Picture");
 		mntmExportPng.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent e) {
 				if (topology == null)
 					return;
@@ -109,6 +112,7 @@ public class OptimizerGUI extends JFrame {
 
 		JMenuItem mntmSaveNetwork = new JMenuItem("Save Network");
 		mntmSaveNetwork.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent e) {
 				if (topology == null)
 					return;
@@ -123,6 +127,7 @@ public class OptimizerGUI extends JFrame {
 
 		JMenuItem mntmExit = new JMenuItem("Exit");
 		mntmExit.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent e) {
 				setVisible(false);
 				dispose();
@@ -136,6 +141,7 @@ public class OptimizerGUI extends JFrame {
 
 		JMenuItem mntmBF = new JMenuItem("BruteForce");
 		mntmBF.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				optimize("BruteForce");
 			}
@@ -144,6 +150,7 @@ public class OptimizerGUI extends JFrame {
 
 		JMenuItem mntmHC = new JMenuItem("Hillclimbing");
 		mntmHC.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent e) {
 				optimize("HillClimbing");
 			}
@@ -152,6 +159,7 @@ public class OptimizerGUI extends JFrame {
 
 		JMenuItem mntmSA = new JMenuItem("SimulatedAnnealing");
 		mntmSA.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent e) {
 				optimize("SimulatedAnnealing");
 			}
@@ -161,6 +169,7 @@ public class OptimizerGUI extends JFrame {
 		JMenuItem mntmGA = new JMenuItem(
 				"SimpleGenerational Evolutionary Algorithm");
 		mntmGA.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent e) {
 				optimize("SimpleGenerationalEA");
 			}
@@ -172,6 +181,7 @@ public class OptimizerGUI extends JFrame {
 		JMenuItem mntmRunAllexcept = new JMenuItem(
 				"Run All (except BruteForce)");
 		mntmRunAllexcept.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				optimize("HillClimbing");
 				optimize("SimulatedAnnealing");
@@ -182,6 +192,7 @@ public class OptimizerGUI extends JFrame {
 
 		JMenuItem mntmDisplayGraph = new JMenuItem("Display Graph");
 		mntmDisplayGraph.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent e) {
 				if (traces == null)
 					return;
@@ -205,6 +216,7 @@ public class OptimizerGUI extends JFrame {
 		JRadioButtonMenuItem rdbtnmntmUbsV0 = new JRadioButtonMenuItem(
 				"UBS V0", true);
 		rdbtnmntmUbsV0.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				if (topology != null && !ubsV0) {
 					delayCalc = new UbsV0DelayCalc(traffic);
@@ -217,6 +229,7 @@ public class OptimizerGUI extends JFrame {
 
 		JRadioButtonMenuItem rdbtnmntmUbsV3 = new JRadioButtonMenuItem("UBS V3");
 		rdbtnmntmUbsV3.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent e) {
 				if (topology != null && ubsV0) {
 					delayCalc = new UbsV3DelayCalc(traffic);
@@ -236,6 +249,7 @@ public class OptimizerGUI extends JFrame {
 				true);
 		mnDisplaytype.add(rdbtnmntmPorts);
 		rdbtnmntmPorts.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent e) {
 				if (topology != null && !portDisplay) {
 					updateDisplay(topology.toDot());
@@ -248,6 +262,7 @@ public class OptimizerGUI extends JFrame {
 		JRadioButtonMenuItem rdbtnmntmFlows = new JRadioButtonMenuItem("Flows");
 		mnDisplaytype.add(rdbtnmntmFlows);
 		rdbtnmntmFlows.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent e) {
 				if (traffic != null && portDisplay) {
 					updateDisplay(traffic.toDot(prio));
@@ -373,6 +388,7 @@ public class OptimizerGUI extends JFrame {
 
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
+			@Override
 			public void run() {
 				try {
 					UIManager.setLookAndFeel(UIManager

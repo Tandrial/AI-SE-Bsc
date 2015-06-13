@@ -37,6 +37,7 @@ public class UbsDestParameters implements Serializable {
 		this.path = path;
 	}
 
+	@Override
 	public String toString() {
 		return " maxLat = " + maxLatencyRequirement + ", actualDelay = "
 				+ delay;

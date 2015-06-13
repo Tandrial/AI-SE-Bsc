@@ -44,7 +44,8 @@ public final class IntArrayIntermediateRecombination extends
    *          the random number generator
    * @return a new genotype
    */
-  public final int[] combine(final int[][] gs, final Random r) {
+  @Override
+public final int[] combine(final int[][] gs, final Random r) {
     final int[] gnew;
     int[] g;
     final int dim;

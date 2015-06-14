@@ -47,6 +47,10 @@ public class NetworkParser {
 
 	public void setFileName(File fileName) {
 		this.fileName = fileName;
+		jsonObj = null;
+		topology = null;
+		traffic = null;
+		prio = null;
 		String extension = fileName.getName().substring(
 				fileName.getName().lastIndexOf("."));
 		if (extension.equals(".ser")) {

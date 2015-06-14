@@ -9,8 +9,6 @@ import org.goataa.spec.INullarySearchOperation;
 import org.goataa.spec.ISOOptimizationAlgorithm;
 import org.goataa.spec.IUnarySearchOperation;
 
-import uni.dc.model.PriorityConfiguration;
-import uni.dc.ubsOpti.delayCalc.UbsDelayCalc;
 import uni.dc.ubsOpti.goataaExt.algorithms.BruteForceTrace;
 import uni.dc.ubsOpti.goataaExt.algorithms.HillClimbingTrace;
 import uni.dc.ubsOpti.goataaExt.algorithms.RandomWalkTrace;
@@ -23,57 +21,65 @@ import uni.dc.ubsOpti.goataaExt.termination.UbsDelayTermination;
 import uni.dc.ubsOpti.tracer.DelayTrace;
 
 public class Optimizer {
-	private INullarySearchOperation<int[]> create;
-	private IUnarySearchOperation<int[]> mutate;
-	private UbsOptiConfig optiConfig;
 
-	public boolean optimize(UbsOptiConfig optiConfig, String selectedAlgo) {
-		this.optiConfig = optiConfig;
-		UbsDelayCalc delayCalc = optiConfig.getDelayCalc();
-		PriorityConfiguration config = optiConfig.getPriorityConfig();
-		DelayTrace trace = null;
-		int dim = config.toIntArray().length;
-		create = new IntArrayAllOnesCreation(dim, 1, optiConfig.getMaxPrio());
-		mutate = new IntArrayAllNormalMutation(1, optiConfig.getMaxPrio());
+	private static Optimizer optimizer = new Optimizer();
 
-		if (selectedAlgo.equals("BruteForce")) {
-			trace = optimizeBruteForce(config, delayCalc);
-		} else if (selectedAlgo.equals("SimulatedAnnealing")) {
-			trace = optimizeSimulatedAnnealing(delayCalc);
-		} else if (selectedAlgo.equals("HillClimbing")) {
-			trace = optimizeHillClimbing(delayCalc);
-		} else if (selectedAlgo.equals("SimpleGenerationalEA")) {
-			trace = optimizeSimpleGenerationalEA(delayCalc);
-		} else if (selectedAlgo.equals("RandomWalk")) {
-			trace = optimizeRandomWalk(delayCalc);
-		}
-		optiConfig.getTraces().add(trace);
-		delayCalc.calculateDelays(trace.getBestConfig());
-		return delayCalc.checkDelays();
+	public static Optimizer getOptimizer() {
+		return Optimizer.optimizer;
 	}
 
-	private DelayTrace optimizeBruteForce(PriorityConfiguration prio,
-			UbsDelayCalc delayCalc) {
-		BruteForceTrace BF = new BruteForceTrace(delayCalc);
-		BF.setUpTrace(optiConfig);
-		BF.optimize(prio, optiConfig.getMaxPrio());
+	private INullarySearchOperation<int[]> create = null;
+	private IUnarySearchOperation<int[]> mutate = null;
+	private UbsOptiConfig config = null;
+
+	private Optimizer() {
+
+	}
+
+	public boolean optimize(UbsOptiConfig config, String selectedAlgo) {
+		this.config = config;
+		create = new IntArrayAllOnesCreation(config.getDim(), 1,
+				config.getMaxPrio());
+		mutate = new IntArrayAllNormalMutation(1, config.getMaxPrio());
+
+		DelayTrace trace = null;
+		if (selectedAlgo.equals("BruteForce")) {
+			trace = optimizeBruteForce();
+		} else if (selectedAlgo.equals("SimulatedAnnealing")) {
+			trace = optimizeSimulatedAnnealing();
+		} else if (selectedAlgo.equals("HillClimbing")) {
+			trace = optimizeHillClimbing();
+		} else if (selectedAlgo.equals("SimpleGenerationalEA")) {
+			trace = optimizeSimpleGenerationalEA();
+		} else if (selectedAlgo.equals("RandomWalk")) {
+			trace = optimizeRandomWalk();
+		}
+		config.getTraces().add(trace);
+		config.getDelayCalc().calculateDelays(trace.getBestConfig());
+		return config.getDelayCalc().checkDelays();
+	}
+
+	private DelayTrace optimizeBruteForce() {
+		BruteForceTrace BF = new BruteForceTrace(config.getDelayCalc());
+		BF.setUpTrace(config);
+		BF.optimize(config.getPriorityConfig(), config.getMaxPrio());
 		return BF.getTrace();
 	}
 
-	private DelayTrace optimizeHillClimbing(UbsDelayCalc delayCalc) {
+	private DelayTrace optimizeHillClimbing() {
 		HillClimbingTrace<int[], int[]> HC = new HillClimbingTrace<int[], int[]>();
-		HC.setUpTrace(optiConfig);
-		HC.setObjectiveFunction(delayCalc);
+		HC.setUpTrace(config);
+		HC.setObjectiveFunction(config.getDelayCalc());
 		HC.setNullarySearchOperation(create);
 		HC.setUnarySearchOperation(mutate);
 		testRuns(HC);
 		return HC.getTrace();
 	}
 
-	private DelayTrace optimizeSimulatedAnnealing(UbsDelayCalc delayCalc) {
+	private DelayTrace optimizeSimulatedAnnealing() {
 		SimulatedAnnealingTrace<int[], int[]> SA = new SimulatedAnnealingTrace<int[], int[]>();
-		SA.setUpTrace(optiConfig);
-		SA.setObjectiveFunction(delayCalc);
+		SA.setUpTrace(config);
+		SA.setObjectiveFunction(config.getDelayCalc());
 		SA.setNullarySearchOperation(create);
 		SA.setTemperatureSchedule(new Logarithmic(1d));
 		SA.setUnarySearchOperation(mutate);
@@ -81,11 +87,11 @@ public class Optimizer {
 		return SA.getTrace();
 	}
 
-	private DelayTrace optimizeSimpleGenerationalEA(UbsDelayCalc delayCalc) {
+	private DelayTrace optimizeSimpleGenerationalEA() {
 		SimpleGenerationalTrace<int[], int[]> GA = new SimpleGenerationalTrace<int[], int[]>();
-		GA.setUpTrace(optiConfig);
+		GA.setUpTrace(config);
 		GA.setBinarySearchOperation(IntArrayWeightedMeanCrossover.INT_ARRAY_WEIGHTED_MEAN_CROSSOVER);
-		GA.setObjectiveFunction(delayCalc);
+		GA.setObjectiveFunction(config.getDelayCalc());
 		GA.setNullarySearchOperation(create);
 		GA.setSelectionAlgorithm(new TournamentSelection(2));
 		GA.setUnarySearchOperation(mutate);
@@ -93,10 +99,10 @@ public class Optimizer {
 		return GA.getTrace();
 	}
 
-	private DelayTrace optimizeRandomWalk(UbsDelayCalc delayCalc) {
+	private DelayTrace optimizeRandomWalk() {
 		RandomWalkTrace<int[], int[]> RW = new RandomWalkTrace<int[], int[]>();
-		RW.setUpTrace(optiConfig);
-		RW.setObjectiveFunction(delayCalc);
+		RW.setUpTrace(config);
+		RW.setObjectiveFunction(config.getDelayCalc());
 		RW.setNullarySearchOperation(create);
 		RW.setUnarySearchOperation(mutate);
 		testRuns(RW);
@@ -110,10 +116,10 @@ public class Optimizer {
 		Individual<?, int[]> individual = null;
 		double bestValue = Double.MAX_VALUE;
 
-		UbsDelayTermination term = new UbsDelayTermination(optiConfig);
+		UbsDelayTermination term = new UbsDelayTermination(config);
 
 		algorithm.setTerminationCriterion(term);
-		for (int i = 0; i < optiConfig.getRuns(); i++) {
+		for (int i = 0; i < config.getRuns(); i++) {
 			algorithm.setRandSeed(i);
 			solutions = ((List<Individual<?, int[]>>) (algorithm.call()));
 			if (solutions.get(0).v < bestValue) {

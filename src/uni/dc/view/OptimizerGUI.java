@@ -34,34 +34,24 @@ import uni.dc.ubsOpti.UbsOptiConfig;
 import uni.dc.ubsOpti.delayCalc.UbsV0DelayCalc;
 import uni.dc.ubsOpti.delayCalc.UbsV3DelayCalc;
 
-public class OptimizerGUI extends JFrame {
+public class OptimizerGui extends JFrame {
 	private static final long serialVersionUID = 1L;
 
-	private static final Logger logger = Logger.getLogger(OptimizerGUI.class
+	private static final Logger logger = Logger.getLogger(OptimizerGui.class
 			.getName());
 
 	private GraphVizPanel imagePanel;
 	private JLabel statusLabel;
 	private UbsOptiConfig config = null;
 
-	private Optimizer optimizer;
-
-	// private UbsDelayCalc delayCalc = null;
-	// private EgressTopology topology = null;
-	// private Traffic traffic = null;
-	// private PriorityConfiguration prio = null;
-	// private TraceCollection traces = null;
-
 	private boolean portDisplay = true;
 	private boolean ubsV0 = true;
 
-	public OptimizerGUI(String title) {
+	public OptimizerGui(String title) {
 		super(title);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		setSize(1024, 768);
-
-		optimizer = new Optimizer();
 
 		JMenuBar menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
@@ -86,7 +76,7 @@ public class OptimizerGUI extends JFrame {
 				c.setCurrentDirectory(new File("./Topologies/"));
 				c.setFileFilter(new FileNameExtensionFilter(
 						"UBS Optimizer Network file", "ubsNetwork", "ser"));
-				int rVal = c.showOpenDialog(OptimizerGUI.this);
+				int rVal = c.showOpenDialog(OptimizerGui.this);
 				if (rVal == JFileChooser.APPROVE_OPTION) {
 					loadFromFile(c.getSelectedFile());
 				}
@@ -312,7 +302,7 @@ public class OptimizerGUI extends JFrame {
 		t1 = System.nanoTime();
 
 		logger.log(Level.INFO, "Optimazation started with " + algo);
-		boolean result = optimizer.optimize(config, algo);
+		boolean result = Optimizer.getOptimizer().optimize(config, algo);
 		config.setBestConfig();
 
 		t2 = System.nanoTime();
@@ -425,13 +415,13 @@ public class OptimizerGUI extends JFrame {
 				try {
 					UIManager.setLookAndFeel(UIManager
 							.getSystemLookAndFeelClassName());
-					OptimizerGUI gui = new OptimizerGUI("UBS Optimizer");
+					OptimizerGui gui = new OptimizerGui("UBS Optimizer");
 					RefineryUtilities.centerFrameOnScreen(gui);
 
 					FileHandler fh = new FileHandler("./ubsOpti.log");
-					OptimizerGUI.logger.addHandler(fh);
+					OptimizerGui.logger.addHandler(fh);
 					fh.setFormatter(new SimpleFormatter());
-					OptimizerGUI.logger.info("********************");
+					OptimizerGui.logger.info("********************");
 
 					gui.setVisible(true);
 				} catch (Exception e) {

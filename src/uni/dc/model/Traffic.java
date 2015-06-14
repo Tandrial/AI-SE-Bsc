@@ -12,7 +12,7 @@ import java.util.Map;
 import java.util.Set;
 
 import uni.dc.util.GraphViz;
-import uni.dc.view.HSLColorGenerator;
+import uni.dc.util.HSLColorGenerator;
 
 public class Traffic extends LinkedHashSet<Flow> implements Serializable {
 	private static final long serialVersionUID = 1L;

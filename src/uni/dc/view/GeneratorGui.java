@@ -152,7 +152,7 @@ public class GeneratorGui extends JFrame {
 
 		RandomMulticastPathGenerator  flowPathGen = new RandomMulticastPathGenerator();
 		flowPathGen.setTopology(topology);
-		flowPathGen.setRng(new Random(0)); // TODO Add spinner
+		flowPathGen.setRng(new Random(0));
 		flowPathGen.setMinFlowPerPort(3);
 		flowPathGen.setMaxDestPerFlow(2);
 		

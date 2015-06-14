@@ -13,6 +13,7 @@ import uni.dc.model.PriorityConfiguration;
 import uni.dc.ubsOpti.delayCalc.UbsDelayCalc;
 import uni.dc.ubsOpti.goataaExt.algorithms.BruteForceTrace;
 import uni.dc.ubsOpti.goataaExt.algorithms.HillClimbingTrace;
+import uni.dc.ubsOpti.goataaExt.algorithms.RandomWalkTrace;
 import uni.dc.ubsOpti.goataaExt.algorithms.SimpleGenerationalTrace;
 import uni.dc.ubsOpti.goataaExt.algorithms.SimulatedAnnealingTrace;
 import uni.dc.ubsOpti.goataaExt.searchOperations.strings.integer.binary.IntArrayWeightedMeanCrossover;
@@ -43,6 +44,8 @@ public class Optimizer {
 			trace = optimizeHillClimbing(delayCalc);
 		} else if (selectedAlgo.equals("SimpleGenerationalEA")) {
 			trace = optimizeSimpleGenerationalEA(delayCalc);
+		} else if (selectedAlgo.equals("RandomWalk")) {
+			trace = optimizeRandomWalk(delayCalc);
 		}
 		optiConfig.getTraces().add(trace);
 		delayCalc.calculateDelays(trace.getBestConfig());
@@ -88,6 +91,16 @@ public class Optimizer {
 		GA.setUnarySearchOperation(mutate);
 		testRuns(GA);
 		return GA.getTrace();
+	}
+
+	private DelayTrace optimizeRandomWalk(UbsDelayCalc delayCalc) {
+		RandomWalkTrace<int[], int[]> RW = new RandomWalkTrace<int[], int[]>();
+		RW.setUpTrace(optiConfig);
+		RW.setObjectiveFunction(delayCalc);
+		RW.setNullarySearchOperation(create);
+		RW.setUnarySearchOperation(mutate);
+		testRuns(RW);
+		return RW.getTrace();
 	}
 
 	@SuppressWarnings("unchecked")

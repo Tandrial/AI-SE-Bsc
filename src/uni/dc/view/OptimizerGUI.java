@@ -182,7 +182,15 @@ public class OptimizerGUI extends JFrame {
 				optimize("SimpleGenerationalEA");
 			}
 		});
-		mnOptimize.add(mntmGA);
+
+		JMenuItem mntmRW = new JMenuItem("RandomWalk Algorithm");
+		mntmRW.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				optimize("RandomWalk");
+			}
+		});
+		mnOptimize.add(mntmRW);
 
 		mnOptimize.add(new JSeparator());
 
@@ -194,6 +202,7 @@ public class OptimizerGUI extends JFrame {
 				optimize("HillClimbing");
 				optimize("SimulatedAnnealing");
 				optimize("SimpleGenerationalEA");
+				optimize("RandomWalk");
 			}
 		});
 		mnOptimize.add(mntmRunAllexcept);
@@ -319,8 +328,7 @@ public class OptimizerGUI extends JFrame {
 					"Optimazation failed (in %.4f sec)!", (t2 - t1) / 1.0e9));
 		}
 		logger.log(Level.INFO, String.format(
-				"Best Prio is: \n%s\nDelays are \n%s", prio,
-				delayCalc));
+				"Best Prio is: \n%s\nDelays are \n%s", prio, delayCalc));
 
 		imagePanel.setDot(portDisplay ? topology.toDot() : traffic.toDot(prio));
 		t3 = System.nanoTime();

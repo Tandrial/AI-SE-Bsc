@@ -105,7 +105,11 @@ public class NetworkParser {
 			long rate = convertSpeed(tspec.getString("leakRate"));
 			int maxPacketLength = convertLength(tspec
 					.getString("maxPacketLength"));
-			double maxLatency = convertTime(tspec.getString("maxLatency"));
+			double maxLatency;
+			if (tspec.has("maxLatency"))
+				maxLatency = convertTime(tspec.getString("maxLatency"));
+			else
+				maxLatency = -1;
 
 			Flow flow = new Flow();
 			flow.setName(String.format("F%d", flowID));

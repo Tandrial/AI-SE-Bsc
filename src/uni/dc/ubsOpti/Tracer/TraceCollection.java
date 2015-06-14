@@ -5,7 +5,8 @@ import java.util.ArrayList;
 
 import uni.dc.model.PriorityConfiguration;
 
-public class TraceCollection extends ArrayList<DelayTrace> implements Serializable{
+public class TraceCollection extends ArrayList<DelayTrace> implements
+		Serializable {
 
 	private static final long serialVersionUID = 1L;
 
@@ -21,4 +22,15 @@ public class TraceCollection extends ArrayList<DelayTrace> implements Serializab
 		return prio;
 	}
 
+	public DelayTrace getBestTrace() {
+		DelayTrace res = null;
+		double best = Double.MAX_VALUE;
+		for (DelayTrace trace : this) {
+			if (trace.getBestValue() < best) {
+				res = trace;
+				best = trace.getBestValue();
+			}
+		}
+		return res;
+	}
 }

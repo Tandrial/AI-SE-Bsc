@@ -305,19 +305,23 @@ public class OptimizerGUI extends JFrame {
 		t1 = System.nanoTime();
 		UbsOptiConfig optiConfig = new UbsOptiConfig(topology, traffic, prio,
 				delayCalc, traces);
-		logger.log(Level.INFO, "Optimazation started with " + algo + "\n");
+		logger.log(Level.INFO, "Optimazation started with " + algo);
 		boolean result = optimizer.optimize(optiConfig, algo);
 		prio = traces.getBestConfig();
 
 		t2 = System.nanoTime();
 		if (result) {
-			logger.log(Level.INFO, String.format(
-					"Optimazation successful (in %.4f sec)! Best Prio is:\n%s",
-					(t2 - t1) / 1.0e9, prio));
+			logger.log(Level.INFO, String
+					.format("Optimazation successful (in %.4f sec)!",
+							(t2 - t1) / 1.0e9));
 		} else {
 			logger.log(Level.INFO, String.format(
 					"Optimazation failed (in %.4f sec)!", (t2 - t1) / 1.0e9));
 		}
+		logger.log(Level.INFO, String.format(
+				"Best Prio is: \n%s\nDelays are \n%s", prio,
+				delayCalc));
+
 		imagePanel.setDot(portDisplay ? topology.toDot() : traffic.toDot(prio));
 		t3 = System.nanoTime();
 		setStatusMsg("Done (optimized in %.4f sec., rendered in %.4f sec.)",

@@ -14,12 +14,17 @@ import uni.dc.model.EgressPort;
 import uni.dc.model.EgressTopology;
 
 public class RandomTopologyGenerator {
-	
+
 	public static final double LINK_SPEED = 1e9;
-	
+
 	private int ports;
 	private int depth;
 	private Random rng;
+
+	EgressTopology topo = new EgressTopology();
+	Map<Integer, LinkedHashSet<EgressPort>> rankPortMap = new TreeMap<Integer, LinkedHashSet<EgressPort>>();
+	Set<Cluster> clusterSet = new LinkedHashSet<Cluster>();
+	Map<EgressPort, Set<Cluster>> portClusterMap = new HashMap<EgressPort, Set<Cluster>>();
 
 	public RandomTopologyGenerator() {
 		super();
@@ -58,11 +63,6 @@ public class RandomTopologyGenerator {
 		}
 	}
 
-	EgressTopology topo = new EgressTopology();
-	Map<Integer, LinkedHashSet<EgressPort>> rankPortMap = new TreeMap<Integer, LinkedHashSet<EgressPort>>();
-	Set<Cluster> clusterSet = new LinkedHashSet<Cluster>();
-	Map<EgressPort, Set<Cluster>> portClusterMap = new HashMap<EgressPort, Set<Cluster>>();
-
 	private void clear() {
 		topo = new EgressTopology();
 		rankPortMap.clear();
@@ -82,18 +82,10 @@ public class RandomTopologyGenerator {
 
 	private void connect(EgressPort src, EgressPort dest) {
 		topo.addLink(src, dest);
-		
+
 		src.setLinkSpeed(LINK_SPEED);
 		dest.setLinkSpeed(LINK_SPEED);
 
-		// System.out.printf("Connecting %s -> %s\n",src,dest);
-		// System.out.printf(" - clusterSet before: %s\n",clusterSet);
-		// Next code uses the first cluster of the src port (if present)
-		// as the joined cluster.
-		// Motivation:
-		// Avoids modification of clusterSet if src is in a cluster and
-		// dest is not. This avoids concurrent modification on iteration
-		// over all clusters in clusterSet.
 		Cluster joined;
 		if (portClusterMap.get(src).size() > 0) {
 			joined = portClusterMap.get(src).iterator().next();
@@ -135,8 +127,6 @@ public class RandomTopologyGenerator {
 			portClusterMap.get(p).clear();
 			portClusterMap.get(p).add(joined);
 		}
-
-		// System.out.printf(" - clusterSet after: %s\n",clusterSet);
 	}
 
 	private Set<Cluster> clustersOf(EgressPort p) {
@@ -144,287 +134,124 @@ public class RandomTopologyGenerator {
 	}
 
 	public EgressTopology generate() {
-
 		if (depth < 1)
 			throw new RuntimeException("Depth must be > 1!");
-
 		if (depth > ports)
 			throw new RuntimeException(
 					"There must be more ports than depth to generate!");
 
-		// Initialize rank port map with ports per rank
-		for (int rank = 0; rank < depth; rank++) {
-			rankPortMap.put(rank, new LinkedHashSet<EgressPort>());
-			rankPortMap.get(rank).add(
-					new EgressPort(String.format("E%d,1", rank)));
-		}
-		int remainingPorts = ports - depth;
-
-		// Add each remaining port at random rank
-		for (int i = 0; i < remainingPorts; i++) {
-
-			int rank = rng.nextInt(depth);
-
-			EgressPort port = new EgressPort(String.format("E%d,%d", rank,
-					rankPortMap.get(rank).size() + 1));
-
-			rankPortMap.get(rank).add(port);
-		}
-
-		// Initialize port->cluster map: No port belongs to a cluster
-		for (Set<EgressPort> portsAtRank : rankPortMap.values())
-			for (EgressPort p : portsAtRank)
-				portClusterMap.put(p, new LinkedHashSet<Cluster>());
-
-		// Add all ports to topology
-		for (Set<EgressPort> rankPorts : rankPortMap.values()) {
-			topo.addAll(rankPorts);
-		}
-
-		// Connect rank r randomly to rank d+1
-		for (int rank = 0; rank < depth - 1; rank++) {
-
-			// System.out.printf("## Rank = %d\n",rank);
-			LinkedHashSet<EgressPort> portsAtCurrentRank = rankPortMap.get(rank);
-			LinkedHashSet<EgressPort> portsAtNextRank = rankPortMap.get(rank + 1);
-			if (portsAtNextRank.size() == 0)
-				portsAtNextRank = rankPortMap.get(rank +2);
-
-			// Identify new clusters at current rank:
-			// - Unconnected ports at current rank are clusters
-			// - Clusters in clusterList are clusters (already existing)
-			for (EgressPort p : portsAtCurrentRank) {
-				if (portClusterMap.get(p).isEmpty()) {
-					Cluster c = new Cluster();
-					c.add(p);
-					portClusterMap.get(p).add(c);
-					clusterSet.add(c);
+		for (int tryCnt = 0; tryCnt < Integer.MAX_VALUE; tryCnt++) {
+			try {
+				clear();
+				// Initialize rank port map with ports per rank
+				for (int rank = 0; rank < depth; rank++) {
+					rankPortMap.put(rank, new LinkedHashSet<EgressPort>());
+					rankPortMap.get(rank).add(
+							new EgressPort(String.format("E%d,1", rank)));
 				}
-			}
+				int remainingPorts = ports - depth;
 
-			// 1. Connected every cluster C at rank to one random port p at next
-			// rank
-			// Assures that all clusters cover all ranks until the last rank
+				// Add each remaining port at random rank
+				for (int i = 0; i < remainingPorts; i++) {
 
-			// This map is used to avoid concurrent modification by connect()
-			Map<EgressPort, EgressPort> clusterForwardPortMap = new HashMap<EgressPort, EgressPort>();
-			for (Cluster c : clusterSet) {
-				List<EgressPort> clusterPortsAtCurrentRank = new ArrayList<EgressPort>(c);
-				clusterPortsAtCurrentRank.retainAll(portsAtCurrentRank);
-				EgressPort srcPort = clusterPortsAtCurrentRank.get(rng
-						.nextInt(clusterPortsAtCurrentRank.size()));
-				EgressPort destPort = new ArrayList<EgressPort>(portsAtNextRank)
-						.get(rng.nextInt(portsAtNextRank.size()));
-				clusterForwardPortMap.put(srcPort, destPort);
-			}
-			for (EgressPort srcPort : clusterForwardPortMap.keySet()) {
-				connect(srcPort, clusterForwardPortMap.get(srcPort));
-			}
+					int rank = rng.nextInt(depth);
 
-			// 2. Connect random clusters to random ports at next rank
-			// Conditions:
-			// - A cluster C is not allowed to connect to port of C
-			// - All ports of the last rank must be connected to a cluster
-			// - There must be exactly one cluster at the last rank
-			//
-			//
-			// Destination Port centric approach:
-			// for each Port d in shuffle(portsAtNextRank) {
-			// if (rank < lastRank-1) C = selectRandomClusterSubSet(clusterSet
-			// without cluster(d))
-			// else C = clusterSet without cluster(d)
-			// for each cluster c : C {
-			// s = selectRandomPort (c intersect portsAtCurrentRank)
-			// connect(s,d) // Cleans up portClusterMap and clusterSet
-			// }
-			// }
-			//
-			// OPEN Issue:
-			// Assure that all clusters are connected at the last rank
-			List<EgressPort> nextRankPortList = new ArrayList<EgressPort>(
-					portsAtNextRank);
-			Collections.shuffle(nextRankPortList, rng);
-			for (EgressPort d : nextRankPortList) {
-				List<Cluster> C = new ArrayList<Cluster>(clusterSet);
-				C.removeAll(clustersOf(d));
-				Collections.shuffle(C, rng);
+					EgressPort port = new EgressPort(String.format("E%d,%d",
+							rank, rankPortMap.get(rank).size() + 1));
 
-				if (rank < depth - 2)
-					C = C.subList(0, rng.nextInt(C.size() + 1));
-				for (Cluster c : C) {
-					List<EgressPort> clusterPortsAtCurrentRank = new ArrayList<EgressPort>(c);
-					clusterPortsAtCurrentRank.retainAll(portsAtCurrentRank);
-					EgressPort s = clusterPortsAtCurrentRank.get(rng
-							.nextInt(clusterPortsAtCurrentRank.size()));
-					connect(s, d);
+					rankPortMap.get(rank).add(port);
 				}
-			}
-		}
-		return topo;
-	}
 
-	public EgressTopology generate2() {
-		clear();
-		EgressTopology topo = new EgressTopology();
+				// Initialize port->cluster map: No port belongs to a cluster
+				for (Set<EgressPort> portsAtRank : rankPortMap.values())
+					for (EgressPort p : portsAtRank)
+						portClusterMap.put(p, new LinkedHashSet<Cluster>());
 
-		if (depth < 1)
-			throw new RuntimeException("Depth must be > 1!");
-
-		if (depth > ports)
-			throw new RuntimeException(
-					"There must be more ports than depth to generate!");
-
-		// Initialize rank port map with ports per rank
-		for (int rank = 0; rank < depth; rank++) {
-			rankPortMap.put(rank, new LinkedHashSet<EgressPort>());
-			rankPortMap.get(rank).add(
-					new EgressPort(String.format("E%d,1", rank)));
-		}
-		int remainingPorts = ports - depth;
-
-		// Add each remaining port at random rank
-		for (int i = 0; i < remainingPorts; i++) {
-
-			int rank = rng.nextInt(depth);
-
-			EgressPort port = new EgressPort(String.format("E%d,%d", rank,
-					rankPortMap.get(rank).size() + 1));
-
-			rankPortMap.get(rank).add(port);
-		}
-
-		// Initialize port->cluster map: No port belongs to a cluster
-		for (Set<EgressPort> portsAtRank : rankPortMap.values())
-			for (EgressPort p : portsAtRank)
-				portClusterMap.put(p, new LinkedHashSet<Cluster>());
-
-		// Add all ports to topology
-		for (Set<EgressPort> rankPorts : rankPortMap.values()) {
-			topo.addAll(rankPorts);
-		}
-
-		// Connect rank r randomly to rank d+1
-		for (int rank = 0; rank < depth - 1; rank++) {
-
-			// System.out.printf("## Rank = %d\n",rank);
-			LinkedHashSet<EgressPort> portsAtCurrentRank = rankPortMap
-					.get(rank);
-			LinkedHashSet<EgressPort> portsAtNextRank = rankPortMap
-					.get(rank + 1);
-
-			// Identify new clusters at current rank:
-			// - Unconnected ports at current rank are clusters
-			// - Clusters in clusterList are clusters (already existing)
-			for (EgressPort p : portsAtCurrentRank) {
-				if (portClusterMap.get(p).isEmpty()) {
-					Cluster c = new Cluster();
-					c.add(p);
-					portClusterMap.get(p).add(c);
-					clusterSet.add(c);
+				// Add all ports to topology
+				for (Set<EgressPort> rankPorts : rankPortMap.values()) {
+					topo.addAll(rankPorts);
 				}
-			}
-			System.out.printf("Rank=%d  Clusters = %s\n", rank, clusterSet);
 
-			// 1. Connected every cluster C at rank to one random port p at next
-			// rank
-			// Assures that all clusters cover all ranks until the last rank
-			// 2. Connect random clusters to random ports at next rank
-			// Conditions:
-			// - A cluster C is not allowed to connect to port of C
-			// - All ports of the last rank must be connected to a cluster
-			// - There must be exactly one cluster at the last rank
-			//
-			// Step 2:
-			// Approach from left to right:
-			// boolean fail=false;
-			// while (not fail){
-			// c = selectRandomCluster(all Clusters)
-			// s = selectRandomPort(c intersect portsAtCurrentRank)
-			// d = selectRandomPort(portsAtNextRank)
-			// if (d not in c) c.add(p);
-			// else fail=true;
-			// }
-			//
-			// Destination Port centric approach:
-			// for each Port d in shuffle(portsAtNextRank) {
-			// if (rank < lastRank)
-			// C = selectRandomClusterSet(clusterSet without cluster(d))
-			// else
-			// C = clusterSet without cluster(d)
-			// for each cluster c : C {
-			// s = selectRandomPort (c intersect portsAtCurrentRank)
-			// connect(s,d) // Cleans up portClusterMap and clusterSet
-			// }
-			// }
-			//
-			// OPEN Issue:
-			// Assure that all clusters are connected at the last rank
-			//
-			// ---------------------------------------------------------------
-			// Generate random connections per cluster c:
-			// - Identify a random set of ports destPorts with
-			// 1. |destPorts| > 0 AND
-			// 2. destPorts in portsAtNextRank
-			// - Connect each port dest in destPorts to a random port src with
-			// 1. src in c AND
-			// 2. src in portsAtCurrentRank
-			for (Cluster c : clusterSet) {
+				// Connect rank r randomly to rank d+1
+				for (int rank = 0; rank < depth - 1; rank++) {
 
-				List<EgressPort> destPorts = new ArrayList<EgressPort>();
-				destPorts.addAll(portsAtNextRank);
-				Collections.shuffle(destPorts, rng);
-				if (rank < depth - 2)
-					destPorts = destPorts.subList(0,
-							1 + rng.nextInt(destPorts.size()));
+					// System.out.printf("## Rank = %d\n",rank);
+					LinkedHashSet<EgressPort> portsAtCurrentRank = rankPortMap
+							.get(rank);
+					LinkedHashSet<EgressPort> portsAtNextRank = rankPortMap
+							.get(rank + 1);
+					if (portsAtNextRank.size() == 0)
+						portsAtNextRank = rankPortMap.get(rank + 2);
 
-				List<EgressPort> srcPorts = new ArrayList<EgressPort>();
-				srcPorts.addAll(portsAtCurrentRank);
-				srcPorts.retainAll(c);
-
-				// System.out.printf("  srcPorts=%s, destPorts=%s\n",
-				// srcPorts,destPorts);
-				for (EgressPort dest : destPorts) {
-					EgressPort src = srcPorts.get(rng.nextInt(srcPorts.size()));
-					topo.addLink(src, dest);
-					portClusterMap.get(dest).add(c);
-					c.add(dest);
-				}
-			}
-
-			// Update clusters
-			// - Join clusters that share ports
-			for (EgressPort p : portsAtNextRank) {
-				if (portClusterMap.get(p).size() > 1) {
-					Set<Cluster> clustersAtPort = portClusterMap.get(p);
-
-					// System.out.printf("Port %s clusters = %s\n",p,clustersAtPort);
-					// Build a new common cluster
-					Cluster cNew = new Cluster();
-					for (Cluster c : clustersAtPort) {
-						clusterSet.remove(c);
-						cNew.addAll(c);
-					}
-					clusterSet.add(cNew);
-					// System.out.printf("Port %s new cluster = %s\n",p,cNew);
-
-					// Remove the old split clusters per port in port->Cluster
-					// map
-					// and if at least one cluster was removed, add the new
-					// common cluster
-
-					for (EgressPort p2 : portClusterMap.keySet()) {
-						Set<Cluster> clustersAtP2 = portClusterMap.get(p2);
-						if (clustersAtP2.removeAll(clustersAtPort)) {
-							clustersAtP2.add(cNew);
+					// Identify new clusters at current rank:
+					// - Unconnected ports at current rank are clusters
+					// - Clusters in clusterList are clusters (already existing)
+					for (EgressPort p : portsAtCurrentRank) {
+						if (portClusterMap.get(p).isEmpty()) {
+							Cluster c = new Cluster();
+							c.add(p);
+							portClusterMap.get(p).add(c);
+							clusterSet.add(c);
 						}
-
 					}
 
+					// 1. Connected every cluster C at rank to one random port p
+					// at
+					// next
+					// rank
+					// Assures that all clusters cover all ranks until the last
+					// rank
+
+					// This map is used to avoid concurrent modification by
+					// connect()
+					Map<EgressPort, EgressPort> clusterForwardPortMap = new HashMap<EgressPort, EgressPort>();
+					for (Cluster c : clusterSet) {
+						List<EgressPort> clusterPortsAtCurrentRank = new ArrayList<EgressPort>(
+								c);
+						clusterPortsAtCurrentRank.retainAll(portsAtCurrentRank);
+						EgressPort srcPort = clusterPortsAtCurrentRank.get(rng
+								.nextInt(clusterPortsAtCurrentRank.size()));
+						EgressPort destPort = new ArrayList<EgressPort>(
+								portsAtNextRank).get(rng
+								.nextInt(portsAtNextRank.size()));
+						clusterForwardPortMap.put(srcPort, destPort);
+					}
+					for (EgressPort srcPort : clusterForwardPortMap.keySet()) {
+						connect(srcPort, clusterForwardPortMap.get(srcPort));
+					}
+
+					// 2. Connect random clusters to random ports at next rank
+					// Conditions:
+					// - A cluster C is not allowed to connect to port of C
+					// - All ports of the last rank must be connected to a
+					// cluster
+					// - There must be exactly one cluster at the last rank
+
+					List<EgressPort> nextRankPortList = new ArrayList<EgressPort>(
+							portsAtNextRank);
+					Collections.shuffle(nextRankPortList, rng);
+					for (EgressPort d : nextRankPortList) {
+						List<Cluster> C = new ArrayList<Cluster>(clusterSet);
+						C.removeAll(clustersOf(d));
+						Collections.shuffle(C, rng);
+
+						if (rank < depth - 2)
+							C = C.subList(0, rng.nextInt(C.size() + 1));
+						for (Cluster c : C) {
+							List<EgressPort> clusterPortsAtCurrentRank = new ArrayList<EgressPort>(
+									c);
+							clusterPortsAtCurrentRank
+									.retainAll(portsAtCurrentRank);
+							EgressPort s = clusterPortsAtCurrentRank.get(rng
+									.nextInt(clusterPortsAtCurrentRank.size()));
+							connect(s, d);
+						}
+					}
 				}
+				break;
+			} catch (Exception e) {
 			}
-			// System.out.printf("  Port cluster map = %s\n",portClusterMap);
 		}
 		return topo;
 	}
-
 }

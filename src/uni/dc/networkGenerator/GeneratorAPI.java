@@ -27,14 +27,14 @@ public class GeneratorAPI {
 	public static void generateNetwork(int depth, int portCount, int maxPrio) {
 		try {
 			RandomTopologyGenerator topologyGen = new RandomTopologyGenerator();
-			topologyGen.setRng(new Random());
+			topologyGen.setRng(new Random(System.currentTimeMillis()));
 			topologyGen.setDepth(depth);
 			topologyGen.setPorts(portCount);
 			topology = topologyGen.generate();
 
 			RandomMulticastPathGenerator flowPathGen = new RandomMulticastPathGenerator();
 			flowPathGen.setTopology(topology);
-			flowPathGen.setRng(new Random());
+			flowPathGen.setRng(new Random(System.currentTimeMillis()));
 			flowPathGen.setMinFlowPerPort(3);
 			flowPathGen.setMaxDestPerFlow(1);
 

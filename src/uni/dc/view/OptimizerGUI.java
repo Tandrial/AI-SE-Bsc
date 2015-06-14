@@ -26,17 +26,13 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 
 import org.jfree.ui.RefineryUtilities;
 
-import uni.dc.model.EgressTopology;
 import uni.dc.model.PriorityConfiguration;
-import uni.dc.model.Traffic;
 import uni.dc.networkGenerator.GeneratorAPI;
 import uni.dc.ubsOpti.NetworkParser;
 import uni.dc.ubsOpti.Optimizer;
 import uni.dc.ubsOpti.UbsOptiConfig;
-import uni.dc.ubsOpti.delayCalc.UbsDelayCalc;
 import uni.dc.ubsOpti.delayCalc.UbsV0DelayCalc;
 import uni.dc.ubsOpti.delayCalc.UbsV3DelayCalc;
-import uni.dc.ubsOpti.tracer.TraceCollection;
 
 public class OptimizerGUI extends JFrame {
 	private static final long serialVersionUID = 1L;
@@ -46,14 +42,15 @@ public class OptimizerGUI extends JFrame {
 
 	private GraphVizPanel imagePanel;
 	private JLabel statusLabel;
-	private NetworkParser parser;
-	private Optimizer optimizer;
-	private UbsDelayCalc delayCalc;
+	private UbsOptiConfig config = null;
 
-	private EgressTopology topology = null;
-	private Traffic traffic = null;
-	private PriorityConfiguration prio = null;
-	private TraceCollection traces = null;
+	private Optimizer optimizer;
+
+	// private UbsDelayCalc delayCalc = null;
+	// private EgressTopology topology = null;
+	// private Traffic traffic = null;
+	// private PriorityConfiguration prio = null;
+	// private TraceCollection traces = null;
 
 	private boolean portDisplay = true;
 	private boolean ubsV0 = true;
@@ -101,19 +98,20 @@ public class OptimizerGUI extends JFrame {
 		mntmExportPng.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				if (topology == null)
+				if (config == null)
 					return;
 				String fileName;
-				if (parser != null) {
-					fileName = parser.getFileName();
+				if (NetworkParser.getParser() != null) {
+					fileName = NetworkParser.getParser().getFileName();
 					fileName = fileName.substring(0, fileName.lastIndexOf("."));
 				} else
-					fileName = "" + topology;
+					fileName = "" + config.getTopology();
 
-				imagePanel.saveToFile(topology.toDot(), new File(
+				imagePanel.saveToFile(config.getTopology().toDot(), new File(
 						"./Topologies/" + fileName + "_port.png"));
-				imagePanel.saveToFile(traffic.toDot(prio), new File(
-						"./Topologies/" + fileName + "_flow.png"));
+				imagePanel.saveToFile(
+						config.getTraffic().toDot(config.getPriorityConfig()),
+						new File("./Topologies/" + fileName + "_flow.png"));
 			}
 		});
 		mnFile.add(mntmExportPng);
@@ -122,12 +120,11 @@ public class OptimizerGUI extends JFrame {
 		mntmSaveNetwork.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				if (topology == null)
+				if (config == null)
 					return;
-				String fileName = "" + topology;
+				String fileName = "" + config.getTopology();
 				NetworkParser.saveToFile(new File("./Topologies/" + fileName
-						+ ".ser"), new UbsOptiConfig(topology, traffic, prio,
-						delayCalc, traces));
+						+ ".ser"), config);
 			}
 		});
 		mnFile.add(mntmSaveNetwork);
@@ -211,10 +208,10 @@ public class OptimizerGUI extends JFrame {
 		mntmDisplayGraph.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				if (traces == null)
+				if (config.getTraces() == null)
 					return;
 				TraceDisplay traceDisplay = new TraceDisplay("Trace Display",
-						traces);
+						config.getTraces());
 				traceDisplay.pack();
 				RefineryUtilities.centerFrameOnScreen(traceDisplay);
 				traceDisplay.setVisible(true);
@@ -235,8 +232,8 @@ public class OptimizerGUI extends JFrame {
 		rdbtnmntmUbsV0.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				if (topology != null && !ubsV0) {
-					delayCalc = new UbsV0DelayCalc(traffic);
+				if (config != null && !ubsV0) {
+					config.setDelayCalc(new UbsV0DelayCalc(config.getTraffic()));
 				}
 				ubsV0 = true;
 			}
@@ -248,8 +245,8 @@ public class OptimizerGUI extends JFrame {
 		rdbtnmntmUbsV3.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				if (topology != null && ubsV0) {
-					delayCalc = new UbsV3DelayCalc(traffic);
+				if (config != null && ubsV0) {
+					config.setDelayCalc(new UbsV3DelayCalc(config.getTraffic()));
 				}
 				ubsV0 = false;
 			}
@@ -268,8 +265,8 @@ public class OptimizerGUI extends JFrame {
 		rdbtnmntmPorts.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				if (topology != null && !portDisplay) {
-					updateDisplay(topology.toDot());
+				if (config != null && !portDisplay) {
+					updateDisplay(config.getTopology().toDot());
 				}
 				portDisplay = true;
 			}
@@ -281,8 +278,9 @@ public class OptimizerGUI extends JFrame {
 		rdbtnmntmFlows.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				if (traffic != null && portDisplay) {
-					updateDisplay(traffic.toDot(prio));
+				if (config != null && portDisplay) {
+					updateDisplay(config.getTraffic().toDot(
+							config.getPriorityConfig()));
 				}
 				portDisplay = false;
 			}
@@ -305,18 +303,17 @@ public class OptimizerGUI extends JFrame {
 	}
 
 	private void optimize(String algo) {
-		if (topology == null)
+		if (config == null)
 			return;
 		logger.entering(getClass().getName(), "optimize");
 		setStatusMsg("Optimizing Priorities! This might take a while ...");
-		prio = new PriorityConfiguration(traffic);
+		config.setPriorityConfig(new PriorityConfiguration(config.getTraffic()));
 		long t1, t2, t3;
 		t1 = System.nanoTime();
-		UbsOptiConfig optiConfig = new UbsOptiConfig(topology, traffic, prio,
-				delayCalc, traces);
+
 		logger.log(Level.INFO, "Optimazation started with " + algo);
-		boolean result = optimizer.optimize(optiConfig, algo);
-		prio = traces.getBestConfig();
+		boolean result = optimizer.optimize(config, algo);
+		config.setBestConfig();
 
 		t2 = System.nanoTime();
 		if (result) {
@@ -327,10 +324,13 @@ public class OptimizerGUI extends JFrame {
 			logger.log(Level.INFO, String.format(
 					"Optimazation failed (in %.4f sec)!", (t2 - t1) / 1.0e9));
 		}
-		logger.log(Level.INFO, String.format(
-				"Best Prio is: \n%s\nDelays are \n%s", prio, delayCalc));
+		logger.log(
+				Level.INFO,
+				String.format("Best Prio is: \n%s\nDelays are \n%s",
+						config.getPriorityConfig(), config.getDelayCalc()));
 
-		imagePanel.setDot(portDisplay ? topology.toDot() : traffic.toDot(prio));
+		imagePanel.setDot(portDisplay ? config.getTopology().toDot() : config
+				.getTraffic().toDot(config.getPriorityConfig()));
 		t3 = System.nanoTime();
 		setStatusMsg("Done (optimized in %.4f sec., rendered in %.4f sec.)",
 				(t2 - t1) / 1.0E9, (t3 - t2) / 1.0E9);
@@ -353,23 +353,20 @@ public class OptimizerGUI extends JFrame {
 		try {
 			logger.entering(getClass().getName(), "loadFromFile");
 			t1 = System.nanoTime();
-			parser = new NetworkParser(file);
-			topology = parser.getTopology();
-			traffic = parser.getTraffic();
-			prio = parser.getPriorityConfig();
-			delayCalc = ubsV0 ? new UbsV0DelayCalc(traffic)
-					: new UbsV3DelayCalc(traffic);
-			delayCalc.calculateDelays(prio);
-			traces = new TraceCollection();
+
+			NetworkParser parser = NetworkParser.getParser();
+			parser.setFileName(file);
+			config = new UbsOptiConfig(parser, ubsV0);
 
 			logger.log(
 					Level.INFO,
 					String.format(
 							"Loaded network \"%s\" with these streams:\n%s\nPriorites:\n%s",
-							file.getName(), delayCalc, prio));
+							file.getName(), config.getDelayCalc(),
+							config.getPriorityConfig()));
 			t2 = System.nanoTime();
-			imagePanel.setDot(portDisplay ? topology.toDot() : traffic
-					.toDot(prio));
+			imagePanel.setDot(portDisplay ? config.getTopology().toDot()
+					: config.getTraffic().toDot(config.getPriorityConfig()));
 			t3 = System.nanoTime();
 
 			setStatusMsg("Done (loaded in %.4f sec., rendered in %.4f sec.)",
@@ -391,27 +388,17 @@ public class OptimizerGUI extends JFrame {
 			logger.entering(getClass().getName(), "generateRandomNetwork");
 			t1 = System.nanoTime();
 
-			// GeneratorAPI.generateNetwork(5, 12, 2);
-			GeneratorAPI.generateNetwork(6, 9, 4);
-			// GeneratorAPI.generateNetwork(2, 4, 2);
-			topology = GeneratorAPI.getTopology();
-			traffic = GeneratorAPI.getTraffic();
-			prio = GeneratorAPI.getPriorityConfiguration();
-			traces = new TraceCollection();
-
-			delayCalc = ubsV0 ? new UbsV0DelayCalc(traffic)
-					: new UbsV3DelayCalc(traffic);
-			delayCalc.setInitialDelays(prio);
+			config = new UbsOptiConfig(GeneratorAPI.getGenerator(), ubsV0);
 
 			logger.log(
 					Level.INFO,
 					String.format(
 							"Generated new network with these streams:\n%s\nStarting priorites:\n%s",
-							delayCalc, prio));
+							config.getDelayCalc(), config.getPriorityConfig()));
 
 			t2 = System.nanoTime();
-			imagePanel.setDot(portDisplay ? topology.toDot() : traffic
-					.toDot(prio));
+			imagePanel.setDot(portDisplay ? config.getTopology().toDot()
+					: config.getTraffic().toDot(config.getPriorityConfig()));
 			t3 = System.nanoTime();
 
 			setStatusMsg(

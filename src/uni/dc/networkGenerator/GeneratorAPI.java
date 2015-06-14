@@ -8,23 +8,32 @@ import uni.dc.model.Traffic;
 
 public class GeneratorAPI {
 
-	private static Traffic traffic = null;
-	private static PriorityConfiguration cfg = null;
-	private static EgressTopology topology = null;
-	
-	public static EgressTopology getTopology() {
+	private static GeneratorAPI generator = new GeneratorAPI();
+
+	public static GeneratorAPI getGenerator() {
+		return GeneratorAPI.generator;
+	}
+
+	private Traffic traffic = null;
+	private PriorityConfiguration cfg = null;
+	private EgressTopology topology = null;
+
+	private GeneratorAPI() {
+	}
+
+	public EgressTopology getTopology() {
 		return topology;
 	}
 
-	public static Traffic getTraffic() {
+	public Traffic getTraffic() {
 		return traffic;
 	}
 
-	public static PriorityConfiguration getPriorityConfiguration() {
+	public PriorityConfiguration getPriorityConfiguration() {
 		return cfg;
 	}
 
-	public static void generateNetwork(int depth, int portCount, int maxPrio) {
+	public void generateNetwork(int depth, int portCount, int maxPrio) {
 		try {
 			RandomTopologyGenerator topologyGen = new RandomTopologyGenerator();
 			topologyGen.setRng(new Random(System.currentTimeMillis()));
@@ -39,12 +48,12 @@ public class GeneratorAPI {
 			flowPathGen.setMaxDestPerFlow(1);
 
 			traffic = flowPathGen.generate();
-			
+
 			RandomPriorityGenerator prioGen = new RandomPriorityGenerator();
 			prioGen.setTraffic(traffic);
 			prioGen.setMaxPrio(maxPrio);
-			
-			cfg = prioGen.generate();				
+
+			cfg = prioGen.generate();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

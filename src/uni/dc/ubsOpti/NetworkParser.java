@@ -29,13 +29,23 @@ import uni.dc.ubsOpti.delayCalc.UbsV0DelayCalc;
 import uni.dc.ubsOpti.tracer.TraceCollection;
 
 public class NetworkParser {
+
+	private static NetworkParser parser = new NetworkParser();
+
+	public static NetworkParser getParser() {
+		return NetworkParser.parser;
+	}
+
 	private JSONObject jsonObj = null;
 	private EgressTopology topology = null;
 	private Traffic traffic = null;
 	private PriorityConfiguration prio = null;
-	private File fileName;
+	private File fileName = null;
 
-	public NetworkParser(File fileName) {
+	private NetworkParser() {
+	}
+
+	public void setFileName(File fileName) {
 		this.fileName = fileName;
 		String extension = fileName.getName().substring(
 				fileName.getName().lastIndexOf("."));

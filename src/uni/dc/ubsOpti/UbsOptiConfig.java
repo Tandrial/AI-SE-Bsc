@@ -16,16 +16,24 @@ public class UbsOptiConfig implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private int depth = 6;
 	private int portCount = 9;
+	private int maxFrameLength = 12350;
+	private double linkSpeed = 1e9;
 	private int maxPrio = 5;
 	private int maxSteps = 7500000;
 	private int runs = 1;
 	private int dim;
 
-	private Traffic traffic;
-	private EgressTopology topology;
-	private PriorityConfiguration prio;
-	private UbsDelayCalc delayCalc;
-	private TraceCollection traces;
+	private boolean ubsV0 = true;
+
+	private Traffic traffic = null;
+	private EgressTopology topology = null;
+	private PriorityConfiguration prio = null;
+	private UbsDelayCalc delayCalc = null;
+	private TraceCollection traces = null;
+
+	public UbsOptiConfig() {
+
+	}
 
 	public UbsOptiConfig(EgressTopology topology, Traffic traffic,
 			PriorityConfiguration prio, UbsDelayCalc delayCalc,
@@ -38,22 +46,25 @@ public class UbsOptiConfig implements Serializable {
 		this.traces = traces;
 	}
 
-	public UbsOptiConfig(NetworkParser parser, boolean v0) {
+	public void fromParser(NetworkParser parser) {
 		topology = parser.getTopology();
 		traffic = parser.getTraffic();
 		prio = parser.getPriorityConfig();
-		delayCalc = v0 ? new UbsV0DelayCalc(traffic) : new UbsV3DelayCalc(
+		dim = prio.toIntArray().length;
+		delayCalc = ubsV0 ? new UbsV0DelayCalc(traffic) : new UbsV3DelayCalc(
 				traffic);
 		delayCalc.calculateDelays(prio);
 		traces = new TraceCollection();
 	}
 
-	public UbsOptiConfig(GeneratorAPI generator, boolean v0) {
-		generator.generateNetwork(depth, portCount, maxPrio);
+	public void fromGenerator(GeneratorAPI generator) {
+		generator.generateNetwork(depth, portCount, maxPrio, linkSpeed,
+				maxFrameLength);
 		topology = generator.getTopology();
 		traffic = generator.getTraffic();
 		prio = generator.getPriorityConfiguration();
-		delayCalc = v0 ? new UbsV0DelayCalc(traffic) : new UbsV3DelayCalc(
+		dim = prio.toIntArray().length;
+		delayCalc = ubsV0 ? new UbsV0DelayCalc(traffic) : new UbsV3DelayCalc(
 				traffic);
 		delayCalc.setInitialDelays(prio);
 		traces = new TraceCollection();
@@ -81,6 +92,22 @@ public class UbsOptiConfig implements Serializable {
 
 	public void setMaxPrio(int maxPrio) {
 		this.maxPrio = maxPrio;
+	}
+
+	public int getMaxFrameLength() {
+		return maxFrameLength;
+	}
+
+	public void setMaxFrameLength(int maxFrameLength) {
+		this.maxFrameLength = maxFrameLength;
+	}
+
+	public double getLinkSpeed() {
+		return linkSpeed;
+	}
+
+	public void setLinkSpeed(double linkSpeed) {
+		this.linkSpeed = linkSpeed;
 	}
 
 	public int getMaxSteps() {
@@ -147,7 +174,19 @@ public class UbsOptiConfig implements Serializable {
 		this.traces = traces;
 	}
 
+	public boolean isUbsV0() {
+		return ubsV0;
+	}
+
+	public void setUbsV0(boolean ubsV0) {
+		this.ubsV0 = ubsV0;
+	}
+
 	public void setBestConfig() {
 		prio = traces.getBestConfig();
+	}
+
+	public PriorityConfiguration getBestConfig() {
+		return traces.getBestConfig();
 	}
 }

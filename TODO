@@ -1,7 +1,4 @@
 TODO
 
 -UBSv3 tests (Double Hop etc. nachrechnen)
--Logger ausgabe UBSv3/v0
--Settings Menu für
-	* RndGen (depth, portCount, maxPrio)
-	* Optimzer (Tries, run/Try)
+-Settings : Add NetworkSpeed

@@ -25,8 +25,8 @@ public class RandomMulticastPathGenerator {
 	// topology.getPorts().size() : Arbitrary multicast
 	private int maxDestPerFlow = 1;
 
-	// TODO: maxFrameLength in bit
-	private int maxFrameLength = 12350;
+	private double linkSpeed;
+	private int maxFrameLength;
 
 	public EgressTopology getTopology() {
 		return topology;
@@ -50,6 +50,22 @@ public class RandomMulticastPathGenerator {
 
 	public void setMaxDestPerFlow(int maxDestPerFlow) {
 		this.maxDestPerFlow = maxDestPerFlow;
+	}
+
+	public int getMaxFrameLength() {
+		return maxFrameLength;
+	}
+
+	public void setMaxFrameLength(int maxFrameLength) {
+		this.maxFrameLength = maxFrameLength;
+	}
+
+	public double getLinkSpeed() {
+		return linkSpeed;
+	}
+
+	public void setLinkSpeed(double linkSpeed) {
+		this.linkSpeed = linkSpeed;
 	}
 
 	public Random getRng() {
@@ -97,8 +113,7 @@ public class RandomMulticastPathGenerator {
 				flow.setSrcPort(src);
 				flow.setDestPort(destPorts.get(0));
 				// max rate = 10% of full networkspeed
-				flow.setRate(RandomTopologyGenerator.LINK_SPEED
-						* ((rng.nextInt(10) + 1)) / 100);
+				flow.setRate(linkSpeed * ((rng.nextInt(10) + 1)) / 100);
 				flow.setMaxFrameLength(rng.nextInt(maxFrameLength) + 1);
 
 				rv.add(flow);

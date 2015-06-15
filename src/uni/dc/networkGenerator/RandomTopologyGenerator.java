@@ -15,10 +15,9 @@ import uni.dc.model.EgressTopology;
 
 public class RandomTopologyGenerator {
 
-	public static final double LINK_SPEED = 1e9;
-
 	private int ports;
 	private int depth;
+	private double linkSpeed;
 	private Random rng;
 
 	EgressTopology topo = new EgressTopology();
@@ -44,6 +43,14 @@ public class RandomTopologyGenerator {
 
 	public void setDepth(int depth) {
 		this.depth = depth;
+	}
+
+	public double getLinkSpeed() {
+		return linkSpeed;
+	}
+
+	public void setLinkSpeed(double linkSpeed) {
+		this.linkSpeed = linkSpeed;
 	}
 
 	public Random getRng() {
@@ -83,8 +90,8 @@ public class RandomTopologyGenerator {
 	private void connect(EgressPort src, EgressPort dest) {
 		topo.addLink(src, dest);
 
-		src.setLinkSpeed(LINK_SPEED);
-		dest.setLinkSpeed(LINK_SPEED);
+		src.setLinkSpeed(linkSpeed);
+		dest.setLinkSpeed(linkSpeed);
 
 		Cluster joined;
 		if (portClusterMap.get(src).size() > 0) {

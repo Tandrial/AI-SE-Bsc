@@ -31,8 +31,6 @@ import uni.dc.networkGenerator.GeneratorAPI;
 import uni.dc.ubsOpti.NetworkParser;
 import uni.dc.ubsOpti.Optimizer;
 import uni.dc.ubsOpti.UbsOptiConfig;
-import uni.dc.ubsOpti.delayCalc.UbsV0DelayCalc;
-import uni.dc.ubsOpti.delayCalc.UbsV3DelayCalc;
 
 public class OptimizerGui extends JFrame {
 	private static final long serialVersionUID = 1L;
@@ -42,10 +40,9 @@ public class OptimizerGui extends JFrame {
 
 	private GraphVizPanel imagePanel;
 	private JLabel statusLabel;
-	private UbsOptiConfig config = null;
+	private UbsOptiConfig config = new UbsOptiConfig();
 
 	private boolean portDisplay = true;
-	private boolean ubsV0 = true;
 
 	public OptimizerGui(String title) {
 		super(title);
@@ -88,7 +85,7 @@ public class OptimizerGui extends JFrame {
 		mntmExportPng.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				if (config == null)
+				if (config.getTopology() == null)
 					return;
 				String fileName;
 				if (NetworkParser.getParser() != null) {
@@ -110,7 +107,7 @@ public class OptimizerGui extends JFrame {
 		mntmSaveNetwork.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				if (config == null)
+				if (config.getTopology() == null)
 					return;
 				String fileName = "" + config.getTopology();
 				NetworkParser.saveToFile(new File("./Topologies/" + fileName
@@ -212,50 +209,15 @@ public class OptimizerGui extends JFrame {
 		JMenu mnSettings = new JMenu("Settings");
 		menuBar.add(mnSettings);
 
-		JMenu mnTrafficModel = new JMenu("Traffic Model");
-		mnSettings.add(mnTrafficModel);
-
-		ButtonGroup trafficTypeSelectionGroup = new ButtonGroup();
-
-		JRadioButtonMenuItem rdbtnmntmUbsV0 = new JRadioButtonMenuItem(
-				"UBS V0", true);
-		rdbtnmntmUbsV0.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent arg0) {
-				if (config != null && !ubsV0) {
-					config.setDelayCalc(new UbsV0DelayCalc(config.getTraffic()));
-				}
-				ubsV0 = true;
-			}
-		});
-		mnTrafficModel.add(rdbtnmntmUbsV0);
-		trafficTypeSelectionGroup.add(rdbtnmntmUbsV0);
-
-		JRadioButtonMenuItem rdbtnmntmUbsV3 = new JRadioButtonMenuItem("UBS V3");
-		rdbtnmntmUbsV3.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				if (config != null && ubsV0) {
-					config.setDelayCalc(new UbsV3DelayCalc(config.getTraffic()));
-				}
-				ubsV0 = false;
-			}
-		});
-		mnTrafficModel.add(rdbtnmntmUbsV3);
-		trafficTypeSelectionGroup.add(rdbtnmntmUbsV3);
-
-		JMenu mnDisplaytype = new JMenu("Displaytype");
-		mnSettings.add(mnDisplaytype);
-
 		ButtonGroup viewTypeSelectionGroup = new ButtonGroup();
 
-		JRadioButtonMenuItem rdbtnmntmPorts = new JRadioButtonMenuItem("Ports",
-				true);
-		mnDisplaytype.add(rdbtnmntmPorts);
+		JRadioButtonMenuItem rdbtnmntmPorts = new JRadioButtonMenuItem(
+				"Display Ports", true);
+		mnSettings.add(rdbtnmntmPorts);
 		rdbtnmntmPorts.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				if (config != null && !portDisplay) {
+				if (config.getTopology() != null && !portDisplay) {
 					updateDisplay(config.getTopology().toDot());
 				}
 				portDisplay = true;
@@ -263,12 +225,13 @@ public class OptimizerGui extends JFrame {
 		});
 		viewTypeSelectionGroup.add(rdbtnmntmPorts);
 
-		JRadioButtonMenuItem rdbtnmntmFlows = new JRadioButtonMenuItem("Flows");
-		mnDisplaytype.add(rdbtnmntmFlows);
+		JRadioButtonMenuItem rdbtnmntmFlows = new JRadioButtonMenuItem(
+				"Display Flows");
+		mnSettings.add(rdbtnmntmFlows);
 		rdbtnmntmFlows.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				if (config != null && portDisplay) {
+				if (config.getTopology() != null && portDisplay) {
 					updateDisplay(config.getTraffic().toDot(
 							config.getPriorityConfig()));
 				}
@@ -276,6 +239,19 @@ public class OptimizerGui extends JFrame {
 			}
 		});
 		viewTypeSelectionGroup.add(rdbtnmntmFlows);
+
+		mnSettings.add(new JSeparator());
+
+		JMenuItem mntmDisplaySettings = new JMenuItem("Settings");
+		mntmDisplaySettings.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {				
+				SettingsGui settings = new SettingsGui(config);
+				RefineryUtilities.centerFrameOnScreen(settings);
+				settings.setVisible(true);
+			}
+		});
+		mnSettings.add(mntmDisplaySettings);
 
 		JPanel contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -293,7 +269,7 @@ public class OptimizerGui extends JFrame {
 	}
 
 	private void optimize(String algo) {
-		if (config == null)
+		if (config.getTopology() == null)
 			return;
 		logger.entering(getClass().getName(), "optimize");
 		setStatusMsg("Optimizing Priorities! This might take a while ...");
@@ -301,7 +277,10 @@ public class OptimizerGui extends JFrame {
 		long t1, t2, t3;
 		t1 = System.nanoTime();
 
-		logger.log(Level.INFO, "Optimazation started with " + algo);
+		logger.log(
+				Level.INFO,
+				String.format("Optimazation for %s started with %s",
+						config.isUbsV0() ? "UBS-V0" : "UBS-V3", algo));
 		boolean result = Optimizer.getOptimizer().optimize(config, algo);
 		config.setBestConfig();
 
@@ -346,7 +325,7 @@ public class OptimizerGui extends JFrame {
 
 			NetworkParser parser = NetworkParser.getParser();
 			parser.setFileName(file);
-			config = new UbsOptiConfig(parser, ubsV0);
+			config.fromParser(parser);
 
 			logger.log(
 					Level.INFO,
@@ -378,7 +357,7 @@ public class OptimizerGui extends JFrame {
 			logger.entering(getClass().getName(), "generateRandomNetwork");
 			t1 = System.nanoTime();
 
-			config = new UbsOptiConfig(GeneratorAPI.getGenerator(), ubsV0);
+			config.fromGenerator(GeneratorAPI.getGenerator());
 
 			logger.log(
 					Level.INFO,

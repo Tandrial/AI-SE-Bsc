@@ -54,6 +54,7 @@ public class Optimizer {
 		} else if (selectedAlgo.equals("RandomWalk")) {
 			trace = optimizeRandomWalk();
 		}
+		trace.setName(config.getTraces().size() + "_" + trace.getName());
 		config.getTraces().add(trace);
 		config.getDelayCalc().calculateDelays(trace.getBestConfig());
 		return config.getDelayCalc().checkDelays();

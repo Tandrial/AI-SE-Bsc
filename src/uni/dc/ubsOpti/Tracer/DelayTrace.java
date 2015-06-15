@@ -25,6 +25,10 @@ public class DelayTrace implements Serializable {
 		this.prio = config.getPriorityConfig();
 	}
 
+	public void setName(String name) {
+		this.name = name;
+	}
+
 	public String getName() {
 		return name;
 	}

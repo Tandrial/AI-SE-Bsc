@@ -19,7 +19,7 @@ public class UbsOptiConfig implements Serializable {
 	private int maxFrameLength = 12350;
 	private int maxSpeed = 10;
 	private double linkSpeed = 1e9;
-	private int maxPrio = 5;
+	private int maxPrio = 2;
 	private int maxSteps = 7500000;
 	private int runs = 1;
 	private int dim;

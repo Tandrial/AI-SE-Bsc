@@ -1,35 +1,172 @@
-Jun 15, 2015 3:36:54 PM uni.dc.view.OptimizerGui generateRandom
-INFORMATION: Generated new network: 
+Jun 15, 2015 3:51:07 PM uni.dc.view.OptimizerGui loadFromFile
+INFORMATION: Loaded network "Linear.ubsNetwork":
 NetworkConfig
-maxPrio:5
+maxPrio:2
 maxSteps per run:7500000
 Run Count:1
 Streams and Delays: 
-F0 : 190 Mbps, 2836 bit
-Path : [E0,1, E1,1, E2,1, E3,1, E4,2, E5,2]
-Destination E5,2 maxLat of -2,328e-06 s, delay is -2,328e-06 s
-F1 : 380 Mbps, 5447 bit
-Path : [E0,1, E1,1, E2,1, E3,1, E4,2, E5,2]
-Destination E5,2 maxLat of 1,286e-04 s, delay is 1,286e-04 s
-F2 : 420 Mbps, 7235 bit
-Path : [E0,1, E1,1, E2,1, E3,1, E4,2, E5,2]
-Destination E5,2 maxLat of 2,762e-05 s, delay is 2,762e-05 s
-F3 : 460 Mbps, 6967 bit
-Path : [E3,2, E4,2, E5,2]
-Destination E5,2 maxLat of 3,812e-05 s, delay is 3,812e-05 s
-F4 : 250 Mbps, 144 bit
-Path : [E3,2, E4,2, E5,2]
-Destination E5,2 maxLat of 2,885e-04 s, delay is 2,885e-04 s
-F5 : 500 Mbps, 5752 bit
-Path : [E3,2, E4,2, E5,2]
-Destination E5,2 maxLat of 4,432e-05 s, delay is 4,432e-05 s
-F6 : 190 Mbps, 9644 bit
-Path : [E4,1, E5,1]
-Destination E5,1 maxLat of 1,795e-05 s, delay is 1,795e-05 s
-F7 : 310 Mbps, 8310 bit
-Path : [E4,1, E5,1]
-Destination E5,1 maxLat of 4,191e-05 s, delay is 4,191e-05 s
-F8 : 370 Mbps, 5142 bit
-Path : [E4,1, E5,1]
-Destination E5,1 maxLat of 2,731e-05 s, delay is 2,731e-05 s
+F1 : 100 Mbps, 1 bit
+Path : [n0.P0, b0.P2, b1.P2, b2.P2]
+Destination n1.P0 maxLat of 3,500e-08 s, delay is 4,500e-08 s
+F2 : 150 Mbps, 4 bit
+Path : [n0.P0, b0.P2, b1.P2, b2.P2]
+Destination n1.P0 maxLat of 5,000e-08 s, delay is 4,500e-08 s
+F3 : 200 Mbps, 3 bit
+Path : [n0.P0, b0.P2, b1.P2, b2.P2]
+Destination n1.P0 maxLat of 5,000e-08 s, delay is 4,500e-08 s
+F4 : 250 Mbps, 7 bit
+Path : [n0.P0, b0.P2, b1.P2, b2.P2]
+Destination n1.P0 maxLat of 5,000e-08 s, delay is 4,500e-08 s
+
+Jun 15, 2015 3:51:08 PM uni.dc.view.OptimizerGui optimize
+INFORMATION: Optimazation for UBS-V0 started with HillClimbing
+Jun 15, 2015 3:51:08 PM uni.dc.view.OptimizerGui optimize
+INFORMATION: Optimazation successful (in 0,1285 sec)!
+Jun 15, 2015 3:51:08 PM uni.dc.view.OptimizerGui optimize
+INFORMATION: Best Prio is: 
+      F1 F2 F3 F4 
+n0.P0  1  1  1  1 
+b0.P0             
+b0.P1             
+n0.P1             
+b0.P2  1  2  2  2 
+b1.P0             
+b1.P1             
+b0.P3             
+b1.P2  1  2  2  2 
+b2.P0             
+b2.P1             
+b1.P3             
+b2.P2  1  1  1  1 
+n1.P0             
+n1.P1             
+b2.P3             
+
+Delays are 
+F1 : 100 Mbps, 1 bit
+Path : [n0.P0, b0.P2, b1.P2, b2.P2]
+Destination n1.P0 maxLat of 3,500e-08 s, delay is 3,100e-08 s
+F2 : 150 Mbps, 4 bit
+Path : [n0.P0, b0.P2, b1.P2, b2.P2]
+Destination n1.P0 maxLat of 5,000e-08 s, delay is 4,744e-08 s
+F3 : 200 Mbps, 3 bit
+Path : [n0.P0, b0.P2, b1.P2, b2.P2]
+Destination n1.P0 maxLat of 5,000e-08 s, delay is 4,767e-08 s
+F4 : 250 Mbps, 7 bit
+Path : [n0.P0, b0.P2, b1.P2, b2.P2]
+Destination n1.P0 maxLat of 5,000e-08 s, delay is 4,678e-08 s
+
+Jun 15, 2015 3:51:09 PM uni.dc.view.OptimizerGui optimize
+INFORMATION: Optimazation for UBS-V0 started with HillClimbing
+Jun 15, 2015 3:51:09 PM uni.dc.view.OptimizerGui optimize
+INFORMATION: Optimazation successful (in 0,0760 sec)!
+Jun 15, 2015 3:51:09 PM uni.dc.view.OptimizerGui optimize
+INFORMATION: Best Prio is: 
+      F1 F2 F3 F4 
+n0.P0  1  1  1  1 
+b0.P0             
+b0.P1             
+n0.P1             
+b0.P2  1  2  2  2 
+b1.P0             
+b1.P1             
+b0.P3             
+b1.P2  1  2  2  2 
+b2.P0             
+b2.P1             
+b1.P3             
+b2.P2  1  1  1  1 
+n1.P0             
+n1.P1             
+b2.P3             
+
+Delays are 
+F1 : 100 Mbps, 1 bit
+Path : [n0.P0, b0.P2, b1.P2, b2.P2]
+Destination n1.P0 maxLat of 3,500e-08 s, delay is 3,100e-08 s
+F2 : 150 Mbps, 4 bit
+Path : [n0.P0, b0.P2, b1.P2, b2.P2]
+Destination n1.P0 maxLat of 5,000e-08 s, delay is 4,744e-08 s
+F3 : 200 Mbps, 3 bit
+Path : [n0.P0, b0.P2, b1.P2, b2.P2]
+Destination n1.P0 maxLat of 5,000e-08 s, delay is 4,767e-08 s
+F4 : 250 Mbps, 7 bit
+Path : [n0.P0, b0.P2, b1.P2, b2.P2]
+Destination n1.P0 maxLat of 5,000e-08 s, delay is 4,678e-08 s
+
+Jun 15, 2015 3:51:11 PM uni.dc.view.OptimizerGui optimize
+INFORMATION: Optimazation for UBS-V0 started with HillClimbing
+Jun 15, 2015 3:51:11 PM uni.dc.view.OptimizerGui optimize
+INFORMATION: Optimazation successful (in 0,0861 sec)!
+Jun 15, 2015 3:51:11 PM uni.dc.view.OptimizerGui optimize
+INFORMATION: Best Prio is: 
+      F1 F2 F3 F4 
+n0.P0  1  1  1  1 
+b0.P0             
+b0.P1             
+n0.P1             
+b0.P2  1  2  2  2 
+b1.P0             
+b1.P1             
+b0.P3             
+b1.P2  1  2  2  2 
+b2.P0             
+b2.P1             
+b1.P3             
+b2.P2  1  1  1  1 
+n1.P0             
+n1.P1             
+b2.P3             
+
+Delays are 
+F1 : 100 Mbps, 1 bit
+Path : [n0.P0, b0.P2, b1.P2, b2.P2]
+Destination n1.P0 maxLat of 3,500e-08 s, delay is 3,100e-08 s
+F2 : 150 Mbps, 4 bit
+Path : [n0.P0, b0.P2, b1.P2, b2.P2]
+Destination n1.P0 maxLat of 5,000e-08 s, delay is 4,744e-08 s
+F3 : 200 Mbps, 3 bit
+Path : [n0.P0, b0.P2, b1.P2, b2.P2]
+Destination n1.P0 maxLat of 5,000e-08 s, delay is 4,767e-08 s
+F4 : 250 Mbps, 7 bit
+Path : [n0.P0, b0.P2, b1.P2, b2.P2]
+Destination n1.P0 maxLat of 5,000e-08 s, delay is 4,678e-08 s
+
+Jun 15, 2015 3:51:12 PM uni.dc.view.OptimizerGui optimize
+INFORMATION: Optimazation for UBS-V0 started with SimulatedAnnealing
+Jun 15, 2015 3:51:23 PM uni.dc.view.OptimizerGui optimize
+INFORMATION: Optimazation successful (in 11,3494 sec)!
+Jun 15, 2015 3:51:23 PM uni.dc.view.OptimizerGui optimize
+INFORMATION: Best Prio is: 
+      F1 F2 F3 F4 
+n0.P0  1  1  1  1 
+b0.P0             
+b0.P1             
+n0.P1             
+b0.P2  1  2  2  2 
+b1.P0             
+b1.P1             
+b0.P3             
+b1.P2  1  2  2  2 
+b2.P0             
+b2.P1             
+b1.P3             
+b2.P2  1  1  1  1 
+n1.P0             
+n1.P1             
+b2.P3             
+
+Delays are 
+F1 : 100 Mbps, 1 bit
+Path : [n0.P0, b0.P2, b1.P2, b2.P2]
+Destination n1.P0 maxLat of 3,500e-08 s, delay is 3,100e-08 s
+F2 : 150 Mbps, 4 bit
+Path : [n0.P0, b0.P2, b1.P2, b2.P2]
+Destination n1.P0 maxLat of 5,000e-08 s, delay is 4,744e-08 s
+F3 : 200 Mbps, 3 bit
+Path : [n0.P0, b0.P2, b1.P2, b2.P2]
+Destination n1.P0 maxLat of 5,000e-08 s, delay is 4,767e-08 s
+F4 : 250 Mbps, 7 bit
+Path : [n0.P0, b0.P2, b1.P2, b2.P2]
+Destination n1.P0 maxLat of 5,000e-08 s, delay is 4,678e-08 s
 

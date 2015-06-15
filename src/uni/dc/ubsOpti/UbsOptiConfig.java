@@ -43,7 +43,8 @@ public class UbsOptiConfig implements Serializable {
 		sb.append("\nmaxPrio:" + maxPrio);
 		sb.append("\nmaxSteps per run:" + maxSteps);
 		sb.append("\nRun Count:" + runs);
-		sb.append("\nStreams and Delays: \n" + delayCalc);
+		sb.append("\n\nStreams and Delays: \n" + delayCalc);
+		sb.append("\nbest PriorityConfig: \n" + prio);
 
 		return sb.toString();
 	}

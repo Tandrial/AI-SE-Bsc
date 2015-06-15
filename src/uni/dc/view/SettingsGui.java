@@ -38,7 +38,7 @@ public class SettingsGui extends JDialog {
 
 	public SettingsGui(UbsOptiConfig config) {
 		setTitle("Settings - UBsOpti");
-		setBounds(100, 100, 200, 350);
+		setBounds(100, 100, 195, 325);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
@@ -154,11 +154,10 @@ public class SettingsGui extends JDialog {
 		contentPanel.add(lblOptimizerConfig);
 
 		JPanel buttonPane = new JPanel();
-		buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
+		buttonPane.setLayout(new FlowLayout(FlowLayout.CENTER));
 		getContentPane().add(buttonPane, BorderLayout.SOUTH);
 
 		JButton okButton = new JButton("OK");
-		okButton.setHorizontalAlignment(SwingConstants.CENTER);
 		okButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {

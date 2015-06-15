@@ -27,6 +27,7 @@ public class RandomMulticastPathGenerator {
 
 	private double linkSpeed;
 	private int maxFrameLength;
+	private int maxSpeedPerStream;
 
 	public EgressTopology getTopology() {
 		return topology;
@@ -66,6 +67,14 @@ public class RandomMulticastPathGenerator {
 
 	public void setLinkSpeed(double linkSpeed) {
 		this.linkSpeed = linkSpeed;
+	}
+	
+	public int getMaxSpeedPerStream() {
+		return maxSpeedPerStream;
+	}
+
+	public void setMaxSpeedPerStream(int maxSpeedPerStream) {
+		this.maxSpeedPerStream = maxSpeedPerStream;
 	}
 
 	public Random getRng() {
@@ -112,8 +121,8 @@ public class RandomMulticastPathGenerator {
 				flow.setTopology(topology);
 				flow.setSrcPort(src);
 				flow.setDestPort(destPorts.get(0));
-				// max rate = 10% of full networkspeed
-				flow.setRate(linkSpeed * ((rng.nextInt(10) + 1)) / 100);
+				flow.setRate(linkSpeed * ((rng.nextInt(maxSpeedPerStream) + 1))
+						/ 100);
 				flow.setMaxFrameLength(rng.nextInt(maxFrameLength) + 1);
 
 				rv.add(flow);

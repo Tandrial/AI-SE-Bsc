@@ -215,6 +215,5 @@ public class EgressTopology implements Serializable{
 			}
 		}
 		return rv;
-	}
-	
+	}	
 }

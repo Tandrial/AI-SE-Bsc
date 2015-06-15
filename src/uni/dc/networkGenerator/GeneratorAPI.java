@@ -34,7 +34,7 @@ public class GeneratorAPI {
 	}
 
 	public void generateNetwork(int depth, int portCount, int maxPrio,
-			double linkSpeed, int maxFrameLength) {
+			double linkSpeed, int maxFrameLength, int maxSpeed) {
 		try {
 			RandomTopologyGenerator topologyGen = new RandomTopologyGenerator();
 			topologyGen.setRng(new Random(System.currentTimeMillis()));
@@ -50,6 +50,7 @@ public class GeneratorAPI {
 			flowPathGen.setMaxDestPerFlow(1);
 			flowPathGen.setLinkSpeed(linkSpeed);
 			flowPathGen.setMaxFrameLength(maxFrameLength);
+			flowPathGen.setMaxSpeedPerStream(maxSpeed);
 			traffic = flowPathGen.generate();
 
 			RandomPriorityGenerator prioGen = new RandomPriorityGenerator();

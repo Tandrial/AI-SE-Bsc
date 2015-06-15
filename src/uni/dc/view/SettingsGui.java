@@ -3,7 +3,6 @@ package uni.dc.view;
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 import java.awt.Font;
-import java.awt.Panel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -30,13 +29,12 @@ public class SettingsGui extends JDialog {
 	private JSpinner spDepth;
 	private JSpinner spPortCount;
 	private JSpinner spMaxLength;
+	private JSpinner spSpeed;
 	private JSpinner spMaxPrio;
 	private JSpinner spMaxStep;
 	private JSpinner spRuns;
 	private JRadioButton rdbtnUbsV0;
 	private JRadioButton rdbtnUbsV3;
-
-	private UbsOptiConfig config;
 
 	public SettingsGui(UbsOptiConfig config) {
 		setTitle("Settings - UBsOpti");
@@ -54,20 +52,24 @@ public class SettingsGui extends JDialog {
 		lblPortCount.setBounds(10, 50, 75, 15);
 		contentPanel.add(lblPortCount);
 
-		JLabel lblMaxframelength = new JLabel("maxLength");
+		JLabel lblMaxframelength = new JLabel("maxLength[bit]");
 		lblMaxframelength.setBounds(10, 75, 75, 15);
 		contentPanel.add(lblMaxframelength);
 
+		JLabel lblMaxspeed = new JLabel("maxSpeed[%]");
+		lblMaxspeed.setBounds(10, 100, 75, 15);
+		contentPanel.add(lblMaxspeed);
+
 		JLabel lblMaxprio = new JLabel("maxPrio");
-		lblMaxprio.setBounds(10, 130, 75, 15);
+		lblMaxprio.setBounds(10, 155, 75, 15);
 		contentPanel.add(lblMaxprio);
 
 		JLabel lblMaxsteps = new JLabel("maxSteps");
-		lblMaxsteps.setBounds(10, 155, 75, 15);
+		lblMaxsteps.setBounds(10, 180, 75, 15);
 		contentPanel.add(lblMaxsteps);
 
 		JLabel lblRuns = new JLabel("runs");
-		lblRuns.setBounds(10, 180, 75, 15);
+		lblRuns.setBounds(10, 205, 75, 15);
 		contentPanel.add(lblRuns);
 
 		spDepth = new JSpinner();
@@ -91,33 +93,40 @@ public class SettingsGui extends JDialog {
 		spMaxLength.setBounds(85, 74, 80, 20);
 		contentPanel.add(spMaxLength);
 
+		spSpeed = new JSpinner();
+		spSpeed.setModel(new SpinnerNumberModel(new Integer(1), new Integer(1),
+				new Integer(100), new Integer(1)));
+		spSpeed.setValue(config.getMaxSpeed());
+		spSpeed.setBounds(85, 101, 80, 20);
+		contentPanel.add(spSpeed);
+
 		spMaxPrio = new JSpinner();
 		spMaxPrio.setModel(new SpinnerNumberModel(new Integer(2),
 				new Integer(2), null, new Integer(1)));
 		spMaxPrio.setValue(config.getMaxPrio());
-		spMaxPrio.setBounds(85, 125, 80, 20);
+		spMaxPrio.setBounds(85, 150, 80, 20);
 		contentPanel.add(spMaxPrio);
 
 		spMaxStep = new JSpinner();
 		spMaxStep.setModel(new SpinnerNumberModel(new Integer(10000),
 				new Integer(10000), null, new Integer(1)));
 		spMaxStep.setValue(config.getMaxSteps());
-		spMaxStep.setBounds(85, 150, 80, 20);
+		spMaxStep.setBounds(85, 175, 80, 20);
 		contentPanel.add(spMaxStep);
 
 		spRuns = new JSpinner();
 		spRuns.setModel(new SpinnerNumberModel(new Integer(1), new Integer(1),
 				null, new Integer(1)));
 		spRuns.setValue(config.getRuns());
-		spRuns.setBounds(85, 175, 80, 20);
+		spRuns.setBounds(85, 200, 80, 20);
 		contentPanel.add(spRuns);
 
 		rdbtnUbsV0 = new JRadioButton("UBS V0");
-		rdbtnUbsV0.setBounds(10, 210, 75, 20);
+		rdbtnUbsV0.setBounds(10, 235, 75, 20);
 		contentPanel.add(rdbtnUbsV0);
 
 		rdbtnUbsV3 = new JRadioButton("UBS V3");
-		rdbtnUbsV3.setBounds(85, 210, 80, 20);
+		rdbtnUbsV3.setBounds(85, 235, 80, 20);
 		contentPanel.add(rdbtnUbsV3);
 
 		if (config.isUbsV0()) {
@@ -132,19 +141,17 @@ public class SettingsGui extends JDialog {
 		ubsRadioGroup.add(rdbtnUbsV0);
 		ubsRadioGroup.add(rdbtnUbsV3);
 
-		JLabel lblNewLabel = new JLabel("Generator Config");
-		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 14));
-		lblNewLabel.setBounds(10, 0, 155, 20);
-		contentPanel.add(lblNewLabel);
+		JLabel lblGeneratorConfig = new JLabel("Generator Config");
+		lblGeneratorConfig.setHorizontalAlignment(SwingConstants.CENTER);
+		lblGeneratorConfig.setFont(new Font("Tahoma", Font.BOLD, 14));
+		lblGeneratorConfig.setBounds(10, 0, 155, 20);
+		contentPanel.add(lblGeneratorConfig);
 
 		JLabel lblOptimizerConfig = new JLabel("Optimizer Config");
 		lblOptimizerConfig.setHorizontalAlignment(SwingConstants.CENTER);
 		lblOptimizerConfig.setFont(new Font("Tahoma", Font.BOLD, 14));
-		lblOptimizerConfig.setBounds(10, 100, 155, 20);
+		lblOptimizerConfig.setBounds(10, 124, 155, 20);
 		contentPanel.add(lblOptimizerConfig);
-
-		this.config = config;
 
 		JPanel buttonPane = new JPanel();
 		buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
@@ -155,8 +162,9 @@ public class SettingsGui extends JDialog {
 		okButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				acceptChanges();
-				close();
+				acceptChanges(config);
+				setVisible(false);
+				dispose();
 			}
 		});
 		buttonPane.add(okButton);
@@ -166,24 +174,18 @@ public class SettingsGui extends JDialog {
 		cancelButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				close();
+				setVisible(false);
+				dispose();
 			}
 		});
 		buttonPane.add(cancelButton);
-
-		Panel Generator = new Panel();
-		getContentPane().add(Generator, BorderLayout.NORTH);
-		Generator.setLayout(null);
-
-		JPanel Optimizer = new JPanel();
-		getContentPane().add(Optimizer, BorderLayout.NORTH);
-		Optimizer.setLayout(null);
 	}
 
-	private void acceptChanges() {
+	private void acceptChanges(UbsOptiConfig config) {
 		config.setDepth((Integer) spDepth.getValue());
 		config.setPortCount((Integer) spPortCount.getValue());
 		config.setMaxFrameLength((Integer) spMaxLength.getValue());
+		config.setMaxSpeed((Integer) spSpeed.getValue());
 		config.setMaxPrio((Integer) spMaxPrio.getValue());
 		config.setMaxSteps((Integer) spMaxStep.getValue());
 		config.setRuns((Integer) spRuns.getValue());
@@ -197,10 +199,5 @@ public class SettingsGui extends JDialog {
 				config.setDelayCalc(new UbsV3DelayCalc(config.getTraffic()));
 			config.setUbsV0(false);
 		}
-	}
-
-	private void close() {
-		setVisible(false);
-		dispose();
 	}
 }

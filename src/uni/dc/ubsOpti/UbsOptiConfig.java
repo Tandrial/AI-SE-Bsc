@@ -17,6 +17,7 @@ public class UbsOptiConfig implements Serializable {
 	private int depth = 6;
 	private int portCount = 9;
 	private int maxFrameLength = 12350;
+	private int maxSpeed = 10;
 	private double linkSpeed = 1e9;
 	private int maxPrio = 5;
 	private int maxSteps = 7500000;
@@ -33,6 +34,18 @@ public class UbsOptiConfig implements Serializable {
 
 	public UbsOptiConfig() {
 
+	}
+
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder();
+		sb.append("NetworkConfig");
+		sb.append("\nmaxPrio:" + maxPrio);
+		sb.append("\nmaxSteps per run:" + maxSteps);
+		sb.append("\nRun Count:" + runs);
+		sb.append("\nStreams and Delays: \n" + delayCalc);
+
+		return sb.toString();
 	}
 
 	public UbsOptiConfig(EgressTopology topology, Traffic traffic,
@@ -59,7 +72,7 @@ public class UbsOptiConfig implements Serializable {
 
 	public void fromGenerator(GeneratorAPI generator) {
 		generator.generateNetwork(depth, portCount, maxPrio, linkSpeed,
-				maxFrameLength);
+				maxFrameLength, maxSpeed);
 		topology = generator.getTopology();
 		traffic = generator.getTraffic();
 		prio = generator.getPriorityConfiguration();
@@ -100,6 +113,14 @@ public class UbsOptiConfig implements Serializable {
 
 	public void setMaxFrameLength(int maxFrameLength) {
 		this.maxFrameLength = maxFrameLength;
+	}
+
+	public int getMaxSpeed() {
+		return maxSpeed;
+	}
+
+	public void setMaxSpeed(int maxSpeed) {
+		this.maxSpeed = maxSpeed;
 	}
 
 	public double getLinkSpeed() {

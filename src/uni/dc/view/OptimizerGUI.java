@@ -245,7 +245,7 @@ public class OptimizerGui extends JFrame {
 		JMenuItem mntmDisplaySettings = new JMenuItem("Settings");
 		mntmDisplaySettings.addActionListener(new ActionListener() {
 			@Override
-			public void actionPerformed(ActionEvent e) {				
+			public void actionPerformed(ActionEvent e) {
 				SettingsGui settings = new SettingsGui(config);
 				RefineryUtilities.centerFrameOnScreen(settings);
 				settings.setVisible(true);
@@ -327,12 +327,8 @@ public class OptimizerGui extends JFrame {
 			parser.setFileName(file);
 			config.fromParser(parser);
 
-			logger.log(
-					Level.INFO,
-					String.format(
-							"Loaded network \"%s\" with these streams:\n%s\nPriorites:\n%s",
-							file.getName(), config.getDelayCalc(),
-							config.getPriorityConfig()));
+			logger.log(Level.INFO, String.format("Loaded network \"%s\":\n%s",
+					file.getName(), config));
 			t2 = System.nanoTime();
 			imagePanel.setDot(portDisplay ? config.getTopology().toDot()
 					: config.getTraffic().toDot(config.getPriorityConfig()));
@@ -359,11 +355,8 @@ public class OptimizerGui extends JFrame {
 
 			config.fromGenerator(GeneratorAPI.getGenerator());
 
-			logger.log(
-					Level.INFO,
-					String.format(
-							"Generated new network with these streams:\n%s\nStarting priorites:\n%s",
-							config.getDelayCalc(), config.getPriorityConfig()));
+			logger.log(Level.INFO,
+					String.format("Generated new network: \n%s", config));
 
 			t2 = System.nanoTime();
 			imagePanel.setDot(portDisplay ? config.getTopology().toDot()
@@ -400,8 +393,6 @@ public class OptimizerGui extends JFrame {
 					FileHandler fh = new FileHandler("./ubsOpti.log");
 					OptimizerGui.logger.addHandler(fh);
 					fh.setFormatter(new SimpleFormatter());
-					OptimizerGui.logger.info("********************");
-
 					gui.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();

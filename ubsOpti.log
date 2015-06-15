@@ -1,153 +1,35 @@
-Jun 13, 2015 8:58:51 PM uni.dc.view.OptimizerGUI$17 run
-INFORMATION: ********************
-Jun 13, 2015 8:58:54 PM uni.dc.view.OptimizerGUI generateRandom
-SCHWERWIEGEND: Generation failed!
-java.lang.NullPointerException
-	at uni.dc.ubsOpti.delayCalc.UbsV0DelayCalc.calculateDelays(UbsV0DelayCalc.java:23)
-	at uni.dc.ubsOpti.delayCalc.UbsDelayCalc.setInitialDelays(UbsDelayCalc.java:91)
-	at uni.dc.view.OptimizerGUI.generateRandom(OptimizerGUI.java:403)
-	at uni.dc.view.OptimizerGUI.access$0(OptimizerGUI.java:385)
-	at uni.dc.view.OptimizerGUI$1.actionPerformed(OptimizerGUI.java:79)
-	at javax.swing.AbstractButton.fireActionPerformed(Unknown Source)
-	at javax.swing.AbstractButton$Handler.actionPerformed(Unknown Source)
-	at javax.swing.DefaultButtonModel.fireActionPerformed(Unknown Source)
-	at javax.swing.DefaultButtonModel.setPressed(Unknown Source)
-	at javax.swing.AbstractButton.doClick(Unknown Source)
-	at javax.swing.plaf.basic.BasicMenuItemUI.doClick(Unknown Source)
-	at javax.swing.plaf.basic.BasicMenuItemUI$Handler.mouseReleased(Unknown Source)
-	at java.awt.Component.processMouseEvent(Unknown Source)
-	at javax.swing.JComponent.processMouseEvent(Unknown Source)
-	at java.awt.Component.processEvent(Unknown Source)
-	at java.awt.Container.processEvent(Unknown Source)
-	at java.awt.Component.dispatchEventImpl(Unknown Source)
-	at java.awt.Container.dispatchEventImpl(Unknown Source)
-	at java.awt.Component.dispatchEvent(Unknown Source)
-	at java.awt.LightweightDispatcher.retargetMouseEvent(Unknown Source)
-	at java.awt.LightweightDispatcher.processMouseEvent(Unknown Source)
-	at java.awt.LightweightDispatcher.dispatchEvent(Unknown Source)
-	at java.awt.Container.dispatchEventImpl(Unknown Source)
-	at java.awt.Window.dispatchEventImpl(Unknown Source)
-	at java.awt.Component.dispatchEvent(Unknown Source)
-	at java.awt.EventQueue.dispatchEventImpl(Unknown Source)
-	at java.awt.EventQueue.access$500(Unknown Source)
-	at java.awt.EventQueue$3.run(Unknown Source)
-	at java.awt.EventQueue$3.run(Unknown Source)
-	at java.security.AccessController.doPrivileged(Native Method)
-	at java.security.ProtectionDomain$1.doIntersectionPrivilege(Unknown Source)
-	at java.security.ProtectionDomain$1.doIntersectionPrivilege(Unknown Source)
-	at java.awt.EventQueue$4.run(Unknown Source)
-	at java.awt.EventQueue$4.run(Unknown Source)
-	at java.security.AccessController.doPrivileged(Native Method)
-	at java.security.ProtectionDomain$1.doIntersectionPrivilege(Unknown Source)
-	at java.awt.EventQueue.dispatchEvent(Unknown Source)
-	at java.awt.EventDispatchThread.pumpOneEventForFilters(Unknown Source)
-	at java.awt.EventDispatchThread.pumpEventsForFilter(Unknown Source)
-	at java.awt.EventDispatchThread.pumpEventsForHierarchy(Unknown Source)
-	at java.awt.EventDispatchThread.pumpEvents(Unknown Source)
-	at java.awt.EventDispatchThread.pumpEvents(Unknown Source)
-	at java.awt.EventDispatchThread.run(Unknown Source)
+Jun 15, 2015 3:36:54 PM uni.dc.view.OptimizerGui generateRandom
+INFORMATION: Generated new network: 
+NetworkConfig
+maxPrio:5
+maxSteps per run:7500000
+Run Count:1
+Streams and Delays: 
+F0 : 190 Mbps, 2836 bit
+Path : [E0,1, E1,1, E2,1, E3,1, E4,2, E5,2]
+Destination E5,2 maxLat of -2,328e-06 s, delay is -2,328e-06 s
+F1 : 380 Mbps, 5447 bit
+Path : [E0,1, E1,1, E2,1, E3,1, E4,2, E5,2]
+Destination E5,2 maxLat of 1,286e-04 s, delay is 1,286e-04 s
+F2 : 420 Mbps, 7235 bit
+Path : [E0,1, E1,1, E2,1, E3,1, E4,2, E5,2]
+Destination E5,2 maxLat of 2,762e-05 s, delay is 2,762e-05 s
+F3 : 460 Mbps, 6967 bit
+Path : [E3,2, E4,2, E5,2]
+Destination E5,2 maxLat of 3,812e-05 s, delay is 3,812e-05 s
+F4 : 250 Mbps, 144 bit
+Path : [E3,2, E4,2, E5,2]
+Destination E5,2 maxLat of 2,885e-04 s, delay is 2,885e-04 s
+F5 : 500 Mbps, 5752 bit
+Path : [E3,2, E4,2, E5,2]
+Destination E5,2 maxLat of 4,432e-05 s, delay is 4,432e-05 s
+F6 : 190 Mbps, 9644 bit
+Path : [E4,1, E5,1]
+Destination E5,1 maxLat of 1,795e-05 s, delay is 1,795e-05 s
+F7 : 310 Mbps, 8310 bit
+Path : [E4,1, E5,1]
+Destination E5,1 maxLat of 4,191e-05 s, delay is 4,191e-05 s
+F8 : 370 Mbps, 5142 bit
+Path : [E4,1, E5,1]
+Destination E5,1 maxLat of 2,731e-05 s, delay is 2,731e-05 s
 
-Jun 13, 2015 8:58:55 PM uni.dc.view.OptimizerGUI generateRandom
-INFORMATION: Generated new network with these streams:
-F0 : 70 Mbps, 7688 bit
-Path : [E0,1, E1,1, E2,1, E3,1, E4,1, E5,3]
-Destination E5,3 has maxLat of 5,856e-05 s, actual delay is 5,856e-05 s
-F1 : 20 Mbps, 2738 bit
-Path : [E0,1, E1,1, E2,1, E3,1, E4,1, E5,3]
-Destination E5,3 has maxLat of 5,693e-05 s, actual delay is 5,693e-05 s
-F2 : 30 Mbps, 1180 bit
-Path : [E0,1, E1,1, E2,1, E3,1, E4,1, E5,3]
-Destination E5,3 has maxLat of 5,483e-05 s, actual delay is 5,483e-05 s
-F3 : 60 Mbps, 9096 bit
-Path : [E4,2, E5,1]
-Destination E5,1 has maxLat of 2,906e-05 s, actual delay is 2,906e-05 s
-F4 : 10 Mbps, 9877 bit
-Path : [E4,2, E5,1]
-Destination E5,1 has maxLat of 2,806e-05 s, actual delay is 2,806e-05 s
-F5 : 40 Mbps, 9088 bit
-Path : [E4,2, E5,1]
-Destination E5,1 has maxLat of 2,806e-05 s, actual delay is 2,806e-05 s
-
-Starting priorites:
-     F0 F1 F2 F3 F4 F5 
-E0,1  2  1  3          
-E1,1  2  4  1          
-E2,1  3  3  2          
-E3,1  1  1  4          
-E4,1  4  2  3          
-E4,2           3  2  2 
-E5,1                   
-E5,2                   
-E5,3                   
-
-Jun 13, 2015 8:58:57 PM uni.dc.view.OptimizerGUI generateRandom
-INFORMATION: Generated new network with these streams:
-F0 : 70 Mbps, 7688 bit
-Path : [E0,1, E1,1, E2,1, E3,1, E4,1, E5,3]
-Destination E5,3 has maxLat of 5,856e-05 s, actual delay is 5,856e-05 s
-F1 : 20 Mbps, 2738 bit
-Path : [E0,1, E1,1, E2,1, E3,1, E4,1, E5,3]
-Destination E5,3 has maxLat of 5,693e-05 s, actual delay is 5,693e-05 s
-F2 : 30 Mbps, 1180 bit
-Path : [E0,1, E1,1, E2,1, E3,1, E4,1, E5,3]
-Destination E5,3 has maxLat of 5,483e-05 s, actual delay is 5,483e-05 s
-F3 : 60 Mbps, 9096 bit
-Path : [E4,2, E5,1]
-Destination E5,1 has maxLat of 2,906e-05 s, actual delay is 2,906e-05 s
-F4 : 10 Mbps, 9877 bit
-Path : [E4,2, E5,1]
-Destination E5,1 has maxLat of 2,806e-05 s, actual delay is 2,806e-05 s
-F5 : 40 Mbps, 9088 bit
-Path : [E4,2, E5,1]
-Destination E5,1 has maxLat of 2,806e-05 s, actual delay is 2,806e-05 s
-
-Starting priorites:
-     F0 F1 F2 F3 F4 F5 
-E0,1  2  1  3          
-E1,1  2  4  1          
-E2,1  3  3  2          
-E3,1  1  1  4          
-E4,1  4  2  3          
-E4,2           3  2  2 
-E5,1                   
-E5,2                   
-E5,3                   
-
-Jun 13, 2015 8:58:58 PM uni.dc.view.OptimizerGUI generateRandom
-INFORMATION: Generated new network with these streams:
-F0 : 10 Mbps, 1498 bit
-Path : [E0,1, E1,1, E2,2, E3,1, E4,1, E5,1]
-Destination E5,1 has maxLat of 3,860e-05 s, actual delay is 3,860e-05 s
-F1 : 10 Mbps, 3635 bit
-Path : [E0,1, E1,1, E2,2, E3,1, E4,1, E5,1]
-Destination E5,1 has maxLat of 3,978e-05 s, actual delay is 3,978e-05 s
-F2 : 10 Mbps, 1099 bit
-Path : [E0,1, E1,1, E2,2, E3,1, E4,1, E5,1]
-Destination E5,1 has maxLat of 4,101e-05 s, actual delay is 4,101e-05 s
-F3 : 70 Mbps, 4387 bit
-Path : [E3,2, E4,1, E5,1]
-Destination E5,1 has maxLat of 3,725e-05 s, actual delay is 3,725e-05 s
-F4 : 70 Mbps, 1656 bit
-Path : [E3,2, E4,1, E5,1]
-Destination E5,1 has maxLat of 2,980e-05 s, actual delay is 2,980e-05 s
-F5 : 50 Mbps, 7935 bit
-Path : [E3,2, E4,1, E5,1]
-Destination E5,1 has maxLat of 3,555e-05 s, actual delay is 3,555e-05 s
-
-Starting priorites:
-     F0 F1 F2 F3 F4 F5 
-E0,1  1  4  3          
-E1,1  2  3  4          
-E2,1                   
-E2,2  3  4  3          
-E3,1  2  1  4          
-E3,2           4  1  1 
-E4,1  2  2  2  4  2  4 
-E5,1                   
-E5,2                   
-
-Jun 13, 2015 8:59:00 PM uni.dc.view.OptimizerGUI optimize
-INFORMATION: Optimazation started with DifferentialEvolution
-
-Jun 13, 2015 8:59:46 PM uni.dc.view.OptimizerGUI optimize
-INFORMATION: Optimazation failed (in 45,7297 sec)!

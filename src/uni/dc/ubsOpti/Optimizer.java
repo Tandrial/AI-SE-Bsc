@@ -73,7 +73,7 @@ public class Optimizer {
 		HC.setObjectiveFunction(config.getDelayCalc());
 		HC.setNullarySearchOperation(create);
 		HC.setUnarySearchOperation(mutate);
-		testRuns(HC);
+		run(HC);
 		return HC.getTrace();
 	}
 
@@ -84,7 +84,7 @@ public class Optimizer {
 		SA.setNullarySearchOperation(create);
 		SA.setTemperatureSchedule(new Logarithmic(1d));
 		SA.setUnarySearchOperation(mutate);
-		testRuns(SA);
+		run(SA);
 		return SA.getTrace();
 	}
 
@@ -96,7 +96,7 @@ public class Optimizer {
 		GA.setNullarySearchOperation(create);
 		GA.setSelectionAlgorithm(new TournamentSelection(2));
 		GA.setUnarySearchOperation(mutate);
-		testRuns(GA);
+		run(GA);
 		return GA.getTrace();
 	}
 
@@ -106,20 +106,20 @@ public class Optimizer {
 		RW.setObjectiveFunction(config.getDelayCalc());
 		RW.setNullarySearchOperation(create);
 		RW.setUnarySearchOperation(mutate);
-		testRuns(RW);
+		run(RW);
 		return RW.getTrace();
 	}
 
 	@SuppressWarnings("unchecked")
-	private final int[] testRuns(
+	private final int[] run(
 			final ISOOptimizationAlgorithm<?, int[], ?> algorithm) {
 		List<Individual<?, int[]>> solutions;
 		Individual<?, int[]> individual = null;
 		double bestValue = Double.MAX_VALUE;
 
 		UbsDelayTermination term = new UbsDelayTermination(config);
-
 		algorithm.setTerminationCriterion(term);
+		
 		for (int i = 0; i < config.getRuns(); i++) {
 			algorithm.setRandSeed(i + System.currentTimeMillis());
 			solutions = ((List<Individual<?, int[]>>) (algorithm.call()));

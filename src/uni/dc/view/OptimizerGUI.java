@@ -35,8 +35,7 @@ import uni.dc.ubsOpti.UbsOptiConfig;
 public class OptimizerGui extends JFrame {
 	private static final long serialVersionUID = 1L;
 
-	private static final Logger logger = Logger.getLogger(OptimizerGui.class
-			.getName());
+	static final Logger logger = Logger.getLogger(OptimizerGui.class.getName());
 
 	private GraphVizPanel imagePanel;
 	private JLabel statusLabel;
@@ -88,8 +87,8 @@ public class OptimizerGui extends JFrame {
 				if (config.getTopology() == null)
 					return;
 				String fileName;
-				if (NetworkParser.getParser() != null) {
-					fileName = NetworkParser.getParser().getFileName();
+				if (NetworkParser.getParser().getFile() != null) {
+					fileName = NetworkParser.getParser().getFile().getName();
 					fileName = fileName.substring(0, fileName.lastIndexOf("."));
 				} else
 					fileName = "" + config.getTopology();
@@ -392,6 +391,7 @@ public class OptimizerGui extends JFrame {
 
 					FileHandler fh = new FileHandler("./ubsOpti.log");
 					OptimizerGui.logger.addHandler(fh);
+					SettingsGui.logger.addHandler(fh);
 					fh.setFormatter(new SimpleFormatter());
 					gui.setVisible(true);
 				} catch (Exception e) {

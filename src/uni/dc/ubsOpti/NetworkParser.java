@@ -63,8 +63,8 @@ public class NetworkParser {
 		}
 	}
 
-	public String getFileName() {
-		return fileName.getName();
+	public File getFile() {
+		return fileName;
 	}
 
 	public EgressTopology getTopology() {
@@ -229,7 +229,7 @@ public class NetworkParser {
 		String SI = str.replaceAll("[0-9]", "");
 		if (SI.equalsIgnoreCase("ns"))
 			return result / 10e9;
-		else if (SI.equalsIgnoreCase("µs"))
+		else if (SI.equalsIgnoreCase("Âµs"))
 			return result / 10e6;
 		else if (SI.equalsIgnoreCase("ms"))
 			return result / 10e3;

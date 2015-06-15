@@ -13,10 +13,6 @@ public class UbsV3DelayCalc extends UbsDelayCalc {
 
 	private Map<EgressPort, Double[]> maxDelays;
 
-	public UbsV3DelayCalc(Map<EgressPort, Set<Flow>> traffic) {
-		super(traffic);
-	}
-
 	public UbsV3DelayCalc(Set<Flow> traffic) {
 		super(traffic);
 	}
@@ -27,12 +23,12 @@ public class UbsV3DelayCalc extends UbsDelayCalc {
 		for (Flow f : flows) {
 			List<EgressPort> path = f.getPath();
 
-			for (int i = 1; i < path.size(); i++) {
+			for (int i = 1; i < path.size() - 1; i++) {
 				double delay = 0.0;
 				EgressPort lastEgress = path.get(i - 1);
 
 				delay = calcDelay(lastEgress, f);
-				
+
 				if (!maxDelays.containsKey(lastEgress)) {
 					Double[] arr = new Double[2];
 					for (int j = 0; j < arr.length; j++) {
@@ -41,19 +37,21 @@ public class UbsV3DelayCalc extends UbsDelayCalc {
 					maxDelays.put(lastEgress, arr);
 				}
 				double currentMax = maxDelays.get(lastEgress)[prio.getPriority(
-						lastEgress, f) - 1];
+						path.get(i), f) - 1];
 
-				maxDelays.get(lastEgress)[prio.getPriority(lastEgress, f) - 1] = Math
+				maxDelays.get(lastEgress)[prio.getPriority(path.get(i), f) - 1] = Math
 						.max(delay, currentMax);
 			}
 		}
 
 		for (Flow f : flows) {
 			double delay = 0.0d;
-			for (int i = 1; i < f.getPath().size()-1; i++) {
-					delay += maxDelays.get(f.getPath().get(i))[prio.getPriority(f.getPath().get(i), f) - 1];
+			for (int i = 0; i < f.getPath().size() - 2; i++) {
+				Double[] delays = maxDelays.get(f.getPath().get(i));
+				delay += delays[prio.getPriority(f.getPath().get(i), f) - 1];
 			}
-			delay += calcDelay(f.getPath().get(f.getPath().size()-1), f);
+			EgressPort last = f.getPath().get(f.getPath().size() - 2);
+			delay += calcDelay(last, f);
 			f.setDelay(delay);
 		}
 	}

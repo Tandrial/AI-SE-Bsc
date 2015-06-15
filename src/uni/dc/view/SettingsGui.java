@@ -5,6 +5,8 @@ import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
@@ -17,13 +19,17 @@ import javax.swing.SpinnerNumberModel;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
+import uni.dc.model.PriorityConfiguration;
 import uni.dc.ubsOpti.UbsOptiConfig;
 import uni.dc.ubsOpti.delayCalc.UbsV0DelayCalc;
 import uni.dc.ubsOpti.delayCalc.UbsV3DelayCalc;
+import uni.dc.ubsOpti.tracer.TraceCollection;
 
 public class SettingsGui extends JDialog {
 
 	private static final long serialVersionUID = 1L;
+	static final Logger logger = Logger.getLogger(SettingsGui.class.getName());
+
 	private final JPanel contentPanel = new JPanel();
 
 	private JSpinner spDepth;
@@ -190,13 +196,26 @@ public class SettingsGui extends JDialog {
 		config.setRuns((Integer) spRuns.getValue());
 
 		if (rdbtnUbsV0.isSelected() && !config.isUbsV0()) {
-			if (config.getTraffic() != null)
+			if (config.getTraffic() != null) {
 				config.setDelayCalc(new UbsV0DelayCalc(config.getTraffic()));
+				config.getDelayCalc().setPrio(config.getPriorityConfig());
+				config.getDelayCalc().calculateDelays();
+				config.setTraces(new TraceCollection());
+				config.setPriorityConfig(new PriorityConfiguration(config
+						.getTraffic()));
+			}
 			config.setUbsV0(true);
 		} else if (rdbtnUbsV3.isSelected() && config.isUbsV0()) {
-			if (config.getTraffic() != null)
+			if (config.getTraffic() != null) {
 				config.setDelayCalc(new UbsV3DelayCalc(config.getTraffic()));
+				config.getDelayCalc().setPrio(config.getPriorityConfig());
+				config.getDelayCalc().calculateDelays();
+				config.setTraces(new TraceCollection());
+				config.setPriorityConfig(new PriorityConfiguration(config
+						.getTraffic()));
+			}
 			config.setUbsV0(false);
 		}
+		logger.log(Level.INFO, "Config changed:\n" + config);
 	}
 }

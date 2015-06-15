@@ -40,12 +40,12 @@ public class UbsOptiConfig implements Serializable {
 	public String toString() {
 		StringBuilder sb = new StringBuilder();
 		sb.append("NetworkConfig");
+		sb.append("Traffic Model : " + (ubsV0 ? "Ubs V0" : "Ubs V3"));
 		sb.append("\nmaxPrio:" + maxPrio);
 		sb.append("\nmaxSteps per run:" + maxSteps);
 		sb.append("\nRun Count:" + runs);
 		sb.append("\n\nStreams and Delays: \n" + delayCalc);
 		sb.append("\nbest PriorityConfig: \n" + prio);
-
 		return sb.toString();
 	}
 

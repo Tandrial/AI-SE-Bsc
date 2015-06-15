@@ -19,7 +19,7 @@ public class IntVectorMutation extends UnarySearchOperation<int[]> {
 	public final int max;
 
 	/**
-	 * Create a new real-vector operation
+	 * Create a new int-vector operation
 	 *
 	 * @param mi
 	 *            the minimum value of the allele (Definition D4.4) of a gene

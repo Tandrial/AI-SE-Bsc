@@ -17,7 +17,7 @@ public class IntArrayUniformCreation extends IntVectorCreation {
 	private static final long serialVersionUID = 1;
 
 	/**
-	 * Instantiate the real-vector creation operation
+	 * Instantiate the int-vector creation operation
 	 *
 	 * @param dim
 	 *            the dimension of the search space
@@ -43,7 +43,7 @@ public class IntArrayUniformCreation extends IntVectorCreation {
 		int[] g;
 		int i;
 
-		// create a new real vector (genotype, Definition D4.2) of
+		// create a new int vector (genotype, Definition D4.2) of
 		// dimension n
 		g = new int[this.n];
 

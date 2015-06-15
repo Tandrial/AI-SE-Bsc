@@ -21,254 +21,239 @@ import uni.dc.ubsOpti.tracer.Tracable;
 
 /**
  * A straightforward implementation of the Evolutionary Algorithm given in
- * Section 28.1.1 and specified in
- * Algorithm 28.1 with generational population treatment
- * (see Section 28.1.4.1).
+ * Section 28.1.1 and specified in Algorithm 28.1 with generational population
+ * treatment (see Section 28.1.4.1) adapted to be traceable by UbsOpti.
  *
  * @param <G>
- *          the search space (genome, Section 4.1)
+ *            the search space (genome, Section 4.1)
  * @param <X>
- *          the problem space (phenome, Section 2.1)
- * @author Thomas Weise
+ *            the problem space (phenome, Section 2.1)
+ * @author Michael Krane
  */
-public final class SimpleGenerationalTrace<G, X> extends EABase<G, X> implements Tracable{
+public final class SimpleGenerationalTrace<G, X> extends EABase<G, X> implements
+		Tracable {
 
-  /** a constant required by Java serialization */
-  private static final long serialVersionUID = 1;
-  
-  private static DelayTrace delays;
-  private static long step;
+	/** a constant required by Java serialization */
+	private static final long serialVersionUID = 1;
 
-  /** instantiate the simple generational EA */
-  public SimpleGenerationalTrace() {
-    super();
-  }
-  
-  @Override
-  public DelayTrace getTrace() {
-  	return delays;
-  }
+	private static DelayTrace delays;
+	private static long step;
 
-  @Override
-  public void setUpTrace(UbsOptiConfig config) {
-	  delays = new DelayTrace(getName(true), config);
-	  step = 1;
-  }
+	/** instantiate the simple generational EA */
+	public SimpleGenerationalTrace() {
+		super();
+	}
 
-  /**
-   * Perform a simple EA as defined in Algorithm 28.1 while
-   * using a generational population handling (see
-   * Section 28.1.4.1).
-   *
-   * @param f
-   *          the objective function (Definition D2.3)
-   * @param create
-   *          the nullary search operator
-   *          (Section 4.2) for creating the initial
-   *          genotype
-   * @param mutate
-   *          the unary search operator (mutation,
-   *          Section 4.2) for modifying existing
-   *          genotypes
-   * @param recombine
-   *          the recombination operator (Definition D28.14)
-   * @param gpm
-   *          the genotype-phenotype mapping
-   *          (Section 4.3)
-   * @param sel
-   *          the selection algorithm (Section 28.4
-   * @param term
-   *          the termination criterion
-   *          (Section 6.3.3)
-   * @param ps
-   *          the population size
-   * @param mps
-   *          the mating pool size
-   * @param cr
-   *          the crossover rate
-   * @param mr
-   *          the mutation rate
-   * @param r
-   *          the random number generator
-   * @return the individual containing the best candidate solution
-   *         (Definition D2.2) found
-   * @param <G>
-   *          the search space (Section 4.1)
-   * @param <X>
-   *          the problem space (Section 2.1)
-   */
-  @SuppressWarnings("unchecked")
-  public static final <G, X> Individual<G, X> evolutionaryAlgorithm(
-      //
-      final IObjectiveFunction<X> f,
-      final INullarySearchOperation<G> create,//
-      final IUnarySearchOperation<G> mutate,//
-      final IBinarySearchOperation<G> recombine,
-      final IGPM<G, X> gpm,//
-      final ISelectionAlgorithm sel, final int ps, final int mps,
-      final double mr, final double cr, final ITerminationCriterion term,
-      final Random r) {
+	@Override
+	public DelayTrace getTrace() {
+		return delays;
+	}
 
-    Individual<G, X>[] pop, mate;
-    int mateIndex, popIndex, i, j, k;
-    Individual<G, X> p, best;
+	@Override
+	public void setUpTrace(UbsOptiConfig config) {
+		delays = new DelayTrace(getName(true), config);
+		step = 1;
+	}
 
-    best = new Individual<G, X>();
-    best.v = Constants.WORST_FITNESS;
-    pop = new Individual[ps];
-    mate = new Individual[mps];
+	/**
+	 * Perform a simple EA as defined in Algorithm 28.1 while using a
+	 * generational population handling (see Section 28.1.4.1).
+	 *
+	 * @param f
+	 *            the objective function (Definition D2.3)
+	 * @param create
+	 *            the nullary search operator (Section 4.2) for creating the
+	 *            initial genotype
+	 * @param mutate
+	 *            the unary search operator (mutation, Section 4.2) for
+	 *            modifying existing genotypes
+	 * @param recombine
+	 *            the recombination operator (Definition D28.14)
+	 * @param gpm
+	 *            the genotype-phenotype mapping (Section 4.3)
+	 * @param sel
+	 *            the selection algorithm (Section 28.4
+	 * @param term
+	 *            the termination criterion (Section 6.3.3)
+	 * @param ps
+	 *            the population size
+	 * @param mps
+	 *            the mating pool size
+	 * @param cr
+	 *            the crossover rate
+	 * @param mr
+	 *            the mutation rate
+	 * @param r
+	 *            the random number generator
+	 * @return the individual containing the best candidate solution (Definition
+	 *         D2.2) found
+	 * @param <G>
+	 *            the search space (Section 4.1)
+	 * @param <X>
+	 *            the problem space (Section 2.1)
+	 */
+	@SuppressWarnings("unchecked")
+	public static final <G, X> Individual<G, X> evolutionaryAlgorithm(
+			final IObjectiveFunction<X> f,
+			final INullarySearchOperation<G> create,
+			final IUnarySearchOperation<G> mutate,
+			final IBinarySearchOperation<G> recombine, final IGPM<G, X> gpm,
+			final ISelectionAlgorithm sel, final int ps, final int mps,
+			final double mr, final double cr, final ITerminationCriterion term,
+			final Random r) {
 
-    // build the initial population of random individuals
-    for (i = pop.length; (--i) >= 0;) {
-      p = new Individual<G, X>();
-      pop[i] = p;
-      p.g = create.create(r);
-    }
+		Individual<G, X>[] pop, mate;
+		int mateIndex, popIndex, i, j, k;
+		Individual<G, X> p, best;
 
-    // the basic loop of the Evolutionary Algorithm 28.1
-    for (;;) {
-    	step++;
-      // for eachgeneration do...
+		best = new Individual<G, X>();
+		best.v = Constants.WORST_FITNESS;
+		pop = new Individual[ps];
+		mate = new Individual[mps];
 
-      // for each individual in the population
-      for (i = pop.length; (--i) >= 0;) {
-        p = pop[i];
+		// build the initial population of random individuals
+		for (i = pop.length; (--i) >= 0;) {
+			p = new Individual<G, X>();
+			pop[i] = p;
+			p.g = create.create(r);
+		}
 
-        // perform the genotype-phenotype mapping
-        p.x = gpm.gpm(p.g, r);
-        // compute the objective value
-        p.v = f.compute(p.x, r);
+		// the basic loop of the Evolutionary Algorithm 28.1
+		for (;;) {
+			step++;
+			// for eachgeneration do...
 
-        // is the current individual the best one so far?
-        if (p.v < best.v) {
-          best.assign(p);
-          if (delays != null)
-      		delays.addDataPoint(step, best.v,(int[]) best.x);
-        }
+			// for each individual in the population
+			for (i = pop.length; (--i) >= 0;) {
+				p = pop[i];
 
-        // after each objective function evaluation, check if we should
-        // stop
-        if (term.terminationCriterion()) {
-          // if we should stop, return the best individual found
-          	if (delays != null)
-        		delays.addDataPoint(step, best.v, (int[]) best.x);
-            
-          return best;
-        }
-      }
-      
-      // perform the selection step
-      sel.select(pop, 0, pop.length, mate, 0, mate.length, r);
+				// perform the genotype-phenotype mapping
+				p.x = gpm.gpm(p.g, r);
+				// compute the objective value
+				p.v = f.compute(p.x, r);
 
-      mateIndex = 0;
-      popIndex = ps;
+				// is the current individual the best one so far?
+				if (p.v < best.v) {
+					best.assign(p);
+					if (delays != null)
+						delays.addDataPoint(step, best.v, (int[]) best.x);
+				}
 
-      // create cr*ps individuals with crossover
-      k = (int) (0.5 + (cr * ps));
-      for (j = 0; (j < k) && (popIndex > 0); j++) {
-        p = new Individual<G, X>();
+				// after each objective function evaluation, check if we should
+				// stop
+				if (term.terminationCriterion()) {
+					// if we should stop, return the best individual found
+					return best;
+				}
+			}
 
-        // recombine an individual with another
-        p.g = recombine.recombine(mate[mateIndex].g,
-            mate[r.nextInt(mps)].g, r);
-        pop[--popIndex] = p;
-        mateIndex = ((mateIndex + 1) % mps);
-      }
+			// perform the selection step
+			sel.select(pop, 0, pop.length, mate, 0, mate.length, r);
 
-      // create mr*ps individuals with mutation
-      k = (int) (0.5 + (mr * ps));
-      for (j = 0; (j < k) && (popIndex > 0); j++) {
-        p = new Individual<G, X>();
+			mateIndex = 0;
+			popIndex = ps;
 
-        // recombine an individual with another
-        p.g = mutate.mutate(mate[mateIndex].g, r);
-        pop[--popIndex] = p;
-        mateIndex = ((mateIndex + 1) % mps);
-      }
+			// create cr*ps individuals with crossover
+			k = (int) (0.5 + (cr * ps));
+			for (j = 0; (j < k) && (popIndex > 0); j++) {
+				p = new Individual<G, X>();
 
-      // copy the remaining individuals
-      for (; popIndex > 0;) {
-        pop[--popIndex] = mate[mateIndex];
-        mateIndex = ((mateIndex + 1) % mps);
-      }
-    }
-  }
+				// recombine an individual with another
+				p.g = recombine.recombine(mate[mateIndex].g,
+						mate[r.nextInt(mps)].g, r);
+				pop[--popIndex] = p;
+				mateIndex = ((mateIndex + 1) % mps);
+			}
 
-  /**
-   * Invoke the simple ga
-   *
-   * @param r
-   *          the randomizer (will be used directly without setting the
-   *          seed)
-   * @param term
-   *          the termination criterion (will be used directly without
-   *          resetting)
-   * @param result
-   *          a list to which the results are to be appended
-   */
-  @Override
-  public void call(final Random r, final ITerminationCriterion term,
-      final List<Individual<G, X>> result) {
+			// create mr*ps individuals with mutation
+			k = (int) (0.5 + (mr * ps));
+			for (j = 0; (j < k) && (popIndex > 0); j++) {
+				p = new Individual<G, X>();
 
-    result.add(SimpleGenerationalTrace.evolutionaryAlgorithm(//
-        this.getObjectiveFunction(),//
-        this.getNullarySearchOperation(), //
-        this.getUnarySearchOperation(),//
-        this.getBinarySearchOperation(),//
-        this.getGPM(), //
-        this.getSelectionAlgorithm(),//
-        this.getPopulationSize(),//
-        this.getMatingPoolSize(),//
-        this.getMutationRate(),//
-        this.getCrossoverRate(),//
-        term, // //
-        r));
-  }
+				// recombine an individual with another
+				p.g = mutate.mutate(mate[mateIndex].g, r);
+				pop[--popIndex] = p;
+				mateIndex = ((mateIndex + 1) % mps);
+			}
 
-  /**
-   * Get the name of the optimization module
-   *
-   * @param longVersion
-   *          true if the long name should be returned, false if the short
-   *          name should be returned
-   * @return the name of the optimization module
-   */
-  @Override
-  public String getName(final boolean longVersion) {
-    IOptimizationModule om;
-    boolean ga;
+			// copy the remaining individuals
+			for (; popIndex > 0;) {
+				pop[--popIndex] = mate[mateIndex];
+				mateIndex = ((mateIndex + 1) % mps);
+			}
+		}
+	}
 
-    ga = false;
+	/**
+	 * Invoke the simple ga
+	 *
+	 * @param r
+	 *            the randomizer (will be used directly without setting the
+	 *            seed)
+	 * @param term
+	 *            the termination criterion (will be used directly without
+	 *            resetting)
+	 * @param result
+	 *            a list to which the results are to be appended
+	 */
+	@Override
+	public void call(final Random r, final ITerminationCriterion term,
+			final List<Individual<G, X>> result) {
 
-    om = this.getNullarySearchOperation();
-    if (om != null) {
-      if (om.getClass().getCanonicalName().contains("strings.bits.")) { //$NON-NLS-1$
-        ga = true;
-      }
-    } else {
-      om = this.getUnarySearchOperation();
-      if (om != null) {
-        if (om.getClass().getCanonicalName().contains("strings.bits.")) { //$NON-NLS-1$
-          ga = true;
-        }
-      } else {
-        om = this.getBinarySearchOperation();
-        if (om != null) {
-          if (om.getClass().getCanonicalName().contains("strings.bits.")) { //$NON-NLS-1$
-            ga = true;
-          }
-        }
-      }
-    }
+		result.add(SimpleGenerationalTrace.evolutionaryAlgorithm(
+				this.getObjectiveFunction(), this.getNullarySearchOperation(),
+				this.getUnarySearchOperation(),
+				this.getBinarySearchOperation(), this.getGPM(),
+				this.getSelectionAlgorithm(), this.getPopulationSize(),
+				this.getMatingPoolSize(), this.getMutationRate(),
+				this.getCrossoverRate(), term, r));
+	}
 
-    if (ga) {
-      return (longVersion ? "sGeneticAlgorithm" : "sGA");//$NON-NLS-1$//$NON-NLS-2$
-    }
+	/**
+	 * Get the name of the optimization module
+	 *
+	 * @param longVersion
+	 *            true if the long name should be returned, false if the short
+	 *            name should be returned
+	 * @return the name of the optimization module
+	 */
+	@Override
+	public String getName(final boolean longVersion) {
+		IOptimizationModule om;
+		boolean ga;
 
-    if (longVersion) {
-      return this.getClass().getSimpleName();
-    }
-    return "sEA"; //$NON-NLS-1$
-  }
+		ga = false;
+
+		om = this.getNullarySearchOperation();
+		if (om != null) {
+			if (om.getClass().getCanonicalName().contains("strings.bits.")) {
+				ga = true;
+			}
+		} else {
+			om = this.getUnarySearchOperation();
+			if (om != null) {
+				if (om.getClass().getCanonicalName().contains("strings.bits.")) {
+					ga = true;
+				}
+			} else {
+				om = this.getBinarySearchOperation();
+				if (om != null) {
+					if (om.getClass().getCanonicalName()
+							.contains("strings.bits.")) {
+						ga = true;
+					}
+				}
+			}
+		}
+
+		if (ga) {
+			return (longVersion ? "sGeneticAlgorithm" : "sGA");
+		}
+
+		if (longVersion) {
+			return this.getClass().getSimpleName();
+		}
+		return "sEA";
+	}
 
 }

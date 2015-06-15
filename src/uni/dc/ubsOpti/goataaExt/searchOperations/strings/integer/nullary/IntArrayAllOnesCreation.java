@@ -17,7 +17,7 @@ public class IntArrayAllOnesCreation extends IntVectorCreation {
 	private static final long serialVersionUID = 1;
 
 	/**
-	 * Instantiate the real-vector creation operation
+	 * Instantiate the int-vector creation operation
 	 *
 	 * @param dim
 	 *            the dimension of the search space
@@ -31,8 +31,7 @@ public class IntArrayAllOnesCreation extends IntVectorCreation {
 	}
 
 	/**
-	 * This operation just produces uniformly distributed random vectors in the
-	 * interval [this.min, this.max]^this.n
+	 * This operation just produces a [1]^this.n vectors
 	 *
 	 * @param r
 	 *            the random number generator
@@ -43,7 +42,7 @@ public class IntArrayAllOnesCreation extends IntVectorCreation {
 		int[] g;
 
 		// create a new int vector (genotype, Definition D4.2) of
-		// dimension n with all 0s
+		// dimension n with all 1s
 		g = new int[this.n];
 
 		for (int i = 0; i < g.length; i++) {

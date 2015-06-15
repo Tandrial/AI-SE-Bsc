@@ -8,7 +8,7 @@ import org.goataa.spec.IBinarySearchOperation;
 /**
  * A weighted average crossover operator as defined in Section 29.3.4.5.
  *
- * @author Thomas Weise
+ * @author Michael Krane
  */
 public final class IntArrayWeightedMeanCrossover extends
 		BinarySearchOperation<int[]> {
@@ -17,11 +17,11 @@ public final class IntArrayWeightedMeanCrossover extends
 	private static final long serialVersionUID = 1;
 
 	/**
-	 * the globally shared instance of the double array weighted mean crossover
+	 * the globally shared instance of the int array weighted mean crossover
 	 */
 	public static final IBinarySearchOperation<int[]> INT_ARRAY_WEIGHTED_MEAN_CROSSOVER = new IntArrayWeightedMeanCrossover();
 
-	/** Create a new real-vector crossover operation */
+	/** Create a new int-vector crossover operation */
 	protected IntArrayWeightedMeanCrossover() {
 		super();
 	}

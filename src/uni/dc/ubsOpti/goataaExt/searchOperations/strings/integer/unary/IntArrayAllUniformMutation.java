@@ -11,7 +11,7 @@ import uni.dc.ubsOpti.goataaExt.searchOperations.strings.integer.IntVectorMutati
  * Section 53.4.1, Section 53.3.1) random number to each of its genes (see
  * Definition D4.3).
  *
- * @author Thomas Weise
+ * @author Michael Krane
  */
 public final class IntArrayAllUniformMutation extends IntVectorMutation {
 
@@ -52,12 +52,12 @@ public final class IntArrayAllUniformMutation extends IntVectorMutation {
 
 		i = g.length;
 
-		// create a new real vector of dimension n
+		// create a new int vector of dimension n
 		gnew = new int[i];
 
 		// the mutation strength: here we use a constant which is small
 		// compared to the range min...max
-		strength = 0.5d * (this.max - this.min);
+		strength = 0.1d * (this.max - this.min);
 
 		// set each gene Definition D4.3 of gnew to ...
 		for (; (--i) >= 0;) {

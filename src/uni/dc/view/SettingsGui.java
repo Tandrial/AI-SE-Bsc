@@ -30,8 +30,6 @@ public class SettingsGui extends JDialog {
 	private static final long serialVersionUID = 1L;
 	static final Logger logger = Logger.getLogger(SettingsGui.class.getName());
 
-	private final JPanel contentPanel = new JPanel();
-
 	private JSpinner spDepth;
 	private JSpinner spPortCount;
 	private JSpinner spMaxLength;
@@ -46,6 +44,7 @@ public class SettingsGui extends JDialog {
 		setTitle("Settings - UBsOpti");
 		setBounds(100, 100, 195, 325);
 		getContentPane().setLayout(new BorderLayout());
+		JPanel contentPanel = new JPanel();
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
 		contentPanel.setLayout(null);

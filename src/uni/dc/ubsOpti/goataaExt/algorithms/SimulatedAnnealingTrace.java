@@ -18,240 +18,230 @@ import uni.dc.ubsOpti.tracer.DelayTrace;
 import uni.dc.ubsOpti.tracer.Tracable;
 
 /**
- * A simple implementation of the Simulated Annealing algorithm introduced
- * as Algorithm 27.1.
+ * A simple implementation of the Simulated Annealing algorithm introduced as
+ * Algorithm 27.1. adapted to be traceable by UbsOpti
  *
  * @param <G>
- *          the search space (genome, Section 4.1)
+ *            the search space (genome, Section 4.1)
  * @param <X>
- *          the problem space (phenome, Section 2.1)
- * @author Thomas Weise
+ *            the problem space (phenome, Section 2.1)
+ * @author Michael Krane
  */
 public final class SimulatedAnnealingTrace<G, X> extends
-    LocalSearchAlgorithm<G, X, Individual<G, X>> implements Tracable{
+		LocalSearchAlgorithm<G, X, Individual<G, X>> implements Tracable {
 
 	private static DelayTrace delays;
 	private static long step;
-	
-  /** a constant required by Java serialization */
-  private static final long serialVersionUID = 1;
 
-  /** the temperature schedule */
-  private ITemperatureSchedule schedule;
+	/** a constant required by Java serialization */
+	private static final long serialVersionUID = 1;
 
-  /** instantiate the simulated annealing class */
-  public SimulatedAnnealingTrace() {
-    super();
-  }
-  
-  @Override
-  public DelayTrace getTrace() {
-  	return delays;
-  }
+	/** the temperature schedule */
+	private ITemperatureSchedule schedule;
 
-  @Override
-  public void setUpTrace(UbsOptiConfig config) {
-	  delays = new DelayTrace(getName(true), config);
-	  step = 1;
-  }
+	/** instantiate the simulated annealing class */
+	public SimulatedAnnealingTrace() {
+		super();
+	}
 
-  /**
-   * Set the temperature schedule (see
-   * Definition D27.2) which will be responsible for
-   * setting the acceptance probability of inferior candidate solutions
-   * during all optimization steps.
-   *
-   * @param aschedule
-   *          the temperature schedule
-   */
-  public final void setTemperatureSchedule(
-      final ITemperatureSchedule aschedule) {
-    this.schedule = aschedule;
-  }
+	@Override
+	public DelayTrace getTrace() {
+		return delays;
+	}
 
-  /**
-   * Get the temperature schedule (see
-   * Definition D27.2) which is responsible for setting
-   * the acceptance probability of inferior candidate solutions during all
-   * optimization steps.
-   *
-   * @return the temperature schedule
-   */
-  public final ITemperatureSchedule getTemperatureSchedule() {
-    return this.schedule;
-  }
+	@Override
+	public void setUpTrace(UbsOptiConfig config) {
+		delays = new DelayTrace(getName(true), config);
+		step = 1;
+	}
 
-  /**
-   * Invoke the optimization process. This method calls the optimizer and
-   * returns the list of best individuals (see Definition D4.18)
-   * found. Usually, only a single individual will be returned. Different
-   * from the parameterless call method, here a randomizer and a
-   * termination criterion are directly passed in. Also, a list to fill in
-   * the optimization results is provided. This allows recursively using
-   * the optimization algorithms.
-   *
-   * @param r
-   *          the randomizer (will be used directly without setting the
-   *          seed)
-   * @param term
-   *          the termination criterion (will be used directly without
-   *          resetting)
-   * @param result
-   *          a list to which the results are to be appended
-   */
-  @Override
-  public void call(final Random r, final ITerminationCriterion term,
-      final List<Individual<G, X>> result) {
+	/**
+	 * Set the temperature schedule (see Definition D27.2) which will be
+	 * responsible for setting the acceptance probability of inferior candidate
+	 * solutions during all optimization steps.
+	 *
+	 * @param aschedule
+	 *            the temperature schedule
+	 */
+	public final void setTemperatureSchedule(
+			final ITemperatureSchedule aschedule) {
+		this.schedule = aschedule;
+	}
 
-    result.add(SimulatedAnnealingTrace.simulatedAnnealing(//
-        this.getObjectiveFunction(),//
-        this.getNullarySearchOperation(), //
-        this.getUnarySearchOperation(),//
-        this.getGPM(), this.getTemperatureSchedule(),//
-        term, r));
-  }
+	/**
+	 * Get the temperature schedule (see Definition D27.2) which is responsible
+	 * for setting the acceptance probability of inferior candidate solutions
+	 * during all optimization steps.
+	 *
+	 * @return the temperature schedule
+	 */
+	public final ITemperatureSchedule getTemperatureSchedule() {
+		return this.schedule;
+	}
 
-  /**
-   * We place the complete Simulated Annealing method as defined in
-   * Algorithm 27.1 into this single procedure.
-   *
-   * @param f
-   *          the objective function (Definition D2.3)
-   * @param create
-   *          the nullary search operator
-   *          (Section 4.2) for creating the initial
-   *          genotype
-   * @param mutate
-   *          the unary search operator (Section 4.2)
-   *          for modifying existing genotypes
-   * @param gpm
-   *          the genotype-phenotype mapping
-   *          (Section 4.3)
-   * @param temperature
-   *          the temperature schedule according to
-   *          (Definition D27.2
-   * @param term
-   *          the termination criterion
-   *          (Section 6.3.3)
-   * @param r
-   *          the random number generator
-   * @return the best candidate solution
-   *         (Definition D2.2) found
-   * @param <G>
-   *          the search space (Section 4.1)
-   * @param <X>
-   *          the problem space (Section 2.1)
-   */
-  public static final <G, X> Individual<G, X> simulatedAnnealing(
-      //
-      final IObjectiveFunction<X> f,
-      final INullarySearchOperation<G> create,//
-      final IUnarySearchOperation<G> mutate,//
-      final IGPM<G, X> gpm,//
-      final ITemperatureSchedule temperature,
-      final ITerminationCriterion term, final Random r) {
+	/**
+	 * Invoke the optimization process. This method calls the optimizer and
+	 * returns the list of best individuals (see Definition D4.18) found.
+	 * Usually, only a single individual will be returned. Different from the
+	 * parameterless call method, here a randomizer and a termination criterion
+	 * are directly passed in. Also, a list to fill in the optimization results
+	 * is provided. This allows recursively using the optimization algorithms.
+	 *
+	 * @param r
+	 *            the randomizer (will be used directly without setting the
+	 *            seed)
+	 * @param term
+	 *            the termination criterion (will be used directly without
+	 *            resetting)
+	 * @param result
+	 *            a list to which the results are to be appended
+	 */
+	@Override
+	public void call(final Random r, final ITerminationCriterion term,
+			final List<Individual<G, X>> result) {
 
-    Individual<G, X> pbest, pcur, pnew;
-    int t;
-    double T, DE;
+		result.add(SimulatedAnnealingTrace.simulatedAnnealing(//
+				this.getObjectiveFunction(),//
+				this.getNullarySearchOperation(), //
+				this.getUnarySearchOperation(),//
+				this.getGPM(), this.getTemperatureSchedule(),//
+				term, r));
+	}
 
-    pbest = new Individual<G, X>();
-    pnew = new Individual<G, X>();
-    pcur = new Individual<G, X>();
+	/**
+	 * We place the complete Simulated Annealing method as defined in Algorithm
+	 * 27.1 into this single procedure.
+	 *
+	 * @param f
+	 *            the objective function (Definition D2.3)
+	 * @param create
+	 *            the nullary search operator (Section 4.2) for creating the
+	 *            initial genotype
+	 * @param mutate
+	 *            the unary search operator (Section 4.2) for modifying existing
+	 *            genotypes
+	 * @param gpm
+	 *            the genotype-phenotype mapping (Section 4.3)
+	 * @param temperature
+	 *            the temperature schedule according to (Definition D27.2
+	 * @param term
+	 *            the termination criterion (Section 6.3.3)
+	 * @param r
+	 *            the random number generator
+	 * @return the best candidate solution (Definition D2.2) found
+	 * @param <G>
+	 *            the search space (Section 4.1)
+	 * @param <X>
+	 *            the problem space (Section 2.1)
+	 */
+	public static final <G, X> Individual<G, X> simulatedAnnealing(
+			final IObjectiveFunction<X> f,
+			final INullarySearchOperation<G> create,
+			final IUnarySearchOperation<G> mutate, final IGPM<G, X> gpm,
+			final ITemperatureSchedule temperature,
+			final ITerminationCriterion term, final Random r) {
 
-    // create the first genotype, map it to a phenotype, and evaluate it
-    pcur.g = create.create(r);
-    pcur.x = gpm.gpm(pcur.g, r);
-    pcur.v = f.compute(pcur.x, r);
-    pbest.assign(pcur);
-    t = 1;
-	if (delays != null)
-		delays.addDataPoint(step, pbest.v, (int[]) pbest.x);
+		Individual<G, X> pbest, pcur, pnew;
+		int t;
+		double T, DE;
 
-    // check the termination criterion
-    while (!(term.terminationCriterion())) {
-      step++;
+		pbest = new Individual<G, X>();
+		pnew = new Individual<G, X>();
+		pcur = new Individual<G, X>();
 
-      // compute the current temperature
-      T = temperature.getTemperature(t);
+		// create the first genotype, map it to a phenotype, and evaluate it
+		pcur.g = create.create(r);
+		pcur.x = gpm.gpm(pcur.g, r);
+		pcur.v = f.compute(pcur.x, r);
+		pbest.assign(pcur);
+		t = 1;
+		if (delays != null)
+			delays.addDataPoint(step, pbest.v, (int[]) pbest.x);
 
-      // modify the best point known, map the new point to a phenotype and
-      // evaluat it
-      pnew.g = mutate.mutate(pcur.g, r);
-      pnew.x = gpm.gpm(pnew.g, r);
-      pnew.v = f.compute(pnew.x, r);
+		// check the termination criterion
+		while (!(term.terminationCriterion())) {
+			step++;
 
-      // compute the energy difference according to
-      // Equation 27.2
-      DE = pnew.v - pcur.v;
+			// compute the current temperature
+			T = temperature.getTemperature(t);
 
-      // implement Equation 27.3
-      if (DE <= 0.0d) {
-        pcur.assign(pnew);
+			// modify the best point known, map the new point to a phenotype and
+			// evaluat it
+			pnew.g = mutate.mutate(pcur.g, r);
+			pnew.x = gpm.gpm(pnew.g, r);
+			pnew.v = f.compute(pnew.x, r);
 
-        // remember the best candidate solution
-        if (pnew.v < pbest.v) {
-          pbest.assign(pnew);
-      	if (delays != null)
-    		delays.addDataPoint(step, pbest.v, (int[]) pbest.x);
-        }
-      } else {
-        // otherwise, use
-        if (r.nextDouble() < Math.exp(-DE / T)) {
-          pcur.assign(pnew);
-        }
-      }
+			// compute the energy difference according to
+			// Equation 27.2
+			DE = pnew.v - pcur.v;
 
-      t++;
-    }
+			// implement Equation 27.3
+			if (DE <= 0.0d) {
+				pcur.assign(pnew);
 
-    return pbest;
-  }
+				// remember the best candidate solution
+				if (pnew.v < pbest.v) {
+					pbest.assign(pnew);
+					if (delays != null)
+						delays.addDataPoint(step, pbest.v, (int[]) pbest.x);
+				}
+			} else {
+				// otherwise, use
+				if (r.nextDouble() < Math.exp(-DE / T)) {
+					pcur.assign(pnew);
+				}
+			}
 
-  /**
-   * Get the name of the optimization module
-   *
-   * @param longVersion
-   *          true if the long name should be returned, false if the short
-   *          name should be returned
-   * @return the name of the optimization module
-   */
-  @Override
-  public String getName(final boolean longVersion) {
-    ITemperatureSchedule ts;
+			t++;
+		}
 
-    ts = this.getTemperatureSchedule();
+		return pbest;
+	}
 
-    if (ts instanceof Exponential) {
-      return (longVersion ? "SimulatedQuenching" : "SQ");//$NON-NLS-1$//$NON-NLS-2$
-    }
+	/**
+	 * Get the name of the optimization module
+	 *
+	 * @param longVersion
+	 *            true if the long name should be returned, false if the short
+	 *            name should be returned
+	 * @return the name of the optimization module
+	 */
+	@Override
+	public String getName(final boolean longVersion) {
+		ITemperatureSchedule ts;
 
-    if (longVersion) {
-      return this.getClass().getSimpleName();
-    }
-    return "SA"; //$NON-NLS-1$
-  }
+		ts = this.getTemperatureSchedule();
 
-  /**
-   * Get the full configuration which holds all the data necessary to
-   * describe this object.
-   *
-   * @param longVersion
-   *          true if the long version should be returned, false if the
-   *          short version should be returned
-   * @return the full configuration
-   */
-  @Override
-  public String getConfiguration(final boolean longVersion) {
-    ITemperatureSchedule ts;
-    String s;
+		if (ts instanceof Exponential) {
+			return (longVersion ? "SimulatedQuenching" : "SQ");
+		}
 
-    s = super.getConfiguration(longVersion);
-    ts = this.getTemperatureSchedule();
-    if (ts != null) {
-      s += ',' + ts.toString(longVersion);
-    }
+		if (longVersion) {
+			return this.getClass().getSimpleName();
+		}
+		return "SA";
+	}
 
-    return s;
-  }
+	/**
+	 * Get the full configuration which holds all the data necessary to describe
+	 * this object.
+	 *
+	 * @param longVersion
+	 *            true if the long version should be returned, false if the
+	 *            short version should be returned
+	 * @return the full configuration
+	 */
+	@Override
+	public String getConfiguration(final boolean longVersion) {
+		ITemperatureSchedule ts;
+		String s;
+
+		s = super.getConfiguration(longVersion);
+		ts = this.getTemperatureSchedule();
+		if (ts != null) {
+			s += ',' + ts.toString(longVersion);
+		}
+
+		return s;
+	}
 }

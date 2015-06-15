@@ -390,9 +390,10 @@ public class OptimizerGui extends JFrame {
 					RefineryUtilities.centerFrameOnScreen(gui);
 
 					FileHandler fh = new FileHandler("./ubsOpti.log");
+					fh.setFormatter(new SimpleFormatter());
+					
 					OptimizerGui.logger.addHandler(fh);
 					SettingsGui.logger.addHandler(fh);
-					fh.setFormatter(new SimpleFormatter());
 					gui.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();

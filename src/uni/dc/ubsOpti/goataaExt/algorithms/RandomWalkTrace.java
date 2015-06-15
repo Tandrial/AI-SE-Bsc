@@ -17,13 +17,13 @@ import uni.dc.ubsOpti.tracer.Tracable;
 
 /**
  * A simple implementation of the Random Walk algorithm introduced as Algorithm
- * 8.2.
+ * 8.2. adapted to be traceable by UbsOpti
  *
  * @param <G>
  *            the search space (genome, Section 4.1)
  * @param <X>
  *            the problem space (phenome, Section 2.1)
- * @author Thomas Weise
+ * @author Michael Krane
  */
 public final class RandomWalkTrace<G, X> extends
 		LocalSearchAlgorithm<G, X, Individual<G, X>> implements Tracable {
@@ -65,11 +65,9 @@ public final class RandomWalkTrace<G, X> extends
 	@Override
 	public void call(final Random r, final ITerminationCriterion term,
 			final List<Individual<G, X>> result) {
-
-		result.add(RandomWalkTrace.randomWalk(this.getObjectiveFunction(),//
-				this.getNullarySearchOperation(), //
-				this.getUnarySearchOperation(),//
-				this.getGPM(), term, r));
+		result.add(RandomWalkTrace.randomWalk(this.getObjectiveFunction(),
+				this.getNullarySearchOperation(),
+				this.getUnarySearchOperation(), this.getGPM(), term, r));
 	}
 
 	/**
@@ -98,11 +96,9 @@ public final class RandomWalkTrace<G, X> extends
 	 *            the problem space (Section 2.1)
 	 */
 	public static final <G, X> Individual<G, X> randomWalk(
-			//
 			final IObjectiveFunction<X> f,
-			final INullarySearchOperation<G> create,//
-			final IUnarySearchOperation<G> mutate,//
-			final IGPM<G, X> gpm,//
+			final INullarySearchOperation<G> create,
+			final IUnarySearchOperation<G> mutate, final IGPM<G, X> gpm,
 			final ITerminationCriterion term, final Random r) {
 
 		Individual<G, X> p, pbest;
@@ -153,6 +149,6 @@ public final class RandomWalkTrace<G, X> extends
 		if (longVersion) {
 			return this.getClass().getSimpleName();
 		}
-		return "RW"; //$NON-NLS-1$
+		return "RW";
 	}
 }

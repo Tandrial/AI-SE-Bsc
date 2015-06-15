@@ -121,7 +121,7 @@ public class Optimizer {
 
 		algorithm.setTerminationCriterion(term);
 		for (int i = 0; i < config.getRuns(); i++) {
-			algorithm.setRandSeed(i);
+			algorithm.setRandSeed(i + System.currentTimeMillis());
 			solutions = ((List<Individual<?, int[]>>) (algorithm.call()));
 			if (solutions.get(0).v < bestValue) {
 				individual = solutions.get(0);

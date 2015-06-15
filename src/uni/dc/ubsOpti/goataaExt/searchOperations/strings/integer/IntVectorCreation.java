@@ -20,7 +20,7 @@ public class IntVectorCreation extends FixedLengthStringCreation<int[]> {
 	public final int max;
 
 	/**
-	 * Create a new real-vector operation
+	 * Create a new int-vector operation
 	 *
 	 * @param dim
 	 *            the dimension of the search space

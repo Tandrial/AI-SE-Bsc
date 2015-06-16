@@ -1,1 +1,8 @@
 TODO
+
+-BatchMode
+	Massen von Daten erzeugen
+		x verschiedene Topos mit y verschiedenen Stream Layouts
+		Alle x Kombinationen durchrechnen mit UBS v0/v3 Traces speichern mit 
+		[x]_[y]_Algo
+		hoffen das ein Algo besonders gut.

@@ -3,7 +3,6 @@ package uni.dc.ubsOpti.goataaExt.algorithms;
 import java.util.List;
 import java.util.Random;
 
-import org.goataa.impl.algorithms.ea.EABase;
 import org.goataa.impl.utils.Constants;
 import org.goataa.impl.utils.Individual;
 import org.goataa.spec.IBinarySearchOperation;
@@ -14,10 +13,6 @@ import org.goataa.spec.IOptimizationModule;
 import org.goataa.spec.ISelectionAlgorithm;
 import org.goataa.spec.ITerminationCriterion;
 import org.goataa.spec.IUnarySearchOperation;
-
-import uni.dc.ubsOpti.UbsOptiConfig;
-import uni.dc.ubsOpti.tracer.DelayTrace;
-import uni.dc.ubsOpti.tracer.Tracable;
 
 /**
  * A straightforward implementation of the Evolutionary Algorithm given in
@@ -30,29 +25,15 @@ import uni.dc.ubsOpti.tracer.Tracable;
  *            the problem space (phenome, Section 2.1)
  * @author Michael Krane
  */
-public final class SimpleGenerationalTrace<G, X> extends EABase<G, X> implements
-		Tracable {
+public final class SimpleGenerationalTraceable<G, X> extends
+		EABaseTracable<G, X> {
 
 	/** a constant required by Java serialization */
 	private static final long serialVersionUID = 1;
 
-	private static DelayTrace delays;
-	private static long step;
-
 	/** instantiate the simple generational EA */
-	public SimpleGenerationalTrace() {
+	public SimpleGenerationalTraceable() {
 		super();
-	}
-
-	@Override
-	public DelayTrace getTrace() {
-		return delays;
-	}
-
-	@Override
-	public void setUpTrace(UbsOptiConfig config) {
-		delays = new DelayTrace(getName(true), config);
-		step = 1;
 	}
 
 	/**
@@ -200,7 +181,7 @@ public final class SimpleGenerationalTrace<G, X> extends EABase<G, X> implements
 	public void call(final Random r, final ITerminationCriterion term,
 			final List<Individual<G, X>> result) {
 
-		result.add(SimpleGenerationalTrace.evolutionaryAlgorithm(
+		result.add(SimpleGenerationalTraceable.evolutionaryAlgorithm(
 				this.getObjectiveFunction(), this.getNullarySearchOperation(),
 				this.getUnarySearchOperation(),
 				this.getBinarySearchOperation(), this.getGPM(),

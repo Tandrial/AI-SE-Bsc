@@ -113,6 +113,7 @@ public class Optimizer {
 			solutions = ((List<Individual<?, int[]>>) (algorithm.call()));
 			if (solutions.get(0).v < bestValue) {
 				individual = solutions.get(0);
+				bestValue = individual.v;
 			}
 			if (term.foundDelay())
 				return individual.x;

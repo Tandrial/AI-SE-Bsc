@@ -90,6 +90,8 @@ public final class RandomWalkTraceTraceable<G, X> extends
 
 		// create the first genotype, map it to a phenotype, and evaluate it
 		p.g = create.create(r);
+		p.x = gpm.gpm(p.g, r);
+		p.v = f.compute(p.x, r);
 		t = 1;
 
 		// check the termination criterion

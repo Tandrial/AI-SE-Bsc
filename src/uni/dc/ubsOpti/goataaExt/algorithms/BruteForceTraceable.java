@@ -22,6 +22,17 @@ public class BruteForceTraceable implements Traceable {
 		this.delayCalc = delayCalc;
 	}
 
+	@Override
+	public DelayTrace getTrace() {
+		return delays;
+	}
+
+	@Override
+	public void setUpTrace(UbsOptiConfig config) {
+		delays = new DelayTrace("BruteForce", config);
+		step = 1;
+	}
+
 	public int[] optimize(PriorityConfiguration prio, int maxPrio) {
 		bestPrio = prio.toIntArray();
 		minDelay = delayCalc.compute(bestPrio, null);
@@ -49,16 +60,5 @@ public class BruteForceTraceable implements Traceable {
 				genPermutations(n, pos + 1, max);
 			}
 		}
-	}
-
-	@Override
-	public DelayTrace getTrace() {
-		return delays;
-	}
-
-	@Override
-	public void setUpTrace(UbsOptiConfig config) {
-		delays = new DelayTrace("BruteForce", config);
-		step = 1;
 	}
 }

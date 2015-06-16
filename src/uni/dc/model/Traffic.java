@@ -17,7 +17,7 @@ import uni.dc.util.HSLColorGenerator;
 public class Traffic extends LinkedHashSet<Flow> implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private EgressTopology topology;
-	
+
 	public Traffic(EgressTopology topology) {
 		super();
 		this.topology = topology;
@@ -37,19 +37,14 @@ public class Traffic extends LinkedHashSet<Flow> implements Serializable {
 		for (Flow f : this) {
 			EgressPort srcPort = f.getSrcPort();
 
-			UbsDestParameters maxLat = new UbsDestParameters(0);
-			if (f.getDestPortParameter() != null)
-				maxLat = f.getDestPortParameter();
 			List<EgressPort> path;
-
 			if (srcPort.getNode() == null) {
 				path = topology.getPath(srcPort, f.getDestPort());
 			} else {
 				path = topology.getPath(srcPort.getNode(), f.getDestPort()
 						.getNode(), new LinkedHashSet<Node>());
 			}
-			f.setDestPortParameter(maxLat);
-			f.getDestPortParameter().setPath(path);
+			f.setPath(path);
 			for (EgressPort p : path)
 				rv.get(p).add(f);
 		}

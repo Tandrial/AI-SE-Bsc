@@ -23,7 +23,6 @@ import uni.dc.model.Flow;
 import uni.dc.model.Node;
 import uni.dc.model.PriorityConfiguration;
 import uni.dc.model.Traffic;
-import uni.dc.model.UbsDestParameters;
 import uni.dc.ubsOpti.delayCalc.UbsDelayCalc;
 import uni.dc.ubsOpti.delayCalc.UbsV0DelayCalc;
 import uni.dc.ubsOpti.tracer.TraceCollection;
@@ -138,7 +137,7 @@ public class NetworkParser {
 
 			for (EgressPort p : topology.getLinkMap().get(lastEgress)) {
 				flow.setDestPort(p);
-				flow.setDestPortParameter(new UbsDestParameters(maxLatency));
+				flow.setMaxLatency(maxLatency);
 			}
 
 			for (EgressPort p : path) {

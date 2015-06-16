@@ -10,9 +10,13 @@ public class Flow implements Serializable {
 	private String name;
 	private double rate;
 	private int maxFrameLength;
+	private double maxLatency = 0.0d;
+
 	private EgressPort srcPort;
 	private EgressPort destPort;
-	private UbsDestParameters destPortParameter;
+	private List<EgressPort> path;
+	private double delay = 0.0d;
+
 	private EgressTopology topology;
 
 	public String getName() {
@@ -39,6 +43,14 @@ public class Flow implements Serializable {
 		this.maxFrameLength = maxFrameLength;
 	}
 
+	public double getMaxLatency() {
+		return maxLatency;
+	}
+
+	public void setMaxLatency(double maxLatency) {
+		this.maxLatency = maxLatency;
+	}
+
 	public EgressPort getSrcPort() {
 		return srcPort;
 	}
@@ -55,12 +67,20 @@ public class Flow implements Serializable {
 		this.destPort = destPort;
 	}
 
-	public UbsDestParameters getDestPortParameter() {
-		return destPortParameter;
+	public List<EgressPort> getPath() {
+		return path;
 	}
 
-	public void setDestPortParameter(UbsDestParameters destPortParameter) {
-		this.destPortParameter = destPortParameter;
+	public void setPath(List<EgressPort> path) {
+		this.path = path;
+	}
+
+	public double getDelay() {
+		return delay;
+	}
+
+	public void setDelay(double delay) {
+		this.delay = delay;
 	}
 
 	public EgressTopology getTopology() {
@@ -71,29 +91,16 @@ public class Flow implements Serializable {
 		this.topology = topology;
 	}
 
-	public void setInitialMaxLatencyRequirement() {
-		destPortParameter
-				.setMaxLatencyRequirement(destPortParameter.getDelay());
-	}
-
-	public List<EgressPort> getPath() {
-		return destPortParameter.getPath();
-	}
-
-	public double getDelay() {
-		return destPortParameter.getDelay();
-	}
-
-	public void setDelay(double delay) {
-		destPortParameter.setDelay(delay);
-	}
-
 	public boolean checkDelay() {
-		return destPortParameter.checkDelay();
+		return maxLatency == -1 || maxLatency >= delay;
 	}
 
 	@Override
 	public String toString() {
-		return Arrays.toString(destPortParameter.getPath().toArray());
+		return Arrays.toString(path.toArray());
+	}
+
+	public void setInitialMaxLatencyRequirement() {
+		this.maxLatency = this.delay;
 	}
 }

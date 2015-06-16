@@ -17,7 +17,6 @@ import uni.dc.model.Traffic;
 public class RandomMulticastPathGenerator {
 
 	private EgressTopology topology;
-
 	private Random rng;
 
 	private int minFlowPerPort = 0;

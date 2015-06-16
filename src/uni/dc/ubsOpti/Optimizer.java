@@ -8,6 +8,7 @@ import org.goataa.impl.utils.Individual;
 import org.goataa.spec.INullarySearchOperation;
 import org.goataa.spec.IUnarySearchOperation;
 
+import uni.dc.ubsOpti.goataaExt.algorithms.BackTrackingTraceable;
 import uni.dc.ubsOpti.goataaExt.algorithms.BruteForceTraceable;
 import uni.dc.ubsOpti.goataaExt.algorithms.HillClimbingTraceable;
 import uni.dc.ubsOpti.goataaExt.algorithms.LocalSearchAlgorithmTraceable;
@@ -45,6 +46,8 @@ public class Optimizer {
 		DelayTrace trace = null;
 		if (selectedAlgo.equals("BruteForce")) {
 			trace = optimizeBruteForce();
+		} else if (selectedAlgo.equals("BackTrack")) {
+			trace = optimizeBackTrack();
 		} else if (selectedAlgo.equals("SimulatedAnnealing")) {
 			trace = optimizeSimulatedAnnealing();
 		} else if (selectedAlgo.equals("HillClimbing")) {
@@ -65,6 +68,13 @@ public class Optimizer {
 		BF.setUpTrace(config);
 		BF.optimize(config.getPriorityConfig(), config.getMaxPrio());
 		return BF.getTrace();
+	}
+
+	private DelayTrace optimizeBackTrack() {
+		BackTrackingTraceable BT = new BackTrackingTraceable(config);
+		BT.setUpTrace(config);
+		BT.optimize(config.getPriorityConfig(), config.getMaxPrio());
+		return BT.getTrace();
 	}
 
 	private DelayTrace optimizeHillClimbing() {

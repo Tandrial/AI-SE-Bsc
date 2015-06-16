@@ -138,6 +138,15 @@ public class OptimizerGui extends JFrame {
 			}
 		});
 		mnOptimize.add(mntmBF);
+		
+		JMenuItem mntmBT = new JMenuItem("BackTrack");
+		mntmBT.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				optimize("BackTrack");
+			}
+		});
+		mnOptimize.add(mntmBT);
 
 		JMenuItem mntmHC = new JMenuItem("Hillclimbing");
 		mntmHC.addActionListener(new ActionListener() {

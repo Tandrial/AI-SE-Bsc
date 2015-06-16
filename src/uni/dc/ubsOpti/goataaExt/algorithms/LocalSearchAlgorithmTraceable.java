@@ -10,7 +10,7 @@ import org.goataa.spec.IUnarySearchOperation;
 
 import uni.dc.ubsOpti.UbsOptiConfig;
 import uni.dc.ubsOpti.tracer.DelayTrace;
-import uni.dc.ubsOpti.tracer.Tracable;
+import uni.dc.ubsOpti.tracer.Traceable;
 
 /**
  * A simple local search algorithm which has a nullary and a unary search
@@ -25,7 +25,7 @@ import uni.dc.ubsOpti.tracer.Tracable;
  * @author Michael Krane
  */
 public class LocalSearchAlgorithmTraceable<G, X, IT extends Individual<G, X>>
-		extends SOOptimizationAlgorithm<G, X, IT> implements Tracable {
+		extends SOOptimizationAlgorithm<G, X, IT> implements Traceable {
 	/** a constant required by Java serialization */
 	private static final long serialVersionUID = 1;
 

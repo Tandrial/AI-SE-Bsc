@@ -12,7 +12,7 @@ import org.goataa.spec.IUnarySearchOperation;
 
 import uni.dc.ubsOpti.UbsOptiConfig;
 import uni.dc.ubsOpti.tracer.DelayTrace;
-import uni.dc.ubsOpti.tracer.Tracable;
+import uni.dc.ubsOpti.tracer.Traceable;
 
 /**
  * A simple implementation of the Hill Climbing algorithm introduced as
@@ -25,7 +25,7 @@ import uni.dc.ubsOpti.tracer.Tracable;
  * @author Michael Krane
  */
 public final class HillClimbingTraceable<G, X> extends
-		LocalSearchAlgorithmTraceable<G, X, Individual<G, X>> implements Tracable {
+		LocalSearchAlgorithmTraceable<G, X, Individual<G, X>> implements Traceable {
 
 	private static DelayTrace delays;
 	private static long step;

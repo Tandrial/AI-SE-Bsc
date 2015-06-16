@@ -48,5 +48,4 @@ public class Pair<L, R> {
 			return false;
 		return true;
 	}
-
 }

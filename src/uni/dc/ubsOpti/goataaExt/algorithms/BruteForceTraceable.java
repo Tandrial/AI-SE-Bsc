@@ -6,9 +6,9 @@ import uni.dc.model.PriorityConfiguration;
 import uni.dc.ubsOpti.UbsOptiConfig;
 import uni.dc.ubsOpti.delayCalc.UbsDelayCalc;
 import uni.dc.ubsOpti.tracer.DelayTrace;
-import uni.dc.ubsOpti.tracer.Tracable;
+import uni.dc.ubsOpti.tracer.Traceable;
 
-public class BruteForceTraceable implements Tracable {
+public class BruteForceTraceable implements Traceable {
 	private UbsDelayCalc delayCalc;
 	private int[] bestPrio;
 	private double minDelay = Double.MAX_VALUE;

@@ -8,7 +8,7 @@ import uni.dc.ubsOpti.delayCalc.UbsDelayCalc;
 import uni.dc.ubsOpti.tracer.DelayTrace;
 import uni.dc.ubsOpti.tracer.Tracable;
 
-public class BruteForceTrace implements Tracable {
+public class BruteForceTraceable implements Tracable {
 	private UbsDelayCalc delayCalc;
 	private int[] bestPrio;
 	private double minDelay = Double.MAX_VALUE;
@@ -18,7 +18,7 @@ public class BruteForceTrace implements Tracable {
 
 	private boolean stopRecursion = false;
 
-	public BruteForceTrace(UbsDelayCalc delayCalc) {
+	public BruteForceTraceable(UbsDelayCalc delayCalc) {
 		this.delayCalc = delayCalc;
 	}
 

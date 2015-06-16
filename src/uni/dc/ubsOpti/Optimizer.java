@@ -6,14 +6,14 @@ import org.goataa.impl.algorithms.ea.selection.TournamentSelection;
 import org.goataa.impl.algorithms.sa.temperatureSchedules.Logarithmic;
 import org.goataa.impl.utils.Individual;
 import org.goataa.spec.INullarySearchOperation;
-import org.goataa.spec.ISOOptimizationAlgorithm;
 import org.goataa.spec.IUnarySearchOperation;
 
-import uni.dc.ubsOpti.goataaExt.algorithms.BruteForceTrace;
-import uni.dc.ubsOpti.goataaExt.algorithms.HillClimbingTrace;
-import uni.dc.ubsOpti.goataaExt.algorithms.RandomWalkTrace;
-import uni.dc.ubsOpti.goataaExt.algorithms.SimpleGenerationalTrace;
-import uni.dc.ubsOpti.goataaExt.algorithms.SimulatedAnnealingTrace;
+import uni.dc.ubsOpti.goataaExt.algorithms.BruteForceTraceable;
+import uni.dc.ubsOpti.goataaExt.algorithms.HillClimbingTraceable;
+import uni.dc.ubsOpti.goataaExt.algorithms.LocalSearchAlgorithmTraceable;
+import uni.dc.ubsOpti.goataaExt.algorithms.RandomWalkTraceTraceable;
+import uni.dc.ubsOpti.goataaExt.algorithms.SimpleGenerationalTraceable;
+import uni.dc.ubsOpti.goataaExt.algorithms.SimulatedAnnealingTraceable;
 import uni.dc.ubsOpti.goataaExt.searchOperations.strings.integer.binary.IntArrayWeightedMeanCrossover;
 import uni.dc.ubsOpti.goataaExt.searchOperations.strings.integer.nullary.IntArrayAllOnesCreation;
 import uni.dc.ubsOpti.goataaExt.searchOperations.strings.integer.unary.IntArrayAllNormalMutation;
@@ -61,65 +61,53 @@ public class Optimizer {
 	}
 
 	private DelayTrace optimizeBruteForce() {
-		BruteForceTrace BF = new BruteForceTrace(config.getDelayCalc());
+		BruteForceTraceable BF = new BruteForceTraceable(config.getDelayCalc());
 		BF.setUpTrace(config);
 		BF.optimize(config.getPriorityConfig(), config.getMaxPrio());
 		return BF.getTrace();
 	}
 
 	private DelayTrace optimizeHillClimbing() {
-		HillClimbingTrace<int[], int[]> HC = new HillClimbingTrace<int[], int[]>();
-		HC.setUpTrace(config);
-		HC.setObjectiveFunction(config.getDelayCalc());
-		HC.setNullarySearchOperation(create);
-		HC.setUnarySearchOperation(mutate);
+		HillClimbingTraceable<int[], int[]> HC = new HillClimbingTraceable<int[], int[]>();
 		run(HC);
 		return HC.getTrace();
 	}
 
 	private DelayTrace optimizeSimulatedAnnealing() {
-		SimulatedAnnealingTrace<int[], int[]> SA = new SimulatedAnnealingTrace<int[], int[]>();
-		SA.setUpTrace(config);
-		SA.setObjectiveFunction(config.getDelayCalc());
-		SA.setNullarySearchOperation(create);
+		SimulatedAnnealingTraceable<int[], int[]> SA = new SimulatedAnnealingTraceable<int[], int[]>();
 		SA.setTemperatureSchedule(new Logarithmic(1d));
-		SA.setUnarySearchOperation(mutate);
 		run(SA);
 		return SA.getTrace();
 	}
 
 	private DelayTrace optimizeSimpleGenerationalEA() {
-		SimpleGenerationalTrace<int[], int[]> GA = new SimpleGenerationalTrace<int[], int[]>();
-		GA.setUpTrace(config);
+		SimpleGenerationalTraceable<int[], int[]> GA = new SimpleGenerationalTraceable<int[], int[]>();
 		GA.setBinarySearchOperation(IntArrayWeightedMeanCrossover.INT_ARRAY_WEIGHTED_MEAN_CROSSOVER);
-		GA.setObjectiveFunction(config.getDelayCalc());
-		GA.setNullarySearchOperation(create);
 		GA.setSelectionAlgorithm(new TournamentSelection(2));
-		GA.setUnarySearchOperation(mutate);
 		run(GA);
 		return GA.getTrace();
 	}
 
 	private DelayTrace optimizeRandomWalk() {
-		RandomWalkTrace<int[], int[]> RW = new RandomWalkTrace<int[], int[]>();
-		RW.setUpTrace(config);
-		RW.setObjectiveFunction(config.getDelayCalc());
-		RW.setNullarySearchOperation(create);
-		RW.setUnarySearchOperation(mutate);
+		RandomWalkTraceTraceable<int[], int[]> RW = new RandomWalkTraceTraceable<int[], int[]>();
 		run(RW);
 		return RW.getTrace();
 	}
 
 	@SuppressWarnings("unchecked")
 	private final int[] run(
-			final ISOOptimizationAlgorithm<?, int[], ?> algorithm) {
+			final LocalSearchAlgorithmTraceable<int[], int[], ?> algorithm) {
 		List<Individual<?, int[]>> solutions;
 		Individual<?, int[]> individual = null;
 		double bestValue = Double.MAX_VALUE;
 
 		UbsDelayTermination term = new UbsDelayTermination(config);
+		algorithm.setObjectiveFunction(config.getDelayCalc());
 		algorithm.setTerminationCriterion(term);
-		
+		algorithm.setUpTrace(config);
+		algorithm.setNullarySearchOperation(create);
+		algorithm.setUnarySearchOperation(mutate);
+
 		for (int i = 0; i < config.getRuns(); i++) {
 			algorithm.setRandSeed(i + System.currentTimeMillis());
 			solutions = ((List<Individual<?, int[]>>) (algorithm.call()));

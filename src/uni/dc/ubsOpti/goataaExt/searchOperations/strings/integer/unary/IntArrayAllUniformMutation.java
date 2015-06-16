@@ -57,7 +57,7 @@ public final class IntArrayAllUniformMutation extends IntVectorMutation {
 
 		// the mutation strength: here we use a constant which is small
 		// compared to the range min...max
-		strength = 0.1d * (this.max - this.min);
+		strength = 0.5d * (this.max - this.min);
 
 		// set each gene Definition D4.3 of gnew to ...
 		for (; (--i) >= 0;) {

@@ -3,7 +3,6 @@ package uni.dc.ubsOpti.goataaExt.algorithms;
 import java.util.List;
 import java.util.Random;
 
-import org.goataa.impl.algorithms.LocalSearchAlgorithm;
 import org.goataa.impl.algorithms.sa.temperatureSchedules.Exponential;
 import org.goataa.impl.utils.Individual;
 import org.goataa.spec.IGPM;
@@ -12,10 +11,6 @@ import org.goataa.spec.IObjectiveFunction;
 import org.goataa.spec.ITemperatureSchedule;
 import org.goataa.spec.ITerminationCriterion;
 import org.goataa.spec.IUnarySearchOperation;
-
-import uni.dc.ubsOpti.UbsOptiConfig;
-import uni.dc.ubsOpti.tracer.DelayTrace;
-import uni.dc.ubsOpti.tracer.Tracable;
 
 /**
  * A simple implementation of the Simulated Annealing algorithm introduced as
@@ -27,11 +22,8 @@ import uni.dc.ubsOpti.tracer.Tracable;
  *            the problem space (phenome, Section 2.1)
  * @author Michael Krane
  */
-public final class SimulatedAnnealingTrace<G, X> extends
-		LocalSearchAlgorithm<G, X, Individual<G, X>> implements Tracable {
-
-	private static DelayTrace delays;
-	private static long step;
+public final class SimulatedAnnealingTraceable<G, X> extends
+		LocalSearchAlgorithmTraceable<G, X, Individual<G, X>> {
 
 	/** a constant required by Java serialization */
 	private static final long serialVersionUID = 1;
@@ -40,19 +32,8 @@ public final class SimulatedAnnealingTrace<G, X> extends
 	private ITemperatureSchedule schedule;
 
 	/** instantiate the simulated annealing class */
-	public SimulatedAnnealingTrace() {
+	public SimulatedAnnealingTraceable() {
 		super();
-	}
-
-	@Override
-	public DelayTrace getTrace() {
-		return delays;
-	}
-
-	@Override
-	public void setUpTrace(UbsOptiConfig config) {
-		delays = new DelayTrace(getName(true), config);
-		step = 1;
 	}
 
 	/**
@@ -100,7 +81,7 @@ public final class SimulatedAnnealingTrace<G, X> extends
 	public void call(final Random r, final ITerminationCriterion term,
 			final List<Individual<G, X>> result) {
 
-		result.add(SimulatedAnnealingTrace.simulatedAnnealing(//
+		result.add(SimulatedAnnealingTraceable.simulatedAnnealing(//
 				this.getObjectiveFunction(),//
 				this.getNullarySearchOperation(), //
 				this.getUnarySearchOperation(),//

@@ -69,19 +69,13 @@ public class Optimizer {
 
 	private DelayTrace optimizeHillClimbing() {
 		HillClimbingTraceable<int[], int[]> HC = new HillClimbingTraceable<int[], int[]>();
-		HC.setObjectiveFunction(config.getDelayCalc());
-		HC.setNullarySearchOperation(create);
-		HC.setUnarySearchOperation(mutate);
 		run(HC);
 		return HC.getTrace();
 	}
 
 	private DelayTrace optimizeSimulatedAnnealing() {
 		SimulatedAnnealingTraceable<int[], int[]> SA = new SimulatedAnnealingTraceable<int[], int[]>();
-		SA.setObjectiveFunction(config.getDelayCalc());
 		SA.setTemperatureSchedule(new Logarithmic(1d));
-		SA.setNullarySearchOperation(create);
-		SA.setUnarySearchOperation(mutate);
 		run(SA);
 		return SA.getTrace();
 	}
@@ -89,33 +83,30 @@ public class Optimizer {
 	private DelayTrace optimizeSimpleGenerationalEA() {
 		SimpleGenerationalTraceable<int[], int[]> GA = new SimpleGenerationalTraceable<int[], int[]>();
 		GA.setBinarySearchOperation(IntArrayWeightedMeanCrossover.INT_ARRAY_WEIGHTED_MEAN_CROSSOVER);
-		GA.setObjectiveFunction(config.getDelayCalc());
 		GA.setSelectionAlgorithm(new TournamentSelection(2));
-		GA.setNullarySearchOperation(create);
-		GA.setUnarySearchOperation(mutate);
 		run(GA);
 		return GA.getTrace();
 	}
 
 	private DelayTrace optimizeRandomWalk() {
 		RandomWalkTraceTraceable<int[], int[]> RW = new RandomWalkTraceTraceable<int[], int[]>();
-		RW.setObjectiveFunction(config.getDelayCalc());
-		RW.setNullarySearchOperation(create);
-		RW.setUnarySearchOperation(mutate);
 		run(RW);
 		return RW.getTrace();
 	}
 
 	@SuppressWarnings("unchecked")
 	private final int[] run(
-			final LocalSearchAlgorithmTraceable<?, int[], ?> algorithm) {
+			final LocalSearchAlgorithmTraceable<int[], int[], ?> algorithm) {
 		List<Individual<?, int[]>> solutions;
 		Individual<?, int[]> individual = null;
 		double bestValue = Double.MAX_VALUE;
 
 		UbsDelayTermination term = new UbsDelayTermination(config);
+		algorithm.setObjectiveFunction(config.getDelayCalc());
 		algorithm.setTerminationCriterion(term);
 		algorithm.setUpTrace(config);
+		algorithm.setNullarySearchOperation(create);
+		algorithm.setUnarySearchOperation(mutate);
 
 		for (int i = 0; i < config.getRuns(); i++) {
 			algorithm.setRandSeed(i + System.currentTimeMillis());

@@ -1,6 +1,3 @@
-// Copyright (c) 2010 Thomas Weise (http://www.it-weise.de/, tweise@gmx.de)
-// GNU LESSER GENERAL PUBLIC LICENSE (Version 2.1, February 1999)
-
 package uni.dc.ubsOpti.goataaExt.algorithms;
 
 import org.goataa.impl.algorithms.SOOptimizationAlgorithm;
@@ -17,7 +14,7 @@ import uni.dc.ubsOpti.tracer.Tracable;
 
 /**
  * A simple local search algorithm which has a nullary and a unary search
- * operation.
+ * operation adapted to be traceable by UbsOpti.
  *
  * @param <G>
  *            the search space (genome, Section 4.1)
@@ -25,7 +22,7 @@ import uni.dc.ubsOpti.tracer.Tracable;
  *            the problem space (phenome, Section 2.1)
  * @param <IT>
  *            the individual type
- * @author Thomas Weise
+ * @author Michael Krane
  */
 public class LocalSearchAlgorithmTraceable<G, X, IT extends Individual<G, X>>
 		extends SOOptimizationAlgorithm<G, X, IT> implements Tracable {
@@ -56,8 +53,8 @@ public class LocalSearchAlgorithmTraceable<G, X, IT extends Individual<G, X>>
 	@SuppressWarnings("unchecked")
 	protected LocalSearchAlgorithmTraceable() {
 		super();
-		this.o0 = (INullarySearchOperation) (NullarySearchOperation.NULL_CREATION);
-		this.o1 = (IUnarySearchOperation) (UnarySearchOperation.IDENTITY_MUTATION);
+		this.o0 = (INullarySearchOperation<G>) (NullarySearchOperation.NULL_CREATION);
+		this.o1 = (IUnarySearchOperation<G>) (UnarySearchOperation.IDENTITY_MUTATION);
 	}
 
 	/**
@@ -70,7 +67,7 @@ public class LocalSearchAlgorithmTraceable<G, X, IT extends Individual<G, X>>
 	@SuppressWarnings("unchecked")
 	public void setNullarySearchOperation(final INullarySearchOperation<G> op) {
 		this.o0 = ((op != null) ? op
-				: ((INullarySearchOperation) (NullarySearchOperation.NULL_CREATION)));
+				: ((INullarySearchOperation<G>) (NullarySearchOperation.NULL_CREATION)));
 	}
 
 	/**
@@ -93,7 +90,7 @@ public class LocalSearchAlgorithmTraceable<G, X, IT extends Individual<G, X>>
 	@SuppressWarnings("unchecked")
 	public void setUnarySearchOperation(final IUnarySearchOperation<G> op) {
 		this.o1 = ((op != null) ? op
-				: (IUnarySearchOperation) (UnarySearchOperation.IDENTITY_MUTATION));
+				: (IUnarySearchOperation<G>) (UnarySearchOperation.IDENTITY_MUTATION));
 	}
 
 	/**

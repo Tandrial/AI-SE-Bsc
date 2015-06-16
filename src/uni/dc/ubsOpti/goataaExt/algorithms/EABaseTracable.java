@@ -1,6 +1,3 @@
-// Copyright (c) 2010 Thomas Weise (http://www.it-weise.de/, tweise@gmx.de)
-// GNU LESSER GENERAL PUBLIC LICENSE (Version 2.1, February 1999)
-
 package uni.dc.ubsOpti.goataaExt.algorithms;
 
 import org.goataa.impl.algorithms.ea.selection.RandomSelection;
@@ -13,12 +10,13 @@ import org.goataa.spec.ISelectionAlgorithm;
 
 /**
  * The base class for evolutionary algorithms as discussed in Chapter 28.
+ * adapted to be traceable by UbsOpti.
  *
  * @param <G>
  *            the search space (genome, Section 4.1)
  * @param <X>
  *            the problem space (phenome, Section 2.1)
- * @author Thomas Weise
+ * @author Michael Krane
  */
 public abstract class EABaseTracable<G, X> extends
 		LocalSearchAlgorithmTraceable<G, X, Individual<G, X>> {

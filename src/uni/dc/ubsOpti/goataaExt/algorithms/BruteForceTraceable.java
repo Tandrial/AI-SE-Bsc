@@ -26,7 +26,7 @@ public class BruteForceTraceable implements Tracable {
 		bestPrio = prio.toIntArray();
 		minDelay = delayCalc.compute(bestPrio, null);
 		delays.addDataPoint(step, delayCalc.compute(bestPrio, null), bestPrio);
-		genPermutations(new int[bestPrio.length], 0, maxPrio);		
+		genPermutations(new int[bestPrio.length], 0, maxPrio);
 		return bestPrio;
 	}
 
@@ -42,7 +42,7 @@ public class BruteForceTraceable implements Tracable {
 				delays.addDataPoint(step, delay, n);
 				if (delayCalc.checkDelays())
 					stopRecursion = true;
-			}			
+			}
 		} else {
 			for (int i = 1; i <= max; i++) {
 				n[pos] = i;

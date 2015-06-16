@@ -3,17 +3,12 @@ package uni.dc.ubsOpti.goataaExt.algorithms;
 import java.util.List;
 import java.util.Random;
 
-import org.goataa.impl.algorithms.LocalSearchAlgorithm;
 import org.goataa.impl.utils.Individual;
 import org.goataa.spec.IGPM;
 import org.goataa.spec.INullarySearchOperation;
 import org.goataa.spec.IObjectiveFunction;
 import org.goataa.spec.ITerminationCriterion;
 import org.goataa.spec.IUnarySearchOperation;
-
-import uni.dc.ubsOpti.UbsOptiConfig;
-import uni.dc.ubsOpti.tracer.DelayTrace;
-import uni.dc.ubsOpti.tracer.Tracable;
 
 /**
  * A simple implementation of the Random Walk algorithm introduced as Algorithm

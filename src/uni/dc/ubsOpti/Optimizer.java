@@ -5,8 +5,6 @@ import java.util.List;
 import org.goataa.impl.algorithms.ea.selection.TournamentSelection;
 import org.goataa.impl.algorithms.sa.temperatureSchedules.Logarithmic;
 import org.goataa.impl.utils.Individual;
-import org.goataa.spec.INullarySearchOperation;
-import org.goataa.spec.IUnarySearchOperation;
 
 import uni.dc.ubsOpti.goataaExt.algorithms.BackTrackingTraceable;
 import uni.dc.ubsOpti.goataaExt.algorithms.BruteForceTraceable;
@@ -14,6 +12,8 @@ import uni.dc.ubsOpti.goataaExt.algorithms.HillClimbingTraceable;
 import uni.dc.ubsOpti.goataaExt.algorithms.LocalSearchAlgorithmTraceable;
 import uni.dc.ubsOpti.goataaExt.algorithms.SimpleGenerationalTraceable;
 import uni.dc.ubsOpti.goataaExt.algorithms.SimulatedAnnealingTraceable;
+import uni.dc.ubsOpti.goataaExt.searchOperations.strings.integer.IntVectorCreation;
+import uni.dc.ubsOpti.goataaExt.searchOperations.strings.integer.IntVectorMutation;
 import uni.dc.ubsOpti.goataaExt.searchOperations.strings.integer.binary.IntArrayWeightedMeanCrossover;
 import uni.dc.ubsOpti.goataaExt.searchOperations.strings.integer.nullary.IntArrayAllOnesCreation;
 import uni.dc.ubsOpti.goataaExt.searchOperations.strings.integer.unary.IntArrayAllNormalMutation;
@@ -28,8 +28,8 @@ public class Optimizer {
 		return Optimizer.optimizer;
 	}
 
-	private INullarySearchOperation<int[]> create = null;
-	private IUnarySearchOperation<int[]> mutate = null;
+	private IntVectorCreation create = null;
+	private IntVectorMutation mutate = null;
 	private UbsOptiConfig config = null;
 
 	private Optimizer() {
@@ -61,17 +61,19 @@ public class Optimizer {
 	}
 
 	private DelayTrace optimizeBruteForce() {
-		BruteForceTraceable BF = new BruteForceTraceable(config.getDelayCalc());
-		BF.setUpTrace(config);
-		BF.optimize(config.getPriorityConfig(), config.getMaxPrio());
+		BruteForceTraceable BF = new BruteForceTraceable();
+		BF.setDim(create.n);
+		BF.setMaxPrio(mutate.max);
+		run(BF);
 		return BF.getTrace();
 	}
 
 	private DelayTrace optimizeBackTrack() {
-		BackTrackingTraceable BT = new BackTrackingTraceable(config);
-		BT.setUpTrace(config);
-		BT.optimize(config.getPriorityConfig(), config.getMaxPrio());
+		BackTrackingTraceable BT = new BackTrackingTraceable();
+		BT.setConfig(config);
+		run(BT);
 		return BT.getTrace();
+
 	}
 
 	private DelayTrace optimizeHillClimbing() {

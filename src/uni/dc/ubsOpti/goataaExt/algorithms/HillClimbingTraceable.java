@@ -24,11 +24,7 @@ import uni.dc.ubsOpti.tracer.Traceable;
  *            the problem space (phenome, Section 2.1)
  * @author Michael Krane
  */
-public final class HillClimbingTraceable<G, X> extends LocalSearchAlgorithmTraceable<G, X, Individual<G, X>> implements
-		Traceable {
-
-	private static DelayTrace delays;
-	private static long step;
+public final class HillClimbingTraceable<G, X> extends LocalSearchAlgorithmTraceable<G, X, Individual<G, X>> {
 
 	/** a constant required by Java serialization */
 	private static final long serialVersionUID = 1;
@@ -36,17 +32,6 @@ public final class HillClimbingTraceable<G, X> extends LocalSearchAlgorithmTrace
 	/** instantiate the hill climbing class */
 	public HillClimbingTraceable() {
 		super();
-	}
-
-	@Override
-	public DelayTrace getTrace() {
-		return delays;
-	}
-
-	@Override
-	public void setUpTrace(UbsOptiConfig config) {
-		delays = new DelayTrace(getName(true), config);
-		step = 1;
 	}
 
 	/**

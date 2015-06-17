@@ -173,6 +173,7 @@ public class OptimizerGui extends JFrame {
 						optimize("SimpleGenerationalEA");
 					}
 				});
+				mnOptimize.add(mntmGA);
 
 				mnOptimize.add(new JSeparator());
 

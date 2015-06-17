@@ -6,74 +6,96 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Random;
 import java.util.Set;
+
+import org.goataa.impl.utils.Individual;
+import org.goataa.spec.IObjectiveFunction;
+import org.goataa.spec.ITerminationCriterion;
 
 import uni.dc.model.EgressPort;
 import uni.dc.model.Flow;
 import uni.dc.model.PriorityConfiguration;
 import uni.dc.ubsOpti.UbsOptiConfig;
-import uni.dc.ubsOpti.delayCalc.UbsDelayCalc;
-import uni.dc.ubsOpti.tracer.DelayTrace;
-import uni.dc.ubsOpti.tracer.Traceable;
 
-public class BackTrackingTraceable implements Traceable {
+/**
+ * A simple implementation of the backtracking algorithm adapted to be traceable
+ * by UbsOpti.
+ *
+ * @author Michael Krane
+ */
+public final class BackTrackingTraceable extends LocalSearchAlgorithmTraceable<int[], int[], Individual<int[], int[]>> {
 
-	private UbsDelayCalc delayCalc;
+	/** a constant required by Java serialization */
+	private static final long serialVersionUID = 1;
+
 	private UbsOptiConfig config;
-	private int[] bestPrio;
-	private double minDelay = Double.MAX_VALUE;
 
-	private DelayTrace delays;
-	private long step;
-
-	private boolean stopRecursion = false;
-
-	@Override
-	public DelayTrace getTrace() {
-		return delays;
-	}
-
-	@Override
-	public void setUpTrace(UbsOptiConfig config) {
-		delays = new DelayTrace("BackTracking", config);
-		step = 1;
-	}
-
-	public BackTrackingTraceable(UbsOptiConfig config) {
+	public void setConfig(UbsOptiConfig config) {
 		this.config = config;
-		this.delayCalc = config.getDelayCalc();
 	}
 
-	public int[] optimize(PriorityConfiguration prio, int maxPrio) {
-		bestPrio = prio.toIntArray();
-		minDelay = delayCalc.compute(bestPrio, null);
-		delays.addDataPoint(step, delayCalc.compute(bestPrio, null), bestPrio);
-		backTrack(bestPrio, new HashSet<int[]>());
-		return bestPrio;
+	private static Individual<int[], int[]> best = new Individual<int[], int[]>();
+	private static boolean stopRecursion = false;
+
+	/** instantiate the BackTracking class */
+	public BackTrackingTraceable() {
+		super();
 	}
 
-	private void backTrack(int[] prio, Set<int[]> visisted) {
+	/**
+	 * Invoke the optimization process. This method calls the optimizer and
+	 * returns the list of best individuals (see Definition D4.18) found.
+	 * Usually, only a single individual will be returned. Different from the
+	 * parameterless call method, here a randomizer and a termination criterion
+	 * are directly passed in. Also, a list to fill in the optimization results
+	 * is provided. This allows recursively using the optimization algorithms.
+	 *
+	 * @param r
+	 *            the randomizer (will be used directly without setting the
+	 *            seed)
+	 * @param term
+	 *            the termination criterion (will be used directly without
+	 *            resetting)
+	 * @param result
+	 *            a list to which the results are to be appended
+	 */
+	@Override
+	public void call(final Random r, final ITerminationCriterion term, final List<Individual<int[], int[]>> result) {
+		stopRecursion = false;
+		Individual<int[], int[]> p = new Individual<int[], int[]>();
+		p.x = this.getNullarySearchOperation().create(null);
+		p.v = this.getObjectiveFunction().compute(p.x, null);
+		if (delays != null)
+			delays.addDataPoint(step, p.v, p.x);
+		result.add(BackTrackingTraceable.backTrack(this.getObjectiveFunction(), term, config, p.x, new HashSet<int[]>()));
+	}
+
+	public static final Individual<int[], int[]> backTrack(IObjectiveFunction<int[]> f, ITerminationCriterion term,
+			UbsOptiConfig config, int[] prio, Set<int[]> visisted) {
 		// 0) Falls Prio schon besucht abbruch, sonst Prio zu besucht hinzufügen
 		if (stopRecursion || visisted.contains(prio)) {
-			return;
+			return best;
 		}
 		visisted.add(prio);
+
+		Individual<int[], int[]> p = new Individual<int[], int[]>();
+		p.x = prio;
+		p.v = f.compute(p.x, null);
 		step++;
 
 		// 1) Delays berechnen, falls besser ==> speichern in trace
-		double delay = delayCalc.compute(prio, null);
-		if (delay < minDelay) {
-			PriorityConfiguration prioConfig = (PriorityConfiguration) config.getPriorityConfig().clone();
-			prioConfig.fromIntArray(prio);
-			minDelay = delay;
-			bestPrio = Arrays.copyOf(prio, prio.length);
-			delays.addDataPoint(step, delay, prio);
+		// 2) checkDelays, falls ja : Rekursion fertig beste Prio zurück geben
+		if (p.v < best.v) {
+			best.assign(p);
+			if (delays != null)
+				delays.addDataPoint(step, p.v, p.x);
+			System.out.println(Arrays.toString(best.x) + "delay " + best.v);
 		}
 
-		// 2) checkDelays, falls ja : Rekursion fertig beste Prio zurück geben
-		if (delayCalc.checkDelays()) {
+		if (term.terminationCriterion()) {
 			stopRecursion = true;
-			return;
+			return best;
 		}
 
 		// 2) Sortiere Stream f absteigend nach (maxLatency - delay)
@@ -84,23 +106,40 @@ public class BackTrackingTraceable implements Traceable {
 				return Double.compare(o1.getDiffDelayMaxLat(), o2.getDiffDelayMaxLat());
 			}
 		});
-		for (Flow f : flows) {
+		for (Flow flow : flows) {
 			// 3) Erzeuge n = f.getPath().length neue Prios mit Prio von f + 1
 			// bei f.getPath().get(i) für i = 0..n (falls möglich)
-			for (int pos = 0; pos < f.getPath().size() - 1; pos++) {
-				EgressPort p = f.getPath().get(pos);
+			for (int pos = 0; pos < flow.getPath().size() - 1; pos++) {
+				EgressPort port = flow.getPath().get(pos);
 				if (stopRecursion) {
-					return;
+					return best;
 				}
 				PriorityConfiguration prioConfig = (PriorityConfiguration) config.getPriorityConfig().clone();
-				prioConfig.fromIntArray(prio);
-				int currPrio = prioConfig.getPriority(p, f);
+				prioConfig.fromIntArray(p.x);
+				int currPrio = prioConfig.getPriority(port, flow);
 				if (currPrio < config.getMaxPrio()) {
-					prioConfig.setPriority(p, f, currPrio + 1);
+					prioConfig.setPriority(port, flow, currPrio + 1);
 					// 4) Rekursion start mit allen erzeugen Prios
-					backTrack(prioConfig.toIntArray(), visisted);
+					backTrack(f, term, config, prioConfig.toIntArray(), visisted);
 				}
 			}
 		}
+		return best;
+	}
+
+	/**
+	 * Get the name of the optimization module
+	 *
+	 * @param longVersion
+	 *            true if the long name should be returned, false if the short
+	 *            name should be returned
+	 * @return the name of the optimization module
+	 */
+	@Override
+	public String getName(final boolean longVersion) {
+		if (longVersion) {
+			return this.getClass().getSimpleName();
+		}
+		return "BT";
 	}
 }

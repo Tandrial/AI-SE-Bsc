@@ -1,64 +1,106 @@
 package uni.dc.ubsOpti.goataaExt.algorithms;
 
-import java.util.Arrays;
+import java.util.List;
+import java.util.Random;
 
-import uni.dc.model.PriorityConfiguration;
-import uni.dc.ubsOpti.UbsOptiConfig;
-import uni.dc.ubsOpti.delayCalc.UbsDelayCalc;
-import uni.dc.ubsOpti.tracer.DelayTrace;
-import uni.dc.ubsOpti.tracer.Traceable;
+import org.goataa.impl.utils.Individual;
+import org.goataa.spec.IObjectiveFunction;
+import org.goataa.spec.ITerminationCriterion;
 
-public class BruteForceTraceable implements Traceable {
-	private UbsDelayCalc delayCalc;
-	private int[] bestPrio;
-	private double minDelay = Double.MAX_VALUE;
+/**
+ * A simple implementation of the Brute Force algorithm i adapted to be
+ * traceable by UbsOpti.
+ *
+ * @author Michael Krane
+ */
+public final class BruteForceTraceable extends LocalSearchAlgorithmTraceable<int[], int[], Individual<int[], int[]>> {
 
-	private DelayTrace delays;
-	private long step;
+	/** a constant required by Java serialization */
+	private static final long serialVersionUID = 1;
 
-	private boolean stopRecursion = false;
+	private static Individual<int[], int[]> best = new Individual<int[], int[]>();
+	private static boolean stopRecursion = false;
 
-	public BruteForceTraceable(UbsDelayCalc delayCalc) {
-		this.delayCalc = delayCalc;
+	private int dim;
+	private int maxPrio;
+
+	public void setDim(int dim) {
+		this.dim = dim;
 	}
 
+	public void setMaxPrio(int maxPrio) {
+		this.maxPrio = maxPrio;
+	}
+
+	/** instantiate the brute Force class */
+	public BruteForceTraceable() {
+		super();
+	}
+
+	/**
+	 * Invoke the optimization process. This method calls the optimizer and
+	 * returns the list of best individuals (see Definition D4.18) found.
+	 * Usually, only a single individual will be returned. Different from the
+	 * parameterless call method, here a randomizer and a termination criterion
+	 * are directly passed in. Also, a list to fill in the optimization results
+	 * is provided. This allows recursively using the optimization algorithms.
+	 *
+	 * @param r
+	 *            the randomizer (will be used directly without setting the
+	 *            seed)
+	 * @param term
+	 *            the termination criterion (will be used directly without
+	 *            resetting)
+	 * @param result
+	 *            a list to which the results are to be appended
+	 */
 	@Override
-	public DelayTrace getTrace() {
-		return delays;
+	public void call(final Random r, final ITerminationCriterion term, final List<Individual<int[], int[]>> result) {
+		result.add(BruteForceTraceable.bruteForce(this.getObjectiveFunction(), term, new int[dim], 0, maxPrio));
 	}
 
-	@Override
-	public void setUpTrace(UbsOptiConfig config) {
-		delays = new DelayTrace("BruteForce", config);
-		step = 1;
-	}
-
-	public int[] optimize(PriorityConfiguration prio, int maxPrio) {
-		bestPrio = prio.toIntArray();
-		minDelay = delayCalc.compute(bestPrio, null);
-		delays.addDataPoint(step, delayCalc.compute(bestPrio, null), bestPrio);
-		genPermutations(new int[bestPrio.length], 0, maxPrio);
-		return bestPrio;
-	}
-
-	private void genPermutations(int[] n, int pos, int max) {
+	public static final Individual<int[], int[]> bruteForce(IObjectiveFunction<int[]> f, ITerminationCriterion term,
+			int[] n, int pos, int maxPrio) {
 		if (stopRecursion)
-			return;
+			return best;
+
 		if (pos == n.length) {
-			double delay = delayCalc.compute(n, null);
+			Individual<int[], int[]> p = new Individual<int[], int[]>();
+			p.x = n;
+			p.v = f.compute(p.x, null);
 			step++;
-			if (delay < minDelay) {
-				minDelay = delay;
-				bestPrio = Arrays.copyOf(n, n.length);
-				delays.addDataPoint(step, delay, n);
-				if (delayCalc.checkDelays())
+
+			if (p.v < best.v) {
+				best.assign(p);
+				if (delays != null)
+					delays.addDataPoint(step, p.v, (int[]) p.x);
+				if (term.terminationCriterion())
 					stopRecursion = true;
 			}
+
 		} else {
-			for (int i = 1; i <= max; i++) {
+			for (int i = 1; i <= maxPrio; i++) {
 				n[pos] = i;
-				genPermutations(n, pos + 1, max);
+				bruteForce(f, term, n, pos + 1, maxPrio);
 			}
 		}
+
+		return best;
+	}
+
+	/**
+	 * Get the name of the optimization module
+	 *
+	 * @param longVersion
+	 *            true if the long name should be returned, false if the short
+	 *            name should be returned
+	 * @return the name of the optimization module
+	 */
+	@Override
+	public String getName(final boolean longVersion) {
+		if (longVersion) {
+			return this.getClass().getSimpleName();
+		}
+		return "BF";
 	}
 }

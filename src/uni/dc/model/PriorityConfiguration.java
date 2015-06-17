@@ -155,4 +155,17 @@ public class PriorityConfiguration implements Cloneable, Serializable {
 
 		return rv;
 	}
+
+	public int getPos(EgressPort port, Flow flow) {
+		int pos = 0;
+		for (Flow f : traffic) {
+			for (EgressPort p : traffic.getTopology().getPorts()) {
+				if (f == flow && p == port)
+					return pos;
+				if (hasPriority(p, f))
+					pos++;
+			}
+		}
+		return pos;
+	}
 }

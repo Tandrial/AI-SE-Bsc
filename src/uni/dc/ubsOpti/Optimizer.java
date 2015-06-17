@@ -71,6 +71,7 @@ public class Optimizer {
 	private DelayTrace optimizeBackTrack() {
 		BackTrackingTraceable BT = new BackTrackingTraceable();
 		BT.setConfig(config);
+		BT.setMaxPrio(mutate.max);
 		run(BT);
 		return BT.getTrace();
 

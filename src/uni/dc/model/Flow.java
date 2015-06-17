@@ -17,8 +17,6 @@ public class Flow implements Serializable {
 	private List<EgressPort> path;
 	private double delay = 0.0d;
 
-	private EgressTopology topology;
-
 	public String getName() {
 		return name;
 	}

@@ -16,6 +16,7 @@ import org.goataa.spec.ITerminationCriterion;
 import uni.dc.model.EgressPort;
 import uni.dc.model.Flow;
 import uni.dc.model.PriorityConfiguration;
+import uni.dc.model.Traffic;
 import uni.dc.ubsOpti.UbsOptiConfig;
 
 /**
@@ -29,10 +30,17 @@ public final class BackTrackingTraceable extends LocalSearchAlgorithmTraceable<i
 	/** a constant required by Java serialization */
 	private static final long serialVersionUID = 1;
 
-	private UbsOptiConfig config;
+	private static Traffic traffic;
+	private static PriorityConfiguration prioConfig;
+	private static int maxPrio;
 
 	public void setConfig(UbsOptiConfig config) {
-		this.config = config;
+		traffic = config.getTraffic();
+		prioConfig = config.getPriorityConfig();
+	}
+
+	public void setMaxPrio(int maxPrio) {
+		BackTrackingTraceable.maxPrio = maxPrio;
 	}
 
 	private static Individual<int[], int[]> best = new Individual<int[], int[]>();
@@ -68,11 +76,11 @@ public final class BackTrackingTraceable extends LocalSearchAlgorithmTraceable<i
 		p.v = this.getObjectiveFunction().compute(p.x, null);
 		if (delays != null)
 			delays.addDataPoint(step, p.v, p.x);
-		result.add(BackTrackingTraceable.backTrack(this.getObjectiveFunction(), term, config, p.x, new HashSet<int[]>()));
+		result.add(BackTrackingTraceable.backTrack(this.getObjectiveFunction(), term, p.x, new HashSet<int[]>()));
 	}
 
 	public static final Individual<int[], int[]> backTrack(IObjectiveFunction<int[]> f, ITerminationCriterion term,
-			UbsOptiConfig config, int[] prio, Set<int[]> visisted) {
+			int[] prio, Set<int[]> visisted) {
 		// 0) Falls Prio schon besucht abbruch, sonst Prio zu besucht hinzufügen
 		if (stopRecursion || visisted.contains(prio)) {
 			return best;
@@ -90,7 +98,6 @@ public final class BackTrackingTraceable extends LocalSearchAlgorithmTraceable<i
 			best.assign(p);
 			if (delays != null)
 				delays.addDataPoint(step, p.v, p.x);
-			System.out.println(Arrays.toString(best.x) + "delay " + best.v);
 		}
 
 		if (term.terminationCriterion()) {
@@ -99,7 +106,7 @@ public final class BackTrackingTraceable extends LocalSearchAlgorithmTraceable<i
 		}
 
 		// 2) Sortiere Stream f absteigend nach (maxLatency - delay)
-		List<Flow> flows = new ArrayList<Flow>(config.getTraffic());
+		List<Flow> flows = new ArrayList<Flow>(traffic);
 		Collections.sort(flows, new Comparator<Flow>() {
 			@Override
 			public int compare(Flow o1, Flow o2) {
@@ -114,13 +121,14 @@ public final class BackTrackingTraceable extends LocalSearchAlgorithmTraceable<i
 				if (stopRecursion) {
 					return best;
 				}
-				PriorityConfiguration prioConfig = (PriorityConfiguration) config.getPriorityConfig().clone();
-				prioConfig.fromIntArray(p.x);
-				int currPrio = prioConfig.getPriority(port, flow);
-				if (currPrio < config.getMaxPrio()) {
-					prioConfig.setPriority(port, flow, currPrio + 1);
+
+				int posToChange = prioConfig.getPos(port, flow);
+				int currPrio = p.x[posToChange];
+				int[] newP = Arrays.copyOf(p.x, p.x.length);
+				if (currPrio < maxPrio) {
+					newP[posToChange] = currPrio + 1;
 					// 4) Rekursion start mit allen erzeugen Prios
-					backTrack(f, term, config, prioConfig.toIntArray(), visisted);
+					backTrack(f, term, newP, visisted);
 				}
 			}
 		}

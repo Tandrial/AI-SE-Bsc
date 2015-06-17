@@ -10,10 +10,6 @@ import org.goataa.spec.IObjectiveFunction;
 import org.goataa.spec.ITerminationCriterion;
 import org.goataa.spec.IUnarySearchOperation;
 
-import uni.dc.ubsOpti.UbsOptiConfig;
-import uni.dc.ubsOpti.tracer.DelayTrace;
-import uni.dc.ubsOpti.tracer.Traceable;
-
 /**
  * A simple implementation of the Hill Climbing algorithm introduced as
  * Algorithm 26.1. adapted to be traceable by UbsOpti.

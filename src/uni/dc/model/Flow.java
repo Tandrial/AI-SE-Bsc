@@ -91,8 +91,12 @@ public class Flow implements Serializable {
 		this.topology = topology;
 	}
 
+	public double getDiffDelayMaxLat() {
+		return delay - maxLatency;
+	}
+
 	public boolean checkDelay() {
-		return maxLatency == -1 || maxLatency >= delay;
+		return maxLatency == Double.MAX_VALUE || maxLatency >= delay;
 	}
 
 	@Override

@@ -101,7 +101,7 @@ public abstract class UbsDelayCalc extends OptimizationModule implements
 			sb.append(String.format("%s : %.0f Mbps, %d bit\n", flow.getName(),
 					flow.getRate() / 1e6, flow.getMaxFrameLength()));
 			sb.append(String.format("Path : %s\n", flow));
-			if (flow.getMaxLatency() == -1) {
+			if (flow.getMaxLatency() == Double.MAX_VALUE) {
 				sb.append(String.format("Destination %s delay is %.3e s\n",
 						flow.getDestPort(), flow.getDelay()));
 			} else {

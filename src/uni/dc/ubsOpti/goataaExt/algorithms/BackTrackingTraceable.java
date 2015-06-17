@@ -1,6 +1,9 @@
 package uni.dc.ubsOpti.goataaExt.algorithms;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -55,10 +58,14 @@ public class BackTrackingTraceable implements Traceable {
 			return;
 		}
 		visisted.add(prio);
+		step++;
 
 		// 1) Delays berechnen, falls besser ==> speichern in trace
 		double delay = delayCalc.compute(prio, null);
 		if (delay < minDelay) {
+			PriorityConfiguration prioConfig = (PriorityConfiguration) config
+					.getPriorityConfig().clone();
+			prioConfig.fromIntArray(prio);
 			minDelay = delay;
 			bestPrio = Arrays.copyOf(prio, prio.length);
 			delays.addDataPoint(step, delay, prio);
@@ -69,28 +76,32 @@ public class BackTrackingTraceable implements Traceable {
 			stopRecursion = true;
 			return;
 		}
-		// 2) Finde Stream f mit max(maxLatency - delay)
-		Flow maxF = null;
-		double maxDiff = 0.0d;
-		for (Flow f : config.getTraffic()) {
-			double diff = f.getMaxLatency() - f.getDelay();
-			if (diff > maxDiff) {
-				maxDiff = diff;
-				maxF = f;
+
+		// 2) Sortiere Stream f absteigend nach (maxLatency - delay)
+		List<Flow> flows = new ArrayList<Flow>(config.getTraffic());
+		Collections.sort(flows, new Comparator<Flow>() {
+			@Override
+			public int compare(Flow o1, Flow o2) {
+				return Double.compare(o1.getDiffDelayMaxLat(), o2.getDiffDelayMaxLat());
 			}
-		}
-		// 3) Erzeuge n = f.getPath().length neue Prios mit Prio von f + 1 bei
-		// f.getPath().get(i) für i = 0..n (falls möglich)
-		// 4) Rekursion start mit allen erzeugen Prios
-		List<EgressPort> path = maxF.getPath();
-		for (EgressPort p : path) {
-			int currPrio = config.getPriorityConfig().getPriority(p, maxF);
-			if (currPrio < config.getMaxPrio()) {
+		});
+		for (Flow f : flows) {
+			// 3) Erzeuge n = f.getPath().length neue Prios mit Prio von f + 1
+			// bei f.getPath().get(i) für i = 0..n (falls möglich)
+			for (int pos = 0; pos < f.getPath().size() - 1; pos++) {
+				EgressPort p = f.getPath().get(pos);
+				if (stopRecursion) {
+					return;
+				}
 				PriorityConfiguration prioConfig = (PriorityConfiguration) config
 						.getPriorityConfig().clone();
-				prioConfig.setPriority(p, maxF, currPrio + 1);
-				//TODO Can't be recursiv!!!!
-				backTrack(prioConfig.toIntArray(), visisted);
+				prioConfig.fromIntArray(prio);
+				int currPrio = prioConfig.getPriority(p, f);
+				if (currPrio < config.getMaxPrio()) {
+					prioConfig.setPriority(p, f, currPrio + 1);
+					// 4) Rekursion start mit allen erzeugen Prios
+					backTrack(prioConfig.toIntArray(), visisted);
+				}
 			}
 		}
 	}

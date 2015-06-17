@@ -122,7 +122,7 @@ public class NetworkParser {
 			if (tspec.has("maxLatency"))
 				maxLatency = convertTime(tspec.getString("maxLatency"));
 			else
-				maxLatency = -1;
+				maxLatency = Double.MAX_VALUE;
 
 			Flow flow = new Flow();
 			flow.setName(String.format("F%d", flowID));

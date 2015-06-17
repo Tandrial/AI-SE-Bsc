@@ -126,7 +126,6 @@ public class NetworkParser {
 
 			Flow flow = new Flow();
 			flow.setName(String.format("F%d", flowID));
-			flow.setTopology(topology);
 			flow.setRate(rate);
 			flow.setMaxFrameLength(maxPacketLength);
 			traffic.add(flow);

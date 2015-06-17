@@ -117,7 +117,6 @@ public class RandomMulticastPathGenerator {
 
 				Flow flow = new Flow();
 				flow.setName(String.format("F%d", flowId++));
-				flow.setTopology(topology);
 				flow.setSrcPort(src);
 				flow.setDestPort(destPorts.get(0));
 				flow.setRate(linkSpeed * ((rng.nextInt(maxSpeedPerStream) + 1))

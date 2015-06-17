@@ -83,14 +83,6 @@ public class Flow implements Serializable {
 		this.delay = delay;
 	}
 
-	public EgressTopology getTopology() {
-		return topology;
-	}
-
-	public void setTopology(EgressTopology topology) {
-		this.topology = topology;
-	}
-
 	public double getDiffDelayMaxLat() {
 		return delay - maxLatency;
 	}

@@ -50,8 +50,7 @@ public class NetworkParser {
 		topology = null;
 		traffic = null;
 		prio = null;
-		String extension = fileName.getName().substring(
-				fileName.getName().lastIndexOf("."));
+		String extension = fileName.getName().substring(fileName.getName().lastIndexOf("."));
 		if (extension.equals(".ser")) {
 			UbsOptiConfig config = NetworkParser.loadFromFile(fileName);
 			topology = config.getTopology();
@@ -108,16 +107,14 @@ public class NetworkParser {
 		for (int i = 0; i < connections.length(); i++) {
 			JSONObject curr = connections.getJSONObject(i);
 			int flowID = curr.getInt("streamID");
-			JSONObject route = curr.getJSONObject("route").getJSONObject(
-					"dijkstra");
+			JSONObject route = curr.getJSONObject("route").getJSONObject("dijkstra");
 
 			String src = JSONObject.getNames(route)[0];
 			String dest = route.getJSONArray(src).getString(0);
 
 			JSONObject tspec = curr.getJSONObject("tspec");
 			long rate = convertSpeed(tspec.getString("leakRate"));
-			int maxPacketLength = convertLength(tspec
-					.getString("maxPacketLength"));
+			int maxPacketLength = convertLength(tspec.getString("maxPacketLength"));
 			double maxLatency;
 			if (tspec.has("maxLatency"))
 				maxLatency = convertTime(tspec.getString("maxLatency"));
@@ -183,12 +180,10 @@ public class NetworkParser {
 			ObjectInputStream in = new ObjectInputStream(fileIn);
 			EgressTopology topo = (EgressTopology) in.readObject();
 			Traffic traffic = (Traffic) in.readObject();
-			PriorityConfiguration prio = (PriorityConfiguration) in
-					.readObject();
+			PriorityConfiguration prio = (PriorityConfiguration) in.readObject();
 			TraceCollection traces = (TraceCollection) in.readObject();
 			UbsDelayCalc delayCalc = new UbsV0DelayCalc(traffic);
-			UbsOptiConfig config = new UbsOptiConfig(topo, traffic, prio,
-					delayCalc, traces);
+			UbsOptiConfig config = new UbsOptiConfig(topo, traffic, prio, delayCalc, traces);
 			in.close();
 			fileIn.close();
 			return config;

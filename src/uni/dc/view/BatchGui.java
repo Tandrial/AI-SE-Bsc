@@ -37,14 +37,12 @@ public class BatchGui extends JDialog {
 		contentPanel.add(lblCountStreamlayout);
 
 		JSpinner spTopoCount = new JSpinner();
-		spTopoCount.setModel(new SpinnerNumberModel(new Integer(10),
-				new Integer(1), null, new Integer(1)));
+		spTopoCount.setModel(new SpinnerNumberModel(new Integer(10), new Integer(1), null, new Integer(1)));
 		spTopoCount.setBounds(130, 8, 45, 20);
 		contentPanel.add(spTopoCount);
 
 		JSpinner spStreamCount = new JSpinner();
-		spStreamCount.setModel(new SpinnerNumberModel(new Integer(10),
-				new Integer(1), null, new Integer(1)));
+		spStreamCount.setModel(new SpinnerNumberModel(new Integer(10), new Integer(1), null, new Integer(1)));
 		spStreamCount.setBounds(130, 35, 45, 20);
 		contentPanel.add(spStreamCount);
 

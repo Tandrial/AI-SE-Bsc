@@ -24,8 +24,8 @@ import uni.dc.ubsOpti.tracer.Traceable;
  *            the individual type
  * @author Michael Krane
  */
-public class LocalSearchAlgorithmTraceable<G, X, IT extends Individual<G, X>>
-		extends SOOptimizationAlgorithm<G, X, IT> implements Traceable {
+public class LocalSearchAlgorithmTraceable<G, X, IT extends Individual<G, X>> extends SOOptimizationAlgorithm<G, X, IT>
+		implements Traceable {
 	/** a constant required by Java serialization */
 	private static final long serialVersionUID = 1;
 
@@ -66,8 +66,7 @@ public class LocalSearchAlgorithmTraceable<G, X, IT extends Individual<G, X>>
 	 */
 	@SuppressWarnings("unchecked")
 	public void setNullarySearchOperation(final INullarySearchOperation<G> op) {
-		this.o0 = ((op != null) ? op
-				: ((INullarySearchOperation<G>) (NullarySearchOperation.NULL_CREATION)));
+		this.o0 = ((op != null) ? op : ((INullarySearchOperation<G>) (NullarySearchOperation.NULL_CREATION)));
 	}
 
 	/**
@@ -89,8 +88,7 @@ public class LocalSearchAlgorithmTraceable<G, X, IT extends Individual<G, X>>
 	 */
 	@SuppressWarnings("unchecked")
 	public void setUnarySearchOperation(final IUnarySearchOperation<G> op) {
-		this.o1 = ((op != null) ? op
-				: (IUnarySearchOperation<G>) (UnarySearchOperation.IDENTITY_MUTATION));
+		this.o1 = ((op != null) ? op : (IUnarySearchOperation<G>) (UnarySearchOperation.IDENTITY_MUTATION));
 	}
 
 	/**

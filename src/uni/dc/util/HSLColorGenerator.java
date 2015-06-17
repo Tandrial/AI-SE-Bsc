@@ -62,18 +62,11 @@ public class HSLColorGenerator {
 
 	public Color getColor(int index) {
 		if (index < 0)
-			throw new IllegalArgumentException(String.format(
-					"Color index %d is negative - not allowed!", index));
+			throw new IllegalArgumentException(String.format("Color index %d is negative - not allowed!", index));
 		int reverseIndex = revertBits(index);
-		float h = H_BEGIN
-				+ ((float) maskAndPack(H_REVERSE_MASK, reverseIndex) / H_RANGE)
-				* (H_END - H_BEGIN);
-		float s = S_BEGIN
-				+ ((float) maskAndPack(S_REVERSE_MASK, reverseIndex) / S_RANGE)
-				* (S_END - H_BEGIN);
-		float b = B_BEGIN
-				+ ((float) maskAndPack(B_REVERSE_MASK, reverseIndex) / B_RANGE)
-				* (B_END - H_BEGIN);
+		float h = H_BEGIN + ((float) maskAndPack(H_REVERSE_MASK, reverseIndex) / H_RANGE) * (H_END - H_BEGIN);
+		float s = S_BEGIN + ((float) maskAndPack(S_REVERSE_MASK, reverseIndex) / S_RANGE) * (S_END - H_BEGIN);
+		float b = B_BEGIN + ((float) maskAndPack(B_REVERSE_MASK, reverseIndex) / B_RANGE) * (B_END - H_BEGIN);
 		return Color.getHSBColor(h, s, b);
 	}
 }

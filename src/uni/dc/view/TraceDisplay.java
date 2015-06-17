@@ -20,7 +20,6 @@ import org.jfree.data.xy.XYSeriesCollection;
 import uni.dc.ubsOpti.tracer.DelayTrace;
 import uni.dc.ubsOpti.tracer.TracerStat;
 
-
 public class TraceDisplay extends JFrame {
 	private static final long serialVersionUID = 1L;
 
@@ -36,22 +35,20 @@ public class TraceDisplay extends JFrame {
 	}
 
 	private static JFreeChart createChart(XYDataset paramXYDataset) {
-		JFreeChart localJFreeChart = ChartFactory.createXYLineChart(
-				"TraceDelay", "Step", "Fitness", paramXYDataset,
+		JFreeChart localJFreeChart = ChartFactory.createXYLineChart("TraceDelay", "Step", "Fitness", paramXYDataset,
 				PlotOrientation.VERTICAL, true, true, false);
 
-	    
 		XYPlot localXYPlot = (XYPlot) localJFreeChart.getPlot();
 		localXYPlot.setDomainAxis(new LogarithmicAxis("Step"));
 		localXYPlot.setDomainPannable(true);
 		localXYPlot.setRangePannable(true);
-		
-		XYLineAndShapeRenderer localXYLineAndShapeRenderer = (XYLineAndShapeRenderer)localXYPlot.getRenderer();
-	    localXYLineAndShapeRenderer.setBaseShapesVisible(true);
-	    localXYLineAndShapeRenderer.setBaseShapesFilled(true);
-	    NumberAxis localNumberAxis = (NumberAxis)localXYPlot.getRangeAxis();
-	    localNumberAxis.setStandardTickUnits(NumberAxis.createIntegerTickUnits());
-	    
+
+		XYLineAndShapeRenderer localXYLineAndShapeRenderer = (XYLineAndShapeRenderer) localXYPlot.getRenderer();
+		localXYLineAndShapeRenderer.setBaseShapesVisible(true);
+		localXYLineAndShapeRenderer.setBaseShapesFilled(true);
+		NumberAxis localNumberAxis = (NumberAxis) localXYPlot.getRangeAxis();
+		localNumberAxis.setStandardTickUnits(NumberAxis.createIntegerTickUnits());
+
 		return localJFreeChart;
 	}
 

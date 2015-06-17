@@ -144,8 +144,7 @@ public class RandomTopologyGenerator {
 		if (depth < 1)
 			throw new RuntimeException("Depth must be > 1!");
 		if (depth > ports)
-			throw new RuntimeException(
-					"There must be more ports than depth to generate!");
+			throw new RuntimeException("There must be more ports than depth to generate!");
 
 		for (int tryCnt = 0; tryCnt < Integer.MAX_VALUE; tryCnt++) {
 			try {
@@ -153,8 +152,7 @@ public class RandomTopologyGenerator {
 				// Initialize rank port map with ports per rank
 				for (int rank = 0; rank < depth; rank++) {
 					rankPortMap.put(rank, new LinkedHashSet<EgressPort>());
-					rankPortMap.get(rank).add(
-							new EgressPort(String.format("E%d,1", rank)));
+					rankPortMap.get(rank).add(new EgressPort(String.format("E%d,1", rank)));
 				}
 				int remainingPorts = ports - depth;
 
@@ -163,8 +161,7 @@ public class RandomTopologyGenerator {
 
 					int rank = rng.nextInt(depth);
 
-					EgressPort port = new EgressPort(String.format("E%d,%d",
-							rank, rankPortMap.get(rank).size() + 1));
+					EgressPort port = new EgressPort(String.format("E%d,%d", rank, rankPortMap.get(rank).size() + 1));
 
 					rankPortMap.get(rank).add(port);
 				}
@@ -183,10 +180,8 @@ public class RandomTopologyGenerator {
 				for (int rank = 0; rank < depth - 1; rank++) {
 
 					// System.out.printf("## Rank = %d\n",rank);
-					LinkedHashSet<EgressPort> portsAtCurrentRank = rankPortMap
-							.get(rank);
-					LinkedHashSet<EgressPort> portsAtNextRank = rankPortMap
-							.get(rank + 1);
+					LinkedHashSet<EgressPort> portsAtCurrentRank = rankPortMap.get(rank);
+					LinkedHashSet<EgressPort> portsAtNextRank = rankPortMap.get(rank + 1);
 					if (portsAtNextRank.size() == 0)
 						portsAtNextRank = rankPortMap.get(rank + 2);
 
@@ -213,13 +208,11 @@ public class RandomTopologyGenerator {
 					// connect()
 					Map<EgressPort, EgressPort> clusterForwardPortMap = new HashMap<EgressPort, EgressPort>();
 					for (Cluster c : clusterSet) {
-						List<EgressPort> clusterPortsAtCurrentRank = new ArrayList<EgressPort>(
-								c);
+						List<EgressPort> clusterPortsAtCurrentRank = new ArrayList<EgressPort>(c);
 						clusterPortsAtCurrentRank.retainAll(portsAtCurrentRank);
-						EgressPort srcPort = clusterPortsAtCurrentRank.get(rng
-								.nextInt(clusterPortsAtCurrentRank.size()));
-						EgressPort destPort = new ArrayList<EgressPort>(
-								portsAtNextRank).get(rng
+						EgressPort srcPort = clusterPortsAtCurrentRank
+								.get(rng.nextInt(clusterPortsAtCurrentRank.size()));
+						EgressPort destPort = new ArrayList<EgressPort>(portsAtNextRank).get(rng
 								.nextInt(portsAtNextRank.size()));
 						clusterForwardPortMap.put(srcPort, destPort);
 					}
@@ -234,8 +227,7 @@ public class RandomTopologyGenerator {
 					// cluster
 					// - There must be exactly one cluster at the last rank
 
-					List<EgressPort> nextRankPortList = new ArrayList<EgressPort>(
-							portsAtNextRank);
+					List<EgressPort> nextRankPortList = new ArrayList<EgressPort>(portsAtNextRank);
 					Collections.shuffle(nextRankPortList, rng);
 					for (EgressPort d : nextRankPortList) {
 						List<Cluster> C = new ArrayList<Cluster>(clusterSet);
@@ -245,12 +237,9 @@ public class RandomTopologyGenerator {
 						if (rank < depth - 2)
 							C = C.subList(0, rng.nextInt(C.size() + 1));
 						for (Cluster c : C) {
-							List<EgressPort> clusterPortsAtCurrentRank = new ArrayList<EgressPort>(
-									c);
-							clusterPortsAtCurrentRank
-									.retainAll(portsAtCurrentRank);
-							EgressPort s = clusterPortsAtCurrentRank.get(rng
-									.nextInt(clusterPortsAtCurrentRank.size()));
+							List<EgressPort> clusterPortsAtCurrentRank = new ArrayList<EgressPort>(c);
+							clusterPortsAtCurrentRank.retainAll(portsAtCurrentRank);
+							EgressPort s = clusterPortsAtCurrentRank.get(rng.nextInt(clusterPortsAtCurrentRank.size()));
 							connect(s, d);
 						}
 					}

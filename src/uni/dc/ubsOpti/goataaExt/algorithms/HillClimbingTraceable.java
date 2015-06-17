@@ -24,8 +24,8 @@ import uni.dc.ubsOpti.tracer.Traceable;
  *            the problem space (phenome, Section 2.1)
  * @author Michael Krane
  */
-public final class HillClimbingTraceable<G, X> extends
-		LocalSearchAlgorithmTraceable<G, X, Individual<G, X>> implements Traceable {
+public final class HillClimbingTraceable<G, X> extends LocalSearchAlgorithmTraceable<G, X, Individual<G, X>> implements
+		Traceable {
 
 	private static DelayTrace delays;
 	private static long step;
@@ -67,8 +67,7 @@ public final class HillClimbingTraceable<G, X> extends
 	 *            a list to which the results are to be appended
 	 */
 	@Override
-	public void call(final Random r, final ITerminationCriterion term,
-			final List<Individual<G, X>> result) {
+	public void call(final Random r, final ITerminationCriterion term, final List<Individual<G, X>> result) {
 
 		result.add(HillClimbingTraceable.hillClimbing(this.getObjectiveFunction(),//
 				this.getNullarySearchOperation(), //
@@ -101,11 +100,8 @@ public final class HillClimbingTraceable<G, X> extends
 	 * @param <X>
 	 *            the problem space (Section 2.1)
 	 */
-	public static final <G, X> Individual<G, X> hillClimbing(
-			final IObjectiveFunction<X> f,
-			final INullarySearchOperation<G> create,
-			final IUnarySearchOperation<G> mutate,
-			final IGPM<G, X> gpm,
+	public static final <G, X> Individual<G, X> hillClimbing(final IObjectiveFunction<X> f,
+			final INullarySearchOperation<G> create, final IUnarySearchOperation<G> mutate, final IGPM<G, X> gpm,
 			final ITerminationCriterion term, final Random r) {
 
 		Individual<G, X> p, pnew;

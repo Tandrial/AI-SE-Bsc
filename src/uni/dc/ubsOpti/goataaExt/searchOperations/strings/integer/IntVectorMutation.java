@@ -43,7 +43,6 @@ public class IntVectorMutation extends UnarySearchOperation<int[]> {
 	 */
 	@Override
 	public String getConfiguration(final boolean longVersion) {
-		return IntVectorCreation.getConfiguration(longVersion, this.min,
-				this.max);
+		return IntVectorCreation.getConfiguration(longVersion, this.min, this.max);
 	}
 }

@@ -78,50 +78,43 @@ public class SettingsGui extends JDialog {
 		contentPanel.add(lblRuns);
 
 		spDepth = new JSpinner();
-		spDepth.setModel(new SpinnerNumberModel(new Integer(2), new Integer(2),
-				null, new Integer(1)));
+		spDepth.setModel(new SpinnerNumberModel(new Integer(2), new Integer(2), null, new Integer(1)));
 		spDepth.setValue(config.getDepth());
 		spDepth.setBounds(85, 25, 80, 20);
 		contentPanel.add(spDepth);
 
 		spPortCount = new JSpinner();
-		spPortCount.setModel(new SpinnerNumberModel(new Integer(2),
-				new Integer(2), null, new Integer(1)));
+		spPortCount.setModel(new SpinnerNumberModel(new Integer(2), new Integer(2), null, new Integer(1)));
 		spPortCount.setValue(config.getPortCount());
 		spPortCount.setBounds(85, 50, 80, 20);
 		contentPanel.add(spPortCount);
 
 		spMaxLength = new JSpinner();
-		spMaxLength.setModel(new SpinnerNumberModel(new Integer(1),
-				new Integer(1), null, new Integer(1)));
+		spMaxLength.setModel(new SpinnerNumberModel(new Integer(1), new Integer(1), null, new Integer(1)));
 		spMaxLength.setValue(config.getMaxFrameLength());
 		spMaxLength.setBounds(85, 74, 80, 20);
 		contentPanel.add(spMaxLength);
 
 		spSpeed = new JSpinner();
-		spSpeed.setModel(new SpinnerNumberModel(new Integer(1), new Integer(1),
-				new Integer(100), new Integer(1)));
+		spSpeed.setModel(new SpinnerNumberModel(new Integer(1), new Integer(1), new Integer(100), new Integer(1)));
 		spSpeed.setValue(config.getMaxSpeed());
 		spSpeed.setBounds(85, 101, 80, 20);
 		contentPanel.add(spSpeed);
 
 		spMaxPrio = new JSpinner();
-		spMaxPrio.setModel(new SpinnerNumberModel(new Integer(2),
-				new Integer(2), null, new Integer(1)));
+		spMaxPrio.setModel(new SpinnerNumberModel(new Integer(2), new Integer(2), null, new Integer(1)));
 		spMaxPrio.setValue(config.getMaxPrio());
 		spMaxPrio.setBounds(85, 150, 80, 20);
 		contentPanel.add(spMaxPrio);
 
 		spMaxStep = new JSpinner();
-		spMaxStep.setModel(new SpinnerNumberModel(new Integer(10000),
-				new Integer(10000), null, new Integer(1)));
+		spMaxStep.setModel(new SpinnerNumberModel(new Integer(10000), new Integer(10000), null, new Integer(1)));
 		spMaxStep.setValue(config.getMaxSteps());
 		spMaxStep.setBounds(85, 175, 80, 20);
 		contentPanel.add(spMaxStep);
 
 		spRuns = new JSpinner();
-		spRuns.setModel(new SpinnerNumberModel(new Integer(1), new Integer(1),
-				null, new Integer(1)));
+		spRuns.setModel(new SpinnerNumberModel(new Integer(1), new Integer(1), null, new Integer(1)));
 		spRuns.setValue(config.getRuns());
 		spRuns.setBounds(85, 200, 80, 20);
 		contentPanel.add(spRuns);
@@ -200,8 +193,7 @@ public class SettingsGui extends JDialog {
 				config.getDelayCalc().setPrio(config.getPriorityConfig());
 				config.getDelayCalc().calculateDelays();
 				config.setTraces(new TraceCollection());
-				config.setPriorityConfig(new PriorityConfiguration(config
-						.getTraffic()));
+				config.setPriorityConfig(new PriorityConfiguration(config.getTraffic()));
 			}
 			config.setUbsV0(true);
 		} else if (rdbtnUbsV3.isSelected() && config.isUbsV0()) {
@@ -210,8 +202,7 @@ public class SettingsGui extends JDialog {
 				config.getDelayCalc().setPrio(config.getPriorityConfig());
 				config.getDelayCalc().calculateDelays();
 				config.setTraces(new TraceCollection());
-				config.setPriorityConfig(new PriorityConfiguration(config
-						.getTraffic()));
+				config.setPriorityConfig(new PriorityConfiguration(config.getTraffic()));
 			}
 			config.setUbsV0(false);
 		}

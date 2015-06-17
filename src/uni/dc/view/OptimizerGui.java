@@ -51,229 +51,215 @@ public class OptimizerGui extends JFrame {
 
 		JMenuBar menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
+		{
+			JMenu mnFile = new JMenu("File");
+			menuBar.add(mnFile);
+			{
+				JMenuItem mntmRandomNetwork = new JMenuItem("New Random Network");
+				mntmRandomNetwork.addActionListener(new ActionListener() {
+					@Override
+					public void actionPerformed(ActionEvent e) {
+						generateRandom();
+					}
+				});
+				mnFile.add(mntmRandomNetwork);
 
-		JMenu mnFile = new JMenu("File");
-		menuBar.add(mnFile);
+				JMenuItem mntmLoad = new JMenuItem("Load Network");
+				mntmLoad.addActionListener(new ActionListener() {
+					@Override
+					public void actionPerformed(ActionEvent arg0) {
+						JFileChooser c = new JFileChooser();
+						c.setCurrentDirectory(new File("./Topologies/"));
+						c.setFileFilter(new FileNameExtensionFilter("UBS Optimizer Network file", "ubsNetwork", "ser"));
+						int rVal = c.showOpenDialog(OptimizerGui.this);
+						if (rVal == JFileChooser.APPROVE_OPTION) {
+							loadFromFile(c.getSelectedFile());
+						}
+					}
+				});
+				mnFile.add(mntmLoad);
 
-		JMenuItem mntmRandomNetwork = new JMenuItem("New Random Network");
-		mntmRandomNetwork.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				generateRandom();
+				JMenuItem mntmExportPng = new JMenuItem("Export Picture");
+				mntmExportPng.addActionListener(new ActionListener() {
+					@Override
+					public void actionPerformed(ActionEvent e) {
+						if (config.getTopology() == null)
+							return;
+						String fileName;
+						if (NetworkParser.getParser().getFile() != null) {
+							fileName = NetworkParser.getParser().getFile().getName();
+							fileName = fileName.substring(0, fileName.lastIndexOf("."));
+						} else
+							fileName = "" + config.getTopology();
+
+						imagePanel.saveToFile(config.getTopology().toDot(), new File("./Topologies/" + fileName
+								+ "_port.png"));
+						imagePanel.saveToFile(config.getTraffic().toDot(config.getPriorityConfig()), new File(
+								"./Topologies/" + fileName + "_flow.png"));
+					}
+				});
+				mnFile.add(mntmExportPng);
+
+				JMenuItem mntmSaveNetwork = new JMenuItem("Save Network");
+				mntmSaveNetwork.addActionListener(new ActionListener() {
+					@Override
+					public void actionPerformed(ActionEvent e) {
+						if (config.getTopology() == null)
+							return;
+						String fileName = "" + config.getTopology();
+						NetworkParser.saveToFile(new File("./Topologies/" + fileName + ".ser"), config);
+					}
+				});
+				mnFile.add(mntmSaveNetwork);
+				mnFile.add(new JSeparator());
+
+				JMenuItem mntmExit = new JMenuItem("Exit");
+				mntmExit.addActionListener(new ActionListener() {
+					@Override
+					public void actionPerformed(ActionEvent e) {
+						setVisible(false);
+						dispose();
+						System.exit(0);
+					}
+				});
+				mnFile.add(mntmExit);
 			}
-		});
-		mnFile.add(mntmRandomNetwork);
 
-		JMenuItem mntmLoad = new JMenuItem("Load Network");
-		mntmLoad.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent arg0) {
-				JFileChooser c = new JFileChooser();
-				c.setCurrentDirectory(new File("./Topologies/"));
-				c.setFileFilter(new FileNameExtensionFilter(
-						"UBS Optimizer Network file", "ubsNetwork", "ser"));
-				int rVal = c.showOpenDialog(OptimizerGui.this);
-				if (rVal == JFileChooser.APPROVE_OPTION) {
-					loadFromFile(c.getSelectedFile());
-				}
+			JMenu mnOptimize = new JMenu("Optimize");
+			menuBar.add(mnOptimize);
+			{
+				JMenuItem mntmBF = new JMenuItem("BruteForce");
+				mntmBF.addActionListener(new ActionListener() {
+					@Override
+					public void actionPerformed(ActionEvent arg0) {
+						optimize("BruteForce");
+					}
+				});
+				mnOptimize.add(mntmBF);
+
+				JMenuItem mntmBT = new JMenuItem("BackTrack");
+				mntmBT.addActionListener(new ActionListener() {
+					@Override
+					public void actionPerformed(ActionEvent arg0) {
+						optimize("BackTrack");
+					}
+				});
+				mnOptimize.add(mntmBT);
+
+				mnOptimize.add(new JSeparator());
+
+				JMenuItem mntmHC = new JMenuItem("Hillclimbing");
+				mntmHC.addActionListener(new ActionListener() {
+					@Override
+					public void actionPerformed(ActionEvent e) {
+						optimize("HillClimbing");
+					}
+				});
+				mnOptimize.add(mntmHC);
+
+				JMenuItem mntmSA = new JMenuItem("SimulatedAnnealing");
+				mntmSA.addActionListener(new ActionListener() {
+					@Override
+					public void actionPerformed(ActionEvent e) {
+						optimize("SimulatedAnnealing");
+					}
+				});
+				mnOptimize.add(mntmSA);
+
+				JMenuItem mntmGA = new JMenuItem("SimpleGenerational Evolutionary Algorithm");
+				mntmGA.addActionListener(new ActionListener() {
+					@Override
+					public void actionPerformed(ActionEvent e) {
+						optimize("SimpleGenerationalEA");
+					}
+				});
+
+				mnOptimize.add(new JSeparator());
+
+				JMenuItem mntmRunAllexcept = new JMenuItem("Run All (except BruteForce/BackTrack)");
+				mntmRunAllexcept.addActionListener(new ActionListener() {
+					@Override
+					public void actionPerformed(ActionEvent arg0) {
+						optimize("HillClimbing");
+						optimize("SimulatedAnnealing");
+						optimize("SimpleGenerationalEA");
+					}
+				});
+				mnOptimize.add(mntmRunAllexcept);
+
+				JMenuItem mntmDisplayGraph = new JMenuItem("Display Graph");
+				mntmDisplayGraph.addActionListener(new ActionListener() {
+					@Override
+					public void actionPerformed(ActionEvent e) {
+						if (config.getTraces() == null)
+							return;
+						TraceDisplay traceDisplay = new TraceDisplay("Trace Display", config.getTraces());
+						traceDisplay.pack();
+						RefineryUtilities.centerFrameOnScreen(traceDisplay);
+						traceDisplay.setVisible(true);
+					}
+				});
+				mnOptimize.add(mntmDisplayGraph);
 			}
-		});
-		mnFile.add(mntmLoad);
 
-		JMenuItem mntmExportPng = new JMenuItem("Export Picture");
-		mntmExportPng.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				if (config.getTopology() == null)
-					return;
-				String fileName;
-				if (NetworkParser.getParser().getFile() != null) {
-					fileName = NetworkParser.getParser().getFile().getName();
-					fileName = fileName.substring(0, fileName.lastIndexOf("."));
-				} else
-					fileName = "" + config.getTopology();
+			JMenu mnSettings = new JMenu("Settings");
+			menuBar.add(mnSettings);
+			{
+				ButtonGroup viewTypeSelectionGroup = new ButtonGroup();
 
-				imagePanel.saveToFile(config.getTopology().toDot(), new File(
-						"./Topologies/" + fileName + "_port.png"));
-				imagePanel.saveToFile(
-						config.getTraffic().toDot(config.getPriorityConfig()),
-						new File("./Topologies/" + fileName + "_flow.png"));
+				JRadioButtonMenuItem rdbtnmntmPorts = new JRadioButtonMenuItem("Display Ports", true);
+				mnSettings.add(rdbtnmntmPorts);
+				rdbtnmntmPorts.addActionListener(new ActionListener() {
+					@Override
+					public void actionPerformed(ActionEvent e) {
+						if (config.getTopology() != null && !portDisplay) {
+							updateDisplay(config.getTopology().toDot());
+						}
+						portDisplay = true;
+					}
+				});
+				viewTypeSelectionGroup.add(rdbtnmntmPorts);
+
+				JRadioButtonMenuItem rdbtnmntmFlows = new JRadioButtonMenuItem("Display Flows");
+				mnSettings.add(rdbtnmntmFlows);
+				rdbtnmntmFlows.addActionListener(new ActionListener() {
+					@Override
+					public void actionPerformed(ActionEvent e) {
+						if (config.getTopology() != null && portDisplay) {
+							updateDisplay(config.getTraffic().toDot(config.getPriorityConfig()));
+						}
+						portDisplay = false;
+					}
+				});
+				viewTypeSelectionGroup.add(rdbtnmntmFlows);
+
+				mnSettings.add(new JSeparator());
+
+				JMenuItem mntmDisplaySettings = new JMenuItem("Settings");
+				mntmDisplaySettings.addActionListener(new ActionListener() {
+					@Override
+					public void actionPerformed(ActionEvent e) {
+						SettingsGui settings = new SettingsGui(config);
+						RefineryUtilities.centerFrameOnScreen(settings);
+						settings.setVisible(true);
+					}
+				});
+				mnSettings.add(mntmDisplaySettings);
 			}
-		});
-		mnFile.add(mntmExportPng);
-
-		JMenuItem mntmSaveNetwork = new JMenuItem("Save Network");
-		mntmSaveNetwork.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				if (config.getTopology() == null)
-					return;
-				String fileName = "" + config.getTopology();
-				NetworkParser.saveToFile(new File("./Topologies/" + fileName
-						+ ".ser"), config);
-			}
-		});
-		mnFile.add(mntmSaveNetwork);
-		mnFile.add(new JSeparator());
-
-		JMenuItem mntmExit = new JMenuItem("Exit");
-		mntmExit.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				setVisible(false);
-				dispose();
-				System.exit(0);
-			}
-		});
-		mnFile.add(mntmExit);
-
-		JMenu mnOptimize = new JMenu("Optimize");
-		menuBar.add(mnOptimize);
-
-		JMenuItem mntmBF = new JMenuItem("BruteForce");
-		mntmBF.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent arg0) {
-				optimize("BruteForce");
-			}
-		});
-		mnOptimize.add(mntmBF);
-		
-		JMenuItem mntmBT = new JMenuItem("BackTrack");
-		mntmBT.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent arg0) {
-				optimize("BackTrack");
-			}
-		});
-		mnOptimize.add(mntmBT);
-
-		JMenuItem mntmHC = new JMenuItem("Hillclimbing");
-		mntmHC.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				optimize("HillClimbing");
-			}
-		});
-		mnOptimize.add(mntmHC);
-
-		JMenuItem mntmSA = new JMenuItem("SimulatedAnnealing");
-		mntmSA.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				optimize("SimulatedAnnealing");
-			}
-		});
-		mnOptimize.add(mntmSA);
-
-		JMenuItem mntmGA = new JMenuItem(
-				"SimpleGenerational Evolutionary Algorithm");
-		mntmGA.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				optimize("SimpleGenerationalEA");
-			}
-		});
-
-		JMenuItem mntmRW = new JMenuItem("RandomWalk Algorithm");
-		mntmRW.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				optimize("RandomWalk");
-			}
-		});
-		mnOptimize.add(mntmRW);
-
-		mnOptimize.add(new JSeparator());
-
-		JMenuItem mntmRunAllexcept = new JMenuItem(
-				"Run All (except BruteForce)");
-		mntmRunAllexcept.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent arg0) {
-				optimize("HillClimbing");
-				optimize("SimulatedAnnealing");
-				optimize("SimpleGenerationalEA");
-				optimize("RandomWalk");
-			}
-		});
-		mnOptimize.add(mntmRunAllexcept);
-
-		JMenuItem mntmDisplayGraph = new JMenuItem("Display Graph");
-		mntmDisplayGraph.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				if (config.getTraces() == null)
-					return;
-				TraceDisplay traceDisplay = new TraceDisplay("Trace Display",
-						config.getTraces());
-				traceDisplay.pack();
-				RefineryUtilities.centerFrameOnScreen(traceDisplay);
-				traceDisplay.setVisible(true);
-			}
-		});
-		mnOptimize.add(mntmDisplayGraph);
-
-		JMenu mnSettings = new JMenu("Settings");
-		menuBar.add(mnSettings);
-
-		ButtonGroup viewTypeSelectionGroup = new ButtonGroup();
-
-		JRadioButtonMenuItem rdbtnmntmPorts = new JRadioButtonMenuItem(
-				"Display Ports", true);
-		mnSettings.add(rdbtnmntmPorts);
-		rdbtnmntmPorts.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				if (config.getTopology() != null && !portDisplay) {
-					updateDisplay(config.getTopology().toDot());
-				}
-				portDisplay = true;
-			}
-		});
-		viewTypeSelectionGroup.add(rdbtnmntmPorts);
-
-		JRadioButtonMenuItem rdbtnmntmFlows = new JRadioButtonMenuItem(
-				"Display Flows");
-		mnSettings.add(rdbtnmntmFlows);
-		rdbtnmntmFlows.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				if (config.getTopology() != null && portDisplay) {
-					updateDisplay(config.getTraffic().toDot(
-							config.getPriorityConfig()));
-				}
-				portDisplay = false;
-			}
-		});
-		viewTypeSelectionGroup.add(rdbtnmntmFlows);
-
-		mnSettings.add(new JSeparator());
-
-		JMenuItem mntmDisplaySettings = new JMenuItem("Settings");
-		mntmDisplaySettings.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				SettingsGui settings = new SettingsGui(config);
-				RefineryUtilities.centerFrameOnScreen(settings);
-				settings.setVisible(true);
-			}
-		});
-		mnSettings.add(mntmDisplaySettings);
+		}
 
 		JPanel contentPane = new JPanel();
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		contentPane.setLayout(new BorderLayout(0, 0));
-		setContentPane(contentPane);
+		{
+			contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+			contentPane.setLayout(new BorderLayout(0, 0));
+			setContentPane(contentPane);
 
-		statusLabel = new JLabel("");
-		contentPane.add(statusLabel, BorderLayout.PAGE_END);
+			statusLabel = new JLabel("");
+			contentPane.add(statusLabel, BorderLayout.PAGE_END);
 
-		JPanel topologyPanel = new JPanel(new BorderLayout());
-		imagePanel = new GraphVizPanel();
-		topologyPanel.add(imagePanel, BorderLayout.CENTER);
-
-		contentPane.add(topologyPanel, BorderLayout.CENTER);
+			imagePanel = new GraphVizPanel();
+			contentPane.add(imagePanel, BorderLayout.CENTER);
+		}
 	}
 
 	private void optimize(String algo) {
@@ -285,32 +271,25 @@ public class OptimizerGui extends JFrame {
 		long t1, t2, t3;
 		t1 = System.nanoTime();
 
-		logger.log(
-				Level.INFO,
-				String.format("Optimazation for %s started with %s",
-						config.isUbsV0() ? "UBS-V0" : "UBS-V3", algo));
+		logger.log(Level.INFO,
+				String.format("Optimazation for %s started with %s", config.isUbsV0() ? "UBS-V0" : "UBS-V3", algo));
+
 		boolean result = Optimizer.getOptimizer().optimize(config, algo);
 		config.setBestConfig();
 
 		t2 = System.nanoTime();
 		if (result) {
-			logger.log(Level.INFO, String
-					.format("Optimazation successful (in %.4f sec)!",
-							(t2 - t1) / 1.0e9));
+			logger.log(Level.INFO, String.format("Optimazation successful (in %.4f sec)!", (t2 - t1) / 1.0e9));
 		} else {
-			logger.log(Level.INFO, String.format(
-					"Optimazation failed (in %.4f sec)!", (t2 - t1) / 1.0e9));
+			logger.log(Level.INFO, String.format("Optimazation failed (in %.4f sec)!", (t2 - t1) / 1.0e9));
 		}
-		logger.log(
-				Level.INFO,
-				String.format("Best Prio is: \n%s\nDelays are \n%s",
-						config.getPriorityConfig(), config.getDelayCalc()));
+		logger.log(Level.INFO,
+				String.format("Best Prio is: \n%s\nDelays are \n%s", config.getPriorityConfig(), config.getDelayCalc()));
 
-		imagePanel.setDot(portDisplay ? config.getTopology().toDot() : config
-				.getTraffic().toDot(config.getPriorityConfig()));
+		imagePanel.setDot(portDisplay ? config.getTopology().toDot() : config.getTraffic().toDot(
+				config.getPriorityConfig()));
 		t3 = System.nanoTime();
-		setStatusMsg("Done (optimized in %.4f sec., rendered in %.4f sec.)",
-				(t2 - t1) / 1.0E9, (t3 - t2) / 1.0E9);
+		setStatusMsg("Done (optimized in %.4f sec., rendered in %.4f sec.)", (t2 - t1) / 1.0E9, (t3 - t2) / 1.0E9);
 		logger.exiting(getClass().getName(), "optimize");
 	}
 
@@ -335,15 +314,13 @@ public class OptimizerGui extends JFrame {
 			parser.setFileName(file);
 			config.fromParser(parser);
 
-			logger.log(Level.INFO, String.format("Loaded network \"%s\":\n%s",
-					file.getName(), config));
+			logger.log(Level.INFO, String.format("Loaded network \"%s\":\n%s", file.getName(), config));
 			t2 = System.nanoTime();
-			imagePanel.setDot(portDisplay ? config.getTopology().toDot()
-					: config.getTraffic().toDot(config.getPriorityConfig()));
+			imagePanel.setDot(portDisplay ? config.getTopology().toDot() : config.getTraffic().toDot(
+					config.getPriorityConfig()));
 			t3 = System.nanoTime();
 
-			setStatusMsg("Done (loaded in %.4f sec., rendered in %.4f sec.)",
-					(t2 - t1) / 1.0E9, (t3 - t2) / 1.0E9);
+			setStatusMsg("Done (loaded in %.4f sec., rendered in %.4f sec.)", (t2 - t1) / 1.0E9, (t3 - t2) / 1.0E9);
 			setTitle("UBS Optimizer - " + file.getName());
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -363,17 +340,14 @@ public class OptimizerGui extends JFrame {
 
 			config.fromGenerator(GeneratorAPI.getGenerator());
 
-			logger.log(Level.INFO,
-					String.format("Generated new network: \n%s", config));
+			logger.log(Level.INFO, String.format("Generated new network: \n%s", config));
 
 			t2 = System.nanoTime();
-			imagePanel.setDot(portDisplay ? config.getTopology().toDot()
-					: config.getTraffic().toDot(config.getPriorityConfig()));
+			imagePanel.setDot(portDisplay ? config.getTopology().toDot() : config.getTraffic().toDot(
+					config.getPriorityConfig()));
 			t3 = System.nanoTime();
 
-			setStatusMsg(
-					"Done (generated in %.4f sec., rendered in %.4f sec.)",
-					(t2 - t1) / 1.0E9, (t3 - t2) / 1.0E9);
+			setStatusMsg("Done (generated in %.4f sec., rendered in %.4f sec.)", (t2 - t1) / 1.0E9, (t3 - t2) / 1.0E9);
 		} catch (Exception e) {
 			e.printStackTrace();
 			setStatusMsg("Generation failed!");
@@ -393,14 +367,13 @@ public class OptimizerGui extends JFrame {
 			@Override
 			public void run() {
 				try {
-					UIManager.setLookAndFeel(UIManager
-							.getSystemLookAndFeelClassName());
+					UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
 					OptimizerGui gui = new OptimizerGui("UBS Optimizer");
 					RefineryUtilities.centerFrameOnScreen(gui);
 
 					FileHandler fh = new FileHandler("./ubsOpti.log");
 					fh.setFormatter(new SimpleFormatter());
-					
+
 					OptimizerGui.logger.addHandler(fh);
 					SettingsGui.logger.addHandler(fh);
 					gui.setVisible(true);

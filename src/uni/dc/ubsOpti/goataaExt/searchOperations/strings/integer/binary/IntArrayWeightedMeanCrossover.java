@@ -10,8 +10,7 @@ import org.goataa.spec.IBinarySearchOperation;
  *
  * @author Michael Krane
  */
-public final class IntArrayWeightedMeanCrossover extends
-		BinarySearchOperation<int[]> {
+public final class IntArrayWeightedMeanCrossover extends BinarySearchOperation<int[]> {
 
 	/** a constant required by Java serialization */
 	private static final long serialVersionUID = 1;

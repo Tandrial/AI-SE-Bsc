@@ -5,8 +5,7 @@ import java.util.ArrayList;
 
 import uni.dc.model.PriorityConfiguration;
 
-public class TraceCollection extends ArrayList<DelayTrace> implements
-		Serializable {
+public class TraceCollection extends ArrayList<DelayTrace> implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 

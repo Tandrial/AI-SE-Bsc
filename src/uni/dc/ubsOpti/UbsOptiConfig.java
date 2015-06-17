@@ -49,8 +49,7 @@ public class UbsOptiConfig implements Serializable {
 		return sb.toString();
 	}
 
-	public UbsOptiConfig(EgressTopology topology, Traffic traffic,
-			PriorityConfiguration prio, UbsDelayCalc delayCalc,
+	public UbsOptiConfig(EgressTopology topology, Traffic traffic, PriorityConfiguration prio, UbsDelayCalc delayCalc,
 			TraceCollection traces) {
 		this.topology = topology;
 		this.traffic = traffic;
@@ -65,21 +64,18 @@ public class UbsOptiConfig implements Serializable {
 		traffic = parser.getTraffic();
 		prio = parser.getPriorityConfig();
 		dim = prio.toIntArray().length;
-		delayCalc = ubsV0 ? new UbsV0DelayCalc(traffic) : new UbsV3DelayCalc(
-				traffic);
+		delayCalc = ubsV0 ? new UbsV0DelayCalc(traffic) : new UbsV3DelayCalc(traffic);
 		delayCalc.calculateDelays(prio);
 		traces = new TraceCollection();
 	}
 
 	public void fromGenerator(GeneratorAPI generator) {
-		generator.generateNetwork(depth, portCount, maxPrio, linkSpeed,
-				maxFrameLength, maxSpeed);
+		generator.generateNetwork(depth, portCount, maxPrio, linkSpeed, maxFrameLength, maxSpeed);
 		topology = generator.getTopology();
 		traffic = generator.getTraffic();
 		prio = generator.getPriorityConfiguration();
 		dim = prio.toIntArray().length;
-		delayCalc = ubsV0 ? new UbsV0DelayCalc(traffic) : new UbsV3DelayCalc(
-				traffic);
+		delayCalc = ubsV0 ? new UbsV0DelayCalc(traffic) : new UbsV3DelayCalc(traffic);
 		delayCalc.setInitialDelays(prio);
 		traces = new TraceCollection();
 	}

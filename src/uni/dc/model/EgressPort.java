@@ -8,7 +8,7 @@ public class EgressPort implements Cloneable, Serializable {
 	private static final long serialVersionUID = 1L;
 	private String name;
 	private Node node;
-	private double linkSpeed = 1e9;	
+	private double linkSpeed = 1e9;
 	private Set<Flow> flowList = new LinkedHashSet<Flow>();
 
 	public EgressPort() {
@@ -19,19 +19,19 @@ public class EgressPort implements Cloneable, Serializable {
 		this();
 		this.name = name;
 	}
-	
+
 	public String getName() {
 		return name;
 	}
-	
+
 	public void setName(String name) {
 		this.name = name;
 	}
-	
+
 	public Node getNode() {
 		return node;
 	}
-	
+
 	public void setNode(Node node) {
 		this.node = node;
 	}
@@ -39,7 +39,7 @@ public class EgressPort implements Cloneable, Serializable {
 	public double getLinkSpeed() {
 		return linkSpeed;
 	}
-	
+
 	public void setLinkSpeed(double linkSpeed) {
 		this.linkSpeed = linkSpeed;
 	}

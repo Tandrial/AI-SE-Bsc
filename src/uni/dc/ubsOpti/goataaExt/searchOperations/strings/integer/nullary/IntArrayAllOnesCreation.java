@@ -48,7 +48,7 @@ public class IntArrayAllOnesCreation extends IntVectorCreation {
 		for (int i = 0; i < g.length; i++) {
 			g[i] = 1;
 		}
-		
+
 		return g;
 	}
 

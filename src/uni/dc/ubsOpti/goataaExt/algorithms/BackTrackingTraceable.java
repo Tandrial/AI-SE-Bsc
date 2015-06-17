@@ -63,8 +63,7 @@ public class BackTrackingTraceable implements Traceable {
 		// 1) Delays berechnen, falls besser ==> speichern in trace
 		double delay = delayCalc.compute(prio, null);
 		if (delay < minDelay) {
-			PriorityConfiguration prioConfig = (PriorityConfiguration) config
-					.getPriorityConfig().clone();
+			PriorityConfiguration prioConfig = (PriorityConfiguration) config.getPriorityConfig().clone();
 			prioConfig.fromIntArray(prio);
 			minDelay = delay;
 			bestPrio = Arrays.copyOf(prio, prio.length);
@@ -93,8 +92,7 @@ public class BackTrackingTraceable implements Traceable {
 				if (stopRecursion) {
 					return;
 				}
-				PriorityConfiguration prioConfig = (PriorityConfiguration) config
-						.getPriorityConfig().clone();
+				PriorityConfiguration prioConfig = (PriorityConfiguration) config.getPriorityConfig().clone();
 				prioConfig.fromIntArray(prio);
 				int currPrio = prioConfig.getPriority(p, f);
 				if (currPrio < config.getMaxPrio()) {

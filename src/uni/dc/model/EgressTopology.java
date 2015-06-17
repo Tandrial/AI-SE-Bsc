@@ -13,7 +13,7 @@ import java.util.Set;
 import uni.dc.util.GraphViz;
 import uni.dc.util.Pair;
 
-public class EgressTopology implements Serializable{
+public class EgressTopology implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private Map<Node, Set<EgressPort>> nodeMap;
 	private Map<EgressPort, Node> portNodeMap;
@@ -44,7 +44,6 @@ public class EgressTopology implements Serializable{
 		return linkMap;
 	}
 
-
 	public void addNode(Node n) {
 		nodeMap.put(n, new LinkedHashSet<EgressPort>());
 	}
@@ -52,7 +51,7 @@ public class EgressTopology implements Serializable{
 	public void add(EgressPort p) {
 		portSet.add(p);
 		if (!linkMap.containsKey(p))
-			linkMap.put(p, new HashSet<EgressPort>());		
+			linkMap.put(p, new HashSet<EgressPort>());
 	}
 
 	public void addAll(Collection<? extends EgressPort> ports) {
@@ -131,14 +130,13 @@ public class EgressTopology implements Serializable{
 
 		if (nodeMap.size() > 0) {
 			for (Node n : nodeMap.keySet()) {
-				r.append(String.format("\tsubgraph cluster_%s {\n",GraphViz.dotUid(n)));
+				r.append(String.format("\tsubgraph cluster_%s {\n", GraphViz.dotUid(n)));
 				r.append(String.format("\t\tlabel=\"%s\";\n", n.getName()));
 				String ranking = "\t\t{ rank=same ";
 				// Ports
 				for (EgressPort p : nodeMap.get(n)) {
 					String portUid = GraphViz.dotUid(p);
-					r.append(String.format("\t\t%s[label=\"%s\"];\n", portUid,
-							p.getName()));
+					r.append(String.format("\t\t%s[label=\"%s\"];\n", portUid, p.getName()));
 					ranking += portUid + " ";
 				}
 				ranking += "};\n\t}\n";
@@ -147,8 +145,7 @@ public class EgressTopology implements Serializable{
 		} else {
 			// Ports
 			for (EgressPort p : portSet) {
-				r.append(String.format("\t%s[label=\"%s\"];\n",
-						GraphViz.dotUid(p), p.getName()));
+				r.append(String.format("\t%s[label=\"%s\"];\n", GraphViz.dotUid(p), p.getName()));
 			}
 		}
 
@@ -156,8 +153,7 @@ public class EgressTopology implements Serializable{
 		for (EgressPort pSrc : portSet) {
 			Set<EgressPort> outLinks = linkMap.get(pSrc);
 			for (EgressPort pDest : outLinks) {
-				r.append(String.format("\t%s->%s;\n", GraphViz.dotUid(pSrc),
-						GraphViz.dotUid(pDest)));
+				r.append(String.format("\t%s->%s;\n", GraphViz.dotUid(pSrc), GraphViz.dotUid(pDest)));
 			}
 		}
 
@@ -175,8 +171,7 @@ public class EgressTopology implements Serializable{
 	}
 
 	public List<EgressPort> getPath(String src, String dest) {
-		return getPath(getNodeFromName(src), getNodeFromName(dest),
-				new LinkedHashSet<Node>());
+		return getPath(getNodeFromName(src), getNodeFromName(dest), new LinkedHashSet<Node>());
 	}
 
 	public List<EgressPort> getPath(EgressPort src, EgressPort dest) {
@@ -196,8 +191,7 @@ public class EgressTopology implements Serializable{
 		return rv;
 	}
 
-	public List<EgressPort> getPath(Node src, Node dest,
-			LinkedHashSet<Node> visited) {
+	public List<EgressPort> getPath(Node src, Node dest, LinkedHashSet<Node> visited) {
 		List<EgressPort> rv = null;
 		if (dest == src) {
 			rv = new LinkedList<EgressPort>();
@@ -207,13 +201,12 @@ public class EgressTopology implements Serializable{
 					visited.add(n);
 					rv = getPath(n, dest, visited);
 					if (rv != null) {
-						rv.add(0, nodeLinkEgressPortMap
-								.get(new Pair<Node, Node>(src, n)));
+						rv.add(0, nodeLinkEgressPortMap.get(new Pair<Node, Node>(src, n)));
 						break;
 					}
 				}
 			}
 		}
 		return rv;
-	}	
+	}
 }

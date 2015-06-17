@@ -22,8 +22,7 @@ import org.goataa.spec.IUnarySearchOperation;
  *            the problem space (phenome, Section 2.1)
  * @author Michael Krane
  */
-public final class SimulatedAnnealingTraceable<G, X> extends
-		LocalSearchAlgorithmTraceable<G, X, Individual<G, X>> {
+public final class SimulatedAnnealingTraceable<G, X> extends LocalSearchAlgorithmTraceable<G, X, Individual<G, X>> {
 
 	/** a constant required by Java serialization */
 	private static final long serialVersionUID = 1;
@@ -44,8 +43,7 @@ public final class SimulatedAnnealingTraceable<G, X> extends
 	 * @param aschedule
 	 *            the temperature schedule
 	 */
-	public final void setTemperatureSchedule(
-			final ITemperatureSchedule aschedule) {
+	public final void setTemperatureSchedule(final ITemperatureSchedule aschedule) {
 		this.schedule = aschedule;
 	}
 
@@ -78,8 +76,7 @@ public final class SimulatedAnnealingTraceable<G, X> extends
 	 *            a list to which the results are to be appended
 	 */
 	@Override
-	public void call(final Random r, final ITerminationCriterion term,
-			final List<Individual<G, X>> result) {
+	public void call(final Random r, final ITerminationCriterion term, final List<Individual<G, X>> result) {
 
 		result.add(SimulatedAnnealingTraceable.simulatedAnnealing(//
 				this.getObjectiveFunction(),//
@@ -115,12 +112,9 @@ public final class SimulatedAnnealingTraceable<G, X> extends
 	 * @param <X>
 	 *            the problem space (Section 2.1)
 	 */
-	public static final <G, X> Individual<G, X> simulatedAnnealing(
-			final IObjectiveFunction<X> f,
-			final INullarySearchOperation<G> create,
-			final IUnarySearchOperation<G> mutate, final IGPM<G, X> gpm,
-			final ITemperatureSchedule temperature,
-			final ITerminationCriterion term, final Random r) {
+	public static final <G, X> Individual<G, X> simulatedAnnealing(final IObjectiveFunction<X> f,
+			final INullarySearchOperation<G> create, final IUnarySearchOperation<G> mutate, final IGPM<G, X> gpm,
+			final ITemperatureSchedule temperature, final ITerminationCriterion term, final Random r) {
 
 		Individual<G, X> pbest, pcur, pnew;
 		int t;

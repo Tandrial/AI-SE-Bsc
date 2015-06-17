@@ -18,8 +18,7 @@ import org.goataa.spec.ISelectionAlgorithm;
  *            the problem space (phenome, Section 2.1)
  * @author Michael Krane
  */
-public abstract class EABaseTracable<G, X> extends
-		LocalSearchAlgorithmTraceable<G, X, Individual<G, X>> {
+public abstract class EABaseTracable<G, X> extends LocalSearchAlgorithmTraceable<G, X, Individual<G, X>> {
 
 	/** a constant required by Java serialization */
 	private static final long serialVersionUID = 1;
@@ -76,10 +75,8 @@ public abstract class EABaseTracable<G, X> extends
 	 *            the binary search operation to use
 	 */
 	@SuppressWarnings("unchecked")
-	public final void setBinarySearchOperation(
-			final IBinarySearchOperation<G> op) {
-		this.o2 = ((op != null) ? op
-				: ((IBinarySearchOperation<G>) (BinarySearchOperation.IDENTITY_CROSSOVER)));
+	public final void setBinarySearchOperation(final IBinarySearchOperation<G> op) {
+		this.o2 = ((op != null) ? op : ((IBinarySearchOperation<G>) (BinarySearchOperation.IDENTITY_CROSSOVER)));
 	}
 
 	/**

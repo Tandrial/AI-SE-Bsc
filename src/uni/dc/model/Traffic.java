@@ -41,8 +41,7 @@ public class Traffic extends LinkedHashSet<Flow> implements Serializable {
 			if (srcPort.getNode() == null) {
 				path = topology.getPath(srcPort, f.getDestPort());
 			} else {
-				path = topology.getPath(srcPort.getNode(), f.getDestPort()
-						.getNode(), new LinkedHashSet<Node>());
+				path = topology.getPath(srcPort.getNode(), f.getDestPort().getNode(), new LinkedHashSet<Node>());
 			}
 			f.setPath(path);
 			for (EgressPort p : path)
@@ -68,24 +67,18 @@ public class Traffic extends LinkedHashSet<Flow> implements Serializable {
 		// Ports
 		if (nodeMap.size() > 0) {
 			for (Node n : nodeMap.keySet()) {
-				r.append(String.format("\tsubgraph cluster%s {\n",
-						GraphViz.dotUid(n)));
+				r.append(String.format("\tsubgraph cluster%s {\n", GraphViz.dotUid(n)));
 				r.append(String.format("\t\tlabel=\"%s\";\n", n.getName()));
 
 				for (EgressPort p : nodeMap.get(n)) {
 					String portUid = GraphViz.dotUid(p);
 					String prioString = generatePrioTable(p, prio);
 					if (prioString.equals("\"\"")) {
-						r.append(String.format("\t%s[label=\"%s\"];\n",
-								portUid, p.getName()));
+						r.append(String.format("\t%s[label=\"%s\"];\n", portUid, p.getName()));
 					} else {
-						r.append(String.format("\t\tsubgraph cluster%s {\n",
-								portUid));
-						r.append(String.format("\t\t\tlabel=\"%s\";\n",
-								p.getName()));
-						r.append(String.format(
-								"\t\t\t%s[shape=none,label=%s];\n", portUid,
-								prioString));
+						r.append(String.format("\t\tsubgraph cluster%s {\n", portUid));
+						r.append(String.format("\t\t\tlabel=\"%s\";\n", p.getName()));
+						r.append(String.format("\t\t\t%s[shape=none,label=%s];\n", portUid, prioString));
 						r.append("\t\t}\n");
 					}
 				}
@@ -96,14 +89,11 @@ public class Traffic extends LinkedHashSet<Flow> implements Serializable {
 				String portUid = GraphViz.dotUid(p);
 				String prioString = generatePrioTable(p, prio);
 				if (prioString.equals("\"\"")) {
-					r.append(String.format("\t%s[label=\"%s\"];\n", portUid,
-							p.getName()));
+					r.append(String.format("\t%s[label=\"%s\"];\n", portUid, p.getName()));
 				} else {
-					r.append(String
-							.format("\tsubgraph cluster_%s {\n", portUid));
+					r.append(String.format("\tsubgraph cluster_%s {\n", portUid));
 					r.append(String.format("\t\tlabel=\"%s\";\n", p.getName()));
-					r.append(String.format("\t\t\t%s[shape=none, label=%s];\n",
-							portUid, prioString));
+					r.append(String.format("\t\t\t%s[shape=none, label=%s];\n", portUid, prioString));
 					r.append("\t}\n");
 				}
 			}
@@ -116,15 +106,12 @@ public class Traffic extends LinkedHashSet<Flow> implements Serializable {
 				if (done.contains(pDest))
 					continue;
 
-				Set<Flow> srcDestFlows = new LinkedHashSet<Flow>(
-						portFlowMap.get(pSrc));
+				Set<Flow> srcDestFlows = new LinkedHashSet<Flow>(portFlowMap.get(pSrc));
 				if (nodeMap.size() == 0)
 					srcDestFlows.retainAll(portFlowMap.get(pDest));
 
-				r.append(String.format("\t%s->%s[label=%s,color=%s];\n",
-						GraphViz.dotUid(pSrc), GraphViz.dotUid(pDest),
-						buildflowDotLabelString(srcDestFlows),
-						buildDotColorString(srcDestFlows, flowColorMap)));
+				r.append(String.format("\t%s->%s[label=%s,color=%s];\n", GraphViz.dotUid(pSrc), GraphViz.dotUid(pDest),
+						buildflowDotLabelString(srcDestFlows), buildDotColorString(srcDestFlows, flowColorMap)));
 			}
 			done.add(pSrc);
 		}
@@ -141,9 +128,8 @@ public class Traffic extends LinkedHashSet<Flow> implements Serializable {
 			sb.append("\n\t\t<<FONT POINT-SIZE=\"8\"><TABLE BORDER=\"0\" CELLBORDER=\"1\" CELLSPACING=\"0\">\n");
 			for (Flow f : flows) {
 				if (!f.getDestPort().equals(p)) {
-					sb.append(String.format(
-							"\t\t\t<TR><TD>%s</TD><TD>%d</TD></TR>\n",
-							f.getName(), prio.getPriority(p, f)));
+					sb.append(String.format("\t\t\t<TR><TD>%s</TD><TD>%d</TD></TR>\n", f.getName(),
+							prio.getPriority(p, f)));
 					hasFlow = true;
 				}
 			}
@@ -182,8 +168,7 @@ public class Traffic extends LinkedHashSet<Flow> implements Serializable {
 		return rv;
 	}
 
-	private static String buildDotColorString(Collection<?> objects,
-			Map<Object, Color> colorMap) {
+	private static String buildDotColorString(Collection<?> objects, Map<Object, Color> colorMap) {
 		String rv = "";
 
 		if (objects.size() > 0) {
@@ -198,7 +183,6 @@ public class Traffic extends LinkedHashSet<Flow> implements Serializable {
 	}
 
 	private static String getDotColorString(Color c) {
-		return String.format("#%02x%02x%02x", c.getRed(), c.getGreen(),
-				c.getBlue());
+		return String.format("#%02x%02x%02x", c.getRed(), c.getGreen(), c.getBlue());
 	}
 }

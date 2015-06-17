@@ -8,7 +8,8 @@ public class PortFlowPriority implements Cloneable, Serializable {
 	private Flow flow;
 	private int priority;
 
-	public PortFlowPriority() {	}
+	public PortFlowPriority() {
+	}
 
 	public PortFlowPriority(EgressPort port, Flow flow, int priority) {
 		this.port = port;

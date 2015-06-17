@@ -3,7 +3,7 @@ package uni.dc.ubsOpti.tracer;
 import java.io.Serializable;
 import java.util.Arrays;
 
-public class TracerStat implements Serializable{
+public class TracerStat implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private long step;
 	private double delay;

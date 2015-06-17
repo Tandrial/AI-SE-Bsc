@@ -25,8 +25,7 @@ import org.goataa.spec.IUnarySearchOperation;
  *            the problem space (phenome, Section 2.1)
  * @author Michael Krane
  */
-public final class SimpleGenerationalTraceable<G, X> extends
-		EABaseTracable<G, X> {
+public final class SimpleGenerationalTraceable<G, X> extends EABaseTracable<G, X> {
 
 	/** a constant required by Java serialization */
 	private static final long serialVersionUID = 1;
@@ -74,13 +73,10 @@ public final class SimpleGenerationalTraceable<G, X> extends
 	 *            the problem space (Section 2.1)
 	 */
 	@SuppressWarnings("unchecked")
-	public static final <G, X> Individual<G, X> evolutionaryAlgorithm(
-			final IObjectiveFunction<X> f,
-			final INullarySearchOperation<G> create,
-			final IUnarySearchOperation<G> mutate,
-			final IBinarySearchOperation<G> recombine, final IGPM<G, X> gpm,
-			final ISelectionAlgorithm sel, final int ps, final int mps,
-			final double mr, final double cr, final ITerminationCriterion term,
+	public static final <G, X> Individual<G, X> evolutionaryAlgorithm(final IObjectiveFunction<X> f,
+			final INullarySearchOperation<G> create, final IUnarySearchOperation<G> mutate,
+			final IBinarySearchOperation<G> recombine, final IGPM<G, X> gpm, final ISelectionAlgorithm sel,
+			final int ps, final int mps, final double mr, final double cr, final ITerminationCriterion term,
 			final Random r) {
 
 		Individual<G, X>[] pop, mate;
@@ -140,8 +136,7 @@ public final class SimpleGenerationalTraceable<G, X> extends
 				p = new Individual<G, X>();
 
 				// recombine an individual with another
-				p.g = recombine.recombine(mate[mateIndex].g,
-						mate[r.nextInt(mps)].g, r);
+				p.g = recombine.recombine(mate[mateIndex].g, mate[r.nextInt(mps)].g, r);
 				pop[--popIndex] = p;
 				mateIndex = ((mateIndex + 1) % mps);
 			}
@@ -178,16 +173,12 @@ public final class SimpleGenerationalTraceable<G, X> extends
 	 *            a list to which the results are to be appended
 	 */
 	@Override
-	public void call(final Random r, final ITerminationCriterion term,
-			final List<Individual<G, X>> result) {
+	public void call(final Random r, final ITerminationCriterion term, final List<Individual<G, X>> result) {
 
-		result.add(SimpleGenerationalTraceable.evolutionaryAlgorithm(
-				this.getObjectiveFunction(), this.getNullarySearchOperation(),
-				this.getUnarySearchOperation(),
-				this.getBinarySearchOperation(), this.getGPM(),
-				this.getSelectionAlgorithm(), this.getPopulationSize(),
-				this.getMatingPoolSize(), this.getMutationRate(),
-				this.getCrossoverRate(), term, r));
+		result.add(SimpleGenerationalTraceable.evolutionaryAlgorithm(this.getObjectiveFunction(),
+				this.getNullarySearchOperation(), this.getUnarySearchOperation(), this.getBinarySearchOperation(),
+				this.getGPM(), this.getSelectionAlgorithm(), this.getPopulationSize(), this.getMatingPoolSize(),
+				this.getMutationRate(), this.getCrossoverRate(), term, r));
 	}
 
 	/**
@@ -219,8 +210,7 @@ public final class SimpleGenerationalTraceable<G, X> extends
 			} else {
 				om = this.getBinarySearchOperation();
 				if (om != null) {
-					if (om.getClass().getCanonicalName()
-							.contains("strings.bits.")) {
+					if (om.getClass().getCanonicalName().contains("strings.bits.")) {
 						ga = true;
 					}
 				}

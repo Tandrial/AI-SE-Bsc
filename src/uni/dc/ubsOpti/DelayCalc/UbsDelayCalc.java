@@ -14,8 +14,7 @@ import uni.dc.model.EgressPort;
 import uni.dc.model.Flow;
 import uni.dc.model.PriorityConfiguration;
 
-public abstract class UbsDelayCalc extends OptimizationModule implements
-		IObjectiveFunction<int[]>, Serializable {
+public abstract class UbsDelayCalc extends OptimizationModule implements IObjectiveFunction<int[]>, Serializable {
 	private static final long serialVersionUID = 1L;
 	protected Set<Flow> flows = null;
 	protected PriorityConfiguration prio = null;
@@ -81,8 +80,7 @@ public abstract class UbsDelayCalc extends OptimizationModule implements
 				maxSmaller = Math.max(maxSmaller, other.getMaxFrameLength());
 			}
 		}
-		delay = (sizeBiggerEq + maxSmaller) / (linkSpeed - rateHigher) + size
-				/ linkSpeed;
+		delay = (sizeBiggerEq + maxSmaller) / (linkSpeed - rateHigher) + size / linkSpeed;
 		return delay;
 	}
 
@@ -98,17 +96,14 @@ public abstract class UbsDelayCalc extends OptimizationModule implements
 	public String toString(boolean longVersion) {
 		StringBuilder sb = new StringBuilder();
 		for (Flow flow : flows) {
-			sb.append(String.format("%s : %.0f Mbps, %d bit\n", flow.getName(),
-					flow.getRate() / 1e6, flow.getMaxFrameLength()));
+			sb.append(String.format("%s : %.0f Mbps, %d bit\n", flow.getName(), flow.getRate() / 1e6,
+					flow.getMaxFrameLength()));
 			sb.append(String.format("Path : %s\n", flow));
 			if (flow.getMaxLatency() == Double.MAX_VALUE) {
-				sb.append(String.format("Destination %s delay is %.3e s\n",
-						flow.getDestPort(), flow.getDelay()));
+				sb.append(String.format("Destination %s delay is %.3e s\n", flow.getDestPort(), flow.getDelay()));
 			} else {
-				sb.append(String.format(
-						"Destination %s maxLat of %.3e s, delay is %.3e s\n",
-						flow.getDestPort(), flow.getMaxLatency(),
-						flow.getDelay()));
+				sb.append(String.format("Destination %s maxLat of %.3e s, delay is %.3e s\n", flow.getDestPort(),
+						flow.getMaxLatency(), flow.getDelay()));
 			}
 		}
 

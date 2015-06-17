@@ -61,11 +61,8 @@ public class IntVectorCreation extends FixedLengthStringCreation<int[]> {
 	 *            the maximum
 	 * @return the full configuration
 	 */
-	static final String getConfiguration(final boolean longVersion,
-			final int mi, final int ma) {
+	static final String getConfiguration(final boolean longVersion, final int mi, final int ma) {
 		return (longVersion ? "G=[" : "[")//$NON-NLS-1$//$NON-NLS-2$
-				+ TextUtils.formatNumber(mi) + ','
-				+ TextUtils.formatNumber(ma)
-				+ "]"; //$NON-NLS-1$
+				+ TextUtils.formatNumber(mi) + ',' + TextUtils.formatNumber(ma) + "]"; //$NON-NLS-1$
 	}
 }

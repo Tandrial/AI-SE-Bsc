@@ -36,11 +36,9 @@ public class UbsV3DelayCalc extends UbsDelayCalc {
 					}
 					maxDelays.put(lastEgress, arr);
 				}
-				double currentMax = maxDelays.get(lastEgress)[prio.getPriority(
-						path.get(i), f) - 1];
+				double currentMax = maxDelays.get(lastEgress)[prio.getPriority(path.get(i), f) - 1];
 
-				maxDelays.get(lastEgress)[prio.getPriority(path.get(i), f) - 1] = Math
-						.max(delay, currentMax);
+				maxDelays.get(lastEgress)[prio.getPriority(path.get(i), f) - 1] = Math.max(delay, currentMax);
 			}
 		}
 

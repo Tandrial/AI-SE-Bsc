@@ -33,8 +33,7 @@ public class PriorityConfiguration implements Cloneable, Serializable {
 		for (EgressPort port : traffic.getTopology().getPorts()) {
 			for (Flow flow : traffic.getPortFlowMap().get(port)) {
 				if (!flow.getDestPort().equals(port)) {
-					PortFlowPriority pfp = new PortFlowPriority(port, flow,
-							DEFAULT_PRIORITY);
+					PortFlowPriority pfp = new PortFlowPriority(port, flow, DEFAULT_PRIORITY);
 					this.add(pfp);
 				}
 			}
@@ -43,13 +42,11 @@ public class PriorityConfiguration implements Cloneable, Serializable {
 
 	private void add(PortFlowPriority x) {
 		if (!this.portFlowPriorityMap.containsKey(x.getPort())) {
-			this.portFlowPriorityMap.put(x.getPort(),
-					new HashMap<Flow, PortFlowPriority>());
+			this.portFlowPriorityMap.put(x.getPort(), new HashMap<Flow, PortFlowPriority>());
 		}
 
 		if (!this.flowPortPriorityMap.containsKey(x.getFlow())) {
-			this.flowPortPriorityMap.put(x.getFlow(),
-					new HashMap<EgressPort, PortFlowPriority>());
+			this.flowPortPriorityMap.put(x.getFlow(), new HashMap<EgressPort, PortFlowPriority>());
 		}
 
 		tripleSet.add(x);
@@ -90,8 +87,7 @@ public class PriorityConfiguration implements Cloneable, Serializable {
 	@Override
 	public String toString() {
 
-		String[][] table = new String[traffic.getTopology().getPorts().size() + 1][traffic
-				.size() + 1];
+		String[][] table = new String[traffic.getTopology().getPorts().size() + 1][traffic.size() + 1];
 
 		int c = 1;
 		for (Flow flow : traffic)
@@ -105,8 +101,7 @@ public class PriorityConfiguration implements Cloneable, Serializable {
 		for (Flow flow : traffic) {
 			r = 1;
 			for (EgressPort port : traffic.getTopology().getPorts()) {
-				table[r][c] = this.hasPriority(port, flow) ? ""
-						+ this.getPriority(port, flow) : NO_PRIORITY_STRING;
+				table[r][c] = this.hasPriority(port, flow) ? "" + this.getPriority(port, flow) : NO_PRIORITY_STRING;
 				r++;
 			}
 			c++;
@@ -153,8 +148,7 @@ public class PriorityConfiguration implements Cloneable, Serializable {
 		String rv = "";
 		for (r = 0; r < table.length; r++) {
 			for (c = 0; c < table[0].length; c++) {
-				rv += String.format("%" + colWidth[c] + "s ",
-						(table[r][c] != null) ? table[r][c] : "");
+				rv += String.format("%" + colWidth[c] + "s ", (table[r][c] != null) ? table[r][c] : "");
 			}
 			rv += "\n";
 		}

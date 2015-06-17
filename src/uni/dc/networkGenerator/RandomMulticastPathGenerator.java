@@ -67,7 +67,7 @@ public class RandomMulticastPathGenerator {
 	public void setLinkSpeed(double linkSpeed) {
 		this.linkSpeed = linkSpeed;
 	}
-	
+
 	public int getMaxSpeedPerStream() {
 		return maxSpeedPerStream;
 	}
@@ -98,8 +98,7 @@ public class RandomMulticastPathGenerator {
 			while (portFlowMap.get(src).size() < minFlowPerPort) {
 
 				// Pick a random sub set of destination ports (at least one)
-				List<EgressPort> destPorts = new ArrayList<EgressPort>(
-						topology.getReachablePorts(src));
+				List<EgressPort> destPorts = new ArrayList<EgressPort>(topology.getReachablePorts(src));
 
 				while (destPorts.size() > maxDestPerFlow) {
 					destPorts.remove(rng.nextInt(destPorts.size() - 1));
@@ -111,16 +110,14 @@ public class RandomMulticastPathGenerator {
 				Collections.shuffle(destPorts);
 
 				if (destPorts.size() > 1) {
-					destPorts = destPorts.subList(0,
-							1 + rng.nextInt(destPorts.size() - 1));
+					destPorts = destPorts.subList(0, 1 + rng.nextInt(destPorts.size() - 1));
 				}
 
 				Flow flow = new Flow();
 				flow.setName(String.format("F%d", flowId++));
 				flow.setSrcPort(src);
 				flow.setDestPort(destPorts.get(0));
-				flow.setRate(linkSpeed * ((rng.nextInt(maxSpeedPerStream) + 1))
-						/ 100);
+				flow.setRate(linkSpeed * ((rng.nextInt(maxSpeedPerStream) + 1)) / 100);
 				flow.setMaxFrameLength(rng.nextInt(maxFrameLength) + 1);
 
 				rv.add(flow);

@@ -12,7 +12,6 @@ import uni.dc.ubsOpti.goataaExt.algorithms.BackTrackingTraceable;
 import uni.dc.ubsOpti.goataaExt.algorithms.BruteForceTraceable;
 import uni.dc.ubsOpti.goataaExt.algorithms.HillClimbingTraceable;
 import uni.dc.ubsOpti.goataaExt.algorithms.LocalSearchAlgorithmTraceable;
-import uni.dc.ubsOpti.goataaExt.algorithms.RandomWalkTraceTraceable;
 import uni.dc.ubsOpti.goataaExt.algorithms.SimpleGenerationalTraceable;
 import uni.dc.ubsOpti.goataaExt.algorithms.SimulatedAnnealingTraceable;
 import uni.dc.ubsOpti.goataaExt.searchOperations.strings.integer.binary.IntArrayWeightedMeanCrossover;
@@ -39,8 +38,7 @@ public class Optimizer {
 
 	public boolean optimize(UbsOptiConfig config, String selectedAlgo) {
 		this.config = config;
-		create = new IntArrayAllOnesCreation(config.getDim(), 1,
-				config.getMaxPrio());
+		create = new IntArrayAllOnesCreation(config.getDim(), 1, config.getMaxPrio());
 		mutate = new IntArrayAllNormalMutation(1, config.getMaxPrio());
 
 		DelayTrace trace = null;
@@ -54,9 +52,8 @@ public class Optimizer {
 			trace = optimizeHillClimbing();
 		} else if (selectedAlgo.equals("SimpleGenerationalEA")) {
 			trace = optimizeSimpleGenerationalEA();
-		} else if (selectedAlgo.equals("RandomWalk")) {
-			trace = optimizeRandomWalk();
 		}
+
 		trace.setName(config.getTraces().size() + "_" + trace.getName());
 		config.getTraces().add(trace);
 		config.getDelayCalc().calculateDelays(trace.getBestConfig());
@@ -98,15 +95,8 @@ public class Optimizer {
 		return GA.getTrace();
 	}
 
-	private DelayTrace optimizeRandomWalk() {
-		RandomWalkTraceTraceable<int[], int[]> RW = new RandomWalkTraceTraceable<int[], int[]>();
-		run(RW);
-		return RW.getTrace();
-	}
-
 	@SuppressWarnings("unchecked")
-	private final int[] run(
-			final LocalSearchAlgorithmTraceable<int[], int[], ?> algorithm) {
+	private final int[] run(final LocalSearchAlgorithmTraceable<int[], int[], ?> algorithm) {
 		List<Individual<?, int[]>> solutions;
 		Individual<?, int[]> individual = null;
 		double bestValue = Double.MAX_VALUE;

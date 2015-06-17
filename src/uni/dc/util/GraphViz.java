@@ -29,16 +29,13 @@ public class GraphViz {
 		}
 	}
 
-	private InputStream createDiagramStream(StringBuilder dotString,
-			OutputFormatEnum fmt) throws IOException {
+	private InputStream createDiagramStream(StringBuilder dotString, OutputFormatEnum fmt) throws IOException {
 		try {
-			ProcessBuilder builder = new ProcessBuilder(GRAPHVIZ_BIN_DIR
-					+ "dot", "-T", fmt.getName());
+			ProcessBuilder builder = new ProcessBuilder(GRAPHVIZ_BIN_DIR + "dot", "-T", fmt.getName());
 			builder.directory(new File("."));
 			Process process = builder.start();
 
-			BufferedWriter stdin = new BufferedWriter(new OutputStreamWriter(
-					process.getOutputStream()));
+			BufferedWriter stdin = new BufferedWriter(new OutputStreamWriter(process.getOutputStream()));
 			InputStream rv = new BufferedInputStream(process.getInputStream());
 
 			stdin.append(dotString);
@@ -56,7 +53,7 @@ public class GraphViz {
 		}
 	}
 
-	private  boolean setGraphVizLocation() {
+	private boolean setGraphVizLocation() {
 		JFileChooser c = new JFileChooser();
 		c.setCurrentDirectory(new java.io.File("."));
 		c.setDialogTitle("Please select the GraphViz Folder!");
@@ -70,15 +67,12 @@ public class GraphViz {
 		}
 	}
 
-	public BufferedImage renderToImage(StringBuilder dotString)
-			throws IOException {
-		BufferedImage rv = ImageIO.read(createDiagramStream(dotString,
-				OutputFormatEnum.PNG));
+	public BufferedImage renderToImage(StringBuilder dotString) throws IOException {
+		BufferedImage rv = ImageIO.read(createDiagramStream(dotString, OutputFormatEnum.PNG));
 		return rv;
 	}
 
 	public static String dotUid(Object o) {
-		return String
-				.format("%s%d", o.getClass().getSimpleName(), o.hashCode());
+		return String.format("%s%d", o.getClass().getSimpleName(), o.hashCode());
 	}
 }

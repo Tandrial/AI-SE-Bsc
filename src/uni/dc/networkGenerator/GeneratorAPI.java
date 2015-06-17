@@ -34,8 +34,8 @@ public class GeneratorAPI {
 		return cfg;
 	}
 
-	public void generateNetwork(int depth, int portCount, int maxPrio,
-			double linkSpeed, int maxFrameLength, int maxSpeed) {
+	public void generateNetwork(int depth, int portCount, int maxPrio, double linkSpeed, int maxFrameLength,
+			int maxSpeed) {
 		genTopology(depth, portCount, linkSpeed);
 		genTraffic(linkSpeed, maxFrameLength, maxSpeed);
 		genPrio(maxPrio);

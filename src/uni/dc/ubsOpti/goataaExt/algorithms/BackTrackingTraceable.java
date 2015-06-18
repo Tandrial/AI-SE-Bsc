@@ -44,7 +44,6 @@ public final class BackTrackingTraceable extends LocalSearchAlgorithmTraceable<i
 	}
 
 	private static Individual<int[], int[]> best = new Individual<int[], int[]>();
-	private static boolean stopRecursion = false;
 
 	/** instantiate the BackTracking class */
 	public BackTrackingTraceable() {
@@ -70,21 +69,16 @@ public final class BackTrackingTraceable extends LocalSearchAlgorithmTraceable<i
 	 */
 	@Override
 	public void call(final Random r, final ITerminationCriterion term, final List<Individual<int[], int[]>> result) {
-		stopRecursion = false;
-		Individual<int[], int[]> p = new Individual<int[], int[]>();
-		p.x = this.getNullarySearchOperation().create(null);
-		p.v = this.getObjectiveFunction().compute(p.x, null);
-		if (delays != null)
-			delays.addDataPoint(step, p.v, p.x);
-		result.add(BackTrackingTraceable.backTrack(this.getObjectiveFunction(), term, p.x, new HashSet<int[]>()));
+		result.add(BackTrackingTraceable.backTrack(this.getObjectiveFunction(), term, this.getNullarySearchOperation()
+				.create(null), new HashSet<int[]>()));
 	}
 
 	public static final Individual<int[], int[]> backTrack(IObjectiveFunction<int[]> f, ITerminationCriterion term,
 			int[] prio, Set<int[]> visisted) {
 		// 0) Falls Prio schon besucht abbruch, sonst Prio zu besucht hinzufügen
-		if (stopRecursion || visisted.contains(prio)) {
+		if (visisted.contains(prio))
 			return best;
-		}
+
 		visisted.add(prio);
 
 		Individual<int[], int[]> p = new Individual<int[], int[]>();
@@ -100,11 +94,6 @@ public final class BackTrackingTraceable extends LocalSearchAlgorithmTraceable<i
 				delays.addDataPoint(step, p.v, p.x);
 		}
 
-		if (term.terminationCriterion()) {
-			stopRecursion = true;
-			return best;
-		}
-
 		// 2) Sortiere Stream f absteigend nach (maxLatency - delay)
 		List<Flow> flows = new ArrayList<Flow>(traffic);
 		Collections.sort(flows, new Comparator<Flow>() {
@@ -117,14 +106,14 @@ public final class BackTrackingTraceable extends LocalSearchAlgorithmTraceable<i
 			// 3) Erzeuge n = f.getPath().length neue Prios mit Prio von f + 1
 			// bei f.getPath().get(i) für i = 0..n (falls möglich)
 			for (int pos = 0; pos < flow.getPath().size() - 1; pos++) {
-				EgressPort port = flow.getPath().get(pos);
-				if (stopRecursion) {
+				if (term.terminationCriterion())
 					return best;
-				}
+				EgressPort port = flow.getPath().get(pos);
 
 				int posToChange = prioConfig.getPos(port, flow);
 				int currPrio = p.x[posToChange];
 				int[] newP = Arrays.copyOf(p.x, p.x.length);
+
 				if (currPrio < maxPrio) {
 					newP[posToChange] = currPrio + 1;
 					// 4) Rekursion start mit allen erzeugen Prios

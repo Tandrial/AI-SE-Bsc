@@ -5,13 +5,13 @@ import org.goataa.impl.termination.TerminationCriterion;
 import uni.dc.ubsOpti.UbsOptiConfig;
 import uni.dc.ubsOpti.delayCalc.UbsDelayCalc;
 
-public final class UbsDelayTermination extends TerminationCriterion {
+public final class UbsStepDelayTermination extends TerminationCriterion {
 	private static final long serialVersionUID = 1;
 	private UbsDelayCalc delayCalc;
 	private final int maxSteps;
 	private int remaining;
 
-	public UbsDelayTermination(UbsOptiConfig config) {
+	public UbsStepDelayTermination(UbsOptiConfig config) {
 		this.maxSteps = config.getMaxSteps();
 		this.delayCalc = config.getDelayCalc();
 	}

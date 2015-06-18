@@ -73,7 +73,7 @@ public final class BruteForceTraceable extends LocalSearchAlgorithmTraceable<int
 			if (p.v < best.v) {
 				best.assign(p);
 				if (delays != null)
-					delays.addDataPoint(step, p.v, (int[]) p.x);
+					delays.addDataPoint(step, p.v, p.x);
 				if (term.terminationCriterion())
 					stopRecursion = true;
 			}

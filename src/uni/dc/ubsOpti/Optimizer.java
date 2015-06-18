@@ -17,7 +17,7 @@ import uni.dc.ubsOpti.goataaExt.searchOperations.strings.integer.IntVectorMutati
 import uni.dc.ubsOpti.goataaExt.searchOperations.strings.integer.binary.IntArrayWeightedMeanCrossover;
 import uni.dc.ubsOpti.goataaExt.searchOperations.strings.integer.nullary.IntArrayAllOnesCreation;
 import uni.dc.ubsOpti.goataaExt.searchOperations.strings.integer.unary.IntArrayAllNormalMutation;
-import uni.dc.ubsOpti.goataaExt.termination.UbsDelayTermination;
+import uni.dc.ubsOpti.goataaExt.termination.UbsStepDelayTermination;
 import uni.dc.ubsOpti.tracer.DelayTrace;
 
 public class Optimizer {
@@ -104,7 +104,7 @@ public class Optimizer {
 		Individual<?, int[]> individual = null;
 		double bestValue = Double.MAX_VALUE;
 
-		UbsDelayTermination term = new UbsDelayTermination(config);
+		UbsStepDelayTermination term = new UbsStepDelayTermination(config);
 		algorithm.setObjectiveFunction(config.getDelayCalc());
 		algorithm.setTerminationCriterion(term);
 		algorithm.setUpTrace(config);

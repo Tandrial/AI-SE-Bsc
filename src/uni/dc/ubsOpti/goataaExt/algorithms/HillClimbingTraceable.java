@@ -54,7 +54,6 @@ public final class HillClimbingTraceable<G, X> extends LocalSearchAlgorithmTrace
 				this.getNullarySearchOperation(), //
 				this.getUnarySearchOperation(),//
 				this.getGPM(), term, r));
-
 	}
 
 	/**

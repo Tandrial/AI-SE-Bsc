@@ -17,6 +17,7 @@ import uni.dc.ubsOpti.goataaExt.searchOperations.strings.integer.IntVectorMutati
 import uni.dc.ubsOpti.goataaExt.searchOperations.strings.integer.binary.IntArrayWeightedMeanCrossover;
 import uni.dc.ubsOpti.goataaExt.searchOperations.strings.integer.nullary.IntArrayAllOnesCreation;
 import uni.dc.ubsOpti.goataaExt.searchOperations.strings.integer.unary.IntArrayAllNormalMutation;
+import uni.dc.ubsOpti.goataaExt.searchOperations.strings.integer.unary.IntArrayBestMutation;
 import uni.dc.ubsOpti.goataaExt.termination.UbsStepDelayTermination;
 import uni.dc.ubsOpti.tracer.DelayTrace;
 
@@ -39,7 +40,7 @@ public class Optimizer {
 	public boolean optimize(UbsOptiConfig config, String selectedAlgo) {
 		this.config = config;
 		create = new IntArrayAllOnesCreation(config.getDim(), 1, config.getMaxPrio());
-		mutate = new IntArrayAllNormalMutation(1, config.getMaxPrio());
+		mutate = new IntArrayBestMutation(1, config.getMaxPrio(), config.getDelayCalc());
 
 		DelayTrace trace = null;
 		if (selectedAlgo.equals("BruteForce")) {
@@ -79,6 +80,7 @@ public class Optimizer {
 
 	private DelayTrace optimizeHillClimbing() {
 		HillClimbingTraceable<int[], int[]> HC = new HillClimbingTraceable<int[], int[]>();
+		mutate = new IntArrayAllNormalMutation(1, config.getMaxPrio());
 		run(HC);
 		return HC.getTrace();
 	}

@@ -10,6 +10,7 @@ import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
 import org.jfree.chart.axis.LogarithmicAxis;
 import org.jfree.chart.axis.NumberAxis;
+import org.jfree.chart.labels.XYToolTipGenerator;
 import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.chart.plot.XYPlot;
 import org.jfree.chart.renderer.xy.XYLineAndShapeRenderer;
@@ -46,6 +47,14 @@ public class TraceDisplay extends JFrame {
 		XYLineAndShapeRenderer localXYLineAndShapeRenderer = (XYLineAndShapeRenderer) localXYPlot.getRenderer();
 		localXYLineAndShapeRenderer.setBaseShapesVisible(true);
 		localXYLineAndShapeRenderer.setBaseShapesFilled(true);
+		localXYLineAndShapeRenderer.setBaseToolTipGenerator(new XYToolTipGenerator() {
+			@Override
+			public String generateToolTip(XYDataset dataset, int series, int item) {
+				String res = String.format("%s: (%d/%.4e)", dataset.getSeriesKey(series), dataset.getX(series, item)
+						.intValue(), dataset.getYValue(series, item));
+				return res;
+			}
+		});
 		NumberAxis localNumberAxis = (NumberAxis) localXYPlot.getRangeAxis();
 		localNumberAxis.setStandardTickUnits(NumberAxis.createIntegerTickUnits());
 

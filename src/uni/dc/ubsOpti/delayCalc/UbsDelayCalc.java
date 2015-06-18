@@ -124,10 +124,11 @@ public abstract class UbsDelayCalc extends OptimizationModule implements IObject
 		calculateDelays();
 		double delay = 0.0d;
 		for (Flow f : flows) {
-			delay += f.getDelay();
+			// TODO fitness Function
+			delay += Math.abs(f.getDiffDelayMaxLat());
 			if (!f.checkDelay()) {
 				// TODO: Strafe für Delay > maxLatencyReq
-				delay += 1;
+				delay += 2 * Math.abs(f.getDiffDelayMaxLat());;
 			}
 		}
 		fitness = delay;

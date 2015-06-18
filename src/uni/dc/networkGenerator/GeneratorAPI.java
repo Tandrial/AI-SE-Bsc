@@ -14,7 +14,7 @@ public class GeneratorAPI {
 		return GeneratorAPI.generator;
 	}
 
-	private static Random rng = new Random(System.currentTimeMillis());
+	private static Random rng;
 	private Traffic traffic = null;
 	private PriorityConfiguration cfg = null;
 	private EgressTopology topology = null;
@@ -34,8 +34,9 @@ public class GeneratorAPI {
 		return cfg;
 	}
 
-	public void generateNetwork(int depth, int portCount, int maxPrio, double linkSpeed, int maxFrameLength,
+	public void generateNetwork(long seed, int depth, int portCount, int maxPrio, double linkSpeed, int maxFrameLength,
 			int maxSpeed) {
+		rng = new Random(seed);
 		genTopology(depth, portCount, linkSpeed);
 		genTraffic(linkSpeed, maxFrameLength, maxSpeed);
 		genPrio(maxPrio);

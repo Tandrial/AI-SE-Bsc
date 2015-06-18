@@ -1,8 +1,31 @@
 TODO
 
--BatchMode
-	Massen von Daten erzeugen
-		x verschiedene Topos mit y verschiedenen Stream Layouts
-		Alle x Kombinationen durchrechnen mit UBS v0/v3 Traces speichern mit 
-		[x]_[y]_Algo
-		hoffen das ein Algo besonders gut.
+2 Modes
+
+-Batch: CLI, erzeugt Daten für R Verarbeitung
+	* x Topos erzeugen mit steigender Anzahl von port/depth dazu y Traffic
+	  Pro Kombi für x_i|y_j Algos durchlaufen lassen
+	  Ergebnisse für x_i|y_j und steps_to_finish in Datei speichern
+	  R erzeugt Boxplots / Histogramme  (stat signifikanter Unterschied?)
+
+
+-Normal: GUI, Analyse von einzelnden Deques(?)
+
+	* Steps to finish Diagramm nur new Best(x Algos)
+	* Darstellung Trace : Graph mit Wurzel [1]^n, jede getestete Config wird in den Graph einsortiert 
+			(Parent == Config aus der dise erzegut wurde)
+			Klick auf Node  ==> Anzeigte Diff zu Parent
+			Makierung für gefundenen new Best und "Lösung"
+
+
+-Hillclimbing deterministisch
+
+-Prio "zusammenschieben"   ( Port mit  1 3 3 3  ==> 1 2 2 2)
+
+-Fitness der flows
+	*diff maxLat delay von Flows die maxLAt NOICHT einhalten
+	*diff von allen als absolut werte
+	*Malus für Nicht erfüllung nötig!!!!
+
+
+-Refactor: Name der Felder/Funktionen

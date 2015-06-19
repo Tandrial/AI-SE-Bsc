@@ -27,7 +27,6 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 import org.jfree.ui.RefineryUtilities;
 
 import uni.dc.model.PriorityConfiguration;
-import uni.dc.networkGenerator.GeneratorAPI;
 import uni.dc.ubsOpti.NetworkParser;
 import uni.dc.ubsOpti.Optimizer;
 import uni.dc.ubsOpti.UbsOptiConfig;
@@ -348,7 +347,7 @@ public class UbsOptiGui extends JFrame {
 			logger.entering(getClass().getName(), "generateRandomNetwork");
 			t1 = System.nanoTime();
 
-			config.fromGenerator(GeneratorAPI.getGenerator());
+			config.fromGenerator();
 
 			logger.log(Level.INFO, String.format("Generated new network: \n%s", config));
 

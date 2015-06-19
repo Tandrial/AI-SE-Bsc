@@ -1,6 +1,7 @@
 package uni.dc.view;
 
 import java.awt.BorderLayout;
+import java.awt.EventQueue;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -12,7 +13,14 @@ import javax.swing.JPanel;
 import javax.swing.JProgressBar;
 import javax.swing.JSpinner;
 import javax.swing.SpinnerNumberModel;
+import javax.swing.UIManager;
 import javax.swing.border.EmptyBorder;
+
+import org.jfree.ui.RefineryUtilities;
+
+import uni.dc.model.PriorityConfiguration;
+import uni.dc.ubsOpti.Optimizer;
+import uni.dc.ubsOpti.UbsOptiConfig;
 
 public class BatchGui extends JDialog {
 	private static final long serialVersionUID = 1L;
@@ -28,23 +36,23 @@ public class BatchGui extends JDialog {
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
 		contentPanel.setLayout(null);
 
-		JLabel lblCountTopologies = new JLabel("Count Topologies");
-		lblCountTopologies.setBounds(10, 10, 110, 15);
-		contentPanel.add(lblCountTopologies);
+		JLabel lblCountPorts = new JLabel("max Ports");
+		lblCountPorts.setBounds(10, 10, 110, 15);
+		contentPanel.add(lblCountPorts);
 
-		JLabel lblCountStreamlayout = new JLabel("Count StreamLayouts");
-		lblCountStreamlayout.setBounds(10, 35, 110, 15);
-		contentPanel.add(lblCountStreamlayout);
+		JLabel lblCountDepth = new JLabel("Count Traffic");
+		lblCountDepth.setBounds(10, 35, 110, 15);
+		contentPanel.add(lblCountDepth);
 
-		JSpinner spTopoCount = new JSpinner();
-		spTopoCount.setModel(new SpinnerNumberModel(new Integer(10), new Integer(1), null, new Integer(1)));
-		spTopoCount.setBounds(130, 8, 45, 20);
-		contentPanel.add(spTopoCount);
+		JSpinner spPortCount = new JSpinner();
+		spPortCount.setModel(new SpinnerNumberModel(new Integer(10), new Integer(2), null, new Integer(1)));
+		spPortCount.setBounds(130, 8, 45, 20);
+		contentPanel.add(spPortCount);
 
-		JSpinner spStreamCount = new JSpinner();
-		spStreamCount.setModel(new SpinnerNumberModel(new Integer(10), new Integer(1), null, new Integer(1)));
-		spStreamCount.setBounds(130, 35, 45, 20);
-		contentPanel.add(spStreamCount);
+		JSpinner spTrafficCount = new JSpinner();
+		spTrafficCount.setModel(new SpinnerNumberModel(new Integer(50), new Integer(2), null, new Integer(1)));
+		spTrafficCount.setBounds(130, 35, 45, 20);
+		contentPanel.add(spTrafficCount);
 
 		JProgressBar progressBar = new JProgressBar();
 		progressBar.setBounds(10, 100, 165, 15);
@@ -61,8 +69,11 @@ public class BatchGui extends JDialog {
 		JButton okButton = new JButton("OK");
 		okButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				setVisible(false);
-				dispose();
+				int port = (Integer) spPortCount.getValue();
+				int traffic = (Integer) spTrafficCount.getValue();
+				run(port, traffic);
+				// setVisible(false);
+				// dispose();
 			}
 		});
 		buttonPane.add(okButton);
@@ -77,4 +88,62 @@ public class BatchGui extends JDialog {
 		});
 		buttonPane.add(cancelButton);
 	}
+
+	private static void run(int maxPortCount, int maxStreamConfig) {
+		if (maxPortCount < 2)
+			return;
+
+		UbsOptiConfig config = new UbsOptiConfig();
+		config.setSeed(maxPortCount << 8 + maxPortCount);
+		config.setMaxSteps(100000);
+		config.setModifier(1.1d);
+		int cnt = 0;
+		int max = (maxPortCount - 1) * maxPortCount / 2 * maxStreamConfig;
+		long t1, t2;
+		t1 = System.nanoTime();
+		for (int portCount = 2; portCount <= maxPortCount; portCount++) {
+			config.setPortCount(portCount);
+			for (int depthCount = 2; depthCount <= portCount; depthCount++) {
+				config.setDepth(depthCount);
+				config.newTopology();
+				for (int streamCount = 1; streamCount <= maxStreamConfig; streamCount++) {
+					if (++cnt % 10 == 0)
+						System.out.println(cnt + "/" + max);
+					config.newTraffic();
+					config.setPriorityConfig(new PriorityConfiguration(config.getTraffic()));
+					Optimizer opti = Optimizer.getOptimizer();
+
+					opti.optimize(config, "BruteForce");
+
+					opti.optimize(config, "BackTrack");
+
+					opti.optimize(config, "HillClimbing");
+
+					opti.optimize(config, "SimulatedAnnealing");
+
+					opti.optimize(config, "SimpleGenerationalEA");
+				}
+			}
+		}
+		t2 = System.nanoTime();
+		System.out.println("done, took " + (t2 - t1) / 1.0e9);
+	}
+
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			@Override
+			public void run() {
+				try {
+					UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+					BatchGui gui = new BatchGui();
+					RefineryUtilities.centerFrameOnScreen(gui);
+
+					gui.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
 }

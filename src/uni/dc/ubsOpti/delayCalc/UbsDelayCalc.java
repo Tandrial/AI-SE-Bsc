@@ -79,11 +79,11 @@ public abstract class UbsDelayCalc extends OptimizationModule implements IObject
 		return delay;
 	}
 
-	public void setInitialDelays(PriorityConfiguration prio) {
+	public void setInitialDelays(PriorityConfiguration prio, double modifier) {
 		this.prio = prio;
 		calculateDelays();
 		for (Flow f : flows) {
-			f.setInitialMaxAllowedDelay();
+			f.setInitialMaxAllowedDelay(modifier);
 		}
 	}
 

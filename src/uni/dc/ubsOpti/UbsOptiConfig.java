@@ -1,6 +1,7 @@
 package uni.dc.ubsOpti;
 
 import java.io.Serializable;
+import java.util.Random;
 
 import uni.dc.model.EgressTopology;
 import uni.dc.model.PriorityConfiguration;
@@ -13,12 +14,15 @@ import uni.dc.ubsOpti.tracer.TraceCollection;
 
 public class UbsOptiConfig implements Serializable {
 
+	private static Random rng;
+
 	private static final long serialVersionUID = 1L;
 	private int depth = 6;
 	private int portCount = 9;
 	private int maxFrameLength = 12350;
 	private int maxLeakRateinPercent = 10;
 	private long seed = 0x31337;
+	private double modifier = 1.0d;
 	private double linkSpeed = 1e9;
 	private int maxPrio = 2;
 	private int maxSteps = 7500000;
@@ -70,14 +74,44 @@ public class UbsOptiConfig implements Serializable {
 		traces = new TraceCollection();
 	}
 
-	public void fromGenerator(GeneratorAPI generator) {
-		generator.generateNetwork(seed, depth, portCount, maxPrio, linkSpeed, maxFrameLength, maxLeakRateinPercent);
+	public void fromGenerator() {
+		GeneratorAPI generator = GeneratorAPI.getGenerator();
+		generator.setRandom(rng);
+		generator.generateNetwork(depth, portCount, maxPrio, linkSpeed, maxFrameLength, maxLeakRateinPercent);
 		topology = generator.getTopology();
 		traffic = generator.getTraffic();
 		prio = generator.getPriorityConfiguration();
 		dim = prio.toIntArray().length;
 		delayCalc = ubsV0 ? new UbsV0DelayCalc(traffic) : new UbsV3DelayCalc(traffic);
-		delayCalc.setInitialDelays(prio);
+		delayCalc.setInitialDelays(prio, 1.0d);
+		traces = new TraceCollection();
+	}
+
+	public void newTopology() {
+		GeneratorAPI generator = GeneratorAPI.getGenerator();
+		generator.setRandom(rng);
+		generator.genTopology(depth, portCount, linkSpeed);
+		generator.genTraffic(linkSpeed, maxFrameLength, maxLeakRateinPercent);
+		generator.genPrio(maxPrio);
+		topology = generator.getTopology();
+		traffic = generator.getTraffic();
+		prio = generator.getPriorityConfiguration();
+		dim = prio.toIntArray().length;
+		delayCalc = ubsV0 ? new UbsV0DelayCalc(traffic) : new UbsV3DelayCalc(traffic);
+		delayCalc.setInitialDelays(prio, modifier);
+		traces = new TraceCollection();
+
+	}
+
+	public void newTraffic() {
+		GeneratorAPI generator = GeneratorAPI.getGenerator();
+		generator.genTraffic(linkSpeed, maxFrameLength, maxLeakRateinPercent);
+		generator.genPrio(maxPrio);
+		traffic = generator.getTraffic();
+		prio = generator.getPriorityConfiguration();
+		dim = prio.toIntArray().length;
+		delayCalc = ubsV0 ? new UbsV0DelayCalc(traffic) : new UbsV3DelayCalc(traffic);
+		delayCalc.setInitialDelays(prio, modifier);
 		traces = new TraceCollection();
 	}
 
@@ -123,6 +157,7 @@ public class UbsOptiConfig implements Serializable {
 
 	public void setSeed(long seed) {
 		this.seed = seed;
+		rng = new Random(seed);
 	}
 
 	public long getSeed() {
@@ -215,5 +250,13 @@ public class UbsOptiConfig implements Serializable {
 
 	public PriorityConfiguration getBestConfig() {
 		return traces.getBestConfig();
+	}
+
+	public double getModifier() {
+		return modifier;
+	}
+
+	public void setModifier(double modifier) {
+		this.modifier = modifier;
 	}
 }

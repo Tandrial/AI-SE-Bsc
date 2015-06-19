@@ -29,3 +29,8 @@ TODO
 
 
 -Refactor: Name der Felder/Funktionen
+
+
+Bugs
+
+*DelayStats sometimes null (nothing found? etc.)

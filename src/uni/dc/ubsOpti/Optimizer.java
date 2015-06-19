@@ -6,6 +6,7 @@ import org.goataa.impl.algorithms.ea.selection.TournamentSelection;
 import org.goataa.impl.algorithms.sa.temperatureSchedules.Logarithmic;
 import org.goataa.impl.utils.Individual;
 
+import uni.dc.model.PriorityConfiguration;
 import uni.dc.ubsOpti.goataaExt.algorithms.BackTrackingTraceable;
 import uni.dc.ubsOpti.goataaExt.algorithms.BruteForceTraceable;
 import uni.dc.ubsOpti.goataaExt.algorithms.HillClimbingTraceable;
@@ -57,8 +58,13 @@ public class Optimizer {
 
 		trace.setAlgoName(config.getTraces().size() + "_" + trace.getAlgoName());
 		config.getTraces().add(trace);
-		config.getDelayCalc().calculateDelays(trace.getBestConfig());
-		return config.getDelayCalc().checkDelays();
+		PriorityConfiguration bestConfig = trace.getBestConfig();
+		if (bestConfig != null) {
+			config.getDelayCalc().calculateDelays(bestConfig);
+			return config.getDelayCalc().checkDelays();
+		} else {
+			return false;
+		}
 	}
 
 	private DelayTrace optimizeBruteForce() {

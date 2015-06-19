@@ -55,6 +55,8 @@ public class DelayTrace implements Serializable {
 				bestStat = stat;
 			}
 		}
+		if (bestStat == null)
+			return null;
 		PriorityConfiguration res = (PriorityConfiguration) prio.clone();
 		res.fromIntArray(bestStat.getPrio());
 		return res;

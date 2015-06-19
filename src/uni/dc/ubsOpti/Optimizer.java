@@ -55,7 +55,7 @@ public class Optimizer {
 			trace = optimizeSimpleGenerationalEA();
 		}
 
-		trace.setName(config.getTraces().size() + "_" + trace.getName());
+		trace.setAlgoName(config.getTraces().size() + "_" + trace.getAlgoName());
 		config.getTraces().add(trace);
 		config.getDelayCalc().calculateDelays(trace.getBestConfig());
 		return config.getDelayCalc().checkDelays();

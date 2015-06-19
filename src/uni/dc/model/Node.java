@@ -7,12 +7,12 @@ import java.util.Set;
 public class Node implements Cloneable, Serializable {
 	private static final long serialVersionUID = 1L;
 	private String name;
-	private int cnt;
+	private int cntPorts;
 	private Set<EgressPort> ports = new LinkedHashSet<EgressPort>();
 
 	public Node(String name) {
 		this.name = name;
-		cnt = 0;
+		cntPorts = 0;
 	}
 
 	public String getName() {
@@ -24,7 +24,7 @@ public class Node implements Cloneable, Serializable {
 	}
 
 	public void addPort(EgressPort port) {
-		port.setName(name + ".P" + cnt++);
+		port.setName(name + ".P" + cntPorts++);
 		ports.add(port);
 	}
 

@@ -64,8 +64,8 @@ public class TraceDisplay extends JFrame {
 	public XYSeriesCollection readDataset(List<DelayTrace> traces) {
 		XYSeriesCollection series = new XYSeriesCollection();
 		for (DelayTrace trace : traces) {
-			XYSeries serie = new XYSeries(trace.getName());
-			for (TracerStat stat : trace.getStats()) {
+			XYSeries serie = new XYSeries(trace.getAlgoName());
+			for (TracerStat stat : trace.getDataPoints()) {
 				serie.add(stat.getStep(), stat.getDelay());
 			}
 			series.addSeries(serie);

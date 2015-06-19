@@ -4,45 +4,38 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-import uni.dc.model.EgressTopology;
 import uni.dc.model.PriorityConfiguration;
 import uni.dc.model.Traffic;
 import uni.dc.ubsOpti.UbsOptiConfig;
 
 public class DelayTrace implements Serializable {
 	private static final long serialVersionUID = 1L;
-	private String name;
-	private List<TracerStat> stats = new ArrayList<TracerStat>();
+	private String algoName;
+	private List<TracerStat> dataPoints = new ArrayList<TracerStat>();
 
-	private EgressTopology topology;
 	private Traffic traffic;
 	private PriorityConfiguration prio;
 
-	public DelayTrace(String name, UbsOptiConfig config) {
-		this.name = name;
-		this.topology = config.getTopology();
+	public DelayTrace(String algoName, UbsOptiConfig config) {
+		this.algoName = algoName;
 		this.traffic = config.getTraffic();
 		this.prio = config.getPriorityConfig();
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setAlgoName(String algoName) {
+		this.algoName = algoName;
 	}
 
-	public String getName() {
-		return name;
-	}
-
-	public EgressTopology getTopology() {
-		return topology;
+	public String getAlgoName() {
+		return algoName;
 	}
 
 	public Traffic getTraffic() {
 		return traffic;
 	}
 
-	public List<TracerStat> getStats() {
-		return stats;
+	public List<TracerStat> getDataPoints() {
+		return dataPoints;
 	}
 
 	public PriorityConfiguration getPrio() {
@@ -50,13 +43,13 @@ public class DelayTrace implements Serializable {
 	}
 
 	public void addDataPoint(long step, double delay, int[] prio) {
-		stats.add(new TracerStat(step, delay, prio));
+		dataPoints.add(new TracerStat(step, delay, prio));
 	}
 
 	public PriorityConfiguration getBestConfig() {
 		double best = Double.MAX_VALUE;
 		TracerStat bestStat = null;
-		for (TracerStat stat : stats) {
+		for (TracerStat stat : dataPoints) {
 			if (stat.getDelay() < best) {
 				best = stat.getDelay();
 				bestStat = stat;
@@ -69,7 +62,7 @@ public class DelayTrace implements Serializable {
 
 	public double getBestValue() {
 		double best = Double.MAX_VALUE;
-		for (TracerStat stat : stats) {
+		for (TracerStat stat : dataPoints) {
 			if (stat.getDelay() < best) {
 				best = stat.getDelay();
 			}
@@ -80,14 +73,14 @@ public class DelayTrace implements Serializable {
 	@Override
 	public String toString() {
 		StringBuilder sb = new StringBuilder();
-		sb.append("Delaytrace for algo :" + name + "\n");
+		sb.append("Delaytrace for algo :" + algoName + "\n");
 		sb.append("Delay development\n");
-		for (TracerStat stat : stats) {
+		for (TracerStat stat : dataPoints) {
 			sb.append(stat);
 
 		}
 		sb.append("Best config\n");
-		sb.append(stats.get(stats.size() - 1));
+		sb.append(dataPoints.get(dataPoints.size() - 1));
 		return sb.toString();
 	}
 }

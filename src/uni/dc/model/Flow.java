@@ -10,7 +10,7 @@ public class Flow implements Serializable {
 	private String name;
 	private double rate;
 	private int maxFrameLength;
-	private double maxLatency = 0.0d;
+	private double maxAllowedDelay = 0.0d;
 
 	private EgressPort srcPort;
 	private EgressPort destPort;
@@ -41,12 +41,12 @@ public class Flow implements Serializable {
 		this.maxFrameLength = maxFrameLength;
 	}
 
-	public double getMaxLatency() {
-		return maxLatency;
+	public double getMaxAllowedDelay() {
+		return maxAllowedDelay;
 	}
 
-	public void setMaxLatency(double maxLatency) {
-		this.maxLatency = maxLatency;
+	public void setMaxAllowedDelay(double maxAllowedLatency) {
+		this.maxAllowedDelay = maxAllowedLatency;
 	}
 
 	public EgressPort getSrcPort() {
@@ -81,12 +81,12 @@ public class Flow implements Serializable {
 		this.delay = delay;
 	}
 
-	public double getDiffDelayMaxLat() {
-		return delay - maxLatency;
+	public double getDiffDelayAllowedDelay() {
+		return delay - maxAllowedDelay;
 	}
 
 	public boolean checkDelay() {
-		return maxLatency == Double.MAX_VALUE || maxLatency >= delay;
+		return maxAllowedDelay == Double.MAX_VALUE || maxAllowedDelay >= delay;
 	}
 
 	@Override
@@ -94,7 +94,7 @@ public class Flow implements Serializable {
 		return Arrays.toString(path.toArray());
 	}
 
-	public void setInitialMaxLatencyRequirement() {
-		this.maxLatency = this.delay;
+	public void setInitialMaxAllowedDelay() {
+		this.maxAllowedDelay = this.delay;
 	}
 }

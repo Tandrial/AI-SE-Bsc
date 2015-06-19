@@ -18,14 +18,9 @@ public abstract class UbsDelayCalc extends OptimizationModule implements IObject
 	private static final long serialVersionUID = 1L;
 	protected Set<Flow> flows = null;
 	protected PriorityConfiguration prio = null;
-	private double fitness = 0.0d;
 
 	public PriorityConfiguration getPrio() {
 		return prio;
-	}
-
-	public double getFitness() {
-		return fitness;
 	}
 
 	public void setPrio(PriorityConfiguration prio) {
@@ -88,7 +83,7 @@ public abstract class UbsDelayCalc extends OptimizationModule implements IObject
 		this.prio = prio;
 		calculateDelays();
 		for (Flow f : flows) {
-			f.setInitialMaxLatencyRequirement();
+			f.setInitialMaxAllowedDelay();
 		}
 	}
 
@@ -99,11 +94,11 @@ public abstract class UbsDelayCalc extends OptimizationModule implements IObject
 			sb.append(String.format("%s : %.0f Mbps, %d bit\n", flow.getName(), flow.getRate() / 1e6,
 					flow.getMaxFrameLength()));
 			sb.append(String.format("Path : %s\n", flow));
-			if (flow.getMaxLatency() == Double.MAX_VALUE) {
+			if (flow.getMaxAllowedDelay() == Double.MAX_VALUE) {
 				sb.append(String.format("Destination %s delay is %.3e s\n", flow.getDestPort(), flow.getDelay()));
 			} else {
 				sb.append(String.format("Destination %s maxLat of %.3e s, delay is %.3e s\n", flow.getDestPort(),
-						flow.getMaxLatency(), flow.getDelay()));
+						flow.getMaxAllowedDelay(), flow.getDelay()));
 			}
 		}
 
@@ -125,13 +120,12 @@ public abstract class UbsDelayCalc extends OptimizationModule implements IObject
 		double delay = 0.0d;
 		for (Flow f : flows) {
 			// TODO fitness Function
-			delay += Math.abs(f.getDiffDelayMaxLat());
+			delay += Math.abs(f.getDiffDelayAllowedDelay());
 			if (!f.checkDelay()) {
 				// TODO: Strafe für Delay > maxLatencyReq
-				delay += 2 * Math.abs(f.getDiffDelayMaxLat());;
+				delay += 2 * Math.abs(f.getDiffDelayAllowedDelay());;
 			}
 		}
-		fitness = delay;
 		return delay;
 	}
 }

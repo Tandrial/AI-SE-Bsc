@@ -133,7 +133,7 @@ public class NetworkParser {
 
 			for (EgressPort p : topology.getLinkMap().get(lastEgress)) {
 				flow.setDestPort(p);
-				flow.setMaxLatency(maxLatency);
+				flow.setMaxAllowedDelay(maxLatency);
 			}
 
 			for (EgressPort p : path) {

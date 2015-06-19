@@ -74,7 +74,7 @@ public class EgressTopology implements Serializable {
 		n2 = getNodeFromName(n2.getName());
 
 		EgressPort src = new EgressPort();
-		src.setNode(n1);
+		src.setParentNode(n1);
 		src.setLinkSpeed(linkSpeed);
 		n1.addPort(src);
 		add(src);
@@ -82,7 +82,7 @@ public class EgressTopology implements Serializable {
 		portNodeMap.put(src, n1);
 
 		EgressPort dest = new EgressPort();
-		dest.setNode(n2);
+		dest.setParentNode(n2);
 		dest.setLinkSpeed(linkSpeed);
 		n2.addPort(dest);
 		add(dest);

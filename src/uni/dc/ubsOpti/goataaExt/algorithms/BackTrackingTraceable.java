@@ -99,7 +99,7 @@ public final class BackTrackingTraceable extends LocalSearchAlgorithmTraceable<i
 		Collections.sort(flows, new Comparator<Flow>() {
 			@Override
 			public int compare(Flow o1, Flow o2) {
-				return Double.compare(o1.getDiffDelayMaxLat(), o2.getDiffDelayMaxLat());
+				return Double.compare(o1.getDiffDelayAllowedDelay(), o2.getDiffDelayAllowedDelay());
 			}
 		});
 		for (Flow flow : flows) {

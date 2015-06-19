@@ -13,6 +13,7 @@ import uni.dc.ubsOpti.delayCalc.UbsDelayCalc;
 import uni.dc.ubsOpti.delayCalc.UbsV0DelayCalc;
 import uni.dc.ubsOpti.delayCalc.UbsV3DelayCalc;
 import uni.dc.ubsOpti.tracer.BestOnlyTracer;
+import uni.dc.ubsOpti.tracer.EndStepTracer;
 import uni.dc.ubsOpti.tracer.SingleBestTracer;
 import uni.dc.ubsOpti.tracer.Tracer;
 
@@ -42,6 +43,7 @@ public class UbsOptiConfig implements Serializable {
 
 	private BestOnlyTracer bestOnlyTracer;
 	private SingleBestTracer singleBestTracer;
+	private EndStepTracer endStepTracer;
 
 	public UbsOptiConfig() {
 
@@ -115,10 +117,24 @@ public class UbsOptiConfig implements Serializable {
 	public List<Tracer> resetTracers() {
 		bestOnlyTracer = new BestOnlyTracer();
 		singleBestTracer = new SingleBestTracer();
+		endStepTracer = new EndStepTracer();
 		ArrayList<Tracer> tracers = new ArrayList<Tracer>();
 		tracers.add(bestOnlyTracer);
 		tracers.add(singleBestTracer);
+		tracers.add(endStepTracer);
 		return tracers;
+	}
+
+	public BestOnlyTracer getBestOnlyTracer() {
+		return bestOnlyTracer;
+	}
+
+	public SingleBestTracer getSingleBestTracer() {
+		return singleBestTracer;
+	}
+
+	public EndStepTracer getEndStepTracer() {
+		return endStepTracer;
 	}
 
 	public int getDepth() {
@@ -252,13 +268,5 @@ public class UbsOptiConfig implements Serializable {
 
 	public void setModifier(double modifier) {
 		this.modifier = modifier;
-	}
-
-	public BestOnlyTracer getBestOnlyTracer() {
-		return bestOnlyTracer;
-	}
-
-	public SingleBestTracer getSingleBestTracer() {
-		return singleBestTracer;
 	}
 }

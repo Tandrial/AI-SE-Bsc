@@ -49,9 +49,11 @@ public final class HillClimbingTraceable<G, X> extends LocalSearchAlgorithmTrace
 	 */
 	@Override
 	public void call(final Random r, final ITerminationCriterion term, final List<Individual<G, X>> result) {
-
 		result.add(hillClimbing(this.getObjectiveFunction(), this.getNullarySearchOperation(),
 				this.getUnarySearchOperation(), this.getGPM(), term, r));
+		Individual<int[], int[]> p = new Individual<int[], int[]>();
+		p.x = new int[0];
+		notifyTracer(p);
 	}
 
 	/**

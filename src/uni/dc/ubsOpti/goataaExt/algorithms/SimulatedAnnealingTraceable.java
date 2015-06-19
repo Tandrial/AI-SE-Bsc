@@ -77,13 +77,11 @@ public final class SimulatedAnnealingTraceable<G, X> extends LocalSearchAlgorith
 	 */
 	@Override
 	public void call(final Random r, final ITerminationCriterion term, final List<Individual<G, X>> result) {
-
-		result.add(simulatedAnnealing(//
-				this.getObjectiveFunction(),//
-				this.getNullarySearchOperation(), //
-				this.getUnarySearchOperation(),//
-				this.getGPM(), this.getTemperatureSchedule(),//
-				term, r));
+		result.add(simulatedAnnealing(this.getObjectiveFunction(), this.getNullarySearchOperation(),
+				this.getUnarySearchOperation(), this.getGPM(), this.getTemperatureSchedule(), term, r));
+		Individual<int[], int[]> p = new Individual<int[], int[]>();
+		p.x = new int[0];
+		notifyTracer(p);
 	}
 
 	/**

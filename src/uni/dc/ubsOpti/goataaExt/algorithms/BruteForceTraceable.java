@@ -57,6 +57,9 @@ public final class BruteForceTraceable extends LocalSearchAlgorithmTraceable<int
 	@Override
 	public void call(final Random r, final ITerminationCriterion term, final List<Individual<int[], int[]>> result) {
 		result.add(bruteForce(this.getObjectiveFunction(), term, new int[dim], 0, maxPrio));
+		Individual<int[], int[]> p = new Individual<int[], int[]>();
+		p.x = new int[0];
+		notifyTracer(p);
 	}
 
 	public Individual<int[], int[]> bruteForce(IObjectiveFunction<int[]> f, ITerminationCriterion term, int[] n,

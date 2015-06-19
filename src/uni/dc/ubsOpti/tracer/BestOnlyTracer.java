@@ -13,6 +13,8 @@ public class BestOnlyTracer extends Tracer {
 
 	@Override
 	public void update(final TracerStat stat) {
+		if (stat.getPrio().length == 0)
+			return;
 		if (!dataPoints.containsKey(stat.getName())) {
 			dataPoints.put(stat.getName(), new ArrayList<TracerStat>());
 			dataPoints.get(stat.getName()).add(stat);
@@ -22,8 +24,8 @@ public class BestOnlyTracer extends Tracer {
 				dataPoints.get(stat.getName()).add(stat);
 		}
 	}
-	
-	public Map<String, List<TracerStat>> getStats() {		
+
+	public Map<String, List<TracerStat>> getStats() {
 		return dataPoints;
 	}
 }

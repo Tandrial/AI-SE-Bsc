@@ -71,6 +71,9 @@ public final class BackTrackingTraceable extends LocalSearchAlgorithmTraceable<i
 	public void call(final Random r, final ITerminationCriterion term, final List<Individual<int[], int[]>> result) {
 		result.add(backTrack(this.getObjectiveFunction(), term, this.getNullarySearchOperation().create(null),
 				new HashSet<int[]>()));
+		Individual<int[], int[]> p = new Individual<int[], int[]>();
+		p.x = new int[0];
+		notifyTracer(p);
 	}
 
 	public final Individual<int[], int[]> backTrack(IObjectiveFunction<int[]> f, ITerminationCriterion term,

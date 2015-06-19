@@ -171,11 +171,13 @@ public final class SimpleGenerationalTraceable<G, X> extends EABaseTracable<G, X
 	 */
 	@Override
 	public void call(final Random r, final ITerminationCriterion term, final List<Individual<G, X>> result) {
-
 		result.add(evolutionaryAlgorithm(this.getObjectiveFunction(), this.getNullarySearchOperation(),
 				this.getUnarySearchOperation(), this.getBinarySearchOperation(), this.getGPM(),
 				this.getSelectionAlgorithm(), this.getPopulationSize(), this.getMatingPoolSize(),
 				this.getMutationRate(), this.getCrossoverRate(), term, r));
+		Individual<int[], int[]> p = new Individual<int[], int[]>();
+		p.x = new int[0];
+		notifyTracer(p);
 	}
 
 	/**

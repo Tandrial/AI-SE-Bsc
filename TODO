@@ -18,6 +18,8 @@ TODO
 			Makierung für gefundenen new Best und "Lösung"
 
 
+- TraceStats : Add result from checkDelay!!!
+
 -Hillclimbing deterministisch
 
 -Prio "zusammenschieben"   ( Port mit  1 3 3 3  ==> 1 2 2 2)
@@ -27,10 +29,3 @@ TODO
 	*diff von allen als absolut werte
 	*Malus für Nicht erfüllung nötig!!!!
 
-
--Refactor: Name der Felder/Funktionen
-
-
-Bugs
-
-*DelayStats sometimes null (nothing found? etc.)

@@ -7,6 +7,8 @@ public class SingleBestTracer extends Tracer {
 
 	@Override
 	public void update(final TracerStat stat) {
+		if (stat.getPrio().length == 0)
+			return;
 		if (best == null)
 			best = stat;
 		else if (best.getDelay() > stat.getDelay())

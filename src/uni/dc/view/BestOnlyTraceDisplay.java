@@ -21,10 +21,10 @@ import org.jfree.data.xy.XYSeriesCollection;
 import uni.dc.ubsOpti.tracer.DelayTrace;
 import uni.dc.ubsOpti.tracer.TracerStat;
 
-public class TraceDisplay extends JFrame {
+public class BestOnlyTraceDisplay extends JFrame {
 	private static final long serialVersionUID = 1L;
 
-	public TraceDisplay(String title, List<DelayTrace> traces) {
+	public BestOnlyTraceDisplay(String title, List<DelayTrace> traces) {
 		super(title);
 
 		JFreeChart localJFreeChart = createChart(readDataset(traces));

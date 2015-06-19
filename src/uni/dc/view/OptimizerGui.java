@@ -194,7 +194,7 @@ public class OptimizerGui extends JFrame {
 					public void actionPerformed(ActionEvent e) {
 						if (config.getTraces() == null)
 							return;
-						TraceDisplay traceDisplay = new TraceDisplay("Trace Display", config.getTraces());
+						BestOnlyTraceDisplay traceDisplay = new BestOnlyTraceDisplay("Trace Display", config.getTraces());
 						traceDisplay.pack();
 						RefineryUtilities.centerFrameOnScreen(traceDisplay);
 						traceDisplay.setVisible(true);

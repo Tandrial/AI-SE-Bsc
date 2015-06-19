@@ -17,7 +17,7 @@ public class UbsOptiConfig implements Serializable {
 	private int depth = 6;
 	private int portCount = 9;
 	private int maxFrameLength = 12350;
-	private int maxSpeed = 10;
+	private int maxLeakRateinPercent = 10;
 	private long seed = 0x31337;
 	private double linkSpeed = 1e9;
 	private int maxPrio = 2;
@@ -71,7 +71,7 @@ public class UbsOptiConfig implements Serializable {
 	}
 
 	public void fromGenerator(GeneratorAPI generator) {
-		generator.generateNetwork(seed, depth, portCount, maxPrio, linkSpeed, maxFrameLength, maxSpeed);
+		generator.generateNetwork(seed, depth, portCount, maxPrio, linkSpeed, maxFrameLength, maxLeakRateinPercent);
 		topology = generator.getTopology();
 		traffic = generator.getTraffic();
 		prio = generator.getPriorityConfiguration();
@@ -114,11 +114,11 @@ public class UbsOptiConfig implements Serializable {
 	}
 
 	public int getMaxSpeed() {
-		return maxSpeed;
+		return maxLeakRateinPercent;
 	}
 
 	public void setMaxSpeed(int maxSpeed) {
-		this.maxSpeed = maxSpeed;
+		this.maxLeakRateinPercent = maxSpeed;
 	}
 
 	public void setSeed(long seed) {

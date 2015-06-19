@@ -195,12 +195,12 @@ public class UbsOptiGui extends JFrame {
 				mntmDisplayGraph.addActionListener(new ActionListener() {
 					@Override
 					public void actionPerformed(ActionEvent e) {
-						if (config.getTraces() == null) {
+						if (config.getBestOnlyTracer() == null) {
 							setStatusMsg("Error: Need to run atleast one optimazation!");
 							return;
 						}
 						BestOnlyTraceDisplay traceDisplay = new BestOnlyTraceDisplay("Best only Linechart", config
-								.getTraces());
+								.getBestOnlyTracer());
 						traceDisplay.pack();
 						RefineryUtilities.centerFrameOnScreen(traceDisplay);
 						traceDisplay.setVisible(true);
@@ -284,7 +284,6 @@ public class UbsOptiGui extends JFrame {
 				String.format("Optimazation for %s started with %s", config.isUbsV0() ? "UBS-V0" : "UBS-V3", algo));
 
 		boolean result = Optimizer.getOptimizer().optimize(config, algo);
-		config.setBestConfig();
 
 		t2 = System.nanoTime();
 		if (result) {
@@ -322,6 +321,7 @@ public class UbsOptiGui extends JFrame {
 			NetworkParser parser = NetworkParser.getParser();
 			parser.setFileName(file);
 			config.fromParser(parser);
+			Optimizer.getOptimizer().setTracer(config.resetTracers());
 
 			logger.log(Level.INFO, String.format("Loaded network \"%s\":\n%s", file.getName(), config));
 			t2 = System.nanoTime();
@@ -348,6 +348,7 @@ public class UbsOptiGui extends JFrame {
 			t1 = System.nanoTime();
 
 			config.fromGenerator();
+			Optimizer.getOptimizer().setTracer(config.resetTracers());
 
 			logger.log(Level.INFO, String.format("Generated new network: \n%s", config));
 

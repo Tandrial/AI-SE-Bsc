@@ -1,5 +1,9 @@
 package uni.dc.ubsOpti.goataaExt.algorithms;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+
 import org.goataa.impl.algorithms.SOOptimizationAlgorithm;
 import org.goataa.impl.searchOperations.NullarySearchOperation;
 import org.goataa.impl.searchOperations.UnarySearchOperation;
@@ -8,9 +12,9 @@ import org.goataa.spec.INullarySearchOperation;
 import org.goataa.spec.IOptimizationModule;
 import org.goataa.spec.IUnarySearchOperation;
 
-import uni.dc.ubsOpti.UbsOptiConfig;
-import uni.dc.ubsOpti.tracer.DelayTrace;
 import uni.dc.ubsOpti.tracer.Traceable;
+import uni.dc.ubsOpti.tracer.Tracer;
+import uni.dc.ubsOpti.tracer.TracerStat;
 
 /**
  * A simple local search algorithm which has a nullary and a unary search
@@ -29,18 +33,31 @@ public class LocalSearchAlgorithmTraceable<G, X, IT extends Individual<G, X>> ex
 	/** a constant required by Java serialization */
 	private static final long serialVersionUID = 1;
 
-	protected static DelayTrace delays;
-	protected static long step;
+	protected long step = 1;
+	private List<Tracer> tracers = new ArrayList<Tracer>();
 
 	@Override
-	public DelayTrace getTrace() {
-		return delays;
+	public void attach(Tracer tracer) {
+		tracers.add(tracer);
 	}
 
 	@Override
-	public void setUpTrace(UbsOptiConfig config) {
-		delays = new DelayTrace(getName(false), config);
-		step = 1;
+	public void attach(Collection<Tracer> tracer) {
+		tracers.addAll(tracer);
+	}
+
+	@Override
+	public void detach(Tracer tracer) {
+		tracers.remove(tracer);
+	}
+
+	@Override
+	public void notifyTracer(Individual<?, ?> p) {
+		TracerStat stat = new TracerStat(this.getName(false), step, p.v, (int[]) p.x);
+		for (Tracer t : tracers) {
+			t.update(stat);
+		}
+		step++;
 	}
 
 	/** the nullary search operation */

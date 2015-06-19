@@ -73,7 +73,7 @@ public final class SimpleGenerationalTraceable<G, X> extends EABaseTracable<G, X
 	 *            the problem space (Section 2.1)
 	 */
 	@SuppressWarnings("unchecked")
-	public static final <G, X> Individual<G, X> evolutionaryAlgorithm(final IObjectiveFunction<X> f,
+	public Individual<G, X> evolutionaryAlgorithm(final IObjectiveFunction<X> f,
 			final INullarySearchOperation<G> create, final IUnarySearchOperation<G> mutate,
 			final IBinarySearchOperation<G> recombine, final IGPM<G, X> gpm, final ISelectionAlgorithm sel,
 			final int ps, final int mps, final double mr, final double cr, final ITerminationCriterion term,
@@ -97,7 +97,6 @@ public final class SimpleGenerationalTraceable<G, X> extends EABaseTracable<G, X
 
 		// the basic loop of the Evolutionary Algorithm 28.1
 		for (;;) {
-			step++;
 			// for eachgeneration do...
 
 			// for each individual in the population
@@ -108,12 +107,10 @@ public final class SimpleGenerationalTraceable<G, X> extends EABaseTracable<G, X
 				p.x = gpm.gpm(p.g, r);
 				// compute the objective value
 				p.v = f.compute(p.x, r);
-
+				notifyTracer(p);
 				// is the current individual the best one so far?
 				if (p.v < best.v) {
 					best.assign(p);
-					if (delays != null)
-						delays.addDataPoint(step, best.v, (int[]) best.x);
 				}
 
 				// after each objective function evaluation, check if we should
@@ -175,9 +172,9 @@ public final class SimpleGenerationalTraceable<G, X> extends EABaseTracable<G, X
 	@Override
 	public void call(final Random r, final ITerminationCriterion term, final List<Individual<G, X>> result) {
 
-		result.add(SimpleGenerationalTraceable.evolutionaryAlgorithm(this.getObjectiveFunction(),
-				this.getNullarySearchOperation(), this.getUnarySearchOperation(), this.getBinarySearchOperation(),
-				this.getGPM(), this.getSelectionAlgorithm(), this.getPopulationSize(), this.getMatingPoolSize(),
+		result.add(evolutionaryAlgorithm(this.getObjectiveFunction(), this.getNullarySearchOperation(),
+				this.getUnarySearchOperation(), this.getBinarySearchOperation(), this.getGPM(),
+				this.getSelectionAlgorithm(), this.getPopulationSize(), this.getMatingPoolSize(),
 				this.getMutationRate(), this.getCrossoverRate(), term, r));
 	}
 

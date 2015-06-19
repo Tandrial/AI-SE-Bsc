@@ -25,7 +25,6 @@ import uni.dc.model.PriorityConfiguration;
 import uni.dc.model.Traffic;
 import uni.dc.ubsOpti.delayCalc.UbsDelayCalc;
 import uni.dc.ubsOpti.delayCalc.UbsV0DelayCalc;
-import uni.dc.ubsOpti.tracer.TraceCollection;
 
 public class NetworkParser {
 
@@ -166,7 +165,6 @@ public class NetworkParser {
 			out.writeObject(config.getTopology());
 			out.writeObject(config.getTraffic());
 			out.writeObject(config.getPriorityConfig());
-			out.writeObject(config.getTraces());
 			out.close();
 			fileOut.close();
 		} catch (IOException i) {
@@ -181,9 +179,8 @@ public class NetworkParser {
 			EgressTopology topo = (EgressTopology) in.readObject();
 			Traffic traffic = (Traffic) in.readObject();
 			PriorityConfiguration prio = (PriorityConfiguration) in.readObject();
-			TraceCollection traces = (TraceCollection) in.readObject();
 			UbsDelayCalc delayCalc = new UbsV0DelayCalc(traffic);
-			UbsOptiConfig config = new UbsOptiConfig(topo, traffic, prio, delayCalc, traces);
+			UbsOptiConfig config = new UbsOptiConfig(topo, traffic, prio, delayCalc);
 			in.close();
 			fileIn.close();
 			return config;

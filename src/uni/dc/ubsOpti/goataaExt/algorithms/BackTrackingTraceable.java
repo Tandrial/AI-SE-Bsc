@@ -69,11 +69,11 @@ public final class BackTrackingTraceable extends LocalSearchAlgorithmTraceable<i
 	 */
 	@Override
 	public void call(final Random r, final ITerminationCriterion term, final List<Individual<int[], int[]>> result) {
-		result.add(BackTrackingTraceable.backTrack(this.getObjectiveFunction(), term, this.getNullarySearchOperation()
-				.create(null), new HashSet<int[]>()));
+		result.add(backTrack(this.getObjectiveFunction(), term, this.getNullarySearchOperation().create(null),
+				new HashSet<int[]>()));
 	}
 
-	public static final Individual<int[], int[]> backTrack(IObjectiveFunction<int[]> f, ITerminationCriterion term,
+	public final Individual<int[], int[]> backTrack(IObjectiveFunction<int[]> f, ITerminationCriterion term,
 			int[] prio, Set<int[]> visisted) {
 		// 0) Falls Prio schon besucht abbruch, sonst Prio zu besucht hinzufügen
 		if (visisted.contains(prio))
@@ -84,14 +84,12 @@ public final class BackTrackingTraceable extends LocalSearchAlgorithmTraceable<i
 		Individual<int[], int[]> p = new Individual<int[], int[]>();
 		p.x = prio;
 		p.v = f.compute(p.x, null);
-		step++;
+		notifyTracer(p);
 
 		// 1) Delays berechnen, falls besser ==> speichern in trace
 		// 2) checkDelays, falls ja : Rekursion fertig beste Prio zurück geben
 		if (p.v < best.v) {
 			best.assign(p);
-			if (delays != null)
-				delays.addDataPoint(step, p.v, p.x);
 		}
 
 		// 2) Sortiere Stream f absteigend nach (maxLatency - delay)

@@ -50,10 +50,8 @@ public final class HillClimbingTraceable<G, X> extends LocalSearchAlgorithmTrace
 	@Override
 	public void call(final Random r, final ITerminationCriterion term, final List<Individual<G, X>> result) {
 
-		result.add(HillClimbingTraceable.hillClimbing(this.getObjectiveFunction(),//
-				this.getNullarySearchOperation(), //
-				this.getUnarySearchOperation(),//
-				this.getGPM(), term, r));
+		result.add(hillClimbing(this.getObjectiveFunction(), this.getNullarySearchOperation(),
+				this.getUnarySearchOperation(), this.getGPM(), term, r));
 	}
 
 	/**
@@ -80,7 +78,7 @@ public final class HillClimbingTraceable<G, X> extends LocalSearchAlgorithmTrace
 	 * @param <X>
 	 *            the problem space (Section 2.1)
 	 */
-	public static final <G, X> Individual<G, X> hillClimbing(final IObjectiveFunction<X> f,
+	public Individual<G, X> hillClimbing(final IObjectiveFunction<X> f,
 			final INullarySearchOperation<G> create, final IUnarySearchOperation<G> mutate, final IGPM<G, X> gpm,
 			final ITerminationCriterion term, final Random r) {
 
@@ -93,25 +91,22 @@ public final class HillClimbingTraceable<G, X> extends LocalSearchAlgorithmTrace
 		p.g = create.create(r);
 		p.x = gpm.gpm(p.g, r);
 		p.v = f.compute(p.x, r);
-		if (delays != null)
-			delays.addDataPoint(step, p.v, (int[]) p.x);
+		notifyTracer(p);
 
 		// check the termination criterion
 		while (!(term.terminationCriterion())) {
-			step++;
 			// modify the best point known, map the new point to a phenotype and
 			// evaluat it
 			pnew.g = mutate.mutate(p.g, r);
 			pnew.x = gpm.gpm(pnew.g, r);
 			pnew.v = f.compute(pnew.x, r);
+			notifyTracer(p);
 
 			// In Algorithm 26.1, the objective functions are
 			// evaluated here. By storing the objective values in the individual
 			// records, we avoid evaluating p.x more than once.
 			if (pnew.v < p.v) {
-				p.assign(pnew);
-				if (delays != null)
-					delays.addDataPoint(step, p.v, (int[]) p.x);
+				p.assign(pnew);				
 			}
 		}
 

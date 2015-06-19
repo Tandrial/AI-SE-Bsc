@@ -33,7 +33,7 @@ public class SettingsGui extends JDialog {
 	private JSpinner spDepth;
 	private JSpinner spPortCount;
 	private JSpinner spMaxLength;
-	private JSpinner spSpeed;
+	private JSpinner spRndSeed;
 	private JSpinner spMaxPrio;
 	private JSpinner spMaxStep;
 	private JSpinner spRuns;
@@ -62,7 +62,7 @@ public class SettingsGui extends JDialog {
 		lblMaxframelength.setBounds(10, 75, 100, 15);
 		contentPanel.add(lblMaxframelength);
 
-		JLabel lblMaxspeed = new JLabel("maxSpeed[%]");
+		JLabel lblMaxspeed = new JLabel("random Seed");
 		lblMaxspeed.setBounds(10, 100, 100, 15);
 		contentPanel.add(lblMaxspeed);
 
@@ -96,11 +96,11 @@ public class SettingsGui extends JDialog {
 		spMaxLength.setBounds(125, 74, 80, 20);
 		contentPanel.add(spMaxLength);
 
-		spSpeed = new JSpinner();
-		spSpeed.setModel(new SpinnerNumberModel(new Integer(1), new Integer(1), new Integer(100), new Integer(1)));
-		spSpeed.setValue(config.getMaxSpeed());
-		spSpeed.setBounds(125, 101, 80, 20);
-		contentPanel.add(spSpeed);
+		spRndSeed = new JSpinner();
+		spRndSeed.setModel(new SpinnerNumberModel(new Long(1), new Long(0), null, new Long(1)));
+		spRndSeed.setValue(config.getSeed());
+		spRndSeed.setBounds(125, 101, 80, 20);
+		contentPanel.add(spRndSeed);
 
 		spMaxPrio = new JSpinner();
 		spMaxPrio.setModel(new SpinnerNumberModel(new Integer(2), new Integer(2), null, new Integer(1)));
@@ -183,7 +183,7 @@ public class SettingsGui extends JDialog {
 		config.setDepth((Integer) spDepth.getValue());
 		config.setPortCount((Integer) spPortCount.getValue());
 		config.setMaxFrameLength((Integer) spMaxLength.getValue());
-		config.setMaxSpeed((Integer) spSpeed.getValue());
+		config.setSeed((Long) spRndSeed.getValue());
 		config.setMaxPrio((Integer) spMaxPrio.getValue());
 		config.setMaxSteps((Integer) spMaxStep.getValue());
 		config.setRuns((Integer) spRuns.getValue());

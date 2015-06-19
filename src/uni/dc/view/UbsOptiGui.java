@@ -32,10 +32,10 @@ import uni.dc.ubsOpti.NetworkParser;
 import uni.dc.ubsOpti.Optimizer;
 import uni.dc.ubsOpti.UbsOptiConfig;
 
-public class OptimizerGui extends JFrame {
+public class UbsOptiGui extends JFrame {
 	private static final long serialVersionUID = 1L;
 
-	static final Logger logger = Logger.getLogger(OptimizerGui.class.getName());
+	static final Logger logger = Logger.getLogger(UbsOptiGui.class.getName());
 
 	private GraphVizPanel imagePanel;
 	private JLabel statusLabel;
@@ -43,7 +43,7 @@ public class OptimizerGui extends JFrame {
 
 	private boolean portDisplay = true;
 
-	public OptimizerGui(String title) {
+	public UbsOptiGui(String title) {
 		super(title);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
@@ -71,7 +71,7 @@ public class OptimizerGui extends JFrame {
 						JFileChooser c = new JFileChooser();
 						c.setCurrentDirectory(new File("./Topologies/"));
 						c.setFileFilter(new FileNameExtensionFilter("UBS Optimizer Network file", "ubsNetwork", "ser"));
-						int rVal = c.showOpenDialog(OptimizerGui.this);
+						int rVal = c.showOpenDialog(UbsOptiGui.this);
 						if (rVal == JFileChooser.APPROVE_OPTION) {
 							loadFromFile(c.getSelectedFile());
 						}
@@ -83,8 +83,10 @@ public class OptimizerGui extends JFrame {
 				mntmExportPng.addActionListener(new ActionListener() {
 					@Override
 					public void actionPerformed(ActionEvent e) {
-						if (config.getTopology() == null)
+						if (config.getTopology() == null) {
+							setStatusMsg("Please generate/load a network first");
 							return;
+						}
 						String fileName;
 						if (NetworkParser.getParser().getFile() != null) {
 							fileName = NetworkParser.getParser().getFile().getName();
@@ -104,8 +106,10 @@ public class OptimizerGui extends JFrame {
 				mntmSaveNetwork.addActionListener(new ActionListener() {
 					@Override
 					public void actionPerformed(ActionEvent e) {
-						if (config.getTopology() == null)
+						if (config.getTopology() == null) {
+							setStatusMsg("Error: No network loaded!");
 							return;
+						}
 						String fileName = "" + config.getTopology();
 						NetworkParser.saveToFile(new File("./Topologies/" + fileName + ".ser"), config);
 					}
@@ -188,13 +192,16 @@ public class OptimizerGui extends JFrame {
 				});
 				mnOptimize.add(mntmRunAllexcept);
 
-				JMenuItem mntmDisplayGraph = new JMenuItem("Display Graph");
+				JMenuItem mntmDisplayGraph = new JMenuItem("Display Best only Linechart");
 				mntmDisplayGraph.addActionListener(new ActionListener() {
 					@Override
 					public void actionPerformed(ActionEvent e) {
-						if (config.getTraces() == null)
+						if (config.getTraces() == null) {
+							setStatusMsg("Error: Need to run atleast one optimazation!");
 							return;
-						BestOnlyTraceDisplay traceDisplay = new BestOnlyTraceDisplay("Trace Display", config.getTraces());
+						}
+						BestOnlyTraceDisplay traceDisplay = new BestOnlyTraceDisplay("Best only Linechart", config
+								.getTraces());
 						traceDisplay.pack();
 						RefineryUtilities.centerFrameOnScreen(traceDisplay);
 						traceDisplay.setVisible(true);
@@ -264,8 +271,10 @@ public class OptimizerGui extends JFrame {
 	}
 
 	private void optimize(String algo) {
-		if (config.getTopology() == null)
+		if (config.getTopology() == null) {
+			setStatusMsg("Error: No network loaded!");
 			return;
+		}
 		logger.entering(getClass().getName(), "optimize");
 		setStatusMsg("Optimizing Priorities! This might take a while ...");
 		config.setPriorityConfig(new PriorityConfiguration(config.getTraffic()));
@@ -369,13 +378,13 @@ public class OptimizerGui extends JFrame {
 			public void run() {
 				try {
 					UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-					OptimizerGui gui = new OptimizerGui("UBS Optimizer");
+					UbsOptiGui gui = new UbsOptiGui("UBS Optimizer");
 					RefineryUtilities.centerFrameOnScreen(gui);
 
 					FileHandler fh = new FileHandler("./ubsOpti.log");
 					fh.setFormatter(new SimpleFormatter());
 
-					OptimizerGui.logger.addHandler(fh);
+					UbsOptiGui.logger.addHandler(fh);
 					SettingsGui.logger.addHandler(fh);
 					gui.setVisible(true);
 				} catch (Exception e) {

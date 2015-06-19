@@ -13,6 +13,7 @@ import uni.dc.ubsOpti.delayCalc.UbsDelayCalc;
 import uni.dc.ubsOpti.delayCalc.UbsV0DelayCalc;
 import uni.dc.ubsOpti.delayCalc.UbsV3DelayCalc;
 import uni.dc.ubsOpti.tracer.BestOnlyTracer;
+import uni.dc.ubsOpti.tracer.SingleBestTracer;
 import uni.dc.ubsOpti.tracer.Tracer;
 
 public class UbsOptiConfig implements Serializable {
@@ -40,6 +41,7 @@ public class UbsOptiConfig implements Serializable {
 	private UbsDelayCalc delayCalc = null;
 
 	private BestOnlyTracer bestOnlyTracer;
+	private SingleBestTracer singleBestTracer;
 
 	public UbsOptiConfig() {
 
@@ -107,13 +109,15 @@ public class UbsOptiConfig implements Serializable {
 	public void genRemaining(GeneratorAPI generator) {
 		prio = generator.getPriorityConfiguration();
 		dim = prio.toIntArray().length;
-		delayCalc = ubsV0 ? new UbsV0DelayCalc(traffic) : new UbsV3DelayCalc(traffic);		
+		delayCalc = ubsV0 ? new UbsV0DelayCalc(traffic) : new UbsV3DelayCalc(traffic);
 	}
 
 	public List<Tracer> resetTracers() {
 		bestOnlyTracer = new BestOnlyTracer();
+		singleBestTracer = new SingleBestTracer();
 		ArrayList<Tracer> tracers = new ArrayList<Tracer>();
 		tracers.add(bestOnlyTracer);
+		tracers.add(singleBestTracer);
 		return tracers;
 	}
 
@@ -222,6 +226,10 @@ public class UbsOptiConfig implements Serializable {
 		this.prio = prio;
 	}
 
+	public void setPriorityConfig(int[] prio) {
+		this.prio.fromIntArray(prio);
+	}
+
 	public UbsDelayCalc getDelayCalc() {
 		return delayCalc;
 	}
@@ -248,5 +256,9 @@ public class UbsOptiConfig implements Serializable {
 
 	public BestOnlyTracer getBestOnlyTracer() {
 		return bestOnlyTracer;
+	}
+
+	public SingleBestTracer getSingleBestTracer() {
+		return singleBestTracer;
 	}
 }

@@ -1,7 +1,5 @@
 package uni.dc.ubsOpti;
 
-import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
 import org.goataa.impl.algorithms.ea.selection.TournamentSelection;
@@ -61,6 +59,8 @@ public class Optimizer {
 			optimizeSimpleGenerationalEA();
 		}
 
+		config.setPriorityConfig(config.getSingleBestTracer().getBest().getPrio());
+		config.getDelayCalc().calculateDelays(config.getPriorityConfig());
 		return config.getDelayCalc().checkDelays();
 	}
 

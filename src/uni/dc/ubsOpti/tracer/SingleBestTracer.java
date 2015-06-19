@@ -9,10 +9,8 @@ public class SingleBestTracer extends Tracer {
 	public void update(final TracerStat stat) {
 		if (best == null)
 			best = stat;
-		else {
-			if (best.getDelay() > stat.getDelay())
-				best = stat;
-		}
+		else if (best.getDelay() > stat.getDelay())
+			best = stat;
 	}
 
 	public TracerStat getBest() {

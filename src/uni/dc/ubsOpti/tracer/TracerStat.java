@@ -1,6 +1,7 @@
 package uni.dc.ubsOpti.tracer;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.goataa.impl.utils.Individual;
@@ -10,7 +11,7 @@ public class TracerStat implements Serializable {
 	private String name;
 	private long step;
 	private Individual<?, ?> data;
-	private List<Individual<?, ?>> parents;
+	private List<Individual<?, ?>> parents = new ArrayList<Individual<?, ?>>();
 
 	public TracerStat(String name, long step, Individual<?, ?> data, Individual<?, ?>... parents) {
 		this.name = name;
@@ -35,13 +36,13 @@ public class TracerStat implements Serializable {
 	public int[] getPrio() {
 		return (int[]) data.x;
 	}
-	
+
 	public List<Individual<?, ?>> getParents() {
 		return parents;
 	}
 
 	@Override
 	public String toString() {
-		return String.format("%d;%.8f\n", step, data.v);
+		return String.format("%d;%.8f;%s\n", step, data.v, parents);
 	}
 }

@@ -102,7 +102,7 @@ public final class HillClimbingTraceable<G, X> extends LocalSearchAlgorithmTrace
 			pnew.g = mutate.mutate(p.g, r);
 			pnew.x = gpm.gpm(pnew.g, r);
 			pnew.v = f.compute(pnew.x, r);
-			notifyTracer(p);
+			notifyTracer(pnew, p);
 
 			// In Algorithm 26.1, the objective functions are
 			// evaluated here. By storing the objective values in the individual

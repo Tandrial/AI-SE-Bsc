@@ -20,6 +20,7 @@ public final class BruteForceTraceable extends LocalSearchAlgorithmTraceable<int
 
 	private static Individual<int[], int[]> best = new Individual<int[], int[]>();
 	private static boolean stopRecursion = false;
+	private Individual<?, ?> parent = null;
 
 	private int dim;
 	private int maxPrio;
@@ -71,7 +72,8 @@ public final class BruteForceTraceable extends LocalSearchAlgorithmTraceable<int
 			Individual<int[], int[]> p = new Individual<int[], int[]>();
 			p.x = n;
 			p.v = f.compute(p.x, null);
-			notifyTracer(p);
+			notifyTracer(p, parent);
+			parent = p;
 
 			if (p.v < best.v) {
 				best.assign(p);

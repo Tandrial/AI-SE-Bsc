@@ -70,14 +70,14 @@ public final class BackTrackingTraceable extends LocalSearchAlgorithmTraceable<i
 	@Override
 	public void call(final Random r, final ITerminationCriterion term, final List<Individual<int[], int[]>> result) {
 		result.add(backTrack(this.getObjectiveFunction(), term, this.getNullarySearchOperation().create(null),
-				new HashSet<int[]>()));
+				new HashSet<int[]>(), null));
 		Individual<int[], int[]> p = new Individual<int[], int[]>();
 		p.x = new int[0];
 		notifyTracer(p);
 	}
 
 	public final Individual<int[], int[]> backTrack(IObjectiveFunction<int[]> f, ITerminationCriterion term,
-			int[] prio, Set<int[]> visisted) {
+			int[] prio, Set<int[]> visisted, Individual<int[], int[]> parent) {
 		// 0) Falls Prio schon besucht abbruch, sonst Prio zu besucht hinzufügen
 		if (visisted.contains(prio))
 			return best;
@@ -87,7 +87,7 @@ public final class BackTrackingTraceable extends LocalSearchAlgorithmTraceable<i
 		Individual<int[], int[]> p = new Individual<int[], int[]>();
 		p.x = prio;
 		p.v = f.compute(p.x, null);
-		notifyTracer(p);
+		notifyTracer(p, parent);
 
 		// 1) Delays berechnen, falls besser ==> speichern in trace
 		// 2) checkDelays, falls ja : Rekursion fertig beste Prio zurück geben
@@ -118,7 +118,7 @@ public final class BackTrackingTraceable extends LocalSearchAlgorithmTraceable<i
 				if (currPrio < maxPrio) {
 					newP[posToChange] = currPrio + 1;
 					// 4) Rekursion start mit allen erzeugen Prios
-					backTrack(f, term, newP, visisted);
+					backTrack(f, term, newP, visisted, p);
 				}
 			}
 		}

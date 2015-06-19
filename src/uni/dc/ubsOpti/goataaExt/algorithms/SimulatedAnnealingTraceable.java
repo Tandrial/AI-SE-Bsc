@@ -141,6 +141,7 @@ public final class SimulatedAnnealingTraceable<G, X> extends LocalSearchAlgorith
 			pnew.g = mutate.mutate(pcur.g, r);
 			pnew.x = gpm.gpm(pnew.g, r);
 			pnew.v = f.compute(pnew.x, r);
+			notifyTracer(pnew, pcur);
 
 			// compute the energy difference according to
 			// Equation 27.2
@@ -149,7 +150,6 @@ public final class SimulatedAnnealingTraceable<G, X> extends LocalSearchAlgorith
 			// implement Equation 27.3
 			if (DE <= 0.0d) {
 				pcur.assign(pnew);
-				notifyTracer(pcur);
 				// remember the best candidate solution
 				if (pnew.v < pbest.v) {
 					pbest.assign(pnew);
@@ -158,7 +158,6 @@ public final class SimulatedAnnealingTraceable<G, X> extends LocalSearchAlgorith
 				// otherwise, use
 				if (r.nextDouble() < Math.exp(-DE / T)) {
 					pcur.assign(pnew);
-					notifyTracer(pcur);
 				}
 			}
 

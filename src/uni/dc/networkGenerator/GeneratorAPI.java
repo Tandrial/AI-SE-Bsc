@@ -35,7 +35,7 @@ public class GeneratorAPI {
 	}
 
 	public void setRandom(Random rng) {
-		this.rng = rng;
+		GeneratorAPI.rng = rng;
 	}
 
 	public void generateNetwork(int depth, int portCount, int maxPrio, double linkSpeed, int maxFrameLength,

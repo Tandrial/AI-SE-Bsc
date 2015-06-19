@@ -11,5 +11,5 @@ public interface Traceable {
 
 	public void detach(Tracer tracer);
 
-	public void notifyTracer(Individual<?, ?> p);
+	public void notifyTracer(Individual<?, ?> p, Individual<?, ?>... parents);
 }

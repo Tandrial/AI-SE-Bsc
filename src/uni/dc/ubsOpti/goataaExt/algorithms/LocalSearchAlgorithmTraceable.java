@@ -52,8 +52,8 @@ public class LocalSearchAlgorithmTraceable<G, X, IT extends Individual<G, X>> ex
 	}
 
 	@Override
-	public void notifyTracer(Individual<?, ?> p) {
-		TracerStat stat = new TracerStat(this.getName(false), step, p.v, (int[]) p.x);
+	public void notifyTracer(Individual<?, ?> p, Individual<?, ?>... parents) {
+		TracerStat stat = new TracerStat(this.getName(false), step, p, parents);
 
 		for (Tracer t : tracers) {
 			t.update(stat);

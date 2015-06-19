@@ -1,12 +1,13 @@
 package uni.dc.ubsOpti;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 import org.goataa.impl.algorithms.ea.selection.TournamentSelection;
 import org.goataa.impl.algorithms.sa.temperatureSchedules.Logarithmic;
 import org.goataa.impl.utils.Individual;
 
-import uni.dc.model.PriorityConfiguration;
 import uni.dc.ubsOpti.goataaExt.algorithms.BackTrackingTraceable;
 import uni.dc.ubsOpti.goataaExt.algorithms.BruteForceTraceable;
 import uni.dc.ubsOpti.goataaExt.algorithms.HillClimbingTraceable;
@@ -20,7 +21,7 @@ import uni.dc.ubsOpti.goataaExt.searchOperations.strings.integer.nullary.IntArra
 import uni.dc.ubsOpti.goataaExt.searchOperations.strings.integer.unary.IntArrayAllNormalMutation;
 import uni.dc.ubsOpti.goataaExt.searchOperations.strings.integer.unary.IntArrayBestMutation;
 import uni.dc.ubsOpti.goataaExt.termination.UbsStepDelayTermination;
-import uni.dc.ubsOpti.tracer.DelayTrace;
+import uni.dc.ubsOpti.tracer.Tracer;
 
 public class Optimizer {
 
@@ -33,9 +34,14 @@ public class Optimizer {
 	private IntVectorCreation create = null;
 	private IntVectorMutation mutate = null;
 	private UbsOptiConfig config = null;
+	private List<Tracer> tracers = null;
 
 	private Optimizer() {
 
+	}
+
+	public void setTracer(List<Tracer> tracers) {
+		this.tracers = tracers;
 	}
 
 	public boolean optimize(UbsOptiConfig config, String selectedAlgo) {
@@ -43,67 +49,52 @@ public class Optimizer {
 		create = new IntArrayAllOnesCreation(config.getDim(), 1, config.getMaxPrio());
 		mutate = new IntArrayBestMutation(1, config.getMaxPrio(), config.getDelayCalc());
 
-		DelayTrace trace = null;
 		if (selectedAlgo.equals("BruteForce")) {
-			trace = optimizeBruteForce();
+			optimizeBruteForce();
 		} else if (selectedAlgo.equals("BackTrack")) {
-			trace = optimizeBackTrack();
+			optimizeBackTrack();
 		} else if (selectedAlgo.equals("SimulatedAnnealing")) {
-			trace = optimizeSimulatedAnnealing();
+			optimizeSimulatedAnnealing();
 		} else if (selectedAlgo.equals("HillClimbing")) {
-			trace = optimizeHillClimbing();
+			optimizeHillClimbing();
 		} else if (selectedAlgo.equals("SimpleGenerationalEA")) {
-			trace = optimizeSimpleGenerationalEA();
+			optimizeSimpleGenerationalEA();
 		}
 
-		trace.setAlgoName(config.getTraces().size() + "_" + trace.getAlgoName());
-		config.getTraces().add(trace);
-		PriorityConfiguration bestConfig = trace.getBestConfig();
-		if (bestConfig != null) {
-			config.getDelayCalc().calculateDelays(bestConfig);
-			return config.getDelayCalc().checkDelays();
-		} else {
-			return false;
-		}
+		return config.getDelayCalc().checkDelays();
 	}
 
-	private DelayTrace optimizeBruteForce() {
+	private void optimizeBruteForce() {
 		BruteForceTraceable BF = new BruteForceTraceable();
 		BF.setDim(create.n);
 		BF.setMaxPrio(mutate.max);
 		run(BF);
-		return BF.getTrace();
 	}
 
-	private DelayTrace optimizeBackTrack() {
+	private void optimizeBackTrack() {
 		BackTrackingTraceable BT = new BackTrackingTraceable();
 		BT.setConfig(config);
 		BT.setMaxPrio(mutate.max);
 		run(BT);
-		return BT.getTrace();
-
 	}
 
-	private DelayTrace optimizeHillClimbing() {
+	private void optimizeHillClimbing() {
 		HillClimbingTraceable<int[], int[]> HC = new HillClimbingTraceable<int[], int[]>();
 		mutate = new IntArrayAllNormalMutation(1, config.getMaxPrio());
 		run(HC);
-		return HC.getTrace();
 	}
 
-	private DelayTrace optimizeSimulatedAnnealing() {
+	private void optimizeSimulatedAnnealing() {
 		SimulatedAnnealingTraceable<int[], int[]> SA = new SimulatedAnnealingTraceable<int[], int[]>();
 		SA.setTemperatureSchedule(new Logarithmic(1d));
 		run(SA);
-		return SA.getTrace();
 	}
 
-	private DelayTrace optimizeSimpleGenerationalEA() {
+	private void optimizeSimpleGenerationalEA() {
 		SimpleGenerationalTraceable<int[], int[]> GA = new SimpleGenerationalTraceable<int[], int[]>();
 		GA.setBinarySearchOperation(IntArrayWeightedMeanCrossover.INT_ARRAY_WEIGHTED_MEAN_CROSSOVER);
 		GA.setSelectionAlgorithm(new TournamentSelection(2));
 		run(GA);
-		return GA.getTrace();
 	}
 
 	@SuppressWarnings("unchecked")
@@ -113,9 +104,9 @@ public class Optimizer {
 		double bestValue = Double.MAX_VALUE;
 
 		UbsStepDelayTermination term = new UbsStepDelayTermination(config);
+		algorithm.attach(tracers);
 		algorithm.setObjectiveFunction(config.getDelayCalc());
 		algorithm.setTerminationCriterion(term);
-		algorithm.setUpTrace(config);
 		algorithm.setNullarySearchOperation(create);
 		algorithm.setUnarySearchOperation(mutate);
 

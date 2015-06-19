@@ -1,6 +1,8 @@
 package uni.dc.ubsOpti;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 import uni.dc.model.EgressTopology;
@@ -10,18 +12,19 @@ import uni.dc.networkGenerator.GeneratorAPI;
 import uni.dc.ubsOpti.delayCalc.UbsDelayCalc;
 import uni.dc.ubsOpti.delayCalc.UbsV0DelayCalc;
 import uni.dc.ubsOpti.delayCalc.UbsV3DelayCalc;
-import uni.dc.ubsOpti.tracer.TraceCollection;
+import uni.dc.ubsOpti.tracer.BestOnlyTracer;
+import uni.dc.ubsOpti.tracer.Tracer;
 
 public class UbsOptiConfig implements Serializable {
 
-	private static Random rng;
+	private static long seed = 0x31337;
+	private static Random rng = new Random(seed);
 
 	private static final long serialVersionUID = 1L;
 	private int depth = 6;
 	private int portCount = 9;
 	private int maxFrameLength = 12350;
 	private int maxLeakRateinPercent = 10;
-	private long seed = 0x31337;
 	private double modifier = 1.0d;
 	private double linkSpeed = 1e9;
 	private int maxPrio = 2;
@@ -35,7 +38,8 @@ public class UbsOptiConfig implements Serializable {
 	private EgressTopology topology = null;
 	private PriorityConfiguration prio = null;
 	private UbsDelayCalc delayCalc = null;
-	private TraceCollection traces = null;
+
+	private BestOnlyTracer bestOnlyTracer;
 
 	public UbsOptiConfig() {
 
@@ -54,24 +58,22 @@ public class UbsOptiConfig implements Serializable {
 		return sb.toString();
 	}
 
-	public UbsOptiConfig(EgressTopology topology, Traffic traffic, PriorityConfiguration prio, UbsDelayCalc delayCalc,
-			TraceCollection traces) {
+	public UbsOptiConfig(EgressTopology topology, Traffic traffic, PriorityConfiguration prio, UbsDelayCalc delayCalc) {
 		this.topology = topology;
 		this.traffic = traffic;
 		this.prio = prio;
 		dim = prio.toIntArray().length;
 		this.delayCalc = delayCalc;
-		this.traces = traces;
 	}
 
 	public void fromParser(NetworkParser parser) {
 		topology = parser.getTopology();
 		traffic = parser.getTraffic();
 		prio = parser.getPriorityConfig();
+
 		dim = prio.toIntArray().length;
 		delayCalc = ubsV0 ? new UbsV0DelayCalc(traffic) : new UbsV3DelayCalc(traffic);
 		delayCalc.calculateDelays(prio);
-		traces = new TraceCollection();
 	}
 
 	public void fromGenerator() {
@@ -80,27 +82,17 @@ public class UbsOptiConfig implements Serializable {
 		generator.generateNetwork(depth, portCount, maxPrio, linkSpeed, maxFrameLength, maxLeakRateinPercent);
 		topology = generator.getTopology();
 		traffic = generator.getTraffic();
-		prio = generator.getPriorityConfiguration();
-		dim = prio.toIntArray().length;
-		delayCalc = ubsV0 ? new UbsV0DelayCalc(traffic) : new UbsV3DelayCalc(traffic);
+		genRemaining(generator);
+
 		delayCalc.setInitialDelays(prio, 1.0d);
-		traces = new TraceCollection();
 	}
 
 	public void newTopology() {
 		GeneratorAPI generator = GeneratorAPI.getGenerator();
 		generator.setRandom(rng);
 		generator.genTopology(depth, portCount, linkSpeed);
-		generator.genTraffic(linkSpeed, maxFrameLength, maxLeakRateinPercent);
-		generator.genPrio(maxPrio);
 		topology = generator.getTopology();
-		traffic = generator.getTraffic();
-		prio = generator.getPriorityConfiguration();
-		dim = prio.toIntArray().length;
-		delayCalc = ubsV0 ? new UbsV0DelayCalc(traffic) : new UbsV3DelayCalc(traffic);
-		delayCalc.setInitialDelays(prio, modifier);
-		traces = new TraceCollection();
-
+		newTraffic();
 	}
 
 	public void newTraffic() {
@@ -108,11 +100,21 @@ public class UbsOptiConfig implements Serializable {
 		generator.genTraffic(linkSpeed, maxFrameLength, maxLeakRateinPercent);
 		generator.genPrio(maxPrio);
 		traffic = generator.getTraffic();
+		genRemaining(generator);
+		delayCalc.setInitialDelays(prio, modifier);
+	}
+
+	public void genRemaining(GeneratorAPI generator) {
 		prio = generator.getPriorityConfiguration();
 		dim = prio.toIntArray().length;
-		delayCalc = ubsV0 ? new UbsV0DelayCalc(traffic) : new UbsV3DelayCalc(traffic);
-		delayCalc.setInitialDelays(prio, modifier);
-		traces = new TraceCollection();
+		delayCalc = ubsV0 ? new UbsV0DelayCalc(traffic) : new UbsV3DelayCalc(traffic);		
+	}
+
+	public List<Tracer> resetTracers() {
+		bestOnlyTracer = new BestOnlyTracer();
+		ArrayList<Tracer> tracers = new ArrayList<Tracer>();
+		tracers.add(bestOnlyTracer);
+		return tracers;
 	}
 
 	public int getDepth() {
@@ -156,7 +158,7 @@ public class UbsOptiConfig implements Serializable {
 	}
 
 	public void setSeed(long seed) {
-		this.seed = seed;
+		UbsOptiConfig.seed = seed;
 		rng = new Random(seed);
 	}
 
@@ -228,14 +230,6 @@ public class UbsOptiConfig implements Serializable {
 		this.delayCalc = delayCalc;
 	}
 
-	public TraceCollection getTraces() {
-		return traces;
-	}
-
-	public void setTraces(TraceCollection traces) {
-		this.traces = traces;
-	}
-
 	public boolean isUbsV0() {
 		return ubsV0;
 	}
@@ -244,19 +238,15 @@ public class UbsOptiConfig implements Serializable {
 		this.ubsV0 = ubsV0;
 	}
 
-	public void setBestConfig() {
-		prio = traces.getBestConfig();
-	}
-
-	public PriorityConfiguration getBestConfig() {
-		return traces.getBestConfig();
-	}
-
 	public double getModifier() {
 		return modifier;
 	}
 
 	public void setModifier(double modifier) {
 		this.modifier = modifier;
+	}
+
+	public BestOnlyTracer getBestOnlyTracer() {
+		return bestOnlyTracer;
 	}
 }

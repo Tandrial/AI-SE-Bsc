@@ -23,7 +23,6 @@ import uni.dc.model.PriorityConfiguration;
 import uni.dc.ubsOpti.UbsOptiConfig;
 import uni.dc.ubsOpti.delayCalc.UbsV0DelayCalc;
 import uni.dc.ubsOpti.delayCalc.UbsV3DelayCalc;
-import uni.dc.ubsOpti.tracer.TraceCollection;
 
 public class SettingsGui extends JDialog {
 
@@ -193,7 +192,6 @@ public class SettingsGui extends JDialog {
 				config.setDelayCalc(new UbsV0DelayCalc(config.getTraffic()));
 				config.getDelayCalc().setPrio(config.getPriorityConfig());
 				config.getDelayCalc().calculateDelays();
-				config.setTraces(new TraceCollection());
 				config.setPriorityConfig(new PriorityConfiguration(config.getTraffic()));
 			}
 			config.setUbsV0(true);
@@ -202,7 +200,6 @@ public class SettingsGui extends JDialog {
 				config.setDelayCalc(new UbsV3DelayCalc(config.getTraffic()));
 				config.getDelayCalc().setPrio(config.getPriorityConfig());
 				config.getDelayCalc().calculateDelays();
-				config.setTraces(new TraceCollection());
 				config.setPriorityConfig(new PriorityConfiguration(config.getTraffic()));
 			}
 			config.setUbsV0(false);

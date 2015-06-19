@@ -56,11 +56,11 @@ public final class BruteForceTraceable extends LocalSearchAlgorithmTraceable<int
 	 */
 	@Override
 	public void call(final Random r, final ITerminationCriterion term, final List<Individual<int[], int[]>> result) {
-		result.add(BruteForceTraceable.bruteForce(this.getObjectiveFunction(), term, new int[dim], 0, maxPrio));
+		result.add(bruteForce(this.getObjectiveFunction(), term, new int[dim], 0, maxPrio));
 	}
 
-	public static final Individual<int[], int[]> bruteForce(IObjectiveFunction<int[]> f, ITerminationCriterion term,
-			int[] n, int pos, int maxPrio) {
+	public Individual<int[], int[]> bruteForce(IObjectiveFunction<int[]> f, ITerminationCriterion term, int[] n,
+			int pos, int maxPrio) {
 		if (stopRecursion)
 			return best;
 
@@ -68,12 +68,10 @@ public final class BruteForceTraceable extends LocalSearchAlgorithmTraceable<int
 			Individual<int[], int[]> p = new Individual<int[], int[]>();
 			p.x = n;
 			p.v = f.compute(p.x, null);
-			step++;
+			notifyTracer(p);
 
 			if (p.v < best.v) {
 				best.assign(p);
-				if (delays != null)
-					delays.addDataPoint(step, p.v, p.x);
 				if (term.terminationCriterion())
 					stopRecursion = true;
 			}

@@ -1,9 +1,15 @@
 package uni.dc.ubsOpti.tracer;
 
-import uni.dc.ubsOpti.UbsOptiConfig;
+import java.util.Collection;
+
+import org.goataa.impl.utils.Individual;
 
 public interface Traceable {
-	public void setUpTrace(UbsOptiConfig config);
+	public void attach(Tracer tracer);
 
-	public DelayTrace getTrace();
+	public void attach(Collection<Tracer> tracer);
+
+	public void detach(Tracer tracer);
+
+	public void notifyTracer(Individual<?, ?> p);
 }

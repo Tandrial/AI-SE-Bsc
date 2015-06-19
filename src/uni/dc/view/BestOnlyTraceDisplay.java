@@ -2,6 +2,7 @@ package uni.dc.view;
 
 import java.awt.Dimension;
 import java.util.List;
+import java.util.Map;
 
 import javax.swing.JFrame;
 
@@ -18,13 +19,13 @@ import org.jfree.data.xy.XYDataset;
 import org.jfree.data.xy.XYSeries;
 import org.jfree.data.xy.XYSeriesCollection;
 
-import uni.dc.ubsOpti.tracer.DelayTrace;
+import uni.dc.ubsOpti.tracer.BestOnlyTracer;
 import uni.dc.ubsOpti.tracer.TracerStat;
 
 public class BestOnlyTraceDisplay extends JFrame {
 	private static final long serialVersionUID = 1L;
 
-	public BestOnlyTraceDisplay(String title, List<DelayTrace> traces) {
+	public BestOnlyTraceDisplay(String title, BestOnlyTracer traces) {
 		super(title);
 
 		JFreeChart localJFreeChart = createChart(readDataset(traces));
@@ -61,11 +62,14 @@ public class BestOnlyTraceDisplay extends JFrame {
 		return localJFreeChart;
 	}
 
-	public XYSeriesCollection readDataset(List<DelayTrace> traces) {
+	public XYSeriesCollection readDataset(BestOnlyTracer tracer) {
 		XYSeriesCollection series = new XYSeriesCollection();
-		for (DelayTrace trace : traces) {
-			XYSeries serie = new XYSeries(trace.getAlgoName());
-			for (TracerStat stat : trace.getDataPoints()) {
+
+		Map<String, List<TracerStat>> stats = tracer.getStats();
+
+		for (String algoName : stats.keySet()) {
+			XYSeries serie = new XYSeries(algoName);
+			for (TracerStat stat : stats.get(algoName)) {
 				serie.add(stat.getStep(), stat.getDelay());
 			}
 			series.addSeries(serie);

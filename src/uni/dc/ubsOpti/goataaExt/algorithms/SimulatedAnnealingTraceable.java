@@ -78,7 +78,7 @@ public final class SimulatedAnnealingTraceable<G, X> extends LocalSearchAlgorith
 	@Override
 	public void call(final Random r, final ITerminationCriterion term, final List<Individual<G, X>> result) {
 
-		result.add(SimulatedAnnealingTraceable.simulatedAnnealing(//
+		result.add(simulatedAnnealing(//
 				this.getObjectiveFunction(),//
 				this.getNullarySearchOperation(), //
 				this.getUnarySearchOperation(),//
@@ -112,9 +112,9 @@ public final class SimulatedAnnealingTraceable<G, X> extends LocalSearchAlgorith
 	 * @param <X>
 	 *            the problem space (Section 2.1)
 	 */
-	public static final <G, X> Individual<G, X> simulatedAnnealing(final IObjectiveFunction<X> f,
-			final INullarySearchOperation<G> create, final IUnarySearchOperation<G> mutate, final IGPM<G, X> gpm,
-			final ITemperatureSchedule temperature, final ITerminationCriterion term, final Random r) {
+	public Individual<G, X> simulatedAnnealing(final IObjectiveFunction<X> f, final INullarySearchOperation<G> create,
+			final IUnarySearchOperation<G> mutate, final IGPM<G, X> gpm, final ITemperatureSchedule temperature,
+			final ITerminationCriterion term, final Random r) {
 
 		Individual<G, X> pbest, pcur, pnew;
 		int t;
@@ -130,12 +130,10 @@ public final class SimulatedAnnealingTraceable<G, X> extends LocalSearchAlgorith
 		pcur.v = f.compute(pcur.x, r);
 		pbest.assign(pcur);
 		t = 1;
-		if (delays != null)
-			delays.addDataPoint(step, pbest.v, (int[]) pbest.x);
+		notifyTracer(pcur);
 
 		// check the termination criterion
 		while (!(term.terminationCriterion())) {
-			step++;
 
 			// compute the current temperature
 			T = temperature.getTemperature(t);
@@ -153,17 +151,16 @@ public final class SimulatedAnnealingTraceable<G, X> extends LocalSearchAlgorith
 			// implement Equation 27.3
 			if (DE <= 0.0d) {
 				pcur.assign(pnew);
-
+				notifyTracer(pcur);
 				// remember the best candidate solution
 				if (pnew.v < pbest.v) {
 					pbest.assign(pnew);
-					if (delays != null)
-						delays.addDataPoint(step, pbest.v, (int[]) pbest.x);
 				}
 			} else {
 				// otherwise, use
 				if (r.nextDouble() < Math.exp(-DE / T)) {
 					pcur.assign(pnew);
+					notifyTracer(pcur);
 				}
 			}
 

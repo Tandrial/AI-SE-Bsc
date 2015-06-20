@@ -135,7 +135,7 @@ public class UbsOptiGui extends JFrame {
 				mntmBF.addActionListener(new ActionListener() {
 					@Override
 					public void actionPerformed(ActionEvent arg0) {
-						optimize("BruteForce");
+						optimize("BF");
 					}
 				});
 				mnOptimize.add(mntmBF);
@@ -144,7 +144,7 @@ public class UbsOptiGui extends JFrame {
 				mntmBT.addActionListener(new ActionListener() {
 					@Override
 					public void actionPerformed(ActionEvent arg0) {
-						optimize("BackTrack");
+						optimize("BT");
 					}
 				});
 				mnOptimize.add(mntmBT);
@@ -155,7 +155,7 @@ public class UbsOptiGui extends JFrame {
 				mntmHC.addActionListener(new ActionListener() {
 					@Override
 					public void actionPerformed(ActionEvent e) {
-						optimize("HillClimbing");
+						optimize("HC");
 					}
 				});
 				mnOptimize.add(mntmHC);
@@ -164,7 +164,7 @@ public class UbsOptiGui extends JFrame {
 				mntmSA.addActionListener(new ActionListener() {
 					@Override
 					public void actionPerformed(ActionEvent e) {
-						optimize("SimulatedAnnealing");
+						optimize("SA");
 					}
 				});
 				mnOptimize.add(mntmSA);
@@ -173,20 +173,21 @@ public class UbsOptiGui extends JFrame {
 				mntmGA.addActionListener(new ActionListener() {
 					@Override
 					public void actionPerformed(ActionEvent e) {
-						optimize("SimpleGenerationalEA");
+						optimize("sEA");
 					}
 				});
 				mnOptimize.add(mntmGA);
 
 				mnOptimize.add(new JSeparator());
 
-				JMenuItem mntmRunAllexcept = new JMenuItem("Run All (except BruteForce/BackTrack)");
+				JMenuItem mntmRunAllexcept = new JMenuItem("Run All (except BruteForce)");
 				mntmRunAllexcept.addActionListener(new ActionListener() {
 					@Override
 					public void actionPerformed(ActionEvent arg0) {
-						optimize("HillClimbing");
-						optimize("SimulatedAnnealing");
-						optimize("SimpleGenerationalEA");
+						optimize("BT");
+						optimize("HC");
+						optimize("SA");
+						optimize("sEA");
 					}
 				});
 				mnOptimize.add(mntmRunAllexcept);

@@ -113,15 +113,15 @@ public class BatchGui extends JDialog {
 					config.setPriorityConfig(new PriorityConfiguration(config.getTraffic()));
 					Optimizer opti = Optimizer.getOptimizer();
 
-					opti.optimize(config, "BruteForce");
+					opti.optimize(config, "BF");
 
-					opti.optimize(config, "BackTrack");
+					opti.optimize(config, "BT");
 
-					opti.optimize(config, "HillClimbing");
+					opti.optimize(config, "HC");
 
-					opti.optimize(config, "SimulatedAnnealing");
+					opti.optimize(config, "SA");
 
-					opti.optimize(config, "SimpleGenerationalEA");
+					opti.optimize(config, "sEA");
 				}
 			}
 		}

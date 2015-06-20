@@ -47,15 +47,15 @@ public class Optimizer {
 		create = new IntArrayAllOnesCreation(config.getDim(), 1, config.getMaxPrio());
 		mutate = new IntArrayBestMutation(1, config.getMaxPrio(), config.getDelayCalc());
 
-		if (selectedAlgo.equals("BruteForce")) {
+		if (selectedAlgo.equals("BF")) {
 			optimizeBruteForce();
-		} else if (selectedAlgo.equals("BackTrack")) {
+		} else if (selectedAlgo.equals("BT")) {
 			optimizeBackTrack();
-		} else if (selectedAlgo.equals("SimulatedAnnealing")) {
+		} else if (selectedAlgo.equals("SA")) {
 			optimizeSimulatedAnnealing();
-		} else if (selectedAlgo.equals("HillClimbing")) {
+		} else if (selectedAlgo.equals("HC")) {
 			optimizeHillClimbing();
-		} else if (selectedAlgo.equals("SimpleGenerationalEA")) {
+		} else if (selectedAlgo.equals("sEA")) {
 			optimizeSimpleGenerationalEA();
 		}
 

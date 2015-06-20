@@ -19,5 +19,4 @@ public class EndStepTracer extends Tracer {
 	public Map<String, Long> getStats() {
 		return dataPoints;
 	}
-
 }

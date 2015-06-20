@@ -5,6 +5,7 @@ import java.awt.EventQueue;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 
 import javax.swing.JButton;
 import javax.swing.JDialog;
@@ -21,6 +22,7 @@ import org.jfree.ui.RefineryUtilities;
 import uni.dc.model.PriorityConfiguration;
 import uni.dc.ubsOpti.Optimizer;
 import uni.dc.ubsOpti.UbsOptiConfig;
+import uni.dc.ubsOpti.tracer.EndStepTracer;
 
 public class BatchGui extends JDialog {
 	private static final long serialVersionUID = 1L;
@@ -71,7 +73,7 @@ public class BatchGui extends JDialog {
 			public void actionPerformed(ActionEvent e) {
 				int port = (Integer) spPortCount.getValue();
 				int traffic = (Integer) spTrafficCount.getValue();
-				run(port, traffic);
+				run(port, 2, traffic);
 				// setVisible(false);
 				// dispose();
 			}
@@ -89,29 +91,33 @@ public class BatchGui extends JDialog {
 		buttonPane.add(cancelButton);
 	}
 
-	private static void run(int maxPortCount, int maxStreamConfig) {
+	private static void run(int maxPortCount, int minPortCount, int maxStreamConfig) {
 		if (maxPortCount < 2)
 			return;
 
+		Optimizer opti = Optimizer.getOptimizer();
 		UbsOptiConfig config = new UbsOptiConfig();
+		EndStepTracer tracer = config.newEndStepTracer();
+
+		opti.addTracer(tracer);
 		config.setSeed(maxPortCount << 8 + maxPortCount);
-		config.setMaxSteps(100000);
+		config.setMaxSteps(200000);
 		config.setModifier(1.1d);
 		int cnt = 0;
 		int max = (maxPortCount - 1) * maxPortCount / 2 * maxStreamConfig;
 		long t1, t2;
 		t1 = System.nanoTime();
-		for (int portCount = 2; portCount <= maxPortCount; portCount++) {
+		for (int portCount = minPortCount; portCount <= maxPortCount; portCount++) {
 			config.setPortCount(portCount);
 			for (int depthCount = 2; depthCount <= portCount; depthCount++) {
 				config.setDepth(depthCount);
 				config.newTopology();
 				for (int streamCount = 1; streamCount <= maxStreamConfig; streamCount++) {
+					tracer.setRoundNumber(cnt);
 					if (++cnt % 10 == 0)
 						System.out.println(cnt + "/" + max);
 					config.newTraffic();
 					config.setPriorityConfig(new PriorityConfiguration(config.getTraffic()));
-					Optimizer opti = Optimizer.getOptimizer();
 
 					opti.optimize(config, "BF");
 
@@ -125,7 +131,11 @@ public class BatchGui extends JDialog {
 				}
 			}
 		}
+		String fileName = String.format("%d_%dports_%dStreamConfigCount_%dmaxSteps_%dMaxPrio_%dmodi.csv", minPortCount,
+				maxPortCount, maxStreamConfig, config.getMaxSteps(), config.getMaxPrio(),
+				(int) (config.getModifier() * 100));
 		t2 = System.nanoTime();
+		EndStepTracer.saveToFile(new File(fileName), tracer);
 		System.out.println("done, took " + (t2 - t1) / 1.0e9);
 	}
 

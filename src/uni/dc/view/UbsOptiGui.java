@@ -322,7 +322,7 @@ public class UbsOptiGui extends JFrame {
 			NetworkParser parser = NetworkParser.getParser();
 			parser.setFileName(file);
 			config.fromParser(parser);
-			Optimizer.getOptimizer().setTracer(config.resetTracers());
+			Optimizer.getOptimizer().setTracer(config.resetAllTracers());
 
 			logger.log(Level.INFO, String.format("Loaded network \"%s\":\n%s", file.getName(), config));
 			t2 = System.nanoTime();
@@ -349,7 +349,7 @@ public class UbsOptiGui extends JFrame {
 			t1 = System.nanoTime();
 
 			config.fromGenerator();
-			Optimizer.getOptimizer().setTracer(config.resetTracers());
+			Optimizer.getOptimizer().setTracer(config.resetAllTracers());
 
 			logger.log(Level.INFO, String.format("Generated new network: \n%s", config));
 

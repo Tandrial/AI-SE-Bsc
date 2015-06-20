@@ -114,7 +114,7 @@ public class UbsOptiConfig implements Serializable {
 		delayCalc = ubsV0 ? new UbsV0DelayCalc(traffic) : new UbsV3DelayCalc(traffic);
 	}
 
-	public List<Tracer> resetTracers() {
+	public List<Tracer> resetAllTracers() {
 		bestOnlyTracer = new BestOnlyTracer();
 		singleBestTracer = new SingleBestTracer();
 		endStepTracer = new EndStepTracer();
@@ -123,6 +123,21 @@ public class UbsOptiConfig implements Serializable {
 		tracers.add(singleBestTracer);
 		tracers.add(endStepTracer);
 		return tracers;
+	}
+
+	public BestOnlyTracer newBestOnlyTracer() {
+		bestOnlyTracer = new BestOnlyTracer();
+		return bestOnlyTracer;
+	}
+
+	public SingleBestTracer newSingleBestTracer() {
+		singleBestTracer = new SingleBestTracer();
+		return singleBestTracer;
+	}
+
+	public EndStepTracer newEndStepTracer() {
+		endStepTracer = new EndStepTracer();
+		return endStepTracer;
 	}
 
 	public BestOnlyTracer getBestOnlyTracer() {

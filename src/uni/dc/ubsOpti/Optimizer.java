@@ -1,5 +1,6 @@
 package uni.dc.ubsOpti;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.goataa.impl.algorithms.ea.selection.TournamentSelection;
@@ -32,7 +33,7 @@ public class Optimizer {
 	private IntVectorCreation create = null;
 	private IntVectorMutation mutate = null;
 	private UbsOptiConfig config = null;
-	private List<Tracer> tracers = null;
+	private List<Tracer> tracers = new ArrayList<Tracer>();
 
 	private Optimizer() {
 
@@ -40,6 +41,10 @@ public class Optimizer {
 
 	public void setTracer(List<Tracer> tracers) {
 		this.tracers = tracers;
+	}
+
+	public void addTracer(Tracer tracer) {
+		tracers.add(tracer);
 	}
 
 	public boolean optimize(UbsOptiConfig config, String selectedAlgo) {
@@ -58,10 +63,12 @@ public class Optimizer {
 		} else if (selectedAlgo.equals("sEA")) {
 			optimizeSimpleGenerationalEA();
 		}
-
-		config.setPriorityConfig(config.getSingleBestTracer().getBest().getPrio());
-		config.getDelayCalc().calculateDelays(config.getPriorityConfig());
-		return config.getDelayCalc().checkDelays();
+		if (config.getSingleBestTracer() != null) {
+			config.setPriorityConfig(config.getSingleBestTracer().getBest().getPrio());
+			config.getDelayCalc().calculateDelays(config.getPriorityConfig());
+			return config.getDelayCalc().checkDelays();
+		} else
+			return false;
 	}
 
 	private void optimizeBruteForce() {

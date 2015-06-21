@@ -16,6 +16,7 @@ public class UbsMousePlugin<V, E> extends PickingGraphMousePlugin<V, E> {
 				Point2D out = e.getPoint();
 				if ((this.vertex == null) && (!heyThatsTooClose(this.down, out, 5.0D))) {
 					pickContainedVertices(vv, this.down, out, true);
+					// Dipslay Prio in window
 				}
 				System.out.println(this.vertex);
 			}

@@ -20,7 +20,7 @@ import uni.dc.ubsOpti.tracer.Tracer;
 
 public class UbsOptiConfig implements Serializable {
 
-	private static long seed = 0x31337;
+	private static long seed = 0x1337;
 	private static Random rng = new Random(seed);
 
 	private static final long serialVersionUID = 1L;
@@ -31,7 +31,7 @@ public class UbsOptiConfig implements Serializable {
 	private double modifier = 1.0d;
 	private double linkSpeed = 1e9;
 	private int maxPrio = 2;
-	private int maxSteps = 7500000;
+	private int maxSteps = 50000;
 	private int runs = 1;
 	private int dim;
 

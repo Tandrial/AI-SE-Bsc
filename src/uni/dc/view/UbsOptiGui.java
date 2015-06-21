@@ -5,6 +5,7 @@ import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
+import java.util.Map;
 import java.util.logging.FileHandler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -34,6 +35,7 @@ import uni.dc.ubsOpti.UbsOptiConfig;
 import uni.dc.util.UbsMousePlugin;
 import edu.uci.ics.jung.algorithms.layout.Layout;
 import edu.uci.ics.jung.algorithms.layout.TreeLayout;
+import edu.uci.ics.jung.graph.DelegateForest;
 import edu.uci.ics.jung.graph.Forest;
 import edu.uci.ics.jung.visualization.VisualizationViewer;
 import edu.uci.ics.jung.visualization.control.DefaultModalGraphMouse;
@@ -144,7 +146,8 @@ public class UbsOptiGui extends JFrame {
 					@Override
 					public void actionPerformed(ActionEvent arg0) {
 						optimize("BF");
-						displayGraph(config.getAllTracer().getGraph("BF"));
+						AllTracerGui frame = new AllTracerGui(config.getAllTracer().getGraphs(), config);
+						frame.setVisible(true);
 					}
 				});
 				mnOptimize.add(mntmBF);
@@ -154,7 +157,8 @@ public class UbsOptiGui extends JFrame {
 					@Override
 					public void actionPerformed(ActionEvent arg0) {
 						optimize("BT");
-						displayGraph(config.getAllTracer().getGraph("BT"));
+						AllTracerGui frame = new AllTracerGui(config.getAllTracer().getGraphs(), config);
+						frame.setVisible(true);
 					}
 				});
 				mnOptimize.add(mntmBT);
@@ -166,7 +170,8 @@ public class UbsOptiGui extends JFrame {
 					@Override
 					public void actionPerformed(ActionEvent e) {
 						optimize("HC");
-						displayGraph(config.getAllTracer().getGraph("HC"));
+						AllTracerGui frame = new AllTracerGui(config.getAllTracer().getGraphs(), config);
+						frame.setVisible(true);
 					}
 				});
 				mnOptimize.add(mntmHC);
@@ -176,7 +181,8 @@ public class UbsOptiGui extends JFrame {
 					@Override
 					public void actionPerformed(ActionEvent e) {
 						optimize("SA");
-						displayGraph(config.getAllTracer().getGraph("SA"));
+						AllTracerGui frame = new AllTracerGui(config.getAllTracer().getGraphs(), config);
+						frame.setVisible(true);
 					}
 				});
 				mnOptimize.add(mntmSA);
@@ -186,7 +192,8 @@ public class UbsOptiGui extends JFrame {
 					@Override
 					public void actionPerformed(ActionEvent e) {
 						optimize("sEA");
-						displayGraph(config.getAllTracer().getGraph("sEA"));
+						AllTracerGui frame = new AllTracerGui(config.getAllTracer().getGraphs(), config);
+						frame.setVisible(true);
 					}
 				});
 				mnOptimize.add(mntmGA);
@@ -201,6 +208,8 @@ public class UbsOptiGui extends JFrame {
 						optimize("HC");
 						optimize("SA");
 						optimize("sEA");
+						AllTracerGui frame = new AllTracerGui(config.getAllTracer().getGraphs(), config);
+						frame.setVisible(true);
 					}
 				});
 				mnOptimize.add(mntmRunAllexcept);
@@ -384,28 +393,6 @@ public class UbsOptiGui extends JFrame {
 		statusLabel.setText(String.format(fmt, args));
 		statusLabel.repaint();
 		statusLabel.validate();
-	}
-
-	private void displayGraph(Forest<Individual<int[], int[]>, String> g) {
-		Layout<Individual<int[], int[]>, String> layout = new TreeLayout<Individual<int[], int[]>, String>(g);
-
-		VisualizationViewer<Individual<int[], int[]>, String> vv = new VisualizationViewer<Individual<int[], int[]>, String>(
-				layout);
-
-		// Create a graph mouse and add it to the visualization component
-		DefaultModalGraphMouse<?, ?> gm = new DefaultModalGraphMouse<Object, Object>();
-
-		gm.add(new UbsMousePlugin<Individual<int[], int[]>, String>());
-
-		gm.setMode(ModalGraphMouse.Mode.TRANSFORMING);
-
-		vv.setGraphMouse(gm);
-
-		JFrame frame = new JFrame("Interactive Graph View 1");
-		frame.getContentPane().add(vv);
-		frame.pack();
-		frame.setVisible(true);
-
 	}
 
 	public static void main(String[] args) {

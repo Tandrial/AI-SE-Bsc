@@ -71,6 +71,7 @@ public final class BruteForceTraceable extends LocalSearchAlgorithmTraceable<int
 		if (pos == n.length) {
 			Individual<int[], int[]> p = new Individual<int[], int[]>();
 			p.x = n;
+			p.g = p.x;
 			p.v = f.compute(p.x, null);
 			notifyTracer(p, parent);
 			parent = p;

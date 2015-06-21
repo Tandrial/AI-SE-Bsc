@@ -86,6 +86,7 @@ public final class BackTrackingTraceable extends LocalSearchAlgorithmTraceable<i
 
 		Individual<int[], int[]> p = new Individual<int[], int[]>();
 		p.x = prio;
+		p.g = p.x;
 		p.v = f.compute(p.x, null);
 		// System.out.println(parent + "->" + p);
 		notifyTracer(p, parent);

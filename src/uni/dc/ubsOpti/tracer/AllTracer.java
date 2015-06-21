@@ -35,6 +35,10 @@ public class AllTracer extends Tracer {
 		}
 	}
 
+	public Map<String, DelegateForest<Individual<int[], int[]>, String>> getGraphs() {
+		return graphs;
+	}
+	
 	public Forest<Individual<int[], int[]>, String> getGraph(String algoName) {
 		return graphs.get(algoName);
 	}

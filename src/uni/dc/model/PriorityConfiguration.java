@@ -93,6 +93,43 @@ public class PriorityConfiguration implements Cloneable, Serializable {
 		return array2HTML(toTable());
 	}
 
+	public String toDiffHTMLString(int[] parent) {
+		int[] p = toIntArray();
+
+		String[][] table = new String[traffic.getTopology().getPorts().size() + 1][traffic.size() + 1];
+		table[0][0] = " ";
+		int c = 1;
+		for (Flow flow : traffic)
+			table[0][c++] = flow.getName();
+
+		int r = 1;
+		for (EgressPort port : traffic.getTopology().getPorts())
+			table[r++][0] = port.getName();
+
+		int pos = 0;
+		c = 1;
+		for (Flow flow : traffic) {
+			r = 1;
+			for (EgressPort port : traffic.getTopology().getPorts()) {
+				if (this.hasPriority(port, flow)) {
+					table[r][c] = "" + this.getPriority(port, flow);
+					int diff = p[pos] - parent[pos];
+					pos++;
+					if (diff < 0) {
+						table[r][c] += "(" + diff + ")";
+					} else if (diff > 0) {
+						table[r][c] += "(+" + diff + ")";
+					}
+				} else {
+					table[r][c] = NO_PRIORITY_STRING;
+				}
+				r++;
+			}
+			c++;
+		}
+		return array2HTML(table);
+	}
+
 	public int[] toIntArray() {
 		List<Integer> resList = new ArrayList<Integer>();
 
@@ -141,6 +178,7 @@ public class PriorityConfiguration implements Cloneable, Serializable {
 
 	public static String array2HTML(Object[][] array) {
 		StringBuilder html = new StringBuilder("<html><table>");
+		html.append("<th></th>");
 		for (Object elem : array[0]) {
 			html.append("<th>" + elem.toString() + "</th>");
 		}

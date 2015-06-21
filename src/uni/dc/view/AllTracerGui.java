@@ -34,6 +34,7 @@ public class AllTracerGui extends JFrame {
 	private JLabel lblPrio;
 
 	private Map<String, DelegateForest<Individual<int[], int[]>, String>> graphs;
+	private DelegateForest<Individual<int[], int[]>, String> currentGraph;
 	private UbsOptiConfig config;
 	private Layout<Individual<int[], int[]>, String> layout;
 	private VisualizationViewer<Individual<int[], int[]>, String> vv;
@@ -43,7 +44,6 @@ public class AllTracerGui extends JFrame {
 		this.config = config;
 		setTitle("AllTracer Display");
 		setBounds(100, 100, 450, 300);
-		// setSize(800, 600);
 
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -61,7 +61,8 @@ public class AllTracerGui extends JFrame {
 			public void itemStateChanged(ItemEvent e) {
 				if (e.getStateChange() == ItemEvent.SELECTED) {
 					String item = (String) e.getItem();
-					layout = new TreeLayout<Individual<int[], int[]>, String>(graphs.get(item));
+					currentGraph = graphs.get(item);
+					layout = new TreeLayout<Individual<int[], int[]>, String>(currentGraph);
 					vv.setGraphLayout(layout);
 				}
 			}
@@ -76,7 +77,8 @@ public class AllTracerGui extends JFrame {
 		comboBox.setModel(new DefaultComboBoxModel<String>(algoNames));
 		allTracerParameterPanel.add(comboBox);
 
-		layout = new TreeLayout<Individual<int[], int[]>, String>(graphs.get(algoNames[0]));
+		currentGraph = graphs.get(algoNames[0]);
+		layout = new TreeLayout<Individual<int[], int[]>, String>(currentGraph);
 		vv = new VisualizationViewer<Individual<int[], int[]>, String>(layout);
 
 		DefaultModalGraphMouse<?, ?> gm = new DefaultModalGraphMouse<Object, Object>();
@@ -127,7 +129,11 @@ public class AllTracerGui extends JFrame {
 	public void displayPrio(Individual<int[], int[]> p) {
 		PriorityConfiguration prio = (PriorityConfiguration) config.getPriorityConfig().clone();
 		prio.fromIntArray(p.x);
-
-		lblPrio.setText(prio.toHTMLString());
+		Individual<int[], int[]> parent = currentGraph.getParent(p);
+		if (parent == null) {
+			lblPrio.setText(prio.toHTMLString());
+		} else {
+			lblPrio.setText(prio.toDiffHTMLString(parent.x));
+		}
 	}
 }

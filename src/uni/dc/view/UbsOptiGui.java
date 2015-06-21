@@ -5,7 +5,6 @@ import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
-import java.util.Map;
 import java.util.logging.FileHandler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -25,21 +24,12 @@ import javax.swing.UIManager;
 import javax.swing.border.EmptyBorder;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
-import org.goataa.impl.utils.Individual;
 import org.jfree.ui.RefineryUtilities;
 
 import uni.dc.model.PriorityConfiguration;
 import uni.dc.ubsOpti.NetworkParser;
 import uni.dc.ubsOpti.Optimizer;
 import uni.dc.ubsOpti.UbsOptiConfig;
-import uni.dc.util.UbsMousePlugin;
-import edu.uci.ics.jung.algorithms.layout.Layout;
-import edu.uci.ics.jung.algorithms.layout.TreeLayout;
-import edu.uci.ics.jung.graph.DelegateForest;
-import edu.uci.ics.jung.graph.Forest;
-import edu.uci.ics.jung.visualization.VisualizationViewer;
-import edu.uci.ics.jung.visualization.control.DefaultModalGraphMouse;
-import edu.uci.ics.jung.visualization.control.ModalGraphMouse;
 
 public class UbsOptiGui extends JFrame {
 	private static final long serialVersionUID = 1L;
@@ -146,8 +136,7 @@ public class UbsOptiGui extends JFrame {
 					@Override
 					public void actionPerformed(ActionEvent arg0) {
 						optimize("BF");
-						AllTracerGui frame = new AllTracerGui(config.getAllTracer().getGraphs(), config);
-						frame.setVisible(true);
+						displayAllTracerGui();
 					}
 				});
 				mnOptimize.add(mntmBF);
@@ -157,8 +146,7 @@ public class UbsOptiGui extends JFrame {
 					@Override
 					public void actionPerformed(ActionEvent arg0) {
 						optimize("BT");
-						AllTracerGui frame = new AllTracerGui(config.getAllTracer().getGraphs(), config);
-						frame.setVisible(true);
+						displayAllTracerGui();
 					}
 				});
 				mnOptimize.add(mntmBT);
@@ -170,8 +158,7 @@ public class UbsOptiGui extends JFrame {
 					@Override
 					public void actionPerformed(ActionEvent e) {
 						optimize("HC");
-						AllTracerGui frame = new AllTracerGui(config.getAllTracer().getGraphs(), config);
-						frame.setVisible(true);
+						displayAllTracerGui();
 					}
 				});
 				mnOptimize.add(mntmHC);
@@ -181,8 +168,7 @@ public class UbsOptiGui extends JFrame {
 					@Override
 					public void actionPerformed(ActionEvent e) {
 						optimize("SA");
-						AllTracerGui frame = new AllTracerGui(config.getAllTracer().getGraphs(), config);
-						frame.setVisible(true);
+						displayAllTracerGui();
 					}
 				});
 				mnOptimize.add(mntmSA);
@@ -192,8 +178,7 @@ public class UbsOptiGui extends JFrame {
 					@Override
 					public void actionPerformed(ActionEvent e) {
 						optimize("sEA");
-						AllTracerGui frame = new AllTracerGui(config.getAllTracer().getGraphs(), config);
-						frame.setVisible(true);
+						displayAllTracerGui();
 					}
 				});
 				mnOptimize.add(mntmGA);
@@ -208,8 +193,7 @@ public class UbsOptiGui extends JFrame {
 						optimize("HC");
 						optimize("SA");
 						optimize("sEA");
-						AllTracerGui frame = new AllTracerGui(config.getAllTracer().getGraphs(), config);
-						frame.setVisible(true);
+						displayAllTracerGui();
 					}
 				});
 				mnOptimize.add(mntmRunAllexcept);
@@ -290,6 +274,12 @@ public class UbsOptiGui extends JFrame {
 			imagePanel = new GraphVizPanel();
 			contentPane.add(imagePanel, BorderLayout.CENTER);
 		}
+	}
+
+	protected void displayAllTracerGui() {
+		AllTracerGui frame = new AllTracerGui(config.getAllTracer().getGraphs(), config);
+		frame.pack();
+		frame.setVisible(true);
 	}
 
 	private void optimize(String algo) {

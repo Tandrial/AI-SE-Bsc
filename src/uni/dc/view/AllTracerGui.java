@@ -1,6 +1,10 @@
 package uni.dc.view;
 
 import java.awt.BorderLayout;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
+import java.awt.event.MouseEvent;
+import java.awt.geom.Point2D;
 import java.util.Map;
 
 import javax.swing.DefaultComboBoxModel;
@@ -9,33 +13,38 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import javax.swing.border.LineBorder;
 
 import org.goataa.impl.utils.Individual;
 
+import uni.dc.model.PriorityConfiguration;
 import uni.dc.ubsOpti.UbsOptiConfig;
-import uni.dc.util.UbsMousePlugin;
 import edu.uci.ics.jung.algorithms.layout.Layout;
 import edu.uci.ics.jung.algorithms.layout.TreeLayout;
 import edu.uci.ics.jung.graph.DelegateForest;
 import edu.uci.ics.jung.visualization.VisualizationViewer;
 import edu.uci.ics.jung.visualization.control.DefaultModalGraphMouse;
 import edu.uci.ics.jung.visualization.control.ModalGraphMouse;
-import java.awt.event.ItemListener;
-import java.awt.event.ItemEvent;
+import edu.uci.ics.jung.visualization.control.PickingGraphMousePlugin;
 
 public class AllTracerGui extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
+	private JLabel lblPrio;
 
 	private Map<String, DelegateForest<Individual<int[], int[]>, String>> graphs;
+	private UbsOptiConfig config;
 	private Layout<Individual<int[], int[]>, String> layout;
 	private VisualizationViewer<Individual<int[], int[]>, String> vv;
 
 	public AllTracerGui(Map<String, DelegateForest<Individual<int[], int[]>, String>> graphs, UbsOptiConfig config) {
 		this.graphs = graphs;
+		this.config = config;
 		setTitle("AllTracer Display");
 		setBounds(100, 100, 450, 300);
+		// setSize(800, 600);
+
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));
@@ -55,7 +64,6 @@ public class AllTracerGui extends JFrame {
 					layout = new TreeLayout<Individual<int[], int[]>, String>(graphs.get(item));
 					vv.setGraphLayout(layout);
 				}
-
 			}
 		});
 
@@ -70,14 +78,56 @@ public class AllTracerGui extends JFrame {
 
 		layout = new TreeLayout<Individual<int[], int[]>, String>(graphs.get(algoNames[0]));
 		vv = new VisualizationViewer<Individual<int[], int[]>, String>(layout);
-		
+
 		DefaultModalGraphMouse<?, ?> gm = new DefaultModalGraphMouse<Object, Object>();
-		gm.add(new UbsMousePlugin<Individual<int[], int[]>, String>());
+
+		gm.add(new PickingGraphMousePlugin<Individual<int[], int[]>, String>() {
+			public void mouseReleased(MouseEvent e) {
+				VisualizationViewer vv = (VisualizationViewer) e.getSource();
+				if (e.getModifiers() == this.modifiers) {
+					if (this.down != null) {
+						Point2D out = e.getPoint();
+						if ((this.vertex == null) && (!heyThatsTooClose(this.down, out, 5.0D))) {
+							pickContainedVertices(vv, this.down, out, true);
+						}
+						if (this.vertex != null)
+							displayPrio(this.vertex);
+					}
+				} else if ((e.getModifiers() == this.addToSelectionModifiers) && (this.down != null)) {
+					Point2D out = e.getPoint();
+					if ((this.vertex == null) && (!heyThatsTooClose(this.down, out, 5.0D))) {
+						pickContainedVertices(vv, this.down, out, false);
+					}
+				}
+				this.down = null;
+				this.vertex = null;
+				this.edge = null;
+				this.rect.setFrame(0.0D, 0.0D, 0.0D, 0.0D);
+				vv.removePostRenderPaintable(this.lensPaintable);
+				vv.repaint();
+			}
+
+			private boolean heyThatsTooClose(Point2D p, Point2D q, double min) {
+				return (Math.abs(p.getX() - q.getX()) < min) && (Math.abs(p.getY() - q.getY()) < min);
+			}
+		});
+
 		gm.setMode(ModalGraphMouse.Mode.TRANSFORMING);
 
 		vv.setGraphMouse(gm);
 
 		allTracerPanel.add(vv, BorderLayout.CENTER);
 		this.getContentPane().add(allTracerPanel, BorderLayout.CENTER);
+
+		lblPrio = new JLabel("");
+		lblPrio.setBorder(LineBorder.createGrayLineBorder());
+		allTracerPanel.add(lblPrio, BorderLayout.EAST);
+	}
+
+	public void displayPrio(Individual<int[], int[]> p) {
+		PriorityConfiguration prio = (PriorityConfiguration) config.getPriorityConfig().clone();
+		prio.fromIntArray(p.x);
+
+		lblPrio.setText(prio.toHTMLString());
 	}
 }

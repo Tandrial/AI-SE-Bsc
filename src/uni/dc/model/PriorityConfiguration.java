@@ -86,28 +86,11 @@ public class PriorityConfiguration implements Cloneable, Serializable {
 
 	@Override
 	public String toString() {
+		return stringTable(toTable());
+	}
 
-		String[][] table = new String[traffic.getTopology().getPorts().size() + 1][traffic.size() + 1];
-
-		int c = 1;
-		for (Flow flow : traffic)
-			table[0][c++] = flow.getName();
-
-		int r = 1;
-		for (EgressPort port : traffic.getTopology().getPorts())
-			table[r++][0] = port.getName();
-
-		c = 1;
-		for (Flow flow : traffic) {
-			r = 1;
-			for (EgressPort port : traffic.getTopology().getPorts()) {
-				table[r][c] = this.hasPriority(port, flow) ? "" + this.getPriority(port, flow) : NO_PRIORITY_STRING;
-				r++;
-			}
-			c++;
-		}
-
-		return stringTable(table);
+	public String toHTMLString() {
+		return array2HTML(toTable());
 	}
 
 	public int[] toIntArray() {
@@ -131,6 +114,49 @@ public class PriorityConfiguration implements Cloneable, Serializable {
 					this.setPriority(port, flow, prio[pos++]);
 			}
 		}
+	}
+
+	public String[][] toTable() {
+		String[][] table = new String[traffic.getTopology().getPorts().size() + 1][traffic.size() + 1];
+		table[0][0] = "";
+		int c = 1;
+		for (Flow flow : traffic)
+			table[0][c++] = flow.getName();
+
+		int r = 1;
+		for (EgressPort port : traffic.getTopology().getPorts())
+			table[r++][0] = port.getName();
+
+		c = 1;
+		for (Flow flow : traffic) {
+			r = 1;
+			for (EgressPort port : traffic.getTopology().getPorts()) {
+				table[r][c] = this.hasPriority(port, flow) ? "" + this.getPriority(port, flow) : NO_PRIORITY_STRING;
+				r++;
+			}
+			c++;
+		}
+		return table;
+	}
+
+	public static String array2HTML(Object[][] array) {
+		StringBuilder html = new StringBuilder("<html><table>");
+		for (Object elem : array[0]) {
+			html.append("<th>" + elem.toString() + "</th>");
+		}
+		for (int i = 1; i < array.length; i++) {
+			Object[] row = array[i];
+			html.append("<tr>");
+			for (int j = 0; j < row.length; j++) {
+				if (j == 0)
+					html.append("<td><th>" + row[j].toString() + "</th></td>");
+				else
+					html.append("<td>" + row[j].toString() + "</td>");
+			}
+			html.append("</tr>");
+		}
+		html.append("</table></html>");
+		return html.toString();
 	}
 
 	private static String stringTable(String[][] table) {

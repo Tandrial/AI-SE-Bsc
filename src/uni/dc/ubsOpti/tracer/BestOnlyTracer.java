@@ -11,7 +11,7 @@ public class BestOnlyTracer extends Tracer {
 	Map<String, List<TracerStat>> dataPoints = new HashMap<String, List<TracerStat>>();
 
 	@Override
-	public void update(final TracerStat stat) {
+	public void update(TracerStat stat) {
 		if (stat.getPrio().length == 0)
 			return;
 		if (!dataPoints.containsKey(stat.getName())) {

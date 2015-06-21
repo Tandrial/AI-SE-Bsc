@@ -16,7 +16,7 @@ public class EndStepTracer extends Tracer {
 	Map<String, Long> dataPoints = new HashMap<String, Long>();
 
 	@Override
-	public void update(final TracerStat stat) {
+	public void update(TracerStat stat) {
 		if (stat.getPrio().length == 0) {
 			if (roundNumber != -1)
 				dataPoints.put(roundNumber + ";" + stat.getName(), stat.getStep() - 1);

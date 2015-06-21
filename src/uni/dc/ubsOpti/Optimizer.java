@@ -112,6 +112,7 @@ public class Optimizer {
 
 		UbsStepDelayTermination term = new UbsStepDelayTermination(config);
 		algorithm.attach(tracers);
+		algorithm.setUbsDelayCalc(config.getDelayCalc());
 		algorithm.setObjectiveFunction(config.getDelayCalc());
 		algorithm.setTerminationCriterion(term);
 		algorithm.setNullarySearchOperation(create);

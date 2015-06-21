@@ -12,6 +12,7 @@ import org.goataa.spec.INullarySearchOperation;
 import org.goataa.spec.IOptimizationModule;
 import org.goataa.spec.IUnarySearchOperation;
 
+import uni.dc.ubsOpti.delayCalc.UbsDelayCalc;
 import uni.dc.ubsOpti.tracer.Traceable;
 import uni.dc.ubsOpti.tracer.Tracer;
 import uni.dc.ubsOpti.tracer.TracerStat;
@@ -35,6 +36,12 @@ public class LocalSearchAlgorithmTraceable<G, X, IT extends Individual<G, X>> ex
 
 	protected long step = 1;
 	private List<Tracer> tracers = new ArrayList<Tracer>();
+	private UbsDelayCalc delayCalc = null;
+
+	@Override
+	public void setUbsDelayCalc(UbsDelayCalc delayCalc) {
+		this.delayCalc = delayCalc;
+	}
 
 	@Override
 	public void attach(Tracer tracer) {
@@ -53,7 +60,7 @@ public class LocalSearchAlgorithmTraceable<G, X, IT extends Individual<G, X>> ex
 
 	@Override
 	public void notifyTracer(Individual<?, ?> p, Individual<?, ?>... parents) {
-		TracerStat stat = new TracerStat(this.getName(false), step, p, parents);
+		TracerStat stat = new TracerStat(this.getName(false), step, delayCalc.checkDelays(), p, parents);
 
 		for (Tracer t : tracers) {
 			t.update(stat);

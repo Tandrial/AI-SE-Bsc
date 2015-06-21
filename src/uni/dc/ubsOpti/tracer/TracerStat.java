@@ -10,14 +10,16 @@ public class TracerStat implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private String name;
 	private long step;
+	private boolean delaysOkay;
 	private Individual<?, ?> data;
 	private List<Individual<int[], int[]>> parents = new ArrayList<Individual<int[], int[]>>();
 
 	@SuppressWarnings("unchecked")
-	public TracerStat(String name, long step, Individual<?, ?> data, Individual<?, ?>... parents) {
+	public TracerStat(String name, long step, boolean delaysOkay, Individual<?, ?> data, Individual<?, ?>... parents) {
 		this.name = name;
 		this.step = step;
 		this.data = data;
+		this.delaysOkay = delaysOkay;
 		for (Individual<?, ?> parent : parents)
 			this.parents.add((Individual<int[], int[]>) parent);
 	}
@@ -28,6 +30,10 @@ public class TracerStat implements Serializable {
 
 	public long getStep() {
 		return step;
+	}
+
+	public boolean isDelaysOkay() {
+		return delaysOkay;
 	}
 
 	@SuppressWarnings("unchecked")

@@ -5,7 +5,7 @@ public class SingleBestTracer extends Tracer {
 	TracerStat best = null;
 
 	@Override
-	public void update(final TracerStat stat) {
+	public void update(TracerStat stat) {
 		if (stat.getPrio().length == 0)
 			return;
 		if (best == null)

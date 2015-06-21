@@ -88,7 +88,8 @@ public final class BackTrackingTraceable extends LocalSearchAlgorithmTraceable<i
 		p.x = prio;
 		p.g = p.x;
 		p.v = f.compute(p.x, null);
-		// System.out.println(parent + "->" + p);
+//		if (parent != null)
+//			System.out.println(Arrays.toString(parent.x) + "->" + Arrays.toString(p.x));
 		notifyTracer(p, parent);
 
 		// 1) Delays berechnen, falls besser ==> speichern in trace
@@ -110,7 +111,7 @@ public final class BackTrackingTraceable extends LocalSearchAlgorithmTraceable<i
 			// bei f.getPath().get(i) für i = 0..n (falls möglich)
 			for (int pos = 0; pos < flow.getPath().size() - 1; pos++) {
 				if (term.terminationCriterion())
-					return best;
+					break;
 				EgressPort port = flow.getPath().get(pos);
 
 				int posToChange = prioConfig.getPos(port, flow);

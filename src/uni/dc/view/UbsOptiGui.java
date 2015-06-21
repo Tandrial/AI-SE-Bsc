@@ -24,12 +24,20 @@ import javax.swing.UIManager;
 import javax.swing.border.EmptyBorder;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
+import org.goataa.impl.utils.Individual;
 import org.jfree.ui.RefineryUtilities;
 
 import uni.dc.model.PriorityConfiguration;
 import uni.dc.ubsOpti.NetworkParser;
 import uni.dc.ubsOpti.Optimizer;
 import uni.dc.ubsOpti.UbsOptiConfig;
+import uni.dc.util.UbsMousePlugin;
+import edu.uci.ics.jung.algorithms.layout.Layout;
+import edu.uci.ics.jung.algorithms.layout.TreeLayout;
+import edu.uci.ics.jung.graph.Forest;
+import edu.uci.ics.jung.visualization.VisualizationViewer;
+import edu.uci.ics.jung.visualization.control.DefaultModalGraphMouse;
+import edu.uci.ics.jung.visualization.control.ModalGraphMouse;
 
 public class UbsOptiGui extends JFrame {
 	private static final long serialVersionUID = 1L;
@@ -136,6 +144,7 @@ public class UbsOptiGui extends JFrame {
 					@Override
 					public void actionPerformed(ActionEvent arg0) {
 						optimize("BF");
+						displayGraph(config.getAllTracer().getGraph("BF"));
 					}
 				});
 				mnOptimize.add(mntmBF);
@@ -145,6 +154,7 @@ public class UbsOptiGui extends JFrame {
 					@Override
 					public void actionPerformed(ActionEvent arg0) {
 						optimize("BT");
+						displayGraph(config.getAllTracer().getGraph("BT"));
 					}
 				});
 				mnOptimize.add(mntmBT);
@@ -156,6 +166,7 @@ public class UbsOptiGui extends JFrame {
 					@Override
 					public void actionPerformed(ActionEvent e) {
 						optimize("HC");
+						displayGraph(config.getAllTracer().getGraph("HC"));
 					}
 				});
 				mnOptimize.add(mntmHC);
@@ -165,6 +176,7 @@ public class UbsOptiGui extends JFrame {
 					@Override
 					public void actionPerformed(ActionEvent e) {
 						optimize("SA");
+						displayGraph(config.getAllTracer().getGraph("SA"));
 					}
 				});
 				mnOptimize.add(mntmSA);
@@ -174,6 +186,7 @@ public class UbsOptiGui extends JFrame {
 					@Override
 					public void actionPerformed(ActionEvent e) {
 						optimize("sEA");
+						displayGraph(config.getAllTracer().getGraph("sEA"));
 					}
 				});
 				mnOptimize.add(mntmGA);
@@ -371,6 +384,28 @@ public class UbsOptiGui extends JFrame {
 		statusLabel.setText(String.format(fmt, args));
 		statusLabel.repaint();
 		statusLabel.validate();
+	}
+
+	private void displayGraph(Forest<Individual<int[], int[]>, String> g) {
+		Layout<Individual<int[], int[]>, String> layout = new TreeLayout<Individual<int[], int[]>, String>(g);
+
+		VisualizationViewer<Individual<int[], int[]>, String> vv = new VisualizationViewer<Individual<int[], int[]>, String>(
+				layout);
+
+		// Create a graph mouse and add it to the visualization component
+		DefaultModalGraphMouse<?, ?> gm = new DefaultModalGraphMouse<Object, Object>();
+
+		gm.add(new UbsMousePlugin<Individual<int[], int[]>, String>());
+
+		gm.setMode(ModalGraphMouse.Mode.TRANSFORMING);
+
+		vv.setGraphMouse(gm);
+
+		JFrame frame = new JFrame("Interactive Graph View 1");
+		frame.getContentPane().add(vv);
+		frame.pack();
+		frame.setVisible(true);
+
 	}
 
 	public static void main(String[] args) {

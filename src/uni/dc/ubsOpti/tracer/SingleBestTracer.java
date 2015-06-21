@@ -1,7 +1,6 @@
 package uni.dc.ubsOpti.tracer;
 
 public class SingleBestTracer extends Tracer {
-
 	private static final long serialVersionUID = 1L;
 	TracerStat best = null;
 

@@ -6,7 +6,6 @@ import java.util.List;
 import java.util.Map;
 
 public class BestOnlyTracer extends Tracer {
-
 	private static final long serialVersionUID = 1L;
 
 	Map<String, List<TracerStat>> dataPoints = new HashMap<String, List<TracerStat>>();

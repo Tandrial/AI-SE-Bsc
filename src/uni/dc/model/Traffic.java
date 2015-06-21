@@ -41,7 +41,8 @@ public class Traffic extends LinkedHashSet<Flow> implements Serializable {
 			if (srcPort.getParentNode() == null) {
 				path = topology.getPath(srcPort, f.getDestPort());
 			} else {
-				path = topology.getPath(srcPort.getParentNode(), f.getDestPort().getParentNode(), new LinkedHashSet<Node>());
+				path = topology.getPath(srcPort.getParentNode(), f.getDestPort().getParentNode(),
+						new LinkedHashSet<Node>());
 			}
 			f.setPath(path);
 			for (EgressPort p : path)

@@ -10,7 +10,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class EndStepTracer extends Tracer {
-
 	private static final long serialVersionUID = 1L;
 	private int roundNumber = -1;
 

@@ -80,9 +80,9 @@ public final class HillClimbingTraceable<G, X> extends LocalSearchAlgorithmTrace
 	 * @param <X>
 	 *            the problem space (Section 2.1)
 	 */
-	public Individual<G, X> hillClimbing(final IObjectiveFunction<X> f,
-			final INullarySearchOperation<G> create, final IUnarySearchOperation<G> mutate, final IGPM<G, X> gpm,
-			final ITerminationCriterion term, final Random r) {
+	public Individual<G, X> hillClimbing(final IObjectiveFunction<X> f, final INullarySearchOperation<G> create,
+			final IUnarySearchOperation<G> mutate, final IGPM<G, X> gpm, final ITerminationCriterion term,
+			final Random r) {
 
 		Individual<G, X> p, pnew;
 
@@ -108,7 +108,7 @@ public final class HillClimbingTraceable<G, X> extends LocalSearchAlgorithmTrace
 			// evaluated here. By storing the objective values in the individual
 			// records, we avoid evaluating p.x more than once.
 			if (pnew.v < p.v) {
-				p.assign(pnew);				
+				p.assign(pnew);
 			}
 		}
 

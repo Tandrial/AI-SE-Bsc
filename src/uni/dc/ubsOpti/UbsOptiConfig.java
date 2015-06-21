@@ -12,6 +12,7 @@ import uni.dc.networkGenerator.GeneratorAPI;
 import uni.dc.ubsOpti.delayCalc.UbsDelayCalc;
 import uni.dc.ubsOpti.delayCalc.UbsV0DelayCalc;
 import uni.dc.ubsOpti.delayCalc.UbsV3DelayCalc;
+import uni.dc.ubsOpti.tracer.AllTracer;
 import uni.dc.ubsOpti.tracer.BestOnlyTracer;
 import uni.dc.ubsOpti.tracer.EndStepTracer;
 import uni.dc.ubsOpti.tracer.SingleBestTracer;
@@ -44,6 +45,7 @@ public class UbsOptiConfig implements Serializable {
 	private BestOnlyTracer bestOnlyTracer;
 	private SingleBestTracer singleBestTracer;
 	private EndStepTracer endStepTracer;
+	private AllTracer allTracer;
 
 	public UbsOptiConfig() {
 
@@ -118,10 +120,12 @@ public class UbsOptiConfig implements Serializable {
 		bestOnlyTracer = new BestOnlyTracer();
 		singleBestTracer = new SingleBestTracer();
 		endStepTracer = new EndStepTracer();
+		allTracer = new AllTracer();
 		ArrayList<Tracer> tracers = new ArrayList<Tracer>();
 		tracers.add(bestOnlyTracer);
 		tracers.add(singleBestTracer);
 		tracers.add(endStepTracer);
+		tracers.add(allTracer);
 		return tracers;
 	}
 
@@ -140,6 +144,11 @@ public class UbsOptiConfig implements Serializable {
 		return endStepTracer;
 	}
 
+	public AllTracer newAllTracer() {
+		allTracer = new AllTracer();
+		return allTracer;
+	}
+
 	public BestOnlyTracer getBestOnlyTracer() {
 		return bestOnlyTracer;
 	}
@@ -150,6 +159,10 @@ public class UbsOptiConfig implements Serializable {
 
 	public EndStepTracer getEndStepTracer() {
 		return endStepTracer;
+	}
+
+	public AllTracer getAllTracer() {
+		return allTracer;
 	}
 
 	public int getDepth() {

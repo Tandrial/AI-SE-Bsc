@@ -123,7 +123,7 @@ public abstract class UbsDelayCalc extends OptimizationModule implements IObject
 			delay += Math.abs(f.getDiffDelayAllowedDelay());
 			if (!f.checkDelay()) {
 				// TODO: Strafe für Delay > maxLatencyReq
-				delay += 2 * Math.abs(f.getDiffDelayAllowedDelay());;
+				delay += 2 * Math.abs(f.getDiffDelayAllowedDelay());
 			}
 		}
 		return delay;

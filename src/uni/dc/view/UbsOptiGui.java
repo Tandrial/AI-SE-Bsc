@@ -276,7 +276,7 @@ public class UbsOptiGui extends JFrame {
 		}
 	}
 
-	protected void displayAllTracerGui() {
+	protected void displayAllTracerGui() {		
 		AllTracerGui frame = new AllTracerGui(config.getAllTracer().getGraphs(), config);
 		frame.pack();
 		frame.setVisible(true);

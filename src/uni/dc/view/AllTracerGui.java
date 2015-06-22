@@ -19,8 +19,8 @@ import org.goataa.impl.utils.Individual;
 
 import uni.dc.model.PriorityConfiguration;
 import uni.dc.ubsOpti.UbsOptiConfig;
+import edu.uci.ics.jung.algorithms.layout.DAGLayout;
 import edu.uci.ics.jung.algorithms.layout.Layout;
-import edu.uci.ics.jung.algorithms.layout.TreeLayout;
 import edu.uci.ics.jung.graph.DelegateForest;
 import edu.uci.ics.jung.visualization.VisualizationViewer;
 import edu.uci.ics.jung.visualization.control.DefaultModalGraphMouse;
@@ -62,7 +62,7 @@ public class AllTracerGui extends JFrame {
 				if (e.getStateChange() == ItemEvent.SELECTED) {
 					String item = (String) e.getItem();
 					currentGraph = graphs.get(item);
-					layout = new TreeLayout<Individual<int[], int[]>, String>(currentGraph);
+					layout = new DAGLayout<Individual<int[],int[]>, String>(currentGraph);//TreeLayout<Individual<int[], int[]>, String>(currentGraph);
 					vv.setGraphLayout(layout);
 				}
 			}
@@ -78,7 +78,7 @@ public class AllTracerGui extends JFrame {
 		allTracerParameterPanel.add(comboBox);
 
 		currentGraph = graphs.get(algoNames[0]);
-		layout = new TreeLayout<Individual<int[], int[]>, String>(currentGraph);
+		layout = new DAGLayout<Individual<int[],int[]>, String>(currentGraph);//new TreeLayout<Individual<int[], int[]>, String>(currentGraph);
 		vv = new VisualizationViewer<Individual<int[], int[]>, String>(layout);
 
 		DefaultModalGraphMouse<?, ?> gm = new DefaultModalGraphMouse<Object, Object>();

@@ -1,6 +1,9 @@
 package uni.dc.ubsOpti.goataaExt.searchOperations.strings.integer.unary;
 
+import java.util.Arrays;
+import java.util.HashSet;
 import java.util.Random;
+import java.util.Set;
 
 import uni.dc.ubsOpti.goataaExt.searchOperations.strings.integer.IntVectorMutation;
 
@@ -24,6 +27,8 @@ public final class IntArrayAllNormalMutation extends IntVectorMutation {
 	/** a constant required by Java serialization */
 	private static final long serialVersionUID = 1;
 
+	private Set<String> visited;
+
 	/**
 	 * Create a new int-vector mutation operation
 	 *
@@ -34,6 +39,7 @@ public final class IntArrayAllNormalMutation extends IntVectorMutation {
 	 */
 	public IntArrayAllNormalMutation(final int mi, final int ma) {
 		super(mi, ma);
+		this.visited = new HashSet<String>();
 	}
 
 	/**
@@ -58,6 +64,8 @@ public final class IntArrayAllNormalMutation extends IntVectorMutation {
 
 		i = g.length;
 
+		visited.add(Arrays.toString(g));
+
 		// create a new real vector of dimension n
 		gnew = new int[i];
 
@@ -65,18 +73,21 @@ public final class IntArrayAllNormalMutation extends IntVectorMutation {
 		// compared to the range min...max
 		strength = 0.5d * (this.max - this.min);
 
-		// set each gene Definition D4.3 of gnew to ...
-		for (; (--i) >= 0;) {
-			do {
-				// the original allele (Definition D4.4) of the gene plus a
-				// random number normally distributed
-				// Section 53.4.2 with N(0, strength^2)
-				gnew[i] = (int) (g[i] + (r.nextGaussian() * strength));
-				// and repeat this until the new allele falls into the specified
-				// boundaries
-			} while ((gnew[i] < this.min) || (gnew[i] > this.max));
-		}
-
+		do {
+			// set each gene Definition D4.3 of gnew to ...
+			for (; (--i) >= 0;) {
+				do {
+					// the original allele (Definition D4.4) of the gene plus a
+					// random number normally distributed
+					// Section 53.4.2 with N(0, strength^2)
+					gnew[i] = (int) (g[i] + (r.nextGaussian() * strength));
+					// and repeat this until the new allele falls into the
+					// specified
+					// boundaries
+				} while ((gnew[i] < this.min) || (gnew[i] > this.max));
+			}
+		} while (visited.contains(Arrays.toString(gnew)));
+		visited.add(Arrays.toString(gnew));
 		return gnew;
 	}
 

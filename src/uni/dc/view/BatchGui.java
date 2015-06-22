@@ -190,8 +190,9 @@ public class BatchGui extends JDialog {
 				System.out.println();
 			}
 		}
-		String fileName = String.format("%d_%dports_%dStreamConfigCount_%dmaxSteps_%dMaxPrio_%dmodi.csv", minPort,
-				maxPort, runs, config.getMaxSteps(), config.getMaxPrio(), (int) (config.getModifier() * 100));
+		String fileName = String.format("%d_%dports_%dStreamConfigCount_%dmaxSteps_%dMaxPrio_%dmodi%s%s%s%s%s.csv",
+				minPort, maxPort, runs, config.getMaxSteps(), config.getMaxPrio(), (int) (config.getModifier() * 100),
+				BF ? "BF" : "", BT ? "BT" : "", HC ? "HC" : "", SA ? "SA" : "", sEA ? "sEA" : "");
 		t2 = System.nanoTime();
 		EndStepTracer.saveToFile(new File(fileName), tracer);
 		JOptionPane.showMessageDialog(null,

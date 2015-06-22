@@ -16,11 +16,16 @@ public class BestOnlyTracer extends Tracer {
 			return;
 		if (!dataPoints.containsKey(stat.getName())) {
 			dataPoints.put(stat.getName(), new ArrayList<TracerStat>());
-			dataPoints.get(stat.getName()).add(stat);
+		}
+		
+		List<TracerStat> stats = dataPoints.get(stat.getName());
+
+		if (stats.size() > 0) {
+			if (stats.get(stats.size() - 1).getDelay() > stat.getDelay()) {
+				stats.add(stat);
+			}
 		} else {
-			TracerStat last = dataPoints.get(stat.getName()).get(dataPoints.get(stat.getName()).size() - 1);
-			if (last.getDelay() > stat.getDelay())
-				dataPoints.get(stat.getName()).add(stat);
+			stats.add(stat);
 		}
 	}
 

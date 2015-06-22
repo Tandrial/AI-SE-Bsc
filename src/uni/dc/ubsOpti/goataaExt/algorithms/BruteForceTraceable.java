@@ -1,5 +1,6 @@
 package uni.dc.ubsOpti.goataaExt.algorithms;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
@@ -70,10 +71,13 @@ public final class BruteForceTraceable extends LocalSearchAlgorithmTraceable<int
 
 		if (pos == n.length) {
 			Individual<int[], int[]> p = new Individual<int[], int[]>();
-			p.x = n;
+			p.x = Arrays.copyOf(n, n.length);
 			p.g = p.x;
 			p.v = f.compute(p.x, null);
-			notifyTracer(p, parent);
+			if (parent == null)
+				notifyTracer(p);
+			else
+				notifyTracer(p, parent);
 			parent = p;
 
 			if (p.v < best.v) {

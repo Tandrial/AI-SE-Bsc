@@ -2,6 +2,7 @@ package uni.dc.ubsOpti.tracer;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import org.goataa.impl.utils.Individual;
@@ -11,6 +12,7 @@ public class TracerStat implements Serializable {
 	private String name;
 	private long step;
 	private boolean delaysOkay;
+	private double delay;
 	private Individual<?, ?> data;
 	private List<Individual<int[], int[]>> parents = new ArrayList<Individual<int[], int[]>>();
 
@@ -20,6 +22,7 @@ public class TracerStat implements Serializable {
 		this.step = step;
 		this.data = data;
 		this.delaysOkay = delaysOkay;
+		this.delay = data.v;
 		for (Individual<?, ?> parent : parents)
 			this.parents.add((Individual<int[], int[]>) parent);
 	}
@@ -42,7 +45,7 @@ public class TracerStat implements Serializable {
 	}
 
 	public double getDelay() {
-		return data.v;
+		return delay;
 	}
 
 	public int[] getPrio() {
@@ -55,6 +58,10 @@ public class TracerStat implements Serializable {
 
 	@Override
 	public String toString() {
-		return String.format("%d;%.8f;%s\n", step, data.v, parents);
+		if (parents.size() == 0)
+			return String.format("%d;%.4e;this:%s;parent:[]\n", step, data.v, Arrays.toString((int[]) data.x));
+		else
+			return String.format("%d;%.4e;this:%s;parent:%s\n", step, data.v, Arrays.toString((int[]) data.x),
+					Arrays.toString(parents.get(0).x));
 	}
 }

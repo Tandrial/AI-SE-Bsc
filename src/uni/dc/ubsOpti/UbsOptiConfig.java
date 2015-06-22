@@ -91,7 +91,7 @@ public class UbsOptiConfig implements Serializable {
 		traffic = generator.getTraffic();
 		genRemaining(generator);
 
-		delayCalc.setInitialDelays(prio, 1.0d);
+		delayCalc.setInitialDelays(prio, modifier);
 	}
 
 	public void newTopology() {

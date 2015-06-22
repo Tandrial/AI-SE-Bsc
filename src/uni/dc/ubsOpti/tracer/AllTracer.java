@@ -25,15 +25,37 @@ public class AllTracer extends Tracer {
 			graphs.put(algoName, new DelegateForest<Individual<int[], int[]>, String>());
 			startPoints.put(algoName, stat.getData());
 		}
-		
-		endPoints.put(algoName, stat.getData());
 
 		DelegateForest<Individual<int[], int[]>, String> graph = graphs.get(algoName);
 
 		if (!graph.containsVertex(stat.getData())) {
 			graph.addVertex(stat.getData());
 		}
-		
+
+		if (algoName.equals("BT"))
+			handleBT(stat, graph);
+		else
+			handleother(stat, graph);
+		endPoints.put(algoName, stat.getData());
+	}
+
+	private void handleother(TracerStat stat, Forest<Individual<int[], int[]>, String> graph) {
+		if (stat.getParents().size() > 0) {
+			Individual<int[], int[]> parent = endPoints.get(stat.getName());
+			if (parent == stat.getData())
+				return;
+			String edgeName = String.format("%s->%s_", parent, stat.getData());			
+			String newEdgeName = edgeName;
+			int cnt = 0;
+			while (graph.containsEdge(newEdgeName)) {
+				newEdgeName = edgeName + cnt++;
+			}
+			graph.addEdge(newEdgeName, parent, stat.getData());
+		}
+	}
+
+	private void handleBT(TracerStat stat, Forest<Individual<int[], int[]>, String> graph) {
+
 		for (Individual<int[], int[]> parent : stat.getParents()) {
 			if (parent != null) {
 				String edgeName = String.format("%s->%s_", parent, stat.getData());

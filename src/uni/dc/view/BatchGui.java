@@ -20,6 +20,7 @@ import uni.dc.model.PriorityConfiguration;
 import uni.dc.ubsOpti.Optimizer;
 import uni.dc.ubsOpti.UbsOptiConfig;
 import uni.dc.ubsOpti.tracer.EndStepTracer;
+import javax.swing.JCheckBox;
 
 public class BatchGui extends JDialog {
 	private static final long serialVersionUID = 1L;
@@ -89,6 +90,30 @@ public class BatchGui extends JDialog {
 		spMaxFlow.setBounds(130, 65, 45, 20);
 		contentPanel.add(spMaxFlow);
 
+		JCheckBox cbBF = new JCheckBox("BF");
+		cbBF.setBounds(6, 177, 45, 23);
+		contentPanel.add(cbBF);
+
+		JCheckBox cbBT = new JCheckBox("BT");
+		cbBT.setSelected(true);
+		cbBT.setBounds(58, 177, 45, 23);
+		contentPanel.add(cbBT);
+
+		JCheckBox cbHC = new JCheckBox("HC");
+		cbHC.setSelected(true);
+		cbHC.setBounds(104, 177, 45, 23);
+		contentPanel.add(cbHC);
+
+		JCheckBox cbSA = new JCheckBox("SA");
+		cbSA.setSelected(true);
+		cbSA.setBounds(6, 199, 45, 23);
+		contentPanel.add(cbSA);
+
+		JCheckBox cbSEA = new JCheckBox("sEA");
+		cbSEA.setSelected(true);
+		cbSEA.setBounds(58, 199, 45, 23);
+		contentPanel.add(cbSEA);
+
 		JPanel buttonPane = new JPanel();
 		buttonPane.setLayout(new FlowLayout(FlowLayout.CENTER));
 		getContentPane().add(buttonPane, BorderLayout.SOUTH);
@@ -103,14 +128,14 @@ public class BatchGui extends JDialog {
 				int runs = (Integer) spRuns.getValue();
 				int maxSteps = (Integer) spMaxSteps.getValue();
 
-				run(minPort, maxPort, maxPrio, runs, maxSteps, maxFlow);
-				dispose();
+				run(minPort, maxPort, maxPrio, runs, maxSteps, maxFlow, cbBF.isSelected(), cbBT.isSelected(),
+						cbHC.isSelected(), cbSA.isSelected(), cbSEA.isSelected());
 			}
 		});
 		buttonPane.add(okButton);
 		getRootPane().setDefaultButton(okButton);
 
-		JButton cancelButton = new JButton("Cancel");
+		JButton cancelButton = new JButton("Close");
 		cancelButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				setVisible(false);
@@ -120,7 +145,8 @@ public class BatchGui extends JDialog {
 		buttonPane.add(cancelButton);
 	}
 
-	private static void run(int minPort, int maxPort, int maxPrio, int runs, int maxSteps, int maxFlowCount) {
+	private static void run(int minPort, int maxPort, int maxPrio, int runs, int maxSteps, int maxFlowCount,
+			boolean BF, boolean BT, boolean HC, boolean SA, boolean sEA) {
 		Optimizer opti = Optimizer.getOptimizer();
 		UbsOptiConfig config = new UbsOptiConfig();
 		EndStepTracer tracer = config.newEndStepTracer();
@@ -142,7 +168,7 @@ public class BatchGui extends JDialog {
 				config.setDepth(depthCount);
 				config.newTopology();
 				int cnt = 0;
-				System.out.print("Stream config (max " + runs + ") ");
+				System.out.print("Stream config (max " + runs + ") 0");
 				for (int streamCount = 1; streamCount <= runs; streamCount++) {
 					String id = String.format("%d%03d%04d", portCount, depthCount, streamCount);
 					tracer.setRoundNumber(Integer.valueOf(id));
@@ -150,12 +176,16 @@ public class BatchGui extends JDialog {
 						System.out.print("..." + cnt);
 					config.newTraffic();
 					config.setPriorityConfig(new PriorityConfiguration(config.getTraffic()));
-					if (portCount <= 10)
+					if (portCount <= 10 && BF)
 						opti.optimize(config, "BF");
-					opti.optimize(config, "BT");
-					opti.optimize(config, "HC");
-					opti.optimize(config, "SA");
-					opti.optimize(config, "sEA");
+					if (BT)
+						opti.optimize(config, "BT");
+					if (HC)
+						opti.optimize(config, "HC");
+					if (SA)
+						opti.optimize(config, "SA");
+					if (sEA)
+						opti.optimize(config, "sEA");
 				}
 				System.out.println();
 			}

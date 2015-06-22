@@ -24,6 +24,8 @@ public class RandomMulticastPathGenerator {
 	// topology.getPorts().size() : Arbitrary multicast
 	private int maxDestPerFlow = 1;
 
+	private int maxFlowCount = 6;
+
 	private double linkSpeed;
 	private int maxFrameLength;
 	private int maxSpeedPerStream;
@@ -50,6 +52,14 @@ public class RandomMulticastPathGenerator {
 
 	public void setMaxDestPerFlow(int maxDestPerFlow) {
 		this.maxDestPerFlow = maxDestPerFlow;
+	}
+
+	public int getMaxFlowCount() {
+		return maxFlowCount;
+	}
+
+	public void setMaxFlowCount(int maxFlowCount) {
+		this.maxFlowCount = maxFlowCount;
 	}
 
 	public int getMaxFrameLength() {
@@ -96,6 +106,8 @@ public class RandomMulticastPathGenerator {
 
 		for (EgressPort src : topology.getPorts()) {
 			while (portFlowMap.get(src).size() < minFlowPerPort) {
+				if (maxFlowCount < flowId)
+					break;
 
 				// Pick a random sub set of destination ports (at least one)
 				List<EgressPort> destPorts = new ArrayList<EgressPort>(topology.getReachablePorts(src));
@@ -134,5 +146,6 @@ public class RandomMulticastPathGenerator {
 			port.setFlowList(portFlowMap.get(port));
 		}
 		return rv;
+
 	}
 }

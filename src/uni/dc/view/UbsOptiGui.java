@@ -125,6 +125,19 @@ public class UbsOptiGui extends JFrame {
 						System.exit(0);
 					}
 				});
+
+				JMenuItem mntmNewMenuItem = new JMenuItem("Mass Test");
+				mntmNewMenuItem.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						BatchGui batchGui = new BatchGui();
+						RefineryUtilities.centerFrameOnScreen(batchGui);
+						batchGui.setVisible(true);
+					}
+				});
+				mnFile.add(mntmNewMenuItem);
+
+				JSeparator separator = new JSeparator();
+				mnFile.add(separator);
 				mnFile.add(mntmExit);
 			}
 
@@ -213,7 +226,12 @@ public class UbsOptiGui extends JFrame {
 			JMenuItem mntmDisplayCompleteTrace = new JMenuItem("Display complete Trace");
 			mntmDisplayCompleteTrace.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					AllTracerGui allTraceDisplay = new AllTracerGui(config.getAllTracer().getGraphs(), config);
+					if (config.getBestOnlyTracer() == null) {
+						setStatusMsg("Error: Need to run atleast one optimazation!");
+						return;
+					}
+					AllTracerGui allTraceDisplay = new AllTracerGui("Complete Trace",
+							config.getAllTracer().getGraphs(), config);
 					allTraceDisplay.pack();
 					RefineryUtilities.centerFrameOnScreen(allTraceDisplay);
 					allTraceDisplay.setVisible(true);
@@ -283,7 +301,7 @@ public class UbsOptiGui extends JFrame {
 
 	private void optimize(String algo) {
 		if (config.getTopology() == null) {
-			setStatusMsg("Error: No network loaded!");
+			setStatusMsg("Error: Nothing loaded!");
 			return;
 		}
 		logger.entering(getClass().getName(), "optimize");

@@ -41,7 +41,7 @@ public class GeneratorAPI {
 	public void generateNetwork(int depth, int portCount, int maxPrio, double linkSpeed, int maxFrameLength,
 			int maxSpeed) {
 		genTopology(depth, portCount, linkSpeed);
-		genTraffic(linkSpeed, maxFrameLength, maxSpeed);
+		genTraffic(linkSpeed, maxFrameLength, maxSpeed, portCount);
 		genPrio(maxPrio);
 	}
 
@@ -55,13 +55,14 @@ public class GeneratorAPI {
 		topology = topologyGen.generate();
 	}
 
-	public void genTraffic(double linkSpeed, int maxFrameLength, int maxLeakRateinPercent) {
+	public void genTraffic(double linkSpeed, int maxFrameLength, int maxLeakRateinPercent, int maxFlowCount) {
 		if (topology == null)
 			return;
 		RandomMulticastPathGenerator flowPathGen = new RandomMulticastPathGenerator();
 		flowPathGen.setTopology(topology);
 		flowPathGen.setRng(rng);
-		flowPathGen.setMinFlowPerPort(3);
+		flowPathGen.setMaxFlowCount(maxFlowCount);
+		flowPathGen.setMinFlowPerPort(2);
 		flowPathGen.setMaxDestPerFlow(1);
 		flowPathGen.setLinkSpeed(linkSpeed);
 		flowPathGen.setMaxFrameLength(maxFrameLength);

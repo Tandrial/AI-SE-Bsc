@@ -26,6 +26,7 @@ public class UbsOptiConfig implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private int depth = 6;
 	private int portCount = 9;
+	private int maxFlowCount = 9;
 	private int maxFrameLength = 12350;
 	private int maxLeakRateinPercent = 10;
 	private double modifier = 1.0d;
@@ -103,7 +104,7 @@ public class UbsOptiConfig implements Serializable {
 
 	public void newTraffic() {
 		GeneratorAPI generator = GeneratorAPI.getGenerator();
-		generator.genTraffic(linkSpeed, maxFrameLength, maxLeakRateinPercent);
+		generator.genTraffic(linkSpeed, maxFrameLength, maxLeakRateinPercent, maxFlowCount);
 		generator.genPrio(maxPrio);
 		traffic = generator.getTraffic();
 		genRemaining(generator);
@@ -203,6 +204,14 @@ public class UbsOptiConfig implements Serializable {
 
 	public void setMaxSpeed(int maxSpeed) {
 		this.maxLeakRateinPercent = maxSpeed;
+	}
+
+	public int getMaxFlowCount() {
+		return maxFlowCount;
+	}
+
+	public void setMaxFlowCount(int maxFlowCount) {
+		this.maxFlowCount = maxFlowCount;
 	}
 
 	public void setSeed(long seed) {

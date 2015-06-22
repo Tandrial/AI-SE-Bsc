@@ -55,9 +55,9 @@ public class AllTracerGui extends JFrame {
 	private Individual<int[], int[]> selected = null;
 	private Set<Individual<int[], int[]>> mPred = null;;
 
-	public AllTracerGui(Map<String, DelegateForest<Individual<int[], int[]>, String>> graphs, UbsOptiConfig config) {
+	public AllTracerGui(String title, Map<String, DelegateForest<Individual<int[], int[]>, String>> graphs, UbsOptiConfig config) {
 		this.config = config;
-		setTitle("AllTracer Display");
+		setTitle(title);
 		setBounds(100, 100, 450, 300);
 
 		contentPane = new JPanel();

@@ -128,7 +128,7 @@ public final class SimulatedAnnealingTraceable<G, X> extends LocalSearchAlgorith
 		pcur.v = f.compute(pcur.x, r);
 		pbest.assign(pcur);
 		t = 1;
-		notifyTracer(pcur);
+		notifyTracer(pbest);
 
 		// check the termination criterion
 		while (!(term.terminationCriterion())) {

@@ -18,7 +18,7 @@ public final class UbsStepDelayTermination extends TerminationCriterion {
 
 	@Override
 	public final boolean terminationCriterion() {
-		return (delayCalc.checkDelays() || (--this.remaining) <= 0);
+		return ((--this.remaining) <= 0 || delayCalc.checkDelays());
 	}
 
 	public boolean foundDelay() {

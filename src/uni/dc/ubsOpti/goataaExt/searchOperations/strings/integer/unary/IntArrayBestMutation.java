@@ -64,15 +64,15 @@ public final class IntArrayBestMutation extends IntVectorMutation {
 	public final int[] mutate(final int[] g, final Random r) {
 		int[] gnew;
 		int[] best = g;
-		visited.add(buildStringFromArray(g));
+		visited.add(Arrays.toString(g));
 		double vbest = Double.MAX_VALUE;
 		for (int i = 0; i < g.length; i++) {
 			if (g[i] < max) {
 				gnew = Arrays.copyOf(g, g.length);
 				gnew[i]++;
-				if (visited.contains(buildStringFromArray(gnew)))
+				if (visited.contains(Arrays.toString(gnew)))
 					continue;
-				visited.add(buildStringFromArray(gnew));
+				visited.add(Arrays.toString(gnew));
 				double vnew = f.compute(gnew, null);
 				if (vnew < vbest) {
 					best = gnew;
@@ -81,14 +81,6 @@ public final class IntArrayBestMutation extends IntVectorMutation {
 			}
 		}
 		return best;
-	}
-
-	private static String buildStringFromArray(int[] arr) {
-		StringBuilder sb = new StringBuilder();
-		for (int x : arr) {
-			sb.append(x);
-		}
-		return sb.toString();
 	}
 
 	/**

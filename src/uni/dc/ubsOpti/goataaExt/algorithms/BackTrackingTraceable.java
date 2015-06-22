@@ -88,8 +88,6 @@ public final class BackTrackingTraceable extends LocalSearchAlgorithmTraceable<i
 		p.x = prio;
 		p.g = p.x;
 		p.v = f.compute(p.x, null);
-//		if (parent != null)
-//			System.out.println(Arrays.toString(parent.x) + "->" + Arrays.toString(p.x));
 		notifyTracer(p, parent);
 
 		// 1) Delays berechnen, falls besser ==> speichern in trace

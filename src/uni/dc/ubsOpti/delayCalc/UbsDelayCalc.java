@@ -53,7 +53,7 @@ public abstract class UbsDelayCalc extends OptimizationModule implements IObject
 	public abstract void calculateDelays();
 
 	protected double calcDelay(EgressPort lastEgress, Flow f) {
-		double delay;
+		double delay = 0.0;
 		double sizeBiggerEq = 0.0;
 		double maxSmaller = 0.0;
 		double rateHigher = 0.0;
@@ -61,11 +61,12 @@ public abstract class UbsDelayCalc extends OptimizationModule implements IObject
 		double linkSpeed = lastEgress.getLinkSpeed();
 		double size = f.getMaxFrameLength();
 		int prioF = prio.getPriority(lastEgress, f);
-
 		for (Flow other : lastEgress.getFlowList()) {
 			if (f == other)
 				continue;
 			int prioOther = prio.getPriority(lastEgress, other);
+			if (prioOther == -1)
+				continue;
 			if (prioOther < prioF) {
 				sizeBiggerEq += other.getMaxFrameLength();
 				rateHigher += other.getRate();
@@ -76,6 +77,7 @@ public abstract class UbsDelayCalc extends OptimizationModule implements IObject
 			}
 		}
 		delay = (sizeBiggerEq + maxSmaller) / (linkSpeed - rateHigher) + size / linkSpeed;
+
 		return delay;
 	}
 

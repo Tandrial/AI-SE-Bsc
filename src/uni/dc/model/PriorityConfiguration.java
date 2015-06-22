@@ -59,7 +59,10 @@ public class PriorityConfiguration implements Cloneable, Serializable {
 	}
 
 	public int getPriority(EgressPort port, Flow flow) {
-		return this.portFlowPriorityMap.get(port).get(flow).getPriority();
+		Map<Flow, PortFlowPriority> map = this.portFlowPriorityMap.get(port);
+		if (map == null || map.get(flow) == null)
+			return -1;
+		return map.get(flow).getPriority();
 	}
 
 	public boolean hasPriority(EgressPort port, Flow flow) {

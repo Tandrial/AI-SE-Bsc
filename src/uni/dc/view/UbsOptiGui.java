@@ -136,7 +136,6 @@ public class UbsOptiGui extends JFrame {
 					@Override
 					public void actionPerformed(ActionEvent arg0) {
 						optimize("BF");
-						displayAllTracerGui();
 					}
 				});
 				mnOptimize.add(mntmBF);
@@ -146,7 +145,6 @@ public class UbsOptiGui extends JFrame {
 					@Override
 					public void actionPerformed(ActionEvent arg0) {
 						optimize("BT");
-						displayAllTracerGui();
 					}
 				});
 				mnOptimize.add(mntmBT);
@@ -158,7 +156,6 @@ public class UbsOptiGui extends JFrame {
 					@Override
 					public void actionPerformed(ActionEvent e) {
 						optimize("HC");
-						displayAllTracerGui();
 					}
 				});
 				mnOptimize.add(mntmHC);
@@ -168,7 +165,6 @@ public class UbsOptiGui extends JFrame {
 					@Override
 					public void actionPerformed(ActionEvent e) {
 						optimize("SA");
-						displayAllTracerGui();
 					}
 				});
 				mnOptimize.add(mntmSA);
@@ -178,7 +174,6 @@ public class UbsOptiGui extends JFrame {
 					@Override
 					public void actionPerformed(ActionEvent e) {
 						optimize("sEA");
-						displayAllTracerGui();
 					}
 				});
 				mnOptimize.add(mntmGA);
@@ -193,7 +188,6 @@ public class UbsOptiGui extends JFrame {
 						optimize("HC");
 						optimize("SA");
 						optimize("sEA");
-						displayAllTracerGui();
 					}
 				});
 				mnOptimize.add(mntmRunAllexcept);
@@ -215,6 +209,17 @@ public class UbsOptiGui extends JFrame {
 				});
 				mnOptimize.add(mntmDisplayGraph);
 			}
+
+			JMenuItem mntmDisplayCompleteTrace = new JMenuItem("Display complete Trace");
+			mntmDisplayCompleteTrace.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					AllTracerGui allTraceDisplay = new AllTracerGui(config.getAllTracer().getGraphs(), config);
+					allTraceDisplay.pack();
+					RefineryUtilities.centerFrameOnScreen(allTraceDisplay);
+					allTraceDisplay.setVisible(true);
+				}
+			});
+			mnOptimize.add(mntmDisplayCompleteTrace);
 
 			JMenu mnSettings = new JMenu("Settings");
 			menuBar.add(mnSettings);
@@ -274,12 +279,6 @@ public class UbsOptiGui extends JFrame {
 			imagePanel = new GraphVizPanel();
 			contentPane.add(imagePanel, BorderLayout.CENTER);
 		}
-	}
-
-	protected void displayAllTracerGui() {		
-		AllTracerGui frame = new AllTracerGui(config.getAllTracer().getGraphs(), config);
-		frame.pack();
-		frame.setVisible(true);
 	}
 
 	private void optimize(String algo) {

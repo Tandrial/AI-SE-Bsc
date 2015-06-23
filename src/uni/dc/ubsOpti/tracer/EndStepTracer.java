@@ -21,7 +21,6 @@ public class EndStepTracer extends Tracer {
 			if (roundNumber != -1)
 				dataPoints.put(roundNumber + ";" + stat.getName(), stat.getStep() - 1);
 			else
-
 				dataPoints.put(stat.getName(), stat.getStep() - 1);
 		}
 	}

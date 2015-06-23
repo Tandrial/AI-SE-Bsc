@@ -8,6 +8,7 @@ import java.io.File;
 import java.util.logging.Logger;
 
 import javax.swing.JButton;
+import javax.swing.JCheckBox;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -20,7 +21,6 @@ import uni.dc.model.PriorityConfiguration;
 import uni.dc.ubsOpti.Optimizer;
 import uni.dc.ubsOpti.UbsOptiConfig;
 import uni.dc.ubsOpti.tracer.EndStepTracer;
-import javax.swing.JCheckBox;
 
 public class BatchGui extends JDialog {
 	private static final long serialVersionUID = 1L;

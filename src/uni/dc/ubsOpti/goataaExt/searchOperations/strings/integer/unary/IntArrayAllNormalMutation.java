@@ -80,7 +80,8 @@ public final class IntArrayAllNormalMutation extends IntVectorMutation {
 					// the original allele (Definition D4.4) of the gene plus a
 					// random number normally distributed
 					// Section 53.4.2 with N(0, strength^2)
-					gnew[i] = (int) (g[i] + (r.nextGaussian() * strength));
+					double rndValue = (g[i] + (r.nextGaussian() * strength));
+					gnew[i] = rndValue > Integer.MAX_VALUE ? Integer.MAX_VALUE : (int) rndValue;
 					// and repeat this until the new allele falls into the
 					// specified
 					// boundaries

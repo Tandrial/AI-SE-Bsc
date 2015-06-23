@@ -194,7 +194,7 @@ public class BatchGui extends JDialog {
 				minPort, maxPort, runs, config.getMaxSteps(), config.getMaxPrio(), (int) (config.getModifier() * 100),
 				BF ? "BF" : "", BT ? "BT" : "", HC ? "HC" : "", SA ? "SA" : "", sEA ? "sEA" : "");
 		t2 = System.nanoTime();
-		EndStepTracer.saveToFile(new File(fileName), tracer);
+		EndStepTracer.saveToFile(new File("./Traces/" + fileName), tracer);
 		JOptionPane.showMessageDialog(null,
 				String.format("Batch done! (took %.4f s)\n See %s for results!", (t2 - t1) / 1.0e9, fileName),
 				"Batch mode ", JOptionPane.PLAIN_MESSAGE);

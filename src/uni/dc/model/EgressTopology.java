@@ -10,8 +10,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import uni.dc.util.GraphViz;
-import uni.dc.util.Pair;
+import uni.dc.view.GraphViz;
 
 public class EgressTopology implements Serializable {
 	private static final long serialVersionUID = 1L;

@@ -1,4 +1,4 @@
-package uni.dc.util;
+package uni.dc.view;
 
 import java.awt.Color;
 

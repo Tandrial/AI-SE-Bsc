@@ -1,4 +1,4 @@
-package uni.dc.util;
+package uni.dc.view;
 
 import java.awt.image.BufferedImage;
 import java.io.BufferedInputStream;

@@ -1,4 +1,4 @@
-package uni.dc.util;
+package uni.dc.model;
 
 public class Pair<L, R> {
 

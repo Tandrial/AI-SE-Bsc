@@ -12,8 +12,6 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
-import uni.dc.util.GraphViz;
-
 public class GraphVizPanel extends JPanel {
 	private static final long serialVersionUID = 1L;
 	private JScrollPane scrollPane = new JScrollPane();

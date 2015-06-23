@@ -39,9 +39,9 @@ public class GeneratorAPI {
 	}
 
 	public void generateNetwork(int depth, int portCount, int maxPrio, double linkSpeed, int maxFrameLength,
-			int maxSpeed) {
+			int maxSpeed, int maxFlowCount) {
 		genTopology(depth, portCount, linkSpeed);
-		genTraffic(linkSpeed, maxFrameLength, maxSpeed, portCount);
+		genTraffic(linkSpeed, maxFrameLength, maxSpeed, maxFlowCount);
 		genPrio(maxPrio);
 	}
 
@@ -62,8 +62,6 @@ public class GeneratorAPI {
 		flowPathGen.setTopology(topology);
 		flowPathGen.setRng(rng);
 		flowPathGen.setMaxFlowCount(maxFlowCount);
-		flowPathGen.setMinFlowPerPort(2);
-		flowPathGen.setMaxDestPerFlow(1);
 		flowPathGen.setLinkSpeed(linkSpeed);
 		flowPathGen.setMaxFrameLength(maxFrameLength);
 		flowPathGen.setMaxSpeedPerStream(maxLeakRateinPercent);

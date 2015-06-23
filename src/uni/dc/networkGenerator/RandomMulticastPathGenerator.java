@@ -19,7 +19,7 @@ public class RandomMulticastPathGenerator {
 	private EgressTopology topology;
 	private Random rng;
 
-	private int minFlowPerPort = 0;
+	private int minFlowPerPort = 3;
 	// 1: Unicast
 	// topology.getPorts().size() : Arbitrary multicast
 	private int maxDestPerFlow = 1;

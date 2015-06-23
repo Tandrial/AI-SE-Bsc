@@ -63,7 +63,7 @@ public final class IntArrayBestMutation extends IntVectorMutation {
 	@Override
 	public final int[] mutate(final int[] g, final Random r) {
 		int[] gnew;
-		int[] best = g;
+		int[] best = Arrays.copyOf(g, g.length);
 		visited.add(Arrays.toString(g));
 		double vbest = Double.MAX_VALUE;
 		for (int i = 0; i < g.length; i++) {

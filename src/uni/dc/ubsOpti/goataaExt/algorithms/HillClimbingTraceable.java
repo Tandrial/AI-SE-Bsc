@@ -1,5 +1,6 @@
 package uni.dc.ubsOpti.goataaExt.algorithms;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
@@ -102,6 +103,10 @@ public final class HillClimbingTraceable<G, X> extends LocalSearchAlgorithmTrace
 			pnew.g = mutate.mutate(p.g, r);
 			pnew.x = gpm.gpm(pnew.g, r);
 			pnew.v = f.compute(pnew.x, r);
+			if (Arrays.equals((int[]) pnew.x, (int[]) p.x)) {
+				step = Integer.valueOf(term.getConfiguration(false));
+				break;
+			}
 			notifyTracer(pnew, p);
 
 			// In Algorithm 26.1, the objective functions are

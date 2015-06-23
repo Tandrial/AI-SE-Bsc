@@ -1,5 +1,6 @@
 package uni.dc.ubsOpti.goataaExt.searchOperations.strings.integer.nullary;
 
+import java.util.Arrays;
 import java.util.Random;
 
 import uni.dc.ubsOpti.goataaExt.searchOperations.strings.integer.IntVectorCreation;
@@ -44,10 +45,7 @@ public class IntArrayAllOnesCreation extends IntVectorCreation {
 		// create a new int vector (genotype, Definition D4.2) of
 		// dimension n with all 1s
 		g = new int[this.n];
-
-		for (int i = 0; i < g.length; i++) {
-			g[i] = 1;
-		}
+		Arrays.fill(g, 1);
 
 		return g;
 	}

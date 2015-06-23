@@ -2,6 +2,7 @@ package uni.dc.model;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.LinkedHashSet;
 import java.util.List;
@@ -234,5 +235,28 @@ public class PriorityConfiguration implements Cloneable, Serializable {
 			}
 		}
 		return pos;
+	}
+
+	public void squash() {
+		for (EgressPort port : portFlowPriorityMap.keySet()) {
+			Map<Flow, PortFlowPriority> fMap = portFlowPriorityMap.get(port);
+			List<Integer> priosInPort = new ArrayList<Integer>();
+			for (Flow f : fMap.keySet()) {
+				int prio = fMap.get(f).getPriority();
+				if (!priosInPort.contains(prio))
+					priosInPort.add(prio);
+			}
+			Collections.sort(priosInPort);
+
+			int currPrio = 1;
+			for (Integer prio : priosInPort) {
+				for (Flow f : fMap.keySet()) {
+					if (fMap.get(f).getPriority() == prio) {
+						fMap.get(f).setPriority(currPrio);
+					}
+				}
+				currPrio++;
+			}
+		}
 	}
 }

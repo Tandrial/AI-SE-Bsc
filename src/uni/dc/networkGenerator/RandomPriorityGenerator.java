@@ -29,6 +29,7 @@ public class RandomPriorityGenerator {
 			arr[i] = rng.nextInt(maxPrio) + 1;
 		}
 		prio.fromIntArray(arr);
+		prio.squash();
 		return prio;
 	}
 }

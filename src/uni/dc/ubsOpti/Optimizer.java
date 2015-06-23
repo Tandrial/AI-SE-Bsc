@@ -17,7 +17,6 @@ import uni.dc.ubsOpti.goataaExt.searchOperations.strings.integer.IntVectorCreati
 import uni.dc.ubsOpti.goataaExt.searchOperations.strings.integer.IntVectorMutation;
 import uni.dc.ubsOpti.goataaExt.searchOperations.strings.integer.binary.IntArrayWeightedMeanCrossover;
 import uni.dc.ubsOpti.goataaExt.searchOperations.strings.integer.nullary.IntArrayAllOnesCreation;
-import uni.dc.ubsOpti.goataaExt.searchOperations.strings.integer.unary.IntArrayAllNormalMutation;
 import uni.dc.ubsOpti.goataaExt.searchOperations.strings.integer.unary.IntArrayBestMutation;
 import uni.dc.ubsOpti.goataaExt.termination.UbsStepDelayTermination;
 import uni.dc.ubsOpti.tracer.Tracer;
@@ -87,7 +86,6 @@ public class Optimizer {
 
 	private void optimizeHillClimbing() {
 		HillClimbingTraceable<int[], int[]> HC = new HillClimbingTraceable<int[], int[]>();
-		mutate = new IntArrayAllNormalMutation(1, config.getMaxPrio());
 		run(HC);
 	}
 

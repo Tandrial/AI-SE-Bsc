@@ -29,11 +29,11 @@ public class EndStepTracer extends Tracer {
 		return dataPoints;
 	}
 
-	public int getRoundNumber() {
-		return roundNumber;
+	public long getRoundNumber(String algoName) {
+		return dataPoints.get(algoName);
 	}
 
-	public void setRoundNumber(int roundNumber) {
+	public void getEndStepForAlgo(int roundNumber) {
 		this.roundNumber = roundNumber;
 	}
 

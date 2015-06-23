@@ -171,7 +171,7 @@ public class BatchGui extends JDialog {
 				System.out.print("Stream config (max " + runs + ") 0");
 				for (int streamCount = 1; streamCount <= runs; streamCount++) {
 					String id = String.format("%d%03d%04d", portCount, depthCount, streamCount);
-					tracer.setRoundNumber(Integer.valueOf(id));
+					tracer.getEndStepForAlgo(Integer.valueOf(id));
 					if (++cnt % 10 == 0)
 						System.out.print("..." + cnt);
 					config.newTraffic();

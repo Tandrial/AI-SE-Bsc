@@ -9,7 +9,7 @@
     {
         "streamID" : 1,
         "route"  : {"dijkstra" : { "n0" : ["n1"] }},
-        "tspec"  : {"leakRate" : "100Mbps", "maxPacketLength" : "1b", "maxLatency" : "350ns"}
+        "tspec"  : {"leakRate" : "100Mbps", "maxPacketLength" : "1b", "maxLatency" : "250ns"}
     },
     {
         "streamID" : 2,

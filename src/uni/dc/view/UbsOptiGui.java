@@ -209,7 +209,7 @@ public class UbsOptiGui extends JFrame {
 				mntmDisplayGraph.addActionListener(new ActionListener() {
 					@Override
 					public void actionPerformed(ActionEvent e) {
-						if (config.getBestOnlyTracer() == null) {
+						if (config.getBestOnlyTracer() == null || config.getBestOnlyTracer().getStats().size() == 0) {
 							setStatusMsg("Error: Need to run atleast one optimazation!");
 							return;
 						}
@@ -226,7 +226,7 @@ public class UbsOptiGui extends JFrame {
 			JMenuItem mntmDisplayCompleteTrace = new JMenuItem("Display complete Trace");
 			mntmDisplayCompleteTrace.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					if (config.getBestOnlyTracer() == null) {
+					if (config.getAllTracer() == null || config.getAllTracer().getGraphs().size() == 0) {
 						setStatusMsg("Error: Need to run atleast one optimazation!");
 						return;
 					}
@@ -324,8 +324,6 @@ public class UbsOptiGui extends JFrame {
 		logger.log(Level.INFO,
 				String.format("Best Prio is: \n%s\nDelays are \n%s", config.getPriorityConfig(), config.getDelayCalc()));
 
-		System.out.println("endstep : " + config.getEndStepTracer().getEndStep(algo));
-
 		imagePanel.setDot(portDisplay ? config.getTopology().toDot() : config.getTraffic().toDot(
 				config.getPriorityConfig()));
 		t3 = System.nanoTime();
@@ -381,8 +379,7 @@ public class UbsOptiGui extends JFrame {
 
 			config.fromGenerator();
 			Optimizer.getOptimizer().setTracer(config.resetAllTracers());
-			logger.log(Level.INFO,
-					String.format("Generated new network: \n%s", config));
+			logger.log(Level.INFO, String.format("Generated new network: \n%s", config));
 			config.setPriorityConfig(new PriorityConfiguration(config.getTraffic()));
 
 			t2 = System.nanoTime();

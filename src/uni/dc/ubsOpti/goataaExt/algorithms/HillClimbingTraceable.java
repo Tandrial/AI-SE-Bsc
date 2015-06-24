@@ -100,6 +100,7 @@ public final class HillClimbingTraceable<G, X> extends LocalSearchAlgorithmTrace
 		while (!(term.terminationCriterion())) {
 			// modify the best point known, map the new point to a phenotype and
 			// evaluat it
+			pnew = new Individual<G, X>();
 			pnew.g = mutate.mutate(p.g, r);
 			pnew.x = gpm.gpm(pnew.g, r);
 			pnew.v = f.compute(pnew.x, r);
@@ -114,6 +115,7 @@ public final class HillClimbingTraceable<G, X> extends LocalSearchAlgorithmTrace
 			// evaluated here. By storing the objective values in the individual
 			// records, we avoid evaluating p.x more than once.
 			if (pnew.v < p.v) {
+				p = new Individual<G, X>();
 				p.assign(pnew);
 			}
 		}

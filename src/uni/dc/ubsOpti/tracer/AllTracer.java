@@ -1,6 +1,5 @@
 package uni.dc.ubsOpti.tracer;
 
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -15,6 +14,7 @@ public class AllTracer extends Tracer {
 	private Map<String, DelegateForest<Individual<int[], int[]>, String>> graphs = new HashMap<String, DelegateForest<Individual<int[], int[]>, String>>();
 	private Map<String, Individual<int[], int[]>> endPoints = new HashMap<String, Individual<int[], int[]>>();
 	private Map<String, Individual<int[], int[]>> startPoints = new HashMap<String, Individual<int[], int[]>>();
+	private Map<String, Boolean> algoSuccess = new HashMap<String, Boolean>();
 
 	@Override
 	public void update(TracerStat stat) {
@@ -29,11 +29,12 @@ public class AllTracer extends Tracer {
 
 		DelegateForest<Individual<int[], int[]>, String> graph = graphs.get(algoName);
 
-//		if (algoName.equals("BT"))
+		if (algoName.equals("BT"))
 			handleBT(stat, graph);
-//		else
-//			handleOther(stat, graph);
+		else
+			handleOther(stat, graph);
 		endPoints.put(algoName, stat.getData());
+		algoSuccess.put(algoName, stat.isDelaysOkay());
 	}
 
 	private void handleBT(TracerStat stat, Forest<Individual<int[], int[]>, String> graph) {
@@ -55,8 +56,6 @@ public class AllTracer extends Tracer {
 	}
 
 	private void handleOther(TracerStat stat, Forest<Individual<int[], int[]>, String> graph) {
-		stat.getData().x = Arrays.copyOf(stat.getData().x, stat.getData().x.length);
-		stat.getData().g = Arrays.copyOf(stat.getData().g, stat.getData().g.length);
 		if (!graph.containsVertex(stat.getData())) {
 			graph.addVertex(stat.getData());
 		}
@@ -87,6 +86,9 @@ public class AllTracer extends Tracer {
 	}
 
 	public Individual<int[], int[]> getEndPoint(String algoName) {
-		return endPoints.get(algoName);
+		if (algoSuccess.get(algoName))
+			return endPoints.get(algoName);
+		else
+			return null;
 	}
 }

@@ -105,6 +105,7 @@ public class AllTracerGui extends JFrame {
 		mFrom = config.getAllTracer().getStartPoint(algoNames[0]);
 		mTo = config.getAllTracer().getEndPoint(algoNames[0]);
 
+		currentGraph = graphs.get(algoNames[0]);
 		layout = new TreeLayout<Individual<int[], int[]>, String>(currentGraph);
 		vv = new VisualizationViewer<Individual<int[], int[]>, String>(layout);
 		vv.setBackground(Color.WHITE);

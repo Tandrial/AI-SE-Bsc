@@ -138,6 +138,7 @@ public final class SimulatedAnnealingTraceable<G, X> extends LocalSearchAlgorith
 
 			// modify the best point known, map the new point to a phenotype and
 			// evaluat it
+			pnew = new Individual<G, X>();
 			pnew.g = mutate.mutate(pcur.g, r);
 			pnew.x = gpm.gpm(pnew.g, r);
 			pnew.v = f.compute(pnew.x, r);

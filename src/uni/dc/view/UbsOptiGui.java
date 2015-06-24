@@ -308,19 +308,19 @@ public class UbsOptiGui extends JFrame {
 		setStatusMsg("Optimizing Priorities! This might take a while ...");
 		config.setPriorityConfig(new PriorityConfiguration(config.getTraffic()));
 		long t1, t2, t3;
-		t1 = System.nanoTime();
 
 		logger.log(Level.INFO,
 				String.format("Optimazation for %s started with %s", config.isUbsV0() ? "UBS-V0" : "UBS-V3", algo));
 
+		t1 = System.nanoTime();
 		boolean result = Optimizer.getOptimizer().optimize(config, algo);
-
 		t2 = System.nanoTime();
-		if (result) {
+		
+		if (result)
 			logger.log(Level.INFO, String.format("Optimazation successful (in %.4f sec)!", (t2 - t1) / 1.0e9));
-		} else {
+		else
 			logger.log(Level.INFO, String.format("Optimazation failed (in %.4f sec)!", (t2 - t1) / 1.0e9));
-		}
+
 		logger.log(Level.INFO,
 				String.format("Best Prio is: \n%s\nDelays are \n%s", config.getPriorityConfig(), config.getDelayCalc()));
 

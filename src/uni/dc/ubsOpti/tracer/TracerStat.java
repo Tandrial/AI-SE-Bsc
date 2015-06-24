@@ -13,14 +13,15 @@ public class TracerStat implements Serializable {
 	private long step;
 	private boolean delaysOkay;
 	private double delay;
-	private Individual<?, ?> data;
+	private Individual<int[], int[]> data;
 	private List<Individual<int[], int[]>> parents = new ArrayList<Individual<int[], int[]>>();
 
 	@SuppressWarnings("unchecked")
 	public TracerStat(String name, long step, boolean delaysOkay, Individual<?, ?> data, Individual<?, ?>... parents) {
 		this.name = name;
 		this.step = step;
-		this.data = data;
+		this.data = (Individual<int[], int[]>) data;
+
 		this.delaysOkay = delaysOkay;
 		this.delay = data.v;
 		for (Individual<?, ?> parent : parents)
@@ -39,9 +40,8 @@ public class TracerStat implements Serializable {
 		return delaysOkay;
 	}
 
-	@SuppressWarnings("unchecked")
 	public Individual<int[], int[]> getData() {
-		return (Individual<int[], int[]>) data;
+		return data;
 	}
 
 	public double getDelay() {
@@ -49,7 +49,7 @@ public class TracerStat implements Serializable {
 	}
 
 	public int[] getPrio() {
-		return (int[]) data.x;
+		return data.x;
 	}
 
 	public List<Individual<int[], int[]>> getParents() {
@@ -59,9 +59,9 @@ public class TracerStat implements Serializable {
 	@Override
 	public String toString() {
 		if (parents.size() == 0)
-			return String.format("%d;%.4e;this:%s;parent:[]\n", step, data.v, Arrays.toString((int[]) data.x));
+			return String.format("%d;%.4e;this:%s;parent:[]\n", step, data.v, Arrays.toString(data.x));
 		else
-			return String.format("%d;%.4e;this:%s;parent:%s\n", step, data.v, Arrays.toString((int[]) data.x),
+			return String.format("%d;%.4e;this:%s;parent:%s\n", step, data.v, Arrays.toString(data.x),
 					Arrays.toString(parents.get(0).x));
 	}
 }

@@ -10,17 +10,6 @@ import org.goataa.spec.IObjectiveFunction;
 import uni.dc.ubsOpti.goataaExt.searchOperations.strings.integer.IntVectorMutation;
 
 /**
- * A unary search operation (see Section 4.2) for int vectors in a bounded
- * subspace of the int vectors of dimension n. This operation takes an existing
- * genotype (see Definition D4.2) and adds a small normally distributed random
- * number to each of its genes (see Definition D4.3). There are two main
- * differences between normally distributed random numbers and uniformly
- * distributed ones: 1) The normal distribution (see Section 53.4.2) is
- * unbounded whereas the uniform distribution has limits to each side (see
- * Section 53.4.1 and Section 53.3.1) 2) The normal distribution gives the
- * elements around its expected value Section 53.2.2 a higher probability and a
- * lower probability to elements distant from it, whereas all possible samples
- * have the same probability in a uniform distribution.
  *
  * @author Michael Krane
  */
@@ -49,9 +38,8 @@ public final class IntArrayBestMutation extends IntVectorMutation {
 	/**
 	 * This is an unary search operation for vectors of int numbers. It takes
 	 * one existing genotype g (see Definition D4.2) from the search space and
-	 * produces one new genotype. This new element is a slightly modified
-	 * version of g which is obtained by adding normally distributed random
-	 * numbers to its elements.
+	 * produces one new genotype. This new element is the best possible solution which is
+	 * different by 1 element
 	 *
 	 * @param g
 	 *            the existing genotype in the search space from which a

@@ -103,8 +103,9 @@ public final class HillClimbingTraceable<G, X> extends LocalSearchAlgorithmTrace
 			pnew.g = mutate.mutate(p.g, r);
 			pnew.x = gpm.gpm(pnew.g, r);
 			pnew.v = f.compute(pnew.x, r);
+			// break if the algo is stuck
 			if (Arrays.equals((int[]) pnew.x, (int[]) p.x)) {
-				step = Integer.valueOf(term.getConfiguration(false));
+				step = Integer.valueOf(term.getConfiguration(false)) + 1;
 				break;
 			}
 			notifyTracer(pnew, p);

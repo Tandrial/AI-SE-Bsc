@@ -18,6 +18,7 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
@@ -55,7 +56,8 @@ public class AllTracerGui extends JFrame {
 	private Individual<int[], int[]> selected = null;
 	private Set<Individual<int[], int[]>> mPred = null;;
 
-	public AllTracerGui(String title, Map<String, DelegateForest<Individual<int[], int[]>, String>> graphs, UbsOptiConfig config) {
+	public AllTracerGui(String title, Map<String, DelegateForest<Individual<int[], int[]>, String>> graphs,
+			UbsOptiConfig config) {
 		this.config = config;
 		setTitle(title);
 		setBounds(100, 100, 450, 300);
@@ -76,11 +78,17 @@ public class AllTracerGui extends JFrame {
 			public void itemStateChanged(ItemEvent e) {
 				if (e.getStateChange() == ItemEvent.SELECTED) {
 					String item = (String) e.getItem();
-					currentGraph = graphs.get(item);
-					mFrom = config.getAllTracer().getStartPoint(item);
-					mTo = config.getAllTracer().getEndPoint(item);
-					layout = new TreeLayout<Individual<int[], int[]>, String>(currentGraph);
-					vv.setGraphLayout(layout);
+					if (!item.equals("sEA")) {
+						currentGraph = graphs.get(item);
+						mFrom = config.getAllTracer().getStartPoint(item);
+						mTo = config.getAllTracer().getEndPoint(item);
+						layout = new TreeLayout<Individual<int[], int[]>, String>(currentGraph);
+						vv.setGraphLayout(layout);
+					} else {
+						JOptionPane.showMessageDialog(null,
+								"This Graph view is not correctly implemented for the Algo sEA!",
+								"Implementation missing!", JOptionPane.WARNING_MESSAGE);
+					}
 				}
 			}
 		});
@@ -93,8 +101,6 @@ public class AllTracerGui extends JFrame {
 
 		comboBox.setModel(new DefaultComboBoxModel<String>(algoNames));
 		allTracerParameterPanel.add(comboBox);
-
-		currentGraph = graphs.get(algoNames[0]);
 
 		mFrom = config.getAllTracer().getStartPoint(algoNames[0]);
 		mTo = config.getAllTracer().getEndPoint(algoNames[0]);
@@ -233,10 +239,14 @@ public class AllTracerGui extends JFrame {
 		});
 
 		gm.setMode(ModalGraphMouse.Mode.TRANSFORMING);
-
 		vv.setGraphMouse(gm);
-		drawShortest();
-		vv.repaint();
+		if (!comboBox.getSelectedItem().equals("sEA")) {
+			drawShortest();
+			vv.repaint();
+		} else {
+			JOptionPane.showMessageDialog(null, "This Graph view is not correctly implemented for the Algo sEA!",
+					"Implementation missing!", JOptionPane.WARNING_MESSAGE);
+		}
 
 		allTracerPanel.add(vv, BorderLayout.CENTER);
 		this.getContentPane().add(allTracerPanel, BorderLayout.CENTER);

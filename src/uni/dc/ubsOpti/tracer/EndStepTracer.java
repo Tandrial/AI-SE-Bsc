@@ -11,15 +11,15 @@ import java.util.Map;
 
 public class EndStepTracer extends Tracer {
 	private static final long serialVersionUID = 1L;
-	private int roundNumber = -1;
+	private int id = -1;
 
 	Map<String, Long> dataPoints = new HashMap<String, Long>();
 
 	@Override
 	public void update(TracerStat stat) {
 		if (stat.getPrio().length == 0) {
-			if (roundNumber != -1)
-				dataPoints.put(roundNumber + ";" + stat.getName(), stat.getStep() - 1);
+			if (id != -1)
+				dataPoints.put(id + ";" + stat.getName(), stat.getStep() - 1);
 			else
 				dataPoints.put(stat.getName(), stat.getStep() - 1);
 		}
@@ -29,12 +29,12 @@ public class EndStepTracer extends Tracer {
 		return dataPoints;
 	}
 
-	public long getRoundNumber(String algoName) {
+	public long getEndStep(String algoName) {
 		return dataPoints.get(algoName);
 	}
 
-	public void getEndStepForAlgo(int roundNumber) {
-		this.roundNumber = roundNumber;
+	public void setID(int id) {
+		this.id = id;
 	}
 
 	public static void saveToFile(File file, EndStepTracer tracer) {

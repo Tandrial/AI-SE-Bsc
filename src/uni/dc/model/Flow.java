@@ -96,5 +96,6 @@ public class Flow implements Serializable {
 
 	public void setInitialMaxAllowedDelay(double modifier) {
 		this.maxAllowedDelay = this.delay * modifier;
+		this.delay = 0;
 	}
 }

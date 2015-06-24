@@ -1,5 +1,6 @@
 package uni.dc.ubsOpti.tracer;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -28,44 +29,48 @@ public class AllTracer extends Tracer {
 
 		DelegateForest<Individual<int[], int[]>, String> graph = graphs.get(algoName);
 
+//		if (algoName.equals("BT"))
+			handleBT(stat, graph);
+//		else
+//			handleOther(stat, graph);
+		endPoints.put(algoName, stat.getData());
+	}
+
+	private void handleBT(TracerStat stat, Forest<Individual<int[], int[]>, String> graph) {
 		if (!graph.containsVertex(stat.getData())) {
 			graph.addVertex(stat.getData());
 		}
 
-		if (algoName.equals("BT"))
-			handleBT(stat, graph);
-		else
-			handleother(stat, graph);
-		endPoints.put(algoName, stat.getData());
+		for (Individual<int[], int[]> parent : stat.getParents()) {
+			if (parent != null) {
+				String edgeName = String.format("%s->%s", parent, stat.getData());
+				String newEdgeName = edgeName;
+				int cnt = 0;
+				while (graph.containsEdge(newEdgeName)) {
+					newEdgeName = edgeName + "_" + cnt++;
+				}
+				graph.addEdge(newEdgeName, parent, stat.getData());
+			}
+		}
 	}
 
-	private void handleother(TracerStat stat, Forest<Individual<int[], int[]>, String> graph) {
+	private void handleOther(TracerStat stat, Forest<Individual<int[], int[]>, String> graph) {
+		stat.getData().x = Arrays.copyOf(stat.getData().x, stat.getData().x.length);
+		stat.getData().g = Arrays.copyOf(stat.getData().g, stat.getData().g.length);
+		if (!graph.containsVertex(stat.getData())) {
+			graph.addVertex(stat.getData());
+		}
 		if (stat.getParents().size() > 0) {
 			Individual<int[], int[]> parent = endPoints.get(stat.getName());
 			if (parent == stat.getData())
 				return;
-			String edgeName = String.format("%s->%s_", parent, stat.getData());			
+			String edgeName = String.format("%s->%s", parent, stat.getData());
 			String newEdgeName = edgeName;
 			int cnt = 0;
 			while (graph.containsEdge(newEdgeName)) {
-				newEdgeName = edgeName + cnt++;
+				newEdgeName = edgeName + "_" + cnt++;
 			}
 			graph.addEdge(newEdgeName, parent, stat.getData());
-		}
-	}
-
-	private void handleBT(TracerStat stat, Forest<Individual<int[], int[]>, String> graph) {
-
-		for (Individual<int[], int[]> parent : stat.getParents()) {
-			if (parent != null) {
-				String edgeName = String.format("%s->%s_", parent, stat.getData());
-				String newEdgeName = edgeName;
-				int cnt = 0;
-				while (graph.containsEdge(newEdgeName)) {
-					newEdgeName = edgeName + cnt++;
-				}
-				graph.addEdge(newEdgeName, parent, stat.getData());
-			}
 		}
 	}
 

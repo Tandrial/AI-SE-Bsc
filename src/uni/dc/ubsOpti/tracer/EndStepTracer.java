@@ -11,14 +11,14 @@ import java.util.Map;
 
 public class EndStepTracer extends Tracer {
 	private static final long serialVersionUID = 1L;
-	private int id = -1;
+	private String id = "";
 
 	Map<String, Long> dataPoints = new HashMap<String, Long>();
 
 	@Override
 	public void update(TracerStat stat) {
 		if (stat.getPrio().length == 0) {
-			if (id != -1)
+			if (!id.equals(""))
 				dataPoints.put(id + ";" + stat.getName(), stat.getStep() - 1);
 			else
 				dataPoints.put(stat.getName(), stat.getStep() - 1);
@@ -33,7 +33,7 @@ public class EndStepTracer extends Tracer {
 		return dataPoints.get(algoName);
 	}
 
-	public void setID(int id) {
+	public void setID(String id) {
 		this.id = id;
 	}
 

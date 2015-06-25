@@ -22,8 +22,20 @@ import uni.dc.ubsOpti.tracer.EndStepTracer;
 
 public class UbsOpti {
 
-	@Option(name = "-factor", usage = "Factor that makes the optimazation easier")
-	private double factor = 1.2d;
+	@Option(name = "-help", usage = "displays this hlep message")
+	private boolean help = false;
+
+	@Option(name = "-BT", usage = "BackTrack enabled")
+	private boolean BT = false;
+
+	@Option(name = "-HC", usage = "HillClimbing enabled")
+	private boolean HC = false;
+
+	@Option(name = "-SA", usage = "Simulated Annealing enabled")
+	private boolean SA = false;
+
+	@Option(name = "-sEA", usage = "simple EvolutionAlgo enabled")
+	private boolean sEA = false;
 
 	@Option(name = "-minPort", usage = "min amount of Ports")
 	private int minPort = 2;
@@ -46,20 +58,8 @@ public class UbsOpti {
 	@Option(name = "-runs", usage = "runs for each Configuration")
 	private int runs = 50;
 
-	@Option(name = "-BT", usage = "BackTrack enabled")
-	private boolean BT = false;
-
-	@Option(name = "-HC", usage = "HillClimbing enabled")
-	private boolean HC = false;
-
-	@Option(name = "-SA", usage = "Simulated Annealing enabled")
-	private boolean SA = false;
-
-	@Option(name = "-sEA", usage = "simple EvolutionAlgo enabled")
-	private boolean sEA = false;
-
-	@Argument
-	private List<String> arguments = new ArrayList<String>();
+	@Option(name = "-factor", usage = "Factor that makes the optimazation easier")
+	private double factor = 1.2d;
 
 	public static void main(String[] args) {
 		args = new String[4];
@@ -79,6 +79,12 @@ public class UbsOpti {
 		CmdLineParser parser = new CmdLineParser(this);
 		try {
 			parser.parseArgument(args);
+			if (help) {
+				System.out.println("java UbsOpti [options...] arguments...");
+				parser.printUsage(System.out);
+				return;
+
+			}
 		} catch (CmdLineException e) {
 			System.err.println(e.getMessage());
 			System.err.println("java UbsOpti [options...] arguments...");
@@ -128,7 +134,6 @@ public class UbsOpti {
 								opti.optimize(config, "SA");
 							if (sEA)
 								opti.optimize(config, "sEA");
-
 						}
 						System.out.println("");
 					}

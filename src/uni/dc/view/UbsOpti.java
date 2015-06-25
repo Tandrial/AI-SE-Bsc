@@ -2,15 +2,12 @@ package uni.dc.view;
 
 import java.awt.EventQueue;
 import java.io.File;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.logging.FileHandler;
 import java.util.logging.SimpleFormatter;
 
 import javax.swing.UIManager;
 
 import org.jfree.ui.RefineryUtilities;
-import org.kohsuke.args4j.Argument;
 import org.kohsuke.args4j.CmdLineException;
 import org.kohsuke.args4j.CmdLineParser;
 import org.kohsuke.args4j.Option;
@@ -62,11 +59,11 @@ public class UbsOpti {
 	private double factor = 1.2d;
 
 	public static void main(String[] args) {
-		args = new String[4];
-		args[0] = "-BT";
-		args[1] = "-HC";
-		args[2] = "-SA";
-		args[3] = "-sEA";
+		// args = new String[4];
+		// args[0] = "-BT";
+		// args[1] = "-HC";
+		// args[2] = "-SA";
+		// args[3] = "-sEA";
 
 		if (args.length == 0) {
 			new UbsOpti().startGui();

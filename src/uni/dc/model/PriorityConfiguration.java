@@ -259,4 +259,16 @@ public class PriorityConfiguration implements Cloneable, Serializable {
 			}
 		}
 	}
+
+	public int calcMaxSteps(int maxPrio) {
+		int count = 1;
+		for (EgressPort port : portFlowPriorityMap.keySet()) {
+			Map<Flow, PortFlowPriority> fMap = portFlowPriorityMap.get(port);
+			if (fMap.size() > 1) {
+				count *= Math.pow(fMap.size(), maxPrio);
+			}
+		}
+		//TODO: 50% of BruteForce
+		return count / 2;
+	}
 }

@@ -104,10 +104,8 @@ public class RandomMulticastPathGenerator {
 			portFlowMap.put(src, new LinkedHashSet<Flow>());
 		}
 
-		for (EgressPort src : topology.getPorts()) {
-			while (portFlowMap.get(src).size() < minFlowPerPort) {
-				if (maxFlowCount < flowId)
-					break;
+		while (flowId < maxFlowCount) {
+			for (EgressPort src : topology.getPorts()) {
 
 				// Pick a random sub set of destination ports (at least one)
 				List<EgressPort> destPorts = new ArrayList<EgressPort>(topology.getReachablePorts(src));
@@ -142,10 +140,10 @@ public class RandomMulticastPathGenerator {
 				}
 			}
 		}
+
 		for (EgressPort port : portFlowMap.keySet()) {
 			port.setFlowList(portFlowMap.get(port));
 		}
 		return rv;
-
 	}
 }

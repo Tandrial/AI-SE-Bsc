@@ -77,7 +77,7 @@ public class UbsOptiConfig implements Serializable {
 		topology = parser.getTopology();
 		traffic = parser.getTraffic();
 		prio = parser.getPriorityConfig();
-
+		maxSteps = prio.calcMaxSteps(maxPrio);
 		dim = prio.toIntArray().length;
 		delayCalc = ubsV0 ? new UbsV0DelayCalc(traffic) : new UbsV3DelayCalc(traffic);
 		delayCalc.calculateDelays(prio);
@@ -114,6 +114,7 @@ public class UbsOptiConfig implements Serializable {
 
 	public void genRemaining(GeneratorAPI generator) {
 		prio = generator.getPriorityConfiguration();
+		maxSteps = prio.calcMaxSteps(maxPrio);
 		dim = prio.toIntArray().length;
 		delayCalc = ubsV0 ? new UbsV0DelayCalc(traffic) : new UbsV3DelayCalc(traffic);
 	}
@@ -211,7 +212,7 @@ public class UbsOptiConfig implements Serializable {
 		return maxFlowCount;
 	}
 
-	public void setMaxFlowCount(int maxFlowCount) {
+	public void setFlowCount(int maxFlowCount) {
 		this.maxFlowCount = maxFlowCount;
 	}
 
@@ -234,10 +235,6 @@ public class UbsOptiConfig implements Serializable {
 
 	public int getMaxSteps() {
 		return maxSteps;
-	}
-
-	public void setMaxSteps(int maxSteps) {
-		this.maxSteps = maxSteps;
 	}
 
 	public int getRuns() {

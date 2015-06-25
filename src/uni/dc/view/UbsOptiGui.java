@@ -1,14 +1,11 @@
 package uni.dc.view;
 
 import java.awt.BorderLayout;
-import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
-import java.util.logging.FileHandler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import java.util.logging.SimpleFormatter;
 
 import javax.swing.ButtonGroup;
 import javax.swing.JFileChooser;
@@ -20,7 +17,6 @@ import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.JRadioButtonMenuItem;
 import javax.swing.JSeparator;
-import javax.swing.UIManager;
 import javax.swing.border.EmptyBorder;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
@@ -93,10 +89,10 @@ public class UbsOptiGui extends JFrame {
 						} else
 							fileName = "" + config.getTopology();
 
-						imagePanel.saveToFile(config.getTopology().toDot(), new File("./Topologies/" + fileName
-								+ "_port.png"));
-						imagePanel.saveToFile(config.getTraffic().toDot(config.getPriorityConfig()), new File(
-								"./Topologies/" + fileName + "_flow.png"));
+						imagePanel.saveToFile(config.getTopology().toDot(),
+								new File("./Topologies/" + fileName + "_port.png"));
+						imagePanel.saveToFile(config.getTraffic().toDot(config.getPriorityConfig()),
+								new File("./Topologies/" + fileName + "_flow.png"));
 					}
 				});
 				mnFile.add(mntmExportPng);
@@ -125,16 +121,6 @@ public class UbsOptiGui extends JFrame {
 						System.exit(0);
 					}
 				});
-
-				JMenuItem mntmNewMenuItem = new JMenuItem("Mass Test");
-				mntmNewMenuItem.addActionListener(new ActionListener() {
-					public void actionPerformed(ActionEvent e) {
-						BatchGui batchGui = new BatchGui();
-						RefineryUtilities.centerFrameOnScreen(batchGui);
-						batchGui.setVisible(true);
-					}
-				});
-				mnFile.add(mntmNewMenuItem);
 
 				JSeparator separator = new JSeparator();
 				mnFile.add(separator);
@@ -213,8 +199,8 @@ public class UbsOptiGui extends JFrame {
 							setStatusMsg("Error: Need to run atleast one optimazation!");
 							return;
 						}
-						BestOnlyTraceDisplay traceDisplay = new BestOnlyTraceDisplay("Best only Linechart", config
-								.getBestOnlyTracer());
+						BestOnlyTraceDisplay traceDisplay = new BestOnlyTraceDisplay("Best only Linechart",
+								config.getBestOnlyTracer());
 						traceDisplay.pack();
 						RefineryUtilities.centerFrameOnScreen(traceDisplay);
 						traceDisplay.setVisible(true);
@@ -230,8 +216,8 @@ public class UbsOptiGui extends JFrame {
 						setStatusMsg("Error: Need to run atleast one optimazation!");
 						return;
 					}
-					AllTracerGui allTraceDisplay = new AllTracerGui("Complete Trace",
-							config.getAllTracer().getGraphs(), config);
+					AllTracerGui allTraceDisplay = new AllTracerGui("Complete Trace", config.getAllTracer().getGraphs(),
+							config);
 					allTraceDisplay.pack();
 					RefineryUtilities.centerFrameOnScreen(allTraceDisplay);
 					allTraceDisplay.setVisible(true);
@@ -315,17 +301,17 @@ public class UbsOptiGui extends JFrame {
 		t1 = System.nanoTime();
 		boolean result = Optimizer.getOptimizer().optimize(config, algo);
 		t2 = System.nanoTime();
-		
+
 		if (result)
 			logger.log(Level.INFO, String.format("Optimazation successful (in %.4f sec)!", (t2 - t1) / 1.0e9));
 		else
 			logger.log(Level.INFO, String.format("Optimazation failed (in %.4f sec)!", (t2 - t1) / 1.0e9));
 
-		logger.log(Level.INFO,
-				String.format("Best Prio is: \n%s\nDelays are \n%s", config.getPriorityConfig(), config.getDelayCalc()));
+		logger.log(Level.INFO, String.format("Best Prio is: \n%s\nDelays are \n%s", config.getPriorityConfig(),
+				config.getDelayCalc()));
 
-		imagePanel.setDot(portDisplay ? config.getTopology().toDot() : config.getTraffic().toDot(
-				config.getPriorityConfig()));
+		imagePanel.setDot(
+				portDisplay ? config.getTopology().toDot() : config.getTraffic().toDot(config.getPriorityConfig()));
 		t3 = System.nanoTime();
 		setStatusMsg("Done (optimized in %.4f sec., rendered in %.4f sec.)", (t2 - t1) / 1.0E9, (t3 - t2) / 1.0E9);
 		logger.exiting(getClass().getName(), "optimize");
@@ -353,10 +339,12 @@ public class UbsOptiGui extends JFrame {
 			config.fromParser(parser);
 			Optimizer.getOptimizer().setTracer(config.resetAllTracers());
 
+			System.out.println("Max steps: " + config.getMaxSteps());
+
 			logger.log(Level.INFO, String.format("Loaded network \"%s\":\n%s", file.getName(), config));
 			t2 = System.nanoTime();
-			imagePanel.setDot(portDisplay ? config.getTopology().toDot() : config.getTraffic().toDot(
-					config.getPriorityConfig()));
+			imagePanel.setDot(
+					portDisplay ? config.getTopology().toDot() : config.getTraffic().toDot(config.getPriorityConfig()));
 			t3 = System.nanoTime();
 
 			setStatusMsg("Done (loaded in %.4f sec., rendered in %.4f sec.)", (t2 - t1) / 1.0E9, (t3 - t2) / 1.0E9);
@@ -379,12 +367,14 @@ public class UbsOptiGui extends JFrame {
 
 			config.fromGenerator();
 			Optimizer.getOptimizer().setTracer(config.resetAllTracers());
+
 			logger.log(Level.INFO, String.format("Generated new network: \n%s", config));
+
 			config.setPriorityConfig(new PriorityConfiguration(config.getTraffic()));
 
 			t2 = System.nanoTime();
-			imagePanel.setDot(portDisplay ? config.getTopology().toDot() : config.getTraffic().toDot(
-					config.getPriorityConfig()));
+			imagePanel.setDot(
+					portDisplay ? config.getTopology().toDot() : config.getTraffic().toDot(config.getPriorityConfig()));
 			t3 = System.nanoTime();
 
 			setStatusMsg("Done (generated in %.4f sec., rendered in %.4f sec.)", (t2 - t1) / 1.0E9, (t3 - t2) / 1.0E9);
@@ -400,27 +390,5 @@ public class UbsOptiGui extends JFrame {
 		statusLabel.setText(String.format(fmt, args));
 		statusLabel.repaint();
 		statusLabel.validate();
-	}
-
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			@Override
-			public void run() {
-				try {
-					UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-					UbsOptiGui gui = new UbsOptiGui("UBS Optimizer");
-					RefineryUtilities.centerFrameOnScreen(gui);
-
-					FileHandler fh = new FileHandler("./ubsOpti.log");
-					fh.setFormatter(new SimpleFormatter());
-
-					UbsOptiGui.logger.addHandler(fh);
-					SettingsGui.logger.addHandler(fh);
-					gui.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
 	}
 }

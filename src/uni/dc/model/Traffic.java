@@ -14,7 +14,7 @@ import java.util.Set;
 import uni.dc.view.GraphViz;
 import uni.dc.view.HSLColorGenerator;
 
-public class Traffic extends LinkedHashSet<Flow> implements Serializable {
+public class Traffic extends LinkedHashSet<Flow>implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private EgressTopology topology;
 

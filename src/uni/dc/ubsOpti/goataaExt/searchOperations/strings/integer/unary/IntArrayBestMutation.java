@@ -38,8 +38,8 @@ public final class IntArrayBestMutation extends IntVectorMutation {
 	/**
 	 * This is an unary search operation for vectors of int numbers. It takes
 	 * one existing genotype g (see Definition D4.2) from the search space and
-	 * produces one new genotype. This new element is the best possible solution which is
-	 * different by 1 element
+	 * produces one new genotype. This new element is the best possible solution
+	 * which is different by 1 element
 	 *
 	 * @param g
 	 *            the existing genotype in the search space from which a

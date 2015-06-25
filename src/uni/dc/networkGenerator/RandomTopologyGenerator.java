@@ -212,8 +212,8 @@ public class RandomTopologyGenerator {
 						clusterPortsAtCurrentRank.retainAll(portsAtCurrentRank);
 						EgressPort srcPort = clusterPortsAtCurrentRank
 								.get(rng.nextInt(clusterPortsAtCurrentRank.size()));
-						EgressPort destPort = new ArrayList<EgressPort>(portsAtNextRank).get(rng
-								.nextInt(portsAtNextRank.size()));
+						EgressPort destPort = new ArrayList<EgressPort>(portsAtNextRank)
+								.get(rng.nextInt(portsAtNextRank.size()));
 						clusterForwardPortMap.put(srcPort, destPort);
 					}
 					for (EgressPort srcPort : clusterForwardPortMap.keySet()) {

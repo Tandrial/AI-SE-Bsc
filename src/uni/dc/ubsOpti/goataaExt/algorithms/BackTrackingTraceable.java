@@ -76,8 +76,8 @@ public final class BackTrackingTraceable extends LocalSearchAlgorithmTraceable<i
 		notifyTracer(p);
 	}
 
-	public final Individual<int[], int[]> backTrack(IObjectiveFunction<int[]> f, ITerminationCriterion term,
-			int[] prio, Set<int[]> visisted, Individual<int[], int[]> parent) {
+	public final Individual<int[], int[]> backTrack(IObjectiveFunction<int[]> f, ITerminationCriterion term, int[] prio,
+			Set<int[]> visisted, Individual<int[], int[]> parent) {
 		// 0) Falls Prio schon besucht abbruch, sonst Prio zu besucht hinzufügen
 		if (visisted.contains(prio))
 			return best;

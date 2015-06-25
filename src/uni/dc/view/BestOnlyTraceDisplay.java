@@ -51,8 +51,8 @@ public class BestOnlyTraceDisplay extends JFrame {
 		localXYLineAndShapeRenderer.setBaseToolTipGenerator(new XYToolTipGenerator() {
 			@Override
 			public String generateToolTip(XYDataset dataset, int series, int item) {
-				String res = String.format("%s: (%d/%.4e)", dataset.getSeriesKey(series), dataset.getX(series, item)
-						.intValue(), dataset.getYValue(series, item));
+				String res = String.format("%s: (%d/%.4e)", dataset.getSeriesKey(series),
+						dataset.getX(series, item).intValue(), dataset.getYValue(series, item));
 				return res;
 			}
 		});

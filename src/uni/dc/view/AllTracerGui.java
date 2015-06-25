@@ -26,8 +26,6 @@ import javax.swing.border.LineBorder;
 import org.apache.commons.collections15.Transformer;
 import org.goataa.impl.utils.Individual;
 
-import uni.dc.model.PriorityConfiguration;
-import uni.dc.ubsOpti.UbsOptiConfig;
 import edu.uci.ics.jung.algorithms.layout.Layout;
 import edu.uci.ics.jung.algorithms.layout.TreeLayout;
 import edu.uci.ics.jung.algorithms.shortestpath.BFSDistanceLabeler;
@@ -39,6 +37,8 @@ import edu.uci.ics.jung.visualization.control.DefaultModalGraphMouse;
 import edu.uci.ics.jung.visualization.control.ModalGraphMouse;
 import edu.uci.ics.jung.visualization.control.PickingGraphMousePlugin;
 import edu.uci.ics.jung.visualization.renderers.Renderer;
+import uni.dc.model.PriorityConfiguration;
+import uni.dc.ubsOpti.UbsOptiConfig;
 
 public class AllTracerGui extends JFrame {
 

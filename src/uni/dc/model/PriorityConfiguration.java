@@ -268,7 +268,7 @@ public class PriorityConfiguration implements Cloneable, Serializable {
 				count *= Math.pow(fMap.size(), maxPrio);
 			}
 		}
-		//TODO: 50% of BruteForce
+		// TODO: 50% of BruteForce
 		return count / 2;
 	}
 }

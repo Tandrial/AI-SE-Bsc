@@ -17,7 +17,7 @@ public class BestOnlyTracer extends Tracer {
 		if (!dataPoints.containsKey(stat.getName())) {
 			dataPoints.put(stat.getName(), new ArrayList<TracerStat>());
 		}
-		
+
 		List<TracerStat> stats = dataPoints.get(stat.getName());
 
 		if (stats.size() > 0) {

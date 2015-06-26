@@ -50,13 +50,13 @@ public class UbsOpti {
 	private int minPrio = 2;
 
 	@Option(name = "-maxPrio", usage = "max amount of Prio")
-	private int maxPrio = 2;
+	private int maxPrio = 4;
 
 	@Option(name = "-runs", usage = "runs for each Configuration")
 	private int runs = 50;
 
 	@Option(name = "-factor", usage = "Factor that makes the optimazation easier")
-	private double factor = 1.2d;
+	private double factor = 1d;
 
 	public static void main(String[] args) {
 		// args = new String[4];
@@ -89,13 +89,19 @@ public class UbsOpti {
 			System.err.println();
 			return;
 		}
+		if (minPort > maxPort)
+			maxPort = minPort;
+		if (minFlow > maxFlow)
+			maxFlow = minFlow;
+		if (minPrio > maxPrio)
+			minPrio = maxPrio;
 		run();
 	}
 
 	private void run() {
 		Optimizer opti = Optimizer.getOptimizer();
 		UbsOptiConfig config = new UbsOptiConfig();
-		config.setSeed(minPort << 1 + maxPort << 2 + minFlow << 3 + maxFlow << 4 + minPrio << 5 + maxPrio << 6);
+		config.setSeed(minPort << 6 + maxPort << 5 + minFlow << 4 + maxFlow << 3 + minPrio << 2 + maxPrio << 1);
 		config.setModifier(factor);
 		EndStepTracer tracer = config.newEndStepTracer();
 		opti.addTracer(tracer);
@@ -103,17 +109,16 @@ public class UbsOpti {
 		t1 = System.nanoTime();
 		for (int portCount = minPort; portCount <= maxPort; portCount++) {
 			config.setPortCount(portCount);
-			for (int depthCount = 2; depthCount <= portCount - 2; depthCount++) {
+			for (int depthCount = 2; depthCount <= Math.max(2, portCount - 2); depthCount++) {
 				config.setDepth(depthCount);
 				config.newTopology();
 				System.out.println(String.format("\nNew Topologies : %d ports, %d depth:", portCount, depthCount));
-				for (int flowCount = minFlow; flowCount <= Math.min(maxFlow, portCount - 2); flowCount++) {
+				for (int flowCount = minFlow; flowCount < Math.min(maxFlow, portCount - 2); flowCount++) {
 					config.setFlowCount(flowCount);
 					System.out.println(String.format("  flowCount : %d", flowCount));
 					for (int prioCount = minPrio; prioCount <= maxPrio; prioCount++) {
 						config.setMaxPrio(prioCount);
-						System.out.print(String.format("    maxStep : %d    prioCount : %d\n      ",
-								config.getMaxSteps(), prioCount));
+						System.out.print(String.format("    prioCount : %d\n      ", prioCount));
 						int cnt = 0;
 						for (int run = 1; run <= runs; run++) {
 							String id = String.format("%03d%03d%03d%03d", portCount, depthCount, flowCount, prioCount,
@@ -138,7 +143,7 @@ public class UbsOpti {
 			}
 		}
 		t2 = System.nanoTime();
-		String fileName = String.format("%d_%dports_%dStreamConfigCount_%dmaxSteps_%dMaxPrio_%dmodi%s%s%s%s%s.csv",
+		String fileName = String.format("%d_%dports_%dStreamConfigCount_%dmaxSteps_%dMaxPrio_%dmodi%s%s%s%s.csv",
 				minPort, maxPort, runs, config.getMaxSteps(), config.getMaxPrio(), (int) (config.getModifier() * 100),
 				BT ? "BT" : "", HC ? "HC" : "", SA ? "SA" : "", sEA ? "sEA" : "");
 		EndStepTracer.saveToFile(new File("./Traces/" + fileName), tracer);

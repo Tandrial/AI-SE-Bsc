@@ -1,11 +1,11 @@
 package uni.dc.ubsOpti.tracer;
 
 import java.io.BufferedWriter;
-import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.io.Writer;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -13,41 +13,37 @@ import uni.dc.model.Pair;
 
 public class EndStepTracer extends Tracer {
 	private static final long serialVersionUID = 1L;
-	private String id = "";
 
-	Map<String, Pair<Long, Boolean>> dataPoints = new HashMap<String, Pair<Long, Boolean>>();
+	Map<String, ArrayList<Pair<Integer, Boolean>>> dataPoints = new HashMap<String, ArrayList<Pair<Integer, Boolean>>>();
 
 	@Override
 	public void update(TracerStat stat) {
 		if (stat.getPrio().length == 0) {
-			if (!id.equals(""))
-				dataPoints.put(id + ";" + stat.getName(),
-						new Pair<Long, Boolean>(stat.getStep() - 1, stat.isDelaysOkay()));
-			else
-				dataPoints.put(stat.getName(), new Pair<Long, Boolean>(stat.getStep() - 1, stat.isDelaysOkay()));
-		}
-	}
-
-	public Map<String, Pair<Long, Boolean>> getStats() {
-		return dataPoints;
-	}
-
-	public long getEndStep(String algoName) {
-		return dataPoints.get(algoName).getLeft();
-	}
-
-	public void setID(String id) {
-		this.id = id;
-	}
-
-	public static void saveToFile(File file, EndStepTracer tracer) {
-		try (Writer writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(file), "utf-8"))) {
-			for (String name : tracer.dataPoints.keySet()) {
-				Pair<Long, Boolean> data = tracer.dataPoints.get(name);
-				writer.write(name + ";" + data.getLeft() + ";" + data.getRight() + "\n");
+			if (!dataPoints.containsKey(stat.getName())) {
+				dataPoints.put(stat.getName(), new ArrayList<Pair<Integer, Boolean>>());
 			}
-		} catch (IOException e) {
-			e.printStackTrace();
+			dataPoints.get(stat.getName()).add(new Pair<Integer, Boolean>(stat.getStep(), stat.isDelaysOkay()));
 		}
+	}
+
+	public static void saveToFile(String fileName, EndStepTracer tracer) {
+		for (String algoName : tracer.dataPoints.keySet()) {
+			try {
+				Writer w = new BufferedWriter(
+						new OutputStreamWriter(new FileOutputStream(fileName + algoName + ".csv")));
+				w.write("Algo;Steps;delayOkay\n");
+				for (Pair<Integer, Boolean> data : tracer.dataPoints.get(algoName)) {
+					w.write(algoName + ";" + data.getLeft() + ";" + data.getRight() + "\n");
+				}
+				w.close();
+			} catch (IOException e) {
+
+			}
+		}
+	}
+
+	@Override
+	public void clearData() {
+		dataPoints.clear();
 	}
 }

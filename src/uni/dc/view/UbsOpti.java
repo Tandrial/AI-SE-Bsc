@@ -1,7 +1,6 @@
 package uni.dc.view;
 
 import java.awt.EventQueue;
-import java.io.File;
 import java.util.logging.FileHandler;
 import java.util.logging.SimpleFormatter;
 
@@ -55,8 +54,14 @@ public class UbsOpti {
 	@Option(name = "-runs", usage = "runs for each Configuration")
 	private int runs = 50;
 
-	@Option(name = "-factor", usage = "Factor that makes the optimazation easier")
+	@Option(name = "-factor", usage = "factor that makes the optimazation easier")
 	private double factor = 1d;
+
+	@Option(name = "-maxStep", usage = "max amount of steps before the algo stops trying")
+	private long maxStep = -1;
+
+	@Option(name = "-seed", usage = "seed for the random generator")
+	private long seed = 0x1337;
 
 	public static void main(String[] args) {
 		// args = new String[4];
@@ -101,7 +106,7 @@ public class UbsOpti {
 	private void run() {
 		Optimizer opti = Optimizer.getOptimizer();
 		UbsOptiConfig config = new UbsOptiConfig();
-		config.setSeed(minPort << 6 + maxPort << 5 + minFlow << 4 + maxFlow << 3 + minPrio << 2 + maxPrio << 1);
+		config.setSeed(seed);
 		config.setModifier(factor);
 		EndStepTracer tracer = config.newEndStepTracer();
 		opti.addTracer(tracer);
@@ -121,13 +126,14 @@ public class UbsOpti {
 						System.out.print(String.format("    prioCount : %d\n      ", prioCount));
 						int cnt = 0;
 						for (int run = 1; run <= runs; run++) {
-							String id = String.format("%03d%03d%03d%03d", portCount, depthCount, flowCount, prioCount,
-									run);
-							tracer.setID(id);
 							if (++cnt % 10 == 0)
 								System.out.print("..." + cnt);
 							config.newTraffic();
 							config.setPriorityConfig(new PriorityConfiguration(config.getTraffic()));
+							if (maxStep != -1 && config.getMaxSteps() > maxStep) {
+								run--;
+								continue;
+							}
 							if (BT)
 								opti.optimize(config, "BT");
 							if (HC)
@@ -138,17 +144,16 @@ public class UbsOpti {
 								opti.optimize(config, "sEA");
 						}
 						System.out.println("");
+						String fileName = String.format("%dports_%dflows_%dprios_%dmodi", portCount, flowCount,
+								prioCount, (int) (config.getModifier() * 100));
+						EndStepTracer.saveToFile("./Traces/" + fileName, tracer);
+						tracer.clearData();
 					}
 				}
 			}
 		}
 		t2 = System.nanoTime();
-		String fileName = String.format("%d_%dports_%dStreamConfigCount_%dmaxSteps_%dMaxPrio_%dmodi%s%s%s%s.csv",
-				minPort, maxPort, runs, config.getMaxSteps(), config.getMaxPrio(), (int) (config.getModifier() * 100),
-				BT ? "BT" : "", HC ? "HC" : "", SA ? "SA" : "", sEA ? "sEA" : "");
-		EndStepTracer.saveToFile(new File("./Traces/" + fileName), tracer);
-		System.out
-				.println(String.format("Batch done! (took %.4f s)\n See %s for results!", (t2 - t1) / 1.0e9, fileName));
+		System.out.println(String.format("Batch done! (took %.4f s)", (t2 - t1) / 1.0e9));
 
 	}
 

@@ -17,4 +17,9 @@ public class SingleBestTracer extends Tracer {
 	public TracerStat getBest() {
 		return best;
 	}
+
+	@Override
+	public void clearData() {
+		best = null;
+	}
 }

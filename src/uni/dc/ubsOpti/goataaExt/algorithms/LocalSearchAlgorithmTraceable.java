@@ -34,7 +34,7 @@ public class LocalSearchAlgorithmTraceable<G, X, IT extends Individual<G, X>> ex
 	/** a constant required by Java serialization */
 	private static final long serialVersionUID = 1;
 
-	protected long step = 1;
+	protected int step = 1;
 	private List<Tracer> tracers = new ArrayList<Tracer>();
 	private UbsDelayCalc delayCalc = null;
 

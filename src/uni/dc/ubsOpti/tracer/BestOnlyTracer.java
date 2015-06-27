@@ -32,4 +32,9 @@ public class BestOnlyTracer extends Tracer {
 	public Map<String, List<TracerStat>> getStats() {
 		return dataPoints;
 	}
+
+	@Override
+	public void clearData() {
+		dataPoints.clear();
+	}
 }

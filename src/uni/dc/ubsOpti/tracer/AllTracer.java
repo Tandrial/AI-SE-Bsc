@@ -17,6 +17,14 @@ public class AllTracer extends Tracer {
 	private Map<String, Boolean> algoSuccess = new HashMap<String, Boolean>();
 
 	@Override
+	public void clearData() {
+		graphs.clear();
+		endPoints.clear();
+		startPoints.clear();
+		algoSuccess.clear();
+	}
+
+	@Override
 	public void update(TracerStat stat) {
 		if (stat.getPrio().length == 0)
 			return;

@@ -37,10 +37,10 @@ public class UbsOpti {
 	private int minPort = 2;
 
 	@Option(name = "-maxPort", usage = "max amount of Ports")
-	private int maxPort = 10;
+	private int maxPort = 20;
 
 	@Option(name = "-minFlow", usage = "min amount of Flows")
-	private int minFlow = 3;
+	private int minFlow = 6;
 
 	@Option(name = "-maxFlow", usage = "max amount of Flows")
 	private int maxFlow = 6;
@@ -49,7 +49,7 @@ public class UbsOpti {
 	private int minPrio = 2;
 
 	@Option(name = "-maxPrio", usage = "max amount of Prio")
-	private int maxPrio = 4;
+	private int maxPrio = 3;
 
 	@Option(name = "-runs", usage = "runs for each Configuration")
 	private int runs = 50;
@@ -58,7 +58,7 @@ public class UbsOpti {
 	private double factor = 1d;
 
 	@Option(name = "-maxStep", usage = "max amount of steps before the algo stops trying")
-	private long maxStep = -1;
+	private long maxStep = 1 << 22;// -1;
 
 	@Option(name = "-seed", usage = "seed for the random generator")
 	private long seed = 0x1337;
@@ -118,22 +118,20 @@ public class UbsOpti {
 				config.setDepth(depthCount);
 				config.newTopology();
 				System.out.println(String.format("\nNew Topologies : %d ports, %d depth:", portCount, depthCount));
-				for (int flowCount = minFlow; flowCount < Math.min(maxFlow, portCount - 2); flowCount++) {
+				for (int flowCount = minFlow; flowCount <= Math.min(maxFlow, portCount - 2); flowCount++) {
 					config.setFlowCount(flowCount);
 					System.out.println(String.format("  flowCount : %d", flowCount));
 					for (int prioCount = minPrio; prioCount <= maxPrio; prioCount++) {
 						config.setMaxPrio(prioCount);
 						System.out.print(String.format("    prioCount : %d\n      ", prioCount));
-						int cnt = 0;
 						for (int run = 1; run <= runs; run++) {
-							if (++cnt % 10 == 0)
-								System.out.print("..." + cnt);
+							if (run % 10 == 0)
+								System.out.print("..." + run);
 							config.newTraffic();
 							config.setPriorityConfig(new PriorityConfiguration(config.getTraffic()));
-							if (maxStep != -1 && config.getMaxSteps() > maxStep) {
-								run--;
+							if (maxStep != -1 && config.getMaxSteps() > maxStep)
 								continue;
-							}
+
 							if (BT)
 								opti.optimize(config, "BT");
 							if (HC)
@@ -154,7 +152,6 @@ public class UbsOpti {
 		}
 		t2 = System.nanoTime();
 		System.out.println(String.format("Batch done! (took %.4f s)", (t2 - t1) / 1.0e9));
-
 	}
 
 	private void startGui() {
@@ -166,7 +163,7 @@ public class UbsOpti {
 					UbsOptiGui gui = new UbsOptiGui("UBS Optimizer");
 					RefineryUtilities.centerFrameOnScreen(gui);
 
-					FileHandler fh = new FileHandler("./ubsOpti.log");
+					FileHandler fh = new FileHandler("./UbsOpti.log");
 					fh.setFormatter(new SimpleFormatter());
 
 					UbsOptiGui.logger.addHandler(fh);

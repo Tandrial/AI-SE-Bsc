@@ -37,10 +37,10 @@ public class UbsOpti {
 	private int minPort = 2;
 
 	@Option(name = "-maxPort", usage = "max amount of Ports")
-	private int maxPort = 20;
+	private int maxPort = 10;
 
 	@Option(name = "-minFlow", usage = "min amount of Flows")
-	private int minFlow = 6;
+	private int minFlow = 3;
 
 	@Option(name = "-maxFlow", usage = "max amount of Flows")
 	private int maxFlow = 6;
@@ -58,7 +58,7 @@ public class UbsOpti {
 	private double factor = 1d;
 
 	@Option(name = "-maxStep", usage = "max amount of steps before the algo stops trying")
-	private long maxStep = 1 << 22;// -1;
+	private long maxStep = -1;
 
 	@Option(name = "-seed", usage = "seed for the random generator")
 	private long seed = 0x1337;

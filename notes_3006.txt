@@ -1,0 +1,37 @@
+Notes Meeting 1
+
+Topic to read
+
+	ANT
+	Flocklab / Minerva (alternatives)
+	BT Nodes  (paper, same idea but with Bluetooth)
+	MPLab X
+	Cyber physical Systems - cool name for WSN
+
+Structur
+
+Introduction
+	Context
+	Problem - Solution SHAMPU
+	My Problem "What are the capabilites of SHAMPU" - Solution Evaluation towards different things.
+
+Mainpart
+
+	Introduction to 
+		1) SHAMPU
+		2) ANT
+		3) TrainSense as an example application
+
+	Evaluation of 
+		1) Communicaton Range
+		2) Delay RoundTripTime  Ping? Timestamping with selectable precision
+		3) Throughput
+
+	Variables
+		1) # Nodes - What happends if 100 nodes send data at the same time?
+		2) info size (packet size small vs. big) -  Usefull to aggregate data and send as huge Burst or small packets instead?
+		3) network size (# hops) - 
+
+
+Conclusion
+	Summary: What / How / Future Work

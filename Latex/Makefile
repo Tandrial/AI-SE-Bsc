@@ -3,12 +3,7 @@
 all:   optimized
 
 clean:	
-	del *.toc *.log *.idx *.ind *.aux *.loa *.out *~ *.dvi *.bak *.bbl *.blg *.glo *.nlo *.ilg *.lof *.lot *.gls *.nls *.brf
-
-distclean: clean
-
-really-clean: clean	
-	del *.dvi *.ps *.pdf
+	del *.toc *.log *.idx *.ind *.aux *.loa *.out *~ *.dvi *.bak *.bbl *.blg *.glo *.nlo *.ilg *.lof *.lot *.gls *.nls *.brf *.dvi *.ps
 
 pdf: clean
 	pdflatex -interaction batchmode krane.tex

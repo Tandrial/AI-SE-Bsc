@@ -1,6 +1,7 @@
 package uni.dc.ubsOpti;
 
 import java.io.Serializable;
+import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -32,7 +33,7 @@ public class UbsOptiConfig implements Serializable {
 	private double modifier = 1.0d;
 	private double linkSpeed = 1e9;
 	private int maxPrio = 2;
-	private int maxSteps = 500000;
+	private BigInteger maxSteps = new BigInteger("500000");
 	private int runs = 1;
 	private int dim;
 
@@ -233,7 +234,7 @@ public class UbsOptiConfig implements Serializable {
 		this.linkSpeed = linkSpeed;
 	}
 
-	public int getMaxSteps() {
+	public BigInteger getMaxSteps() {
 		return maxSteps;
 	}
 

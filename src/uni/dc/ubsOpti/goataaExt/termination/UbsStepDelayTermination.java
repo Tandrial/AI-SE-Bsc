@@ -1,5 +1,7 @@
 package uni.dc.ubsOpti.goataaExt.termination;
 
+import java.math.BigInteger;
+
 import org.goataa.impl.termination.TerminationCriterion;
 
 import uni.dc.ubsOpti.UbsOptiConfig;
@@ -8,8 +10,8 @@ import uni.dc.ubsOpti.delayCalc.UbsDelayCalc;
 public final class UbsStepDelayTermination extends TerminationCriterion {
 	private static final long serialVersionUID = 1;
 	private UbsDelayCalc delayCalc;
-	private final int maxSteps;
-	private int remaining;
+	private final BigInteger maxSteps;
+	private BigInteger remaining;
 
 	public UbsStepDelayTermination(UbsOptiConfig config) {
 		this.maxSteps = config.getMaxSteps();
@@ -18,11 +20,12 @@ public final class UbsStepDelayTermination extends TerminationCriterion {
 
 	@Override
 	public final boolean terminationCriterion() {
-		return ((--this.remaining) <= 0 || delayCalc.checkDelays());
+		this.remaining = this.remaining.subtract(BigInteger.ONE);
+		return remaining.compareTo(BigInteger.ZERO) <= 0 || delayCalc.checkDelays();
 	}
 
 	public boolean foundDelay() {
-		return this.remaining > 0;
+		return remaining.compareTo(BigInteger.ZERO) > 0;
 	}
 
 	@Override

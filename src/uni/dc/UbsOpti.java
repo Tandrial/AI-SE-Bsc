@@ -1,6 +1,7 @@
-package uni.dc.view;
+package uni.dc;
 
 import java.awt.EventQueue;
+import java.math.BigInteger;
 import java.util.logging.FileHandler;
 import java.util.logging.SimpleFormatter;
 
@@ -15,6 +16,8 @@ import uni.dc.model.PriorityConfiguration;
 import uni.dc.ubsOpti.Optimizer;
 import uni.dc.ubsOpti.UbsOptiConfig;
 import uni.dc.ubsOpti.tracer.EndStepTracer;
+import uni.dc.view.SettingsGui;
+import uni.dc.view.UbsOptiGui;
 
 public class UbsOpti {
 
@@ -34,7 +37,7 @@ public class UbsOpti {
 	private boolean sEA = false;
 
 	@Option(name = "-minPort", usage = "min amount of Ports")
-	private int minPort = 2;
+	private int minPort = 10;
 
 	@Option(name = "-maxPort", usage = "max amount of Ports")
 	private int maxPort = 10;
@@ -43,33 +46,27 @@ public class UbsOpti {
 	private int minFlow = 3;
 
 	@Option(name = "-maxFlow", usage = "max amount of Flows")
-	private int maxFlow = 6;
+	private int maxFlow = 3;
 
 	@Option(name = "-minPrio", usage = "min amount of Prio")
 	private int minPrio = 2;
 
 	@Option(name = "-maxPrio", usage = "max amount of Prio")
-	private int maxPrio = 3;
+	private int maxPrio = 2;
 
 	@Option(name = "-runs", usage = "runs for each Configuration")
-	private int runs = 50;
+	private int runs = 500;
 
 	@Option(name = "-factor", usage = "factor that makes the optimazation easier")
 	private double factor = 1d;
 
 	@Option(name = "-maxStep", usage = "max amount of steps before the algo stops trying")
-	private long maxStep = -1;
+	private String maxStep = "-1";
 
 	@Option(name = "-seed", usage = "seed for the random generator")
 	private long seed = 0x1337;
 
 	public static void main(String[] args) {
-		// args = new String[4];
-		// args[0] = "-BT";
-		// args[1] = "-HC";
-		// args[2] = "-SA";
-		// args[3] = "-sEA";
-
 		if (args.length == 0) {
 			new UbsOpti().startGui();
 		} else {
@@ -106,10 +103,11 @@ public class UbsOpti {
 	private void run() {
 		Optimizer opti = Optimizer.getOptimizer();
 		UbsOptiConfig config = new UbsOptiConfig();
+		EndStepTracer tracer = config.newEndStepTracer();
 		config.setSeed(seed);
 		config.setModifier(factor);
-		EndStepTracer tracer = config.newEndStepTracer();
 		opti.addTracer(tracer);
+		BigInteger maxStepBigInt = new BigInteger(maxStep);
 		long t1, t2;
 		t1 = System.nanoTime();
 		for (int portCount = minPort; portCount <= maxPort; portCount++) {
@@ -118,7 +116,7 @@ public class UbsOpti {
 				config.setDepth(depthCount);
 				config.newTopology();
 				System.out.println(String.format("\nNew Topologies : %d ports, %d depth:", portCount, depthCount));
-				for (int flowCount = minFlow; flowCount <= Math.min(maxFlow, portCount - 2); flowCount++) {
+				for (int flowCount = minFlow; flowCount <= maxFlow; flowCount++) {
 					config.setFlowCount(flowCount);
 					System.out.println(String.format("  flowCount : %d", flowCount));
 					for (int prioCount = minPrio; prioCount <= maxPrio; prioCount++) {
@@ -129,9 +127,11 @@ public class UbsOpti {
 								System.out.print("..." + run);
 							config.newTraffic();
 							config.setPriorityConfig(new PriorityConfiguration(config.getTraffic()));
-							if (maxStep != -1 && config.getMaxSteps() > maxStep)
+							if (!maxStep.equals(new BigInteger("-1"))
+									&& config.getMaxSteps().compareTo(maxStepBigInt) > 0) {
+								System.out.println(maxStep);
 								continue;
-
+							}
 							if (BT)
 								opti.optimize(config, "BT");
 							if (HC)

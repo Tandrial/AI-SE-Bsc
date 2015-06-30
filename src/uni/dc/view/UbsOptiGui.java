@@ -30,7 +30,7 @@ import uni.dc.ubsOpti.UbsOptiConfig;
 public class UbsOptiGui extends JFrame {
 	private static final long serialVersionUID = 1L;
 
-	static final Logger logger = Logger.getLogger(UbsOptiGui.class.getName());
+	public static final Logger logger = Logger.getLogger(UbsOptiGui.class.getName());
 
 	private GraphVizPanel imagePanel;
 	private JLabel statusLabel;

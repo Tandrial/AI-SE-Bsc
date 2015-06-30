@@ -27,7 +27,7 @@ import uni.dc.ubsOpti.delayCalc.UbsV3DelayCalc;
 public class SettingsGui extends JDialog {
 
 	private static final long serialVersionUID = 1L;
-	static final Logger logger = Logger.getLogger(SettingsGui.class.getName());
+	public static final Logger logger = Logger.getLogger(SettingsGui.class.getName());
 
 	private JSpinner spDepth;
 	private JSpinner spPortCount;

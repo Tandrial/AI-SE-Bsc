@@ -42,7 +42,7 @@ public class SettingsGui extends JDialog {
 	public SettingsGui(UbsOptiConfig config) {
 		setResizable(false);
 		setTitle("Settings - UBsOpti");
-		setBounds(100, 100, 230, 325);
+		setBounds(100, 100, 230, 330);
 		getContentPane().setLayout(new BorderLayout());
 		JPanel contentPanel = new JPanel();
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -70,11 +70,11 @@ public class SettingsGui extends JDialog {
 		contentPanel.add(lblMaxprio);
 
 		JLabel lblFlowCount = new JLabel("Flow Count");
-		lblFlowCount.setBounds(10, 180, 100, 15);
+		lblFlowCount.setBounds(10, 157, 100, 15);
 		contentPanel.add(lblFlowCount);
 
 		JLabel lblRuns = new JLabel("runs");
-		lblRuns.setBounds(10, 205, 100, 15);
+		lblRuns.setBounds(10, 215, 100, 15);
 		contentPanel.add(lblRuns);
 
 		spDepth = new JSpinner();
@@ -108,23 +108,23 @@ public class SettingsGui extends JDialog {
 		contentPanel.add(spMaxPrio);
 
 		spFlowCount = new JSpinner();
-		spFlowCount.setModel(new SpinnerNumberModel(new Integer(10000), new Integer(10000), null, new Integer(1)));
+		spFlowCount.setModel(new SpinnerNumberModel(new Integer(3), new Integer(1), null, new Integer(1)));
 		spFlowCount.setValue(config.getMaxSteps());
-		spFlowCount.setBounds(125, 175, 80, 20);
+		spFlowCount.setBounds(125, 152, 80, 20);
 		contentPanel.add(spFlowCount);
 
 		spRuns = new JSpinner();
 		spRuns.setModel(new SpinnerNumberModel(new Integer(1), new Integer(1), null, new Integer(1)));
 		spRuns.setValue(config.getRuns());
-		spRuns.setBounds(125, 200, 80, 20);
+		spRuns.setBounds(125, 210, 80, 20);
 		contentPanel.add(spRuns);
 
 		rdbtnUbsV0 = new JRadioButton("UBS V0");
-		rdbtnUbsV0.setBounds(10, 235, 75, 20);
+		rdbtnUbsV0.setBounds(10, 245, 75, 20);
 		contentPanel.add(rdbtnUbsV0);
 
 		rdbtnUbsV3 = new JRadioButton("UBS V3");
-		rdbtnUbsV3.setBounds(105, 235, 100, 20);
+		rdbtnUbsV3.setBounds(105, 245, 100, 20);
 		contentPanel.add(rdbtnUbsV3);
 
 		if (config.isUbsV0()) {
@@ -148,7 +148,7 @@ public class SettingsGui extends JDialog {
 		JLabel lblOptimizerConfig = new JLabel("Optimizer Config");
 		lblOptimizerConfig.setHorizontalAlignment(SwingConstants.CENTER);
 		lblOptimizerConfig.setFont(new Font("Tahoma", Font.BOLD, 14));
-		lblOptimizerConfig.setBounds(10, 150, 195, 20);
+		lblOptimizerConfig.setBounds(10, 183, 195, 20);
 		contentPanel.add(lblOptimizerConfig);
 
 		JPanel buttonPane = new JPanel();

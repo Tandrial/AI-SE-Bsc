@@ -15,7 +15,7 @@ success <- subset(dataPoints, delayOkay == "true")
 
 #BarPlot with the % of runs that were successful
 print("Saving SuccessBarPlot...")
-png(filename = "./successBarPlot.png")
+png(filename = "./pics/successBarPlot.png")
 cf <- data.frame(table(success$Algo))
 cf <- data.frame(cf[,], cf[2] / dataCount[2] * 100)
 names(cf)[]<-c("Algo","Count","Better")
@@ -24,24 +24,29 @@ succBarPlot <- barplot(cf$Better, names.arg = cf$Algo, ylim = c(0,100),
 text(succBarPlot, 5, labels = sprintf("%2.2f%%", cf$Better))
 dev.off()
 
-#Histograms of the # of steps for each different algo
-print("Saving Histograms...")
-png(filename = "./BT_Histogram.png")
-BT_succ <- subset(success, Algo =="BT")
-hist(BT_succ$Steps, main = "Histogram Backtrack", xlab = "steps", ylab = "")
-dev.off()
-
-png(filename = "./HC_Histogram.png")
-HC_succ <- subset(success, Algo =="HC")
-hist(HC_succ$Steps, main = "Histogram Hillclimbing", xlab = "steps", ylab = "")
-dev.off()
-
-png(filename = "./SA_Histogram.png")
-SA_succ <- subset(success, Algo =="SA")
-hist(SA_succ$Steps, main = "Histogram Simulated Annealing", xlab = "steps", ylab = "")
-dev.off()
-
-png(filename = "./sEA_Histogram.png")
-sEA_succ <- subset(success, Algo =="sEA")
-hist(sEA_succ$Steps, main = "Histogram simple Evolutionary", xlab = "steps", ylab = "")
-dev.off()
+for(portCount in 2:20) {
+  for (depthCount in 2:portCount) {
+    for (flowCount in 3:6){
+      for (prioCount in 2:4) {
+        name <- sprintf("./Traces/%dports_%ddepth_%dflows_%dprios_*.csv",portCount, depthCount, flowCount, prioCount)
+        files <- Sys.glob(name)
+        if (length(files) != 0) {
+          dataPoints <- NULL
+          for (f in files) {
+            dataPoints <- rbind(dataPoints, read.csv(f, sep = ";"))
+         }
+          BT_succ <- subset(dataPoints, dataPoints$Algo =="BT")
+          HC_succ <- subset(dataPoints, dataPoints$Algo =="HC")
+          SA_succ <- subset(dataPoints, dataPoints$Algo =="SA")
+          sEA_succ <- subset(dataPoints, dataPoints$Algo =="sEA")
+          file <- sprintf("./pics/%dports_%ddepth_%dflows_%dprios.png",portCount, depthCount, flowCount, prioCount)
+          print(file)
+          png(filename = file)
+          boxplot(BT_succ$Steps, HC_succ$Steps, SA_succ$Steps, sEA_succ$Steps, 
+                  names = c("BT", "HC", "SA", "sEA") , ylab = "Schritte")
+          dev.off()
+        }
+      }
+    }
+  }
+}

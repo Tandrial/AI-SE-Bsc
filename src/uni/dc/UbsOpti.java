@@ -37,16 +37,16 @@ public class UbsOpti {
 	private boolean sEA = false;
 
 	@Option(name = "-minPort", usage = "min amount of Ports")
-	private int minPort = 10;
+	private int minPort = 17;
 
 	@Option(name = "-maxPort", usage = "max amount of Ports")
-	private int maxPort = 10;
+	private int maxPort = 20;
 
 	@Option(name = "-minFlow", usage = "min amount of Flows")
 	private int minFlow = 3;
 
 	@Option(name = "-maxFlow", usage = "max amount of Flows")
-	private int maxFlow = 3;
+	private int maxFlow = 6;
 
 	@Option(name = "-minPrio", usage = "min amount of Prio")
 	private int minPrio = 2;
@@ -55,13 +55,13 @@ public class UbsOpti {
 	private int maxPrio = 2;
 
 	@Option(name = "-runs", usage = "runs for each Configuration")
-	private int runs = 500;
+	private int runs = 100;
 
 	@Option(name = "-factor", usage = "factor that makes the optimazation easier")
 	private double factor = 1d;
 
 	@Option(name = "-maxStep", usage = "max amount of steps before the algo stops trying")
-	private String maxStep = "-1";
+	private String maxStep = "2000000";
 
 	@Option(name = "-seed", usage = "seed for the random generator")
 	private long seed = 0x1337;
@@ -115,7 +115,8 @@ public class UbsOpti {
 			for (int depthCount = 2; depthCount <= Math.max(2, portCount - 2); depthCount++) {
 				config.setDepth(depthCount);
 				config.newTopology();
-				System.out.println(String.format("\nNew Topologies : %d ports, %d depth:", portCount, depthCount));
+				System.out.println(String.format("\n%s New Topologies : %d ports, %d depth:", new java.util.Date(),
+						portCount, depthCount));
 				for (int flowCount = minFlow; flowCount <= maxFlow; flowCount++) {
 					config.setFlowCount(flowCount);
 					System.out.println(String.format("  flowCount : %d", flowCount));
@@ -129,7 +130,8 @@ public class UbsOpti {
 							config.setPriorityConfig(new PriorityConfiguration(config.getTraffic()));
 							if (!maxStep.equals(new BigInteger("-1"))
 									&& config.getMaxSteps().compareTo(maxStepBigInt) > 0) {
-								System.out.println(maxStep);
+								System.out.println(String.format("\nBruteForce steps: %s > maxStep %s!",
+										config.getMaxSteps(), maxStepBigInt));
 								continue;
 							}
 							if (BT)
@@ -142,8 +144,8 @@ public class UbsOpti {
 								opti.optimize(config, "sEA");
 						}
 						System.out.println("");
-						String fileName = String.format("%dports_%dflows_%dprios_%dmodi", portCount, flowCount,
-								prioCount, (int) (config.getModifier() * 100));
+						String fileName = String.format("%dports_%ddepth_%dflows_%dprios_%dmodi", portCount, depthCount,
+								flowCount, prioCount, (int) (config.getModifier() * 100));
 						EndStepTracer.saveToFile("./Traces/" + fileName, tracer);
 						tracer.clearData();
 					}

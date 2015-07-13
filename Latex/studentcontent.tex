@@ -1,22 +1,53 @@
 \chapter{Introduction}
 
-\chapter{Technical Background}
 
-\section{WSN}
+In this thesis we evalute on such WSN testbed: SHAMPU (Single chip Host for Autonomous Mote Programming over USB). SHAMPU aims to provide a framework for reprogramming and debugging of WSN. 
+
+
 \section{SHAMPU}
+
+SHAMPU (Single chip Host for Autonomous Mote Programming over USB) \cite{Smeets:2014:DAL:2602339.2602401} is a WSN testbed, which allows the remote debugging and reporgramming of sensor nodes. The main advantages over other testbeds (see section~\ref{sec:related_work}) are the low cost, small size and small energy consumption. SHAMPU can be used as an extension to an already existing sensor node. The node only needs to provide an USB-Interface, SHAMPU is thus completely OS independent.\\\\
+
+Picture SHAMPU framework
+\textit{ MOVE TO OTHER SECTION?
+The SHAMPU framework itself is split into multiple modules. The Code Reception Module allows the use of different protocols to connect to and communicate with other SHAMPU enabled devices. For wireless communication SHAMPU uses an ANTAP1MxIB RF Transceiver Module, which suppports the ANT protocol. The USB Host module is used to connect to the sensor node, which SHAMPU is attached to. }
+
+\section{Related work}
+\label{sec:related_work}
+
+There are already several different WSN testbeds available. These testbeds all fulfill certain roles, but ultimately fail to provide all the necessary features for a small, mobiles and low power WSN testbed.
+
+There are some testbeds which need a fixed infrastructur, like FlockLab \cite{Lim2013} or Minverva \cite{Sommer}. The nature of a fixed infrastructur has certains problems, for once it is only viable to test inside the lab and not in the targent environment since the needed infrastructur might not be available or transportable. 
+
+Other technologies aim to detach the testbed from the infrastructur itself and rely on wireless communication instead. Sensei-UU \cite{Rensfelt2009} for example uses a wireless 802.11 network for communication between the nodes and the sensor host. The problem here is the power requirements for the communication, which makes it hard to run the nodes without an external power source.
+
+BTNodes \cite{Moser} or Smart-Its \cite{Kasten2000} use Bluetooth to adress the power issue. But Bluetooth introduces different problems, such as a size limitations for the network size and difficult setup and use of more complex network topologies. The newest version of Bluetooth tries to adress this with the introduction of ScatterNets, but the setup and maintanence of the network still remain challenging.
+
+\chapter{Technical Background}
 \section{ANT}
-\section{TrainSense}
+ANT \cite{DynastreamInnovationsInc.2013} is a wireless protocol which operates in the 2.4 GHz ISM Band. Originally developed in 2003 for the use wireless sensors, the ANT protocol is designed for low power, scalibilty and ease of use.\\
+One of the advantages ANT has over other protocols, like Bluetooth or ZigBee is the high level of abstraction the ANT chipset provides. This is achieved by the incorperation the first 4 OSI-layer into the ANT protocol and thus allowing even low-cost MCU to setup and maintain complex wireless networks.\\
+
+\subsection{ANT Networks}
+In order for ANT-Nodes to communicate with eachother, they have to be part of a network. This is done be creating a channel and connection two or more different ANT nodes together. Most of the avaiblable channel types are bidirectional, but the ANT protocoll still differentiates between master and slaves nodes. While a master nodes mostly sends data and a slave nodes mostly receives data, the slave still has the ability to response to the incoming data.
+
+\subsection{ANT Channels}
+The ANT protocol knows 125 different channels, each 1 MHz wide. Each Channel supports a data rate of 1 Mbps and up to 65533 nodes. To avoid interference between the channels isochronous selfadjusting TDMA technology is used, this allows the ANT nodes to change the transmit timings and even the frequency that is being used for the current channel.
+
+The ANT protocol distinguishes between 2 different Channel types:
+\begin{description}
+\item{\textbf{Independent Channels}} \hfill \\ Indepentend Channels are used if there is only one ANT node, which is transmitting data. This allows 1:1 transmission, but also broadcasts.
+\item{\textbf{Shared Channels}} \hfill \\ Shared Channels are used if a single ANT node needs to receive data from many nodes. This type of channel is made possible by the use of Shared Channel Address, however this reduces the amount of data that can be transmitted at a time.
+\end{description}
+
+\section{ANTAP1MxIB RF}
+In order to use the ANT protocol each SHAMPU-mote is equipped with an ANTAP1MxIB RF Transceiver Module. The module was chosen because of it's small formfactor (20mm x 20mm) and very low power draw. The ANTAP1M can handle up to 4 ANT channels and a 1Mbps RF data rate, which is enough to setup and use the desired network topology.
 
 \chapter{Evaluation of SHAMPU}
 \section{Communication Range}
 \section{Communication Delay}
 \section{Data Throughput}
-\cite{Beutel04}
-\cite{Hopkins06}
-\cite{Leopold03}
-\cite{Lim13}
-\cite{Smeets14}
-\cite{Smeets13}
+
 
 \chapter{Conclusion}
 \section{Summary}

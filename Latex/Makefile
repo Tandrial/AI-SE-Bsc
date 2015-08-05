@@ -7,7 +7,7 @@ clean:
 
 distclean: clean
 
-really-clean: clean
+tidy: clean
 	rm -f *.dvi *.ps *.pdf
 
 pdf: clean

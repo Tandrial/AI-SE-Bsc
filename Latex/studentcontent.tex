@@ -68,6 +68,14 @@ The ANT protocol distinguishes between 2 different Channel types:
 \end{description}
 
 \subsection{ANT Communication}
+The ANT protocol supports 4 different data types: broadcast, acknowledge, burst and advanced burst. The data type is not part of the channel configuration and thus channels are able to use any combination of data types. The only exceptions are unidirectional channels, which can only ever send broadcast data. Each data type has a maximum payload of 8 bytes.
+\begin{itemize}
+	\item{Broadcast data} \hfill \\ Broadcast data is the most basic datatype and the default choice since it uses the least amount of power and bandwidth. Broadcast data is send every timeslot, and if no new data needs to be transmitted, the last send packet is repeated event if it wasn't broadcast in the first place.
+	\item{Acknowledge data} \hfill \\ Acknowledge data can only be used in bidirectional channels. Whenever a node receives an acknowledge data packet it immediately sends an ackowledge message back to the sender of original packet to confirm the correct transmission of the data.  
+	\item{Burst data} \hfill \\ Burst data provides a method to transmit large amounts of data. This is achieved by ignoring the normal channel period and sending the packets at a much higher rates. This allows for a maximum transmission rate of 20 kbps. There is no limit for the duration of the burst, however since burst data takes precedence over all other traffic, care should be taken care to allow other devices to transmit data.
+	\item{Advanced burst data} \hfill \\ This type of data is only supported on some ANT devices, it pushed the maximum transmission rate to 60 kbps, but is otherwise the same as normal burst data.
+\end{itemize}
+
 \textbf{TODO}
 \begin{itemize}
 	\item{Explain how each msg is structured}
@@ -100,17 +108,29 @@ For this we designed different scenarios, which test one or more of the describe
 \item{\textbf{Result}} \hfill \\ The results of the experiment and any additional collected data.
 \end{description}
 
+All the experiments were done on the third floor of the SA buidling
+\newpage
 
 \section{Experiment 1: Delay calculations between two nodes}
+\newpage
 
 \section{Experiment 2: Delay calculations between multiple nodes}
+\newpage
 
 \section{Experiment 3: Maximal communication Range}
 \textit{Diagram for the experiment:  2 nodes   x meter apart.  with distances from 0.5 m to 30m  (floor in SM 3xx is 27m long)}
-In this experiment we propose to test this theoretical limit, we set up two ANT radios next to each other. We then start moving the nodes away from each other until the connection breaks. We then start moving the nodes back together until a new connection is established.
+\begin{description} 
+\item{\textbf{Name}} \hfill \\ maximal communication Range
+\item{\textbf{Description}} \hfill \\ According to the datasheet the maximum range for communication is 30m. This limit can only be reach with full power, since we try to minimize power use
+\item{\textbf{Network Topology}} \hfill \\ 2 Nodes: A node is master, B node is slave. Node B is set up on a moveable platform 
+\item{\textbf{Result}} \hfill \\ 
+\end{description}
+In this experiment we propose to test the maximum range for communication. According to the specification the maximum range is 30m, we set up two ANT radios next to each other. We then start moving the nodes away from each other until the connection breaks. We then start moving the nodes back together until a new connection is established.
+\newpage
 
 \section{Experiment 4: Data Transfer between two nodes}
 The ANT protocol promises a speed of up to 1 Mbps, 20 kbps of which are available for the application itself. In this experiment we try to determining the speed with which it is possible to move data to and form a SHAMPU device. We also try to determinate what effect the size of the payload and the number of the nodes in the network have on the transmission speed.
+\newpage
 
 \section{Experiment 5: Reflash of a wireless sensor network}
 

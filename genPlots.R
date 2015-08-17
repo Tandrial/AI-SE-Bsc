@@ -20,7 +20,7 @@ cf <- data.frame(table(success$Algo))
 cf <- data.frame(cf[,], cf[2] / dataCount[2] * 100)
 names(cf)[]<-c("Algo","Count","Better")
 succBarPlot <- barplot(cf$Better, names.arg = cf$Algo, ylim = c(0,100), 
-                       main = sprintf("better than BruteForce \n [n = %i]",dataCount$Freq[1]))
+                       main = sprintf("besser als BF \n [Stichprobenanzahl = %i]",dataCount$Freq[1]))
 text(succBarPlot, 5, labels = sprintf("%2.2f%%", cf$Better))
 dev.off()
 
@@ -35,6 +35,8 @@ for(portCount in 2:20) {
           for (f in files) {
             dataPoints <- rbind(dataPoints, read.csv(f, sep = ";"))
          }
+         # Only care about successful runs
+          dataPoints <- subset(dataPoints, delayOkay == "true")
           BT_succ <- subset(dataPoints, dataPoints$Algo =="BT")
           HC_succ <- subset(dataPoints, dataPoints$Algo =="HC")
           SA_succ <- subset(dataPoints, dataPoints$Algo =="SA")
@@ -43,7 +45,7 @@ for(portCount in 2:20) {
           print(file)
           png(filename = file)
           boxplot(BT_succ$Steps, HC_succ$Steps, SA_succ$Steps, sEA_succ$Steps, 
-                  names = c("BT", "HC", "SA", "sEA") , ylab = "Schritte")
+                  names = c("BT", "HC", "SA", "sEA") , ylab = "Schritte", ylim = c(0,50))
           dev.off()
         }
       }

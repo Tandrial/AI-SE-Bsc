@@ -41,54 +41,55 @@ ANT \cite{DynastreamInnovationsInc.2013} is a wireless protocol which operates i
 One of the advantages ANT has over other protocols, like Bluetooth or ZigBee is the high level of abstraction the ANT Protocol provides. This is achieved by the incorporation the first 4 OSI-layer (see Figure \ref{fig:osilayer}) into the ANT protocol and thus allowing even low-cost MCU to setup and maintain complex wireless networks.
 
 \subsection{ANT Topology}
+In order for the ANT protocol to work each mote needs to be part of a network. As shown in figure \ref{fig:anttopo} the ANT protocol can be used to create simple or more complex networks. Each mote inside a network is called an ANT node and in order for two nodes to communicate with each other they need to be connected via a channel.
 
-In order for ANT-Nodes to communicate with each other, they have to be part of a network. This is done be creating a channel and connection two or more different ANT nodes together. 
 \begin{figure}[h]
 	\centering
 	\includegraphics[scale=0.7]{./pics/ANTtopo.png}
 	\caption{Example ANT Topologies}\label{fig:anttopo}
-\end{figure}\\
-\textbf{TODO}
-\begin{itemize}
-	\item{Explains what ANT nodes are}
-	\item{Explain what channels are (for now in section ANT Channels)}
-\end{itemize}
+\end{figure}
+
 
 \subsection{ANT Channels}
 Most of the available channel types are bidirectional, but the ANT protocol still differentiates between master and slaves nodes. While a master nodes mostly sends data and a slave nodes mostly receives data, the slave still has the ability to response to the incoming data.
 
-The ANT protocol knows 125 different channels, each 1 MHz wide. Each Channel supports a data rate of 1 Mbps and up to 65533 nodes. To avoid interference between the channels isochronous selfadjusting TDMA technology is used, this allows the ANT nodes to change the transmit timings and even the frequency that is being used for the current channel.
+The ANT protocol knows 125 different channels, each 1 MHz wide. Each Channel supports a data rate of 1 Mbps and up to 65533 nodes. To avoid interference between the channels isochronous self adjusting TDMA technology is used, this allows the ANT nodes to change the transmit timings and even the frequency that is being used for the current channel.
 
 \textit{Picture Process to establish a channel between master and slave nodes.}
 
 The ANT protocol distinguishes between 2 different Channel types:
 \begin{description}
-\item{\textbf{Independent Channels}} \hfill \\ Independent Channels are used if there is only one ANT node, which is transmitting data. This allows 1:1 transmission, but also broadcasts.
-\item{\textbf{Shared Channels}} \hfill \\ Shared Channels are used if a single ANT node needs to receive data from many nodes. This type of channel is made possible by the use of Shared Channel Address, however this reduces the amount of data that can be transmitted at a time.
+\item{\textbf{Independent Channels}} \hfill \\ Independent Channels are used if there is only one node, which is transmitting data. There is no limit of the amount of slave devices, which receive the messages being send out. Furthermore the message being send out is broadcast to all nodes, it is not possible to only address a specific node.
+\item{\textbf{Shared Channels}} \hfill \\ Shared Channels are used if a single ANT node needs to receive data from many nodes. This type of channel is made possible by the use of Shared Channel Address, however this reduces the amount of data that can be transmitted at a time. The Channel master can decided to either use one or two bytes as the address, which allows for either 255 or 65535 slave devices in the same channel.
 \end{description}
 
 \subsection{ANT Communication}
-The ANT protocol supports 4 different data types: broadcast, acknowledge, burst and advanced burst. The data type is not part of the channel configuration and thus channels are able to use any combination of data types. The only exceptions are unidirectional channels, which can only ever send broadcast data. Each data type has a maximum payload of 8 bytes.
+The ANT protocol supports 4 different data types: broadcast, acknowledge, burst and advanced burst. The data type is not part of the channel configuration and thus channels are able to use any combination of data types. The only exceptions are unidirectional channels, which can only ever send broadcast data.
 \begin{itemize}
 	\item{Broadcast data} \hfill \\ Broadcast data is the most basic datatype and the default choice since it uses the least amount of power and bandwidth. Broadcast data is send every timeslot, and if no new data needs to be transmitted, the last send packet is repeated event if it wasn't broadcast in the first place.
-	\item{Acknowledge data} \hfill \\ Acknowledge data can only be used in bidirectional channels. Whenever a node receives an acknowledge data packet it immediately sends an ackowledge message back to the sender of original packet to confirm the correct transmission of the data.  
-	\item{Burst data} \hfill \\ Burst data provides a method to transmit large amounts of data. This is achieved by ignoring the normal channel period and sending the packets at a much higher rates. This allows for a maximum transmission rate of 20 kbps. There is no limit for the duration of the burst, however since burst data takes precedence over all other traffic, care should be taken care to allow other devices to transmit data.
+	\item{Acknowledge data} \hfill \\ Acknowledge data can only be used in bidirectional channels. Whenever a node receives an acknowledge data packet it immediately sends an acknowledge message back to the sender of original packet to confirm the correct transmission of the data.  
+	\item{Burst data} \hfill \\ Burst data provides a method to transmit large amounts of data. This is achieved by ignoring the normal channel period and sending the packets right after each other. This allows for a transmission rate of upto 20 kbps, much higher than other data transmissions types. There is no limit for the duration of the burst, however since burst data takes precedence over all other traffic, care should be taken care to allow other devices to transmit data.
 	\item{Advanced burst data} \hfill \\ This type of data is only supported on some ANT devices, it pushed the maximum transmission rate to 60 kbps, but is otherwise the same as normal burst data.
 \end{itemize}
 
-\textbf{TODO}
-\begin{itemize}
-	\item{Explain how each msg is structured}
-	\item{Explain extended msg }
-\end{itemize}
+\subsection{ANT messages}
+In the ANT protocol each message has the in Figure \ref{fig:antmsg} specified basic format.
+\begin{figure}[h]
+	\centering
+	\includegraphics[scale=.75]{./pics/ANTmsg.png}
+	\caption{Ant message structure}\label{fig:antmsg}
+\end{figure}
+Each message starts with a special Sync-Byte and end with a checksum, which is calculated by xoring all previous bytes. The Msg Length byte is the number ob Message Content bytes. The Msg ID byte specifies which kind of data is contained in the message. The ANT protocol also provides an extended message format, which allows to attached further information to each message.
+
 
 \section{ANTAP1MxIB RF}
 In order to use the ANT protocol each SHAMPU-mote is equipped with an ANTAP1MxIB RF Transceiver Module. The module was chosen because of it's small form factor (20mm x 20mm) and very low power draw. The ANTAP1M can handle up to 4 ANT channels and a 1Mbps RF data rate, which is enough to setup and use the desired network topology.
 
-\textbf{TODO}
+The proposed experiments are run with two different kinds of hardware.
+
 \begin{itemize}
-	\item{Explain how the Chip communicates with the SHAMPU node}
-	\item{Explain how the Chip communicates with the host PC}
+	\item{ANT Basestation} \hfill \\ The Basestation contains the ANT Module and a \textbf{IC-Name} which allows the basestation to be connected via RS-232 to a PC.
+	\item{SHAMPU node} \hfill \\ The ANT Module is directly connected to the SHAMPU node in an asyncronous and is used just like any other 
 \end{itemize}
 
 \chapter{Evaluation of SHAMPU}
@@ -102,30 +103,56 @@ In order to assess the capabilities of SHAMPU we plan and run experiments design
 For this we designed different scenarios, which test one or more of the described categories. The following section describes the experiments according to the following template:
 
 \begin{description}
-\item{\textbf{Name}} \hfill \\ The name of the experiment.
 \item{\textbf{Description}} \hfill \\ A description of the experiment and the the category being evaluated.
 \item{\textbf{Network Topology}} \hfill \\ A diagram of the network topology in which the experiment is run.
+\item{\textbf{Testing methodology}} \hfill \\ A description on how the experiment is performed.
 \item{\textbf{Result}} \hfill \\ The results of the experiment and any additional collected data.
 \end{description}
 
-All the experiments were done on the third floor of the SA buidling
+All the experiments were done on the third floor of the SA building of the University Duisburg-Essen.
 \newpage
 
 \section{Experiment 1: Delay calculations between two nodes}
+\begin{description} 
+	\item{\textbf{Description}} \hfill \\ In this experiment we try to determine the communication delay between two nodes. For this we use a simple ping application. Node A starts by sending a ping packet to Node B. Node B acknowledges the message and response with a ping message of its own. Node A acknowledges that message and repeats the whole process.
+	\item{\textbf{Network Topology}} \hfill \\ \textit{Diagram for the experiment:  2 nodes right next to eachother. A node is master, B node is slave.} 
+	\item{\textbf{Testing methodology}} \hfill \\ As shown in figure (zzz) the delay of each transmission can be split into two different parts:\\
+	$d_1$ Delay Node A $\rightarrow$ Node B + 0 to $\frac{1}{freq}$\\
+	$d_2$ Delay Node B $\rightarrow$ Node A + 0 to $\frac{1}{freq}$\\
+	$d_3$ Delay PC $\rightarrow$ Node A\\
+	$d_4$ Delay PC $\rightarrow$ Node B\\
+	\begin{align*}
+	d_1 &= D - \frac{C}{2} + \frac{D-C}{2}\\
+	d_2 &= B + \frac{C}{2} + \frac{D-C}{2}\\
+	d_3 &= \frac{D-C}{2}\\
+	d_4 &= \frac{C}{2}\\
+	\end{align*}
+	1. Prepare Pingpayload [1 Byte == 1 char ‚p‘]\\
+	2. Save sendTimestamp in PC and send to Slave\\
+	3. Message arrives @ Slave:\\
+		3.1 directly reply msg to Master B = clock() – [savedTime]\\
+		3.2 msg to PC A = clock() – [savedTime]\\
+	4. Prep Pongpayload [1 Byte == 1 char ‚P‘]\\
+	5. Save sendTimestamp in PC and send to Master\\
+	6. Message arrives @ Master:\\
+		6.1 directly reply msg to Slave D = clock() - [savedTime]\\
+		6.2 msg to PC C = clock() – [savedTime]\\
+	  
+	\item{\textbf{Result}} \hfill \\ In Diagram (x) shows the transmission failures for each of the different runs. 
+\end{description}
+
 \newpage
 
 \section{Experiment 2: Delay calculations between multiple nodes}
 \newpage
 
 \section{Experiment 3: Maximal communication Range}
-\textit{Diagram for the experiment:  2 nodes   x meter apart.  with distances from 0.5 m to 30m  (floor in SM 3xx is 27m long)}
 \begin{description} 
-\item{\textbf{Name}} \hfill \\ maximal communication Range
-\item{\textbf{Description}} \hfill \\ According to the datasheet the maximum range for communication is 30m. This limit can only be reach with full power, since we try to minimize power use
-\item{\textbf{Network Topology}} \hfill \\ 2 Nodes: A node is master, B node is slave. Node B is set up on a moveable platform 
-\item{\textbf{Result}} \hfill \\ 
+\item{\textbf{Description}} \hfill \\ According to the datasheet the maximum range for communication is 30m. The ANT documentation doesn't specify for which power setting this range can be achieved. Since we try to minimize power use, we run the experiment with different power settings to try to discover the effects the power setting has on the communication range.
+\item{\textbf{Network Topology}} \hfill \\ \textit{Diagram for the experiment:  2 nodes   x meter apart.  with distances from 0.5 m to 30m  (floor in SM 3xx is 27m long)  A node is master, B node is slave. Node B is set up on a movable platform.} 
+\item{\textbf{Testing methodology}} \hfill \\ At the beginning of the experiment Node A and B are placed right next to each other. Node A acts as a master and keeps broadcasting the same message. Node B is the slave and tries to receive the broadcast message of Node A. After 20 broadcast messages are send, the transmission failures and successes are recorded and the distance between the two nodes is increased by 0.5 meters. This process is repeated until there no more successful transmissions. At this point the distance is no longer increased, but decreased until a successful transmission can be recorded again. The whole experiment is then repeated for each available power setting 
+\item{\textbf{Result}} \hfill \\ In Diagram (x) shows the transmission failures for each of the different runs. 
 \end{description}
-In this experiment we propose to test the maximum range for communication. According to the specification the maximum range is 30m, we set up two ANT radios next to each other. We then start moving the nodes away from each other until the connection breaks. We then start moving the nodes back together until a new connection is established.
 \newpage
 
 \section{Experiment 4: Data Transfer between two nodes}

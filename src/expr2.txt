@@ -1,0 +1,29 @@
+Data Throughput
+
+Master keeps sending the same byte over and over  (Burst mode)
+
+Slave receives data for 10s, the test ist run 10 times:
+
+Done. 160 bytes received in 10.000000 s => 16.000000 kbps
+Done. 232 bytes received in 10.000000 s => 23.200001 kbps
+Done. 176 bytes received in 10.000000 s => 17.600000 kbps
+Done. 232 bytes received in 10.000000 s => 23.200001 kbps
+Done. 240 bytes received in 10.000000 s => 24.000000 kbps
+Done. 224 bytes received in 10.000000 s => 22.400000 kbps
+Done. 216 bytes received in 10.000000 s => 21.600000 kbps
+Done. 192 bytes received in 10.000000 s => 19.200001 kbps
+Done. 192 bytes received in 10.000000 s => 19.200001 kbps
+Done. 144 bytes received in 10.000000 s => 14.400000 kbps
+Average datarate : 20.079998  std dev 3.148587127
+
+Done. 80 bytes received in 10.000000 s => 8.000000 kbps
+Done. 168 bytes received in 10.000000 s => 16.799999 kbps
+Done. 128 bytes received in 10.000000 s => 12.800000 kbps
+Done. 96 bytes received in 10.000000 s => 9.600000 kbps
+Done. 136 bytes received in 10.000000 s => 13.600000 kbps
+Done. 128 bytes received in 10.000000 s => 12.800000 kbps
+Done. 72 bytes received in 10.000000 s => 7.200000 kbps
+Done. 72 bytes received in 10.000000 s => 7.200000 kbps
+Done. 72 bytes received in 10.000000 s => 7.200000 kbps
+Done. 88 bytes received in 10.000000 s => 8.800000 kbps
+Average datarate : 10.400000

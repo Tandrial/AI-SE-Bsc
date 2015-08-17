@@ -1,20 +1,22 @@
 /*
  *  Created on: 2012/10/12
  *      Author: ryuchi
-
-Added high-level support for PIC and PC: 2015/07/07 (Hugues Smeets)
-
+ *
+ *  Added high-level support for PIC and PC: 2015/07/07 (Hugues Smeets)
+ *	Added blockfree ANT_RecvPacket_Blockfree with FSM: 2015/08/06 (Michael Krane) 
+ *
  */
 
 #include "ant.h"
 
 uint8_t BC_ANT_buffer[BC_ANT_BUFFSIZE];
 uint8_t BC_ANT_raw_buffer[BC_ANT_BUFFSIZE];
+uint8_t BC_ANT_recvBuffer[BC_ANT_BUFFSIZE];
 
 int antFD = 0;
 
 /******************************
-  ANT serial port abstraction 
+  ANT serial port abstraction
 *******************************/
 
 #ifdef ANT_PIC
@@ -30,6 +32,8 @@ void antUARTputChar( char ){
 int  antUARTgetChar( char *p ){uart1_recv_char( p );}
 }
 int  antUARTreceivedChar( void ){return antUARTreceivedChar();}
+
+void flushBuffer(void) { }
 #endif
 
 #ifdef ANT_PC
@@ -57,7 +61,7 @@ int  antUARTrts( void  ){
 
 
 void antUARTputChar( char c ){
-printf("[ %02X ]",(unsigned char)c);
+  printf("[%2X]",(unsigned char)c);
   writeSerial( antFD, &c, 1);
 }
 int  antUARTgetChar( char *p ){
@@ -65,10 +69,16 @@ int  antUARTgetChar( char *p ){
   return 1;
 }
 int  antUARTreceivedChar( void ){
-  error("antUARTreceivedChar");
-  return 0;
+	return gotSerialChar(antFD);
 }
 
+int flushBuffer() {
+	char c;
+	while (antUARTreceivedChar()) {
+		antUARTgetChar(&c);
+	}
+	return 1;
+}
 #endif
 
 /********************
@@ -76,214 +86,123 @@ int  antUARTreceivedChar( void ){
 ********************/
 
 #ifdef ANT_PIC
-  void antDelayMs( int i ){ delayMs( i ); }
+  void ANT_delayMs( int i ){ delayMs( i ); }
 #endif
 
 #ifdef ANT_PC
-  void antDelayMs( int i ){ usleep( i * 1000 );}
+  void ANT_delayMs( int i ){ usleep( i * 1000 );}
 #endif
-
-/**********************
-  high level functions
-**********************/
-
-
-/*****************************************************************************
-Input:
-Output:
-Rem: -
-*****************************************************************************/
-void antCreateMessage(ANT_MESSAGE* message, UINT8 id, UINT8* data, UINT8 length)
-{
-    UINT8 i;
-    message->sync = 0xA4;
-    message->id = id;
-    message->data = data;
-    message->length = length;
-
-    message->checksum = message->sync ^ message->id ^ message->length;
-
-    for(i = 0; i < length; i++)
-    {
-        message->checksum ^= message->data[i];
-    }
-
-    message->padbytes = 2;
-}
-
-/*****************************************************************************
-Input:
-  ANT_MESSAGE* message
-  UINT8 maxWaitingTime: maximum time to wait for an answer from the ANT mote
-                        in 10ms units, 0xFF for no timeout.
-Output:
-  ANT_OK: the ANT node accepted the message.
-  ANT_TIMEOUT: the ANT did not accept the message within the given time.
-Rem: -
-*****************************************************************************/
-UINT8 antSendMessage(ANT_MESSAGE* message, UINT8 maxWaitingTime)
-{
-    UINT8 i;
-
-#ifdef ANT_PIC
-    UINT8 waitingTime = 0;
-    while(PORTBbits.RB0) 
-    {
-        if((maxWaitingTime != 0xff) && (waitingTime >= maxWaitingTime))
-        {
-            return ANT_TIMEOUT;
-        }
-        DelayMs(10);
-        waitingTime++;
-    }
-#endif
-
-#ifdef ANT_PC    
-    while( antUARTrts() );
-#endif
-
-
-    antUARTputChar(message->sync);
-    antUARTputChar(message->length);
-    antUARTputChar(message->id);
-
-    for(i = 0; i < message->length;i++)
-    {
-        antUARTputChar(message->data[i]);
-    }
-
-    antUARTputChar(message->checksum);
-
-    for(i = 0; i < message->padbytes; i++)
-    {
-        antUARTputChar(0x00);
-    }
-
-    return ANT_OK;
-}
-
-/*****************************************************************************
-Input:
-  UINT8 master: the master ID
-  UINT8 channel: the channel ID
-  void (*antIdle)(void): a pointer to a function that will be called
-                         whenever a function of this module has to wait.
-Output: -
-Rem: -
-*****************************************************************************/
-void antInit(UINT8 master, UINT8 channel, void (*antIdle)(void) )
-{
-#ifdef ANT_PC
-  if( antUARTinit( ANT_IO_PORT ) ) error("Can't initialize ANT port");
-#endif
-
-#ifdef ANT_PIC
-  antUARTinit( ANT_IO_PORT );  /* maybe we make an LED blink if failed? */
-#endif
-    if(master > 0)
-    {
-		ANT_MESSAGE assignChannelMsg;
-        /*Assign Channel (Bidi Master): Channel 1
-        
-                                      +-> channel number      +-> channel type
-                                      |                       |
-                                      |                       |     +-> network number
-                                      |                       |     | */
-        UINT8 assignChannelData[] = {0x01,ANT_CHANNEL_BIDI_MASTER,0x00};
-        antCreateMessage(&assignChannelMsg,0x42,assignChannelData,3);
-        antSendMessage(&assignChannelMsg,0xFF);
-
-        ANT_MESSAGE setChannelIDMsg;
-        /*Set Channel ID
-  
-                                      +-> channel number
-                                      |
-                                      |   device number
-                                      |    LSB  MSB
-                                      |     |    |   +-> device type ID
-                                      |     |    |   |
-                                      |     |    |   |     +-> tranmission type
-                                      |     |    |   |     | */
-        UINT8 sendChannelIDData[] = {0x01,0x01,0x00,0x07,0x01};
-        antCreateMessage(&setChannelIDMsg,0x51,sendChannelIDData,5);
-        antSendMessage(&setChannelIDMsg,0xFF);
-
-        ANT_MESSAGE setFrequencyMsg;
-        UINT8 setFrequencyData[] = {0x01,0x05};
-        antCreateMessage(&setFrequencyMsg,0x45,setFrequencyData,2);
-        antSendMessage(&setFrequencyMsg,0xFF);
-
-        ANT_SetChannelPeriod_Hz( 1, 4 );
-
-        ANT_MESSAGE openChannelMsg;
-/*                                   +-> channel number
-                                     | */
-        UINT8 openChannelData[] = {0x01};
-        antCreateMessage(&openChannelMsg,0x4B,openChannelData,1);
-        antSendMessage(&openChannelMsg,0xFF);
-
-
-        while(1)
-        {
-            ANT_MESSAGE testMsg;
-            UINT8 testData[] = {0x01,0x02,0x03,0x04};
-            antCreateMessage(&testMsg,0x4E,testData,0x04);
-            antSendMessage(&testMsg,0xFF);
-            antDelayMs(10000);
-			printf(";");fflush(stdout);
-        }
-    }
-    else
-    {
-
-    }
-exit(-1);
-}
-
 
 /*********************
  low level functions
 **********************/
 
-uint32_t BC_ANT_RecvPacket(uint8_t *buffer, unsigned int size) {
+uint32_t ANT_RecvPacket_Blockfree(uint8_t *buffer, unsigned int size) {
+	static ReceiverState_t state = RS_WAITING_FOR_SYNC;
+	static uint8_t payloadLeft;
+	static uint8_t mesg_len;
+	static uint8_t checksum;
+	static uint8_t* revcBufferPos = BC_ANT_recvBuffer;
+
+	if (state == RS_PACKET_COMPLETE) {
+		state = RS_WAITING_FOR_SYNC;
+		revcBufferPos = BC_ANT_recvBuffer;
+	}
 
 	unsigned char c;
+	if (antUARTreceivedChar()) {
+		antUARTgetChar((char*) &c);
+	} else {
+		return state;
+	}
+
+	 switch (state) {
+	 	case RS_WAITING_FOR_SYNC:
+			if (c == ANT_SYNCBYTE) {
+				*revcBufferPos++ = c;
+				checksum = ANT_SYNCBYTE;
+				state = RS_WAITING_FOR_MSGLENGTH;
+			}
+			break;
+
+		case RS_WAITING_FOR_MSGLENGTH:
+			*revcBufferPos++ = c;
+			mesg_len = c;
+			checksum ^= c;
+			payloadLeft = c;
+			state = RS_WAITING_FOR_MSGTYPE;
+			break;
+
+		case RS_WAITING_FOR_MSGTYPE:
+			*revcBufferPos++ = c;
+			checksum ^= c;
+			state = RS_WAITING_FOR_PAYLOAD;
+			break;
+
+		case RS_WAITING_FOR_PAYLOAD:
+			*revcBufferPos++ = c;
+			checksum ^= c;
+			payloadLeft--;
+			if (payloadLeft == 0) {
+				state = RS_WAITING_FOR_CHECKSUM;
+			}
+			break;
+
+		case RS_WAITING_FOR_CHECKSUM:
+			*revcBufferPos++ = c;
+			if (c == checksum) {
+				if ((uint32_t) (mesg_len + 4) > size) {
+					state = RS_ERROR;
+					error("Receiver Buffer is not big enough! size : %d (need %d)!", size, mesg_len + 4);
+				} else {
+					state = RS_PACKET_COMPLETE;
+					memcpy(buffer, BC_ANT_recvBuffer, mesg_len + 4);
+				}
+			} else {
+				state = RS_ERROR;
+			}
+			break;
+
+		default:
+			state = RS_ERROR;
+			break;
+	}
+	return state;
+}
+
+
+uint32_t BC_ANT_RecvPacket(uint8_t *buffer, unsigned int size) {
+	unsigned char c;
 	uint8_t checksum;
-	unsigned int length, mesg_len;
-
-	if (!antUARTreceivedChar())
-        {
-            return 0;
-        }
-
+	unsigned int length;
+	unsigned char mesg_len;
+	if (antUARTreceivedChar() == 0) {
+        return 0;
+    }
 
         /*Wait for syncbyte */
 	antUARTgetChar( (char*) &c );
-
 	while ( c != ANT_SYNCBYTE ) {
-                *buffer++ = c;
+        *buffer++ = c;
 		if (!antUARTgetChar( (char*) &c )) {
-                        *buffer++ = c;
+            *buffer++ = c;
 			return 0;
 		}
 	}
 
-
 	*buffer++ = c;
-        checksum = ANT_SYNCBYTE;
+    checksum = ANT_SYNCBYTE;
 	length = 1;
-
         /*Get Message Length */
 	mesg_len = antUARTreceivedChar();
+
 	*buffer++ = mesg_len;
 	checksum ^= mesg_len;
 	length++;
-
         /*Get message ID */
 	*buffer  = antUARTreceivedChar();
 	checksum ^= *buffer++;
 	length++;
-
 	while( mesg_len-- ) {
 		*buffer = antUARTreceivedChar();
 		checksum ^= *buffer++;
@@ -292,24 +211,23 @@ uint32_t BC_ANT_RecvPacket(uint8_t *buffer, unsigned int size) {
 			return 0;
 		}
 	}
-
 	*buffer = antUARTreceivedChar();
+
 	if ( *buffer == checksum ) {
 		return length + 1;
 	 }
 
 	return 0;
-
 }
 
 unsigned int BC_ANT_SendPacket( uint8_t *packet, unsigned int size ) {
-
   uint32_t i = 0;
   while( i < size ){
     while ( antUARTrts() );
       antUARTputChar( *( packet + i ) );
       i++;
     }
+    printf("\n");
     return 0;
 }
 
@@ -456,9 +374,7 @@ uint32_t ANT_SetChannelPeriod_Hz(
 	*p++ = MessagePeriod >> 8;
 
 	psize = BC_ANT_build_packet( BC_ANT_buffer, 3, BC_ANT_raw_buffer );
-printf("stuck...");fflush(stdout);
 	BC_ANT_SendPacket( BC_ANT_raw_buffer, psize);
-printf("unstuck...");fflush(stdout);
 
 	return 0;
 
@@ -1063,4 +979,3 @@ uint32_t ANT_SendExtBurstData(
 
 	return 0;
 }
-

@@ -20,6 +20,7 @@ public final class UbsStepDelayTermination extends TerminationCriterion {
 
 	@Override
 	public final boolean terminationCriterion() {
+		// TODO Abbruchkriterium, siehe Abschnitt 3.4
 		this.remaining = this.remaining.subtract(BigInteger.ONE);
 		return remaining.compareTo(BigInteger.ZERO) <= 0 || delayCalc.checkDelays();
 	}

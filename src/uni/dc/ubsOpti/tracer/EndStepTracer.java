@@ -14,15 +14,15 @@ import uni.dc.model.Pair;
 public class EndStepTracer extends Tracer {
 	private static final long serialVersionUID = 1L;
 
-	Map<String, ArrayList<Pair<Integer, Boolean>>> dataPoints = new HashMap<String, ArrayList<Pair<Integer, Boolean>>>();
+	Map<String, ArrayList<Pair<Long, Boolean>>> dataPoints = new HashMap<String, ArrayList<Pair<Long, Boolean>>>();
 
 	@Override
 	public void update(TracerStat stat) {
 		if (stat.getPrio().length == 0) {
 			if (!dataPoints.containsKey(stat.getName())) {
-				dataPoints.put(stat.getName(), new ArrayList<Pair<Integer, Boolean>>());
+				dataPoints.put(stat.getName(), new ArrayList<Pair<Long, Boolean>>());
 			}
-			dataPoints.get(stat.getName()).add(new Pair<Integer, Boolean>(stat.getStep(), stat.isDelaysOkay()));
+			dataPoints.get(stat.getName()).add(new Pair<Long, Boolean>(stat.getStep(), stat.isDelaysOkay()));
 		}
 	}
 
@@ -32,7 +32,7 @@ public class EndStepTracer extends Tracer {
 				Writer w = new BufferedWriter(
 						new OutputStreamWriter(new FileOutputStream(fileName + algoName + ".csv")));
 				w.write("Algo;Steps;delayOkay\n");
-				for (Pair<Integer, Boolean> data : tracer.dataPoints.get(algoName)) {
+				for (Pair<Long, Boolean> data : tracer.dataPoints.get(algoName)) {
 					w.write(algoName + ";" + data.getLeft() + ";" + data.getRight() + "\n");
 				}
 				w.close();

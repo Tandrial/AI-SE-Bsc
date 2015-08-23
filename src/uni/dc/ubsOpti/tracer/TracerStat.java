@@ -10,14 +10,14 @@ import org.goataa.impl.utils.Individual;
 public class TracerStat implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private String name;
-	private int step;
+	private long step;
 	private boolean delaysOkay;
 	private double delay;
 	private Individual<int[], int[]> data;
 	private List<Individual<int[], int[]>> parents = new ArrayList<Individual<int[], int[]>>();
 
 	@SuppressWarnings("unchecked")
-	public TracerStat(String name, int step, boolean delaysOkay, Individual<?, ?> data, Individual<?, ?>... parents) {
+	public TracerStat(String name, long step, boolean delaysOkay, Individual<?, ?> data, Individual<?, ?>... parents) {
 		this.name = name;
 		this.step = step;
 		this.data = (Individual<int[], int[]>) data;
@@ -32,7 +32,7 @@ public class TracerStat implements Serializable {
 		return name;
 	}
 
-	public int getStep() {
+	public long getStep() {
 		return step;
 	}
 

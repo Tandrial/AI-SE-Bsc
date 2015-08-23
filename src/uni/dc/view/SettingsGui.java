@@ -109,7 +109,7 @@ public class SettingsGui extends JDialog {
 
 		spFlowCount = new JSpinner();
 		spFlowCount.setModel(new SpinnerNumberModel(new Integer(3), new Integer(1), null, new Integer(1)));
-		spFlowCount.setValue(config.getMaxSteps());
+		spFlowCount.setValue(config.getMaxFlowCount());
 		spFlowCount.setBounds(125, 152, 80, 20);
 		contentPanel.add(spFlowCount);
 

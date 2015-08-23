@@ -21,13 +21,13 @@ import uni.dc.ubsOpti.tracer.Tracer;
 
 public class UbsOptiConfig implements Serializable {
 
-	private static long seed = 0x31337;
+	private static long seed = 0x1337;
 	private static Random rng = new Random(seed);
 
 	private static final long serialVersionUID = 1L;
 	private int depth = 6;
 	private int portCount = 9;
-	private int maxFlowCount = 12;
+	private int maxFlowCount = 6;
 	private int maxFrameLength = 12350;
 	private int maxLeakRateinPercent = 10;
 	private double modifier = 1.0d;

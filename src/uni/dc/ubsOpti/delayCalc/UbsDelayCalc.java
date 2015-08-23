@@ -14,6 +14,7 @@ import uni.dc.model.EgressPort;
 import uni.dc.model.Flow;
 import uni.dc.model.PriorityConfiguration;
 
+//TODO Abstrakte Oberklasse für die USB-Traffic Modelle, siehe Abschnitt 2.1.2
 public abstract class UbsDelayCalc extends OptimizationModule implements IObjectiveFunction<int[]>, Serializable {
 	private static final long serialVersionUID = 1L;
 	protected Set<Flow> flows = null;
@@ -121,10 +122,9 @@ public abstract class UbsDelayCalc extends OptimizationModule implements IObject
 		calculateDelays();
 		double delay = 0.0d;
 		for (Flow f : flows) {
-			// TODO fitness Function
+			// TODO Fitness-Funktion, siehe Abschnitt 3.2
 			delay += Math.abs(f.getDiffDelayAllowedDelay());
 			if (!f.checkDelay()) {
-				// TODO: Strafe fÃ¼r Delay > maxLatencyReq
 				delay += 2 * Math.abs(f.getDiffDelayAllowedDelay());
 			}
 		}

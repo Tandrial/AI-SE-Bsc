@@ -6,6 +6,7 @@ import org.goataa.impl.utils.Individual;
 
 import uni.dc.ubsOpti.delayCalc.UbsDelayCalc;
 
+//TODO Interface damit die Algorithmen mit den verschiedenen Tracern klarkommen
 public interface Traceable {
 	public void attach(Tracer tracer);
 

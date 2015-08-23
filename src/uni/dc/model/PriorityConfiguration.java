@@ -269,7 +269,6 @@ public class PriorityConfiguration implements Cloneable, Serializable {
 				count = count.multiply(new BigInteger(String.valueOf((long) Math.pow(fMap.size(), maxPrio))));
 			}
 		}
-		// TODO: 50% better than BruteForce
 		return count;
 	}
 }

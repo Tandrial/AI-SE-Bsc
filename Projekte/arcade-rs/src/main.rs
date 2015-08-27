@@ -1,27 +1,9 @@
 extern crate sdl2;
+mod phi;
+mod views;
 
-// #[macro_use] asks the compiler to import the macros defined in the `events`
-// module. This is necessary because macros cannot be namespaced -- macro
-// expansion happens before the concept of namespace even starts to _exist_ in
-// the compilation timeline.
-#[macro_use] mod events;
-
-// We cannot call functions at top-level. However, `struct_events` is not your
-// usual function: it's a macro. Which means that you can use a macro to do
-// pretty much anything _normal_ code would.
-struct_events!(
-    keyboard: {
-        key_escape: Escape,
-        key_up: Up,
-        key_down: Down
-    },
-    else: {
-        quit: Quit { .. }
-    }
-);
-
-
-use sdl2::pixels::Color;
+use ::sdl2::pixels::Color;
+use ::phi::Events;
 
 fn main() {
 	// Init SDL2
@@ -41,7 +23,7 @@ fn main() {
 	'game_loop: loop {
 		events.pump();
 
-		if events.now.quit || events.now.key_escape  == Some(true) {
+		if true == events.now.quit || Some(true) == events.now.key_escape {
 			break 'game_loop;
 		}
 

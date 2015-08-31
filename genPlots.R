@@ -20,8 +20,8 @@ cf <- data.frame(table(success$Algo))
 cf <- data.frame(cf[,], cf[2] / dataCount[2] * 100)
 names(cf)[]<-c("Algo","Count","Better")
 succBarPlot <- barplot(cf$Better, names.arg = cf$Algo, ylim = c(0,100), 
-                       main = sprintf("besser als BF \n [Stichprobenanzahl = %i]",dataCount$Freq[1]))
-text(succBarPlot, 5, labels = sprintf("%2.2f%%", cf$Better))
+                       main = sprintf("besser als BruteForce \n [Stichprobenanzahl = %i]",dataCount$Freq[1]))
+text(succBarPlot, 5, labels = sprintf("%2.0f%%", cf$Better))
 dev.off()
 
 for(portCount in 2:20) {

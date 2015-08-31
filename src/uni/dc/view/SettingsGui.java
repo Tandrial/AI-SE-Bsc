@@ -41,7 +41,7 @@ public class SettingsGui extends JDialog {
 
 	public SettingsGui(UbsOptiConfig config) {
 		setResizable(false);
-		setTitle("Settings - UBsOpti");
+		setTitle("Settings - UBSOpti");
 		setBounds(100, 100, 230, 330);
 		getContentPane().setLayout(new BorderLayout());
 		JPanel contentPanel = new JPanel();

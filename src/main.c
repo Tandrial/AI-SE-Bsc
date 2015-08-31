@@ -15,6 +15,10 @@
 #define   FREQ_CHAN1		11
 #define   ID_CHAN2			 1
 #define   FREQ_CHAN2		22
+#define   ID_CHAN3			 2
+#define   FREQ_CHAN3		33
+#define   ID_CHAN4			 3
+#define   FREQ_CHAN4		44
 
 #define   MAX_BUFFSIZE		72
 
@@ -28,9 +32,15 @@ typedef enum {
 } distanceState_t;
 
 /* CONSTANTS EXPERIMENT 2 */
-#define   TRANSFER_TIME_S	60  /* = 1 min */
+#define   TRANSFER_TIME_S	10  /* = 1 min */
 #define   RUN_COUNT			10
 double results[RUN_COUNT];
+
+typedef enum {
+  SS_NONE = 0,
+  SS_BROADCAST,
+  SS_BURST
+} sendState_t;
 
 /* CONSTANTS EXPERIMENT 3 */
 
@@ -88,7 +98,7 @@ void openChannel(uint8_t channel, uint8_t freq, bool isMaster) {
 					 isMaster? DEVICE_TYPE : 0,
 					 isMaster? TRANSMISSION_TYPE : 0);
 
-	ANT_SetChannelRFFreq(channel, freq);
+	/*ANT_SetChannelRFFreq(channel, freq);*/
 	ANT_OpenChannel(channel);
 }
 
@@ -145,6 +155,7 @@ int main(int argc, char** argv) {
 		error("Port information wrong!");
 	}
 	initANT(port);
+	setTransmitPower(ANT_TRANSMIT_POWER_MINUS_20DBM);
 
 	printf("Port = %s\nType = %c\nNum = %d\n", port, deviceType, experimentNum);
 	switch (experimentNum) {
@@ -168,7 +179,7 @@ int main(int argc, char** argv) {
 				if (pState == PS_SENDING_PACKET) {
 					uint8_t data[8];
 					clockToMsg(data);
-					ANT_SendAcknowledgedData(ID_CHAN1, data);
+					ANT_SendAcknowledgedData(deviceType == 'm' ? ID_CHAN1 : ID_CHAN2, data);
 				}
 				s = ANT_RecvPacket_Blockfree(buffer, MAX_BUFFSIZE);
 				if (s == RS_PACKET_COMPLETE) {
@@ -191,14 +202,15 @@ int main(int argc, char** argv) {
 			if (deviceType == 'm') {
 				openChannel(ID_CHAN1, FREQ_CHAN1, true);
 				uint8_t data[4] = {0x70, 0x69, 0x6E, 0x67};
+				
 				ANT_SendBroadcastData(ID_CHAN1, data);
+			
 				printf("Started broadcast! Press return to exit!\n");
 				getchar();
 				closeANT(ID_CHAN1);
 			} else if (deviceType == 's') {
 				int pSetting = ANT_TRANSMIT_POWER_MINUS_20DBM;
 				for(; pSetting <= ANT_TRANSMIT_POWER_0DBM; ++pSetting) {
-					setTransmitPower(pSetting);					
 					openChannel(ID_CHAN1, FREQ_CHAN1, false);
 					distanceState_t state = DS_INCRESING;
 					float distance = 0.0f;
@@ -252,37 +264,104 @@ int main(int argc, char** argv) {
 				}
 			}
 			break;
-		case 4:								/*	Experiment 4 - Data Throughput  */
-		if (deviceType == 'm') {
+		case 4:  /* Experiment 1a: Broadcast Data Transfer between two nodes */
+			if (deviceType == 'm') {
+				uint16_t period = 65535;
+				while (period > 0) {
+					printf("period = %d ==> Freq = %f\n", period, 32768.0 / period );
+					ANT_SetChannelPeriod(ID_CHAN1, period);
+					openChannel(ID_CHAN1, FREQ_CHAN1, true);
+					uint8_t data[4] = {0x70, 0x69, 0x6E, 0x67};
+					ANT_SendBroadcastData(ID_CHAN1, data);				
+					printf("Started broadcast! Press return to exit!\n");
+					getchar();
+					period = period >> 1;
+					closeANT(ID_CHAN1);
+				}
+			} else {
+				uint16_t period = 65535;
+				while (period > 0) {
+					printf("period = %d ==> Freq = %f\n", period, 32768.0 / period );
+					ANT_SetChannelPeriod(ID_CHAN1, period);
+					openChannel(ID_CHAN1, FREQ_CHAN1, false);
+					uint8_t i;
+					double speed_avr = 0.0;
+					double total_t = 0.0;
+					for (i = 0; i < RUN_COUNT; ++i) {
+						uint8_t count = 0;
+						struct timespec tstart={0,0}, tend={0,0};
+						clock_gettime(CLOCK_MONOTONIC, &tstart);
+						while (true) {
+							s = ANT_RecvPacket_Blockfree(buffer, MAX_BUFFSIZE);
+							if (s == RS_PACKET_COMPLETE) {
+								
+								if (buffer[2] == ANT_BURST_DATA || buffer[2] == ANT_BROADCAST_DATA) {
+									count++;
+								}
+							}
+							clock_gettime(CLOCK_MONOTONIC, &tend);
+							total_t = (tend.tv_sec - tstart.tv_sec);
+							total_t += (tend.tv_nsec - tstart.tv_nsec) / 1000000000.0;
+							if (total_t >= TRANSFER_TIME_S) {
+								break;
+							}
+						}
+						results[i] = count * 8 / total_t;
+						speed_avr += results[i];
+						printf("Run %d: %d bytes received in %f s => %f Bps\n", i, count * 8, total_t, results[i]);
+						count = 0;
+					}
+					speed_avr /= RUN_COUNT;
+					double stdDev = 0.0;
+					for (i = 0; i < RUN_COUNT; ++i) {
+						double cur = results[i] - speed_avr;
+						stdDev += cur * cur;
+					}
+					stdDev /= RUN_COUNT;
+					printf("Average datarate : %f \tStd dev: %f\n", speed_avr, sqrt(stdDev));
+					getchar();
+					period = period >> 1;
+					closeANT(ID_CHAN1);
+				}
+			break;
+		case 6:  /* 1x Burst */
+			if (deviceType == 'm') {
 				openChannel(ID_CHAN1, FREQ_CHAN1, true);
-				uint8_t data[8] = {0xA5, 0xA5, 0xA5, 0xA5, 0xA5, 0xA5, 0xA5, 0xA5};
+				uint8_t data[4] = {0x70, 0x69, 0x6E, 0x67};
+				printf("Master node is Bursting!\n");
+				getchar();
 				while(true) {
 					ANT_SendBurstTransferPacket(ID_CHAN1, data);
 				}
 				closeANT(ID_CHAN1);
-			} else if (deviceType == 's') {
+			} else {
 				openChannel(ID_CHAN1, FREQ_CHAN1, false);
 				uint8_t i;
-				double speed_avr = 0;
-				for(i = 0; i < RUN_COUNT; ++i) {
-					clock_t now_t = -1, start_t = clock();
-					double total_t = 0.0;
+				double speed_avr = 0.0;
+				double total_t = 0.0;
+				for (i = 0; i < RUN_COUNT; ++i) {
 					uint8_t count = 0;
-					while (total_t < TRANSFER_TIME_S) {
-						now_t = clock();
-						total_t = ((double) (now_t - start_t)) / CLOCKS_PER_SEC;
+					struct timespec tstart={0,0}, tend={0,0};
+					clock_gettime(CLOCK_MONOTONIC, &tstart);
+					while (true) {
 						s = ANT_RecvPacket_Blockfree(buffer, MAX_BUFFSIZE);
 						if (s == RS_PACKET_COMPLETE) {
-							if (buffer[2] == ANT_BURST_DATA) {
-								count++;
-							} else if (buffer[2] == ANT_BROADCAST_DATA) {
+							if (buffer[2] == ANT_BURST_DATA || buffer[2] == ANT_BROADCAST_DATA) {
 								count++;
 							}
+						}
+						/*now_t = clock(); total_t = ((double) (now_t - start_t)) / CLOCKS_PER_SEC;	*/
+						clock_gettime(CLOCK_MONOTONIC, &tend);
+						total_t = (tend.tv_sec - tstart.tv_sec);
+						total_t += (tend.tv_nsec - tstart.tv_nsec) / 1000000000.0;
+						if (total_t >= TRANSFER_TIME_S) {
+							break;
 						}
 					}
 					results[i] = count * 8 / total_t;
 					speed_avr += results[i];
-					printf("Done. %d bytes received in %f s => %f kbps\n", count * 8, total_t, results[i]);
+					printf("Run %d: %d bytes received in %f s => %f Bps\n", i, count * 8, total_t, results[i]);
+					count = 0;
 				}
 				speed_avr /= RUN_COUNT;
 				double stdDev = 0.0;
@@ -293,12 +372,90 @@ int main(int argc, char** argv) {
 				stdDev /= RUN_COUNT;
 				printf("Average datarate : %f \tStd dev: %f\n", speed_avr, sqrt(stdDev));
 				closeANT(ID_CHAN1);
+				}
+			break;
+		case 5:  /* 2x Broadcast */			
+		case 7:  /* 1x Burst 1x Broadcast */
+		case 8: {/* 2x Burst */
+				sendState_t sState = SS_NONE;
+			uint8_t data[4] = {0x70, 0x69, 0x6E, 0x67};
+			if (deviceType == 'm') {
+				openChannel(ID_CHAN1, FREQ_CHAN1, true);
+				openChannel(ID_CHAN2, FREQ_CHAN2, false);
+				if (experimentNum == 4 || experimentNum == 5) {
+					sState = SS_BROADCAST;
+					printf("Master node is Broadcasting!\n");
+					ANT_SendBroadcastData(ID_CHAN1, data);
+				} else {
+					sState = SS_BURST;
+					printf("Master node is Bursting!\n");
+				}
+			} else {
+				openChannel(ID_CHAN1, FREQ_CHAN1, false);
+				openChannel(ID_CHAN2, FREQ_CHAN2, true);
+				if (experimentNum == 5 || experimentNum == 7) {
+					sState = SS_BROADCAST;					
+					printf("Slave node is Broadcasting!\n");
+					ANT_SendBroadcastData(ID_CHAN2, data);	
+				} else if (experimentNum == 8) {
+					sState = SS_BURST;					
+					printf("Slave node is Bursting!\n");
+				}
+			}
+			getchar();
+			printf("waiting 10s\n");
+			ANT_delayMs(10000);			
+			printf("started...\n");
+			uint8_t i;
+			double speed_avr = 0.0;
+			double total_t = 0.0;
+			for (i = 0; i < RUN_COUNT; ++i) {
+				uint8_t count = 0;
+				flushBuffer();
+				struct timespec tstart={0,0}, tend={0,0};
+				clock_gettime(CLOCK_MONOTONIC, &tstart);
+				while (true) {
+					if (sState == SS_BURST) {
+						ANT_SendBurstTransferPacket(deviceType == 'm' ? ID_CHAN1 : ID_CHAN2, data);
+					}
+					s = ANT_RecvPacket_Blockfree(buffer, MAX_BUFFSIZE);
+					if (s == RS_PACKET_COMPLETE) {
+						
+						if (buffer[2] == ANT_BURST_DATA || buffer[2] == ANT_BROADCAST_DATA) {
+							count++;
+						}
+					}
+					/*now_t = clock();
+					total_t = ((double) (now_t - start_t)) / CLOCKS_PER_SEC;
+					*/
+					clock_gettime(CLOCK_MONOTONIC, &tend);
+					total_t = (tend.tv_sec - tstart.tv_sec);
+					total_t += (tend.tv_nsec - tstart.tv_nsec) / 1000000000.0;
+					if (total_t >= TRANSFER_TIME_S) {
+						break;
+					}
+				}
+				results[i] = count * 8 / total_t;
+				speed_avr += results[i];
+				printf("Run %d: %d bytes received in %f s => %f Bps\n", i, count * 8, total_t, results[i]);
+				count = 0;
+			}
+			speed_avr /= RUN_COUNT;
+			double stdDev = 0.0;
+			for (i = 0; i < RUN_COUNT; ++i) {
+				double cur = results[i] - speed_avr;
+				stdDev += cur * cur;
+			}
+			stdDev /= RUN_COUNT;
+			printf("Average datarate : %f \tStd dev: %f\n", speed_avr, sqrt(stdDev));
+			ANT_delayMs(5000);
+			closeANT(ID_CHAN1);
+			closeANT(ID_CHAN2);
 			}
 			break;
 		default:
 			error("%d is not a valid experiment! \n", experimentNum);
 			break;
 	}
-
 	return EXIT_SUCCESS;
 }

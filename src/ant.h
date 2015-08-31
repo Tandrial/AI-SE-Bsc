@@ -50,19 +50,19 @@ typedef enum {
 
 /* ANT serial port abstraction (portability PC/PIC) */
 
+int antUARTinit(char*);
 
-int antUARTinit( char* );
+int  antUARTrts(void);
+void antUARTputChar(char);
+int  antUARTgetChar(char*);
+int  antUARTreceivedChar(void);
 
-int  antUARTrts( void );
-void antUARTputChar( char );
-int  antUARTgetChar( char* );
-int  antUARTreceivedChar( void );
-
+/* Clears all packets coming FROM the ANT, which aren't handled yet */
 int flushBuffer();
 
 /* ANT time abstraction */
 
-void ANT_delayMs( int );
+void ANT_delayMs(int);
 
 #define  ANT_SYNCBYTE                   0xA4
 
@@ -211,43 +211,43 @@ void ANT_delayMs( int );
 #define  ANT_DEVICE_SERIAL_NUMBER 0x61
 #define  ANT_PADDING_BYTE 0
 
-uint32_t ANT_UnAssignChannel( uint8_t Channel );
-uint32_t ANT_AssignChannel( uint8_t Channel, uint8_t ChannelType, uint8_t NetworkNumber) ;
-uint32_t ANT_AssignChannelExt( uint8_t Channel, uint8_t ChannelType, uint8_t NetworkNumber, uint8_t Extend );
-uint32_t ANT_SetChannelId( uint8_t Channel, uint16_t DeviceNum, uint8_t DeviceType, uint8_t TransmissionType );
-uint32_t ANT_SetChannelPeriod( uint8_t Channel, uint16_t MessaggePeriod );
-uint32_t ANT_SetChannelPeriod_Hz( uint8_t Channel, uint16_t Period );
-uint32_t ANT_SetChannelSearchTimeout( uint8_t ChannelNum, uint8_t SearcchTimeout );
-uint32_t ANT_SetChannelRFFreq( uint8_t Channel, uint8_t RFFreq );
-uint32_t ANT_SetNetworkKey( uint8_t NetworkNumber,  uint8_t *pucKey);
-uint32_t ANT_SetTransmitPower( uint8_t TransmitPower );
-uint32_t ANT_AddChannelID( uint8_t Channel, uint16_t DeviceNum, uint8_t DeviceType, uint8_t TransmissionType, uint8_t ListIndex );
-uint32_t ANT_ConfigList( uint8_t Channel, uint8_t ListSize, uint8_t Exclude );
-uint32_t ANT_SetChannelTxPower( uint8_t Channel, uint8_t TxPower );
-uint32_t ANT_SetLowPriorityChannelSearchTimeout( uint8_t ChannelNum, uint8_t SearchTimeout );
-uint32_t ANT_SetSerialNumChannelId( uint8_t Channel, uint8_t DeviceType, uint8_t TransmissionType );
-uint32_t ANT_RxExtMesgsEnable( uint8_t Enable );
-uint32_t ANT_EnableLED( uint8_t Enable );
-uint32_t ANT_CrystalEnable( uint8_t Enable );
-uint32_t ANT_ConfigFrequencyAgility( uint8_t Channel, uint8_t Frequency1, uint8_t Frequency2, uint8_t Frequency3 );
-uint32_t ANT_SetProximitySearch( uint8_t Channel, uint8_t SearchThreshold );
-uint32_t ANT_SetUSBDescriptorString( uint8_t StringNum, uint8_t *pucDescString, uint8_t StringSize );
-uint32_t ANT_ResetSystem ( void );
-uint32_t ANT_OpenChannel(uint32_t Channel );
-uint32_t ANT_CloseChannel(uint32_t Channel );
-uint32_t ANT_RequestMessage(uint32_t Channel, uint8_t MessageID );
-uint32_t ANT_OpenRxScanMode( void );
-uint32_t ANT_SleepMessage( void );
-uint32_t ANT_SendBroadcastData(uint8_t Channel, uint8_t * BroadcastData );
-uint32_t ANT_SendBroadcastDataExt(uint8_t Channel, uint8_t *BroadcastData, uint16_t DeviceNumber, uint8_t DeviceType, uint8_t TransmissionType );
-uint32_t ANT_SendAcknowledgedData(uint8_t Channel, uint8_t *BroadcastData );
-uint32_t ANT_SendAcknowledgedDataExt( uint8_t Channel, uint8_t *BroadcastData, uint16_t DeviceNumber, uint8_t DeviceType, uint8_t TransmissionType );
-uint32_t ANT_SendBurstTransferPacket( uint8_t ChannelSeq, uint8_t *BurstData );
-uint32_t ANT_InitCWTestMode( void );
-uint32_t ANT_SetCWTestMode( uint8_t TransmitPower, uint8_t RFChannel );
-uint32_t ANT_SendExtBroadcastData( uint8_t Channel, uint16_t DeviceNum, uint8_t DeviceType, uint8_t TransmissionType, uint8_t *Data );
-uint32_t ANT_SendExtAcknowledgedData( uint8_t Channel, uint16_t DeviceNum, uint8_t DeviceType, uint8_t TransmissionType, uint8_t *Data );
-uint32_t ANT_SendExtBurstData( uint8_t Channel, uint16_t DeviceNum, uint8_t DeviceType, uint8_t TransmissionType, uint8_t *Data );
+uint32_t ANT_UnAssignChannel(uint8_t Channel);
+uint32_t ANT_AssignChannel(uint8_t Channel, uint8_t ChannelType, uint8_t NetworkNumber) ;
+uint32_t ANT_AssignChannelExt(uint8_t Channel, uint8_t ChannelType, uint8_t NetworkNumber, uint8_t Extend);
+uint32_t ANT_SetChannelId(uint8_t Channel, uint16_t DeviceNum, uint8_t DeviceType, uint8_t TransmissionType);
+uint32_t ANT_SetChannelPeriod(uint8_t Channel, uint16_t MessaggePeriod);
+uint32_t ANT_SetChannelPeriod_Hz(uint8_t Channel, uint16_t Period);
+uint32_t ANT_SetChannelSearchTimeout(uint8_t ChannelNum, uint8_t SearcchTimeout);
+uint32_t ANT_SetChannelRFFreq(uint8_t Channel, uint8_t RFFreq);
+uint32_t ANT_SetNetworkKey(uint8_t NetworkNumber,  uint8_t *pucKey);
+uint32_t ANT_SetTransmitPower(uint8_t TransmitPower);
+uint32_t ANT_AddChannelID(uint8_t Channel, uint16_t DeviceNum, uint8_t DeviceType, uint8_t TransmissionType, uint8_t ListIndex);
+uint32_t ANT_ConfigList(uint8_t Channel, uint8_t ListSize, uint8_t Exclude);
+uint32_t ANT_SetChannelTxPower(uint8_t Channel, uint8_t TxPower);
+uint32_t ANT_SetLowPriorityChannelSearchTimeout(uint8_t ChannelNum, uint8_t SearchTimeout);
+uint32_t ANT_SetSerialNumChannelId(uint8_t Channel, uint8_t DeviceType, uint8_t TransmissionType);
+uint32_t ANT_RxExtMesgsEnable(uint8_t Enable);
+uint32_t ANT_EnableLED(uint8_t Enable);
+uint32_t ANT_CrystalEnable(uint8_t Enable);
+uint32_t ANT_ConfigFrequencyAgility(uint8_t Channel, uint8_t Frequency1, uint8_t Frequency2, uint8_t Frequency3);
+uint32_t ANT_SetProximitySearch(uint8_t Channel, uint8_t SearchThreshold);
+uint32_t ANT_SetUSBDescriptorString(uint8_t StringNum, uint8_t *pucDescString, uint8_t StringSize);
+uint32_t ANT_ResetSystem(void);
+uint32_t ANT_OpenChannel(uint32_t Channel);
+uint32_t ANT_CloseChannel(uint32_t Channel);+
+uint32_t ANT_RequestMessage(uint32_t Channel, uint8_t MessageID);
+uint32_t ANT_OpenRxScanMode(void);
+uint32_t ANT_SleepMessage(void);
+uint32_t ANT_SendBroadcastData(uint8_t Channel, uint8_t * BroadcastData);
+uint32_t ANT_SendBroadcastDataExt(uint8_t Channel, uint8_t *BroadcastData, uint16_t DeviceNumber, uint8_t DeviceType, uint8_t TransmissionType);
+uint32_t ANT_SendAcknowledgedData(uint8_t Channel, uint8_t *BroadcastData);
+uint32_t ANT_SendAcknowledgedDataExt(uint8_t Channel, uint8_t *BroadcastData, uint16_t DeviceNumber, uint8_t DeviceType, uint8_t TransmissionType);
+uint32_t ANT_SendBurstTransferPacket(uint8_t ChannelSeq, uint8_t *BurstData);
+uint32_t ANT_InitCWTestMode(void);
+uint32_t ANT_SetCWTestMode(uint8_t TransmitPower, uint8_t RFChannel);
+uint32_t ANT_SendExtBroadcastData(uint8_t Channel, uint16_t DeviceNum, uint8_t DeviceType, uint8_t TransmissionType, uint8_t *Data);
+uint32_t ANT_SendExtAcknowledgedData(uint8_t Channel, uint16_t DeviceNum, uint8_t DeviceType, uint8_t TransmissionType, uint8_t *Data);
+uint32_t ANT_SendExtBurstData(uint8_t Channel, uint16_t DeviceNum, uint8_t DeviceType, uint8_t TransmissionType, uint8_t *Data);
 
 uint32_t BC_ANT_RecvPacket(uint8_t *buffer, unsigned int size);
 uint32_t ANT_RecvPacket_Blockfree(uint8_t *buffer, unsigned int size);

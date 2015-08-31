@@ -20,18 +20,21 @@ int antFD = 0;
 *******************************/
 
 #ifdef ANT_PIC
-int antUARTinit( char *port  ){
+int antUARTinit(char *port){
   TRISBbits.TRISB0 = 1;   /* Set RB0 as input. */
   return UART1Init();     /* check if  UART1Init() returns something... */
 }
 
-int  antUARTrts( void ){
+int antUARTrts(void) { }
+
+void antUARTputChar(char) { }
+
+int antUARTgetChar(char *p) {
+	uart1_recv_char(p);
 }
-void antUARTputChar( char ){
+int antUARTreceivedChar(void) {
+	return antUARTreceivedChar();
 }
-int  antUARTgetChar( char *p ){uart1_recv_char( p );}
-}
-int  antUARTreceivedChar( void ){return antUARTreceivedChar();}
 
 void flushBuffer(void) { }
 #endif
@@ -44,31 +47,32 @@ Input: on PC: port: device name
 Output: 1 if error, 0 if OK.
 Rem: -
 *****************************************************************************/
-int antUARTinit( char *port  ){
-
-  if( antFD != 0 ) return 1; /* assume was opened before */
-  antFD =  open( port, O_RDWR );
-  if(antFD == -1) error("Unable to open serial port %s", port);
-  if(setBaud(antFD, IO_SERIAL_DATA_RATE)) error("Set baud failed");
-  setDTR(antFD,1);
-  setRTS(antFD,1);
-  return 0;
+int antUARTinit(char *port) {
+	if( antFD != 0 ) 
+		return 1; /* assume was opened before */
+	antFD = open(port, O_RDWR);
+	if(antFD == -1) 
+		error("Unable to open serial port %s", port);
+	if (setBaud(antFD, IO_SERIAL_DATA_RATE)) 
+		error("Set baud failed");
+	setDTR(antFD, 1);
+	setRTS(antFD, 1);
+	return 0;
 }
 
-int  antUARTrts( void  ){
-  return getCTS(antFD);
+int antUARTrts(void) {
+	return getCTS(antFD);
 }
 
-
-void antUARTputChar( char c ){
-  printf("[%2X]",(unsigned char)c);
-  writeSerial( antFD, &c, 1);
+void antUARTputChar(char c) {
+	printf("[%2X]", (unsigned char)c);
+	writeSerial(antFD, &c, 1);
 }
-int  antUARTgetChar( char *p ){
-  readSerialChar( antFD, p);
-  return 1;
+int antUARTgetChar(char *p) {
+	readSerialChar(antFD, p);
+	return 1;
 }
-int  antUARTreceivedChar( void ){
+int antUARTreceivedChar(void) {
 	return gotSerialChar(antFD);
 }
 
@@ -86,11 +90,15 @@ int flushBuffer() {
 ********************/
 
 #ifdef ANT_PIC
-  void ANT_delayMs( int i ){ delayMs( i ); }
+	void ANT_delayMs(int i) {
+		delayMs( i );
+	}
 #endif
 
 #ifdef ANT_PC
-  void ANT_delayMs( int i ){ usleep( i * 1000 );}
+	void ANT_delayMs(int i) {
+		usleep(i * 1000);
+	}
 #endif
 
 /*********************
@@ -115,9 +123,8 @@ uint32_t ANT_RecvPacket_Blockfree(uint8_t *buffer, unsigned int size) {
 	} else {
 		return state;
 	}
-
-	 switch (state) {
-	 	case RS_WAITING_FOR_SYNC:
+	switch (state) {
+		case RS_WAITING_FOR_SYNC:
 			if (c == ANT_SYNCBYTE) {
 				*revcBufferPos++ = c;
 				checksum = ANT_SYNCBYTE;

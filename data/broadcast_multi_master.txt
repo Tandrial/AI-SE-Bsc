@@ -1,0 +1,255 @@
+[michael@xps src]$ sudo ./ant -p /dev/ttyUSB3 -t m -n 2
+Power setting is now : 0 dBm
+Port = /dev/ttyUSB3
+Type = m
+Num = 2
+period = 65535 ==> Freq = 0.500008
+Press any key to start the Experiment!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][FF][FF][ 0][ 0][F3]
+Press any key to start the Experiment!
+pkg (4E) on Chan 1 found! Can start!
+[A4][ 9][4E][ 1][ 0][ 0][AD][ 6][85][32][53][33][9E]
+Run 0: failed 0 sucess 5: 40 bytes received in 10.000000 s => 4.000000 Bps
+Run 1: failed 0 sucess 5: 40 bytes received in 10.000000 s => 4.000000 Bps
+Run 2: failed 0 sucess 5: 40 bytes received in 10.000000 s => 4.000000 Bps
+Run 3: failed 0 sucess 5: 40 bytes received in 10.000000 s => 4.000000 Bps
+Run 4: failed 0 sucess 5: 40 bytes received in 10.000000 s => 4.000000 Bps
+Run 5: failed 0 sucess 5: 40 bytes received in 10.000000 s => 4.000000 Bps
+Run 6: failed 0 sucess 5: 40 bytes received in 10.000000 s => 4.000000 Bps
+Run 7: failed 0 sucess 5: 40 bytes received in 10.000000 s => 4.000000 Bps
+Run 8: failed 0 sucess 5: 40 bytes received in 10.000000 s => 4.000000 Bps
+Run 9: failed 0 sucess 5: 40 bytes received in 10.000000 s => 4.000000 Bps
+Average datarate : 4.000000 	Std dev: 0.000000
+
+period = 32767 ==> Freq = 1.000031
+Press any key to start the Experiment!
+Press any key to start the Experiment!
+pkg (4E) on Chan 1 found! Can start!
+[A4][ 9][4E][ 1][ 0][ 0][AD][ 6][85][32][53][33][9E]
+Run 0: failed 0 sucess 10: 80 bytes received in 10.000000 s => 8.000000 Bps
+Run 1: failed 0 sucess 10: 80 bytes received in 10.000000 s => 8.000000 Bps
+Run 2: failed 0 sucess 10: 80 bytes received in 10.000000 s => 8.000000 Bps
+Run 3: failed 0 sucess 10: 80 bytes received in 10.000000 s => 8.000000 Bps
+Run 4: failed 0 sucess 10: 80 bytes received in 10.000000 s => 8.000000 Bps
+Run 5: failed 0 sucess 10: 80 bytes received in 10.000000 s => 8.000000 Bps
+Run 6: failed 0 sucess 10: 80 bytes received in 10.000000 s => 8.000000 Bps
+Run 7: failed 0 sucess 10: 80 bytes received in 10.000000 s => 8.000000 Bps
+Run 8: failed 0 sucess 10: 80 bytes received in 10.000000 s => 8.000000 Bps
+Run 9: failed 1 sucess 9: 72 bytes received in 10.000000 s => 7.200000 Bps
+Average datarate : 7.920000 	Std dev: 0.240000
+
+period = 16383 ==> Freq = 2.000122
+Press any key to start the Experiment!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][FF][3F][ 0][ 0][33]
+Press any key to start the Experiment!
+pkg (4E) on Chan 1 found! Can start!
+[A4][ 9][4E][ 1][ 0][ 0][AD][ 6][85][32][53][33][9E]
+Run 0: failed 2 sucess 18: 144 bytes received in 10.000000 s => 14.400000 Bps
+Run 1: failed 0 sucess 20: 160 bytes received in 10.000000 s => 16.000000 Bps
+Run 2: failed 0 sucess 20: 160 bytes received in 10.000000 s => 16.000000 Bps
+Run 3: failed 0 sucess 20: 160 bytes received in 10.000000 s => 16.000000 Bps
+Run 4: failed 0 sucess 20: 160 bytes received in 10.000000 s => 16.000000 Bps
+Run 5: failed 0 sucess 20: 160 bytes received in 10.000000 s => 16.000000 Bps
+Run 6: failed 0 sucess 20: 160 bytes received in 10.000000 s => 16.000000 Bps
+Run 7: failed 0 sucess 20: 160 bytes received in 10.000000 s => 16.000000 Bps
+Run 8: failed 0 sucess 20: 160 bytes received in 10.000000 s => 16.000000 Bps
+Run 9: failed 0 sucess 20: 160 bytes received in 10.000000 s => 16.000000 Bps
+Average datarate : 15.840000 	Std dev: 0.480000
+
+period = 8191 ==> Freq = 4.000488
+Press any key to start the Experiment!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][FF][1F][ 0][ 0][13]
+Press any key to start the Experiment!
+pkg (4E) on Chan 1 found! Can start!
+[A4][ 9][4E][ 1][ 0][ 0][AD][ 6][85][32][53][33][9E]
+Run 0: failed 0 sucess 40: 320 bytes received in 10.000000 s => 31.999999 Bps
+Run 1: failed 0 sucess 40: 320 bytes received in 10.000000 s => 32.000000 Bps
+Run 2: failed 0 sucess 40: 320 bytes received in 10.000000 s => 32.000000 Bps
+Run 3: failed 1 sucess 39: 312 bytes received in 10.000000 s => 31.199999 Bps
+Run 4: failed 0 sucess 40: 320 bytes received in 10.000000 s => 32.000000 Bps
+Run 5: failed 0 sucess 40: 320 bytes received in 10.000000 s => 32.000000 Bps
+Run 6: failed 1 sucess 39: 312 bytes received in 10.000000 s => 31.200000 Bps
+Run 7: failed 0 sucess 40: 320 bytes received in 10.000000 s => 32.000000 Bps
+Run 8: failed 0 sucess 40: 320 bytes received in 10.000000 s => 32.000000 Bps
+Run 9: failed 1 sucess 39: 312 bytes received in 10.000000 s => 31.199999 Bps
+Average datarate : 31.760000 	Std dev: 0.366606
+
+period = 4095 ==> Freq = 8.001954
+Press any key to start the Experiment!
+Press any key to start the Experiment!
+pkg (4E) on Chan 1 found! Can start!
+[A4][ 9][4E][ 1][ 0][ 0][AD][ 6][85][32][53][33][9E]
+Run 0: failed 1 sucess 79: 632 bytes received in 10.000000 s => 63.200000 Bps
+Run 1: failed 0 sucess 80: 640 bytes received in 10.000000 s => 63.999999 Bps
+Run 2: failed 0 sucess 80: 640 bytes received in 10.000000 s => 64.000000 Bps
+Run 3: failed 0 sucess 80: 640 bytes received in 10.000000 s => 63.999999 Bps
+Run 4: failed 0 sucess 80: 640 bytes received in 10.000000 s => 63.999999 Bps
+Run 5: failed 0 sucess 80: 640 bytes received in 10.000000 s => 63.999999 Bps
+Run 6: failed 0 sucess 80: 640 bytes received in 10.000000 s => 64.000000 Bps
+Run 7: failed 1 sucess 79: 632 bytes received in 10.000000 s => 63.200000 Bps
+Run 8: failed 1 sucess 79: 632 bytes received in 10.000000 s => 63.200000 Bps
+Run 9: failed 13 sucess 67: 536 bytes received in 10.000000 s => 53.599999 Bps
+Average datarate : 62.719999 	Std dev: 3.060980
+
+period = 2047 ==> Freq = 16.007816
+Press any key to start the Experiment!
+Press any key to start the Experiment!
+pkg (4E) on Chan 1 found! Can start!
+[A4][ 9][4E][ 1][ 0][ 0][AD][ 6][85][32][53][33][9E]
+Run 0: failed 0 sucess 160: 1280 bytes received in 10.000000 s => 127.999999 Bps
+Run 1: failed 2 sucess 158: 1264 bytes received in 10.000000 s => 126.399999 Bps
+Run 2: failed 1 sucess 159: 1272 bytes received in 10.000000 s => 127.199998 Bps
+Run 3: failed 1 sucess 159: 1272 bytes received in 10.000002 s => 127.199969 Bps
+Run 4: failed 3 sucess 157: 1256 bytes received in 10.000000 s => 125.599998 Bps
+Run 5: failed 0 sucess 160: 1280 bytes received in 10.000000 s => 127.999999 Bps
+Run 6: failed 0 sucess 160: 1280 bytes received in 10.000000 s => 128.000000 Bps
+Run 7: failed 1 sucess 159: 1272 bytes received in 10.000000 s => 127.199997 Bps
+Run 8: failed 0 sucess 0: 0 bytes received in 10.000000 s => 0.000000 Bps
+Run 9: failed 0 sucess 0: 0 bytes received in 10.000000 s => 0.000000 Bps
+Average datarate : 101.759996 	Std dev: 50.885029
+
+period = 1023 ==> Freq = 32.031281
+Press any key to start the Experiment!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][FF][ 3][ 0][ 0][ F]
+Press any key to start the Experiment!
+pkg (4E) on Chan 1 found! Can start!
+[A4][ 9][4E][ 1][ 0][ 0][AD][ 6][85][32][53][32][9F]
+Run 0: failed 5 sucess 311: 2488 bytes received in 10.000000 s => 248.799998 Bps
+Run 1: failed 0 sucess 320: 2560 bytes received in 10.000000 s => 256.000000 Bps
+Run 2: failed 0 sucess 320: 2560 bytes received in 10.000000 s => 255.999998 Bps
+Run 3: failed 0 sucess 320: 2560 bytes received in 10.000000 s => 255.999999 Bps
+Run 4: failed 0 sucess 321: 2568 bytes received in 10.000000 s => 256.799997 Bps
+Run 5: failed 0 sucess 320: 2560 bytes received in 10.000000 s => 255.999996 Bps
+Run 6: failed 0 sucess 320: 2560 bytes received in 10.000000 s => 255.999999 Bps
+Run 7: failed 0 sucess 321: 2568 bytes received in 10.000000 s => 256.799999 Bps
+Run 8: failed 0 sucess 320: 2560 bytes received in 10.000000 s => 256.000000 Bps
+Run 9: failed 23 sucess 297: 2376 bytes received in 10.000000 s => 237.599996 Bps
+Average datarate : 253.599998 	Std dev: 5.779966
+
+period = 511 ==> Freq = 64.125245
+Press any key to start the Experiment!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][FF][ 1][ 0][ 0][ D]
+Press any key to start the Experiment!
+pkg (4E) on Chan 1 found! Can start!
+[A4][ 9][4E][ 1][ 0][ 0][AD][ 6][85][32][53][32][9F]
+Run 0: failed 0 sucess 641: 5128 bytes received in 10.000000 s => 512.799998 Bps
+Run 1: failed 0 sucess 641: 5128 bytes received in 10.000000 s => 512.800000 Bps
+Run 2: failed 1 sucess 641: 5128 bytes received in 10.000000 s => 512.799989 Bps
+Run 3: failed 2 sucess 639: 5112 bytes received in 10.000000 s => 511.199997 Bps
+Run 4: failed 1 sucess 640: 5120 bytes received in 10.000000 s => 511.999989 Bps
+Run 5: failed 1 sucess 640: 5120 bytes received in 10.000000 s => 511.999995 Bps
+Run 6: failed 0 sucess 642: 5136 bytes received in 10.000000 s => 513.599996 Bps
+Run 7: failed 1 sucess 640: 5120 bytes received in 10.000000 s => 512.000000 Bps
+Run 8: failed 0 sucess 641: 5128 bytes received in 10.000000 s => 512.799990 Bps
+Run 9: failed 140 sucess 502: 4016 bytes received in 10.000000 s => 401.599999 Bps
+Average datarate : 501.359995 	Std dev: 33.259319
+
+period = 490 ==> Freq = 66.873469
+Press any key to start the Experiment!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][EA][ 1][ 0][ 0][18]
+Press any key to start the Experiment!
+pkg (4E) on Chan 1 found! Can start!
+[A4][ 9][4E][ 1][ 0][ 0][AD][ 6][85][32][53][32][9F]
+Run 0: failed 1 sucess 668: 5344 bytes received in 10.000000 s => 534.399997 Bps
+Run 1: failed 1 sucess 668: 5344 bytes received in 10.000000 s => 534.399991 Bps
+Run 2: failed 0 sucess 668: 5344 bytes received in 10.000000 s => 534.399996 Bps
+Run 3: failed 1 sucess 668: 5344 bytes received in 10.000000 s => 534.399999 Bps
+Run 4: failed 0 sucess 669: 5352 bytes received in 10.000000 s => 535.199996 Bps
+Run 5: failed 1 sucess 668: 5344 bytes received in 10.000000 s => 534.399990 Bps
+Run 6: failed 1 sucess 667: 5336 bytes received in 10.000000 s => 533.599997 Bps
+Run 7: failed 0 sucess 669: 5352 bytes received in 10.000000 s => 535.199997 Bps
+Run 8: failed 0 sucess 669: 5352 bytes received in 10.000000 s => 535.199993 Bps
+Run 9: failed 1 sucess 667: 5336 bytes received in 10.000000 s => 533.599994 Bps
+Average datarate : 534.479995 	Std dev: 0.560000
+
+period = 470 ==> Freq = 69.719149
+Press any key to start the Experiment!
+Press any key to start the Experiment!
+pkg (4E) on Chan 1 found! Can start!
+[A4][ 9][4E][ 1][ 0][ 0][AD][ 6][85][32][53][32][9F]
+Run 0: failed 0 sucess 697: 5576 bytes received in 10.000000 s => 557.599990 Bps
+Run 1: failed 0 sucess 697: 5576 bytes received in 10.000000 s => 557.600000 Bps
+Run 2: failed 0 sucess 698: 5584 bytes received in 10.000000 s => 558.399994 Bps
+Run 3: failed 0 sucess 697: 5576 bytes received in 10.000000 s => 557.599991 Bps
+Run 4: failed 0 sucess 697: 5576 bytes received in 10.000000 s => 557.599992 Bps
+Run 5: failed 0 sucess 697: 5576 bytes received in 10.000000 s => 557.599991 Bps
+Run 6: failed 0 sucess 697: 5576 bytes received in 10.000000 s => 557.599990 Bps
+Run 7: failed 2 sucess 696: 5568 bytes received in 10.000000 s => 556.799996 Bps
+Run 8: failed 0 sucess 697: 5576 bytes received in 10.000000 s => 557.599988 Bps
+Run 9: failed 1 sucess 696: 5568 bytes received in 10.000000 s => 556.800000 Bps
+Average datarate : 557.519993 	Std dev: 0.430812
+
+period = 450 ==> Freq = 72.817778
+Press any key to start the Experiment!
+Press any key to start the Experiment!
+pkg (4E) on Chan 1 found! Can start!
+[A4][ 9][4E][ 1][ 0][ 0][AD][ 6][85][32][53][32][9F]
+Run 0: failed 2 sucess 726: 5808 bytes received in 10.000000 s => 580.799995 Bps
+Run 1: failed 0 sucess 728: 5824 bytes received in 10.000000 s => 582.399994 Bps
+Run 2: failed 0 sucess 728: 5824 bytes received in 10.000000 s => 582.399992 Bps
+Run 3: failed 1 sucess 727: 5816 bytes received in 10.000000 s => 581.599992 Bps
+Run 4: failed 0 sucess 729: 5832 bytes received in 10.000000 s => 583.199994 Bps
+Run 5: failed 0 sucess 728: 5824 bytes received in 10.000000 s => 582.399994 Bps
+Run 6: failed 0 sucess 728: 5824 bytes received in 10.000000 s => 582.399994 Bps
+Run 7: failed 0 sucess 728: 5824 bytes received in 10.000000 s => 582.399990 Bps
+Run 8: failed 0 sucess 728: 5824 bytes received in 10.000000 s => 582.399990 Bps
+Run 9: failed 1 sucess 728: 5824 bytes received in 10.000000 s => 582.399997 Bps
+Average datarate : 582.239993 	Std dev: 0.598665
+
+period = 430 ==> Freq = 76.204651
+Press any key to start the Experiment!
+Press any key to start the Experiment!
+pkg (4E) on Chan 1 found! Can start!
+[A4][ 9][4E][ 1][ 0][ 0][AD][ 6][85][32][53][32][9F]
+Run 0: failed 0 sucess 0: 0 bytes received in 10.000000 s => 0.000000 Bps
+Run 1: failed 0 sucess 0: 0 bytes received in 10.000000 s => 0.000000 Bps
+Run 2: failed 0 sucess 0: 0 bytes received in 10.000000 s => 0.000000 Bps
+Run 3: failed 0 sucess 0: 0 bytes received in 10.000000 s => 0.000000 Bps
+Run 4: failed 0 sucess 0: 0 bytes received in 10.000000 s => 0.000000 Bps
+Run 5: failed 0 sucess 0: 0 bytes received in 10.000000 s => 0.000000 Bps
+Run 6: failed 0 sucess 0: 0 bytes received in 10.000000 s => 0.000000 Bps
+Run 7: failed 0 sucess 0: 0 bytes received in 10.000000 s => 0.000000 Bps
+Run 8: failed 0 sucess 0: 0 bytes received in 10.000000 s => 0.000000 Bps
+Run 9: failed 0 sucess 0: 0 bytes received in 10.000000 s => 0.000000 Bps
+Average datarate : 0.000000 	Std dev: 0.000000
+
+
+period = 255 ==> Freq = 128.501961
+Press any key to start the Experiment!
+Press any key to start the Experiment!
+pkg (4E) on Chan 1 found! Can start!
+[A4][ 9][4E][ 1][ 0][ 0][AD][ 6][85][32][53][32][9F]
+Run 0: failed 0 sucess 0: 0 bytes received in 10.000000 s => 0.000000 Bps
+Run 1: failed 0 sucess 0: 0 bytes received in 10.000000 s => 0.000000 Bps
+Run 2: failed 0 sucess 0: 0 bytes received in 10.000000 s => 0.000000 Bps
+Run 3: failed 0 sucess 0: 0 bytes received in 10.000000 s => 0.000000 Bps
+Run 4: failed 0 sucess 0: 0 bytes received in 10.000000 s => 0.000000 Bps
+Run 5: failed 0 sucess 0: 0 bytes received in 10.000000 s => 0.000000 Bps
+Run 6: failed 0 sucess 0: 0 bytes received in 10.000000 s => 0.000000 Bps
+Run 7: failed 0 sucess 0: 0 bytes received in 10.000000 s => 0.000000 Bps
+Run 8: failed 0 sucess 0: 0 bytes received in 10.000000 s => 0.000000 Bps
+Run 9: failed 0 sucess 0: 0 bytes received in 10.000000 s => 0.000000 Bps
+Average datarate : 0.000000 	Std dev: 0.000000
+
+period = 245 ==> Freq = 133.746939
+Press any key to start the Experiment!
+Press any key to start the Experiment!
+pkg (4E) on Chan 1 found! Can start!
+[A4][ 9][4E][ 1][ 0][ 0][AD][ 6][85][32][53][32][9F]
+Run 0: failed 33 sucess 43: 344 bytes received in 10.000000 s => 34.400000 Bps
+Run 1: failed 28 sucess 38: 304 bytes received in 10.000000 s => 30.400000 Bps
+Run 2: failed 36 sucess 48: 384 bytes received in 10.000000 s => 38.400000 Bps
+Run 3: failed 33 sucess 45: 360 bytes received in 10.000000 s => 35.999999 Bps
+Run 4: failed 31 sucess 41: 328 bytes received in 10.000000 s => 32.799999 Bps
+Run 5: failed 27 sucess 37: 296 bytes received in 10.000000 s => 29.599999 Bps
+Run 6: failed 35 sucess 47: 376 bytes received in 10.000000 s => 37.600000 Bps
+Run 7: failed 36 sucess 49: 392 bytes received in 10.000000 s => 39.200000 Bps
+Run 8: failed 27 sucess 37: 296 bytes received in 10.000000 s => 29.600000 Bps
+Run 9: failed 30 sucess 40: 320 bytes received in 10.000000 s => 32.000000 Bps
+Average datarate : 34.000000 	Std dev: 3.473327

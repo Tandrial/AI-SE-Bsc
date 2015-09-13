@@ -1,0 +1,121 @@
+[michael@xps src]$ sudo ./ant -p /dev/ttyUSB2 -t s -n 6 -f 8192
+Power setting is now : 0 dBm
+Port = /dev/ttyUSB2
+Type = s
+Num = 6
+Press any key to start the Experiment!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][ 0][ 0][ 0][ 0][ 0][ 0][ 0][25][C6]
+
+Received 2 burst packets in 0.006975 s ==>  2294.068957 Bps
+Received 2 burst packets in 0.006974 s ==>  2294.101192 Bps
+Received 2 burst packets in 0.006975 s ==>  2294.051853 Bps
+Received 2 burst packets in 0.006975 s ==>  2293.920952 Bps
+Received 2 burst packets in 0.006824 s ==>  2344.590641 Bps
+Received 2 burst packets in 0.006799 s ==>  2353.221833 Bps
+Received 2 burst packets in 0.006815 s ==>  2347.781581 Bps
+Received 2 burst packets in 0.006825 s ==>  2344.353946 Bps
+Received 2 burst packets in 0.006815 s ==>  2347.828090 Bps
+Received 2 burst packets in 0.006815 s ==>  2347.644132 Bps
+
+Received 4 burst packets in 0.020635 s ==>  1550.769805 Bps
+Received 4 burst packets in 0.020635 s ==>  1550.799941 Bps
+Received 4 burst packets in 0.020625 s ==>  1551.527489 Bps
+Received 4 burst packets in 0.020689 s ==>  1546.685144 Bps
+Received 4 burst packets in 0.020689 s ==>  1546.686041 Bps
+Received 4 burst packets in 0.020650 s ==>  1549.648210 Bps
+Received 4 burst packets in 0.020771 s ==>  1540.593038 Bps
+Received 4 burst packets in 0.020635 s ==>  1550.795507 Bps
+Received 4 burst packets in 0.020639 s ==>  1550.474511 Bps
+Received 4 burst packets in 0.020672 s ==>  1548.022737 Bps
+
+Received 8 burst packets in 0.047971 s ==>  1334.125804 Bps
+Received 8 burst packets in 0.048000 s ==>  1333.334028 Bps
+Received 8 burst packets in 0.048000 s ==>  1333.323445 Bps
+Received 8 burst packets in 0.048050 s ==>  1331.933333 Bps
+Received 8 burst packets in 0.048050 s ==>  1331.942563 Bps
+Received 8 burst packets in 0.048003 s ==>  1333.246061 Bps
+Received 8 burst packets in 0.048000 s ==>  1333.335722 Bps
+Received 8 burst packets in 0.048000 s ==>  1333.323111 Bps
+Received 8 burst packets in 0.048051 s ==>  1331.914179 Bps
+Received 8 burst packets in 0.048050 s ==>  1331.947802 Bps
+
+Received 16 burst packets in 0.103126 s ==>  1241.206091 Bps
+Received 16 burst packets in 0.103151 s ==>  1240.899012 Bps
+Received 16 burst packets in 0.103115 s ==>  1241.327485 Bps
+Received 16 burst packets in 0.103112 s ==>  1241.364817 Bps
+Received 16 burst packets in 0.103116 s ==>  1241.319419 Bps
+Received 16 burst packets in 0.103166 s ==>  1240.718613 Bps
+Received 16 burst packets in 0.103115 s ==>  1241.326775 Bps
+Received 16 burst packets in 0.103113 s ==>  1241.358207 Bps
+Received 16 burst packets in 0.103001 s ==>  1242.712173 Bps
+Received 16 burst packets in 0.103119 s ==>  1241.280622 Bps
+Received 16 burst packets in 0.103116 s ==>  1241.321333 Bps
+
+Received 32 burst packets in 0.213220 s ==>  1200.638548 Bps
+Received 32 burst packets in 0.212516 s ==>  1204.614989 Bps
+Received 32 burst packets in 0.213193 s ==>  1200.792125 Bps
+Received 32 burst packets in 0.212677 s ==>  1203.704027 Bps
+Received 32 burst packets in 0.213028 s ==>  1201.717570 Bps
+Received 32 burst packets in 0.212974 s ==>  1202.023142 Bps
+Received 32 burst packets in 0.213053 s ==>  1201.577861 Bps
+Received 32 burst packets in 0.212577 s ==>  1204.272327 Bps
+Received 32 burst packets in 0.213190 s ==>  1200.807986 Bps
+Received 32 burst packets in 0.213052 s ==>  1201.584686 Bps
+
+Received 64 burst packets in 0.432140 s ==>  1184.800087 Bps
+Received 64 burst packets in 0.432851 s ==>  1182.854157 Bps
+Received 64 burst packets in 0.432491 s ==>  1183.840167 Bps
+Received 64 burst packets in 0.432751 s ==>  1183.128688 Bps
+Received 64 burst packets in 0.432145 s ==>  1184.788243 Bps
+Received 64 burst packets in 0.432803 s ==>  1182.985082 Bps
+Received 64 burst packets in 0.432495 s ==>  1183.830070 Bps
+Received 64 burst packets in 0.432679 s ==>  1183.324908 Bps
+Received 64 burst packets in 0.432804 s ==>  1182.983590 Bps
+Received 64 burst packets in 0.432544 s ==>  1183.695649 Bps
+
+Received 128 burst packets in 0.873172 s ==>  1172.735230 Bps
+Received 128 burst packets in 0.871833 s ==>  1174.536586 Bps
+Received 128 burst packets in 0.870838 s ==>  1175.878882 Bps
+Received 128 burst packets in 0.871883 s ==>  1174.469024 Bps
+Received 128 burst packets in 0.872148 s ==>  1174.112113 Bps
+Received 128 burst packets in 0.872249 s ==>  1173.976865 Bps
+Received 128 burst packets in 0.871934 s ==>  1174.400910 Bps
+Received 128 burst packets in 0.871683 s ==>  1174.738634 Bps
+Received 128 burst packets in 0.871637 s ==>  1174.801283 Bps
+Received 128 burst packets in 0.871960 s ==>  1174.365434 Bps
+Received 128 burst packets in 0.871785 s ==>  1174.601490 Bps
+
+Received 256 burst packets in 1.750794 s ==>  1169.754749 Bps
+Received 256 burst packets in 1.752208 s ==>  1168.811247 Bps
+Received 256 burst packets in 1.750585 s ==>  1169.894911 Bps
+Received 256 burst packets in 1.750382 s ==>  1170.030140 Bps
+Received 256 burst packets in 1.751180 s ==>  1169.497126 Bps
+Received 256 burst packets in 1.751989 s ==>  1168.956998 Bps
+Received 256 burst packets in 1.750582 s ==>  1169.896943 Bps
+Received 256 burst packets in 1.751069 s ==>  1169.571493 Bps
+Received 256 burst packets in 1.750228 s ==>  1170.133024 Bps
+Received 256 burst packets in 1.752943 s ==>  1168.321022 Bps
+
+Received 512 burst packets in 3.507596 s ==>  1167.751291 Bps
+Received 512 burst packets in 3.508629 s ==>  1167.407693 Bps
+Received 512 burst packets in 3.508639 s ==>  1167.404142 Bps
+Received 512 burst packets in 3.507992 s ==>  1167.619491 Bps
+Received 512 burst packets in 3.507840 s ==>  1167.670203 Bps
+Received 512 burst packets in 3.507830 s ==>  1167.673335 Bps
+Received 512 burst packets in 3.509626 s ==>  1167.075967 Bps
+Received 512 burst packets in 3.508914 s ==>  1167.312848 Bps
+Received 512 burst packets in 3.507680 s ==>  1167.723345 Bps
+Received 512 burst packets in 3.508507 s ==>  1167.448273 Bps
+Received 512 burst packets in 3.509647 s ==>  1167.068977 Bps
+
+Received 1024 burst packets in 7.024032 s ==>  1166.281671 Bps
+Received 1024 burst packets in 7.023831 s ==>  1166.315002 Bps
+Received 1024 burst packets in 7.026544 s ==>  1165.864687 Bps
+Received 1024 burst packets in 7.022741 s ==>  1166.496021 Bps
+Received 1024 burst packets in 7.021549 s ==>  1166.694190 Bps
+Received 1024 burst packets in 7.024034 s ==>  1166.281404 Bps
+Received 1024 burst packets in 7.022805 s ==>  1166.485446 Bps
+Received 1024 burst packets in 7.022208 s ==>  1166.584659 Bps
+Received 1024 burst packets in 7.026426 s ==>  1165.884413 Bps
+Received 1024 burst packets in 7.024405 s ==>  1166.219796 Bps

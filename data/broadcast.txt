@@ -1,0 +1,299 @@
+[michael@xps src]$ sudo ./ant -p /dev/ttyUSB0 -t s -n 4
+Power setting is now : 0 dBm
+Port = /dev/ttyUSB0
+Type = s
+Num = 4
+period = 65535 ==> Freq = 0.500008
+Press any key to start the Experiment!
+
+Run 0: failed 0 sucess 5: 40 bytes received in 10.000000 s => 4.000000 Bps
+Run 1: failed 0 sucess 5: 40 bytes received in 10.000000 s => 4.000000 Bps
+Run 2: failed 0 sucess 5: 40 bytes received in 10.000000 s => 4.000000 Bps
+Run 3: failed 0 sucess 5: 40 bytes received in 10.000000 s => 4.000000 Bps
+Run 4: failed 0 sucess 5: 40 bytes received in 10.000000 s => 4.000000 Bps
+Run 5: failed 0 sucess 5: 40 bytes received in 10.000000 s => 4.000000 Bps
+Run 6: failed 0 sucess 5: 40 bytes received in 10.000000 s => 4.000000 Bps
+Run 7: failed 0 sucess 5: 40 bytes received in 10.000000 s => 4.000000 Bps
+Run 8: failed 0 sucess 5: 40 bytes received in 10.000000 s => 4.000000 Bps
+Run 9: failed 0 sucess 5: 40 bytes received in 10.000000 s => 4.000000 Bps
+Average datarate : 4.000000 	Std dev: 0.000000
+
+period = 32767 ==> Freq = 1.000031
+Press any key to start the Experiment!
+pkg found! Can start!
+
+Run 0: failed 0 sucess 10: 80 bytes received in 10.000000 s => 8.000000 Bps
+Run 1: failed 0 sucess 10: 80 bytes received in 10.000000 s => 8.000000 Bps
+Run 2: failed 0 sucess 10: 80 bytes received in 10.000000 s => 8.000000 Bps
+Run 3: failed 0 sucess 10: 80 bytes received in 10.000000 s => 8.000000 Bps
+Run 4: failed 0 sucess 10: 80 bytes received in 10.000000 s => 8.000000 Bps
+Run 5: failed 0 sucess 10: 80 bytes received in 10.000000 s => 8.000000 Bps
+Run 6: failed 0 sucess 10: 80 bytes received in 10.000000 s => 8.000000 Bps
+Run 7: failed 0 sucess 10: 80 bytes received in 10.000000 s => 8.000000 Bps
+Run 8: failed 0 sucess 10: 80 bytes received in 10.000000 s => 8.000000 Bps
+Run 9: failed 0 sucess 10: 80 bytes received in 10.000000 s => 8.000000 Bps
+Average datarate : 8.000000 	Std dev: 0.000000
+
+period = 16383 ==> Freq = 2.000122
+Press any key to start the Experiment!
+pkg found! Can start!
+
+Run 0: failed 0 sucess 20: 160 bytes received in 10.000000 s => 16.000000 Bps
+Run 1: failed 0 sucess 20: 160 bytes received in 10.000000 s => 16.000000 Bps
+Run 2: failed 0 sucess 20: 160 bytes received in 10.000000 s => 16.000000 Bps
+Run 3: failed 0 sucess 20: 160 bytes received in 10.000000 s => 16.000000 Bps
+Run 4: failed 0 sucess 20: 160 bytes received in 10.000000 s => 16.000000 Bps
+Run 5: failed 0 sucess 20: 160 bytes received in 10.000000 s => 16.000000 Bps
+Run 6: failed 0 sucess 20: 160 bytes received in 10.000000 s => 16.000000 Bps
+Run 7: failed 0 sucess 20: 160 bytes received in 10.000000 s => 16.000000 Bps
+Run 8: failed 0 sucess 20: 160 bytes received in 10.000000 s => 16.000000 Bps
+Run 9: failed 0 sucess 20: 160 bytes received in 10.000000 s => 16.000000 Bps
+Average datarate : 16.000000 	Std dev: 0.000000
+
+period = 8191 ==> Freq = 4.000488
+Press any key to start the Experiment!
+pkg found! Can start!
+
+Run 0: failed 1 sucess 39: 312 bytes received in 10.000000 s => 31.200000 Bps
+Run 1: failed 0 sucess 40: 320 bytes received in 10.000000 s => 32.000000 Bps
+Run 2: failed 0 sucess 40: 320 bytes received in 10.000000 s => 32.000000 Bps
+Run 3: failed 1 sucess 39: 312 bytes received in 10.000000 s => 31.200000 Bps
+Run 4: failed 1 sucess 39: 312 bytes received in 10.000000 s => 31.200000 Bps
+Run 5: failed 0 sucess 40: 320 bytes received in 10.000000 s => 32.000000 Bps
+Run 6: failed 1 sucess 39: 312 bytes received in 10.000000 s => 31.200000 Bps
+Run 7: failed 0 sucess 40: 320 bytes received in 10.000000 s => 32.000000 Bps
+Run 8: failed 0 sucess 40: 320 bytes received in 10.000000 s => 32.000000 Bps
+Run 9: failed 1 sucess 39: 312 bytes received in 10.000000 s => 31.200000 Bps
+Average datarate : 31.600000 	Std dev: 0.400000
+
+period = 4095 ==> Freq = 8.001954
+Press any key to start the Experiment!
+pkg found! Can start!
+Run 0: failed 0 sucess 80: 640 bytes received in 10.000000 s => 64.000000 Bps
+Run 1: failed 0 sucess 80: 640 bytes received in 10.000000 s => 63.999999 Bps
+Run 2: failed 0 sucess 80: 640 bytes received in 10.000000 s => 63.999999 Bps
+Run 3: failed 0 sucess 80: 640 bytes received in 10.000000 s => 64.000000 Bps
+Run 4: failed 0 sucess 80: 640 bytes received in 10.000000 s => 64.000000 Bps
+Run 5: failed 0 sucess 80: 640 bytes received in 10.000000 s => 63.999999 Bps
+Run 6: failed 0 sucess 80: 640 bytes received in 10.000000 s => 64.000000 Bps
+Run 7: failed 0 sucess 80: 640 bytes received in 10.000000 s => 63.999999 Bps
+Run 8: failed 0 sucess 80: 640 bytes received in 10.000000 s => 63.999999 Bps
+Run 9: failed 1 sucess 79: 632 bytes received in 10.000000 s => 63.200000 Bps
+Average datarate : 63.920000 	Std dev: 0.240000
+
+period = 2047 ==> Freq = 16.007816
+Press any key to start the Experiment!
+pkg found! Can start!
+Run 0: failed 2 sucess 158: 1264 bytes received in 10.000000 s => 126.399999 Bps
+Run 1: failed 0 sucess 160: 1280 bytes received in 10.000000 s => 128.000000 Bps
+Run 2: failed 0 sucess 161: 1288 bytes received in 10.000000 s => 128.799998 Bps
+Run 3: failed 0 sucess 160: 1280 bytes received in 10.000000 s => 127.999999 Bps
+Run 4: failed 0 sucess 160: 1280 bytes received in 10.000000 s => 128.000000 Bps
+Run 5: failed 0 sucess 160: 1280 bytes received in 10.000000 s => 127.999999 Bps
+Run 6: failed 0 sucess 160: 1280 bytes received in 10.000000 s => 127.999999 Bps
+Run 7: failed 0 sucess 160: 1280 bytes received in 10.000000 s => 127.999999 Bps
+Run 8: failed 0 sucess 160: 1280 bytes received in 10.000000 s => 127.999999 Bps
+Run 9: failed 0 sucess 160: 1280 bytes received in 10.000000 s => 127.999999 Bps
+Average datarate : 127.919999 	Std dev: 0.560000
+
+period = 1023 ==> Freq = 32.031281
+Press any key to start the Experiment!
+pkg found! Can start!
+Run 0: failed 1 sucess 319: 2552 bytes received in 10.000000 s => 255.199996 Bps
+Run 1: failed 0 sucess 320: 2560 bytes received in 10.000000 s => 255.999999 Bps
+Run 2: failed 1 sucess 320: 2560 bytes received in 10.000000 s => 255.999996 Bps
+Run 3: failed 0 sucess 320: 2560 bytes received in 10.000000 s => 255.999996 Bps
+Run 4: failed 2 sucess 318: 2544 bytes received in 10.000000 s => 254.399998 Bps
+Run 5: failed 0 sucess 320: 2560 bytes received in 10.000000 s => 255.999999 Bps
+Run 6: failed 1 sucess 320: 2560 bytes received in 10.000000 s => 255.999996 Bps
+Run 7: failed 1 sucess 319: 2552 bytes received in 10.000000 s => 255.199999 Bps
+Run 8: failed 0 sucess 320: 2560 bytes received in 10.000000 s => 255.999997 Bps
+Run 9: failed 0 sucess 320: 2560 bytes received in 10.000000 s => 255.999999 Bps
+Average datarate : 255.679998 	Std dev: 0.530660
+
+period = 511 ==> Freq = 64.125245
+Press any key to start the Experiment!
+pkg found! Can start!
+Run 0: failed 1 sucess 640: 5120 bytes received in 10.000000 s => 511.999994 Bps
+Run 1: failed 3 sucess 638: 5104 bytes received in 10.000000 s => 510.399997 Bps
+Run 2: failed 1 sucess 640: 5120 bytes received in 10.000000 s => 511.999993 Bps
+Run 3: failed 2 sucess 639: 5112 bytes received in 10.000000 s => 511.199993 Bps
+Run 4: failed 2 sucess 640: 5120 bytes received in 10.000000 s => 511.999992 Bps
+Run 5: failed 1 sucess 640: 5120 bytes received in 10.000000 s => 512.000000 Bps
+Run 6: failed 0 sucess 641: 5128 bytes received in 10.000000 s => 512.799993 Bps
+Run 7: failed 2 sucess 639: 5112 bytes received in 10.000000 s => 511.199996 Bps
+Run 8: failed 0 sucess 642: 5136 bytes received in 10.000000 s => 513.599996 Bps
+Run 9: failed 1 sucess 640: 5120 bytes received in 10.000000 s => 511.999995 Bps
+Average datarate : 511.919995 	Std dev: 0.835224
+
+period = 255 ==> Freq = 128.501961
+Press any key to start the Experiment!
+pkg found! Can start!
+Run 0: failed 2 sucess 1277: 10216 bytes received in 10.000000 s => 1021.599987 Bps
+Run 1: failed 3 sucess 1273: 10184 bytes received in 10.000000 s => 1018.399992 Bps
+Run 2: failed 1 sucess 1281: 10248 bytes received in 10.000000 s => 1024.799984 Bps
+Run 3: failed 2 sucess 1277: 10216 bytes received in 10.000000 s => 1021.599996 Bps
+Run 4: failed 1 sucess 1281: 10248 bytes received in 10.000000 s => 1024.799997 Bps
+Run 5: failed 4 sucess 1269: 10152 bytes received in 10.000000 s => 1015.199995 Bps
+Run 6: failed 2 sucess 1277: 10216 bytes received in 10.000000 s => 1021.599986 Bps
+Run 7: failed 0 sucess 1285: 10280 bytes received in 10.000000 s => 1027.999985 Bps
+Run 8: failed 1 sucess 1281: 10248 bytes received in 10.000000 s => 1024.799995 Bps
+Run 9: failed 5 sucess 1265: 10120 bytes received in 10.000000 s => 1011.999989 Bps
+Average datarate : 1021.279991 	Std dev: 4.626185
+
+period = 245 ==> Freq = 133.746939
+Press any key to start the Experiment!
+pkg found! Can start!
+Run 0: failed 4 sucess 1305: 10440 bytes received in 10.000001 s => 1043.999895 Bps
+Run 1: failed 2 sucess 1322: 10576 bytes received in 10.000000 s => 1057.599999 Bps
+Run 2: failed 1 sucess 1329: 10632 bytes received in 10.000000 s => 1063.199993 Bps
+Run 3: failed 3 sucess 1314: 10512 bytes received in 10.000000 s => 1051.199987 Bps
+Run 4: failed 3 sucess 1313: 10504 bytes received in 10.000000 s => 1050.399984 Bps
+Run 5: failed 3 sucess 1313: 10504 bytes received in 10.000000 s => 1050.399997 Bps
+Run 6: failed 4 sucess 1306: 10448 bytes received in 10.000000 s => 1044.799986 Bps
+Run 7: failed 2 sucess 1321: 10568 bytes received in 10.000000 s => 1056.799988 Bps
+Run 8: failed 1 sucess 1330: 10640 bytes received in 10.000000 s => 1063.999999 Bps
+Run 9: failed 2 sucess 1321: 10568 bytes received in 10.000000 s => 1056.799985 Bps
+Average datarate : 1053.919981 	Std dev: 6.569766
+
+period = 235 ==> Freq = 139.438298
+Press any key to start the Experiment!
+pkg found! Can start!
+Run 0: failed 1 sucess 1392: 11136 bytes received in 10.000000 s => 1113.599993 Bps
+Run 1: failed 2 sucess 1388: 11104 bytes received in 10.000000 s => 1110.399989 Bps
+Run 2: failed 3 sucess 1385: 11080 bytes received in 10.000000 s => 1107.999992 Bps
+Run 3: failed 2 sucess 1389: 11112 bytes received in 10.000000 s => 1111.199987 Bps
+Run 4: failed 3 sucess 1385: 11080 bytes received in 10.000000 s => 1107.999992 Bps
+Run 5: failed 0 sucess 1394: 11152 bytes received in 10.000000 s => 1115.199991 Bps
+Run 6: failed 4 sucess 1383: 11064 bytes received in 10.000000 s => 1106.399996 Bps
+Run 7: failed 5 sucess 1379: 11032 bytes received in 10.000000 s => 1103.199999 Bps
+Run 8: failed 2 sucess 1388: 11104 bytes received in 10.000000 s => 1110.399990 Bps
+Run 9: failed 2 sucess 1389: 11112 bytes received in 10.000000 s => 1111.199986 Bps
+Average datarate : 1109.759992 	Std dev: 3.313968
+
+period = 225 ==> Freq = 145.635556
+Press any key to start the Experiment!
+pkg found! Can start!
+
+Run 0: failed 9 sucess 1402: 11216 bytes received in 10.000000 s => 1121.599991 Bps
+Run 1: failed 5 sucess 1427: 11416 bytes received in 10.000000 s => 1141.600000 Bps
+Run 2: failed 10 sucess 1396: 11168 bytes received in 10.000000 s => 1116.800000 Bps
+Run 3: failed 1 sucess 1450: 11600 bytes received in 10.000000 s => 1159.999993 Bps
+Run 4: failed 6 sucess 1421: 11368 bytes received in 10.000000 s => 1136.799999 Bps
+Run 5: failed 3 sucess 1438: 11504 bytes received in 10.000000 s => 1150.399989 Bps
+Run 6: failed 6 sucess 1420: 11360 bytes received in 10.000000 s => 1135.999986 Bps
+Run 7: failed 5 sucess 1426: 11408 bytes received in 10.000000 s => 1140.799983 Bps
+Run 8: failed 10 sucess 1397: 11176 bytes received in 10.000000 s => 1117.600000 Bps
+Run 9: failed 8 sucess 1408: 11264 bytes received in 10.000000 s => 1126.399984 Bps
+Average datarate : 1134.799992 	Std dev: 13.530409
+
+period = 215 ==> Freq = 152.409302
+Press any key to start the Experiment!
+pkg found! Can start!
+Run 0: failed 4 sucess 1408: 11264 bytes received in 10.000000 s => 1126.399993 Bps
+Run 1: failed 8 sucess 1352: 10816 bytes received in 10.000000 s => 1081.599992 Bps
+Run 2: failed 3 sucess 1421: 11368 bytes received in 10.000000 s => 1136.799988 Bps
+Run 3: failed 3 sucess 1421: 11368 bytes received in 10.000000 s => 1136.799984 Bps
+Run 4: failed 5 sucess 1395: 11160 bytes received in 10.000000 s => 1115.999989 Bps
+Run 5: failed 6 sucess 1379: 11032 bytes received in 10.000000 s => 1103.199987 Bps
+Run 6: failed 8 sucess 1352: 10816 bytes received in 10.000000 s => 1081.599987 Bps
+Run 7: failed 5 sucess 1394: 11152 bytes received in 10.000000 s => 1115.199992 Bps
+Run 8: failed 3 sucess 1422: 11376 bytes received in 10.000000 s => 1137.599983 Bps
+Run 9: failed 2 sucess 1435: 11480 bytes received in 10.000000 s => 1147.999991 Bps
+Average datarate : 1118.319989 	Std dev: 22.229205
+
+period = 205 ==> Freq = 159.843902
+Press any key to start the Experiment!
+pkg found! Can start!
+
+Run 0: failed 6 sucess 1439: 11512 bytes received in 10.000000 s => 1151.199992 Bps
+Run 1: failed 5 sucess 1441: 11528 bytes received in 10.000000 s => 1152.799984 Bps
+Run 2: failed 3 sucess 1449: 11592 bytes received in 10.000000 s => 1159.200000 Bps
+Run 3: failed 4 sucess 1446: 11568 bytes received in 10.000000 s => 1156.800000 Bps
+Run 4: failed 3 sucess 1449: 11592 bytes received in 10.000000 s => 1159.199994 Bps
+Run 5: failed 2 sucess 1453: 11624 bytes received in 10.000000 s => 1162.399990 Bps
+Run 6: failed 5 sucess 1442: 11536 bytes received in 10.000000 s => 1153.599982 Bps
+Run 7: failed 4 sucess 1445: 11560 bytes received in 10.000000 s => 1155.999992 Bps
+Run 8: failed 10 sucess 1420: 11360 bytes received in 10.000000 s => 1135.999993 Bps
+Run 9: failed 3 sucess 1449: 11592 bytes received in 10.000000 s => 1159.199999 Bps
+Average datarate : 1154.639993 	Std dev: 7.020429
+
+period = 195 ==> Freq = 168.041026
+Press any key to start the Experiment!
+pkg found! Can start!
+Run 0: failed 9 sucess 1451: 11608 bytes received in 10.000000 s => 1160.799999 Bps
+Run 1: failed 5 sucess 1456: 11648 bytes received in 10.000000 s => 1164.799993 Bps
+Run 2: failed 8 sucess 1455: 11640 bytes received in 10.000000 s => 1163.999999 Bps
+Run 3: failed 7 sucess 1454: 11632 bytes received in 10.000000 s => 1163.199986 Bps
+Run 4: failed 5 sucess 1457: 11656 bytes received in 10.000000 s => 1165.599992 Bps
+Run 5: failed 10 sucess 1452: 11616 bytes received in 10.000000 s => 1161.599992 Bps
+Run 6: failed 5 sucess 1458: 11664 bytes received in 10.000000 s => 1166.399983 Bps
+Run 7: failed 7 sucess 1455: 11640 bytes received in 10.000000 s => 1163.999985 Bps
+Run 8: failed 4 sucess 1457: 11656 bytes received in 10.000000 s => 1165.599983 Bps
+Run 9: failed 1 sucess 1463: 11704 bytes received in 10.000000 s => 1170.399983 Bps
+Average datarate : 1164.639990 	Std dev: 2.549977
+
+period = 185 ==> Freq = 177.124324
+Press any key to start the Experiment!
+pkg found! Can start!
+Run 0: failed 8 sucess 1410: 11280 bytes received in 10.000000 s => 1127.999988 Bps
+Run 1: failed 4 sucess 1436: 11488 bytes received in 10.000000 s => 1148.799994 Bps
+Run 2: failed 7 sucess 1415: 11320 bytes received in 10.000000 s => 1131.999989 Bps
+Run 3: failed 5 sucess 1430: 11440 bytes received in 10.000000 s => 1143.999986 Bps
+Run 4: failed 8 sucess 1409: 11272 bytes received in 10.000000 s => 1127.199998 Bps
+Run 5: failed 4 sucess 1435: 11480 bytes received in 10.000000 s => 1147.999994 Bps
+Run 6: failed 9 sucess 1403: 11224 bytes received in 10.000000 s => 1122.399987 Bps
+Run 7: failed 9 sucess 1388: 11104 bytes received in 10.000000 s => 1110.399985 Bps
+Run 8: failed 3 sucess 1443: 11544 bytes received in 10.000000 s => 1154.399994 Bps
+Run 9: failed 3 sucess 1444: 11552 bytes received in 10.000000 s => 1155.199983 Bps
+Average datarate : 1137.039990 	Std dev: 14.373532
+
+period = 175 ==> Freq = 187.245714
+Press any key to start the Experiment!
+pkg found! Can start!
+
+Run 0: failed 11 sucess 1429: 11432 bytes received in 10.000000 s => 1143.199992 Bps
+Run 1: failed 6 sucess 1441: 11528 bytes received in 10.000001 s => 1152.799876 Bps
+Run 2: failed 4 sucess 1446: 11568 bytes received in 10.000000 s => 1156.799993 Bps
+Run 3: failed 8 sucess 1437: 11496 bytes received in 10.000000 s => 1149.599994 Bps
+Run 4: failed 5 sucess 1444: 11552 bytes received in 10.000000 s => 1155.199991 Bps
+Run 5: failed 11 sucess 1431: 11448 bytes received in 10.000000 s => 1144.799999 Bps
+Run 6: failed 7 sucess 1439: 11512 bytes received in 10.000000 s => 1151.199989 Bps
+Run 7: failed 7 sucess 1440: 11520 bytes received in 10.000000 s => 1151.999996 Bps
+Run 8: failed 4 sucess 1447: 11576 bytes received in 10.000000 s => 1157.599990 Bps
+Run 9: failed 3 sucess 1449: 11592 bytes received in 10.000000 s => 1159.199990 Bps
+Average datarate : 1152.239981 	Std dev: 5.022188
+
+period = 165 ==> Freq = 198.593939
+Press any key to start the Experiment!
+pkg found! Can start!
+
+Run 0: failed 7 sucess 1411: 11288 bytes received in 10.000000 s => 1128.799984 Bps
+Run 1: failed 9 sucess 1398: 11184 bytes received in 10.000000 s => 1118.399988 Bps
+Run 2: failed 8 sucess 1408: 11264 bytes received in 10.000000 s => 1126.399991 Bps
+Run 3: failed 7 sucess 1407: 11256 bytes received in 10.000000 s => 1125.599993 Bps
+Run 4: failed 8 sucess 1405: 11240 bytes received in 10.000000 s => 1124.000000 Bps
+Run 5: failed 9 sucess 1397: 11176 bytes received in 10.000000 s => 1117.599998 Bps
+Run 6: failed 3 sucess 1438: 11504 bytes received in 10.000000 s => 1150.399989 Bps
+Run 7: failed 8 sucess 1405: 11240 bytes received in 10.000000 s => 1123.999987 Bps
+Run 8: failed 6 sucess 1417: 11336 bytes received in 10.000000 s => 1133.599987 Bps
+Run 9: failed 15 sucess 1360: 10880 bytes received in 10.000000 s => 1087.999994 Bps
+Average datarate : 1123.679991 	Std dev: 14.791131
+
+period = 164 ==> Freq = 199.804878
+Press any key to start the Experiment!
+pkg found! Can start!
+
+Run 0: failed 13 sucess 1359: 10872 bytes received in 10.000000 s => 1087.199984 Bps
+Run 1: failed 13 sucess 1367: 10936 bytes received in 10.000000 s => 1093.599999 Bps
+Run 2: failed 9 sucess 1383: 11064 bytes received in 10.000000 s => 1106.399991 Bps
+Run 3: failed 8 sucess 1400: 11200 bytes received in 10.000000 s => 1119.999993 Bps
+Run 4: failed 6 sucess 1416: 11328 bytes received in 10.000000 s => 1132.799997 Bps
+Run 5: failed 5 sucess 1426: 11408 bytes received in 10.000000 s => 1140.799984 Bps
+Run 6: failed 8 sucess 1398: 11184 bytes received in 10.000000 s => 1118.399996 Bps
+Run 7: failed 8 sucess 1399: 11192 bytes received in 10.000000 s => 1119.199995 Bps
+Run 8: failed 3 sucess 1441: 11528 bytes received in 10.000000 s => 1152.799985 Bps
+Run 9: failed 12 sucess 1367: 10936 bytes received in 10.000000 s => 1093.599997 Bps
+Average datarate : 1116.479992 	Std dev: 20.509352
+^C[michael@xps src]$ ^C
+[michael@xps src]$ 

@@ -1,0 +1,287 @@
+Port = /dev/ttyUSB1
+Type = m
+Num = 7
+period = 65535 ==> Freq = 0.500008
+Press any key to start the Experiment!
+Run 0: Delay 1.805417
+Run 1: Delay 1.999938
+Run 2: Delay 1.999871
+Run 3: Delay 1.999988
+Run 4: Delay 1.999917
+Run 5: Delay 1.999925
+Run 6: Delay 1.999921
+Run 7: Delay 1.999929
+Run 8: Delay 1.999923
+Run 9: Delay 1.999924
+Average delay : 1.980475 	Std dev: 0.058353
+
+period = 32767 ==> Freq = 1.000031
+Press any key to start the Experiment!
+
+Run 0: Delay 0.599048
+Run 1: Delay 0.999933
+Run 2: Delay 0.999911
+Run 3: Delay 0.999938
+Run 4: Delay 0.999915
+Run 5: Delay 0.999948
+Run 6: Delay 0.999947
+Run 7: Delay 0.999986
+Run 8: Delay 0.999938
+Run 9: Delay 0.999960
+Average delay : 0.959852 	Std dev: 0.120268
+
+period = 16383 ==> Freq = 2.000122
+Press any key to start the Experiment!
+
+Run 0: Delay 0.274472
+Run 1: Delay 0.499951
+Run 2: Delay 0.499917
+Run 3: Delay 0.499941
+Run 4: Delay 0.499925
+Run 5: Delay 0.499896
+Run 6: Delay 0.499944
+Run 7: Delay 0.499949
+Run 8: Delay 0.499933
+Run 9: Delay 0.499977
+Average delay : 0.477391 	Std dev: 0.067639
+
+period = 8191 ==> Freq = 4.000488
+Press any key to start the Experiment!
+
+Run 0: Delay 0.189124
+Run 1: Delay 0.249915
+Run 2: Delay 0.249964
+Run 3: Delay 0.249962
+Run 4: Delay 0.249859
+Run 5: Delay 0.249937
+Run 6: Delay 0.249940
+Run 7: Delay 0.249911
+Run 8: Delay 0.249943
+Run 9: Delay 0.249974
+Average delay : 0.243853 	Std dev: 0.018243
+
+period = 4095 ==> Freq = 8.001954
+Press any key to start the Experiment!
+
+Run 0: Delay 0.087902
+Run 1: Delay 0.124965
+Run 2: Delay 0.124848
+Run 3: Delay 0.124995
+Run 4: Delay 0.124917
+Run 5: Delay 0.124916
+Run 6: Delay 0.124947
+Run 7: Delay 0.124996
+Run 8: Delay 0.124893
+Run 9: Delay 0.124926
+Average delay : 0.121230 	Std dev: 0.011109
+
+period = 2047 ==> Freq = 16.007816
+Press any key to start the Experiment!
+
+Run 0: Delay 0.064736
+Run 1: Delay 0.062412
+Run 2: Delay 0.062463
+Run 3: Delay 0.062421
+Run 4: Delay 0.062416
+Run 5: Delay 0.062493
+Run 6: Delay 0.062431
+Run 7: Delay 0.062412
+Run 8: Delay 0.062474
+Run 9: Delay 0.062414
+Average delay : 0.062667 	Std dev: 0.000690
+
+period = 1023 ==> Freq = 32.031281
+Press any key to start the Experiment!
+
+Run 0: Delay 0.015328
+Run 1: Delay 0.031285
+Run 2: Delay 0.031036
+Run 3: Delay 0.031209
+Run 4: Delay 0.031204
+Run 5: Delay 0.031139
+Run 6: Delay 0.031176
+Run 7: Delay 0.031179
+Run 8: Delay 0.031242
+Run 9: Delay 0.031126
+Average delay : 0.029592 	Std dev: 0.004755
+
+period = 511 ==> Freq = 64.125245
+Press any key to start the Experiment!
+
+Run 0: Delay 0.023831
+Run 1: Delay 0.015576
+Run 2: Delay 0.015553
+Run 3: Delay 0.015593
+Run 4: Delay 0.015564
+Run 5: Delay 0.015561
+Run 6: Delay 0.015575
+Run 7: Delay 0.015574
+Run 8: Delay 0.015574
+Run 9: Delay 0.015563
+Average delay : 0.016396 	Std dev: 0.002478
+
+period = 255 ==> Freq = 128.501961
+Press any key to start the Experiment!
+
+Run 0: Delay 0.017054
+Run 1: Delay 0.015555
+Run 2: Delay 0.015514
+Run 3: Delay 0.015528
+Run 4: Delay 0.015518
+Run 5: Delay 0.015580
+Run 6: Delay 0.015504
+Run 7: Delay 0.015511
+Run 8: Delay 0.015533
+Run 9: Delay 0.015525
+Average delay : 0.015682 	Std dev: 0.000458
+
+period = 245 ==> Freq = 133.746939
+Press any key to start the Experiment!
+
+Run 0: Delay 0.020917
+Run 1: Delay 0.014891
+Run 2: Delay 0.014936
+Run 3: Delay 0.015001
+Run 4: Delay 0.014836
+Run 5: Delay 0.014938
+Run 6: Delay 0.014950
+Run 7: Delay 0.014792
+Run 8: Delay 0.015266
+Run 9: Delay 0.014618
+Average delay : 0.015515 	Std dev: 0.001808
+
+period = 235 ==> Freq = 139.438298
+Press any key to start the Experiment!
+
+Run 0: Delay 0.015423
+Run 1: Delay 0.021474
+Run 2: Delay 0.021500
+Run 3: Delay 0.021457
+Run 4: Delay 0.021584
+Run 5: Delay 0.021362
+Run 6: Delay 0.021596
+Run 7: Delay 0.021415
+Run 8: Delay 0.021512
+Run 9: Delay 0.021429
+Average delay : 0.020875 	Std dev: 0.001819
+
+period = 225 ==> Freq = 145.635556
+Press any key to start the Experiment!
+
+Run 0: Delay 0.019578
+Run 1: Delay 0.020605
+Run 2: Delay 0.020511
+Run 3: Delay 0.020581
+Run 4: Delay 0.020608
+Run 5: Delay 0.020545
+Run 6: Delay 0.020573
+Run 7: Delay 0.020569
+Run 8: Delay 0.020502
+Run 9: Delay 0.020595
+Average delay : 0.020467 	Std dev: 0.000298
+
+period = 215 ==> Freq = 152.409302
+Press any key to start the Experiment!
+
+Run 0: Delay 0.020073
+Run 1: Delay 0.019616
+Run 2: Delay 0.019688
+Run 3: Delay 0.019651
+Run 4: Delay 0.019599
+Run 5: Delay 0.019653
+Run 6: Delay 0.019588
+Run 7: Delay 0.019606
+Run 8: Delay 0.019644
+Run 9: Delay 0.019634
+Average delay : 0.019675 	Std dev: 0.000135
+
+period = 205 ==> Freq = 159.843902
+Press any key to start the Experiment!
+
+Run 0: Delay 0.017872
+Run 1: Delay 0.018661
+Run 2: Delay 0.018749
+Run 3: Delay 0.018662
+Run 4: Delay 0.018783
+Run 5: Delay 0.018700
+Run 6: Delay 0.018701
+Run 7: Delay 0.018725
+Run 8: Delay 0.018918
+Run 9: Delay 0.018525
+Average delay : 0.018630 	Std dev: 0.000270
+
+period = 195 ==> Freq = 168.041026
+Press any key to start the Experiment!
+
+Run 0: Delay 0.014543
+Run 1: Delay 0.022756
+Run 2: Delay 0.018792
+Run 3: Delay 0.017853
+Run 4: Delay 0.017791
+Run 5: Delay 0.017820
+Run 6: Delay 0.017837
+Run 7: Delay 0.017871
+Run 8: Delay 0.017791
+Run 9: Delay 0.017719
+Average delay : 0.018077 	Std dev: 0.001881
+
+period = 185 ==> Freq = 177.124324
+Press any key to start the Experiment!
+
+Run 0: Delay 0.014926
+Run 1: Delay 0.016901
+Run 2: Delay 0.016841
+Run 3: Delay 0.016946
+Run 4: Delay 0.016899
+Run 5: Delay 0.016929
+Run 6: Delay 0.016845
+Run 7: Delay 0.017467
+Run 8: Delay 0.016355
+Run 9: Delay 0.016910
+Average delay : 0.016702 	Std dev: 0.000643
+
+period = 175 ==> Freq = 187.245714
+Press any key to start the Experiment!
+
+Run 0: Delay 0.019755
+Run 1: Delay 0.015989
+Run 2: Delay 0.015990
+Run 3: Delay 0.015917
+Run 4: Delay 0.015993
+Run 5: Delay 0.015962
+Run 6: Delay 0.016000
+Run 7: Delay 0.016213
+Run 8: Delay 0.015739
+Run 9: Delay 0.015992
+Average delay : 0.016355 	Std dev: 0.001138
+
+period = 165 ==> Freq = 198.593939
+Press any key to start the Experiment!
+
+Run 0: Delay 0.016950
+Run 1: Delay 0.015038
+Run 2: Delay 0.015035
+Run 3: Delay 0.015095
+Run 4: Delay 0.014981
+Run 5: Delay 0.015095
+Run 6: Delay 0.015134
+Run 7: Delay 0.014988
+Run 8: Delay 0.015098
+Run 9: Delay 0.015040
+Average delay : 0.015245 	Std dev: 0.000570
+
+period = 164 ==> Freq = 199.804878
+Press any key to start the Experiment!
+
+Run 0: Delay 0.016316
+Run 1: Delay 0.014989
+Run 2: Delay 0.014952
+Run 3: Delay 0.014974
+Run 4: Delay 0.015035
+Run 5: Delay 0.014950
+Run 6: Delay 0.014959
+Run 7: Delay 0.015036
+Run 8: Delay 0.015028
+Run 9: Delay 0.014907
+Average delay : 0.015115 	Std dev: 0.000403
+period = 164 ==> Freq = 199.804878

@@ -1,13 +1,6 @@
 #include <unistd.h>
 #include <stdio.h>
-#include <stdlib.h>
 #include <getopt.h>
-#include <stdbool.h>
-#include <sys/select.h>
-#include <termios.h>
-#include <stropts.h>
-#include <time.h>
-#include <math.h>
 #include "experiment.h"
 
 char* ProgName; /* error.c */
@@ -21,10 +14,10 @@ int main(int argc, char** argv) {
 
 	ProgName = fileName(argv[0]); /* error.c */
 	if (argc == 1) {
-		error("Usage: %s -p /dev/ttyUSB[Number] -t [m(aster) or s(lave)] -n Experiment_number -f start_chanPeriod\n", ProgName);
+		error("Usage: %s -p /dev/ttyUSB[Number] -t [m(aster) or s(lave)] -n experiment [-f start_period]\n", ProgName);
 	}
 
-	while ( (option = getopt(argc, argv, "p:t:n:f:")) != -1) {
+	while ((option = getopt(argc, argv, "p:t:n:f:")) != -1) {
 		switch (option) {
 			case 'p' :
 				port = optarg;
@@ -54,29 +47,35 @@ int main(int argc, char** argv) {
 	initANT(port);
 	setTransmitPower(ANT_TRANSMIT_POWER_0DBM);
 
-	printf("Port = %s\nType = %c\nNum = %d\n", port, deviceType, experimentNum);
+	printf("Port = %s\nType = %c\n", port, deviceType);
 	switch (experimentNum) {
 		case 1:
+			printf("Experiment 1: Broadcast Data Transfer between two nodes\n");
 			doExperiment1(deviceType);
 		break;
 
 		case 2:
+		printf("Experiment 2: Broadcast Data Transfer between multiple nodes\n");
 			doExperiment2(deviceType);
 		break;
 
 		case 3:
+			printf("Experiment 3: Ackowledge Data Transfer between two nodes\n");
 			doExperiment3(deviceType);
 		break;
 
 		case 4:
+			printf("Experiment 4: Ackowledge Data Delay\n");
 			doExperiment4(deviceType);
 		break;
 
 		case 5:
+			printf("Experiment 5 - Communication Distance\n");
 			doExperiment5(deviceType);
 		break;
 
 		case 6:
+			printf("Experiment 6: Burst Data Transfer between two nodes\n");
 			doExperiment6(deviceType);
 		break;
 

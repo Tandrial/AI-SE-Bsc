@@ -1,6 +1,7 @@
 #ifndef EXPERIMENT_H_
 #define EXPERIMENT_H_
 
+#include <stdbool.h>
 #include "ant.h"
 
 #define   DEVICE_NUMBER		33
@@ -15,6 +16,9 @@
 #define   START_FREQ      0xFFFF /* 0.5 Hz */
 #define   STD_FREQ		  0x2000 /*   4 Hz */
 #define   END_FREQ        0x00A4 /* 200 Hz */
+
+#define   STOP_SINGLE    0x00FF /* 255 Hz */
+#define   STOP_DOUBLE     0x01FF /* 511 Hz */
 
 #define   TRANSFER_TIME_S	10   /* = 10 s */
 #define   RUN_COUNT			10

@@ -1,10 +1,7 @@
-#include <unistd.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <stdbool.h>
 #include <sys/select.h>
 #include <termios.h>
-#include <stropts.h>
 #include <time.h>
 #include <math.h>
 #include "experiment.h"
@@ -65,10 +62,10 @@ void setTransmitPower(uint8_t pSetting) {
 	ANT_SetTransmitPower(pSetting);
 }
 
-uint16_t halfPeriod(uint16_t period) {
-	if (period >= 256) {
+uint16_t decreasePeriod(uint16_t period, uint16_t stopShiftingAt) {
+	if (period >= stopShiftingAt) {
 		return  period >> 1;
-	} else if ((period - 10) > 164) {
+	} else if ((period - 10) > END_FREQ) {
 		return period - 10;
 	}
 	return END_FREQ;
@@ -253,7 +250,7 @@ void doExperiment1(char deviceType) {
 			getchar();
 			closeANT(ID_CHAN1);
 			ANT_delayMs(2000);
-			period = halfPeriod(period);
+			period = decreasePeriod(period, STOP_SINGLE);
 		}
 	} else {
 		while (period >= END_FREQ) {
@@ -262,7 +259,7 @@ void doExperiment1(char deviceType) {
 			doExperiment(ANT_BROADCAST_DATA, ID_CHAN1, &receiveMessageAndCount);
 			closeANT(ID_CHAN1);
 			getchar();
-			period = halfPeriod(period);
+			period = decreasePeriod(period, STOP_SINGLE);
 		}
 	}
 }
@@ -281,7 +278,7 @@ void doExperiment2(char deviceType) {
 			closeANT(ID_CHAN1);
 			closeANT(ID_CHAN2);
 			ANT_delayMs(2000);
-			period = halfPeriod(period);
+			period = decreasePeriod(period, STOP_DOUBLE);
 		}
 	} else {
 		while (period >= END_FREQ) {
@@ -295,7 +292,7 @@ void doExperiment2(char deviceType) {
 			closeANT(ID_CHAN1);
 			closeANT(ID_CHAN2);
 			ANT_delayMs(2000);
-			period = halfPeriod(period);
+			period = decreasePeriod(period, STOP_DOUBLE);
 		}
 	}	
 }
@@ -311,7 +308,7 @@ void doExperiment3(char deviceType) {
 			doExperiment(ANT_ACKNOWLEDGED_DATA, ID_CHAN1, &receiveMessageAck);
 			closeANT(ID_CHAN1);
 			ANT_delayMs(2000);
-			period = halfPeriod(period);
+			period = decreasePeriod(period, STOP_SINGLE);
 		}
 	} else {
 		while (period >= END_FREQ) {
@@ -321,8 +318,8 @@ void doExperiment3(char deviceType) {
 			printAndWait(0x00, ID_CHAN1);
 			closeANT(ID_CHAN1);
 			ANT_delayMs(2000);
-			period = halfPeriod(period);
-			}
+			period = decreasePeriod(period, STOP_SINGLE);
+		}
 	}
 }
 
@@ -354,7 +351,7 @@ void doExperiment4(char deviceType) {
 			printf("Average delay : %f \tStd dev: %f\n", speed_avr, sqrt(stdDev));
 			closeANT(ID_CHAN1);
 			ANT_delayMs(2000);
-			period = halfPeriod(period);
+			period = decreasePeriod(period, STOP_SINGLE);
 			}
 	} else {
 		while (period >= END_FREQ) {
@@ -364,7 +361,7 @@ void doExperiment4(char deviceType) {
 			printAndWait(0x00, ID_CHAN1);
 			closeANT(ID_CHAN1);
 			ANT_delayMs(2000);
-			period = halfPeriod(period);
+			period = decreasePeriod(period, STOP_SINGLE);
 		}
 	}
 }

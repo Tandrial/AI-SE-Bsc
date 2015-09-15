@@ -158,7 +158,7 @@ Also there is an important difference between the message period used in the pse
 			  channelPeriod = decreaseChannelPeriod()
 			}
 			\end{verbatim}
-			\caption{Master - Broadcast data transfer (1a)}\label{lst:mExp1}
+			\caption{Broadcast data single channel (Master)}\label{lst:mExp1}
 		\end{code}
 		
 		\begin{code}[h]
@@ -177,7 +177,7 @@ Also there is an important difference between the message period used in the pse
 			  channelPeriod = decreaseChannelPeriod()
 			}
 			\end{verbatim}
-			\caption{Slave - Broadcast data transfer (1a)}\label{lst:sExp1}
+			\caption{Broadcast data single channel (Slave)}\label{lst:sExp1}
 		\end{code}	
 	\item{\textbf{Network Topology and Configuration}} \hfill \\ The 2 nodes are placed right next to each other.
 	 \item{\textbf{Testing methodology}} \hfill \\Node A acts as the master and node B as the slave. For both nodes the channel period is set to the highest value and the channel is opened. Node B records how many bytes it received over a 10s interval. The measurement is repeated 10 times and the average value saved. Then the channel period is decreased and the process repeated.
@@ -224,7 +224,7 @@ Also there is an important difference between the message period used in the pse
 			  channelPeriod = decreaseChannelPeriod()
 			}
 			\end{verbatim}
-			\caption{Master - Broadcast data transfer with two channels }\label{lst:mExp2}
+			\caption{Broadcast data transfer two channels (Master)}\label{lst:mExp2}
 		\end{code}
 		
 		\begin{code}
@@ -247,7 +247,7 @@ Also there is an important difference between the message period used in the pse
 			  channelPeriod = decreaseChannelPeriod()
 			}
 			\end{verbatim}
-			\caption{Master - Broadcast data transfer with two channels }\label{lst:mExp2}
+			\caption{Broadcast data transfer two channels (Slave)}\label{lst:mExp2}
 		\end{code}
  
 	\item{\textbf{Network Topology and Configuration}} \hfill \\ The 2 nodes are placed right next to each other.
@@ -291,7 +291,7 @@ Also there is an important difference between the message period used in the pse
 		  channelPeriod = decreaseChannelPeriod()
 		} 
 		\end{verbatim}
-		\caption{Master - Acknowledge data delay}\label{lst:mExp3}
+		\caption{Acknowledge data delay (Master)}\label{lst:mExp3}
 	\end{code}
 	
 	\begin{code}
@@ -305,7 +305,7 @@ Also there is an important difference between the message period used in the pse
 		  channelPeriod = channelPeriod >> 1;
 		}
 		\end{verbatim}
-		\caption{Slave - Acknowledge data delay}\label{lst:sExp3}
+		\caption{Acknowledge data delay (Slave)}\label{lst:sExp3}
 	\end{code}
 	
 	\item{\textbf{Testing methodology}} \hfill \\ Node A acts as the master and node B as the slave. For both nodes the channel period is set to the highest value and the channel is opened. Node A then sends a total of 10 acknowledge messages, and measured how long it takes until if receives the acknowledge signal. The channel period is then decreased and the experiment repeated.
@@ -347,7 +347,7 @@ Also there is an important difference between the message period used in the pse
 		  channelPeriod = decreaseChannelPeriod()
 		} 
 		\end{verbatim}
-		\caption{Master - Acknowledge data transfer}\label{lst:mExp4}
+		\caption{Acknowledge data transfer (Master)}\label{lst:mExp4}
 	\end{code}
 			
 	\begin{code}
@@ -361,7 +361,7 @@ Also there is an important difference between the message period used in the pse
 		  channelPeriod = channelPeriod >> 1
 		}
 		\end{verbatim}
-		\caption{Slave - Acknowledge data transfer}\label{lst:sExp4}
+		\caption{Acknowledge data transfer (Slave)}\label{lst:sExp4}
 	\end{code}
 	\item{\textbf{Testing methodology}} \hfill \\ The testing methodology is the same as experiment 1a, except that the master sends acknowledge messages and waits for the slave to confirm the successful transmission before sending the next packet. 
 	\item{\textbf{Result}} \hfill \\
@@ -400,7 +400,7 @@ Also there is an important difference between the message period used in the pse
 		  size = 2 * size
 		}
 		\end{verbatim}
-		\caption{Slave - Burst data transfer}\label{lst:sExp5}
+		\caption{Burst data transfer (Slave)}\label{lst:sExp5}
 	\end{code}
 	\item{\textbf{Testing methodology}} \hfill \\ Since the burst transmission mode, of our ANT-library is not working correctly (see section \ref{sec:future}) we use an ANTUSB-m Stick, which acts as a master. Node B is a normal base station and receives the burst transfers. Each different sized packet is send 10 times and the values recorded. The size is then doubled and the experiment repeated.
 	\item{\textbf{Result}} \hfill \\ 
@@ -433,7 +433,7 @@ Also there is an important difference between the message period used in the pse
 		  closeChannel(ID_CHAN1);
 		}
 		\end{verbatim}
-		\caption{Master - max communication range}\label{lst:mExp6}
+		\caption{max communication range (Master)}\label{lst:mExp6}
 	\end{code}
 	
 	\begin{code}
@@ -458,7 +458,7 @@ Also there is an important difference between the message period used in the pse
 		}
 		closeChannel(ID_CHAN1);		
 		\end{verbatim}
-		\caption{Slave - max communication range}\label{lst:sExp6}
+		\caption{max communication range (Slave)}\label{lst:sExp6}
 	\end{code}
 	
 	

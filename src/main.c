@@ -44,10 +44,10 @@ int main(int argc, char** argv) {
 		error("Port information wrong!");
 	}
 
+	printf("Port = %s\nType = %c\nMessage Period = %d (%f Hz)\n", port, deviceType, period, 32768.0 / period);
 	initANT(port);
 	setTransmitPower(ANT_TRANSMIT_POWER_0DBM);
-
-	printf("Port = %s\nType = %c\n", port, deviceType);
+		
 	switch (experimentNum) {
 		case 1:
 			printf("Experiment 1: Broadcast Data Transfer between two nodes\n");

@@ -45,16 +45,16 @@ void closeANT(uint8_t channel) {
 void setTransmitPower(uint8_t pSetting) {
 	switch (pSetting) {
 		case ANT_TRANSMIT_POWER_MINUS_20DBM:
-			printf("Power setting is now : -20 dBm\n");
+			printf("Power setting is now: -20dBm\n");
 			break;
 		case ANT_TRANSMIT_POWER_MINUS_10DBM:
-			printf("Power setting is now : -10 dBm\n");
+			printf("Power setting is now: -10dBm\n");
 			break;
 		case ANT_TRANSMIT_POWER_MINUS_5DBM:
-			printf("Power setting is now : -5 dBm\n");
+			printf("Power setting is now: -5dBm\n");
 			break;
 		case ANT_TRANSMIT_POWER_0DBM:
-			printf("Power setting is now : 0 dBm\n");
+			printf("Power setting is now: 0dBm\n");
 			break;
 		default:
 		error("Unkown power setting : %02X!\n", pSetting);
@@ -63,12 +63,14 @@ void setTransmitPower(uint8_t pSetting) {
 }
 
 uint16_t decreasePeriod(uint16_t period, uint16_t stopShiftingAt) {
+	uint16_t result = END_FREQ;
 	if (period >= stopShiftingAt) {
-		return  period >> 1;
+		result =  period >> 1;
 	} else if ((period - 10) > END_FREQ) {
-		return period - 10;
+		result = period - 10;
 	}
-	return END_FREQ;
+	printf("Message Period = %d (%f Hz)\n", result, 32768.0 / result );
+	return result;
 }
 
 void printBuffer(uint8_t *buffer) {
@@ -146,7 +148,7 @@ void doExperiment(uint8_t msgType, uint8_t channel, exprHandler fn) {
 		expriment_t result = fn(msgType);
 		results[i] = result.sucess * 8 / result.duration;
 		speed_avr += results[i];
-		printf("Run %d: failed %d sucess %d: %d bytes received in %f s => %f Bps\n", i, result.fail, result.sucess, result.sucess * 8, result.duration, results[i]);
+		printf("Run %d: failed %d sucess %d: %d bytes received in %f s => %f\n", i, result.fail, result.sucess, result.sucess * 8, result.duration, results[i]);
 	}
 	speed_avr /= RUN_COUNT;
 	double stdDev = 0.0;
@@ -243,7 +245,6 @@ expriment_t measureMessageAck() {
 void doExperiment1(char deviceType) {
 	if (deviceType == 'm') {
 		while (period >= END_FREQ) {
-			printf("period = %d ==> Freq = %f\n", period, 32768.0 / period );
 			openChannel(ID_CHAN1, FREQ_CHAN1, period, true);					
 			ANT_SendBroadcastData(ID_CHAN1, data);
 			printf("Started broadcast! Press return to exit!\n");
@@ -254,7 +255,6 @@ void doExperiment1(char deviceType) {
 		}
 	} else {
 		while (period >= END_FREQ) {
-			printf("period = %d ==> Freq = %f\n", period, 32768.0 / period );
 			openChannel(ID_CHAN1, FREQ_CHAN1, period, false);
 			doExperiment(ANT_BROADCAST_DATA, ID_CHAN1, &receiveMessageAndCount);
 			closeANT(ID_CHAN1);
@@ -268,7 +268,6 @@ void doExperiment1(char deviceType) {
 void doExperiment2(char deviceType) {	
 	if (deviceType == 'm') {
 		while (period >= END_FREQ) {
-			printf("period = %d ==> Freq = %f\n", period, 32768.0 / period );
 			openChannel(ID_CHAN1, FREQ_CHAN1, period, true);					
 			ANT_SendBroadcastData(ID_CHAN1, data);
 			printAndWait(ANT_BROADCAST_DATA, ID_CHAN1);
@@ -282,7 +281,7 @@ void doExperiment2(char deviceType) {
 		}
 	} else {
 		while (period >= END_FREQ) {
-			printf("period = %d ==> Freq = %f\n", period, 32768.0 / period );
+			
 			openChannel(ID_CHAN1, FREQ_CHAN1, period, false);					
 			printAndWait(ANT_BROADCAST_DATA, ID_CHAN1);
 			openChannel(ID_CHAN2, FREQ_CHAN2, period, true);
@@ -302,7 +301,6 @@ void doExperiment3(char deviceType) {
 	if (deviceType == 'm') {
 		uint8_t data[4] = {0x70, 0x69, 0x6E, 0x67};
 		while (period >= END_FREQ) {
-			printf("period = %d ==> Freq = %f\n", period, 32768.0 / period );
 			openChannel(ID_CHAN1, FREQ_CHAN1, period, true);
 			ANT_SendBroadcastData(ID_CHAN1, data);
 			doExperiment(ANT_ACKNOWLEDGED_DATA, ID_CHAN1, &receiveMessageAck);
@@ -312,7 +310,6 @@ void doExperiment3(char deviceType) {
 		}
 	} else {
 		while (period >= END_FREQ) {
-			printf("period = %d ==> Freq = %f\n", period, 32768.0 / period );
 			openChannel(ID_CHAN1, FREQ_CHAN1, period, false);
 			printf("Slave node is listning!\n");
 			printAndWait(0x00, ID_CHAN1);
@@ -327,7 +324,6 @@ void doExperiment3(char deviceType) {
 void doExperiment4(char deviceType) {
 	if (deviceType == 'm') {
 		while (period >= END_FREQ) {
-			printf("period = %d ==> Freq = %f\n", period, 32768.0 / period );
 			openChannel(ID_CHAN1, FREQ_CHAN1, period, true);
 			ANT_SendBroadcastData(ID_CHAN1, data);
 			printAndWait(ANT_BROADCAST_DATA, ID_CHAN1);
@@ -355,7 +351,6 @@ void doExperiment4(char deviceType) {
 			}
 	} else {
 		while (period >= END_FREQ) {
-			printf("period = %d ==> Freq = %f\n", period, 32768.0 / period );
 			openChannel(ID_CHAN1, FREQ_CHAN1, period, false);
 			printf("Slave node is listning!\n");
 			printAndWait(0x00, ID_CHAN1);
@@ -451,7 +446,7 @@ void doExperiment6(char deviceType) {
 						clock_gettime(CLOCK_MONOTONIC, &tend);
 						double total_t = (tend.tv_sec - tstart.tv_sec);
 						total_t += (tend.tv_nsec - tstart.tv_nsec) / 1000000000.0;
-						printf("Received %d burst packets in %f s ==>  %f Bps\n", count, total_t, count * 8 / total_t);
+						printf("Received %d burst packets in %f s ==> %f\n", count, total_t, count * 8 / total_t);
 					}
 				}
 			}

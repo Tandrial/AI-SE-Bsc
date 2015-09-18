@@ -5,16 +5,16 @@
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {code}{\numberline {1}{\ignorespaces Broadcast data single channel (Master)}}{8}{code.1}
-\contentsline {code}{\numberline {2}{\ignorespaces Broadcast data single channel (Slave)}}{8}{code.2}
-\contentsline {code}{\numberline {3}{\ignorespaces Broadcast data transfer two channels (Master)}}{11}{code.3}
-\contentsline {code}{\numberline {4}{\ignorespaces Broadcast data transfer two channels (Slave)}}{12}{code.4}
-\contentsline {code}{\numberline {5}{\ignorespaces Acknowledge data delay (Master)}}{13}{code.5}
-\contentsline {code}{\numberline {6}{\ignorespaces Acknowledge data delay (Slave)}}{14}{code.6}
-\contentsline {code}{\numberline {7}{\ignorespaces Acknowledge data transfer (Master)}}{16}{code.7}
-\contentsline {code}{\numberline {8}{\ignorespaces Acknowledge data transfer (Slave)}}{16}{code.8}
-\contentsline {code}{\numberline {9}{\ignorespaces Burst data transfer (Slave)}}{18}{code.9}
-\contentsline {code}{\numberline {10}{\ignorespaces max communication range (Master)}}{19}{code.10}
-\contentsline {code}{\numberline {11}{\ignorespaces max communication range (Slave)}}{20}{code.11}
+\contentsline {code}{\numberline {1}{\ignorespaces Broadcast data single channel (Master)}}{9}{code.1}
+\contentsline {code}{\numberline {2}{\ignorespaces Broadcast data single channel (Slave)}}{9}{code.2}
+\contentsline {code}{\numberline {3}{\ignorespaces Broadcast data transfer two channels (Master)}}{13}{code.3}
+\contentsline {code}{\numberline {4}{\ignorespaces Broadcast data transfer two channels (Slave)}}{14}{code.4}
+\contentsline {code}{\numberline {5}{\ignorespaces Acknowledge data delay (Master)}}{16}{code.5}
+\contentsline {code}{\numberline {6}{\ignorespaces Acknowledge data delay (Slave)}}{16}{code.6}
+\contentsline {code}{\numberline {7}{\ignorespaces Acknowledge data transfer (Master)}}{18}{code.7}
+\contentsline {code}{\numberline {8}{\ignorespaces Acknowledge data transfer (Slave)}}{18}{code.8}
+\contentsline {code}{\numberline {9}{\ignorespaces Burst data transfer (Slave)}}{21}{code.9}
+\contentsline {code}{\numberline {10}{\ignorespaces max communication range (Master)}}{23}{code.10}
+\contentsline {code}{\numberline {11}{\ignorespaces max communication range (Slave)}}{24}{code.11}
 \addvspace {10\p@ }
 \addvspace {10\p@ }

@@ -5,6 +5,7 @@
 
 char* ProgName; /* error.c */
 extern uint16_t period;
+extern FILE * fp;
 
 int main(int argc, char** argv) {
 	int option = -1;
@@ -44,6 +45,7 @@ int main(int argc, char** argv) {
 		error("Port information wrong!");
 	}
 
+	fp = fopen("result.txt", "a");
 	printf("Port = %s\nType = %c\nMessage Period = %d (%f Hz)\n", port, deviceType, period, 32768.0 / period);
 	initANT(port);
 	setTransmitPower(ANT_TRANSMIT_POWER_0DBM);
@@ -55,22 +57,22 @@ int main(int argc, char** argv) {
 		break;
 
 		case 2:
-		printf("Experiment 2: Broadcast Data Transfer between multiple nodes\n");
+			printf("Experiment 2: Broadcast Data Transfer between multiple nodes\n");
 			doExperiment2(deviceType);
 		break;
 
 		case 3:
-			printf("Experiment 3: Ackowledge Data Transfer between two nodes\n");
+			printf("Experiment 3: Ackowledge Data Delay\n");
 			doExperiment3(deviceType);
 		break;
 
 		case 4:
-			printf("Experiment 4: Ackowledge Data Delay\n");
+			printf("Experiment 4: Ackowledge Data Transfer between two nodes\n");
 			doExperiment4(deviceType);
 		break;
 
 		case 5:
-			printf("Experiment 5 - Communication Distance\n");
+			printf("Experiment 5: Communication Distance\n");
 			doExperiment5(deviceType);
 		break;
 
@@ -80,9 +82,18 @@ int main(int argc, char** argv) {
 		break;
 
 		default:
+			printf("Available Experiments:\n");
+			printf("Experiment 1: Broadcast Data Transfer between two nodes\n");
+			printf("Experiment 2: Broadcast Data Transfer between multiple nodes\n");
+			printf("Experiment 3: Ackowledge Data Delay\n");
+			printf("Experiment 4: Ackowledge Data Transfer between two nodes\n");
+			printf("Experiment 5: Communication Distance\n");
+			printf("Experiment 6: Burst Data Transfer between two nodes\n");
 			error("%d is not a valid experiment! \n", experimentNum);
+
 		break;
 	}
 	flushBuffer();
+	fclose(fp);
 	return EXIT_SUCCESS;
 }

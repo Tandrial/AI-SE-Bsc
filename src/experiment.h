@@ -17,11 +17,12 @@
 #define   STD_FREQ		  0x2000 /*   4 Hz */
 #define   END_FREQ        0x00A4 /* 200 Hz */
 
-#define   STOP_SINGLE    0x00FF /* 255 Hz */
+#define   STOP_SINGLE     0x00FF /* 255 Hz */
 #define   STOP_DOUBLE     0x01FF /* 511 Hz */
 
-#define   TRANSFER_TIME_S	10   /* = 10 s */
 #define   RUN_COUNT			10
+#define   SLICE_COUNT		10
+#define   TRANSFER_TIME_S	10   /* = 10 * 10 = 100 s */
 
 typedef enum {
   DS_INCRESING = 0,
@@ -43,6 +44,7 @@ typedef struct {
 typedef expriment_t (*exprHandler)(uint8_t);
 
 void initANT(char* ttyUSBDevice);
+void resetANT();
 void openChannel(uint8_t channel, uint8_t freq, uint16_t period, bool isMaster);
 void closeANT(uint8_t channel);
 

@@ -3,7 +3,7 @@
 all:   optimized
 
 clean:
-	rm -f *.toc *.log *.idx *.ind *.aux *.loa *.out *~ *.dvi *.bak *.bbl *.blg *.glo *.nlo *.ilg *.lof *.lot *.gls *.nls *.brf
+	del *.toc *.log *.idx *.ind *.aux *.loa *.out *~ *.dvi *.bak *.bbl *.blg *.glo *.nlo *.ilg *.lof *.lot *.gls *.nls *.brf
 
 distclean: clean
 

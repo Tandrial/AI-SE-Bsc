@@ -1,0 +1,72 @@
+{
+	"connections" : [
+        {"n0" : {"dest" : "b0", "linkSpeed" : "1Gbps"}},
+        {"n1" : {"dest" : "b0", "linkSpeed" : "1Gbps"}},
+        {"n2" : {"dest" : "b1", "linkSpeed" : "1Gbps"}},
+        {"b0" : {"dest" : "b1", "linkSpeed" : "1Gbps"}},
+        {"n3" : {"dest" : "b2", "linkSpeed" : "1Gbps"}},
+        {"b1" : {"dest" : "b2", "linkSpeed" : "1Gbps"}},
+        {"n4" : {"dest" : "b3", "linkSpeed" : "1Gbps"}},
+        {"n5" : {"dest" : "b4", "linkSpeed" : "1Gbps"}},
+        {"b3" : {"dest" : "b4", "linkSpeed" : "1Gbps"}},
+        {"b2" : {"dest" : "b3", "linkSpeed" : "1Gbps"}},
+        {"b4" : {"dest" : "n6", "linkSpeed" : "1Gbps"}},
+	],
+	"streams" : [
+	{
+		"streamID" 		: 1,		
+		"route"  : {"dijkstra" : { "n0" : ["n6"] } },	
+		"tspec"  : {"leakRate":"30Mbps", "maxPacketLength":"6b", "maxLatency" : "1100ns"}
+	},
+	{
+		"streamID" 		: 2,		
+		"route"  : {"dijkstra" : { "n0" : ["n6"] } },	
+		"tspec"  : {"leakRate":"45Mbps", "maxPacketLength":"2b", "maxLatency" : "1250ns"}
+	},
+	{
+		"streamID" 		: 3,		
+		"route"  : {"dijkstra" : { "n0" : ["n6"] } },	
+		"tspec"  : {"leakRate":"15Mbps", "maxPacketLength":"9b", "maxLatency" : "1250ns"}
+	},	
+	{
+		"streamID" 		: 12,		
+		"route"  : {"dijkstra" : { "n1" : ["n2"] } },	
+		"tspec"  : {"leakRate":"300Mbps", "maxPacketLength":"7b"}
+	},
+	{
+		"streamID" 		: 13,		
+		"route"  : {"dijkstra" : { "n1" : ["n3"] } },	
+		"tspec"  : {"leakRate":"400Mbps", "maxPacketLength":"4b"}
+	},	
+	{
+		"streamID" 		: 23,		
+		"route"  : {"dijkstra" : { "n2" : ["n3"] } },	
+		"tspec"  : {"leakRate":"200Mbps", "maxPacketLength":"9b"}
+	},
+	{
+		"streamID" 		: 24,		
+		"route"  : {"dijkstra" : { "n2" : ["n4"] } },	
+		"tspec"  : {"leakRate":"300Mbps", "maxPacketLength":"3b"}
+	},
+	{
+		"streamID" 		: 34,		
+		"route"  : {"dijkstra" : { "n3" : ["n4"] } },	
+		"tspec"  : {"leakRate":"400Mbps", "maxPacketLength":"6b"}
+	},
+	{
+		"streamID" 		: 35,		
+		"route"  : {"dijkstra" : { "n3" : ["n5"] } },	
+		"tspec"  : {"leakRate":"150Mbps", "maxPacketLength":"5b"}
+	},
+	{
+		"streamID" 		: 45,		
+		"route"  : {"dijkstra" : { "n4" : ["n5"] } },	
+		"tspec"  : {"leakRate":"500Mbps", "maxPacketLength":"8b"}
+	},
+	{
+		"streamID" 		: 46,		
+		"route"  : {"dijkstra" : { "n4" : ["n6"] } },	
+		"tspec"  : {"leakRate":"100Mbps", "maxPacketLength":"2b"}
+	}
+	]
+}

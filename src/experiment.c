@@ -11,8 +11,6 @@ double results[SLICE_COUNT];
 uint16_t period = START_FREQ;
 uint32_t s = 0; /* holds the result for received messages */
 
-FILE * fp;
-
 uint8_t data[4] = {0x70, 0x69, 0x6E, 0x67};
 struct timespec tstart = {0,0}, tend = {0,0};
 double total_t = 0.0;
@@ -53,19 +51,15 @@ void setTransmitPower(uint8_t pSetting) {
 	switch (pSetting) {
 		case ANT_TRANSMIT_POWER_MINUS_20DBM:
 			printf("Power setting is now: -20dBm\n");
-			fprintf(fp, "Power setting is now: -20dBm\n");
 			break;
 		case ANT_TRANSMIT_POWER_MINUS_10DBM:
 			printf("Power setting is now: -10dBm\n");
-			fprintf(fp, "Power setting is now: -10dBm\n");
 			break;
 		case ANT_TRANSMIT_POWER_MINUS_5DBM:
 			printf("Power setting is now: -5dBm\n");
-			fprintf(fp, "Power setting is now: -5dBm\n");
 			break;
 		case ANT_TRANSMIT_POWER_0DBM:
 			printf("Power setting is now: 0dBm\n");
-			fprintf(fp, "Power setting is now: 0dBm\n");
 			break;
 		default:
 		error("Unkown power setting : %02X!\n", pSetting);
@@ -83,7 +77,6 @@ uint16_t decreasePeriod(uint16_t period, uint16_t stopShiftingAt) {
 		result--;
 	}
 	printf("Message Period = %d (%f Hz)\n", result, 32768.0 / result );
-	fprintf(fp, "Message Period = %d (%f Hz)\n", result, 32768.0 / result );
 	return result;
 }
 
@@ -97,7 +90,6 @@ void printBuffer(uint8_t *buffer) {
 
 void printAndWait(uint8_t msgType, uint8_t channel) {
 	printf("Waiting for msgType %2X! Press any key to continue!\n", msgType);
-	fprintf(fp, "Waiting for msgType %2X! Press any key to continue!\n", msgType);
 	while (!kbhit()) {
 		s = ANT_RecvPacket_Blockfree(buffer, BC_ANT_BUFFSIZE);
 		if (s == RS_PACKET_COMPLETE) {
@@ -110,7 +102,6 @@ void printAndWait(uint8_t msgType, uint8_t channel) {
 						total_t = (tend.tv_sec - tstart.tv_sec);
 						total_t += (tend.tv_nsec - tstart.tv_nsec) / 1000000000.0;
 						printf("Channel %d open! took %f\n", buffer[3], total_t);
-						fprintf(fp, "Channel %d open! took %f\n", buffer[3], total_t);
 						return;
 					}
 				break;
@@ -162,12 +153,12 @@ void doExperiment(uint8_t msgType, uint8_t channel, exprHandler fn) {
 	double speed_avr = 0.0;
 	uint16_t i;	
 	printAndWait(msgType, channel);
+	flushBuffer();
 	for (i = 0; i < SLICE_COUNT; ++i) {
 		expriment_t result = fn(msgType);
 		results[i] = result.sucess * 8 / result.duration;
 		speed_avr += results[i];
 		printf("Run %d: failed %d sucess %d: %d bytes received in %f s => %f\n", i, result.fail, result.sucess, result.sucess * 8, result.duration, results[i]);
-		fprintf(fp, "Run %d: failed %d sucess %d: %d bytes received in %f s => %f\n", i, result.fail, result.sucess, result.sucess * 8, result.duration, results[i]);
 	}
 	speed_avr /= SLICE_COUNT;
 	double stdDev = 0.0;
@@ -177,7 +168,6 @@ void doExperiment(uint8_t msgType, uint8_t channel, exprHandler fn) {
 	}
 	stdDev /= SLICE_COUNT;
 	printf("Average datarate : %f \tStd dev: %f\n", speed_avr, sqrt(stdDev));
-	fprintf(fp, "Average datarate : %f \tStd dev: %f\n", speed_avr, sqrt(stdDev));	
 }
 
 expriment_t receiveMessageAndCount(uint8_t msgType) {
@@ -336,7 +326,7 @@ void doExperiment3(char deviceType) {
 		while (period >= END_FREQ) {
 			openChannel(ID_CHAN1, FREQ_CHAN1, period, true);
 			ANT_SendBroadcastData(ID_CHAN1, data);
-			printAndWait(ANT_BROADCAST_DATA, ID_CHAN1);
+			getchar();
 			double speed_avr = 0;
 			uint16_t i;
 			for (i = 0; i < SLICE_COUNT; ++i) {
@@ -345,8 +335,6 @@ void doExperiment3(char deviceType) {
 				results[i] = result.duration;
 				speed_avr += results[i];
 				printf("Run %d: Delay %f\n", i, result.duration);
-				fprintf(fp, "Run %d: Delay %f\n", i, result.duration);
-				
 			}
 			speed_avr /= SLICE_COUNT;
 			double stdDev = 0.0;
@@ -356,7 +344,6 @@ void doExperiment3(char deviceType) {
 			}
 			stdDev /= SLICE_COUNT;
 			printf("Average delay : %f \tStd dev: %f\n", speed_avr, sqrt(stdDev));
-			fprintf(fp, "Average delay : %f \tStd dev: %f\n", speed_avr, sqrt(stdDev));
 			closeANT(ID_CHAN1);
 			ANT_delayMs(2000);
 			period = decreasePeriod(period, STOP_SINGLE);
@@ -476,7 +463,6 @@ void doExperiment6(char deviceType) {
 						total_t += (tend.tv_nsec - tstart.tv_nsec) / 1000000000.0;
 						count--;
 						printf("Received %d burst packets in %f s ==> %f\n", count, total_t, count * 8 / total_t);
-						fprintf(fp, "Received %d burst packets in %f s ==> %f\n", count, total_t, count * 8 / total_t);
 					}
 				}
 			}

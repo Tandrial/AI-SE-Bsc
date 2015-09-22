@@ -5,7 +5,6 @@
 
 char* ProgName; /* error.c */
 extern uint16_t period;
-extern FILE * fp;
 
 int main(int argc, char** argv) {
 	int option = -1;
@@ -45,8 +44,6 @@ int main(int argc, char** argv) {
 		error("Port information wrong!");
 	}
 
-	fp = fopen("result.txt", "a");
-	printf("Port = %s\nType = %c\nMessage Period = %d (%f Hz)\n", port, deviceType, period, 32768.0 / period);
 	initANT(port);
 	setTransmitPower(ANT_TRANSMIT_POWER_0DBM);
 		
@@ -94,6 +91,5 @@ int main(int argc, char** argv) {
 		break;
 	}
 	flushBuffer();
-	fclose(fp);
 	return EXIT_SUCCESS;
 }

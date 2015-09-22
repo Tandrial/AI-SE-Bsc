@@ -2,9 +2,9 @@
 \label{sec:intro}
 In the current years the number of Cyber-physical systems (CPSs) has drastically increased. This is mostly due to the emergence of the Internet of Things (IoT), as well as the existence of several user friendly kits, like the RaspberryPi or the Arduino. With this new trend new challenges are created in the monitoring and debugging of these devices. This is especially difficult for applications, where the sensors are deployed in a hard to reach area. In addition to this, the deployed device can often fulfil a multi-purpose role and might need to be reconfigured for different tasks.
 
-In order to address both these problems SHAMPU(Single chip Host for Autonomous Mote Programming over USB)\cite{Smeets:2014:DAL:2602339.2602401} was developed at the University Duisburg-Essen. SHAMPU was designed with the goal of being as small, lightweight and energy efficient as possible. In order to use SHAMPU as a test bed, it needs to be attached to an existing node. SHAMPU is then capable to not only monitor and debug the attached node, but also to program it. These reprogramming capabilities make it possible to reprogram the attached sensor, without having to physically be near it. To achieve this each SHAMPU node is equipped with a wireless interface. In the current configuration an ANT\cite{DynastreamInnovationsInc.2013} radio chip. All SHAMPU nodes than form a Wireless sensor network (WSN) of their on, which allows not only the communication between the nodes, but also a connection to a base station. This base station not only acts as a central data sink for the whole network, but is also able to push commands and data to the SHAMPU nodes.
+In order to address both these problems SHAMPU(Single chip Host for Autonomous Mote Programming over USB)\cite{Smeets:2014:DAL:2602339.2602401} was developed at the University Duisburg-Essen. SHAMPU was designed with the goal of being as small, lightweight and energy efficient as possible. In order to use SHAMPU as a test bed, it needs to be attached to an existing node. SHAMPU is then capable to not only monitor and debug the attached node, but also to program it. These reprogramming capabilities make it possible to reprogram an attached sensor, without having to physically be near it. To achieve this each SHAMPU node is equipped with a wireless interface. In the current configuration an ANT\cite{DynastreamInnovationsInc.2013} radio chip. All SHAMPU nodes form a Wireless sensor network (WSN) of their on, which allows not only the communication between the nodes, but also a connection to a base station. This base station not only acts as a central data sink for the whole network, but is also able to push commands and data to the SHAMPU nodes.
 
-In this thesis we evaluate the wireless capabilities of the SHAMPU framework. For this purpose we develop use-cases for the different tasks that the SHAMPU framework can perform: Program a device, collect data during operation and interact with the system itself during runtime. For each of the test cases we then design and run different experiments with the goal to assess if the chosen wireless technology is able to fulfil all the use cases.
+In this thesis we evaluate the wireless capabilities of the SHAMPU framework. For this purpose we develop use-cases for the different tasks that the SHAMPU framework can perform: Program a device, collect data during operation and interact with the system itself during runtime. For each of the test cases we design and run different experiments with the goal to assess if the chosen wireless technology is able to fulfil all the use cases.
 
 \section{Related work}
 \label{sec:related_work}
@@ -12,9 +12,9 @@ There are already several different WSN test beds available. Each of these test 
 
 Some test beds like FlockLab \cite{Lim2013} allow to attach a wide array of different sensors and use a JTAG interface to be able to precisely capture debugging and timing information.
  
-However these types of test beds rely on a wired connection to interface with the test bed itself. That makes it exceedingly difficult to test and debug already deployed WSN, since it might not be possible to easily get to the sensor in the planted location.
+However, these types of test beds rely on a wired connection to interface with the test bed itself. That makes it exceedingly difficult to test and debug already deployed WSN, since it might not be possible to easily get to the sensor in the planted location.
 
-Other available solutions address this problem by attaching the test bed directly to the node and use a wireless connection to communicate with the test bed. An example for this is Sensei-UU \cite{Rensfelt2009} which uses a wireless 802.11 network. This allows the WSN to be tested and debugged while it is deployed. One drawback of this solution is the power draw of 802.11 devices which is huge, compared to other technologies. If the node itself is run of an external power source that isn't a problem, but the use of a battery to power the node will hardly be feasible.
+Other available solutions address this problem by attaching the test bed directly to the node and use a wireless connection to communicate with the test bed. An example for this is Sensei-UU \cite{Rensfelt2009} which uses a wireless 802.11 network. This allows the WSN to be tested and debugged while it is deployed. One drawback of this solution is the power draw of 802.11 devices, which is huge, compared to other technologies. If the node itself is run of an external power source that isn't a problem, but the use of a battery to power the node will hardly be feasible.
 
 To address this power issue, it is possible to use a different technology which offers a lower power mode. Two examples for this are BTNodes \cite{Moser} or Smart-Its \cite{Kasten2000}, which use a Bluetooth connection. 
 The structure of the network itself is similar to Sensei-UU: each node in the network has its own test bed attached and the test beds communicate with a central base station.
@@ -32,14 +32,14 @@ SHAMPU (Single chip Host for Autonomous Mote Programming over USB) \cite{Smeets:
 The SHAMPU framework (see Figure \ref{fig:shampuframework}) itself is split into multiple modules. The most important part for this thesis is the Code Reception Module, which allows the use of different protocols to connect to and communicate with the SHAMPU device. One option for the wireless communications with the SHAMPU device is the ANT protocol, on which we will focus in this evaluation.
 
 \section{ANTAP1MxIB RF}
-In order to use the ANT protocol each SHAMPU-mote is equipped with an ANTAP1MxIB RF Transceiver Module. The module was chosen because of its small form factor (20mm x 20mm) and its very low power draw. The ANTAP1M can handle up to 4 different ANT channels with a combined message rate that ranges between 0.5Hz and 200 Hz. 
+In order to use the ANT protocol each SHAMPU-mote is equipped with an ANTAP1MxIB RF Transceiver Module. The module was chosen because of its small form factor (20mm x 20mm) and its very low power draw. The ANTAP1M can handle up to 4 different ANT channels with a combined message rate which ranges between 0.5Hz and 200 Hz. 
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[scale=.5]{./pics/SHAMPUbase.JPG}
 	\caption{SHAMPU base station}\label{fig:shampubase}
 \end{figure}
-In order to more easily test the capabilities of the ANT chip, we use a SHAMPU base station for all the experiments. This base station (see figure \ref{fig:shampubase}) contains the ANTAP1MxIB and a serial interface, which allows the ANT to asynchronously communicate with a PC over RS-232. 
+In order to more easily test the capabilities of the ANT chip, we use a SHAMPU base station for all the experiments. This base station (see Figure \ref{fig:shampubase}) contains the ANTAP1MxIB and a serial interface, which allows the ANT to asynchronously communicate with a PC over RS-232. 
 
 \section{ANT}
 ANT \cite{DynastreamInnovationsInc.2013} is a wireless protocol which operates in the 2.4 GHz ISM Band. It was originally developed in 2003 by Dynastream Innovations Inc. for the use in wireless sensors. The ANT protocol is designed for the use in low power WSNs focusing on scalability and ease of use.
@@ -63,9 +63,9 @@ In order for the ANT protocol to work each mote needs to be part of a network. A
 \end{figure}
 
 \subsection{ANT Channels}
-Most of the available channel types are bidirectional. The ANT protocol, however, still differentiates between master and slaves nodes. While a master node mostly sends data and a slave node mostly receives data, the slave retains the ability to response to the incoming data.
+Most of the available channel types are bidirectional. The ANT protocol, however, still differentiates between master and slaves nodes. While a master node mostly sends data and a slave node mostly receives data, the slave retains the ability to respond to the incoming data.
 
-The ANT protocol knows 125 different channels, each of them 1 MHz wide. Each Channel can support a data rate of 1 Mbps and up to 65533 nodes. To avoid interference between the channels isochronous self adjusting TDMA technology is used, which allows the ANT nodes to change the transmit timings and as well as the frequency that is being used for the current channel. The use of the TDMA is completely handled by the ANT protocol, which means the user has no control over the process.
+The ANT protocol knows 125 different channels, each of them 1 MHz wide. Each Channel can support a data rate of 1 Mbps and up to 65533 nodes. To avoid interference between the channels isochronous self adjusting TDMA technology is used, which allows the ANT nodes to change the transmit timings as well as the frequency that is being used for the current channel. The use of the TDMA is completely handled by the ANT protocol, which means the user has no control over the process.
 
 \begin{figure}[H]
 	\centering
@@ -73,7 +73,7 @@ The ANT protocol knows 125 different channels, each of them 1 MHz wide. Each Cha
 	\caption{ANT Channel Establishment\cite{DynastreamInnovationsInc.2013}}\label{fig:antsetup}
 \end{figure}
 
-Figure \ref{fig:antsetup} shows the procedure of opening up a channel between two ANT nodes. In the first step the Channel configuration is set, most important in this context being the channel type: 0x00 signifies that the node is a slave while 0x10 means that the node acts as a master. The next step is to set the Channel ID. Here the slave node needs to set the values of the master device in order to correctly connect. It is possible, however, to set wildcard values, which allows the slave to connect to any device sending on the same frequency. Before the final step, it is optionally possible to set the frequency of the channel and the message period. These steps are not mandatory though, since ANT defaults to fixed values for these: 2466 Hz transmission frequency and a message period of 8192. The last step constitutes the opening of the channel itself, where care should be taken that the master opens the channel before it is opened by the slave device.
+Figure \ref{fig:antsetup} shows the procedure of opening up a channel between two ANT nodes. In the first step the Channel configuration is set, most important in this context being the channel type: 0x00 signifies that the node is a slave while 0x10 means that the node acts as a master. The next step is to set the Channel ID. Here the slave node needs to set the values of the master device in order to correctly connect. It is possible, however, to set wildcard values, which allows the slave to connect to any device sending on the same frequency. Before the final step, it is optionally possible to set the frequency of the channel and the message period. These steps are not mandatory though, since ANT defaults to fixed values for these: 2466 Hz transmission frequency and a message period of 8192. The last step constitutes of the opening of the channel itself, where care should be taken that the master opens the channel before it is opened by the slave device.
 
 The ANT protocol distinguishes between two different Channel types:
 \begin{description}
@@ -83,14 +83,14 @@ The ANT protocol distinguishes between two different Channel types:
 
 \subsection{ANT Communication}
 
-The ANT protocol supports three different data types: broadcast, acknowledge and burst. The data type is not part of the channel configuration, thus channels are able to use any combination of data types. The only exceptions are unidirectional channels, which can exclusively send broadcast data. The various data types differ in the way the data are handled and transmitted.
+The ANT protocol supports three different data types: broadcast, acknowledge and burst. The data type is not part of the channel configuration, thus channels are able to use any combination of data types. The only exceptions are unidirectional channels, which can exclusively send broadcast data. The various data types differ in the way data is handled and transmitted.
 
 \begin{itemize}
-	\item{Broadcast data} \hfill \\ Broadcast data represents the most basic data type and, at the same time, the default. To start a broadcast transmission, the command needs to be issued just once, since the last sent packet is periodically resent as a broadcast. It does not matter if the last packet was part of a burst or acknowledge transmission, if no new data is available this packet is resent. Figure (xyxcy) shows, how each broadcast transmission is aligned to the channel message period.	Since there is no answer from the receiving node, it is not possible to determine if the packet was transmitted correctly.
+	\item{Broadcast data} \hfill \\ Broadcast data represents the most basic data type and, at the same time, the default. To start a broadcast transmission, the command needs to be issued just once, since the last sent packet is periodically resent as a broadcast. It does not matter if the last packet was part of a burst or acknowledge transmission, if no new data is available this packet is resent. Figure (MISSINGPIC) shows, how each broadcast transmission is aligned to the channel message period.	Since there is no answer from the receiving node, it is not possible to determine if the packet was transmitted correctly.
 
-	\item{Acknowledge data} \hfill \\ Acknowledge data can be used to make sure a node has received a transmitted packet. After receiving an acknowledge packet the node will send a message back to the sender. Acknowledge data can only be used with bidirectional channels, yet both the master and the slave can use it. Figure (Xyxy) shows that, just like broadcast data, acknowledge data is always aligned to a time slot, yet the answer from the receiver is send immediately back to the sender.
+	\item{Acknowledge data} \hfill \\ Acknowledge data can be used to make sure a node has received a transmitted packet. After receiving an acknowledge packet the node will send a message back to the sender. Acknowledge data can only be used with bidirectional channels, yet both the master and the slave can use it. Figure (MISSINGPIC) shows that, just like broadcast data, acknowledge data is always aligned to a time slot, yet the answer from the receiver is sent immediately back to the sender.
 	
-	\item{Burst data} \hfill \\ Burst data provides a method to quickly transmit large amounts of data. This is achieved by ignoring the normal channel time slots and sending the packets immediately one after the other. This allows for a transmission rate of up to 20 kbps, which is much higher than other data transmission types. Similar to acknowledge data at the end of the transmission the sender is informed if the transfer failed or succeeded. The drawback of these methods is, that burst data is prioritized over all other transmissions and can interrupt other transmissions over the same channel.
+	\item{Burst data} \hfill \\ Burst data provides a method to quickly transmit large amounts of data. This is achieved by ignoring the normal channel time slots and sending the packets immediately one after the other. This allows for a transmission rate of up to 20 kbps, which is much higher than other data transmission types. Similar to acknowledge data at the end of the transmission the sender is informed if the transfer failed or succeeded. The drawback of this method is, that burst data is prioritized over all other transmissions and will interrupt other transmissions over the same channel.
 \end{itemize}
 
 \subsection{ANT messages}
@@ -133,7 +133,7 @@ To cover all the mentioned test cases we designed different experiments, which t
 	\caption{Experiment set up}\label{fig:expSetup}
 \end{figure}
 
-If not otherwise noted in the experiment description each experiment was run in the Mobility Lab of the Networked Embedded Systems group at the University of Duisburg-Essen (SA 327), which the two base stations in the configuration which can be seen in figure \ref{fig:expSetup}. The following table describes the parameters which are used in the experiments.
+If not otherwise noted in the experiment description each experiment was run in the Mobility Lab of the Networked Embedded Systems group at the University of Duisburg-Essen (SA 327), with the two base stations in the configuration which can be seen in figure \ref{fig:expSetup}. The following table describes the parameters which are used in the experiments.
 \begin{center}
 \begin{tabular}{|c|c|}
 	\hline Device Number & 33 \\ 
@@ -156,12 +156,12 @@ Also, there is an important difference between the message period used in the ps
 
 \section{Experiment 1: Broadcast Data Transfer between two nodes}
 \begin{description} 
-	\item{\textbf{Description}} \hfill \\ Broadcasting is one way of periodically transmitting data between two or more ANT nodes. Since all broadcast packets are synchronized to a fixed time-slot, the data throughput can be increased by decreasing the channel period. The experiment itself is split into two parts. In the first part we try to determine the highest possible data throughput. Also we try to determine if the channel period has an effect on the time it takes for a slave node to find and join an existing channel. The second part is a test of the highest detected data throughput and here we try to evaluate if there are any variations of the data throughput over a much longer interval.	
+	\item{\textbf{Description}} \hfill \\ Broadcasting is one way of periodically transmitting data between two or more ANT nodes. Since all broadcast packets are synchronized to a fixed time-slot, the data throughput can be increased by decreasing the channel period. The experiment itself is split into two parts. In the first part we try to determine the highest possible data throughput. Also we try to determine if the channel period has an effect on the time it takes for a slave node to find and join an existing channel. The second part is a test of the highest detected data throughput. Here we try to evaluate if there are any variations of the data throughput over a much longer interval.	
 	\item{\textbf{Use-Case}} \hfill \\ Scheduled Data-transmission	
 	\item{\textbf{Network Topology and Configuration}} \hfill \\ 
 	\begin{figure}[H]
 		\centering
-		\includegraphics[scale=0.6]{./pics/exp1_topo.png}
+		\includegraphics[scale=1]{./pics/exp_topo.png}
 		\caption{Toplogy experiment 1}
 	\end{figure}
 		\begin{code}[H]
@@ -208,22 +208,22 @@ Also, there is an important difference between the message period used in the ps
 	\caption{Broadcast data rate (0.5Hz - 128Hz)}\label{fig:exp1norm}
 	\end{figure}
 	
-	Figure \ref{fig:exp1norm} shows the transmission speeds achieved for the different frequencies. Up to a frequency of 128 Hz, the measured data rate matches the expected theoretical maximum rate. For the highest supported frequency (199.8 Hz), the measured data rate is much lower than the maximum rate. Even if you account for transmission errors the difference is significant. 
+	Figure \ref{fig:exp1norm} shows the transmission speeds achieved for the different frequencies. Up to a frequency of 128 Hz, the measured data rate matches the expected theoretical maximum rate. For the highest supported frequency (199.8 Hz), the measured data rate is much lower than the maximum rate. Even if we account for transmission errors the difference is significant. 
 		\begin{figure}[H]
 			\centering
 			\includegraphics[scale=0.5]{./pics/exp1_detail.png}
 			\caption{Broadcast data rate (129Hz - 199Hz)}\label{fig:exp1between}
 		\end{figure}
-	As seen in figure \ref{fig:exp1between} the measured data rates for frequencies above 140 Hz all fall short of the expected values. However the average of these frequencies remains consistent at around 1100 Bps. The experiment was repeated multiple times, running it at different times and places, thus an environmental factor can be excluded. That means, the reason for the upper limit has to be found with the hardware itself. See section \ref{sec:dataThrougput} for a discussion about possible reasons for this upper limit.
+	As seen in figure \ref{fig:exp1between} the measured data rates for frequencies above 140 Hz all fall short of the expected values. However the average data throughput of these frequencies remains consistently at around 1100 Bps. The experiment was repeated multiple times, running it at different times and places, thus an environmental factor can be excluded. That means, the reason for the upper limit has to be found with the hardware itself. See section \ref{sec:dataThrougput} for a discussion about possible reasons for this upper limit.
 	
-	The time it takes for a Node to join a channel falls rapidly once the frequency is above 1 Hz. For frequencies above 64 Hz, the time it takes to join a channel become negligible, with times around 75 ms. All the measured values are below the specified worst case channel acquisition times of the ANt protocol \cite{AntChan}.
+	The time it takes for a Node to join a channel falls rapidly once the frequency is above 1 Hz. For frequencies above 64 Hz, the time it takes to join a channel becomes negligible, with times around 75 ms (see Figure \ref{fig:exp1norm}). All the measured values are below the specified worst case channel acquisition times of the ANT protocol \cite{AntChan}.
 	
 	\begin{figure}[H]
 		\centering
 		\includegraphics[scale=0.5]{./pics/exp1_long.png}
 		\caption{Broadcast data rate over time (200Hz)}\label{fig:exp1long}
 	\end{figure}
-	Figure \ref{fig:exp1long} shows the transmission speed for the highest supported frequency 199.8 Hz over time. The results show that the data throughput stays fairly consistent with a standard. deviation of only 30 Bps, or 2.7\%. Interesting to note is the time period from 1:00PM to 2:50 PM, where the deviation from the average is much smaller. The exact reason for this phenomenon in unknown, since during this time period the environment of the test set up did not change in any way.
+	Figure \ref{fig:exp1long} shows the transmission speed for the highest supported frequency 199.8 Hz over time. The results show that the data throughput stays fairly consistent with a standard deviation of only 30 Bps, or 2.7\%. Interesting to note is the time period from 1:00PM to 2:50 PM, where the deviation from the average is much smaller. The exact reason for this phenomenon in unknown, since during this time period the environment of the test set up did not change in any way.
 \end{description}
 \newpage
 
@@ -234,7 +234,7 @@ Also, there is an important difference between the message period used in the ps
 	\item{\textbf{Network Topology and Configuration}} \hfill
 		\begin{figure}[H]
 			\centering
-			\includegraphics[scale=0.6]{./pics/exp2_topo.png}
+			\includegraphics[scale=1]{./pics/exp2_topo.png}
 			\caption{Toplogy experiment 2}
 		\end{figure}
 		\begin{code}[H]
@@ -284,7 +284,7 @@ Also, there is an important difference between the message period used in the ps
 		\end{code}
  
 	\item{\textbf{Network Topology and Configuration}} \hfill \\ The two nodes are placed right next to each other.
-	\item{\textbf{Testing methodology}} \hfill \\ In this experiment each node acts as a master for a different channel. Node A is the master for Channel 0 and Node B is the master for Channel 1. The measurements itself are identical to the ones in experiment 1, except that the data are recorded on both nodes. The channel period is decreased until the data throughput decreases, or the connection can no longer be established.
+	\item{\textbf{Testing methodology}} \hfill \\ In this experiment each node acts as a master for a different channel. Node A is the master for Channel 0 and Node B is the master for Channel 1. The measurements itself are identical to the ones in experiment 1, except that the data is recorded on both nodes. The channel period is decreased until the data throughput decreases, or the connection can no longer be established.
 	\item{\textbf{Result}} \hfill \\  	
 	\begin{figure}[H]
 		\centering
@@ -296,7 +296,7 @@ Also, there is an important difference between the message period used in the ps
 		\includegraphics[scale=0.5]{./pics/exp2_detail.png}
 		\caption{Broadcast data through - 2 channels (64Hz - 129Hz)}\label{fig:exp2high}
 	\end{figure}
-	Figures \ref{fig:exp2low} shows the results of the measurements, the left bar displaying the throughput for channel 0, the right bar displaying the throughput for channel 1. The blue line show the theoretical maximum of the data throughput for the given frequency. Up to a frequency of 64 Hz the data throughput increases with the frequency for both channels. However there is a complete drop at 128 Hz. Figure \ref{fig:exp2high} shows that somewhere between 72 Hz and 76 Hz the data throughput begins to cut off. The combined data rate for two channels adds up to around 1160 Bps, which is in line with the result from experiment 1. From this data we can assume, that the entire available data rate of 1160 Bps is simply split among all existing channels.
+	Figures \ref{fig:exp2low} shows the results of the measurements, the left bar displaying the throughput for channel 0, the right bar displaying the throughput for channel 1. The blue line shows the theoretical maximum of the data throughput for the given frequency. Up to a frequency of 64 Hz the data throughput increases with the frequency for both channels. However there is a complete drop at 128 Hz. Figure \ref{fig:exp2high} shows that somewhere between 72 Hz and 76 Hz the data throughput begins to drop off. The maximum combined data rate for two channels adds up to around 1160 Bps, which is in line with the result from experiment 1. From this data we can assume, that the entire available data rate of 1160 Bps is simply split among all existing channels.
 \end{description}
 \newpage
 
@@ -308,7 +308,7 @@ Also, there is an important difference between the message period used in the ps
 	\item{\textbf{Network Topology and Configuration}} \hfill \\ 
 	\begin{figure}[H]
 		\centering
-		\includegraphics[scale=0.6]{./pics/exp1_topo.png}
+		\includegraphics[scale=1]{./pics/exp_topo.png}
 		\caption{Toplogy experiment 3}
 	\end{figure}
 	\begin{code}[H]
@@ -357,7 +357,7 @@ Also, there is an important difference between the message period used in the ps
 		\includegraphics[scale=0.5]{./pics/exp3_detail.png}
 		\caption{Acknowledge delay (16Hz - 70Hz)}\label{fig:exp3high}
 	\end{figure}
-	Figure \ref{fig:exp3low} and \ref{fig:exp3high} show the delays for the tested frequencies. The blue line shows the size between two timeslots and can act as a resolution for each measurement. For the lower frequencies the results are skewed, since each acknowledge packet is aligned to a time-slot. Thus the biggest part of the delay is waiting for the next time-slot. For frequencies greater than 64 Hz the data is considerably more useful, since the resolution is lower than the measured values. The delay for those frequencies is around 18 ms, with no notable difference between 128 Hz and 200 Hz. Since the procedure is the same for the higher channel periods, it can be assumed that the delay is the same as the one for the lower channel periods.
+	Figure \ref{fig:exp3low} and \ref{fig:exp3high} show the delays for the tested frequencies. The blue line shows the size of the gap between two timeslots and can act as a resolution for each measurement. For the lower frequencies the results are skewed, since each acknowledge packet is aligned to a time-slot. Thus the biggest part of the delay is waiting for the next time-slot. For frequencies greater than 64 Hz the data is considerably more useful, since the resolution is lower than the measured values. The delay for those frequencies is around 18 ms, with no notable difference between 128 Hz and 200 Hz. Since the procedure is the same for the higher channel periods, it can be assumed that the delay is the same as the one for the lower channel periods.
 \end{description}
 \newpage
 
@@ -369,7 +369,7 @@ Also, there is an important difference between the message period used in the ps
 	\item{\textbf{Network Topology and Configuration}} \hfill \\
 	\begin{figure}[H]
 		\centering
-		\includegraphics[scale=0.6]{./pics/exp1_topo.png}
+		\includegraphics[scale=1]{./pics/exp_topo.png}
 		\caption{Toplogy experiment 4}
 	\end{figure}
 	\begin{code}[H]
@@ -418,20 +418,20 @@ Also, there is an important difference between the message period used in the ps
 		\caption{Acknowledge data rate (65Hz - 70Hz)}\label{fig:exp4between}
 	\end{figure}
 	
-	Figure \ref{fig:exp4norm} shows the measured transmission speeds for the different tested frequencies. For the lower frequencies, the values align very well the with maximum data rate. Notable however is the sharp drop off at 129 Hz. Figure \ref{fig:exp4between} shows
-	that the drop off in the data throughput rate happens around 69 Hz. This result can be explained with the results of experiment 3. The delay of an acknowledge message is roughly 18 ms. The problem is that ANT retransmits the last sent packet as a broadcast packet. If the frequency for this retransmission is too high it can interfere with the acknowledge message that the slave sends back to the master. For example at 200 Hz the message is broadcasted every 5 ms resulting in too much data for the channel to handle. The transmission is thus interrupted. Since there is no increase of the data throughput between 64 Hz and 128 Hz, but a huge drop off at 69 Hz it can be assumed that somewhere around 69 Hz the channel is at the maximum data throughput of around 1100 Bps. Again see section \ref{sec:dataThrougput} for a discussion about possible reasons for this upper limit. 
+	Figure \ref{fig:exp4norm} shows the measured transmission speeds for the different tested frequencies. For the lower frequencies, the values align very well with the maximum data rate. Notable however is the sharp drop off at 129 Hz. Figure \ref{fig:exp4between} shows
+	that the drop off in the data throughput rate starts around 69 Hz. This result can be explained with the results of experiment 3. The delay of an acknowledge message is roughly 18 ms. The problem is that ANT retransmits the last sent packet as a broadcast packet. If the frequency for this retransmission is too high it can interfere with the acknowledge message that the slave sends back to the master. For example at 200 Hz the message is broadcast every 5 ms, resulting in too much data for the channel to handle. The transmission is thus interrupted. Since there is no increase of the data throughput between 64 Hz and 128 Hz, but a huge drop off at 69 Hz it can be assumed that somewhere around 69 Hz the channel is at the maximum data throughput of around 1100 Bps. Again see section \ref{sec:dataThrougput} for a discussion about possible reasons for this upper limit. 
 
 \end{description}
 \newpage
 
 \section{Experiment 5: Burst Data Transfer between two nodes}
 \begin{description} 
-	\item{\textbf{Description}} \hfill \\ Burst data transmissions make it possible to drastically increase the throughput rate. This allows a SHAMPU base station to quickly transmit a new firmware to a node or a node to dump its RAM back to the base station.	According to the  specification rates of up to 20 kbps can be achieved. To fully utilize this speed a baud rate of 50000 is needed. Since we are using 19200 baud the maximum speed is expected to be less than 20 kbps. Furthermore we try to determine if the size of the burst transfer has an impact on the speed, since longer burst can disrupt communications on other channels.
+	\item{\textbf{Description}} \hfill \\ Burst data transmissions make it possible to drastically increase the throughput rate. This allows a SHAMPU base station to quickly transmit a new firmware to a node or a node to dump its RAM back to the base station.	According to the  specification rates of up to 20 kbps can be achieved. To fully utilize this speed a baud rate of 50000 is needed. Since we are using 19200 baud the maximum speed is expected to be less than 20 kbps. Furthermore we try to determine if the size of the burst transfer has an impact on the speed, since longer bursts will disrupt communications on other channels.
 	\item{\textbf{Use-Case}} \hfill \\ Unscheduled Data-transmission
 	\item{\textbf{Network Topology and Configuration}} \hfill \\ 
 	\begin{figure}[H]
 		\centering
-		\includegraphics[scale=0.6]{./pics/exp5_topo.png}
+		\includegraphics[scale=1]{./pics/exp5_topo.png}
 		\caption{Toplogy experiment 5}
 	\end{figure}
 	\begin{code}[H]
@@ -450,7 +450,7 @@ Also, there is an important difference between the message period used in the ps
 		\end{verbatim}
 		\caption{Burst data transfer (Slave)}\label{lst:sExp5}
 	\end{code}
-	\item{\textbf{Testing methodology}} \hfill \\ Since the burst transmission mode of our ANT-library is not working correctly (see section \ref{sec:future}) we use an ANTUSB-m Stick, which acts as a master. Node B is a normal base station and receives the burst transfers. On the master side, the program ANTWareII [XYXYXY] is used to create the channel and then send burst with different sizes. Each size is sent 10 times and the values are recorded and averaged. The size is then doubled and the experiment repeated. The first burst packet cannot be counted since the start of the burst can only be determined after the ANT chip has already received the first packet.
+	\item{\textbf{Testing methodology}} \hfill \\ Since the burst transmission mode of our ANT-library is not working correctly (see section \ref{sec:future}) we use an ANTUSB-m Stick, which acts as a master. Node B is a normal base station and receives the burst transfers. On the master side, the program ANTWareII \cite{ANTwareII} is used to create the channel and then send bursts with different sizes. Each size is sent 10 times and the values are recorded and averaged. The size is then doubled and the experiment repeated. The first burst packet cannot be counted directly since the start of the burst can only be determined after the ANT chip has already received the first packet.
 	\item{\textbf{Result}} \hfill \\ 
 		\begin{figure}[H]
 			\centering
@@ -462,7 +462,7 @@ Also, there is an important difference between the message period used in the ps
 \end{description}
 \newpage
 
-\section{Experiment 6: Maximal communication Range}
+\section{Experiment 6: Maximum communication Range}
 \begin{description} 
 	\item{\textbf{Description}} \hfill \\  In this experiment we try to determine the correlation between the maximum range and the power setting of the ANT radio. One of SHAMPU's advantages is the low power consumption, so it might be possible to further reduce the power consumption by decreasing the power level of the ANT radio, especially in smaller environments where there is no need for such a long range. According to the datasheet the maximum range for communication is 30m. However the ANT documentation does not specify for which power setting this range can be achieved. 
 
@@ -470,8 +470,8 @@ Also, there is an important difference between the message period used in the ps
 	\item{\textbf{Network Topology and Configuration}} \hfill \\ 
 	\begin{figure}[H]
 		\centering
-		\includegraphics[scale=0.75]{./pics/exp6_topo.png}
-		\caption{Toplogy experiment 6}
+		\includegraphics[scale=1]{./pics/exp6_topo.png}
+		\caption{Topology experiment 6}
 	\end{figure}
 	
 	\begin{code}[H]
@@ -484,7 +484,7 @@ Also, there is an important difference between the message period used in the ps
 		  closeChannel(ID_CHAN1);
 		}
 		\end{verbatim}
-		\caption{max communication range (Master)}\label{lst:mExp6}
+		\caption{maximum communication range (Master)}\label{lst:mExp6}
 	\end{code}
 	
 	\begin{code}[H]
@@ -509,60 +509,62 @@ Also, there is an important difference between the message period used in the ps
 		}
 		
 		\end{verbatim}
-		\caption{max communication range (Slave)}\label{lst:sExp6}
+		\caption{maximum communication range (Slave)}\label{lst:sExp6}
 	\end{code}
-	\item{\textbf{Testing methodology}} \hfill \\ At the beginning of the experiment Node A and B are placed right next to each other. Node A acts as a master and keeps broadcasting the same message. Node B is the slave and tries to connect to the channel. If the connection is successful, the distance between the two nodes is increased by 0.4 meters. This process is repeated until Node B can no longer connect to the channel and the connection times out, this happens after 30s of searching. At this point the distance is no longer increased, but rather decreased until Node B is able to successfully connect to the channel. The whole experiment is then repeated for each available power setting.	
+	\item{\textbf{Testing methodology}} \hfill \\ At the beginning of the experiment Node A and B are placed right next to each other. Node A acts as a master and keeps broadcasting the same message. Node B is the slave and tries to connect to the channel. If the connection is successful, the distance between the two nodes is increased by 0.4 meters. This process is repeated until Node B can no longer connect to the channel and the connection times out. This happens after 30s of searching. At this point the distance is no longer increased, but rather decreased until Node B is able to successfully connect to the channel. The whole experiment is then repeated for each available power setting.	
 	\item{\textbf{Result}} \hfill \\ 
 	\begin{figure}[H]
 		\centering
 		\includegraphics[scale=0.5]{./pics/exp6.png}
-		\caption{max comunication range}\label{fig:exp6}
+		\caption{maximum comunication range}\label{fig:exp6}
 	\end{figure}
-	Figure \ref{fig:exp6} shows the transmission range for each power setting. The results of this experiment seem disappointing, since we did not get close to the maximum range of 30m. However the ANT documentation states that the maximum range of 30m can only be achieved in "optimal conditions". It is possible for several different factors, such as multiple 802.11 networks in the vicinity, or even the plastic case of the base station, to interfere with the ANT signal. 
+	Figure \ref{fig:exp6} shows the transmission range for each power setting. As expected the maximum distance goes up with the higher power settings. But the result at the highest power setting is disappointing, since we did not get close to the claimed maximum range of 30m. The ANT documentation states that the maximum range of 30m can only be achieved in "optimal conditions"\cite{DynastreamInnovationsInc.2013}. It is possible for several different unfavourable factors, such as multiple 802.11 networks in the vicinity, or even the plastic case of the base station, to interfere with the ANT signal. 
 \end{description}
 \newpage
 
 
 \chapter{Conclusion}
 
-\section{max DataThroughput}
+\section{Maximum Data Throughput}
 \label{sec:dataThrougput}
 
-All our experiments seem to confirm that there is a hard limit for the maximum data throughput, which can be achieved with our current set up. The ANT AP1MxIB supports a maximum frequency of 200 Hz, so we would expect to see a maximum transmission rate of 1600 Bps, however we miss this limit by around 500 Bps or 30\%. For a burst transmission there should be up to 20 kbps  of throughput, again we only achieved around 1100 Bps, a loss of 1400 Bps or 56\%.\\
-To eliminate environmental influences, the experiments were repeated in different locations and times of the day and night. Since the throughput did not change noticeable, it can be concluded that there are not any easily eliminated environmental factors, which affect the maximum rate. That means that the root cause for the lower than expected throughput has to do with the hardware or software. \\
+All our experiments seem to confirm that there is a hard limit for the maximum data throughput which can be achieved with our current set up. The ANT AP1MxIB supports a maximum frequency of 200 Hz, so we would expect to see a maximum transmission rate of 1600 Bps. However, we missed that limit by around 500 Bps or 30\%. For a burst transmission there should be up to 20 kbps of throughput, but again we only achieved around 1100 Bps, a loss of 1400 Bps or 56\%.\\
+To eliminate environmental influences, the experiments were repeated in different locations and times of day and night. Since the throughput did not change noticeably, it can be assumed that there are no easily eliminated environmental factors which affect the maximum rate. We conclude that the root cause for the lower than expected throughput must be attributed to the hardware or software. \\
 
-If we exclude environmental factors that leave three possible reasons:
+If we exclude environmental factors, we are left with three possible reasons:
 \begin{itemize}
-	\item{\textbf{RS-232 Connection}} \hfill \\ The base station is connected over a serial connection to a PC. For the speed we chose 19200 baud, which should be more then enough for a maximum message rate of 200 Hz. For the burst mode however, this is one limiting factor. With 19200 baud, the theoretical maximum is 1920 Bps. This explains some, but not all of the measured difference.
+	\item{\textbf{RS-232 Connection}} \hfill \\ The base station is connected to a PC over a serial connection. For the speed we chose 19200 baud, which should be more than enough for a maximum message rate of 200 Hz. For the burst mode however, this is one limiting factor. With 19200 baud, the theoretical maximum is 1920 Bps. This explains some, but not all of the measured difference.
 	
-	\item{\textbf{ANT API}} \hfill \\ The software we use is not officially support by ANT. Tt is thus possible that there are some bugs, which have an impact of the performance. Except for the missing burst modus (see \ref{sec:future}), there were no unusual measured values during the experiments. If there is a bug, it might be hard to find, without rewriting all the experiments and running them with the offical ANT library [XYXYX]
+	\item{\textbf{ANT API}} \hfill \\ The software we use is not officially supported by ANT. It is thus possible that there are some bugs which have an impact on the performance. Except for the missing burst modus (see \ref{sec:future}), there were no unusual measured values during the experiments. If there is a bug, it might be hard to find without rewriting all the experiments and running them with the official ANT library \cite{ANTWinLib}
 	
-	\item{\textbf{ANT AP1MxIB}} \hfill \\ Due to the blackbox nature of ANT, it is very hard to exactly determine where the problem is. The inner workings of the chip are not documented at all and the error messages of the protocol are not very specific. The chip itself is from 2007, and the manufacturer no longer recommends the use of the chip[XXYYX]. There are alternatives available, like the newer ANTAP281M5IB chip, with this it might be able to achieve the full potential of ANT.
+	\item{\textbf{ANT AP1MxIB}} \hfill \\ Due to the black box nature of ANT, it is very hard to exactly determine what causes the problem. The inner workings of the chip are not documented in any way, and the error messages of the protocol are not very specific. The chip itself is from 2007 and the manufacturer no longer recommends the use of the chip\cite{AP1page}. There are alternatives available, like the newer ANTAP281M5IB chip \cite{AP2Datasheet}.
 \end{itemize}
 \newpage
 \section{Summary}
-In conclusion of our experiments, it seems af if the ANT protocol falls short of its full potential:
+In conclusion of our experiments, it seems af if the ANT chip falls short of its full potential:
 \begin{itemize}
-	\item{\textbf{Scheduled Data-transmission}} \hfill \\ The achieved data throughput of around 1160 Bps is valid for a single chip. That means the main bottleneck of the network is the base station, since it acts as a command and control server for each node in the network. The easiest way to fix the problem, is to use more the one base station. This is possible, since we do not need a full meshed network for the SHAMPU nodes to communicate with each other, they just need to talk to the base station.
-	\item{\textbf{Unscheduled Data-transmission}} \hfill \\ The achievable burst data throughput is especially troublesome. SHAMPU is equipped with 128 kBytes of RAM. With the current set up it takes about 2 minutes to dump the whole memory to a base station, where is can be further analysed. If the full potential of the burst mode can be made available, the duration can be shorten to 70s. The long burst duration is a problem, because long bursts disrupt the communication on other channels. For this reason the transmission of these memory-dumps has to be very carefully scheduled to avoid network congestion.
-	\item{\textbf{Communication Range}} \hfill \\ The range of 6m is maybe the most worrying result of this thesis. The short range means, that the physical location of the base station is critical for a successful deployment of SHAMPU. It also means that a larger network requires more than one such base stations, to be able to reach of nodes.
+	\item{\textbf{Scheduled data-transmission}} \hfill \\ The achieved data throughput of around 1160 Bps is valid for a single chip. That means the main bottleneck of the network is the base station, since it acts as a command and control server for each node in the network. The easiest way to fix the problem is to use more than one base station. This is possible, since we do not need a fully meshed network for the SHAMPU nodes to communicate with each other. They solely need to talk to the base station.
+	
+	\item{\textbf{Unscheduled data-transmission}} \hfill \\ The achievable burst data throughput is especially problematic. SHAMPU is equipped with 128 kBytes of RAM. With the current set up it takes about 2 minutes to dump the entire memory to a base station, where is can be further analysed. If the full potential of the burst mode could be made available, the duration can be shortened to 70s. The long burst duration poses a problem, as long bursts disrupt the communication on other channels. For this reason the transmission of these memory-dumps has to be very carefully scheduled to avoid network congestion.
+	
+	\item{\textbf{Communication Range}} \hfill \\ The maximum achieved range of 6m is probably the most disturbing result of this thesis. The short range signifies, that the physical location of the base station is critical for a successful deployment of SHAMPU. It also means that a larger network requires more than one such base station to be able to reach all nodes.
 \end{itemize}
 
 
-With all these limitations of the data throughput, the network set up has to be chosen very carefully. One option is to use additional SHAMPU nodes as relays, which serve a dual purpose. For one they allow to extend the range of the network, while also increase the data throughput of the whole network.\\ Another possibility to counteract the limitation is to leverage the numerous advantages of the SHAMPU framework, its low weight, form factor and power draw. A mobile base station, e.g. TrainSense \cite{Smeets:2013:TNI:2450070.2450072}, which can be easily moved around in the location where the SHAMPU nodes are deployed, makes it possible to address all the mentioned problems. The range is no longer a problem, since the base  station is simply moved towards the node until a connection can be achieved. At the same time, the limited range provides a solution for the limited data throughput. Since the amount of nodes, which can connect to the base station can be controlled its possible to only ever have a small amount of nodes transmitting data to the base station.
+With all these limitations of the data throughput, the network setup has to be chosen very carefully. One option is to use additional SHAMPU nodes as relays, which serve a dual purpose. They allow to extend the range of the network, while increasing the data throughput of the whole network.\\ Another possibility to counteract the limitation is to leverage the numerous advantages of the SHAMPU framework, such as its low weight, form factor and power draw. A mobile base station, e.g. TrainSense \cite{Smeets:2013:TNI:2450070.2450072}, which can easily be moved around in the location where the SHAMPU nodes are deployed, makes it possible to address all above mentioned problems. The range no longer represents a problem, since the base station is simply moved towards the node until a connection can be achieved. At the same time, the limited range provides a solution for the limited data throughput. Since the amount of nodes, which are able to connect to the base station can be controlled its possible to only ever have a small number of nodes transmitting data to the base station.
 
-In the end, while ANT is not the most powerful wireless solution available, its design choices (low power consumption and ease-of-use) overlap almost completely with the design goals of SHAMPU.
+In the end, while ANT is not the most powerful wireless solution available, its design choices (low power consumption and ease-of-use) coincide almost completely with the design goals of SHAMPU.
 \newpage
 \section{Future Work}
 \label{sec:future}
-Due to time and the limited hardware availability we were not able to fully explore and evaluate the possibilities of ANT in the SHAMPU network. Especially these three areas should be revisted:
+Due to lack of time and the limited hardware availability we were not able to fully explore and evaluate the possibilities of ANT in the SHAMPU network. Especially the following four areas should be revisited:
 
 \begin{itemize}
-	\item{\textbf{Power consumptions}} \hfill \\ Each experiment tries to find the maximum of either data throughput or the communication range. We did not measure how the power consumption changes if, for example the message period is reduced. Since SHAMPU tries to be very low-powered this is an important measurement for the decision wheter or not SHAMPU can be used for a specific application. The data sheet of the ANT AP1MxIB module provides interesting data \cite{Networks}: The maximum current draw seems to be around 5 mA for a continuous burst transmission and around 40 µA for a normal broadcast operation.
+	\item{\textbf{Power consumptions}} \hfill \\ Each experiment tries to find the maximum of either data throughput or the communication range. We did not measure how the power consumption changes if, for example, the message period is reduced. Since SHAMPU tries to be very low-powered, this is an important measurement for the decision whether or not SHAMPU can be used for a specific application. The data sheet of the ANT AP1MxIB module provides interesting data \cite{Networks}: The maximum current draw seems to be around 5 mA for a continuous burst transmission and around 40 µA for a normal broadcast operation.
 	
-	\item{\textbf{Burst mode}} \hfill \\ We used a custom library, which provides an API to interface with the ANT-Chip. For this thesis an attempt was made, to add the missing burst transfer mode. However due to time constrains we were unable to get the mode working correctly. Burst packets need to have a precise timing and due to the black box nature of the ANT protocol makes this issue hard to debug.
+	\item{\textbf{Burst mode}} \hfill \\ We use a custom library, which provides an API to interface with the ANT-Chip. For this thesis an attempt was made to add the missing burst transfer mode. However, due to time constraints we were unable to get the mode working correctly. Burst packets need to have a precise timing, but the black box nature of the ANT protocol makes it a challenge to debug the code.
 	
-	\item{\textbf{Shared channels}} \hfill \\ Due to missing hardware, we were only able to test the communication between two nodes. Thus shared channels could not be tested. However we expect the available data throughput to be in line with the results from our experiments. ANT uses up to 2 bytes of the 8 byte payload to specify the address of the receiver. Therefore we expect to lose about 12.5\% to 25\% of throughput if shared channels are used.
+	\item{\textbf{Shared channels}} \hfill \\ Due to missing hardware, we were only able to test the communication between two nodes. Shared channels could not be tested, yet we expect the available data throughput to be in line with the results from our experiments. ANT uses up to 2 bytes of the 8 byte payload to specify the address of the receiver. Therefore we expect to lose approximately 12.5\% to 25\% of throughput if shared channels are used. It would be important to confirm this to fully assess the usefulness of the ANT chip.
 	
-	\item{\textbf{New ANT-module}} \hfill \\ As mention before the chip currently in use is old and no longer recommended for use. The successor of the current chip, the ANTAP281M4IB has roughly the same specifications as the current chip. Therefore the experiments should be rerun with the newer model in order to eliminate the ANT-module as the limiting factor.
+	\item{\textbf{New ANT-chip}} \hfill \\ As mentioned before the chip currently in use is old and no longer recommended for use. The successor of the current chip, the ANTAP281M4IB has roughly the same specifications as the current chip. Therefore the experiments should be rerun with the newer model in order to determine whether the ANT-chip is the limiting factor for data throughput.
 \end{itemize}

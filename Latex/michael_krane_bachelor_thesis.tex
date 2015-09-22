@@ -33,7 +33,8 @@ bibliography=totoc]{scrbook}
 %\tracingstats=2
 %\usepackage{layout}
 % english/spanish/new german language support (hyphenation etc)
-\usepackage[english,spanish,ngerman]{babel}
+\usepackage[english]{babel}
+\selectlanguage{english}
 
 % for prettier tables
 \usepackage{booktabs}
@@ -96,38 +97,22 @@ bibliography=totoc]{scrbook}
 % Metadata and configuration of the pdf output:
 % Do not forget to enter the correct title, author, subject und keywords
 
-% For screen viewing it is nice to have references marked in a slightly different
-% color than the rest of the text. Since they will be hyperlinks to the 
-% referenced objects.
-\usepackage[pdftex,
-             pdftitle={},
-             colorlinks,
-             linkcolor={mydarkgrey},
-             citecolor={mygrey},
-             urlcolor={black},
-             plainpages={false},
-             bookmarksnumbered={true},
-             pdfauthor={},
-             pdfsubject={},
-             pdfkeywords={},
-             pdfstartview={FitBH}]{hyperref}
-
 % For the final printouts (remember - you need at least three - one for each examiner and one for the archive 
 % [ This might have changed - so contact the "Pr�fungsamt" about the current regulations !! ] - it is better
 % to have all text in the same color (namely black).
 % 
-%\usepackage[pdftex,
-%            pdftitle={},
-%            colorlinks,
-%            linkcolor={black},
-%            citecolor={black},
-%            urlcolor={black},
-%            plainpages={false},
-%            bookmarksnumbered={true},
-%            pdfauthor={},
-%            pdfsubject={},
-%            pdfkeywords={},
-%            pdfstartview={FitBH}]{hyperref}
+\usepackage[pdftex,
+            pdftitle={},
+            colorlinks,
+            linkcolor={black},
+            citecolor={black},
+            urlcolor={black},
+            plainpages={false},
+            bookmarksnumbered={true},
+            pdfauthor={},
+            pdfsubject={},
+            pdfkeywords={},
+            pdfstartview={FitBH}]{hyperref}
 \pdfcompresslevel=9
 \fi
 

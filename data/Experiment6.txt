@@ -1,0 +1,205 @@
+[michael@xps src]$ sudo ./ant -p /dev/ttyUSB0 -t s -n 5
+Port = /dev/ttyUSB0
+Type = s
+
+Experiment 5: Communication Distance
+
+Power setting is now: -20dBm
+
+Still in range (current 0.000000m)!
+Increase distance by 0.4m and press return!
+Still in range (current 0.400000m)!
+Increase distance by 0.4m and press return!
+Still in range (current 0.800000m)!
+Increase distance by 0.4m and press return!
+Still in range (current 1.200000m)!
+Increase distance by 0.4m and press return!
+Still in range (current 1.600000m)!
+Increase distance by 0.4m and press return!
+Lost connection (current range 2.000000m)! Decrease distance by 0.4m and press return!
+Found connection again (current range 1.600000m)!
+
+Power setting is now: -10dBm
+
+Still in range (current 0.000000m)!
+Increase distance by 0.4m and press return!
+Still in range (current 0.400000m)!
+Increase distance by 0.4m and press return!
+Still in range (current 0.800000m)!
+Increase distance by 0.4m and press return!
+Still in range (current 1.200000m)!
+Increase distance by 0.4m and press return!
+Still in range (current 1.600000m)!
+Increase distance by 0.4m and press return!
+Still in range (current 2.000000m)!
+Increase distance by 0.4m and press return!
+Still in range (current 2.400000m)!
+Increase distance by 0.4m and press return!
+Still in range (current 2.800000m)!
+Increase distance by 0.4m and press return!
+Still in range (current 3.200000m)!
+Increase distance by 0.4m and press return!
+Still in range (current 3.600000m)!
+Increase distance by 0.4m and press return!
+Still in range (current 4.000000m)!
+Increase distance by 0.4m and press return!
+Still in range (current 4.400001m)!
+Increase distance by 0.4m and press return!
+Lost connection (current range 4.800001m)! Decrease distance by 0.4m and press return!
+Found connection again (current range 4.400000m)!
+
+Power setting is now: -5dBm
+
+Still in range (current 0.000000m)!
+Increase distance by 0.4m and press return!
+Still in range (current 0.400000m)!
+Increase distance by 0.4m and press return!
+Still in range (current 0.800000m)!
+Increase distance by 0.4m and press return!
+Still in range (current 1.200000m)!
+Increase distance by 0.4m and press return!
+Still in range (current 1.600000m)!
+Increase distance by 0.4m and press return!
+Still in range (current 2.000000m)!
+Increase distance by 0.4m and press return!
+Still in range (current 2.400000m)!
+Increase distance by 0.4m and press return!
+Still in range (current 2.800000m)!
+Increase distance by 0.4m and press return!
+Still in range (current 3.200000m)!
+Increase distance by 0.4m and press return!
+Still in range (current 3.600000m)!
+Increase distance by 0.4m and press return!
+Still in range (current 4.000000m)!
+Increase distance by 0.4m and press return!
+Still in range (current 4.400001m)!
+Increase distance by 0.4m and press return!
+Still in range (current 4.800001m)!
+Increase distance by 0.4m and press return!
+Still in range (current 5.200001m)!
+Increase distance by 0.4m and press return!
+Still in range (current 5.600001m)!
+Increase distance by 0.4m and press return!
+Still in range (current 6.000001m)!
+Increase distance by 0.4m and press return!
+Lost connection (current range 6.400001m)!
+Decrease distance by 0.4m and press return!
+Still no connection (current range 6.000001m!
+Decrease distance by 0.4m and press return!
+Still no connection (current range 5.600001m!
+Decrease distance by 0.4m and press return!
+Found connection again (current range 5.200001m)!
+
+Power setting is now: 0dBm
+
+Still in range (current 0.000000m)!
+Increase distance by 0.4m and press return!
+Still in range (current 0.400000m)!
+Increase distance by 0.4m and press return!
+Still in range (current 0.800000m)!
+Increase distance by 0.4m and press return!
+Still in range (current 1.200000m)!
+Increase distance by 0.4m and press return!
+Still in range (current 1.600000m)!
+Increase distance by 0.4m and press return!
+Still in range (current 2.000000m)!
+Increase distance by 0.4m and press return!
+Still in range (current 2.400000m)!
+Increase distance by 0.4m and press return!
+Still in range (current 2.800000m)!
+Increase distance by 0.4m and press return!
+Still in range (current 3.200000m)!
+Increase distance by 0.4m and press return!
+Still in range (current 3.600000m)!
+Increase distance by 0.4m and press return!
+Still in range (current 4.000000m)!
+Increase distance by 0.4m and press return!
+Still in range (current 4.400001m)!
+Increase distance by 0.4m and press return!
+Still in range (current 4.800001m)!
+Increase distance by 0.4m and press return!
+Still in range (current 5.200001m)!
+Increase distance by 0.4m and press return!
+Still in range (current 5.600001m)!
+Increase distance by 0.4m and press return!
+Still in range (current 6.000001m)!
+Increase distance by 0.4m and press return!
+Lost connection (current range 6.400001m)! 
+Decrease distance by 0.4m and press return!
+Still no connection (current range 6.000001m! 
+Decrease distance by 0.4m and press return!
+Found connection again (current range 5.400001m)!
+[michael@xps src]$ 
+
+[michael@xps src]$ sudo ./ant -p /dev/ttyUSB0 -t s -n 5
+Port = /dev/ttyUSB0
+Type = s
+Message Period = 65535 (0.500008 Hz)
+Power setting is now: 0dBm
+Experiment 5: Communication Distance
+Power setting is now: -20dBm
+distance = 0.000000
+
+Still in range (current 0.000000m)!
+Increase distance by 0.4m and press return!
+Still in range (current 0.400000m)!
+Increase distance by 0.4m and press return!
+Still in range (current 0.800000m)!
+Increase distance by 0.4m and press return!
+Lost connection (current range 1.200000m)!
+Decrease distance by 0.4m and press return!
+Found connection again (current range 0.800000m)!
+
+Power setting is now: -10dBm
+distance = 0.800000
+Still in range (current 0.800000m)!
+Increase distance by 0.4m and press return!
+Still in range (current 1.200000m)!
+Increase distance by 0.4m and press return!
+Still in range (current 1.600000m)!
+Increase distance by 0.4m and press return!
+Still in range (current 2.000000m)!
+Increase distance by 0.4m and press return!
+Still in range (current 2.400000m)!
+Increase distance by 0.4m and press return!
+Lost connection (current range 2.800000m)! 
+Decrease distance by 0.4m and press return!
+Still no connection (current range 2.400000m! 
+Decrease distance by 0.4m and press return!
+Still no connection (current range 2.000000m! 
+Decrease distance by 0.4m and press return!
+Found connection again (current range 1.600000m)!
+
+Power setting is now: -5dBm
+distance = 1.600000	
+Still in range (current 1.600000m)!
+Increase distance by 0.4m and press return!Still in range (current 2.000000m)!
+Increase distance by 0.4m and press return!
+Still in range (current 2.400000m)!
+Increase distance by 0.4m and press return!
+Still in range (current 2.800000m)!
+Increase distance by 0.4m and press return!
+Still in range (current 3.200000m)!
+Increase distance by 0.4m and press return!
+Still in range (current 3.600000m)!
+Increase distance by 0.4m and press return!
+Still in range (current 4.000000m)!
+Increase distance by 0.4m and press return!
+Still in range (current 4.400001m)!
+Increase distance by 0.4m and press return!
+Still in range (current 4.800001m)!
+Increase distance by 0.4m and press return!
+Still in range (current 5.200001m)!
+Increase distance by 0.4m and press return!
+Lost connection (current range 5.600001m)! Decrease distance by 0.4m and press return!
+Found connection again (current range 5.200001m)!
+
+Power setting is now: 0dBm
+distance = 5.200001
+Still in range (current 5.200001m)!
+Increase distance by 0.4m and press return!
+Still in range (current 5.600001m)!
+Increase distance by 0.4m and press return!
+Lost connection (current range 6.000001m)! Decrease distance by 0.4m and press return!
+Still no connection (current range 5.600001m! Decrease distance by 0.4m and press return!
+Found connection again (current range 5.200001m)!

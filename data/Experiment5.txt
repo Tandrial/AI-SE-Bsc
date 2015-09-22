@@ -1,0 +1,131 @@
+[michael@xps src]$ sudo ,/ant -p /dev/ttyUSB0 -t s -n 6
+Port = /dev/ttyUSB0
+Type = s
+Message Period = 65535 (0,500008 Hz)
+Power setting is now: 0dBm
+Experiment 6: Burst Data Transfer between two nodes
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][ 0][ 0][ 0][ 0][ 0][ 0][ 0][C8][2B]
+Channel 0 open! took 5302,257206
+Received 1 burst packets in 0,006824 s ==> 1172,252204
+Received 1 burst packets in 0,006949 s ==> 1151,288688
+Received 1 burst packets in 0,006965 s ==> 1148,648464
+Received 1 burst packets in 0,006974 s ==> 1147,140895
+Received 1 burst packets in 0,006974 s ==> 1147,149777
+Received 1 burst packets in 0,007000 s ==> 1142,893879
+Received 1 burst packets in 0,006975 s ==> 1146,939757
+Received 1 burst packets in 0,006825 s ==> 1172,241211
+Received 1 burst packets in 0,006800 s ==> 1176,450173
+Received 1 burst packets in 0,006975 s ==> 1146,941072
+
+Received 3 burst packets in 0,020558 s ==> 1167,410226
+Received 3 burst packets in 0,020650 s ==> 1162,253324
+Received 3 burst packets in 0,020656 s ==> 1161,872289
+Received 3 burst packets in 0,020640 s ==> 1162,816275
+Received 3 burst packets in 0,020640 s ==> 1162,790078
+Received 3 burst packets in 0,020650 s ==> 1162,244600
+Received 3 burst packets in 0,020637 s ==> 1162,963001
+Received 3 burst packets in 0,020561 s ==> 1167,277307
+Received 3 burst packets in 0,020625 s ==> 1163,651879
+Received 3 burst packets in 0,020640 s ==> 1162,814416
+Received 3 burst packets in 0,020750 s ==> 1156,646573
+
+Received 7 burst packets in 0,047949 s ==> 1167,904426
+Received 7 burst packets in 0,047949 s ==> 1167,902380
+Received 7 burst packets in 0,047999 s ==> 1166,698945
+Received 7 burst packets in 0,047999 s ==> 1166,686622
+Received 7 burst packets in 0,047949 s ==> 1167,899068
+Received 7 burst packets in 0,047949 s ==> 1167,899920
+Received 7 burst packets in 0,048099 s ==> 1164,254840
+Received 7 burst packets in 0,047949 s ==> 1167,896949
+Received 7 burst packets in 0,048000 s ==> 1166,669365
+Received 7 burst packets in 0,047976 s ==> 1167,246375
+
+Received 15 burst packets in 0,103124 s ==> 1163,649239
+Received 15 burst packets in 0,103099 s ==> 1163,930075
+Received 15 burst packets in 0,103124 s ==> 1163,646011
+Received 15 burst packets in 0,103124 s ==> 1163,650232
+Received 15 burst packets in 0,103049 s ==> 1164,497454
+Received 15 burst packets in 0,103124 s ==> 1163,650468
+Received 15 burst packets in 0,103099 s ==> 1163,929420
+Received 15 burst packets in 0,103024 s ==> 1164,778394
+Received 15 burst packets in 0,103030 s ==> 1164,710269
+Received 15 burst packets in 0,103049 s ==> 1164,496279
+
+Received 31 burst packets in 0,213048 s ==> 1164,058030
+Received 31 burst packets in 0,212789 s ==> 1165,473231
+Received 31 burst packets in 0,213049 s ==> 1164,051506
+Received 31 burst packets in 0,212999 s ==> 1164,323966
+Received 31 burst packets in 0,212633 s ==> 1166,327391
+Received 31 burst packets in 0,212998 s ==> 1164,328235
+Received 31 burst packets in 0,213149 s ==> 1163,505947
+Received 31 burst packets in 0,213020 s ==> 1164,209819
+Received 31 burst packets in 0,213049 s ==> 1164,050178
+Received 31 burst packets in 0,212974 s ==> 1164,463096
+
+Received 63 burst packets in 0,432162 s ==> 1166,228540
+Received 63 burst packets in 0,433222 s ==> 1163,375553
+Received 63 burst packets in 0,432487 s ==> 1165,351761
+Received 63 burst packets in 0,432173 s ==> 1166,200456
+Received 63 burst packets in 0,433257 s ==> 1163,280639
+Received 63 burst packets in 0,432432 s ==> 1165,500990
+Received 63 burst packets in 0,431997 s ==> 1166,673618
+Received 63 burst packets in 0,432947 s ==> 1164,114349
+Received 63 burst packets in 0,432462 s ==> 1165,419969
+Received 63 burst packets in 0,432637 s ==> 1164,949119
+
+Received 127 burst packets in 0,874209 s ==> 1162,193689
+Received 127 burst packets in 0,872235 s ==> 1164,824097
+Received 127 burst packets in 0,872435 s ==> 1164,556198
+Received 127 burst packets in 0,872210 s ==> 1164,856853
+Received 127 burst packets in 0,872095 s ==> 1165,010234
+Received 127 burst packets in 0,871607 s ==> 1165,662577
+Received 127 burst packets in 0,872235 s ==> 1164,823631
+Received 127 burst packets in 0,871770 s ==> 1165,444945
+Received 127 burst packets in 0,872660 s ==> 1164,257038
+Received 127 burst packets in 0,872510 s ==> 1164,457178
+
+Received 255 burst packets in 1,750605 s ==> 1165,311683
+Received 255 burst packets in 1,750664 s ==> 1165,272262
+Received 255 burst packets in 1,749941 s ==> 1165,753592
+Received 255 burst packets in 1,750041 s ==> 1165,686979
+Received 255 burst packets in 1,750089 s ==> 1165,655018
+Received 255 burst packets in 1,750555 s ==> 1165,344708
+Received 255 burst packets in 1,756214 s ==> 1161,589333
+Received 255 burst packets in 1,751166 s ==> 1164,938370
+Received 255 burst packets in 1,751265 s ==> 1164,872516
+Received 255 burst packets in 1,750505 s ==> 1165,378089
+
+Received 511 burst packets in 3,507225 s ==> 1165,593728
+Received 511 burst packets in 3,510444 s ==> 1164,525035
+Received 511 burst packets in 3,508438 s ==> 1165,190926
+Received 511 burst packets in 3,508697 s ==> 1165,105026
+Received 511 burst packets in 3,509950 s ==> 1164,688795
+Received 511 burst packets in 3,507387 s ==> 1165,540169
+Received 511 burst packets in 3,507470 s ==> 1165,512563
+Received 511 burst packets in 3,507979 s ==> 1165,343433
+Received 511 burst packets in 3,510377 s ==> 1164,547122
+Received 511 burst packets in 3,507002 s ==> 1165,667986
+
+Received 1023 burst packets in 7,024234 s ==> 1165,109300
+Received 1023 burst packets in 7,028237 s ==> 1164,445601
+Received 1023 burst packets in 7,024485 s ==> 1165,067565
+Received 1023 burst packets in 7,024562 s ==> 1165,054784
+Received 1023 burst packets in 7,022983 s ==> 1165,316719
+Received 1023 burst packets in 7,023589 s ==> 1165,216162
+Received 1023 burst packets in 7,025888 s ==> 1164,835040
+Received 1023 burst packets in 7,023307 s ==> 1165,263093
+Received 1023 burst packets in 7,023559 s ==> 1165,221177
+Received 1023 burst packets in 7,024438 s ==> 1165,075430
+
+Received 2047 burst packets in 14,053713 s ==> 1165,243671
+Received 2047 burst packets in 14,054539 s ==> 1165,175166
+Received 2047 burst packets in 14,053512 s ==> 1165,260357
+Received 2047 burst packets in 14,053144 s ==> 1165,290862
+Received 2047 burst packets in 14,055199 s ==> 1165,120451
+Received 2047 burst packets in 14,052187 s ==> 1165,370239
+Received 2047 burst packets in 14,052426 s ==> 1165,350416
+Received 2047 burst packets in 14,052023 s ==> 1165,383808
+Received 2047 burst packets in 14,054241 s ==> 1165,199899
+Received 2047 burst packets in 14,053566 s ==> 1165,255882

@@ -1,0 +1,45 @@
+\chapter{Conclusion}
+
+\section{Maximum Data Throughput}
+\label{sec:dataThrougput}
+
+All our experiments seem to confirm that there is a hard limit for the maximum data throughput which can be achieved with our current set up. The ANT AP1MxIB supports a maximum frequency of 200 Hz, so we would expect to see a maximum transmission rate of 1600 Bps. However, we missed that limit by around 500 Bps or 30\%. For a burst transmission there should be up to 20 kbps of throughput, but again we only achieved around 1100 Bps, a loss of 1400 Bps or 56\%.\\
+To eliminate environmental influences, the experiments were repeated in different locations and times of day and night. Since the throughput did not change noticeably, it can be assumed that there are no easily eliminated environmental factors which affect the maximum rate. We conclude that the root cause for the lower than expected throughput must be attributed to the hardware or software. \\
+
+If we exclude environmental factors, we are left with three possible reasons:
+\begin{itemize}
+	\item{\textbf{RS-232 Connection}} \hfill \\ The base station is connected to a PC over a serial connection. For the speed we chose 19200 baud, which should be more than enough for a maximum message rate of 200 Hz. For the burst mode however, this is one limiting factor. With 19200 baud, the theoretical maximum is 1920 Bps. This explains some, but not all of the measured difference.
+	
+	\item{\textbf{ANT API}} \hfill \\ The software we use is not officially supported by ANT. It is thus possible that there are some bugs which have an impact on the performance. Except for the missing burst modus (see \ref{sec:future}), there were no unusual measured values during the experiments. If there is a bug, it might be hard to find without rewriting all the experiments and running them with the official ANT library \cite{ANTWinLib}
+	
+	\item{\textbf{ANT AP1MxIB}} \hfill \\ Due to the black box nature of ANT, it is very hard to exactly determine what causes the problem. The inner workings of the chip are not documented in any way, and the error messages of the protocol are not very specific. The chip itself is from 2007 and the manufacturer no longer recommends the use of the chip\cite{AP1page}. There are alternatives available, like the newer ANTAP281M5IB chip \cite{AP2Datasheet}.
+\end{itemize}
+\newpage
+\section{Summary}
+In conclusion of our experiments, it seems af if the ANT chip falls short of its full potential:
+\begin{itemize}
+	\item{\textbf{Scheduled data-transmission}} \hfill \\ The achieved data throughput of around 1160 Bps is valid for a single chip. That means the main bottleneck of the network is the base station, since it acts as a command and control server for each node in the network. The easiest way to fix the problem is to use more than one base station. This is possible, since we do not need a fully meshed network for the SHAMPU nodes to communicate with each other. They solely need to talk to the base station.
+	
+	\item{\textbf{Unscheduled data-transmission}} \hfill \\ The achievable burst data throughput is especially problematic. SHAMPU is equipped with 128 kBytes of RAM. With the current set up it takes about 2 minutes to dump the entire memory to a base station, where is can be further analysed. If the full potential of the burst mode could be made available, the duration can be shortened to 70s. The long burst duration poses a problem, as long bursts disrupt the communication on other channels. For this reason the transmission of these memory-dumps has to be very carefully scheduled to avoid network congestion.
+	
+	\item{\textbf{Communication Range}} \hfill \\ The maximum achieved range of 6m is probably the most disturbing result of this thesis. The short range signifies, that the physical location of the base station is critical for a successful deployment of SHAMPU. It also means that a larger network requires more than one such base station to be able to reach all nodes.
+\end{itemize}
+
+
+With all these limitations of the data throughput, the network setup has to be chosen very carefully. One option is to use additional SHAMPU nodes as relays, which serve a dual purpose. They allow to extend the range of the network, while increasing the data throughput of the whole network.\\ Another possibility to counteract the limitation is to leverage the numerous advantages of the SHAMPU framework, such as its low weight, form factor and power draw. A mobile base station, e.g. TrainSense \cite{Smeets:2013:TNI:2450070.2450072}, which can easily be moved around in the location where the SHAMPU nodes are deployed, makes it possible to address all above mentioned problems. The range no longer represents a problem, since the base station is simply moved towards the node until a connection can be achieved. At the same time, the limited range provides a solution for the limited data throughput. Since the amount of nodes, which are able to connect to the base station can be controlled its possible to only ever have a small number of nodes transmitting data to the base station.
+
+In the end, while ANT is not the most powerful wireless solution available, its design choices (low power consumption and ease-of-use) coincide almost completely with the design goals of SHAMPU.
+\newpage
+\section{Future Work}
+\label{sec:future}
+Due to lack of time and the limited hardware availability we were not able to fully explore and evaluate the ossibilities of ANT in the SHAMPU network. Especially the following four areas should be revisited:
+
+\begin{itemize}
+	\item{\textbf{Power consumptions}} \hfill \\ Each experiment tries to find the maximum of either data throughput or the communication range. We did not measure how the power consumption changes if, for example, the message period is reduced. Since SHAMPU tries to be very low-powered, this is an important measurement for the decision whether or not SHAMPU can be used for a specific application. The data sheet of the ANT AP1MxIB module provides interesting data \cite{Networks}: The maximum current draw seems to be around 5 mA for a continuous burst transmission and around 40 $\mu$A for a normal broadcast operation.
+	
+	\item{\textbf{Burst mode}} \hfill \\ We use a custom library, which provides an API to interface with the ANT-Chip. For this thesis an attempt was made to add the missing burst transfer mode. However, due to time constraints we were unable to get the mode working correctly. Burst packets need to have a precise timing, but the black box nature of the ANT protocol makes it a challenge to debug the code.
+	
+	\item{\textbf{Shared channels}} \hfill \\ Due to missing hardware, we were only able to test the communication between two nodes. Shared channels could not be tested, yet we expect the available data throughput to be in line with the results from our experiments. ANT uses up to 2 bytes of the 8 byte payload to specify the address of the receiver. Therefore we expect to lose approximately 12.5\% to 25\% of throughput if shared channels are used. It would be important to confirm this to fully assess the usefulness of the ANT chip.
+	
+	\item{\textbf{New ANT-chip}} \hfill \\ As mentioned before the chip currently in use is old and no longer recommended for use. The successor of the current chip, the ANTAP281M4IB has roughly the same specifications as the current chip. Therefore the experiments should be rerun with the newer model in order to determine whether the ANT-chip is the limiting factor for data throughput.
+\end{itemize}

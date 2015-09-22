@@ -1,0 +1,22 @@
+\chapter{Introduction}
+\label{sec:intro}
+In the current years the number of Cyber-physical systems (CPSs) has drastically increased. This is mostly due to the emergence of the Internet of Things (IoT), as well as the existence of several user friendly kits, like the RaspberryPi or the Arduino. With this new trend new challenges are created in the monitoring and debugging of these devices. This is especially difficult for applications, where the sensors are deployed in a hard to reach area. In addition to this, the deployed device can often fulfil a multi-purpose role and might need to be reconfigured for different tasks.
+
+In order to address both these problems SHAMPU(Single chip Host for Autonomous Mote Programming over USB)\cite{Smeets:2014:DAL:2602339.2602401} was developed at the University Duisburg-Essen. SHAMPU was designed with the goal of being as small, lightweight and energy efficient as possible. In order to use SHAMPU as a test bed, it needs to be attached to an existing node. SHAMPU is then capable to not only monitor and debug the attached node, but also to program it. These reprogramming capabilities make it possible to reprogram an attached sensor, without having to physically be near it. To achieve this each SHAMPU node is equipped with a wireless interface. In the current configuration an ANT\cite{DynastreamInnovationsInc.2013} radio chip. All SHAMPU nodes form a Wireless sensor network (WSN) of their on, which allows not only the communication between the nodes, but also a connection to a base station. This base station not only acts as a central data sink for the whole network, but is also able to push commands and data to the SHAMPU nodes.
+
+In this thesis we evaluate the wireless capabilities of the SHAMPU framework. For this purpose we develop use-cases for the different tasks that the SHAMPU framework can perform: Program a device, collect data during operation and interact with the system itself during runtime. For each of the test cases we design and run different experiments with the goal to assess if the chosen wireless technology is able to fulfil all the use cases.
+
+\section{Related work}
+\label{sec:related_work}
+There are already several different WSN test beds available. Each of these test beds were designed to fulfil a different role. 
+
+Some test beds like FlockLab \cite{Lim2013} allow to attach a wide array of different sensors and use a JTAG interface to be able to precisely capture debugging and timing information.
+
+However, these types of test beds rely on a wired connection to interface with the test bed itself. That makes it exceedingly difficult to test and debug already deployed WSN, since it might not be possible to easily get to the sensor in the planted location.
+
+Other available solutions address this problem by attaching the test bed directly to the node and use a wireless connection to communicate with the test bed. An example for this is Sensei-UU \cite{Rensfelt2009} which uses a wireless 802.11 network. This allows the WSN to be tested and debugged while it is deployed. One drawback of this solution is the power draw of 802.11 devices, which is huge, compared to other technologies. If the node itself is run of an external power source that isn't a problem, but the use of a battery to power the node will hardly be feasible.
+
+To address this power issue, it is possible to use a different technology which offers a lower power mode. Two examples for this are BTNodes \cite{Moser} or Smart-Its \cite{Kasten2000}, which use a Bluetooth connection. 
+The structure of the network itself is similar to Sensei-UU: each node in the network has its own test bed attached and the test beds communicate with a central base station.
+
+The main problem with Bluetooth is the limited size of the network, which makes it difficult to set up and use more complex network topologies. Also Bluetooth communication is always 1:1 and does not allow broadcasts. The newest version of Bluetooth addresses the network size with the introduction of ScatterNets, but the setup and maintenance of the network still remains challenging.

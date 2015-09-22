@@ -1,0 +1,224 @@
+%\sorgt 	%ensures the apparition of "Appendix" before each appendix.
+%\openany	%ensures that a chapter can begin on each side and not only on the right site.
+%\bibtotoc	%ensures that the bibliography automatically appears in the table of contents.
+%\documentclass[colordvi,11pt,a4paper,halfparskip,final,headings,appendixprefix,bibtotoc]{scrbook}
+\documentclass[
+	pdftex,
+	chapterprefix,
+	headsepline,
+	footsepline,
+	% colordvi,
+	11pt,
+	a4paper,
+	parskip=half,
+	final,
+	appendixprefix,
+bibliography=totoc]{scrbook}
+
+% uncomment the following line (mutual exclusive to the one above) to enter the draft mode.
+%\documentclass[colordvi,11pt,a4paper,halfparskip,draft,appendixprefix,bibtotoc]{scrbook}
+
+\newcommand{\studentFirsName}{Michael}
+\newcommand{\studentSecondName}{Krane}
+\newcommand{\studentMatrikelnummer}{2233018}
+
+% Define a new one if is possible to choose between PDF and DVI.
+\usepackage{ifpdf}
+\ifx\pdfoutput\undefined
+\pdffalse %not PDFLaTeX
+\else
+\pdfoutput=1
+\pdftrue
+\fi
+%\tracingstats=2
+%\usepackage{layout}
+% english/spanish/new german language support (hyphenation etc)
+\usepackage[english,spanish,ngerman]{babel}
+
+% for prettier tables
+\usepackage{booktabs}
+
+% support for latin1 characters. That means you can enter umlauts directly
+% no need for "a "u "o "s anymore
+\usepackage[ansinew]{inputenc}
+%\usepackage[latin1]{inputenc}
+
+% provides the \url{} command to pretty print urls
+\usepackage{url}
+
+% needed for a german bibliography-style (s. below)
+\usepackage{bibgerm}
+
+% allows text flowing around figures.
+\usepackage{wrapfig}
+
+% allows to \includegraphics
+\usepackage{graphicx}
+
+% defines some standard colornames like "black" etc.
+\usepackage{color}
+
+% allows to color tablecells
+\usepackage{colortbl}
+
+% provides an easier interface to if-then-else constructs in 
+% custom macros
+\usepackage{ifthen}
+
+% allows tables to break over pages.
+\usepackage{supertabular}
+
+% allows to have different kinds paper orientations in the same pdf-documnent
+\usepackage{pdflscape}
+
+% allows to specify absolute texpos for textboxes. This is generally only important for the titlepage
+\usepackage[absolute]{textpos}
+
+% allows to enumerate different figures with a) b) in the same figure-environment.
+\usepackage{subfigure}
+
+\usepackage{float}
+
+% finetune the gaps between figure and text in the subfigure environment (basically close the gap as much as possible)
+\renewcommand{\subfigtopskip}{0pt}
+\renewcommand{\subfigbottomskip}{0pt}
+
+% some color definitions for the pdf statements below
+\definecolor{mygrey}{rgb}{0.45,0.45,0.45}
+\definecolor{mydarkgrey}{rgb}{0.2,0.2,0.2}
+\definecolor{red}{rgb}{1.0,0.33,0.33}
+\definecolor{orange}{rgb}{1.00,0.73,0.33}
+\definecolor{yellow}{rgb}{0.95,0.92,0.}
+\definecolor{lightgreen}{rgb}{0.3,0.95,0.46}
+\definecolor{titleblue}{rgb}{0.03,0.10,0.46}
+
+\ifpdf
+% Metadata and configuration of the pdf output:
+% Do not forget to enter the correct title, author, subject und keywords
+
+% For screen viewing it is nice to have references marked in a slightly different
+% color than the rest of the text. Since they will be hyperlinks to the 
+% referenced objects.
+\usepackage[pdftex,
+             pdftitle={},
+             colorlinks,
+             linkcolor={mydarkgrey},
+             citecolor={mygrey},
+             urlcolor={black},
+             plainpages={false},
+             bookmarksnumbered={true},
+             pdfauthor={},
+             pdfsubject={},
+             pdfkeywords={},
+             pdfstartview={FitBH}]{hyperref}
+
+% For the final printouts (remember - you need at least three - one for each examiner and one for the archive 
+% [ This might have changed - so contact the "Pr�fungsamt" about the current regulations !! ] - it is better
+% to have all text in the same color (namely black).
+% 
+%\usepackage[pdftex,
+%            pdftitle={},
+%            colorlinks,
+%            linkcolor={black},
+%            citecolor={black},
+%            urlcolor={black},
+%            plainpages={false},
+%            bookmarksnumbered={true},
+%            pdfauthor={},
+%            pdfsubject={},
+%            pdfkeywords={},
+%            pdfstartview={FitBH}]{hyperref}
+\pdfcompresslevel=9
+\fi
+
+% some configuration for the amount of text on a single page
+\usepackage{typearea}
+\areaset[1.5cm]{418pt}{658pt}
+\setlength{\headheight}{37pt}
+
+% Enter author and title for the titlepage.
+\author{Michael Krane}
+\title{Evaluation of a lightweight debugging platform for mobile sensor networks}
+
+% To avoid nasty mistakes like having comments directly in the textflow
+% the following \todo macro was defined. With that you can enter
+% \todo{What I still have to do here} 
+% inside of your text and a marker will appear at the page's margin with the 
+% text "What I still have to do here".
+% The first line activates this feature. If you comment it out and uncomment
+% the second line below there will be no error messages and no todos will be shown
+% anymore. So - even if you have forgotten to delete one of them - they will not appear
+% in the final printout. 
+\newcommand{\todo}[1]{\marginpar{\textcolor{red}{ToDo:} #1}}
+%\newcommand{\todo}[1]{}
+
+% We recommend to split your document into several files. Usually one for every chapter is a 
+% good idea. If you follow this guideline (how to assemble these files in a single document
+% see two paragraphs below) you will be able to single out chapters via the \includeonly{}
+% command. Using this mechanism page numbering and references of the full run before will be
+% preserved. This also nice, if your latex run tends to get slow and you need to fine tune 
+% some formatting in one chapter - just include that one. The rest (or at least the ones before
+% the one currently under construction) will remain untouched. This means a boost in compilation time.
+%\includeonly{chapter2}
+
+\begin{document}
+\newfloat{code}{h}{bmccode}
+\floatname{code}{Pseudo code}
+% the next two lines influence the detailedness of the table of contents
+% and to what structure depth numbers are written before sections/subsections/paragraphs
+% You should not touch this
+\setcounter{tocdepth}{2}
+\setcounter{secnumdepth}{3}
+\frontmatter
+% here the titlepage is included. Look into the file "titlePage.tex" to 
+% adapt it to your needs (name, title etc.)
+\input{content/chapters/titlePage}
+\tableofcontents
+
+\listoffigures
+\mainmatter
+
+% To assemble the whole document
+% Please be aware that each file will begin on a new page
+% therefore chapters should be put into such a file.
+% There cannot be an include statement inside of an "included" file.
+% So if you want to further divide your document - use \input inside of 
+% the included files. \input will not begin on a new page.
+\include{content/chapters/abstract}
+\include{content/chapters/chapter1}	%Introduction
+\include{content/chapters/chapter2} %Technical Background
+\include{content/chapters/chapter3}	%Evaluation of SHAMPU
+\include{content/chapters/chapter4} %Conclusion
+
+% Appendix chapters to be put here. They will be enumerated with capital letters 
+% if you  did not change the \documentclass options.
+\begin{appendix}
+\include{content/chapters/source} % Sourcecode
+
+%\include{appendix_chapterA}
+\end{appendix}
+%Ende Anhang
+
+%Bibliography
+% We strongly recommend to use bibtex to manage your bibliography. It helps you
+% structure your references and helps avoiding missing important data for a correct
+% quotation. If you have no other idea jabref (http://jabref.sourceforge.net/)
+% might be a good idea (Jave runtime environment needed).
+% This style is good to use in german master thesis'. You need to have activated
+% \usepackage{bigerm} above.
+% For english documents just use apalike.
+\bibliographystyle{geralpha}
+
+
+% to finally announce where your bibliography is stored use
+\bibliography{content/references/references}
+% it is also possible to have several files separated by comma. 
+%Bibliographie Angaben mit \bibliography{}
+
+\include{content/chapters/clause} %It may be necessary that you replace "Bachelorarbeit" with "Masterarbeit" here...
+
+\end{document}
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:

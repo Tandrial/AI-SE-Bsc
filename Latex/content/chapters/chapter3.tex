@@ -23,7 +23,7 @@ To cover all the mentioned test cases we designed different experiments, which t
 \newpage
 
 \section{Common experiment parameters}
-\begin{figure}[h]
+\begin{figure}[H]
 	\centering
 	\includegraphics[scale=.75]{content/images/expSetup.JPG}
 	\caption{Experiment set up}\label{fig:expSetup}
@@ -55,12 +55,12 @@ Also, there is an important difference between the message period used in the ps
 	\item{\textbf{Description}} \hfill \\ Broadcasting is one way of periodically transmitting data between two or more ANT nodes. Since all broadcast packets are synchronized to a fixed time-slot, the data throughput can be increased by decreasing the channel period. The experiment itself is split into two parts. In the first part we try to determine the highest possible data throughput. Also we try to determine if the channel period has an effect on the time it takes for a slave node to find and join an existing channel. The second part is a test of the highest detected data throughput. Here we try to evaluate if there are any variations of the data throughput over a much longer interval.	
 	\item{\textbf{Use-Case}} \hfill \\ Scheduled Data-transmission	
 	\item{\textbf{Network Topology and Configuration}} \hfill \\ 
-	\begin{figure}[h]
+	\begin{figure}[H]
 		\centering
 		\includegraphics[scale=1]{content/images/exp_topo.png}
 		\caption{Toplogy experiment 1}
 	\end{figure}
-	\begin{code}[h]
+	\begin{code}[H]
 		\begin{verbatim}
 		channelPeriod = max_Channel_Period
 		while (channelPeriod >= min_Channel_Period) {
@@ -75,7 +75,7 @@ Also, there is an important difference between the message period used in the ps
 		\caption{Broadcast data single channel (Master)}\label{lst:mExp1}
 	\end{code}
 	
-	\begin{code}[h]
+	\begin{code}[H]
 		\begin{verbatim}
 		channelPeriod = max_Channel_Period
 		while (channelPeriod >= min_Channel_Period) {
@@ -98,14 +98,14 @@ Also, there is an important difference between the message period used in the ps
 	\item{\textbf{Network Topology and Configuration}} \hfill \\ The 2 nodes are placed right next to each other.
 	\item{\textbf{Testing methodology}} \hfill \\Node A acts as the master and node B as the slave. For both nodes the channel period is set to the highest value and the channel is opened. Node B records how long it takes to join the channel and how many bytes it received over a 100s interval. The measurement is repeated 10 times and the average values are saved. Then the channel period is decreased and the process is repeated. For the second part, the channel period is set to the value which achieved the highest speed. The experiment is then left running for a period of 10 hours in one continuous run.
 	\item{\textbf{Result}} \hfill \\  
-	\begin{figure}[h]
+	\begin{figure}[H]
 		\centering
 		\includegraphics[scale=0.5]{content/images/exp1_norm.png}
 		\caption{Broadcast data rate (0.5Hz - 128Hz)}\label{fig:exp1norm}
 	\end{figure}
 	
 	Figure \ref{fig:exp1norm} shows the transmission speeds achieved for the different frequencies. Up to a frequency of 128 Hz, the measured data rate matches the expected theoretical maximum rate. For the highest supported frequency (199.8 Hz), the measured data rate is much lower than the maximum rate. Even if we account for transmission errors the difference is significant. 
-	\begin{figure}[h]
+	\begin{figure}[H]
 		\centering
 		\includegraphics[scale=0.5]{content/images/exp1_detail.png}
 		\caption{Broadcast data rate (129Hz - 199Hz)}\label{fig:exp1between}
@@ -114,7 +114,7 @@ Also, there is an important difference between the message period used in the ps
 	
 	The time it takes for a Node to join a channel falls rapidly once the frequency is above 1 Hz. For frequencies above 64 Hz, the time it takes to join a channel becomes negligible, with times around 75 ms (see Figure \ref{fig:exp1norm}). All the measured values are below the specified worst case channel acquisition times of the ANT protocol \cite{AntChan}.
 	
-	\begin{figure}[h]
+	\begin{figure}[H]
 		\centering
 		\includegraphics[scale=0.5]{content/images/exp1_long.png}
 		\caption{Broadcast data rate over time (200Hz)}\label{fig:exp1long}
@@ -128,12 +128,12 @@ Also, there is an important difference between the message period used in the ps
 	\item{\textbf{Description}} \hfill \\ In experiment 1 we determined the channel period, which allows for the maximum throughput. In this experiment we try to determine, how the maximum throughput is affected by the amount of channels in the network. SHAMPU needs two channels, so it can work correctly: One channel which sends data from the base station to the nodes in order to control them and another channel by which the nodes can send debugging and other information.
 	\item{\textbf{Use-Case}} \hfill \\ Scheduled Data-transmission	
 	\item{\textbf{Network Topology and Configuration}} \hfill
-	\begin{figure}[h]
+	\begin{figure}[H]
 		\centering
 		\includegraphics[scale=1]{content/images/exp2_topo.png}
 		\caption{Toplogy experiment 2}
 	\end{figure}
-	\begin{code}[h]
+	\begin{code}[H]
 		\begin{verbatim}
 		channelPeriod = max_Channel_Period
 		while (channelPeriod >= min_Channel_Period) {
@@ -156,7 +156,7 @@ Also, there is an important difference between the message period used in the ps
 		\caption{Broadcast data transfer two channels (Master)}\label{lst:mExp2}
 	\end{code}
 	
-	\begin{code}[h]
+	\begin{code}[H]
 		\begin{verbatim}
 		channelPeriod = max_Channel_Period
 		while (channelPeriod >= min_Channel_Period) {
@@ -182,12 +182,12 @@ Also, there is an important difference between the message period used in the ps
 	\item{\textbf{Network Topology and Configuration}} \hfill \\ The two nodes are placed right next to each other.
 	\item{\textbf{Testing methodology}} \hfill \\ In this experiment each node acts as a master for a different channel. Node A is the master for Channel 0 and Node B is the master for Channel 1. The measurements itself are identical to the ones in experiment 1, except that the data is recorded on both nodes. The channel period is decreased until the data throughput decreases, or the connection can no longer be established.
 	\item{\textbf{Result}} \hfill \\  	
-	\begin{figure}[h]
+	\begin{figure}[H]
 		\centering
 		\includegraphics[scale=0.5]{content/images/exp2_norm.png}
 		\caption{Broadcast data through - 2 channels (0.5Hz - 129Hz)}\label{fig:exp2low}
 	\end{figure}
-	\begin{figure}[h]
+	\begin{figure}[H]
 		\centering
 		\includegraphics[scale=0.5]{content/images/exp2_detail.png}
 		\caption{Broadcast data through - 2 channels (64Hz - 129Hz)}\label{fig:exp2high}
@@ -202,12 +202,12 @@ Also, there is an important difference between the message period used in the ps
 	\item{\textbf{Description}} \hfill \\ In this experiment we try to determine the time it takes for a node to receive and acknowledge a transmitted packet. The value is important in order to be able to determine the reaction time of SHAMPU to commands sent by the base station, for example to set up a separate channel for a burst transmission.
 	\item{\textbf{Use-Case}} \hfill \\ Scheduled Data-transmission
 	\item{\textbf{Network Topology and Configuration}} \hfill \\ 
-	\begin{figure}[h]
+	\begin{figure}[H]
 		\centering
 		\includegraphics[scale=1]{content/images/exp_topo.png}
 		\caption{Toplogy experiment 3}
 	\end{figure}
-	\begin{code}[h]
+	\begin{code}[H]
 		\begin{verbatim}
 		channelPeriod = max_Channel_Period
 		while (channelPeriod >= min_Channel_Period) {
@@ -227,7 +227,7 @@ Also, there is an important difference between the message period used in the ps
 		\caption{Acknowledge data delay (Master)}\label{lst:mExp3}
 	\end{code}
 	
-	\begin{code}[h]
+	\begin{code}[H]
 		\begin{verbatim}
 		channelPeriod = max_Channel_Period
 		while (channelPeriod >= min_Channel_Period) {
@@ -243,12 +243,12 @@ Also, there is an important difference between the message period used in the ps
 	
 	\item{\textbf{Testing methodology}} \hfill \\ Node A acts as the master and node B as the slave. For both nodes the channel period is set to the highest value and the channel is opened. Node A then sends a total of 10 acknowledge messages and measures how long it takes until it receives the acknowledge signal. The channel period is then decreased and the experiment repeated.
 	\item{\textbf{Result}} \hfill \\  
-	\begin{figure}[h]
+	\begin{figure}[H]
 		\centering
 		\includegraphics[scale=0.5]{content/images/exp3_norm.png}
 		\caption{Acknowledge delay (0.5Hz - 8Hz)}\label{fig:exp3low}
 	\end{figure}
-	\begin{figure}[h]
+	\begin{figure}[H]
 		\centering
 		\includegraphics[scale=0.5]{content/images/exp3_detail.png}
 		\caption{Acknowledge delay (16Hz - 70Hz)}\label{fig:exp3high}
@@ -263,12 +263,12 @@ Also, there is an important difference between the message period used in the ps
 	\item{\textbf{Description}} \hfill \\ This experiment is almost identical with experiment 1. The main difference is that we use acknowledge data instead of broadcast. It is also important to note that the master records how many successful packets are transmitted. The main goal of the experiment is to see if the data throughput is decreased compared to broadcast data, especially for smaller channel periods.
 	\item{\textbf{Use-Case}} \hfill \\ Scheduled Data-transmission
 	\item{\textbf{Network Topology and Configuration}} \hfill \\
-	\begin{figure}[h]
+	\begin{figure}[H]
 		\centering
 		\includegraphics[scale=1]{content/images/exp_topo.png}
 		\caption{Toplogy experiment 4}
 	\end{figure}
-	\begin{code}[h]
+	\begin{code}[H]
 		\begin{verbatim}
 		channelPeriod = max_Channel_Period
 		while (channelPeriod >= min_Channel_Period) {
@@ -288,7 +288,7 @@ Also, there is an important difference between the message period used in the ps
 		\caption{Acknowledge data transfer (Master)}\label{lst:mExp4}
 	\end{code}
 	
-	\begin{code}[h]
+	\begin{code}[H]
 		\begin{verbatim}
 		channelPeriod = max_Channel_Period
 		while (channelPeriod >= min_Channel_Period) {
@@ -303,12 +303,12 @@ Also, there is an important difference between the message period used in the ps
 	\end{code}
 	\item{\textbf{Testing methodology}} \hfill \\ The testing methodology is the same as experiment 1a, except that the master sends acknowledge messages and waits for the slave to confirm the successful transmission before sending the next packet. 
 	\item{\textbf{Result}} \hfill \\
-	\begin{figure}[h]
+	\begin{figure}[H]
 		\centering
 		\includegraphics[scale=0.5]{content/images/exp4_norm.png}
 		\caption{Acknowledge data rate (0.5Hz - 129Hz)}\label{fig:exp4norm}
 	\end{figure}
-	\begin{figure}[h]
+	\begin{figure}[H]
 		\centering
 		\includegraphics[scale=0.5]{content/images/exp4_detail.png}
 		\caption{Acknowledge data rate (65Hz - 70Hz)}\label{fig:exp4between}
@@ -325,12 +325,12 @@ Also, there is an important difference between the message period used in the ps
 	\item{\textbf{Description}} \hfill \\ Burst data transmissions make it possible to drastically increase the throughput rate. This allows a SHAMPU base station to quickly transmit a new firmware to a node or a node to dump its RAM back to the base station.	According to the  specification rates of up to 20 kbps can be achieved. To fully utilize this speed a baud rate of 50000 is needed. Since we are using 19200 baud the maximum speed is expected to be less than 20 kbps. Furthermore we try to determine if the size of the burst transfer has an impact on the speed, since longer bursts will disrupt communications on other channels.
 	\item{\textbf{Use-Case}} \hfill \\ Unscheduled Data-transmission
 	\item{\textbf{Network Topology and Configuration}} \hfill \\ 
-	\begin{figure}[h]
+	\begin{figure}[H]
 		\centering
 		\includegraphics[scale=1]{content/images/exp5_topo.png}
 		\caption{Toplogy experiment 5}
 	\end{figure}
-	\begin{code}[h]
+	\begin{code}[H]
 		\begin{verbatim}
 		size = START_SIZE
 		ANT_OpenChannel(ID_CHAN1, ANT_Bidirectional_Slave);		
@@ -348,7 +348,7 @@ Also, there is an important difference between the message period used in the ps
 	\end{code}
 	\item{\textbf{Testing methodology}} \hfill \\ Since the burst transmission mode of our ANT-library is not working correctly (see section \ref{sec:future}) we use an ANTUSB-m Stick, which acts as a master. Node B is a normal base station and receives the burst transfers. On the master side, the program ANTWareII \cite{ANTwareII} is used to create the channel and then send bursts with different sizes. Each size is sent 10 times and the values are recorded and averaged. The size is then doubled and the experiment repeated. The first burst packet cannot be counted directly since the start of the burst can only be determined after the ANT chip has already received the first packet.
 	\item{\textbf{Result}} \hfill \\ 
-	\begin{figure}[h]
+	\begin{figure}[H]
 		\centering
 		\includegraphics[scale=0.5]{content/images/exp5.png}
 		\caption{Burst data rate}\label{fig:exp5}
@@ -364,13 +364,13 @@ Also, there is an important difference between the message period used in the ps
 	
 	\item{\textbf{Use-Case}} \hfill \\ Communication Range		
 	\item{\textbf{Network Topology and Configuration}} \hfill \\ 
-	\begin{figure}[h]
+	\begin{figure}[H]
 		\centering
 		\includegraphics[scale=1]{content/images/exp6_topo.png}
 		\caption{Topology experiment 6}
 	\end{figure}
 	
-	\begin{code}[h]
+	\begin{code}[H]
 		\begin{verbatim}
 		for (pSetting in Available_PowerSettings) {
 		ANT_SetTransmitPower(pSetting)
@@ -383,7 +383,7 @@ Also, there is an important difference between the message period used in the ps
 		\caption{maximum communication range (Master)}\label{lst:mExp6}
 	\end{code}
 	
-	\begin{code}[h]
+	\begin{code}[H]
 		\begin{verbatim}
 		distance = 0.0
 		stopInc = false
@@ -409,7 +409,7 @@ Also, there is an important difference between the message period used in the ps
 	\end{code}
 	\item{\textbf{Testing methodology}} \hfill \\ At the beginning of the experiment Node A and B are placed right next to each other. Node A acts as a master and keeps broadcasting the same message. Node B is the slave and tries to connect to the channel. If the connection is successful, the distance between the two nodes is increased by 0.4 meters. This process is repeated until Node B can no longer connect to the channel and the connection times out. This happens after 30s of searching. At this point the distance is no longer increased, but rather decreased until Node B is able to successfully connect to the channel. The whole experiment is then repeated for each available power setting.	
 	\item{\textbf{Result}} \hfill \\ 
-	\begin{figure}[h]
+	\begin{figure}[H]
 		\centering
 		\includegraphics[scale=0.5]{content/images/exp6.png}
 		\caption{maximum comunication range}\label{fig:exp6}

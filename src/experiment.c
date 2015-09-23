@@ -320,8 +320,35 @@ void doExperiment2(char deviceType) {
 	}	
 }
 
-/* Experiment 3: Ackowledge Data Delay */
+
+/* Experiment 3: Ackowledge Data Transfer between two nodes */
 void doExperiment3(char deviceType) {
+	if (deviceType == 'm') {
+		uint8_t data[4] = {0x70, 0x69, 0x6E, 0x67};
+		while (period >= END_FREQ) {
+			resetANT();
+			openChannel(ID_CHAN1, FREQ_CHAN1, period, true);
+			ANT_SendBroadcastData(ID_CHAN1, data);
+			doExperiment(ANT_ACKNOWLEDGED_DATA, ID_CHAN1, &receiveMessageAck);
+			closeANT(ID_CHAN1);
+			getchar();
+			period = decreasePeriod(period, STOP_SINGLE);
+		}
+	} else {
+		while (period >= END_FREQ) {
+			openChannel(ID_CHAN1, FREQ_CHAN1, period, false);
+			printf("Slave node is listning!\n");
+			printAndWait(0x00, ID_CHAN1);
+			closeANT(ID_CHAN1);
+			getchar();
+			ANT_delayMs(2000);
+			period = decreasePeriod(period, STOP_SINGLE);
+		}
+	}
+}
+
+/* Experiment 4: Ackowledge Data Delay */
+void doExperiment4(char deviceType) {
 	if (deviceType == 'm') {
 		while (period >= END_FREQ) {
 			openChannel(ID_CHAN1, FREQ_CHAN1, period, true);
@@ -354,32 +381,6 @@ void doExperiment3(char deviceType) {
 			printf("Slave node is listning!\n");
 			printAndWait(0x00, ID_CHAN1);
 			closeANT(ID_CHAN1);
-			ANT_delayMs(2000);
-			period = decreasePeriod(period, STOP_SINGLE);
-		}
-	}
-}
-
-/* Experiment 4: Ackowledge Data Transfer between two nodes */
-void doExperiment4(char deviceType) {
-	if (deviceType == 'm') {
-		uint8_t data[4] = {0x70, 0x69, 0x6E, 0x67};
-		while (period >= END_FREQ) {
-			resetANT();
-			openChannel(ID_CHAN1, FREQ_CHAN1, period, true);
-			ANT_SendBroadcastData(ID_CHAN1, data);
-			doExperiment(ANT_ACKNOWLEDGED_DATA, ID_CHAN1, &receiveMessageAck);
-			closeANT(ID_CHAN1);
-			getchar();
-			period = decreasePeriod(period, STOP_SINGLE);
-		}
-	} else {
-		while (period >= END_FREQ) {
-			openChannel(ID_CHAN1, FREQ_CHAN1, period, false);
-			printf("Slave node is listning!\n");
-			printAndWait(0x00, ID_CHAN1);
-			closeANT(ID_CHAN1);
-			getchar();
 			ANT_delayMs(2000);
 			period = decreasePeriod(period, STOP_SINGLE);
 		}
@@ -454,7 +455,7 @@ void doExperiment6(char deviceType) {
 			if (s == RS_PACKET_COMPLETE) {
 				if (buffer[2] == ANT_BURST_DATA) {
 					count++;
-					if (buffer[3] == 0x00) {
+					if ((buffer[3] & 0xE0)== 0x00) {
 						clock_gettime(CLOCK_MONOTONIC, &tstart);
 						count = 1;
 					} else if ((buffer[3] & 0x80) > 0) {

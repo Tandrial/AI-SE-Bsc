@@ -59,12 +59,12 @@ int main(int argc, char** argv) {
 		break;
 
 		case 3:
-			printf("Experiment 3: Ackowledge Data Delay\n");
+			printf("Experiment 3: Ackowledge Data Transfer between two nodes\n");
 			doExperiment3(deviceType);
 		break;
 
 		case 4:
-			printf("Experiment 4: Ackowledge Data Transfer between two nodes\n");
+			printf("Experiment 4: Ackowledge Data Delay\n");
 			doExperiment4(deviceType);
 		break;
 
@@ -82,8 +82,8 @@ int main(int argc, char** argv) {
 			printf("Available Experiments:\n");
 			printf("Experiment 1: Broadcast Data Transfer between two nodes\n");
 			printf("Experiment 2: Broadcast Data Transfer between multiple nodes\n");
-			printf("Experiment 3: Ackowledge Data Delay\n");
-			printf("Experiment 4: Ackowledge Data Transfer between two nodes\n");
+			printf("Experiment 3: Ackowledge Data Transfer between two nodes\n");
+			printf("Experiment 4: Ackowledge Data Delay\n");
 			printf("Experiment 5: Communication Distance\n");
 			printf("Experiment 6: Burst Data Transfer between two nodes\n");
 			error("%d is not a valid experiment! \n", experimentNum);

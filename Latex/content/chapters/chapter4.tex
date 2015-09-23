@@ -1,20 +1,6 @@
 \chapter{Conclusion}
 
-\section{Maximum Data Throughput}
-\label{sec:dataThrougput}
 
-All our experiments seem to confirm that there is a hard limit for the maximum data throughput which can be achieved with our current set up. The ANT AP1MxIB supports a maximum frequency of 200 Hz, so we would expect to see a maximum transmission rate of 1600 Bps. However, we missed that limit by around 500 Bps or 30\%. For a burst transmission there should be up to 20 kbps of throughput, but again we only achieved around 1100 Bps, a loss of 1400 Bps or 56\%.\\
-To eliminate environmental influences, the experiments were repeated in different locations and times of day and night. Since the throughput did not change noticeably, it can be assumed that there are no easily eliminated environmental factors which affect the maximum rate. We conclude that the root cause for the lower than expected throughput must be attributed to the hardware or software. \\
-
-If we exclude environmental factors, we are left with three possible reasons:
-\begin{itemize}
-	\item{\textbf{RS-232 Connection}} \hfill \\ The base station is connected to a PC over a serial connection. For the speed we chose 19200 baud, which should be more than enough for a maximum message rate of 200 Hz. For the burst mode however, this is one limiting factor. With 19200 baud, the theoretical maximum is 1920 Bps. This explains some, but not all of the measured difference.
-	
-	\item{\textbf{ANT API}} \hfill \\ The software we use is not officially supported by ANT. It is thus possible that there are some bugs which have an impact on the performance. Except for the missing burst modus (see \ref{sec:future}), there were no unusual measured values during the experiments. If there is a bug, it might be hard to find without rewriting all the experiments and running them with the official ANT library \cite{ANTWinLib}
-	
-	\item{\textbf{ANT AP1MxIB}} \hfill \\ Due to the black box nature of ANT, it is very hard to exactly determine what causes the problem. The inner workings of the chip are not documented in any way, and the error messages of the protocol are not very specific. The chip itself is from 2007 and the manufacturer no longer recommends the use of the chip\cite{AP1page}. There are alternatives available, like the newer ANTAP281M5IB chip \cite{AP2Datasheet}.
-\end{itemize}
-\newpage
 \section{Summary}
 In conclusion of our experiments, it seems af if the ANT chip falls short of its full potential:
 \begin{itemize}

@@ -1,0 +1,118 @@
+Aug 22, 2015 3:25:29 PM uni.dc.view.UbsOptiGui generateRandom
+INFORMATION: Generated new network: 
+NetworkConfigTraffic Model : Ubs V0
+maxPrio:2
+maxSteps per run:14400
+Run Count:1
+
+PriorityConfig: 
+     F0 F1 F2 F3 F4 F5 F6 
+E0,1  1                   
+E1,1  2  1                
+E2,1  1  1  1             
+E3,1  1  1  1  1          
+E4,1  1  1  2  2  1       
+E4,2                 1    
+E4,3                    1 
+E5,1                      
+E5,2                      
+
+Streams and Delays: 
+F0 : 90 Mbps, 9322 bit
+Path : [E0,1, E1,1, E2,1, E3,1, E4,1, E5,2]
+Destination E5,2 maxLat of 1,053e-04 s, delay is 0,000e+00 s
+F1 : 70 Mbps, 11008 bit
+Path : [E1,1, E2,1, E3,1, E4,1, E5,2]
+Destination E5,2 maxLat of 9,519e-05 s, delay is 0,000e+00 s
+F2 : 20 Mbps, 3340 bit
+Path : [E2,1, E3,1, E4,1, E5,2]
+Destination E5,2 maxLat of 8,173e-05 s, delay is 0,000e+00 s
+F3 : 40 Mbps, 1911 bit
+Path : [E3,1, E4,1, E5,2]
+Destination E5,2 maxLat of 5,835e-05 s, delay is 0,000e+00 s
+F4 : 10 Mbps, 1942 bit
+Path : [E4,1, E5,2]
+Destination E5,2 maxLat of 2,561e-05 s, delay is 0,000e+00 s
+F5 : 90 Mbps, 2033 bit
+Path : [E4,2, E5,1]
+Destination E5,1 maxLat of 2,033e-06 s, delay is 0,000e+00 s
+F6 : 50 Mbps, 4199 bit
+Path : [E4,3, E5,1]
+Destination E5,1 maxLat of 4,199e-06 s, delay is 0,000e+00 s
+
+Aug 22, 2015 3:25:32 PM uni.dc.view.UbsOptiGui generateRandom
+INFORMATION: Generated new network: 
+NetworkConfigTraffic Model : Ubs V0
+maxPrio:2
+maxSteps per run:2985984
+Run Count:1
+
+PriorityConfig: 
+     F0 F1 F2 F3 F4 F5 
+E0,1  1        2       
+E1,1  2  1     2  1    
+E2,1  2  1  1  1  1  2 
+E3,1                   
+E3,2  2  2  2  2  2  1 
+E3,3                   
+E4,1  1  2  1  2  1  2 
+E4,2                   
+E5,1                   
+
+Streams and Delays: 
+F0 : 100 Mbps, 551 bit
+Path : [E0,1, E1,1, E2,1, E3,2, E4,1, E5,1]
+Destination E5,1 maxLat of 1,243e-04 s, delay is 0,000e+00 s
+F1 : 90 Mbps, 2238 bit
+Path : [E1,1, E2,1, E3,2, E4,1, E5,1]
+Destination E5,1 maxLat of 1,199e-04 s, delay is 0,000e+00 s
+F2 : 40 Mbps, 7730 bit
+Path : [E2,1, E3,2, E4,1, E5,1]
+Destination E5,1 maxLat of 9,114e-05 s, delay is 0,000e+00 s
+F3 : 60 Mbps, 4960 bit
+Path : [E0,1, E1,1, E2,1, E3,2, E4,1, E5,1]
+Destination E5,1 maxLat of 1,267e-04 s, delay is 0,000e+00 s
+F4 : 30 Mbps, 7826 bit
+Path : [E1,1, E2,1, E3,2, E4,1, E5,1]
+Destination E5,1 maxLat of 1,062e-04 s, delay is 0,000e+00 s
+F5 : 70 Mbps, 9040 bit
+Path : [E2,1, E3,2, E4,1, E5,1]
+Destination E5,1 maxLat of 9,290e-05 s, delay is 0,000e+00 s
+
+Aug 22, 2015 3:25:33 PM uni.dc.view.UbsOptiGui optimize
+INFORMATION: Optimazation for UBS-V0 started with BT
+Aug 22, 2015 3:25:33 PM uni.dc.view.UbsOptiGui optimize
+INFORMATION: Optimazation successful (in 0,0258 sec)!
+Aug 22, 2015 3:25:33 PM uni.dc.view.UbsOptiGui optimize
+INFORMATION: Best Prio is: 
+     F0 F1 F2 F3 F4 F5 
+E0,1  2        2       
+E1,1  2  2     2  2    
+E2,1  2  2  2  2  2  2 
+E3,1                   
+E3,2  2  2  2  2  1  2 
+E3,3                   
+E4,1  2  2  1  2  2  1 
+E4,2                   
+E5,1                   
+
+Delays are 
+F0 : 100 Mbps, 551 bit
+Path : [E0,1, E1,1, E2,1, E3,2, E4,1, E5,1]
+Destination E5,1 maxLat of 1,243e-04 s, delay is 1,230e-04 s
+F1 : 90 Mbps, 2238 bit
+Path : [E1,1, E2,1, E3,2, E4,1, E5,1]
+Destination E5,1 maxLat of 1,199e-04 s, delay is 1,173e-04 s
+F2 : 40 Mbps, 7730 bit
+Path : [E2,1, E3,2, E4,1, E5,1]
+Destination E5,1 maxLat of 9,114e-05 s, delay is 9,005e-05 s
+F3 : 60 Mbps, 4960 bit
+Path : [E0,1, E1,1, E2,1, E3,2, E4,1, E5,1]
+Destination E5,1 maxLat of 1,267e-04 s, delay is 1,224e-04 s
+F4 : 30 Mbps, 7826 bit
+Path : [E1,1, E2,1, E3,2, E4,1, E5,1]
+Destination E5,1 maxLat of 1,062e-04 s, delay is 1,002e-04 s
+F5 : 70 Mbps, 9040 bit
+Path : [E2,1, E3,2, E4,1, E5,1]
+Destination E5,1 maxLat of 9,290e-05 s, delay is 9,001e-05 s
+

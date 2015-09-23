@@ -10,7 +10,6 @@ import java.util.List;
 
 public class Challenge4 {
 	public static void main(String[] args) {
-
 		List<String> results = new ArrayList<>();
 
 		try (BufferedReader br = new BufferedReader(new FileReader("4.txt"))) {

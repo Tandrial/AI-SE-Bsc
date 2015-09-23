@@ -34,7 +34,6 @@ class EnglishLangSort implements Comparator<String> {
 }
 
 public class Challenge3 {
-
 	private static String xorWithSingleByte(String in, char x) {
 		byte[] res = Challenge1.hexToInt(in.getBytes());
 
@@ -44,7 +43,7 @@ public class Challenge3 {
 
 		return new String(res);
 	}
-
+	
 	static List<String> genPossibleDecrypts(String s) {
 		List<String> results = new ArrayList<>();
 		for (int i = 0; i <= 0xFF; i++) {

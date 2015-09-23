@@ -9,10 +9,10 @@
 int  setBaud(int sfd, int baud);
 void setRTS(int sfd, int v);
 void setDTR(int sfd, int v);
-int  getCTS(int sfd);
-int  readSerial(int fs, char *buffer, int count);
-int  writeSerial(int fd, char *buffer, int count);
-int  readSerialChar(int fd, char *buffer);
-int  gotSerialChar(int sfd);
+int getCTS(int sfd);
+int readSerial(int fs, char *buffer, int count);
+int writeSerial(int fd, char *buffer, int count);
+int readSerialChar(int fd, char *buffer);
+int gotSerialChar(int sfd);
 
 #endif

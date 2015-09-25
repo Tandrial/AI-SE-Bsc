@@ -1,8 +1,9 @@
+
 \chapter{Evaluation of SHAMPU}
 In order to assess the capabilities of SHAMPU, we plan and run experiments designed to evaluate the SHAMPU framework according to the following use-cases:
 \begin{itemize}
 	\item{\textbf{Scheduled data-transmission}} \hfill \\ In order for SHAMPU to work as a debugging and logging platform, the base station needs to periodically receive data from all the nodes in the network. Furthermore the base station has to be able to send commands to nodes in the network.
-	\item{\textbf{Unscheduled data-transmission}} \hfill \\ There are several cases, where it is not feasible to use a scheduled data-transmission. Because either the data only needs to be trasmitted once, or it is not know at what point in time the transmission happends: 
+	\item{\textbf{Unscheduled data-transmission}} \hfill \\ There are several cases, where it is not feasible to use a scheduled data-transmission. Because either the data only needs to be transmitted once, or it is not know at what point in time the transmission happens: 
 	\begin{itemize}
 		\item{}Reprogramming of a node: SHAMPU is able to reprogram the attached node. For this process, SHAMPU needs to receive a new firmware, which can amount to several hundred kB.
 		\item{}SHAMPU RAM-Dumps: SHAMPU has 128kB of RAM, which can be used to save collected data during an experiment. At the end of the experiment the complete memory needs to be transmitted back to the base station.
@@ -11,15 +12,15 @@ In order to assess the capabilities of SHAMPU, we plan and run experiments desig
 	
 To evaluate ANT according to these two use-cases, we identified three metrics which indicate how well a use-case can be handled:
 	\begin{itemize}
-		\item {\textbf{Data throughput }} \hfill \\ The speed with which ANT can transmit data affects directly how many nodes can be part of the network at once. The more data throughput which is available, the more verbose can the information be which is being logged. ANT provides three different data types which can be used to transport data: Broadcast data and acknowledge data can be used to scheduled data-transmissions. Burst mode can be used for unscheduled data-transmissions. 		
+		\item {\textbf{Data throughput }} \hfill \\ The speed with which ANT can transmit data directly affects the network performance and how many nodes can be part of the network at once. ANT provides three different data types which can be used to transport data: Broadcast data and acknowledge data can be used for scheduled data-transmission. Burst mode can be used for unscheduled data-transmission. 		
 		
 		\item {\textbf{Message delay}} \hfill \\ A SHAMPU base station not only acts as a data sink for incoming logging information, but is also able to send commands to other SHAMPU devices in the network.
 		It is thus important to know how long it takes ANT to verify whether a message was correctly received or not.
 		
-		\item {\textbf{Communication range}} \hfill \\ Since SHAMPU is architecture independent it can be used in different situations. Therefore it is important to know, how far away from the base station the nodes can be placed. As SHAMPU tries to be energy efficient, it might also be viable to reduce the range for smaller set ups to save even more energy.
+		\item {\textbf{Communication range}} \hfill \\ Since SHAMPU is architecture independent it can be used in different situations. Therefore it is important to know, how far away from the base station the nodes can be placed. As SHAMPU focuses on energy efficiency, it might also be viable to reduce the range for smaller set ups to save even more energy.
 	\end{itemize}
 
-To cover all the mentioned metrics we designed different experiments, which test one or more of the described categories. The following section describes the experiments according to the following template:
+To cover the mentioned metrics we designed different experiments, which test one or more of the described categories. The following section describes the experiments according to the following template:
 
 \begin{description}
 	\item{\textbf{Description}} \hfill \\ A description of the experiment and the category being evaluated.
@@ -39,7 +40,7 @@ To cover all the mentioned metrics we designed different experiments, which test
 	\caption{Experiment set up}\label{fig:expSetup}
 \end{figure}
 
-If not otherwise noted in the experiment description each experiment was run in the Mobility Lab of the Networked Embedded Systems group at the University of Duisburg-Essen (SA 327), with the two base stations in the configuration which can be seen in figure \ref{fig:expSetup}. The following table describes the parameters which are used in the experiments.
+If not otherwise noted in the description each experiment was run in the Mobility Lab of the Networked Embedded Systems group at the University of Duisburg-Essen (SA 327), with the two base stations in the configuration which can be seen in figure \ref{fig:expSetup}. The following table describes the parameters which were used in the experiments.
 
 \begin{table}[H]
 	\centering
@@ -50,7 +51,7 @@ If not otherwise noted in the experiment description each experiment was run in 
 		Transmission type    & 1     &                                                                                                         \\ \hline
 		ID\_CHAN1            & 0     & \multirow{2}{*}{\begin{tabular}[c]{@{}c@{}}Configuration\\ for the first channel\end{tabular}}          \\ \cline{1-2}
 		FREQ\_CHAN1          & 66 Hz &                                                                                                         \\ \hline
-		ID\_CHAN2            & 1     & \multirow{2}{*}{\begin{tabular}[c]{@{}c@{}}Configuration\\ for the second channel\end{tabular}}        \\ \cline{1-2}
+		ID\_CHAN2            & 1     & \multirow{2}{*}{\begin{tabular}[c]{@{}c@{}}Configuration\\ for the second channel\end{tabular}}         \\ \cline{1-2}
 		FREQ\_CHAN2          & 77 Hz &                                                                                                         \\ \hline
 		STD\_FREQ            & 8192  & 4 Hz (default frequency)                                                                                \\ \hline
 		min\_Channel\_Period & 164   & 199.8 Hz (closest to 200 Hz)                                                                            \\ \hline
@@ -62,20 +63,20 @@ If not otherwise noted in the experiment description each experiment was run in 
 
 There is an important difference between the message period used in the pseudo code and the frequency used in the figures which display the results. The period describes the size of the gap between two messages, the frequency describes how many messages are sent in 1 second. The channel period $p$ can be used to calculate the frequency of the messages $f_t = \frac{32678s^{-1}}{p}$. For example a message period of 8192 results in a message frequency of 4 Hz, which means that 4 messages are send every second.
 
-ANT supports different transmit power levels. The highest level is 0 dBm, the 
+ANT supports different transmit power levels: 0 dBm, -5 dBm, -10 dBm and -20 dBm. dBm is a way to express broadcast power as a power ratio in decibels. The power of the broadcast $p$ can be calulated as follows $p = 1mW * 10^{\frac{x}{10}}$.
 
-Furthermore in experiments which measure data throughput, we show a maximum theoretical values for each frequency. This is the maximum values which can be achieved if there are no transmission errors and no interference with other channels. The value depends on the message frequency $f$ and be calculated as follows: $rate_{max}(f) = 8*f$. Each message contains contains a payload of 8 bytes and we send $f$ messages each second.
+Furthermore in experiments which measure data throughput, we show maximum theoretical value for each frequency. This is the maximum value which can be achieved, if there are no transmission errors and no interference with other channels. The value depends on the message frequency $f$ and be calculated as follows: $rate_{max}(f) = 8*f$. Each message contains contains a payload of 8 bytes and we send $f$ messages each second.
 \newpage
 
 \section{Experiment 1: Broadcast Data Transfer between two nodes}
 \begin{description} 
-	\item{\textbf{Description}} \hfill \\ Broadcasting is one way of periodically transmitting data between two or more ANT nodes. Since all broadcast packets are synchronized to a fixed time-slot, the data throughput can be increased by decreasing the channel period. The experiment itself is split into two parts. In the first part we try to determine the highest possible data throughput. Also we try to determine if the channel period has an effect on the time it takes for a slave node to find and join an existing channel. The second part is a test of the highest detected data throughput. Here we try to evaluate if there are any variations of the data throughput over a much longer interval.	
+	\item{\textbf{Description}} \hfill \\ Broadcasting is one way of periodically transmitting data between two or more ANT nodes. Since all broadcast packets are synchronized to a fixed time-slot, the data throughput can be increased by decreasing the channel period. The experiment itself is split into two parts. In the first part we try to determine the highest possible data throughput. Also we try to determine whether the channel period has an effect on the time it takes for a slave node to find and join an existing channel. The second part is a test of the highest detected data throughput. Here we try to evaluate if there are any variations of the data throughput over a much longer interval.	
 	\item{\textbf{Use-Case}} \hfill \\ Scheduled data-transmission	
 	\item{\textbf{Network topology and pseudo code}} \hfill \\ 
 	\begin{figure}[H]
 		\centering
 		\includegraphics[scale=1]{content/images/exp_topo.png}
-		\caption{Toplogy experiment 1}
+		\caption{Topology experiment 1}
 	\end{figure}
 	\begin{code}[H]
 		\begin{verbatim}
@@ -116,31 +117,32 @@ Furthermore in experiments which measure data throughput, we show a maximum theo
 		\caption{Broadcast data single channel (Slave)}\label{lst:sExp1}
 	\end{code}	
 	\item{\textbf{Testing methodology}} \hfill \\Experiment 1 is split into two parts.
-	In the first part node A acts as the master and node B as the slave. For both nodes the channel period is set to the highest value and the channel is opened. Node B records how long it takes to join the channel and how many bytes it received over a 100s interval. The measurement is repeated 10 times and the average values are saved. Then the channel period is decreased and the process is repeated.\\ 
+	In the first part node A acts as the master and node B as the slave. For both nodes the channel period is set to the highest value and the channel is opened. Node B records how long it takes to join the channel and how many bytes it receives over a 100s interval. The measurement is repeated 10 times and the average values are saved. Then the channel period is decreased and the process is repeated.\\ 
 	In the second part of the experiment, the channel period is set to the value which achieved the highest speed. The experiment is then left running for a period of 10 hours and the data throughput is recorded in one continuous run.
 	\item{\textbf{Result}} \hfill \\  
 	\begin{figure}[H]
 		\centering
 		\includegraphics[scale=0.5]{content/images/exp1_norm.png}
-		\caption{Broadcast data rate (0.5Hz - 128Hz)}\label{fig:exp1norm}
+		\caption{Broadcast data rate (0.5Hz - 198.6Hz)}\label{fig:exp1norm}
 	\end{figure}
 	
-	Figure \ref{fig:exp1norm} shows the transmission speeds achieved for the different frequencies. Up to a frequency of 128 Hz, the measured data rate matches the expected theoretical maximum rate. For the highest supported frequency (199.8 Hz), the measured data rate is much lower than the maximum rate. Even if we account for transmission errors the difference is significant. 
+	Figure \ref{fig:exp1norm} shows the transmission speeds achieved for the different frequencies. Up to a frequency of 128 Hz, the measured data rate matches the expected theoretical maximum rate. For the highest measured frequency (198.6 Hz), the data rate is much lower than the maximum rate. The measured errors are insignificant. Therefore the frequencies between 128 Hz and 198.6 Hz were analyzed in more detail. 
+		
+	The time it takes for a Node to join a channel falls rapidly once the frequency is above 1 Hz. For frequencies above 64 Hz, the time it takes to join a channel becomes negligible, with times around 75 ms (see Figure \ref{fig:exp1norm}). All the measured values are below the specified worst case channel acquisition times of the ANT protocol \cite{AntChan}.
+	
 	\begin{figure}[H]
 		\centering
 		\includegraphics[scale=0.5]{content/images/exp1_detail.png}
 		\caption{Broadcast data rate (129Hz - 199Hz)}\label{fig:exp1between}
 	\end{figure}
-	As seen in figure \ref{fig:exp1between} the measured data rates for frequencies above 140 Hz all fall short of the expected values. However the average data throughput of these frequencies remains consistently at around 1100 Bps. The experiment was repeated multiple times, running it at different times and places, thus an environmental factor can be excluded. That means, the reason for the upper limit has to be found with the test set up itself. See section \ref{sec:dataThrougput} for a discussion about possible reasons for this upper limit.
-	
-	The time it takes for a Node to join a channel falls rapidly once the frequency is above 1 Hz. For frequencies above 64 Hz, the time it takes to join a channel becomes negligible, with times around 75 ms (see Figure \ref{fig:exp1norm}). All the measured values are below the specified worst case channel acquisition times of the ANT protocol \cite{AntChan}.
+	As seen in figure \ref{fig:exp1between} the measured data rates for frequencies above 140 Hz all fall short of the expected values. The average data throughput of these frequencies remains consistently at around 1100 Bps. The experiment was repeated multiple times, running it at different times and places, thus an environmental factor can be excluded. That means, the reason for the upper limit has to be found with the test set up itself. See section \ref{sec:dataThrougput} for a discussion about possible reasons for this upper limit.
 	
 	\begin{figure}[H]
 		\centering
 		\includegraphics[scale=0.5]{content/images/exp1_long.png}
-		\caption{Broadcast data rate over time (200Hz)}\label{fig:exp1long}
+		\caption{Broadcast data rate over time (198.6Hz)}\label{fig:exp1long}
 	\end{figure}
-	Figure \ref{fig:exp1long} shows the transmission speed for the highest supported frequency 199.8 Hz over time. The results show that the data throughput stays fairly consistent with a standard deviation of only 30 Bps, or 2.7\%. Interesting to note is the time period from 1:00PM to 2:50 PM, where the deviation from the average is much smaller. The exact reason for this phenomenon in unknown, since during this time period the environment of the test set up did not change in any known way.
+	Figure \ref{fig:exp1long} shows the transmission speed for the highest supported frequency 198.6 Hz over time. The results show that the data throughput stays fairly consistent at around 1100 Bps with a standard deviation of only 30 Bps, or 2.7\%. Interesting to note is the time period from 1:00PM to 2:50 PM, where the deviation from the average is much smaller. The exact reason for this phenomenon in unknown, since during this time period the environment of the test set up did not change in any known way.
 \end{description}
 \newpage
 
@@ -152,7 +154,7 @@ Furthermore in experiments which measure data throughput, we show a maximum theo
 	\begin{figure}[H]
 		\centering
 		\includegraphics[scale=1]{content/images/exp2_topo.png}
-		\caption{Toplogy experiment 2}
+		\caption{Topology experiment 2}
 	\end{figure}
 	\begin{code}[H]
 		\begin{verbatim}
@@ -227,13 +229,13 @@ Furthermore in experiments which measure data throughput, we show a maximum theo
 
 \section{Experiment 3: Acknowledge Data Transfer between two nodes}
 \begin{description} 
-	\item{\textbf{Description}} \hfill \\ This experiment is almost identical with experiment 1. The main difference is that we use acknowledge data instead of broadcast. It is also important to note that the master records how many successful packets are transmitted. The main goal of the experiment is to see if the data throughput is decreased compared to broadcast data, especially for smaller channel periods.
+	\item{\textbf{Description}} \hfill \\ This experiment is almost identical with experiment 1. The main difference is that we use acknowledge data instead of broadcast. It is also important to note that the master records how many successful packets are transmitted. The main goal of the experiment is to see whether the data throughput is decreased compared to broadcast data, especially for smaller channel periods.
 	\item{\textbf{Use-Case}} \hfill \\ Scheduled data-transmission
 	\item{\textbf{Network topology and pseudo code}} \hfill \\
 	\begin{figure}[H]
 		\centering
 		\includegraphics[scale=1]{content/images/exp_topo.png}
-		\caption{Toplogy experiment 3}
+		\caption{Topology experiment 3}
 	\end{figure}
 	\begin{code}[H]
 		\begin{verbatim}
@@ -272,6 +274,7 @@ Furthermore in experiments which measure data throughput, we show a maximum theo
 		\caption{Acknowledge data transfer (Slave)}\label{lst:sExp3}
 	\end{code}
 	\item{\textbf{Testing methodology}} \hfill \\ The testing methodology is the same as experiment 1, except that the master sends acknowledge messages and waits for the slave to confirm the successful transmission before sending the next packet. 
+	\newpage
 	\item{\textbf{Result}} \hfill \\
 	\begin{figure}[H]
 		\centering
@@ -284,8 +287,9 @@ Furthermore in experiments which measure data throughput, we show a maximum theo
 		\caption{Acknowledge data rate (65Hz - 70Hz)}\label{fig:exp4between}
 	\end{figure}
 	
-	Figure \ref{fig:exp4norm} shows the measured transmission speeds for the different tested frequencies. For the lower frequencies, the values align very well with the maximum data rate. Notable however is the sharp drop off at 129 Hz. Figure \ref{fig:exp4between} shows the data throughput for some chosen values, between 64 Hz and 129 Hz. The figure shows that the drop off in the data throughput rate starts around 69 Hz. 
-	The decreased data throughput is a result of ANT retransmitting the last sent packet as broadcast data. If the frequency for this retransmission is too high it can interfere with the acknowledge message that the slave sends back to the master. For example at 128 Hz the message is broadcast every ~7 ms, resulting in too much data for the channel to handle. The transmission is thus interrupted. 
+	Figure \ref{fig:exp4norm} shows the measured transmission speeds for the different tested frequencies. For the lower frequencies, the values align very well with the maximum data rate. Notable however is the drop off at 129 Hz. Figure \ref{fig:exp4between} shows the data throughput for some chosen values, between 64 Hz and 129 Hz. Demonstrating that the drop off starts around 69 Hz. 
+	
+	We conclude that the data throughput is a result of ANT retransmitting the last sent packet as broadcast data. If the frequency for this retransmission is too high it can interfere with the acknowledge message that the slave sends back to the master. For example at 128 Hz the message is broadcast every ~7 ms, resulting in too much data for the channel to handle. The transmission is thus interrupted. 
 	Since there is no increase of the data throughput between 64 Hz and 128 Hz, but a huge drop off at 69 Hz it can be assumed that somewhere around 69 Hz the channel is at the maximum data throughput of around 1100 Bps. Again see section \ref{sec:dataThrougput} for a discussion about possible reasons for this upper limit. 	
 \end{description}
 \newpage
@@ -298,7 +302,7 @@ Furthermore in experiments which measure data throughput, we show a maximum theo
 	\begin{figure}[H]
 		\centering
 		\includegraphics[scale=1]{content/images/exp_topo.png}
-		\caption{Toplogy experiment 4}
+		\caption{Topology experiment 4}
 	\end{figure}
 	\begin{code}[H]
 		\begin{verbatim}
@@ -337,7 +341,10 @@ Furthermore in experiments which measure data throughput, we show a maximum theo
 		\caption{Acknowledge data delay (Slave)}\label{lst:sExp4}
 	\end{code}
 	
-	\item{\textbf{Testing methodology}} \hfill \\ Node A acts as the master and node B as the slave. For both nodes the channel period is set to the highest value and the channel is opened. Node A then sends a total of 10 acknowledge messages and measures how long it takes until it receives the acknowledge signal. The channel period is then decreased and the experiment repeated.
+	\item{\textbf{Testing methodology}} \hfill \\ Node A acts as the master and node B as the slave. For both nodes the channel period is set to the highest value and the channel is opened. Node A then sends a total of 10 acknowledge messages and measures how long it takes until it receives the
+	acknowledge signal. The channel period is then decreased and the experiment repeated.
+	
+	\newpage
 	\item{\textbf{Result}} \hfill \\  
 	\begin{figure}[H]
 		\centering
@@ -357,13 +364,13 @@ Furthermore in experiments which measure data throughput, we show a maximum theo
 
 \section{Experiment 5: Burst Data Transfer between two nodes}
 \begin{description} 
-	\item{\textbf{Description}} \hfill \\ Burst data transmissions make it possible to drastically increase the throughput rate. This allows a SHAMPU base station to quickly transmit a new firmware to a node or a node to dump its RAM back to the base station.	According to the  specification rates of up to 20 kbps can be achieved. To fully utilize this speed a baud rate of 50000 is needed. In the current set up the base station uses 19200 baud, since it is the only value that both the ANT chip and the RS-232 Interface support. Because of this we expect the maximum speed to be less than 20 kbps. Furthermore we try to determine if the size of the burst transfer has an impact on the speed, since longer bursts will disrupt communications on other channels.
+	\item{\textbf{Description}} \hfill \\ Burst data transmissions make it possible to drastically increase the throughput rate. This allows a SHAMPU base station to quickly transmit a new firmware to a node or a node to dump its RAM back to the base station.	According to the  specification rates of up to 20 kbps can be achieved. To fully utilize this speed a baud rate of 50000 is needed. In the current set up the base station uses 19200 baud, since it is the only value that both the ANT chip and the RS-232 Interface support. Because of this we expect the maximum speed to be less than 20 kbps. Furthermore we try to determine whether the size of the burst transfer has an impact on the speed, since longer bursts will disrupt communications on other channels.
 	\item{\textbf{Use-Case}} \hfill \\ Unscheduled data-transmission
 	\item{\textbf{Network topology and pseudo code}} \hfill \\ 
 	\begin{figure}[H]
 		\centering
 		\includegraphics[scale=1]{content/images/exp5_topo.png}
-		\caption{Toplogy experiment 5}
+		\caption{Topology experiment 5}
 	\end{figure}
 	\begin{code}[H]
 		\begin{verbatim}
@@ -384,6 +391,7 @@ Furthermore in experiments which measure data throughput, we show a maximum theo
 		\caption{Burst data transfer (Slave)}\label{lst:sExp5}
 	\end{code}
 	\item{\textbf{Testing methodology}} \hfill \\ Since the burst transmission mode of our ANT-library is not working correctly (see section \ref{sec:future}) we use an ANTUSB-m Stick, which acts as a master. Node B is a normal base station and receives the burst transfers. On the master side, the program ANTWareII \cite{ANTwareII} is used to create the channel and then send bursts with different sizes. Each size is sent 10 times and the values are recorded and averaged. The size is then doubled and the experiment repeated. The first burst packet cannot be counted directly since the start of the burst can only be determined after the ANT chip has already received the first packet.
+	\newpage
 	\item{\textbf{Result}} \hfill \\ 
 	\begin{figure}[H]
 		\centering
@@ -397,7 +405,7 @@ Furthermore in experiments which measure data throughput, we show a maximum theo
 
 \section{Experiment 6: Maximum communication Range}
 \begin{description} 
-	\item{\textbf{Description}} \hfill \\  In this experiment we try to determine the correlation between the maximum range and the power setting of the ANT radio.	One of SHAMPU's advantages is the low power consumption, so it might be possible to further reduce the power consumption by decreasing the power level of the ANT radio, especially in smaller environments where there is no need for such a long range. According to the datasheet the maximum range for communication is 30m. However the ANT documentation does not specify for which power setting this range can be achieved. 
+	\item{\textbf{Description}} \hfill \\  In this experiment we try to determine the correlation between the maximum range and the power setting of the ANT radio. One of SHAMPU's advantages is the low power consumption, so it might be possible to further reduce the power consumption by decreasing the power level of the ANT radio, especially in smaller environments where there is no need for such a range. According to the datasheet the maximum range for communication is 30m, however the ANT documentation does not provide different ranges for different power settings. 
 	
 	\item{\textbf{Use-Case}} \hfill \\ Unscheduled data-transmission and scheduled data-transmission	
 	\item{\textbf{Network topology and pseudo code}} \hfill \\ 
@@ -416,7 +424,7 @@ Furthermore in experiments which measure data throughput, we show a maximum theo
 		  wait_for_user_input();
 		  closeChannel(ID_CHAN1);
 		\end{verbatim}
-		\caption{maximum communication range (Master)}\label{lst:mExp6}
+		\caption{Maximum communication range (Master)}\label{lst:mExp6}
 	\end{code}
 	
 	\begin{code}[H]
@@ -440,16 +448,17 @@ Furthermore in experiments which measure data throughput, we show a maximum theo
 		    else distance += .4
 		  closeChannel(ID_CHAN1);
 		\end{verbatim}
-		\caption{maximum communication range (Slave)}\label{lst:sExp6}
+		\caption{Maximum communication range (Slave)}\label{lst:sExp6}
 	\end{code}
-	\item{\textbf{Testing methodology}} \hfill \\ At the beginning of the experiment Node A and B are placed right next to each other. Node A acts as a master and keeps broadcasting the same message. Node B is the slave and tries to connect to the channel. If the connection is successful, the distance between the two nodes is increased by 0.4 meters. This process is repeated until Node B can no longer connect to the channel and the connection times out. This happens after 30s of searching. At this point the distance is no longer increased, but rather decreased until Node B is able to successfully connect to the channel. The whole experiment is then repeated for each available power setting.	
+	\item{\textbf{Testing methodology}} \hfill \\ At the beginning of the experiment Node A and B are placed right next to each other. Node A acts as a master and keeps broadcasting the same message. Node B is the slave and tries to connect to the channel. If the connection is successful, the distance between the two nodes is increased by 0.4 meters. This process is repeated until Node B can no longer connect to the channel and the connection times out. This happens after 30s of searching. At this point the distance is no longer increased, but rather decreased until Node B is able to successfully connect to the channel. Both of these values are recorded. The whole experiment is then repeated for each available power setting.	
+	\newpage
 	\item{\textbf{Result}} \hfill \\ 
 	\begin{figure}[H]
 		\centering
 		\includegraphics[scale=0.5]{content/images/exp6.png}
-		\caption{maximum comunication range}\label{fig:exp6}
+		\caption{Maximum comunication range}\label{fig:exp6}
 	\end{figure}
-	Figure \ref{fig:exp6} shows the transmission range for each power setting. As expected the maximum distance goes up with the higher power settings. But the result at the highest power setting is disappointing, since we did not get close to the claimed maximum range of 30m. The ANT documentation states that the maximum range of 30m can only be achieved in "optimal conditions"\cite{DynastreamInnovationsInc.2013}. It is possible for several different unfavourable factors, such as multiple 802.11 networks in the vicinity, or even the plastic case of the base station, to interfere with the ANT signal. 
+	Figure \ref{fig:exp6} shows the transmission range for each power setting. As expected the maximum distance goes up with the higher power settings. But the result at the highest power setting is disappointing, since we did not get close to the claimed maximum range of 30m. The ANT documentation states that the maximum range of 30m can only be achieved in "optimal conditions" \cite{DynastreamInnovationsInc.2013}. It is possible for several different unfavorable factors to interfere with the ANT signal, such as multiple 802.11 networks in the vicinity, or even the plastic case of the base station. 
 \end{description}
 
 
@@ -457,7 +466,7 @@ Furthermore in experiments which measure data throughput, we show a maximum theo
 \label{sec:dataThrougput}
 
 All our experiments seem to confirm that there is a hard limit for the maximum data throughput which can be achieved with our current set up. The ANT AP1MxIB supports a maximum message frequency of 200 Hz, which means that we would expect to see a maximum transmission rate of 1600 Bps.
- However, we missed that limit by around 500 Bps or 30\%. For a burst transmission there should be up to 20 kbps of throughput, but again we only achieved around 1100 Bps, a loss of 1400 Bps or 56\%.\\
+ However, we missed that limit by around 500 Bps or 30\%. For a burst transmission there should be up to 20 kbps of throughput measurable, but again we only achieved around 1100 Bps, a loss of 1400 Bps or 56\%.\\
 To balance environmental influences, the experiments were repeated in different locations and times of day and night. Since the throughput did not change noticeably, it can be assumed that there are no easily eliminated environmental factors which affect the maximum rate. We conclude that the root cause for the lower than expected throughput must be attributed to the hardware or software. \\
 
 If we exclude environmental factors, we are left with three possible reasons:

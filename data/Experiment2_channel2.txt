@@ -1,0 +1,3048 @@
+[michael@xps src]$ sudo ./ant -p /dev/ttyUSB0 -t m -n 2
+Power setting is now: 0dBm
+Experiment 2: Broadcast Data Transfer between multiple nodes
+press key!
+press key once slave received first packet!
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 1 found! Can start!
+[A4][ 9][4E][ 1][70][69][6E][67][FF][FF][ 0][ 0][F2]
+Channel 1 open! took 5.346210
+Run 0: failed 0 sucess 5: 40 bytes received in 10.000000 s => 4.000000
+Run 1: failed 1 sucess 4: 32 bytes received in 10.000000 s => 3.200000
+Run 2: failed 0 sucess 4: 32 bytes received in 10.000000 s => 3.200000
+Run 3: failed 0 sucess 5: 40 bytes received in 10.000000 s => 4.000000
+Run 4: failed 0 sucess 5: 40 bytes received in 10.000000 s => 4.000000
+Run 5: failed 0 sucess 5: 40 bytes received in 10.000000 s => 4.000000
+Run 6: failed 0 sucess 5: 40 bytes received in 10.000000 s => 4.000000
+Run 7: failed 0 sucess 5: 40 bytes received in 10.000000 s => 4.000000
+Run 8: failed 0 sucess 5: 40 bytes received in 10.000000 s => 4.000000
+Run 9: failed 3 sucess 3: 24 bytes received in 10.000000 s => 2.400000
+Average datarate : 3.680000 	Std dev: 0.530660
+press key!
+press key once slave received first packet!
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 1 found! Can start!
+[A4][ 9][4E][ 1][70][69][6E][67][FF][FF][ 0][ 0][F2]
+Channel 1 open! took 5.972153
+Run 0: failed 0 sucess 5: 40 bytes received in 10.000000 s => 4.000000
+Run 1: failed 0 sucess 5: 40 bytes received in 10.000000 s => 4.000000
+Run 2: failed 0 sucess 5: 40 bytes received in 10.000000 s => 4.000000
+Run 3: failed 0 sucess 5: 40 bytes received in 10.000000 s => 4.000000
+Run 4: failed 0 sucess 5: 40 bytes received in 10.000000 s => 4.000000
+Run 5: failed 0 sucess 4: 32 bytes received in 10.000000 s => 3.200000
+Run 6: failed 0 sucess 5: 40 bytes received in 10.000000 s => 4.000000
+Run 7: failed 0 sucess 5: 40 bytes received in 10.000000 s => 4.000000
+Run 8: failed 0 sucess 5: 40 bytes received in 10.000000 s => 4.000000
+Run 9: failed 0 sucess 5: 40 bytes received in 10.000000 s => 4.000000
+Average datarate : 3.920000 	Std dev: 0.240000
+done! press key for next round
+press key!
+press key once slave received first packet!
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 1 found! Can start!
+[A4][ 9][4E][ 1][70][69][6E][67][FF][FF][ 0][ 0][F2]
+Channel 1 open! took 4.272596
+Run 0: failed 0 sucess 5: 40 bytes received in 10.000000 s => 4.000000
+Run 1: failed 0 sucess 5: 40 bytes received in 10.000000 s => 4.000000
+Run 2: failed 0 sucess 5: 40 bytes received in 10.000000 s => 4.000000
+Run 3: failed 0 sucess 5: 40 bytes received in 10.000000 s => 4.000000
+Run 4: failed 0 sucess 5: 40 bytes received in 10.000000 s => 4.000000
+Run 5: failed 0 sucess 5: 40 bytes received in 10.000000 s => 4.000000
+Run 6: failed 0 sucess 5: 40 bytes received in 10.000000 s => 4.000000
+Run 7: failed 0 sucess 5: 40 bytes received in 10.000000 s => 4.000000
+Run 8: failed 0 sucess 5: 40 bytes received in 10.000000 s => 4.000000
+Run 9: failed 0 sucess 5: 40 bytes received in 10.000000 s => 4.000000
+Average datarate : 4.000000 	Std dev: 0.000000
+done! press key for next round
+press key!
+press key once slave received first packet!
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 1 found! Can start!
+[A4][ 9][4E][ 1][70][69][6E][67][FF][FF][ 0][ 0][F2]
+Channel 1 open! took 5.260872
+Run 0: failed 0 sucess 5: 40 bytes received in 10.000000 s => 4.000000
+Run 1: failed 0 sucess 5: 40 bytes received in 10.000000 s => 4.000000
+Run 2: failed 0 sucess 5: 40 bytes received in 10.000000 s => 4.000000
+Run 3: failed 0 sucess 5: 40 bytes received in 10.000000 s => 4.000000
+Run 4: failed 0 sucess 5: 40 bytes received in 10.000000 s => 4.000000
+Run 5: failed 0 sucess 5: 40 bytes received in 10.000000 s => 4.000000
+Run 6: failed 0 sucess 5: 40 bytes received in 10.000000 s => 4.000000
+Run 7: failed 0 sucess 5: 40 bytes received in 10.000000 s => 4.000000
+Run 8: failed 0 sucess 5: 40 bytes received in 10.000000 s => 4.000000
+Run 9: failed 0 sucess 5: 40 bytes received in 10.000000 s => 4.000000
+Average datarate : 4.000000 	Std dev: 0.000000
+done! press key for next round
+press key!
+press key once slave received first packet!
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 1 found! Can start!
+[A4][ 9][4E][ 1][70][69][6E][67][FF][FF][ 0][ 0][F2]
+Channel 1 open! took 4.873890
+Run 0: failed 0 sucess 5: 40 bytes received in 10.000000 s => 4.000000
+Run 1: failed 0 sucess 5: 40 bytes received in 10.000000 s => 4.000000
+Run 2: failed 0 sucess 5: 40 bytes received in 10.000000 s => 4.000000
+Run 3: failed 0 sucess 5: 40 bytes received in 10.000000 s => 4.000000
+Run 4: failed 0 sucess 5: 40 bytes received in 10.000000 s => 4.000000
+Run 5: failed 0 sucess 5: 40 bytes received in 10.000000 s => 4.000000
+Run 6: failed 0 sucess 5: 40 bytes received in 10.000000 s => 4.000000
+Run 7: failed 0 sucess 5: 40 bytes received in 10.000000 s => 4.000000
+Run 8: failed 0 sucess 5: 40 bytes received in 10.000000 s => 4.000000
+Run 9: failed 0 sucess 5: 40 bytes received in 10.000000 s => 4.000000
+Average datarate : 4.000000 	Std dev: 0.000000
+done! press key for next round
+press key!
+press key once slave received first packet!
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 1 found! Can start!
+[A4][ 9][4E][ 1][70][69][6E][67][FF][FF][ 0][ 0][F2]
+Channel 1 open! took 4.714489
+Run 0: failed 0 sucess 5: 40 bytes received in 10.000000 s => 4.000000
+Run 1: failed 0 sucess 5: 40 bytes received in 10.000000 s => 4.000000
+Run 2: failed 0 sucess 5: 40 bytes received in 10.000000 s => 4.000000
+Run 3: failed 0 sucess 5: 40 bytes received in 10.000000 s => 4.000000
+Run 4: failed 0 sucess 5: 40 bytes received in 10.000000 s => 4.000000
+Run 5: failed 0 sucess 5: 40 bytes received in 10.000000 s => 4.000000
+Run 6: failed 0 sucess 5: 40 bytes received in 10.000000 s => 4.000000
+Run 7: failed 0 sucess 5: 40 bytes received in 10.000000 s => 4.000000
+Run 8: failed 0 sucess 5: 40 bytes received in 10.000000 s => 4.000000
+Run 9: failed 0 sucess 5: 40 bytes received in 10.000000 s => 4.000000
+Average datarate : 4.000000 	Std dev: 0.000000
+done! press key for next round
+press key!
+press key once slave received first packet!
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 1 found! Can start!
+[A4][ 9][4E][ 1][70][69][6E][67][FF][FF][ 0][ 0][F2]
+Channel 1 open! took 4.309401
+Run 0: failed 0 sucess 5: 40 bytes received in 10.000000 s => 4.000000
+Run 1: failed 0 sucess 5: 40 bytes received in 10.000000 s => 4.000000
+Run 2: failed 0 sucess 5: 40 bytes received in 10.000000 s => 4.000000
+Run 3: failed 0 sucess 5: 40 bytes received in 10.000000 s => 4.000000
+Run 4: failed 0 sucess 5: 40 bytes received in 10.000000 s => 4.000000
+Run 5: failed 0 sucess 5: 40 bytes received in 10.000000 s => 4.000000
+Run 6: failed 0 sucess 5: 40 bytes received in 10.000000 s => 4.000000
+Run 7: failed 0 sucess 5: 40 bytes received in 10.000000 s => 4.000000
+Run 8: failed 0 sucess 5: 40 bytes received in 10.000000 s => 4.000000
+Run 9: failed 0 sucess 5: 40 bytes received in 10.000000 s => 4.000000
+Average datarate : 4.000000 	Std dev: 0.000000
+done! press key for next round
+press key!
+press key once slave received first packet!
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 1 found! Can start!
+[A4][ 9][4E][ 1][70][69][6E][67][FF][FF][ 0][ 0][F2]
+Channel 1 open! took 4.523642
+Run 0: failed 0 sucess 5: 40 bytes received in 10.000000 s => 4.000000
+Run 1: failed 0 sucess 5: 40 bytes received in 10.000000 s => 4.000000
+Run 2: failed 0 sucess 5: 40 bytes received in 10.000000 s => 4.000000
+Run 3: failed 0 sucess 5: 40 bytes received in 10.000000 s => 4.000000
+Run 4: failed 0 sucess 5: 40 bytes received in 10.000000 s => 4.000000
+Run 5: failed 0 sucess 5: 40 bytes received in 10.000000 s => 4.000000
+Run 6: failed 0 sucess 5: 40 bytes received in 10.000000 s => 4.000000
+Run 7: failed 0 sucess 5: 40 bytes received in 10.000000 s => 4.000000
+Run 8: failed 0 sucess 5: 40 bytes received in 10.000000 s => 4.000000
+Run 9: failed 0 sucess 5: 40 bytes received in 10.000000 s => 4.000000
+Average datarate : 4.000000 	Std dev: 0.000000
+done! press key for next round
+press key!
+press key once slave received first packet!
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 1 found! Can start!
+[A4][ 9][4E][ 1][70][69][6E][67][FF][FF][ 0][ 0][F2]
+Channel 1 open! took 5.952838
+Run 0: failed 0 sucess 5: 40 bytes received in 10.000000 s => 4.000000
+Run 1: failed 0 sucess 5: 40 bytes received in 10.000000 s => 4.000000
+Run 2: failed 0 sucess 5: 40 bytes received in 10.000000 s => 4.000000
+Run 3: failed 0 sucess 5: 40 bytes received in 10.000000 s => 4.000000
+Run 4: failed 0 sucess 5: 40 bytes received in 10.000000 s => 4.000000
+Run 5: failed 0 sucess 5: 40 bytes received in 10.000000 s => 4.000000
+Run 6: failed 0 sucess 5: 40 bytes received in 10.000000 s => 4.000000
+Run 7: failed 0 sucess 5: 40 bytes received in 10.000000 s => 4.000000
+Run 8: failed 0 sucess 5: 40 bytes received in 10.000000 s => 4.000000
+Run 9: failed 0 sucess 5: 40 bytes received in 10.000000 s => 4.000000
+Average datarate : 4.000000 	Std dev: 0.000000
+done! press key for next round
+press key!
+press key once slave received first packet!
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 1 found! Can start!
+[A4][ 9][4E][ 1][70][69][6E][67][FF][FF][ 0][ 0][F2]
+Channel 1 open! took 4.859877
+Run 0: failed 0 sucess 5: 40 bytes received in 10.000000 s => 4.000000
+Run 1: failed 0 sucess 5: 40 bytes received in 10.000000 s => 4.000000
+Run 2: failed 0 sucess 5: 40 bytes received in 10.000000 s => 4.000000
+Run 3: failed 0 sucess 5: 40 bytes received in 10.000000 s => 4.000000
+Run 4: failed 0 sucess 5: 40 bytes received in 10.000000 s => 4.000000
+Run 5: failed 0 sucess 5: 40 bytes received in 10.000000 s => 4.000000
+Run 6: failed 0 sucess 5: 40 bytes received in 10.000000 s => 4.000000
+Run 7: failed 0 sucess 5: 40 bytes received in 10.000000 s => 4.000000
+Run 8: failed 0 sucess 5: 40 bytes received in 10.000000 s => 4.000000
+Run 9: failed 0 sucess 5: 40 bytes received in 10.000000 s => 4.000000
+Average datarate : 4.000000 	Std dev: 0.000000
+done! press key for next round
+
+[michael@xps src]$ sudo ./ant -p /dev/ttyUSB0 -t m -n 2 -f 32767
+Power setting is now: 0dBm
+Experiment 2: Broadcast Data Transfer between multiple nodes
+press key!
+press key once slave received first packet!
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 1 found! Can start!
+[A4][ 9][4E][ 1][70][69][6E][67][FF][7F][ 0][ 0][72]
+Channel 1 open! took 4.747987
+Run 0: failed 0 sucess 10: 80 bytes received in 10.000000 s => 8.000000
+Run 1: failed 0 sucess 10: 80 bytes received in 10.000000 s => 8.000000
+Run 2: failed 0 sucess 10: 80 bytes received in 10.000000 s => 8.000000
+Run 3: failed 0 sucess 10: 80 bytes received in 10.000000 s => 8.000000
+Run 4: failed 0 sucess 10: 80 bytes received in 10.000000 s => 8.000000
+Run 5: failed 0 sucess 10: 80 bytes received in 10.000000 s => 8.000000
+Run 6: failed 0 sucess 10: 80 bytes received in 10.000000 s => 8.000000
+Run 7: failed 0 sucess 10: 80 bytes received in 10.000000 s => 8.000000
+Run 8: failed 0 sucess 10: 80 bytes received in 10.000000 s => 8.000000
+Run 9: failed 0 sucess 10: 80 bytes received in 10.000000 s => 8.000000
+Average datarate : 8.000000 	Std dev: 0.000000
+done! press key for next round
+press key!
+press key once slave received first packet!
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 1 found! Can start!
+[A4][ 9][4E][ 1][70][69][6E][67][FF][7F][ 0][ 0][72]
+Channel 1 open! took 4.901951
+Run 0: failed 0 sucess 10: 80 bytes received in 10.000000 s => 8.000000
+Run 1: failed 0 sucess 10: 80 bytes received in 10.000000 s => 8.000000
+Run 2: failed 0 sucess 10: 80 bytes received in 10.000000 s => 8.000000
+Run 3: failed 0 sucess 10: 80 bytes received in 10.000000 s => 8.000000
+Run 4: failed 0 sucess 10: 80 bytes received in 10.000000 s => 8.000000
+Run 5: failed 0 sucess 10: 80 bytes received in 10.000000 s => 8.000000
+Run 6: failed 0 sucess 10: 80 bytes received in 10.000000 s => 8.000000
+Run 7: failed 0 sucess 10: 80 bytes received in 10.000000 s => 8.000000
+Run 8: failed 0 sucess 10: 80 bytes received in 10.000000 s => 8.000000
+Run 9: failed 0 sucess 10: 80 bytes received in 10.000000 s => 8.000000
+Average datarate : 8.000000 	Std dev: 0.000000
+done! press key for next round
+press key!
+press key once slave received first packet!
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 1 found! Can start!
+[A4][ 9][4E][ 1][70][69][6E][67][FF][7F][ 0][ 0][72]
+Channel 1 open! took 4.866829
+Run 0: failed 0 sucess 10: 80 bytes received in 10.000000 s => 8.000000
+Run 1: failed 0 sucess 10: 80 bytes received in 10.000000 s => 8.000000
+Run 2: failed 0 sucess 10: 80 bytes received in 10.000000 s => 8.000000
+Run 3: failed 0 sucess 10: 80 bytes received in 10.000000 s => 8.000000
+Run 4: failed 0 sucess 10: 80 bytes received in 10.000000 s => 8.000000
+Run 5: failed 0 sucess 10: 80 bytes received in 10.000000 s => 8.000000
+Run 6: failed 0 sucess 10: 80 bytes received in 10.000000 s => 8.000000
+Run 7: failed 0 sucess 10: 80 bytes received in 10.000000 s => 8.000000
+Run 8: failed 0 sucess 10: 80 bytes received in 10.000000 s => 8.000000
+Run 9: failed 1 sucess 9: 72 bytes received in 10.000000 s => 7.200000
+Average datarate : 7.920000 	Std dev: 0.240000
+done! press key for next round
+press key!
+press key once slave received first packet!
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 1 found! Can start!
+[A4][ 9][4E][ 1][70][69][6E][67][FF][7F][ 0][ 0][72]
+Channel 1 open! took 4.908276
+Run 0: failed 0 sucess 10: 80 bytes received in 10.000000 s => 8.000000
+Run 1: failed 0 sucess 10: 80 bytes received in 10.000000 s => 8.000000
+Run 2: failed 0 sucess 10: 80 bytes received in 10.000000 s => 8.000000
+Run 3: failed 0 sucess 10: 80 bytes received in 10.000000 s => 8.000000
+Run 4: failed 0 sucess 10: 80 bytes received in 10.000000 s => 8.000000
+Run 5: failed 0 sucess 10: 80 bytes received in 10.000000 s => 8.000000
+Run 6: failed 0 sucess 10: 80 bytes received in 10.000000 s => 8.000000
+Run 7: failed 0 sucess 10: 80 bytes received in 10.000000 s => 8.000000
+Run 8: failed 0 sucess 10: 80 bytes received in 10.000000 s => 8.000000
+Run 9: failed 0 sucess 10: 80 bytes received in 10.000000 s => 8.000000
+Average datarate : 8.000000 	Std dev: 0.000000
+done! press key for next round
+press key!
+press key once slave received first packet!
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 1 found! Can start!
+[A4][ 9][4E][ 1][70][69][6E][67][FF][7F][ 0][ 0][72]
+Channel 1 open! took 4.909603
+Run 0: failed 0 sucess 10: 80 bytes received in 10.000000 s => 8.000000
+Run 1: failed 0 sucess 10: 80 bytes received in 10.000000 s => 8.000000
+Run 2: failed 0 sucess 10: 80 bytes received in 10.000000 s => 8.000000
+Run 3: failed 0 sucess 10: 80 bytes received in 10.000000 s => 8.000000
+Run 4: failed 0 sucess 10: 80 bytes received in 10.000000 s => 8.000000
+Run 5: failed 0 sucess 10: 80 bytes received in 10.000000 s => 8.000000
+Run 6: failed 0 sucess 10: 80 bytes received in 10.000000 s => 8.000000
+Run 7: failed 0 sucess 10: 80 bytes received in 10.000000 s => 8.000000
+Run 8: failed 0 sucess 10: 80 bytes received in 10.000000 s => 8.000000
+Run 9: failed 0 sucess 10: 80 bytes received in 10.000000 s => 8.000000
+Average datarate : 8.000000 	Std dev: 0.000000
+done! press key for next round
+press key!
+press key once slave received first packet!
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 1 found! Can start!
+[A4][ 9][4E][ 1][70][69][6E][67][FF][7F][ 0][ 0][72]
+Channel 1 open! took 4.839189
+Run 0: failed 1 sucess 9: 72 bytes received in 10.000000 s => 7.200000
+Run 1: failed 0 sucess 10: 80 bytes received in 10.000000 s => 8.000000
+Run 2: failed 0 sucess 10: 80 bytes received in 10.000000 s => 8.000000
+Run 3: failed 0 sucess 10: 80 bytes received in 10.000000 s => 8.000000
+Run 4: failed 0 sucess 10: 80 bytes received in 10.000000 s => 8.000000
+Run 5: failed 0 sucess 10: 80 bytes received in 10.000000 s => 8.000000
+Run 6: failed 0 sucess 10: 80 bytes received in 10.000000 s => 8.000000
+Run 7: failed 0 sucess 10: 80 bytes received in 10.000000 s => 8.000000
+Run 8: failed 0 sucess 10: 80 bytes received in 10.000000 s => 8.000000
+Run 9: failed 0 sucess 10: 80 bytes received in 10.000000 s => 8.000000
+Average datarate : 7.920000 	Std dev: 0.240000
+done! press key for next round
+press key!
+press key once slave received first packet!
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 1 found! Can start!
+[A4][ 9][4E][ 1][70][69][6E][67][FF][7F][ 0][ 0][72]
+Channel 1 open! took 4.349726
+Run 0: failed 0 sucess 10: 80 bytes received in 10.000000 s => 8.000000
+Run 1: failed 0 sucess 10: 80 bytes received in 10.000000 s => 8.000000
+Run 2: failed 1 sucess 9: 72 bytes received in 10.000000 s => 7.200000
+Run 3: failed 0 sucess 10: 80 bytes received in 10.000000 s => 8.000000
+Run 4: failed 0 sucess 10: 80 bytes received in 10.000000 s => 8.000000
+Run 5: failed 0 sucess 10: 80 bytes received in 10.000000 s => 8.000000
+Run 6: failed 0 sucess 10: 80 bytes received in 10.000000 s => 8.000000
+Run 7: failed 0 sucess 10: 80 bytes received in 10.000000 s => 8.000000
+Run 8: failed 0 sucess 10: 80 bytes received in 10.000000 s => 8.000000
+Run 9: failed 0 sucess 10: 80 bytes received in 10.000000 s => 8.000000
+Average datarate : 7.920000 	Std dev: 0.240000
+done! press key for next round
+press key!
+press key once slave received first packet!
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 1 found! Can start!
+[A4][ 9][4E][ 1][70][69][6E][67][FF][7F][ 0][ 0][72]
+Channel 1 open! took 4.890632
+Run 0: failed 0 sucess 10: 80 bytes received in 10.000000 s => 8.000000
+Run 1: failed 0 sucess 10: 80 bytes received in 10.000000 s => 8.000000
+Run 2: failed 0 sucess 10: 80 bytes received in 10.000000 s => 8.000000
+Run 3: failed 0 sucess 10: 80 bytes received in 10.000000 s => 8.000000
+Run 4: failed 0 sucess 10: 80 bytes received in 10.000000 s => 8.000000
+Run 5: failed 0 sucess 10: 80 bytes received in 10.000000 s => 8.000000
+Run 6: failed 0 sucess 10: 80 bytes received in 10.000000 s => 8.000000
+Run 7: failed 0 sucess 10: 80 bytes received in 10.000000 s => 8.000000
+Run 8: failed 0 sucess 10: 80 bytes received in 10.000000 s => 8.000000
+Run 9: failed 0 sucess 10: 80 bytes received in 10.000000 s => 8.000000
+Average datarate : 8.000000 	Std dev: 0.000000
+done! press key for next round
+press key!
+press key once slave received first packet!
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 1 found! Can start!
+[A4][ 9][4E][ 1][70][69][6E][67][FF][7F][ 0][ 0][72]
+Channel 1 open! took 4.361273
+Run 0: failed 0 sucess 10: 80 bytes received in 10.000000 s => 8.000000
+Run 1: failed 0 sucess 10: 80 bytes received in 10.000000 s => 8.000000
+Run 2: failed 0 sucess 10: 80 bytes received in 10.000000 s => 8.000000
+Run 3: failed 0 sucess 10: 80 bytes received in 10.000000 s => 8.000000
+Run 4: failed 0 sucess 10: 80 bytes received in 10.000000 s => 8.000000
+Run 5: failed 0 sucess 10: 80 bytes received in 10.000000 s => 8.000000
+Run 6: failed 0 sucess 10: 80 bytes received in 10.000000 s => 8.000000
+Run 7: failed 0 sucess 10: 80 bytes received in 10.000000 s => 8.000000
+Run 8: failed 0 sucess 10: 80 bytes received in 10.000000 s => 8.000000
+Run 9: failed 0 sucess 10: 80 bytes received in 10.000000 s => 8.000000
+Average datarate : 8.000000 	Std dev: 0.000000
+done! press key for next round
+press key!
+press key once slave received first packet!
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 1 found! Can start!
+[A4][ 9][4E][ 1][70][69][6E][67][FF][7F][ 0][ 0][72]
+Channel 1 open! took 4.538946
+Run 0: failed 0 sucess 10: 80 bytes received in 10.000000 s => 8.000000
+Run 1: failed 0 sucess 10: 80 bytes received in 10.000000 s => 8.000000
+Run 2: failed 0 sucess 10: 80 bytes received in 10.000000 s => 8.000000
+Run 3: failed 0 sucess 10: 80 bytes received in 10.000000 s => 8.000000
+Run 4: failed 0 sucess 10: 80 bytes received in 10.000000 s => 8.000000
+Run 5: failed 0 sucess 10: 80 bytes received in 10.000000 s => 8.000000
+Run 6: failed 0 sucess 10: 80 bytes received in 10.000000 s => 8.000000
+Run 7: failed 0 sucess 10: 80 bytes received in 10.000000 s => 8.000000
+Run 8: failed 0 sucess 10: 80 bytes received in 10.000000 s => 8.000000
+Run 9: failed 0 sucess 10: 80 bytes received in 10.000000 s => 8.000000
+Average datarate : 8.000000 	Std dev: 0.000000
+done! press key for next round
+
+[michael@xps src]sudo ./ant -p /dev/ttyUSB1 -t s -n 2 -f 16383
+Message Period = 16383 (2.000122 Hz)
+press key!
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][FF][3F][ 0][ 0][33]
+Channel 0 open! took 1.628289
+Run 0: failed 0 sucess 20: 160 bytes received in 10.000000 s => 16.000000
+Run 1: failed 0 sucess 20: 160 bytes received in 10.000000 s => 16.000000
+Run 2: failed 0 sucess 20: 160 bytes received in 10.000000 s => 16.000000
+Run 3: failed 0 sucess 20: 160 bytes received in 10.000000 s => 16.000000
+Run 4: failed 0 sucess 20: 160 bytes received in 10.000000 s => 16.000000
+Run 5: failed 0 sucess 20: 160 bytes received in 10.000000 s => 16.000000
+Run 6: failed 0 sucess 20: 160 bytes received in 10.000000 s => 16.000000
+Run 7: failed 0 sucess 20: 160 bytes received in 10.000000 s => 16.000000
+Run 8: failed 0 sucess 20: 160 bytes received in 10.000000 s => 16.000000
+Run 9: failed 0 sucess 20: 160 bytes received in 10.000000 s => 16.000000
+Average datarate : 16.000000 	Std dev: 0.000000
+done! press key for next round
+press key!
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][FF][3F][ 0][ 0][33]
+Channel 0 open! took 1.811498
+Run 0: failed 1 sucess 19: 152 bytes received in 10.000000 s => 15.200000
+Run 1: failed 0 sucess 20: 160 bytes received in 10.000000 s => 16.000000
+Run 2: failed 0 sucess 20: 160 bytes received in 10.000000 s => 16.000000
+Run 3: failed 0 sucess 20: 160 bytes received in 10.000000 s => 16.000000
+Run 4: failed 0 sucess 20: 160 bytes received in 10.000000 s => 16.000000
+Run 5: failed 1 sucess 19: 152 bytes received in 10.000000 s => 15.200000
+Run 6: failed 0 sucess 20: 160 bytes received in 10.000000 s => 16.000000
+Run 7: failed 0 sucess 20: 160 bytes received in 10.000000 s => 16.000000
+Run 8: failed 0 sucess 20: 160 bytes received in 10.000000 s => 16.000000
+Run 9: failed 0 sucess 20: 160 bytes received in 10.000000 s => 16.000000
+Average datarate : 15.840000 	Std dev: 0.320000
+done! press key for next round
+press key!
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][FF][3F][ 0][ 0][33]
+Channel 0 open! took 2.390353
+Run 0: failed 0 sucess 20: 160 bytes received in 10.000000 s => 16.000000
+Run 1: failed 0 sucess 20: 160 bytes received in 10.000000 s => 16.000000
+Run 2: failed 2 sucess 18: 144 bytes received in 10.000000 s => 14.400000
+Run 3: failed 0 sucess 20: 160 bytes received in 10.000000 s => 16.000000
+Run 4: failed 0 sucess 20: 160 bytes received in 10.000000 s => 16.000000
+Run 5: failed 0 sucess 20: 160 bytes received in 10.000000 s => 16.000000
+Run 6: failed 0 sucess 20: 160 bytes received in 10.000000 s => 16.000000
+Run 7: failed 0 sucess 20: 160 bytes received in 10.000000 s => 16.000000
+Run 8: failed 0 sucess 20: 160 bytes received in 10.000000 s => 16.000000
+Run 9: failed 0 sucess 20: 160 bytes received in 10.000000 s => 16.000000
+Average datarate : 15.840000 	Std dev: 0.480000
+done! press key for next round
+press key!
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][FF][3F][ 0][ 0][33]
+Channel 0 open! took 2.071875
+Run 0: failed 0 sucess 20: 160 bytes received in 10.000000 s => 16.000000
+Run 1: failed 0 sucess 20: 160 bytes received in 10.000000 s => 16.000000
+Run 2: failed 0 sucess 20: 160 bytes received in 10.000000 s => 16.000000
+Run 3: failed 0 sucess 20: 160 bytes received in 10.000000 s => 16.000000
+Run 4: failed 0 sucess 20: 160 bytes received in 10.000000 s => 16.000000
+Run 5: failed 0 sucess 20: 160 bytes received in 10.000000 s => 16.000000
+Run 6: failed 0 sucess 20: 160 bytes received in 10.000000 s => 16.000000
+Run 7: failed 0 sucess 20: 160 bytes received in 10.000000 s => 16.000000
+Run 8: failed 0 sucess 20: 160 bytes received in 10.000000 s => 16.000000
+Run 9: failed 0 sucess 20: 160 bytes received in 10.000000 s => 16.000000
+Average datarate : 16.000000 	Std dev: 0.000000
+done! press key for next round
+	press key!
+Waiting for msgType 4E! Press any key to continue!
+Run 0: failed 0 sucess 20: 160 bytes received in 10.000000 s => 16.000000
+Run 1: failed 0 sucess 20: 160 bytes received in 10.000000 s => 16.000000
+Run 2: failed 0 sucess 20: 160 bytes received in 10.000000 s => 16.000000
+Run 3: failed 0 sucess 20: 160 bytes received in 10.000000 s => 16.000000
+Run 4: failed 1 sucess 19: 152 bytes received in 10.000000 s => 15.200000
+Run 5: failed 0 sucess 20: 160 bytes received in 10.000000 s => 16.000000
+Run 6: failed 1 sucess 19: 152 bytes received in 10.000000 s => 15.200000
+Run 7: failed 0 sucess 20: 160 bytes received in 10.000000 s => 16.000000
+Run 8: failed 0 sucess 20: 160 bytes received in 10.000000 s => 16.000000
+Run 9: failed 0 sucess 20: 160 bytes received in 10.000000 s => 16.000000
+Average datarate : 15.840000 	Std dev: 0.320000
+done! press key for next round
+press key!
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][FF][3F][ 0][ 0][33]
+Channel 0 open! took 4.405566
+Run 0: failed 0 sucess 20: 160 bytes received in 10.000000 s => 16.000000
+Run 1: failed 0 sucess 20: 160 bytes received in 10.000000 s => 16.000000
+Run 2: failed 0 sucess 20: 160 bytes received in 10.000000 s => 16.000000
+Run 3: failed 0 sucess 20: 160 bytes received in 10.000000 s => 16.000000
+Run 4: failed 0 sucess 20: 160 bytes received in 10.000000 s => 16.000000
+Run 5: failed 0 sucess 20: 160 bytes received in 10.000000 s => 16.000000
+Run 6: failed 0 sucess 20: 160 bytes received in 10.000000 s => 16.000000
+Run 7: failed 0 sucess 20: 160 bytes received in 10.000000 s => 16.000000
+Run 8: failed 0 sucess 20: 160 bytes received in 10.000000 s => 16.000000
+Run 9: failed 0 sucess 20: 160 bytes received in 10.000000 s => 16.000000
+Average datarate : 16.000000 	Std dev: 0.000000
+done! press key for next round
+press key!
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][FF][3F][ 0][ 0][33]
+Channel 0 open! took 1.763320
+Run 0: failed 0 sucess 20: 160 bytes received in 10.000000 s => 16.000000
+Run 1: failed 0 sucess 20: 160 bytes received in 10.000000 s => 16.000000
+Run 2: failed 0 sucess 20: 160 bytes received in 10.000000 s => 16.000000
+Run 3: failed 0 sucess 20: 160 bytes received in 10.000000 s => 16.000000
+Run 4: failed 0 sucess 20: 160 bytes received in 10.000000 s => 16.000000
+Run 5: failed 0 sucess 20: 160 bytes received in 10.000000 s => 16.000000
+Run 6: failed 0 sucess 20: 160 bytes received in 10.000000 s => 16.000000
+Run 7: failed 0 sucess 20: 160 bytes received in 10.000000 s => 16.000000
+Run 8: failed 0 sucess 20: 160 bytes received in 10.000000 s => 16.000000
+Run 9: failed 0 sucess 20: 160 bytes received in 10.000000 s => 16.000000
+Average datarate : 16.000000 	Std dev: 0.000000
+done! press key for next round
+press key!
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][FF][3F][ 0][ 0][33]
+Channel 0 open! took 0.548236
+Run 0: failed 0 sucess 20: 160 bytes received in 10.000000 s => 16.000000
+Run 1: failed 0 sucess 20: 160 bytes received in 10.000000 s => 16.000000
+Run 2: failed 0 sucess 20: 160 bytes received in 10.000000 s => 16.000000
+Run 3: failed 0 sucess 20: 160 bytes received in 10.000000 s => 16.000000
+Run 4: failed 0 sucess 20: 160 bytes received in 10.000000 s => 16.000000
+Run 5: failed 0 sucess 20: 160 bytes received in 10.000000 s => 16.000000
+Run 6: failed 0 sucess 20: 160 bytes received in 10.000000 s => 16.000000
+Run 7: failed 0 sucess 20: 160 bytes received in 10.000000 s => 16.000000
+Run 8: failed 0 sucess 20: 160 bytes received in 10.000000 s => 16.000000
+Run 9: failed 0 sucess 20: 160 bytes received in 10.000000 s => 16.000000
+Average datarate : 16.000000 	Std dev: 0.000000
+done! press key for next round
+press key!
+press key once slave received first packet!
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 1 found! Can start!
+[A4][ 9][4E][ 1][70][69][6E][67][FF][3F][ 0][ 0][32]
+Channel 1 open! took 0.756258
+Run 0: failed 0 sucess 20: 160 bytes received in 10.000000 s => 16.000000
+Run 1: failed 0 sucess 20: 160 bytes received in 10.000000 s => 16.000000
+Run 2: failed 0 sucess 20: 160 bytes received in 10.000000 s => 16.000000
+Run 3: failed 0 sucess 20: 160 bytes received in 10.000000 s => 16.000000
+Run 4: failed 0 sucess 20: 160 bytes received in 10.000000 s => 16.000000
+Run 5: failed 0 sucess 20: 160 bytes received in 10.000000 s => 16.000000
+Run 6: failed 0 sucess 20: 160 bytes received in 10.000000 s => 16.000000
+Run 7: failed 0 sucess 20: 160 bytes received in 10.000000 s => 16.000000
+Run 8: failed 0 sucess 20: 160 bytes received in 10.000000 s => 16.000000
+Run 9: failed 0 sucess 20: 160 bytes received in 10.000000 s => 16.000000
+Average datarate : 16.000000 	Std dev: 0.000000
+done! press key for next round
+press key!
+press key once slave received first packet!
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 1 found! Can start!
+[A4][ 9][4E][ 1][70][69][6E][67][FF][3F][ 0][ 0][32]
+Channel 1 open! took 0.548430
+Run 0: failed 0 sucess 20: 160 bytes received in 10.000000 s => 16.000000
+Run 1: failed 1 sucess 19: 152 bytes received in 10.000000 s => 15.200000
+Run 2: failed 0 sucess 20: 160 bytes received in 10.000000 s => 16.000000
+Run 3: failed 0 sucess 20: 160 bytes received in 10.000000 s => 16.000000
+Run 4: failed 0 sucess 20: 160 bytes received in 10.000000 s => 16.000000
+Run 5: failed 0 sucess 20: 160 bytes received in 10.000000 s => 16.000000
+Run 6: failed 0 sucess 20: 160 bytes received in 10.000000 s => 16.000000
+Run 7: failed 0 sucess 20: 160 bytes received in 10.000000 s => 16.000000
+Run 8: failed 0 sucess 20: 160 bytes received in 10.000000 s => 16.000000
+Run 9: failed 0 sucess 20: 160 bytes received in 10.000000 s => 16.000000
+Average datarate : 15.920000 	Std dev: 0.240000
+done! press key for next round
+press key!
+press key once slave received first packet!
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 1 found! Can start!
+[A4][ 9][4E][ 1][70][69][6E][67][FF][3F][ 0][ 0][32]
+Channel 1 open! took 0.756258
+Run 0: failed 0 sucess 20: 160 bytes received in 10.000000 s => 16.000000
+Run 1: failed 0 sucess 20: 160 bytes received in 10.000000 s => 16.000000
+Run 2: failed 0 sucess 20: 160 bytes received in 10.000000 s => 16.000000
+Run 3: failed 0 sucess 20: 160 bytes received in 10.000000 s => 16.000000
+Run 4: failed 0 sucess 20: 160 bytes received in 10.000000 s => 16.000000
+Run 5: failed 0 sucess 20: 160 bytes received in 10.000000 s => 16.000000
+Run 6: failed 0 sucess 20: 160 bytes received in 10.000000 s => 16.000000
+Run 7: failed 0 sucess 20: 160 bytes received in 10.000000 s => 16.000000
+Run 8: failed 0 sucess 20: 160 bytes received in 10.000000 s => 16.000000
+Run 9: failed 0 sucess 20: 160 bytes received in 10.000000 s => 16.000000
+Average datarate : 16.000000 	Std dev: 0.000000
+done! press key for next round
+press key!
+press key once slave received first packet!
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 1 found! Can start!
+[A4][ 9][4E][ 1][70][69][6E][67][FF][3F][ 0][ 0][32]
+Channel 1 open! took 0.548430
+Run 0: failed 0 sucess 20: 160 bytes received in 10.000000 s => 16.000000
+Run 1: failed 1 sucess 19: 152 bytes received in 10.000000 s => 15.200000
+Run 2: failed 0 sucess 20: 160 bytes received in 10.000000 s => 16.000000
+Run 3: failed 0 sucess 20: 160 bytes received in 10.000000 s => 16.000000
+Run 4: failed 0 sucess 20: 160 bytes received in 10.000000 s => 16.000000
+Run 5: failed 0 sucess 20: 160 bytes received in 10.000000 s => 16.000000
+Run 6: failed 0 sucess 20: 160 bytes received in 10.000000 s => 16.000000
+Run 7: failed 0 sucess 20: 160 bytes received in 10.000000 s => 16.000000
+Run 8: failed 0 sucess 20: 160 bytes received in 10.000000 s => 16.000000
+Run 9: failed 0 sucess 20: 160 bytes received in 10.000000 s => 16.000000
+Average datarate : 15.920000 	Std dev: 0.240000
+done! press key for next round
+
+[michael@xps src]$ sudo ./ant -p /dev/ttyUSB0 -t m -n 2 -f 8191
+[sudo] Passwort für michael: 
+Power setting is now: 0dBm
+Experiment 2: Broadcast Data Transfer between multiple nodes
+press key!
+press key once slave received first packet!
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 1 found! Can start!
+[A4][ 9][4E][ 1][70][69][6E][67][FF][1F][ 0][ 0][12]
+Channel 1 open! took 0.715777
+Run 0: failed 0 sucess 40: 320 bytes received in 10.000000 s => 32.000000
+Run 1: failed 0 sucess 40: 320 bytes received in 10.000000 s => 32.000000
+Run 2: failed 0 sucess 40: 320 bytes received in 10.000000 s => 32.000000
+Run 3: failed 0 sucess 40: 320 bytes received in 10.000000 s => 32.000000
+Run 4: failed 0 sucess 40: 320 bytes received in 10.000000 s => 32.000000
+Run 5: failed 0 sucess 40: 320 bytes received in 10.000000 s => 32.000000
+Run 6: failed 0 sucess 40: 320 bytes received in 10.000000 s => 32.000000
+Run 7: failed 0 sucess 40: 320 bytes received in 10.000000 s => 32.000000
+Run 8: failed 0 sucess 40: 320 bytes received in 10.000000 s => 32.000000
+Run 9: failed 0 sucess 40: 320 bytes received in 10.000000 s => 32.000000
+Average datarate : 32.000000 	Std dev: 0.000000
+done! press key for next round
+press key!
+press key once slave received first packet!
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 1 found! Can start!
+[A4][ 9][4E][ 1][70][69][6E][67][FF][1F][ 0][ 0][12]
+Channel 1 open! took 0.601585
+Run 0: failed 0 sucess 40: 320 bytes received in 10.000000 s => 32.000000
+Run 1: failed 0 sucess 40: 320 bytes received in 10.000000 s => 32.000000
+Run 2: failed 0 sucess 40: 320 bytes received in 10.000000 s => 32.000000
+Run 3: failed 0 sucess 40: 320 bytes received in 10.000000 s => 32.000000
+Run 4: failed 0 sucess 40: 320 bytes received in 10.000000 s => 32.000000
+Run 5: failed 0 sucess 40: 320 bytes received in 10.000000 s => 32.000000
+Run 6: failed 0 sucess 40: 320 bytes received in 10.000000 s => 32.000000
+Run 7: failed 1 sucess 39: 312 bytes received in 10.000000 s => 31.200000
+Run 8: failed 0 sucess 40: 320 bytes received in 10.000000 s => 32.000000
+Run 9: failed 0 sucess 40: 320 bytes received in 10.000000 s => 32.000000
+Average datarate : 31.920000 	Std dev: 0.240000
+done! press key for next round
+press key!
+press key once slave received first packet!
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 1 found! Can start!
+[A4][ 9][4E][ 1][70][69][6E][67][FF][1F][ 0][ 0][12]
+Channel 1 open! took 0.675036
+Run 0: failed 0 sucess 40: 320 bytes received in 10.000000 s => 32.000000
+Run 1: failed 0 sucess 40: 320 bytes received in 10.000000 s => 32.000000
+Run 2: failed 0 sucess 40: 320 bytes received in 10.000000 s => 32.000000
+Run 3: failed 0 sucess 40: 320 bytes received in 10.000000 s => 31.999999
+Run 4: failed 0 sucess 40: 320 bytes received in 10.000000 s => 32.000000
+Run 5: failed 0 sucess 40: 320 bytes received in 10.000000 s => 32.000000
+Run 6: failed 0 sucess 40: 320 bytes received in 10.000000 s => 32.000000
+Run 7: failed 0 sucess 40: 320 bytes received in 10.000000 s => 32.000000
+Run 8: failed 0 sucess 40: 320 bytes received in 10.000000 s => 31.999999
+Run 9: failed 0 sucess 40: 320 bytes received in 10.000000 s => 32.000000
+Average datarate : 32.000000 	Std dev: 0.000000
+done! press key for next round
+press key!
+press key once slave received first packet!
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 1 found! Can start!
+[A4][ 9][4E][ 1][70][69][6E][67][FF][1F][ 0][ 0][12]
+Channel 1 open! took 2.249427
+Run 0: failed 0 sucess 40: 320 bytes received in 10.000000 s => 32.000000
+Run 1: failed 0 sucess 40: 320 bytes received in 10.000000 s => 31.999999
+Run 2: failed 0 sucess 40: 320 bytes received in 10.000000 s => 32.000000
+Run 3: failed 0 sucess 40: 320 bytes received in 10.000000 s => 32.000000
+Run 4: failed 0 sucess 40: 320 bytes received in 10.000000 s => 32.000000
+Run 5: failed 0 sucess 40: 320 bytes received in 10.000000 s => 32.000000
+Run 6: failed 0 sucess 40: 320 bytes received in 10.000000 s => 31.999999
+Run 7: failed 0 sucess 40: 320 bytes received in 10.000000 s => 32.000000
+Run 8: failed 0 sucess 40: 320 bytes received in 10.000000 s => 32.000000
+Run 9: failed 0 sucess 40: 320 bytes received in 10.000000 s => 32.000000
+Average datarate : 32.000000 	Std dev: 0.000000
+done! press key for next round
+press key!
+press key once slave received first packet!
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 1 found! Can start!
+[A4][ 9][4E][ 1][70][69][6E][67][FF][1F][ 0][ 0][12]
+Channel 1 open! took 1.916442
+Run 0: failed 0 sucess 40: 320 bytes received in 10.000000 s => 32.000000
+Run 1: failed 0 sucess 40: 320 bytes received in 10.000000 s => 32.000000
+Run 2: failed 0 sucess 40: 320 bytes received in 10.000000 s => 32.000000
+Run 3: failed 0 sucess 40: 320 bytes received in 10.000000 s => 32.000000
+Run 4: failed 0 sucess 40: 320 bytes received in 10.000000 s => 32.000000
+Run 5: failed 0 sucess 40: 320 bytes received in 10.000000 s => 32.000000
+Run 6: failed 0 sucess 40: 320 bytes received in 10.000000 s => 32.000000
+Run 7: failed 0 sucess 40: 320 bytes received in 10.000000 s => 32.000000
+Run 8: failed 0 sucess 40: 320 bytes received in 10.000000 s => 32.000000
+Run 9: failed 0 sucess 40: 320 bytes received in 10.000000 s => 32.000000
+Average datarate : 32.000000 	Std dev: 0.000000
+done! press key for next round
+press key!
+press key once slave received first packet!
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 1 found! Can start!
+[A4][ 9][4E][ 1][70][69][6E][67][FF][1F][ 0][ 0][12]
+Channel 1 open! took 0.028527
+Run 0: failed 0 sucess 40: 320 bytes received in 10.000000 s => 32.000000
+Run 1: failed 0 sucess 39: 312 bytes received in 10.000000 s => 31.199999
+Run 2: failed 0 sucess 41: 328 bytes received in 10.000000 s => 32.800000
+Run 3: failed 0 sucess 40: 320 bytes received in 10.000000 s => 32.000000
+Run 4: failed 0 sucess 40: 320 bytes received in 10.000000 s => 32.000000
+Run 5: failed 0 sucess 40: 320 bytes received in 10.000000 s => 32.000000
+Run 6: failed 0 sucess 40: 320 bytes received in 10.000000 s => 32.000000
+Run 7: failed 0 sucess 40: 320 bytes received in 10.000000 s => 32.000000
+Run 8: failed 0 sucess 40: 320 bytes received in 10.000000 s => 31.999999
+Run 9: failed 0 sucess 40: 320 bytes received in 10.000000 s => 32.000000
+Average datarate : 32.000000 	Std dev: 0.357771
+done! press key for next round
+press key!
+press key once slave received first packet!
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 1 found! Can start!
+[A4][ 9][4E][ 1][70][69][6E][67][FF][1F][ 0][ 0][12]
+Channel 1 open! took 0.583759
+Run 0: failed 0 sucess 40: 320 bytes received in 10.000000 s => 32.000000
+Run 1: failed 0 sucess 40: 320 bytes received in 10.000000 s => 32.000000
+Run 2: failed 0 sucess 40: 320 bytes received in 10.000000 s => 32.000000
+Run 3: failed 0 sucess 40: 320 bytes received in 10.000000 s => 32.000000
+Run 4: failed 0 sucess 40: 320 bytes received in 10.000000 s => 32.000000
+Run 5: failed 0 sucess 40: 320 bytes received in 10.000000 s => 32.000000
+Run 6: failed 0 sucess 40: 320 bytes received in 10.000000 s => 32.000000
+Run 7: failed 0 sucess 40: 320 bytes received in 10.000000 s => 32.000000
+Run 8: failed 0 sucess 40: 320 bytes received in 10.000000 s => 32.000000
+Run 9: failed 0 sucess 40: 320 bytes received in 10.000000 s => 32.000000
+Average datarate : 32.000000 	Std dev: 0.000000
+done! press key for next round
+press key!
+press key once slave received first packet!
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 1 found! Can start!
+[A4][ 9][4E][ 1][70][69][6E][67][FF][1F][ 0][ 0][12]
+Channel 1 open! took 2.663209
+Run 0: failed 0 sucess 40: 320 bytes received in 10.000000 s => 32.000000
+Run 1: failed 0 sucess 40: 320 bytes received in 10.000000 s => 32.000000
+Run 2: failed 0 sucess 40: 320 bytes received in 10.000000 s => 31.999999
+Run 3: failed 0 sucess 40: 320 bytes received in 10.000000 s => 32.000000
+Run 4: failed 0 sucess 40: 320 bytes received in 10.000000 s => 32.000000
+Run 5: failed 0 sucess 40: 320 bytes received in 10.000000 s => 32.000000
+Run 6: failed 0 sucess 40: 320 bytes received in 10.000000 s => 32.000000
+Run 7: failed 0 sucess 40: 320 bytes received in 10.000000 s => 32.000000
+Run 8: failed 0 sucess 40: 320 bytes received in 10.000000 s => 32.000000
+Run 9: failed 0 sucess 40: 320 bytes received in 10.000000 s => 32.000000
+Average datarate : 32.000000 	Std dev: 0.000000
+done! press key for next round
+press key!
+press key once slave received first packet!
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 1 found! Can start!
+[A4][ 9][4E][ 1][70][69][6E][67][FF][1F][ 0][ 0][12]
+Channel 1 open! took 0.379348
+Run 0: failed 0 sucess 40: 320 bytes received in 10.000000 s => 32.000000
+Run 1: failed 0 sucess 40: 320 bytes received in 10.000000 s => 32.000000
+Run 2: failed 0 sucess 40: 320 bytes received in 10.000000 s => 32.000000
+Run 3: failed 0 sucess 40: 320 bytes received in 10.000000 s => 32.000000
+Run 4: failed 0 sucess 40: 320 bytes received in 10.000000 s => 32.000000
+Run 5: failed 0 sucess 40: 320 bytes received in 10.000000 s => 32.000000
+Run 6: failed 0 sucess 40: 320 bytes received in 10.000000 s => 32.000000
+Run 7: failed 0 sucess 40: 320 bytes received in 10.000000 s => 32.000000
+Run 8: failed 0 sucess 34: 272 bytes received in 10.000000 s => 27.200000
+Run 9: failed 13 sucess 19: 152 bytes received in 10.000000 s => 15.200000
+Average datarate : 29.840000 	Std dev: 5.085509
+done! press key for next round
+press key!
+press key once slave received first packet!
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 1 found! Can start!
+[A4][ 9][4E][ 1][70][69][6E][67][FF][1F][ 0][ 0][12]
+Channel 1 open! took 2.659383
+Run 0: failed 0 sucess 40: 320 bytes received in 10.000000 s => 32.000000
+Run 1: failed 0 sucess 40: 320 bytes received in 10.000000 s => 32.000000
+Run 2: failed 0 sucess 40: 320 bytes received in 10.000000 s => 32.000000
+Run 3: failed 0 sucess 40: 320 bytes received in 10.000000 s => 32.000000
+Run 4: failed 0 sucess 40: 320 bytes received in 10.000000 s => 32.000000
+Run 5: failed 0 sucess 40: 320 bytes received in 10.000000 s => 32.000000
+Run 6: failed 0 sucess 40: 320 bytes received in 10.000000 s => 32.000000
+Run 7: failed 0 sucess 40: 320 bytes received in 10.000000 s => 32.000000
+Run 8: failed 0 sucess 40: 320 bytes received in 10.000000 s => 32.000000
+Run 9: failed 1 sucess 39: 312 bytes received in 10.000000 s => 31.200000
+Average datarate : 31.920000 	Std dev: 0.240000
+done! press key for next round
+
+[michael@xps src]$ sudo ./ant -p /dev/ttyUSB0 -t m -n 2 -f 4095
+Power setting is now: 0dBm
+Experiment 2: Broadcast Data Transfer between multiple nodes
+press key!
+press key once slave received first packet!
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 1 found! Can start!
+[A4][ 9][4E][ 1][70][69][6E][67][FF][ F][ 0][ 0][ 2]
+Channel 1 open! took 0.638467
+Run 0: failed 0 sucess 80: 640 bytes received in 10.000000 s => 64.000000
+Run 1: failed 0 sucess 80: 640 bytes received in 10.000000 s => 63.999999
+Run 2: failed 1 sucess 79: 632 bytes received in 10.000000 s => 63.199999
+Run 3: failed 1 sucess 79: 632 bytes received in 10.000000 s => 63.200000
+Run 4: failed 1 sucess 79: 632 bytes received in 10.000000 s => 63.199999
+Run 5: failed 0 sucess 80: 640 bytes received in 10.000000 s => 64.000000
+Run 6: failed 2 sucess 78: 624 bytes received in 10.000000 s => 62.399999
+Run 7: failed 1 sucess 79: 632 bytes received in 10.000000 s => 63.199999
+Run 8: failed 1 sucess 79: 632 bytes received in 10.000000 s => 63.200000
+Run 9: failed 1 sucess 79: 632 bytes received in 10.000000 s => 63.200000
+Average datarate : 63.359999 	Std dev: 0.480000
+done! press key for next round
+press key!
+press key once slave received first packet!
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 1 found! Can start!
+[A4][ 9][4E][ 1][70][69][6E][67][FF][ F][ 0][ 0][ 2]
+Channel 1 open! took 0.641553
+Run 0: failed 0 sucess 80: 640 bytes received in 10.000000 s => 63.999999
+Run 1: failed 1 sucess 79: 632 bytes received in 10.000000 s => 63.199999
+Run 2: failed 1 sucess 79: 632 bytes received in 10.000000 s => 63.199999
+Run 3: failed 0 sucess 80: 640 bytes received in 10.000000 s => 64.000000
+Run 4: failed 0 sucess 80: 640 bytes received in 10.000000 s => 63.999999
+Run 5: failed 0 sucess 80: 640 bytes received in 10.000000 s => 63.999999
+Run 6: failed 0 sucess 80: 640 bytes received in 10.000000 s => 63.999999
+Run 7: failed 0 sucess 80: 640 bytes received in 10.000000 s => 64.000000
+Run 8: failed 0 sucess 80: 640 bytes received in 10.000000 s => 63.999999
+Run 9: failed 0 sucess 80: 640 bytes received in 10.000000 s => 63.999999
+Average datarate : 63.839999 	Std dev: 0.320000
+done! press key for next round
+press key!
+press key once slave received first packet!
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 1 found! Can start!
+[A4][ 9][4E][ 1][70][69][6E][67][FF][ F][ 0][ 0][ 2]
+Channel 1 open! took 0.531321
+Run 0: failed 0 sucess 80: 640 bytes received in 10.000000 s => 63.999999
+Run 1: failed 0 sucess 80: 640 bytes received in 10.000000 s => 63.999999
+Run 2: failed 0 sucess 80: 640 bytes received in 10.000000 s => 64.000000
+Run 3: failed 0 sucess 80: 640 bytes received in 10.000000 s => 64.000000
+Run 4: failed 0 sucess 80: 640 bytes received in 10.000000 s => 63.999999
+Run 5: failed 0 sucess 80: 640 bytes received in 10.000000 s => 64.000000
+Run 6: failed 0 sucess 80: 640 bytes received in 10.000000 s => 64.000000
+Run 7: failed 1 sucess 79: 632 bytes received in 10.000000 s => 63.199999
+Run 8: failed 1 sucess 79: 632 bytes received in 10.000000 s => 63.200000
+Run 9: failed 0 sucess 80: 640 bytes received in 10.000000 s => 63.999999
+Average datarate : 63.839999 	Std dev: 0.320000
+done! press key for next round
+press key!
+press key once slave received first packet!
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 1 found! Can start!
+[A4][ 9][4E][ 1][70][69][6E][67][FF][ F][ 0][ 0][ 2]
+Channel 1 open! took 0.577284
+Run 0: failed 0 sucess 80: 640 bytes received in 10.000000 s => 63.999999
+Run 1: failed 1 sucess 79: 632 bytes received in 10.000000 s => 63.199999
+Run 2: failed 2 sucess 78: 624 bytes received in 10.000000 s => 62.400000
+Run 3: failed 0 sucess 80: 640 bytes received in 10.000000 s => 64.000000
+Run 4: failed 0 sucess 80: 640 bytes received in 10.000000 s => 63.999999
+Run 5: failed 0 sucess 80: 640 bytes received in 10.000000 s => 64.000000
+Run 6: failed 0 sucess 80: 640 bytes received in 10.000000 s => 64.000000
+Run 7: failed 0 sucess 80: 640 bytes received in 10.000000 s => 63.999999
+Run 8: failed 1 sucess 79: 632 bytes received in 10.000000 s => 63.200000
+Run 9: failed 4 sucess 76: 608 bytes received in 10.000000 s => 60.800000
+Average datarate : 63.360000 	Std dev: 0.999200
+done! press key for next round
+press key!
+press key once slave received first packet!
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 1 found! Can start!
+[A4][ 9][4E][ 1][70][69][6E][67][FF][ F][ 0][ 0][ 2]
+Channel 1 open! took 0.545171
+Run 0: failed 0 sucess 80: 640 bytes received in 10.000000 s => 63.999999
+Run 1: failed 0 sucess 80: 640 bytes received in 10.000000 s => 63.999999
+Run 2: failed 0 sucess 80: 640 bytes received in 10.000000 s => 63.999999
+Run 3: failed 0 sucess 80: 640 bytes received in 10.000000 s => 64.000000
+Run 4: failed 1 sucess 79: 632 bytes received in 10.000000 s => 63.199999
+Run 5: failed 0 sucess 80: 640 bytes received in 10.000000 s => 64.000000
+Run 6: failed 0 sucess 80: 640 bytes received in 10.000000 s => 64.000000
+Run 7: failed 1 sucess 79: 632 bytes received in 10.000000 s => 63.199999
+Run 8: failed 1 sucess 79: 632 bytes received in 10.000000 s => 63.199999
+Run 9: failed 1 sucess 79: 632 bytes received in 10.000000 s => 63.200000
+Average datarate : 63.679999 	Std dev: 0.391918
+done! press key for next round
+press key!
+press key once slave received first packet!
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 1 found! Can start!
+[A4][ 9][4E][ 1][70][69][6E][67][FF][ F][ 0][ 0][ 2]
+Channel 1 open! took 0.619752
+Run 0: failed 0 sucess 80: 640 bytes received in 10.000000 s => 64.000000
+Run 1: failed 0 sucess 80: 640 bytes received in 10.000000 s => 64.000000
+Run 2: failed 0 sucess 80: 640 bytes received in 10.000000 s => 63.999999
+Run 3: failed 0 sucess 80: 640 bytes received in 10.000000 s => 64.000000
+Run 4: failed 0 sucess 80: 640 bytes received in 10.000000 s => 63.999999
+Run 5: failed 0 sucess 80: 640 bytes received in 10.000000 s => 63.999999
+Run 6: failed 0 sucess 80: 640 bytes received in 10.000000 s => 63.999999
+Run 7: failed 1 sucess 79: 632 bytes received in 10.000000 s => 63.200000
+Run 8: failed 1 sucess 79: 632 bytes received in 10.000000 s => 63.200000
+Run 9: failed 0 sucess 80: 640 bytes received in 10.000000 s => 64.000000
+Average datarate : 63.839999 	Std dev: 0.320000
+done! press key for next round
+press key!
+press key once slave received first packet!
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 1 found! Can start!
+[A4][ 9][4E][ 1][70][69][6E][67][FF][ F][ 0][ 0][ 2]
+Channel 1 open! took 0.622070
+Run 0: failed 0 sucess 80: 640 bytes received in 10.000000 s => 63.999999
+Run 1: failed 0 sucess 80: 640 bytes received in 10.000000 s => 64.000000
+Run 2: failed 1 sucess 79: 632 bytes received in 10.000000 s => 63.200000
+Run 3: failed 0 sucess 80: 640 bytes received in 10.000000 s => 64.000000
+Run 4: failed 0 sucess 80: 640 bytes received in 10.000000 s => 63.999999
+Run 5: failed 0 sucess 80: 640 bytes received in 10.000000 s => 64.000000
+Run 6: failed 0 sucess 80: 640 bytes received in 10.000000 s => 64.000000
+Run 7: failed 0 sucess 80: 640 bytes received in 10.000000 s => 63.999999
+Run 8: failed 1 sucess 79: 632 bytes received in 10.000000 s => 63.200000
+Run 9: failed 1 sucess 79: 632 bytes received in 10.000000 s => 63.200000
+Average datarate : 63.760000 	Std dev: 0.366606
+done! press key for next round
+press key!
+press key once slave received first packet!
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 1 found! Can start!
+[A4][ 9][4E][ 1][70][69][6E][67][FF][ F][ 0][ 0][ 2]
+Channel 1 open! took 0.585567
+Run 0: failed 0 sucess 80: 640 bytes received in 10.000000 s => 63.999999
+Run 1: failed 1 sucess 79: 632 bytes received in 10.000000 s => 63.199999
+Run 2: failed 1 sucess 79: 632 bytes received in 10.000000 s => 63.200000
+Run 3: failed 1 sucess 79: 632 bytes received in 10.000000 s => 63.200000
+Run 4: failed 0 sucess 80: 640 bytes received in 10.000000 s => 64.000000
+Run 5: failed 0 sucess 80: 640 bytes received in 10.000000 s => 63.999999
+Run 6: failed 0 sucess 80: 640 bytes received in 10.000000 s => 63.999999
+Run 7: failed 0 sucess 80: 640 bytes received in 10.000000 s => 64.000000
+Run 8: failed 2 sucess 78: 624 bytes received in 10.000000 s => 62.400000
+Run 9: failed 1 sucess 79: 632 bytes received in 10.000000 s => 63.200000
+Average datarate : 63.519999 	Std dev: 0.530660
+done! press key for next round
+press key!
+press key once slave received first packet!
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 1 found! Can start!
+[A4][ 9][4E][ 1][70][69][6E][67][FF][ F][ 0][ 0][ 2]
+Channel 1 open! took 0.602463
+Run 0: failed 0 sucess 80: 640 bytes received in 10.000000 s => 63.999999
+Run 1: failed 0 sucess 80: 640 bytes received in 10.000000 s => 63.999999
+Run 2: failed 0 sucess 80: 640 bytes received in 10.000000 s => 63.999999
+Run 3: failed 0 sucess 80: 640 bytes received in 10.000000 s => 64.000000
+Run 4: failed 0 sucess 80: 640 bytes received in 10.000000 s => 64.000000
+Run 5: failed 0 sucess 80: 640 bytes received in 10.000000 s => 63.999999
+Run 6: failed 2 sucess 78: 624 bytes received in 10.000000 s => 62.400000
+Run 7: failed 0 sucess 80: 640 bytes received in 10.000000 s => 64.000000
+Run 8: failed 0 sucess 80: 640 bytes received in 10.000000 s => 63.999999
+Run 9: failed 3 sucess 77: 616 bytes received in 10.000000 s => 61.599999
+Average datarate : 63.599999 	Std dev: 0.819756
+done! press key for next round
+press key!
+press key once slave received first packet!
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 1 found! Can start!
+[A4][ 9][4E][ 1][70][69][6E][67][FF][ F][ 0][ 0][ 2]
+Channel 1 open! took 0.542253
+Run 0: failed 0 sucess 80: 640 bytes received in 10.000000 s => 64.000000
+Run 1: failed 1 sucess 79: 632 bytes received in 10.000000 s => 63.199999
+Run 2: failed 0 sucess 80: 640 bytes received in 10.000000 s => 63.999999
+Run 3: failed 0 sucess 80: 640 bytes received in 10.000000 s => 63.999999
+Run 4: failed 0 sucess 80: 640 bytes received in 10.000000 s => 63.999999
+Run 5: failed 0 sucess 80: 640 bytes received in 10.000000 s => 64.000000
+Run 6: failed 0 sucess 80: 640 bytes received in 10.000000 s => 63.999999
+Run 7: failed 0 sucess 80: 640 bytes received in 10.000000 s => 63.999999
+Run 8: failed 1 sucess 79: 632 bytes received in 10.000000 s => 63.199999
+Run 9: failed 0 sucess 80: 640 bytes received in 10.000000 s => 63.999999
+Average datarate : 63.839999 	Std dev: 0.320000
+done! press key for next round
+
+[michael@xps src]$ sudo ./ant -p /dev/ttyUSB0 -t m -n 2 -f 2047
+[sudo] Passwort für michael: 
+Power setting is now: 0dBm
+Experiment 2: Broadcast Data Transfer between multiple nodes
+press key!
+press key once slave received first packet!
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 1 found! Can start!
+[A4][ 9][4E][ 1][70][69][6E][67][FF][ 7][ 0][ 0][ A]
+Channel 1 open! took 0.518555
+Run 0: failed 0 sucess 160: 1280 bytes received in 10.000000 s => 127.999999
+Run 1: failed 0 sucess 160: 1280 bytes received in 10.000000 s => 127.999998
+Run 2: failed 0 sucess 160: 1280 bytes received in 10.000000 s => 127.999999
+Run 3: failed 1 sucess 159: 1272 bytes received in 10.000000 s => 127.199999
+Run 4: failed 0 sucess 160: 1280 bytes received in 10.000000 s => 127.999999
+Run 5: failed 0 sucess 160: 1280 bytes received in 10.000000 s => 127.999998
+Run 6: failed 0 sucess 160: 1280 bytes received in 10.000000 s => 127.999998
+Run 7: failed 0 sucess 160: 1280 bytes received in 10.000000 s => 127.999999
+Run 8: failed 1 sucess 159: 1272 bytes received in 10.000000 s => 127.199999
+Run 9: failed 0 sucess 160: 1280 bytes received in 10.000000 s => 127.999999
+Average datarate : 127.839999 	Std dev: 0.320000
+done! press key for next round
+press key!
+press key once slave received first packet!
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 1 found! Can start!
+[A4][ 9][4E][ 1][70][69][6E][67][FF][ 7][ 0][ 0][ A]
+Channel 1 open! took 0.553575
+Run 0: failed 0 sucess 160: 1280 bytes received in 10.000000 s => 128.000000
+Run 1: failed 0 sucess 160: 1280 bytes received in 10.000000 s => 127.999999
+Run 2: failed 0 sucess 160: 1280 bytes received in 10.000000 s => 128.000000
+Run 3: failed 0 sucess 160: 1280 bytes received in 10.000000 s => 127.999998
+Run 4: failed 0 sucess 160: 1280 bytes received in 10.000000 s => 127.999999
+Run 5: failed 0 sucess 160: 1280 bytes received in 10.000000 s => 127.999998
+Run 6: failed 0 sucess 160: 1280 bytes received in 10.000000 s => 127.999999
+Run 7: failed 0 sucess 160: 1280 bytes received in 10.000000 s => 128.000000
+Run 8: failed 0 sucess 160: 1280 bytes received in 10.000000 s => 127.999999
+Run 9: failed 0 sucess 160: 1280 bytes received in 10.000000 s => 127.999999
+Average datarate : 127.999999 	Std dev: 0.000001
+done! press key for next round
+press key!
+press key once slave received first packet!
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 1 found! Can start!
+[A4][ 9][4E][ 1][70][69][6E][67][FF][ 7][ 0][ 0][ A]
+Channel 1 open! took 0.559162
+Run 0: failed 0 sucess 160: 1280 bytes received in 10.000000 s => 127.999999
+Run 1: failed 0 sucess 160: 1280 bytes received in 10.000000 s => 127.999999
+Run 2: failed 0 sucess 160: 1280 bytes received in 10.000000 s => 127.999999
+Run 3: failed 0 sucess 160: 1280 bytes received in 10.000000 s => 127.999998
+Run 4: failed 0 sucess 160: 1280 bytes received in 10.000000 s => 127.999998
+Run 5: failed 0 sucess 160: 1280 bytes received in 10.000000 s => 127.999999
+Run 6: failed 0 sucess 160: 1280 bytes received in 10.000000 s => 127.999999
+Run 7: failed 0 sucess 160: 1280 bytes received in 10.000000 s => 127.999998
+Run 8: failed 0 sucess 160: 1280 bytes received in 10.000000 s => 128.000000
+Run 9: failed 0 sucess 160: 1280 bytes received in 10.000000 s => 127.999998
+Average datarate : 127.999999 	Std dev: 0.000001
+done! press key for next round
+press key!
+press key once slave received first packet!
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 1 found! Can start!
+[A4][ 9][4E][ 1][70][69][6E][67][FF][ 7][ 0][ 0][ A]
+Channel 1 open! took 0.535667
+Run 0: failed 0 sucess 160: 1280 bytes received in 10.000000 s => 127.999999
+Run 1: failed 0 sucess 160: 1280 bytes received in 10.000000 s => 127.999999
+Run 2: failed 0 sucess 160: 1280 bytes received in 10.000000 s => 128.000000
+Run 3: failed 1 sucess 159: 1272 bytes received in 10.000000 s => 127.200000
+Run 4: failed 0 sucess 160: 1280 bytes received in 10.000000 s => 127.999998
+Run 5: failed 0 sucess 160: 1280 bytes received in 10.000000 s => 128.000000
+Run 6: failed 0 sucess 160: 1280 bytes received in 10.000000 s => 128.000000
+Run 7: failed 0 sucess 160: 1280 bytes received in 10.000000 s => 127.999999
+Run 8: failed 0 sucess 160: 1280 bytes received in 10.000000 s => 128.000000
+Run 9: failed 0 sucess 160: 1280 bytes received in 10.000000 s => 128.000000
+Average datarate : 127.919999 	Std dev: 0.240000
+done! press key for next round
+press key!
+press key once slave received first packet!
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 1 found! Can start!
+[A4][ 9][4E][ 1][70][69][6E][67][FF][ 7][ 0][ 0][ A]
+Channel 1 open! took 0.553742
+Run 0: failed 0 sucess 160: 1280 bytes received in 10.000000 s => 127.999999
+Run 1: failed 0 sucess 160: 1280 bytes received in 10.000000 s => 127.999999
+Run 2: failed 0 sucess 160: 1280 bytes received in 10.000000 s => 127.999998
+Run 3: failed 0 sucess 160: 1280 bytes received in 10.000000 s => 128.000000
+Run 4: failed 0 sucess 160: 1280 bytes received in 10.000000 s => 127.999999
+Run 5: failed 0 sucess 160: 1280 bytes received in 10.000000 s => 127.999998
+Run 6: failed 0 sucess 160: 1280 bytes received in 10.000000 s => 127.999999
+Run 7: failed 0 sucess 160: 1280 bytes received in 10.000000 s => 127.999999
+Run 8: failed 0 sucess 160: 1280 bytes received in 10.000000 s => 128.000000
+Run 9: failed 0 sucess 160: 1280 bytes received in 10.000000 s => 127.999997
+Average datarate : 127.999999 	Std dev: 0.000001
+done! press key for next round
+press key!
+press key once slave received first packet!
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 1 found! Can start!
+[A4][ 9][4E][ 1][70][69][6E][67][FF][ 7][ 0][ 0][ A]
+Channel 1 open! took 0.551620
+Run 0: failed 0 sucess 160: 1280 bytes received in 10.000000 s => 127.999999
+Run 1: failed 0 sucess 160: 1280 bytes received in 10.000000 s => 127.999999
+Run 2: failed 0 sucess 160: 1280 bytes received in 10.000000 s => 127.999999
+Run 3: failed 0 sucess 160: 1280 bytes received in 10.000000 s => 127.999998
+Run 4: failed 0 sucess 160: 1280 bytes received in 10.000000 s => 127.999999
+Run 5: failed 0 sucess 160: 1280 bytes received in 10.000000 s => 127.999998
+Run 6: failed 0 sucess 160: 1280 bytes received in 10.000000 s => 127.999998
+Run 7: failed 0 sucess 160: 1280 bytes received in 10.000000 s => 127.999998
+Run 8: failed 0 sucess 160: 1280 bytes received in 10.000000 s => 128.000000
+Run 9: failed 0 sucess 160: 1280 bytes received in 10.000000 s => 128.000000
+Average datarate : 127.999999 	Std dev: 0.000001
+done! press key for next round
+press key!
+press key once slave received first packet!
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 1 found! Can start!
+[A4][ 9][4E][ 1][70][69][6E][67][FF][ 7][ 0][ 0][ A]
+Channel 1 open! took 0.547023
+Run 0: failed 0 sucess 160: 1280 bytes received in 10.000000 s => 128.000000
+Run 1: failed 0 sucess 160: 1280 bytes received in 10.000000 s => 127.999999
+Run 2: failed 0 sucess 160: 1280 bytes received in 10.000000 s => 127.999999
+Run 3: failed 0 sucess 160: 1280 bytes received in 10.000000 s => 127.999998
+Run 4: failed 0 sucess 160: 1280 bytes received in 10.000000 s => 128.000000
+Run 5: failed 0 sucess 160: 1280 bytes received in 10.000000 s => 127.999998
+Run 6: failed 0 sucess 160: 1280 bytes received in 10.000000 s => 127.999998
+Run 7: failed 0 sucess 160: 1280 bytes received in 10.000000 s => 127.999999
+Run 8: failed 0 sucess 160: 1280 bytes received in 10.000000 s => 127.999999
+Run 9: failed 0 sucess 160: 1280 bytes received in 10.000000 s => 127.999999
+Average datarate : 127.999999 	Std dev: 0.000001
+done! press key for next round
+press key!
+press key once slave received first packet!
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 1 found! Can start!
+[A4][ 9][4E][ 1][70][69][6E][67][FF][ 7][ 0][ 0][ A]
+Channel 1 open! took 0.568270
+Run 0: failed 0 sucess 160: 1280 bytes received in 10.000000 s => 127.999999
+Run 1: failed 0 sucess 160: 1280 bytes received in 10.000000 s => 127.999997
+Run 2: failed 0 sucess 160: 1280 bytes received in 10.000000 s => 127.999998
+Run 3: failed 0 sucess 160: 1280 bytes received in 10.000000 s => 127.999998
+Run 4: failed 0 sucess 160: 1280 bytes received in 10.000000 s => 127.999999
+Run 5: failed 0 sucess 160: 1280 bytes received in 10.000000 s => 127.999998
+Run 6: failed 0 sucess 160: 1280 bytes received in 10.000000 s => 128.000000
+Run 7: failed 0 sucess 160: 1280 bytes received in 10.000000 s => 127.999999
+Run 8: failed 0 sucess 160: 1280 bytes received in 10.000000 s => 127.999999
+Run 9: failed 1 sucess 159: 1272 bytes received in 10.000000 s => 127.199999
+Average datarate : 127.919999 	Std dev: 0.240000
+done! press key for next round
+press key!
+press key once slave received first packet!
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 1 found! Can start!
+[A4][ 9][4E][ 1][70][69][6E][67][FF][ 7][ 0][ 0][ A]
+Channel 1 open! took 0.573413
+Run 0: failed 0 sucess 160: 1280 bytes received in 10.000000 s => 127.999999
+Run 1: failed 0 sucess 160: 1280 bytes received in 10.000000 s => 127.999999
+Run 2: failed 1 sucess 159: 1272 bytes received in 10.000000 s => 127.199999
+Run 3: failed 0 sucess 160: 1280 bytes received in 10.000000 s => 127.999999
+Run 4: failed 0 sucess 160: 1280 bytes received in 10.000000 s => 127.999998
+Run 5: failed 0 sucess 160: 1280 bytes received in 10.000000 s => 127.999998
+Run 6: failed 0 sucess 160: 1280 bytes received in 10.000000 s => 128.000000
+Run 7: failed 0 sucess 160: 1280 bytes received in 10.000000 s => 127.999999
+Run 8: failed 0 sucess 160: 1280 bytes received in 10.000000 s => 127.999999
+Run 9: failed 0 sucess 160: 1280 bytes received in 10.000000 s => 128.000000
+Average datarate : 127.919999 	Std dev: 0.240000
+done! press key for next round
+press key!
+press key once slave received first packet!
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 1 found! Can start!
+[A4][ 9][4E][ 1][70][69][6E][67][FF][ 7][ 0][ 0][ A]
+Channel 1 open! took 0.534721
+Run 0: failed 0 sucess 160: 1280 bytes received in 10.000000 s => 127.999999
+Run 1: failed 0 sucess 160: 1280 bytes received in 10.000000 s => 127.999998
+Run 2: failed 0 sucess 160: 1280 bytes received in 10.000000 s => 127.999999
+Run 3: failed 0 sucess 160: 1280 bytes received in 10.000000 s => 128.000000
+Run 4: failed 1 sucess 159: 1272 bytes received in 10.000000 s => 127.199999
+Run 5: failed 0 sucess 160: 1280 bytes received in 10.000000 s => 128.000000
+Run 6: failed 0 sucess 160: 1280 bytes received in 10.000000 s => 128.000000
+Run 7: failed 1 sucess 159: 1272 bytes received in 10.000000 s => 127.200000
+Run 8: failed 0 sucess 160: 1280 bytes received in 10.000000 s => 127.999999
+Run 9: failed 0 sucess 160: 1280 bytes received in 10.000000 s => 127.999997
+Average datarate : 127.839999 	Std dev: 0.320000
+done! press key for next round
+
+[michael@xps src]$ sudo ./ant -p /dev/ttyUSB0 -t m -n 2 -f 1023
+[sudo] Passwort für michael: 
+Power setting is now: 0dBm
+Experiment 2: Broadcast Data Transfer between multiple nodes
+press key!
+press key once slave received first packet!
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 1 found! Can start!
+[A4][ 9][4E][ 1][70][69][6E][67][FF][ 7][ 0][ 0][ A]
+Channel 1 open! took 0.000122
+Run 0: failed 0 sucess 304: 2432 bytes received in 10.000000 s => 243.199998
+Run 1: failed 1 sucess 319: 2552 bytes received in 10.000000 s => 255.199997
+Run 2: failed 0 sucess 321: 2568 bytes received in 10.000000 s => 256.799998
+Run 3: failed 0 sucess 320: 2560 bytes received in 10.000000 s => 255.999998
+Run 4: failed 0 sucess 320: 2560 bytes received in 10.000000 s => 256.000000
+Run 5: failed 0 sucess 321: 2568 bytes received in 10.000000 s => 256.800000
+Run 6: failed 1 sucess 319: 2552 bytes received in 10.000000 s => 255.199996
+Run 7: failed 0 sucess 320: 2560 bytes received in 10.000000 s => 255.999998
+Run 8: failed 1 sucess 320: 2560 bytes received in 10.000000 s => 255.999999
+Run 9: failed 0 sucess 320: 2560 bytes received in 10.000000 s => 255.999999
+Average datarate : 254.719998 	Std dev: 3.873190
+done! press key for next round
+press key!
+press key once slave received first packet!
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 1 found! Can start!
+[A4][ 9][4E][ 1][70][69][6E][67][FF][ 3][ 0][ 0][ E]
+Channel 1 open! took 0.070977
+Run 0: failed 4 sucess 316: 2528 bytes received in 10.000000 s => 252.799999
+Run 1: failed 0 sucess 320: 2560 bytes received in 10.000000 s => 255.999996
+Run 2: failed 0 sucess 321: 2568 bytes received in 10.000000 s => 256.799996
+Run 3: failed 0 sucess 320: 2560 bytes received in 10.000000 s => 255.999998
+Run 4: failed 0 sucess 320: 2560 bytes received in 10.000000 s => 255.999998
+Run 5: failed 1 sucess 319: 2552 bytes received in 10.000000 s => 255.199998
+Run 6: failed 0 sucess 321: 2568 bytes received in 10.000000 s => 256.799998
+Run 7: failed 0 sucess 320: 2560 bytes received in 10.000000 s => 255.999998
+Run 8: failed 0 sucess 320: 2560 bytes received in 10.000000 s => 255.999998
+Run 9: failed 0 sucess 321: 2568 bytes received in 10.000000 s => 256.799998
+Average datarate : 255.839998 	Std dev: 1.120000
+done! press key for next round
+press key!
+press key once slave received first packet!
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 1 found! Can start!
+[A4][ 9][4E][ 1][70][69][6E][67][FF][ 3][ 0][ 0][ E]
+Channel 1 open! took 0.398597
+Run 0: failed 0 sucess 320: 2560 bytes received in 10.000000 s => 255.999997
+Run 1: failed 1 sucess 319: 2552 bytes received in 10.000000 s => 255.199998
+Run 2: failed 0 sucess 320: 2560 bytes received in 10.000000 s => 255.999999
+Run 3: failed 1 sucess 320: 2560 bytes received in 10.000000 s => 255.999996
+Run 4: failed 1 sucess 319: 2552 bytes received in 10.000000 s => 255.199996
+Run 5: failed 0 sucess 320: 2560 bytes received in 10.000000 s => 255.999998
+Run 6: failed 0 sucess 321: 2568 bytes received in 10.000000 s => 256.800000
+Run 7: failed 0 sucess 320: 2560 bytes received in 10.000000 s => 255.999998
+Run 8: failed 0 sucess 320: 2560 bytes received in 10.000000 s => 255.999997
+Run 9: failed 0 sucess 321: 2568 bytes received in 10.000000 s => 256.799997
+Average datarate : 255.999998 	Std dev: 0.505965
+done! press key for next round
+press key!
+press key once slave received first packet!
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 1 found! Can start!
+[A4][ 9][4E][ 1][70][69][6E][67][FF][ 3][ 0][ 0][ E]
+Channel 1 open! took 0.534684
+Run 0: failed 1 sucess 319: 2552 bytes received in 10.000000 s => 255.199998
+Run 1: failed 0 sucess 320: 2560 bytes received in 10.000000 s => 255.999998
+Run 2: failed 0 sucess 320: 2560 bytes received in 10.000000 s => 255.999998
+Run 3: failed 0 sucess 321: 2568 bytes received in 10.000000 s => 256.799999
+Run 4: failed 0 sucess 320: 2560 bytes received in 10.000000 s => 255.999999
+Run 5: failed 0 sucess 320: 2560 bytes received in 10.000000 s => 255.999997
+Run 6: failed 0 sucess 321: 2568 bytes received in 10.000000 s => 256.799996
+Run 7: failed 0 sucess 320: 2560 bytes received in 10.000000 s => 255.999998
+Run 8: failed 0 sucess 320: 2560 bytes received in 10.000000 s => 255.999999
+Run 9: failed 0 sucess 321: 2568 bytes received in 10.000000 s => 256.800000
+Average datarate : 256.159998 	Std dev: 0.480000
+done! press key for next round
+press key!
+press key once slave received first packet!
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 1 found! Can start!
+[A4][ 9][4E][ 1][70][69][6E][67][FF][ 3][ 0][ 0][ E]
+Channel 1 open! took 0.421660
+Run 0: failed 88 sucess 228: 1824 bytes received in 10.000000 s => 182.399998
+Run 1: failed 0 sucess 320: 2560 bytes received in 10.000000 s => 255.999999
+Run 2: failed 0 sucess 320: 2560 bytes received in 10.000000 s => 255.999998
+Run 3: failed 0 sucess 321: 2568 bytes received in 10.000000 s => 256.799998
+Run 4: failed 0 sucess 320: 2560 bytes received in 10.000000 s => 255.999997
+Run 5: failed 1 sucess 319: 2552 bytes received in 10.000000 s => 255.200000
+Run 6: failed 0 sucess 321: 2568 bytes received in 10.000000 s => 256.799996
+Run 7: failed 0 sucess 320: 2560 bytes received in 10.000000 s => 255.999997
+Run 8: failed 0 sucess 320: 2560 bytes received in 10.000000 s => 255.999998
+Run 9: failed 0 sucess 321: 2568 bytes received in 10.000000 s => 256.799998
+Average datarate : 248.799998 	Std dev: 22.138473
+done! press key for next round
+press key!
+press key once slave received first packet!
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 1 found! Can start!
+[A4][ 9][4E][ 1][70][69][6E][67][FF][ 3][ 0][ 0][ E]
+Channel 1 open! took 0.547236
+Run 0: failed 1 sucess 319: 2552 bytes received in 10.000000 s => 255.199997
+Run 1: failed 0 sucess 320: 2560 bytes received in 10.000000 s => 255.999996
+Run 2: failed 0 sucess 320: 2560 bytes received in 10.000000 s => 255.999996
+Run 3: failed 0 sucess 321: 2568 bytes received in 10.000000 s => 256.799998
+Run 4: failed 0 sucess 320: 2560 bytes received in 10.000000 s => 255.999998
+Run 5: failed 0 sucess 320: 2560 bytes received in 10.000000 s => 255.999998
+Run 6: failed 0 sucess 321: 2568 bytes received in 10.000000 s => 256.799998
+Run 7: failed 0 sucess 320: 2560 bytes received in 10.000000 s => 255.999997
+Run 8: failed 0 sucess 320: 2560 bytes received in 10.000000 s => 255.999997
+Run 9: failed 0 sucess 321: 2568 bytes received in 10.000000 s => 256.799998
+Average datarate : 256.159997 	Std dev: 0.480000
+done! press key for next round
+press key!
+press key once slave received first packet!
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 1 found! Can start!
+[A4][ 9][4E][ 1][70][69][6E][67][FF][ 3][ 0][ 0][ E]
+Channel 1 open! took 0.397882
+Run 0: failed 0 sucess 320: 2560 bytes received in 10.000000 s => 255.999997
+Run 1: failed 0 sucess 320: 2560 bytes received in 10.000000 s => 255.999996
+Run 2: failed 0 sucess 320: 2560 bytes received in 10.000000 s => 255.999998
+Run 3: failed 0 sucess 321: 2568 bytes received in 10.000000 s => 256.799994
+Run 4: failed 0 sucess 320: 2560 bytes received in 10.000000 s => 255.999998
+Run 5: failed 1 sucess 319: 2552 bytes received in 10.000000 s => 255.200000
+Run 6: failed 1 sucess 320: 2560 bytes received in 10.000000 s => 255.999996
+Run 7: failed 0 sucess 320: 2560 bytes received in 10.000000 s => 255.999997
+Run 8: failed 0 sucess 320: 2560 bytes received in 10.000000 s => 255.999996
+Run 9: failed 0 sucess 321: 2568 bytes received in 10.000000 s => 256.799998
+Average datarate : 256.079997 	Std dev: 0.430812
+done! press key for next round
+press key!
+press key once slave received first packet!
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 1 found! Can start!
+[A4][ 9][4E][ 1][70][69][6E][67][FF][ 3][ 0][ 0][ E]
+Channel 1 open! took 0.000112
+Run 0: failed 0 sucess 308: 2464 bytes received in 10.000000 s => 246.399998
+Run 1: failed 0 sucess 320: 2560 bytes received in 10.000000 s => 255.999997
+Run 2: failed 0 sucess 321: 2568 bytes received in 10.000000 s => 256.799996
+Run 3: failed 0 sucess 320: 2560 bytes received in 10.000000 s => 255.999999
+Run 4: failed 0 sucess 320: 2560 bytes received in 10.000000 s => 256.000000
+Run 5: failed 0 sucess 321: 2568 bytes received in 10.000000 s => 256.799997
+Run 6: failed 0 sucess 320: 2560 bytes received in 10.000000 s => 255.999996
+Run 7: failed 0 sucess 320: 2560 bytes received in 10.000000 s => 255.999998
+Run 8: failed 0 sucess 321: 2568 bytes received in 10.000000 s => 256.799996
+Run 9: failed 0 sucess 320: 2560 bytes received in 10.000000 s => 255.999998
+Average datarate : 255.279998 	Std dev: 2.981543
+done! press key for next round
+press key!
+press key once slave received first packet!
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 1 found! Can start!
+[A4][ 9][4E][ 1][70][69][6E][67][FF][ 3][ 0][ 0][ E]
+Channel 1 open! took 0.416218
+Run 0: failed 88 sucess 228: 1824 bytes received in 10.000000 s => 182.399999
+Run 1: failed 0 sucess 320: 2560 bytes received in 10.000000 s => 256.000000
+Run 2: failed 0 sucess 320: 2560 bytes received in 10.000000 s => 255.999995
+Run 3: failed 0 sucess 321: 2568 bytes received in 10.000000 s => 256.799999
+Run 4: failed 0 sucess 320: 2560 bytes received in 10.000000 s => 255.999998
+Run 5: failed 0 sucess 320: 2560 bytes received in 10.000000 s => 255.999997
+Run 6: failed 0 sucess 321: 2568 bytes received in 10.000000 s => 256.800000
+Run 7: failed 0 sucess 320: 2560 bytes received in 10.000000 s => 255.999999
+Run 8: failed 0 sucess 320: 2560 bytes received in 10.000000 s => 255.999998
+Run 9: failed 0 sucess 321: 2568 bytes received in 10.000000 s => 256.799997
+Average datarate : 248.879998 	Std dev: 22.162888
+done! press key for next round
+press key!
+press key once slave received first packet!
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 1 found! Can start!
+[A4][ 9][4E][ 1][70][69][6E][67][FF][ 3][ 0][ 0][ E]
+Channel 1 open! took 0.392999
+Run 0: failed 88 sucess 228: 1824 bytes received in 10.000000 s => 182.399998
+Run 1: failed 0 sucess 320: 2560 bytes received in 10.000000 s => 255.999997
+Run 2: failed 0 sucess 320: 2560 bytes received in 10.000000 s => 255.999998
+Run 3: failed 0 sucess 321: 2568 bytes received in 10.000000 s => 256.799998
+Run 4: failed 0 sucess 320: 2560 bytes received in 10.000000 s => 255.999997
+Run 5: failed 0 sucess 320: 2560 bytes received in 10.000000 s => 255.999998
+Run 6: failed 1 sucess 320: 2560 bytes received in 10.000000 s => 255.999999
+Run 7: failed 0 sucess 320: 2560 bytes received in 10.000000 s => 255.999999
+Run 8: failed 0 sucess 320: 2560 bytes received in 10.000000 s => 256.000000
+Run 9: failed 0 sucess 321: 2568 bytes received in 10.000000 s => 256.799997
+Average datarate : 248.799998 	Std dev: 22.135582
+done! press key for next round
+
+[michael@xps src]$ sudo ./ant -p /dev/ttyUSB0 -t m -n 2 -f 511
+[sudo] Passwort für michael: 
+Power setting is now: 0dBm
+Experiment 2: Broadcast Data Transfer between multiple nodes
+press key!
+press key once slave received first packet!
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 1 found! Can start!
+[A4][ 9][4E][ 1][70][69][6E][67][FF][ 1][ 0][ 0][ C]
+Channel 1 open! took 0.200319
+Run 0: failed 1 sucess 640: 5120 bytes received in 10.000000 s => 511.999996
+Run 1: failed 0 sucess 641: 5128 bytes received in 10.000000 s => 512.799992
+Run 2: failed 1 sucess 640: 5120 bytes received in 10.000000 s => 511.999999
+Run 3: failed 0 sucess 642: 5136 bytes received in 10.000000 s => 513.599988
+Run 4: failed 0 sucess 641: 5128 bytes received in 10.000000 s => 512.799995
+Run 5: failed 0 sucess 641: 5128 bytes received in 10.000000 s => 512.799999
+Run 6: failed 2 sucess 639: 5112 bytes received in 10.000000 s => 511.199997
+Run 7: failed 0 sucess 642: 5136 bytes received in 10.000000 s => 513.599999
+Run 8: failed 0 sucess 641: 5128 bytes received in 10.000000 s => 512.799997
+Run 9: failed 0 sucess 641: 5128 bytes received in 10.000000 s => 512.799994
+Average datarate : 512.639996 	Std dev: 0.697423
+done! press key for next round
+press key!
+press key once slave received first packet!
+^C[michael@xps src]$ sudo ./ant -p /dev/ttyUSB0 -t m -n 2 -f 511
+Power setting is now: 0dBm
+Experiment 2: Broadcast Data Transfer between multiple nodes
+press key!
+press key once slave received first packet!
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 1 found! Can start!
+[A4][ 9][4E][ 1][70][69][6E][67][FF][ 1][ 0][ 0][ C]
+Channel 1 open! took 0.190799
+Run 0: failed 0 sucess 641: 5128 bytes received in 10.000000 s => 512.799999
+Run 1: failed 0 sucess 641: 5128 bytes received in 10.000000 s => 512.799998
+Run 2: failed 0 sucess 641: 5128 bytes received in 10.000000 s => 512.799992
+Run 3: failed 1 sucess 641: 5128 bytes received in 10.000000 s => 512.799996
+Run 4: failed 0 sucess 641: 5128 bytes received in 10.000000 s => 512.799993
+Run 5: failed 1 sucess 640: 5120 bytes received in 10.000000 s => 511.999992
+Run 6: failed 0 sucess 641: 5128 bytes received in 10.000000 s => 512.799996
+Run 7: failed 0 sucess 642: 5136 bytes received in 10.000000 s => 513.599999
+Run 8: failed 0 sucess 641: 5128 bytes received in 10.000000 s => 512.799993
+Run 9: failed 0 sucess 641: 5128 bytes received in 10.000000 s => 512.800000
+Average datarate : 512.799996 	Std dev: 0.357772
+done! press key for next round
+press key!
+press key once slave received first packet!
+^C[michael@xps src]$ sudo ./ant -p /dev/ttyUSB0 -t m -n 2 -f 511
+Power setting is now: 0dBm
+Experiment 2: Broadcast Data Transfer between multiple nodes
+press key!
+press key once slave received first packet!
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 1 found! Can start!
+[A4][ 9][4E][ 1][70][69][6E][67][FF][ 1][ 0][ 0][ C]
+Channel 1 open! took 0.189944
+Run 0: failed 0 sucess 641: 5128 bytes received in 10.000000 s => 512.799995
+Run 1: failed 0 sucess 641: 5128 bytes received in 10.000000 s => 512.799995
+Run 2: failed 1 sucess 640: 5120 bytes received in 10.000000 s => 511.999997
+Run 3: failed 0 sucess 642: 5136 bytes received in 10.000000 s => 513.599993
+Run 4: failed 0 sucess 641: 5128 bytes received in 10.000000 s => 512.799993
+Run 5: failed 0 sucess 641: 5128 bytes received in 10.000000 s => 512.799999
+Run 6: failed 0 sucess 641: 5128 bytes received in 10.000000 s => 512.800000
+Run 7: failed 0 sucess 642: 5136 bytes received in 10.000000 s => 513.599995
+Run 8: failed 0 sucess 641: 5128 bytes received in 10.000000 s => 512.799999
+Run 9: failed 0 sucess 641: 5128 bytes received in 10.000000 s => 512.799997
+Average datarate : 512.879996 	Std dev: 0.430812
+done! press key for next round
+press key!
+press key once slave received first packet!
+^C[michael@xps src]$ sudo ./ant -p /dev/ttyUSB0 -t m -n 2 -f 511
+Power setting is now: 0dBm
+Experiment 2: Broadcast Data Transfer between multiple nodes
+press key!
+press key once slave received first packet!
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 1 found! Can start!
+[A4][ 9][4E][ 1][70][69][6E][67][FF][ 1][ 0][ 0][ C]
+Channel 1 open! took 0.196893
+Run 0: failed 0 sucess 641: 5128 bytes received in 10.000000 s => 512.799992
+Run 1: failed 0 sucess 641: 5128 bytes received in 10.000000 s => 512.799996
+Run 2: failed 0 sucess 641: 5128 bytes received in 10.000000 s => 512.799994
+Run 3: failed 1 sucess 641: 5128 bytes received in 10.000000 s => 512.799999
+Run 4: failed 0 sucess 641: 5128 bytes received in 10.000000 s => 512.799997
+Run 5: failed 1 sucess 640: 5120 bytes received in 10.000000 s => 511.999992
+Run 6: failed 1 sucess 640: 5120 bytes received in 10.000000 s => 511.999992
+Run 7: failed 0 sucess 642: 5136 bytes received in 10.000000 s => 513.599994
+Run 8: failed 1 sucess 640: 5120 bytes received in 10.000000 s => 511.999994
+Run 9: failed 0 sucess 641: 5128 bytes received in 10.000000 s => 512.799999
+Average datarate : 512.639995 	Std dev: 0.480001
+done! press key for next round
+press key!
+press key once slave received first packet!
+Waiting for msgType 4E! Press any key to continue!
+[michael@xps src]$ Power setting is now: 0dBm
+Experiment 2: Broadcast Data Transfer between multiple nodes
+press key!
+press key once slave received first packet!
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 1 found! Can start!
+[A4][ 9][4E][ 1][70][69][6E][67][FF][ 1][ 0][ 0][ C]
+Channel 1 open! took 0.193656
+Run 0: failed 0 sucess 641: 5128 bytes received in 10.000000 s => 512.799997
+Run 1: failed 0 sucess 641: 5128 bytes received in 10.000000 s => 512.800000
+Run 2: failed 0 sucess 641: 5128 bytes received in 10.000000 s => 512.799997
+Run 3: failed 0 sucess 642: 5136 bytes received in 10.000000 s => 513.599998
+Run 4: failed 0 sucess 641: 5128 bytes received in 10.000000 s => 512.799995
+Run 5: failed 0 sucess 641: 5128 bytes received in 10.000000 s => 512.799994
+Run 6: failed 0 sucess 641: 5128 bytes received in 10.000000 s => 512.799994
+Run 7: failed 0 sucess 642: 5136 bytes received in 10.000000 s => 513.599994
+Run 8: failed 1 sucess 640: 5120 bytes received in 10.000000 s => 511.999993
+Run 9: failed 2 sucess 639: 5112 bytes received in 10.000000 s => 511.199993
+Average datarate : 512.719995 	Std dev: 0.664531
+done! press key for next round
+press key!
+press key once slave received first packet!
+[michael@xps src]$ Power setting is now: 0dBm
+Experiment 2: Broadcast Data Transfer between multiple nodes
+press key!
+press key once slave received first packet!
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 1 found! Can start!
+[A4][ 9][4E][ 1][70][69][6E][67][FF][ 1][ 0][ 0][ C]
+Channel 1 open! took 0.198525
+Run 0: failed 0 sucess 641: 5128 bytes received in 10.000000 s => 512.799995
+Run 1: failed 0 sucess 641: 5128 bytes received in 10.000000 s => 512.799999
+Run 2: failed 1 sucess 640: 5120 bytes received in 10.000000 s => 511.999993
+Run 3: failed 0 sucess 642: 5136 bytes received in 10.000000 s => 513.599999
+Run 4: failed 0 sucess 641: 5128 bytes received in 10.000000 s => 512.799997
+Run 5: failed 0 sucess 641: 5128 bytes received in 10.000000 s => 512.799994
+Run 6: failed 1 sucess 641: 5128 bytes received in 10.000000 s => 512.799996
+Run 7: failed 0 sucess 641: 5128 bytes received in 10.000000 s => 512.799995
+Run 8: failed 1 sucess 640: 5120 bytes received in 10.000000 s => 511.999994
+Run 9: failed 0 sucess 641: 5128 bytes received in 10.000000 s => 512.799999
+Average datarate : 512.719996 	Std dev: 0.430815
+done! press key for next round
+press key!
+press key once slave received first packet!
+[michael@xps src]$ Power setting is now: 0dBm
+Experiment 2: Broadcast Data Transfer between multiple nodes
+press key!
+press key once slave received first packet!
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 1 found! Can start!
+[A4][ 9][4E][ 1][70][69][6E][67][FF][ 1][ 0][ 0][ C]
+Channel 1 open! took 0.191589
+Run 0: failed 1 sucess 640: 5120 bytes received in 10.000000 s => 511.999997
+Run 1: failed 0 sucess 641: 5128 bytes received in 10.000000 s => 512.799993
+Run 2: failed 0 sucess 641: 5128 bytes received in 10.000000 s => 512.799992
+Run 3: failed 1 sucess 641: 5128 bytes received in 10.000000 s => 512.799993
+Run 4: failed 0 sucess 641: 5128 bytes received in 10.000000 s => 512.799997
+Run 5: failed 0 sucess 641: 5128 bytes received in 10.000000 s => 512.799994
+Run 6: failed 0 sucess 641: 5128 bytes received in 10.000000 s => 512.799993
+Run 7: failed 0 sucess 642: 5136 bytes received in 10.000000 s => 513.599995
+Run 8: failed 0 sucess 641: 5128 bytes received in 10.000000 s => 512.799993
+Run 9: failed 0 sucess 641: 5128 bytes received in 10.000000 s => 512.800000
+Average datarate : 512.799995 	Std dev: 0.357770
+done! press key for next round
+[michael@xps src]$ Power setting is now: 0dBm
+Experiment 2: Broadcast Data Transfer between multiple nodes
+press key!
+press key once slave received first packet!
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 1 found! Can start!
+[A4][ 9][4E][ 1][70][69][6E][67][FF][ 1][ 0][ 0][ C]
+Channel 1 open! took 0.193107
+Run 0: failed 1 sucess 640: 5120 bytes received in 10.000000 s => 511.999993
+Run 1: failed 0 sucess 641: 5128 bytes received in 10.000000 s => 512.799994
+Run 2: failed 1 sucess 640: 5120 bytes received in 10.000000 s => 511.999998
+Run 3: failed 1 sucess 641: 5128 bytes received in 10.000000 s => 512.799996
+Run 4: failed 0 sucess 641: 5128 bytes received in 10.000000 s => 512.799998
+Run 5: failed 0 sucess 641: 5128 bytes received in 10.000000 s => 512.799994
+Run 6: failed 0 sucess 641: 5128 bytes received in 10.000000 s => 512.799996
+Run 7: failed 0 sucess 642: 5136 bytes received in 10.000000 s => 513.599997
+Run 8: failed 1 sucess 640: 5120 bytes received in 10.000000 s => 511.999997
+Run 9: failed 1 sucess 640: 5120 bytes received in 10.000000 s => 511.999993
+Average datarate : 512.559996 	Std dev: 0.512250
+done! press key for next round
+[michael@xps src]$ Power setting is now: 0dBm
+Experiment 2: Broadcast Data Transfer between multiple nodes
+press key!
+press key once slave received first packet!
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 1 found! Can start!
+[A4][ 9][4E][ 1][70][69][6E][67][FF][ 1][ 0][ 0][ C]
+Channel 1 open! took 0.214937
+Run 0: failed 1 sucess 640: 5120 bytes received in 10.000000 s => 511.999998
+Run 1: failed 1 sucess 640: 5120 bytes received in 10.000000 s => 511.999994
+Run 2: failed 0 sucess 641: 5128 bytes received in 10.000000 s => 512.799995
+Run 3: failed 1 sucess 641: 5128 bytes received in 10.000000 s => 512.799989
+Run 4: failed 0 sucess 641: 5128 bytes received in 10.000000 s => 512.799993
+Run 5: failed 1 sucess 640: 5120 bytes received in 10.000000 s => 511.999997
+Run 6: failed 0 sucess 641: 5128 bytes received in 10.000000 s => 512.799999
+Run 7: failed 1 sucess 641: 5128 bytes received in 10.000000 s => 512.799999
+Run 8: failed 1 sucess 640: 5120 bytes received in 10.000000 s => 511.999999
+Run 9: failed 1 sucess 640: 5120 bytes received in 10.000000 s => 511.999993
+Average datarate : 512.399996 	Std dev: 0.399999
+done! press key for next round
+[michael@xps src]$ Power setting is now: 0dBm
+Experiment 2: Broadcast Data Transfer between multiple nodes
+press key!
+press key once slave received first packet!
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 1 found! Can start!
+[A4][ 9][4E][ 1][70][69][6E][67][FF][ 1][ 0][ 0][ C]
+Channel 1 open! took 0.000092
+Run 0: failed 0 sucess 629: 5032 bytes received in 10.000000 s => 503.199998
+Run 1: failed 0 sucess 642: 5136 bytes received in 10.000000 s => 513.599994
+Run 2: failed 1 sucess 640: 5120 bytes received in 10.000000 s => 511.999997
+Run 3: failed 1 sucess 640: 5120 bytes received in 10.000000 s => 511.999995
+Run 4: failed 0 sucess 641: 5128 bytes received in 10.000000 s => 512.799992
+Run 5: failed 0 sucess 642: 5136 bytes received in 10.000000 s => 513.600000
+Run 6: failed 1 sucess 640: 5120 bytes received in 10.000000 s => 511.999998
+Run 7: failed 0 sucess 641: 5128 bytes received in 10.000000 s => 512.799998
+Run 8: failed 0 sucess 641: 5128 bytes received in 10.000000 s => 512.799999
+Run 9: failed 0 sucess 642: 5136 bytes received in 10.000000 s => 513.599997
+Average datarate : 511.839997 	Std dev: 2.945912
+
+[michael@xps src]$ sudo ./ant -p /dev/ttyUSB0 -t m -n 2 -f 255
+[sudo] Passwort für michael: 
+Power setting is now: 0dBm
+Experiment 2: Broadcast Data Transfer between multiple nodes
+press key!
+press key once slave received first packet!
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 1 found! Can start!
+[A4][ 9][4E][ 1][70][69][6E][67][9A][ 1][ 0][ 0][69]
+Channel 1 open! took 0.000116
+Run 0: failed 1 sucess 1: 8 bytes received in 10.000000 s => 0.800000
+Run 1: failed 0 sucess 0: 0 bytes received in 10.000000 s => 0.000000
+Run 2: failed 0 sucess 0: 0 bytes received in 10.000000 s => 0.000000
+Run 3: failed 0 sucess 0: 0 bytes received in 10.000000 s => 0.000000
+Run 4: failed 0 sucess 0: 0 bytes received in 10.000000 s => 0.000000
+Run 5: failed 0 sucess 0: 0 bytes received in 10.000000 s => 0.000000
+Run 6: failed 0 sucess 0: 0 bytes received in 10.000000 s => 0.000000
+Run 7: failed 0 sucess 0: 0 bytes received in 10.000000 s => 0.000000
+Run 8: failed 0 sucess 0: 0 bytes received in 10.000000 s => 0.000000
+Run 9: failed 0 sucess 0: 0 bytes received in 10.000000 s => 0.000000
+Average datarate : 0.080000 	Std dev: 0.240000
+done! press key for next round
+press key!
+press key once slave received first packet!
+^C^C[michael@xps src]$ sudo ./ant -p /dev/ttyUSB0 -t m -n 2 -f 255
+Power setting is now: 0dBm
+Experiment 2: Broadcast Data Transfer between multiple nodes
+press key!
+press key once slave received first packet!
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 1 found! Can start!
+[A4][ 9][4E][ 1][ 0][ 0][6E][67][9A][ 1][ 0][ 0][70]
+Channel 1 open! took 0.200329
+Run 0: failed 1 sucess 0: 0 bytes received in 10.000000 s => 0.000000
+Run 1: failed 0 sucess 0: 0 bytes received in 10.000000 s => 0.000000
+Run 2: failed 0 sucess 0: 0 bytes received in 10.000000 s => 0.000000
+Run 3: failed 0 sucess 0: 0 bytes received in 10.000000 s => 0.000000
+Run 4: failed 0 sucess 0: 0 bytes received in 10.000000 s => 0.000000
+Run 5: failed 0 sucess 0: 0 bytes received in 10.000000 s => 0.000000
+Run 6: failed 0 sucess 0: 0 bytes received in 10.000000 s => 0.000000
+Run 7: failed 0 sucess 0: 0 bytes received in 10.000000 s => 0.000000
+Run 8: failed 0 sucess 0: 0 bytes received in 10.000000 s => 0.000000
+Run 9: failed 0 sucess 0: 0 bytes received in 10.000000 s => 0.000000
+Average datarate : 0.000000 	Std dev: 0.000000
+done! press key for next round
+^C[michael@xps src]$ sudo ./ant -p /dev/ttyUSB0 -t m -n 2 -f 255
+Power setting is now: 0dBm
+Experiment 2: Broadcast Data Transfer between multiple nodes
+press key!
+press key once slave received first packet!
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 1 found! Can start!
+[A4][ 9][4E][ 1][ 0][ 0][6E][67][9A][ 1][ 0][ 0][70]
+Channel 1 open! took 0.200526
+Run 0: failed 1 sucess 0: 0 bytes received in 10.000000 s => 0.000000
+Run 1: failed 0 sucess 0: 0 bytes received in 10.000000 s => 0.000000
+Run 2: failed 0 sucess 0: 0 bytes received in 10.000000 s => 0.000000
+Run 3: failed 0 sucess 0: 0 bytes received in 10.000000 s => 0.000000
+Run 4: failed 0 sucess 0: 0 bytes received in 10.000000 s => 0.000000
+Run 5: failed 0 sucess 0: 0 bytes received in 10.000000 s => 0.000000
+Run 6: failed 0 sucess 0: 0 bytes received in 10.000000 s => 0.000000
+Run 7: failed 0 sucess 0: 0 bytes received in 10.000000 s => 0.000000
+Run 8: failed 0 sucess 0: 0 bytes received in 10.000000 s => 0.000000
+Run 9: failed 0 sucess 0: 0 bytes received in 10.000000 s => 0.000000
+Average datarate : 0.000000 	Std dev: 0.000000
+done! press key for next round
+^C[michael@xps src]$ sudo ./ant -p /dev/ttyUSB0 -t m -n 2 -f 255
+Power setting is now: 0dBm
+Experiment 2: Broadcast Data Transfer between multiple nodes
+press key!
+press key once slave received first packet!
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 1 found! Can start!
+[A4][ 9][4E][ 1][ 0][ 0][6E][67][9A][ 1][ 0][ 0][70]
+Channel 1 open! took 0.203994
+Run 0: failed 1 sucess 0: 0 bytes received in 10.000000 s => 0.000000
+Run 1: failed 0 sucess 0: 0 bytes received in 10.000000 s => 0.000000
+Run 2: failed 0 sucess 0: 0 bytes received in 10.000000 s => 0.000000
+Run 3: failed 0 sucess 0: 0 bytes received in 10.000000 s => 0.000000
+Run 4: failed 0 sucess 0: 0 bytes received in 10.000000 s => 0.000000
+Run 5: failed 0 sucess 0: 0 bytes received in 10.000000 s => 0.000000
+Run 6: failed 0 sucess 0: 0 bytes received in 10.000000 s => 0.000000
+Run 7: failed 0 sucess 0: 0 bytes received in 10.000000 s => 0.000000
+Run 8: failed 0 sucess 0: 0 bytes received in 10.000000 s => 0.000000
+Run 9: failed 0 sucess 0: 0 bytes received in 10.000000 s => 0.000000
+Average datarate : 0.000000 	Std dev: 0.000000
+done! press key for next round
+^C[michael@xps src]$ sudo ./ant -p /dev/ttyUSB0 -t m -n 2 -f 255
+Power setting is now: 0dBm
+Experiment 2: Broadcast Data Transfer between multiple nodes
+press key!
+press key once slave received first packet!
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 1 found! Can start!
+[A4][ 9][4E][ 1][ 0][ 0][6E][67][9A][ 1][ 0][ 0][70]
+Channel 1 open! took 0.198435
+Run 0: failed 1 sucess 0: 0 bytes received in 10.000000 s => 0.000000
+Run 1: failed 0 sucess 0: 0 bytes received in 10.000000 s => 0.000000
+Run 2: failed 0 sucess 0: 0 bytes received in 10.000000 s => 0.000000
+Run 3: failed 0 sucess 0: 0 bytes received in 10.000000 s => 0.000000
+Run 4: failed 0 sucess 0: 0 bytes received in 10.000000 s => 0.000000
+Run 5: failed 0 sucess 0: 0 bytes received in 10.000000 s => 0.000000
+Run 6: failed 0 sucess 0: 0 bytes received in 10.000000 s => 0.000000
+Run 7: failed 0 sucess 0: 0 bytes received in 10.000000 s => 0.000000
+Run 8: failed 0 sucess 0: 0 bytes received in 10.000000 s => 0.000000
+Run 9: failed 0 sucess 0: 0 bytes received in 10.000000 s => 0.000000
+Average datarate : 0.000000 	Std dev: 0.000000
+done! press key for next round
+^C[michael@xps src]$ sudo ./ant -p /dev/ttyUSB0 -t m -n 2 -f 255
+Power setting is now: 0dBm
+Experiment 2: Broadcast Data Transfer between multiple nodes
+press key!
+press key once slave received first packet!
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 1 found! Can start!
+[A4][ 9][4E][ 1][ 0][ 0][6E][67][9A][ 1][ 0][ 0][70]
+Channel 1 open! took 0.200751
+Run 0: failed 1 sucess 0: 0 bytes received in 10.000000 s => 0.000000
+Run 1: failed 0 sucess 0: 0 bytes received in 10.000000 s => 0.000000
+Run 2: failed 0 sucess 0: 0 bytes received in 10.000000 s => 0.000000
+Run 3: failed 0 sucess 0: 0 bytes received in 10.000000 s => 0.000000
+Run 4: failed 0 sucess 0: 0 bytes received in 10.000000 s => 0.000000
+Run 5: failed 0 sucess 0: 0 bytes received in 10.000000 s => 0.000000
+Run 6: failed 0 sucess 0: 0 bytes received in 10.000000 s => 0.000000
+Run 7: failed 0 sucess 0: 0 bytes received in 10.000000 s => 0.000000
+Run 8: failed 0 sucess 0: 0 bytes received in 10.000000 s => 0.000000
+Run 9: failed 0 sucess 0: 0 bytes received in 10.000000 s => 0.000000
+Average datarate : 0.000000 	Std dev: 0.000000
+done! press key for next round
+^C[michael@xps src]$ sudo ./ant -p /dev/ttyUSB0 -t m -n 2 -f 255
+Power setting is now: 0dBm
+Experiment 2: Broadcast Data Transfer between multiple nodes
+press key!
+press key once slave received first packet!
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 1 found! Can start!
+[A4][ 9][4E][ 1][ 0][ 0][6E][67][9A][ 1][ 0][ 0][70]
+Channel 1 open! took 0.202207
+Run 0: failed 1 sucess 0: 0 bytes received in 10.000000 s => 0.000000
+Run 1: failed 0 sucess 0: 0 bytes received in 10.000000 s => 0.000000
+Run 2: failed 0 sucess 0: 0 bytes received in 10.000000 s => 0.000000
+Run 3: failed 0 sucess 0: 0 bytes received in 10.000000 s => 0.000000
+Run 4: failed 0 sucess 0: 0 bytes received in 10.000000 s => 0.000000
+Run 5: failed 0 sucess 0: 0 bytes received in 10.000000 s => 0.000000
+Run 6: failed 0 sucess 0: 0 bytes received in 10.000000 s => 0.000000
+Run 7: failed 0 sucess 0: 0 bytes received in 10.000000 s => 0.000000
+Run 8: failed 0 sucess 0: 0 bytes received in 10.000000 s => 0.000000
+Run 9: failed 0 sucess 0: 0 bytes received in 10.000000 s => 0.000000
+Average datarate : 0.000000 	Std dev: 0.000000
+done! press key for next round
+^C[michael@xps src]$ sudo ./ant -p /dev/ttyUSB0 -t m -n 2 -f 255
+Power setting is now: 0dBm
+Experiment 2: Broadcast Data Transfer between multiple nodes
+press key!
+press key once slave received first packet!
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 1 found! Can start!
+[A4][ 9][4E][ 1][ 0][ 0][6E][67][9A][ 1][ 0][ 0][70]
+Channel 1 open! took 0.204639
+Run 0: failed 1 sucess 0: 0 bytes received in 10.000000 s => 0.000000
+Run 1: failed 0 sucess 0: 0 bytes received in 10.000000 s => 0.000000
+Run 2: failed 0 sucess 0: 0 bytes received in 10.000000 s => 0.000000
+Run 3: failed 0 sucess 0: 0 bytes received in 10.000000 s => 0.000000
+Run 4: failed 0 sucess 0: 0 bytes received in 10.000000 s => 0.000000
+Run 5: failed 0 sucess 0: 0 bytes received in 10.000000 s => 0.000000
+Run 6: failed 0 sucess 0: 0 bytes received in 10.000000 s => 0.000000
+Run 7: failed 0 sucess 0: 0 bytes received in 10.000000 s => 0.000000
+Run 8: failed 0 sucess 0: 0 bytes received in 10.000000 s => 0.000000
+Run 9: failed 0 sucess 0: 0 bytes received in 10.000000 s => 0.000000
+Average datarate : 0.000000 	Std dev: 0.000000
+done! press key for next round
+^C[michael@xps src]$ sudo ./ant -p /dev/ttyUSB0 -t m -n 2 -f 255
+Power setting is now: 0dBm
+Experiment 2: Broadcast Data Transfer between multiple nodes
+press key!
+press key once slave received first packet!
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 1 found! Can start!
+[A4][ 9][4E][ 1][ 0][ 0][6E][67][9A][ 1][ 0][ 0][70]
+Channel 1 open! took 0.200241
+Run 0: failed 1 sucess 0: 0 bytes received in 10.000000 s => 0.000000
+Run 1: failed 0 sucess 0: 0 bytes received in 10.000000 s => 0.000000
+Run 2: failed 0 sucess 0: 0 bytes received in 10.000000 s => 0.000000
+Run 3: failed 0 sucess 0: 0 bytes received in 10.000000 s => 0.000000
+Run 4: failed 0 sucess 0: 0 bytes received in 10.000000 s => 0.000000
+Run 5: failed 0 sucess 0: 0 bytes received in 10.000000 s => 0.000000
+Run 6: failed 0 sucess 0: 0 bytes received in 10.000000 s => 0.000000
+Run 7: failed 0 sucess 0: 0 bytes received in 10.000000 s => 0.000000
+Run 8: failed 0 sucess 0: 0 bytes received in 10.000000 s => 0.000000
+Run 9: failed 0 sucess 0: 0 bytes received in 10.000000 s => 0.000000
+Average datarate : 0.000000 	Std dev: 0.000000
+done! press key for next round
+^C[michael@xps src]$ sudo ./ant -p /dev/ttyUSB0 -t m -n 2 -f 255
+Power setting is now: 0dBm
+Experiment 2: Broadcast Data Transfer between multiple nodes
+press key!
+press key once slave received first packet!
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 1 found! Can start!
+[A4][ 9][4E][ 1][ 0][ 0][6E][67][9A][ 1][ 0][ 0][70]
+Channel 1 open! took 0.203687
+Run 0: failed 1 sucess 0: 0 bytes received in 10.000000 s => 0.000000
+Run 1: failed 0 sucess 0: 0 bytes received in 10.000000 s => 0.000000
+Run 2: failed 0 sucess 0: 0 bytes received in 10.000000 s => 0.000000
+Run 3: failed 0 sucess 0: 0 bytes received in 10.000000 s => 0.000000
+Run 4: failed 0 sucess 0: 0 bytes received in 10.000000 s => 0.000000
+Run 5: failed 0 sucess 0: 0 bytes received in 10.000000 s => 0.000000
+Run 6: failed 0 sucess 0: 0 bytes received in 10.000000 s => 0.000000
+Run 7: failed 0 sucess 0: 0 bytes received in 10.000000 s => 0.000000
+Run 8: failed 0 sucess 0: 0 bytes received in 10.000000 s => 0.000000
+Run 9: failed 0 sucess 0: 0 bytes received in 10.000000 s => 0.000000
+Average datarate : 0.000000 	Std dev: 0.000000
+done! press key for next round
+
+[michael@xps src]$ sudo ./ant -p /dev/ttyUSB0 -t m -n 2 -f 400
+[sudo] Passwort für michael: 
+Power setting is now: 0dBm
+Experiment 2: Broadcast Data Transfer between multiple nodes
+press key!
+press key once slave received first packet!
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 1 found! Can start!
+[A4][ 9][4E][ 1][70][69][6E][67][90][ 1][ 0][ 0][63]
+Channel 1 open! took 0.058170
+Run 0: failed 0 sucess 819: 6552 bytes received in 10.000000 s => 655.199993
+Run 1: failed 1 sucess 818: 6544 bytes received in 10.000000 s => 654.399993
+Run 2: failed 13 sucess 806: 6448 bytes received in 10.000000 s => 644.799999
+Run 3: failed 3 sucess 816: 6528 bytes received in 10.000000 s => 652.799997
+Run 4: failed 0 sucess 820: 6560 bytes received in 10.000000 s => 655.999996
+Run 5: failed 0 sucess 819: 6552 bytes received in 10.000000 s => 655.199994
+Run 6: failed 2 sucess 817: 6536 bytes received in 10.000000 s => 653.599991
+Run 7: failed 3 sucess 816: 6528 bytes received in 10.000000 s => 652.799996
+Run 8: failed 4 sucess 815: 6520 bytes received in 10.000000 s => 651.999998
+Run 9: failed 7 sucess 813: 6504 bytes received in 10.000000 s => 650.399991
+Average datarate : 652.719995 	Std dev: 3.087004
+done! press key for next round
+press key!
+press key once slave received first packet!
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 1 found! Can start!
+[A4][ 9][4E][ 1][70][69][6E][67][90][ 1][ 0][ 0][63]
+Channel 1 open! took 0.065892
+Run 0: failed 5 sucess 814: 6512 bytes received in 10.000000 s => 651.199994
+Run 1: failed 0 sucess 819: 6552 bytes received in 10.000000 s => 655.199997
+Run 2: failed 6 sucess 813: 6504 bytes received in 10.000000 s => 650.399998
+Run 3: failed 1 sucess 818: 6544 bytes received in 10.000000 s => 654.399996
+Run 4: failed 3 sucess 817: 6536 bytes received in 10.000000 s => 653.599998
+Run 5: failed 1 sucess 818: 6544 bytes received in 10.000000 s => 654.399999
+Run 6: failed 1 sucess 818: 6544 bytes received in 10.000000 s => 654.399996
+Run 7: failed 2 sucess 817: 6536 bytes received in 10.000000 s => 653.599999
+Run 8: failed 10 sucess 809: 6472 bytes received in 10.000000 s => 647.199994
+Run 9: failed 4 sucess 816: 6528 bytes received in 10.000000 s => 652.799994
+Average datarate : 652.719996 	Std dev: 2.331009
+done! press key for next round
+press key!
+press key once slave received first packet!
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 1 found! Can start!
+[A4][ 9][4E][ 1][70][69][6E][67][90][ 1][ 0][ 0][63]
+Channel 1 open! took 0.000117
+Run 0: failed 1 sucess 814: 6512 bytes received in 10.000000 s => 651.199996
+Run 1: failed 3 sucess 816: 6528 bytes received in 10.000000 s => 652.799991
+Run 2: failed 7 sucess 813: 6504 bytes received in 10.000000 s => 650.399992
+Run 3: failed 3 sucess 816: 6528 bytes received in 10.000000 s => 652.799994
+Run 4: failed 1 sucess 818: 6544 bytes received in 10.000000 s => 654.399998
+Run 5: failed 0 sucess 819: 6552 bytes received in 10.000000 s => 655.199996
+Run 6: failed 3 sucess 817: 6536 bytes received in 10.000000 s => 653.599996
+Run 7: failed 5 sucess 814: 6512 bytes received in 10.000000 s => 651.199992
+Run 8: failed 3 sucess 816: 6528 bytes received in 10.000000 s => 652.799996
+Run 9: failed 5 sucess 814: 6512 bytes received in 10.000000 s => 651.199990
+Average datarate : 652.559994 	Std dev: 1.477297
+done! press key for next round
+press key!
+press key once slave received first packet!
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 1 found! Can start!
+[A4][ 9][4E][ 1][70][69][6E][67][90][ 1][ 0][ 0][63]
+Channel 1 open! took 0.000185
+Run 0: failed 0 sucess 819: 6552 bytes received in 10.000000 s => 655.199991
+Run 1: failed 7 sucess 812: 6496 bytes received in 10.000000 s => 649.599998
+Run 2: failed 3 sucess 816: 6528 bytes received in 10.000000 s => 652.799995
+Run 3: failed 9 sucess 810: 6480 bytes received in 10.000000 s => 647.999990
+Run 4: failed 1 sucess 819: 6552 bytes received in 10.000000 s => 655.199998
+Run 5: failed 0 sucess 819: 6552 bytes received in 10.000000 s => 655.199998
+Run 6: failed 2 sucess 817: 6536 bytes received in 10.000000 s => 653.599991
+Run 7: failed 1 sucess 818: 6544 bytes received in 10.000000 s => 654.399990
+Run 8: failed 55 sucess 765: 6120 bytes received in 10.000000 s => 611.999992
+Run 9: failed 463 sucess 328: 2624 bytes received in 10.000000 s => 262.399998
+Average datarate : 609.839994 	Std dev: 116.479587
+done! press key for next round
+press key!
+press key once slave received first packet!
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 1 found! Can start!
+[A4][ 9][4E][ 1][70][69][6E][67][90][ 1][ 0][ 0][63]
+Channel 1 open! took 0.000168
+Run 0: failed 8 sucess 865: 6920 bytes received in 10.000000 s => 691.999997
+Run 1: failed 10 sucess 810: 6480 bytes received in 10.000000 s => 647.999992
+Run 2: failed 7 sucess 812: 6496 bytes received in 10.000000 s => 649.599994
+Run 3: failed 3 sucess 816: 6528 bytes received in 10.000000 s => 652.799991
+Run 4: failed 2 sucess 817: 6536 bytes received in 10.000000 s => 653.599992
+Run 5: failed 2 sucess 818: 6544 bytes received in 10.000000 s => 654.399994
+Run 6: failed 8 sucess 811: 6488 bytes received in 10.000000 s => 648.799995
+Run 7: failed 3 sucess 816: 6528 bytes received in 10.000000 s => 652.799994
+Run 8: failed 10 sucess 809: 6472 bytes received in 10.000000 s => 647.199997
+Run 9: failed 4 sucess 815: 6520 bytes received in 10.000000 s => 651.999995
+Average datarate : 655.119994 	Std dev: 12.519170
+done! press key for next round
+press key!
+press key once slave received first packet!
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 1 found! Can start!
+[A4][ 9][4E][ 1][70][69][6E][67][90][ 1][ 0][ 0][63]
+Channel 1 open! took 0.000155
+Run 0: failed 2 sucess 817: 6536 bytes received in 10.000000 s => 653.599996
+Run 1: failed 1 sucess 818: 6544 bytes received in 10.000000 s => 654.399997
+Run 2: failed 6 sucess 814: 6512 bytes received in 10.000000 s => 651.199996
+Run 3: failed 3 sucess 816: 6528 bytes received in 10.000000 s => 652.799996
+Run 4: failed 3 sucess 816: 6528 bytes received in 10.000000 s => 652.799993
+Run 5: failed 2 sucess 817: 6536 bytes received in 10.000000 s => 653.599993
+Run 6: failed 4 sucess 815: 6520 bytes received in 10.000000 s => 651.999993
+Run 7: failed 2 sucess 818: 6544 bytes received in 10.000000 s => 654.399991
+Run 8: failed 8 sucess 811: 6488 bytes received in 10.000000 s => 648.799997
+Run 9: failed 4 sucess 815: 6520 bytes received in 10.000000 s => 651.999988
+Average datarate : 652.559994 	Std dev: 1.601998
+done! press key for next round
+[michael@xps src]$ sudo ./ant -p /dev/ttyUSB0 -t m -n 2 -f 400
+Power setting is now: 0dBm
+Experiment 2: Broadcast Data Transfer between multiple nodes
+press key!
+press key once slave received first packet!
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 1 found! Can start!
+[A4][ 9][4E][ 1][70][69][6E][67][90][ 1][ 0][ 0][63]
+Channel 1 open! took 0.000083
+Run 0: failed 9 sucess 806: 6448 bytes received in 10.000000 s => 644.799992
+Run 1: failed 5 sucess 814: 6512 bytes received in 10.000000 s => 651.199994
+Run 2: failed 1 sucess 818: 6544 bytes received in 10.000000 s => 654.400000
+Run 3: failed 1 sucess 818: 6544 bytes received in 10.000000 s => 654.399998
+Run 4: failed 1 sucess 819: 6552 bytes received in 10.000000 s => 655.199996
+Run 5: failed 3 sucess 816: 6528 bytes received in 10.000000 s => 652.799999
+Run 6: failed 9 sucess 810: 6480 bytes received in 10.000000 s => 647.999992
+Run 7: failed 2 sucess 817: 6536 bytes received in 10.000000 s => 653.599998
+Run 8: failed 4 sucess 815: 6520 bytes received in 10.000000 s => 651.999996
+Run 9: failed 1 sucess 819: 6552 bytes received in 10.000000 s => 655.199994
+Average datarate : 652.159996 	Std dev: 3.215962
+done! press key for next round
+press key!
+press key once slave received first packet!
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 1 found! Can start!
+[A4][ 9][4E][ 1][70][69][6E][67][90][ 1][ 0][ 0][63]
+Channel 1 open! took 0.056222
+Run 0: failed 1 sucess 818: 6544 bytes received in 10.000000 s => 654.399997
+Run 1: failed 3 sucess 816: 6528 bytes received in 10.000000 s => 652.800000
+Run 2: failed 4 sucess 815: 6520 bytes received in 10.000000 s => 651.999991
+Run 3: failed 2 sucess 817: 6536 bytes received in 10.000000 s => 653.599990
+Run 4: failed 1 sucess 818: 6544 bytes received in 10.000000 s => 654.399993
+Run 5: failed 2 sucess 817: 6536 bytes received in 10.000001 s => 653.599944
+Run 6: failed 3 sucess 816: 6528 bytes received in 10.000000 s => 652.799990
+Run 7: failed 4 sucess 816: 6528 bytes received in 10.000000 s => 652.799994
+Run 8: failed 6 sucess 813: 6504 bytes received in 10.000000 s => 650.399992
+Run 9: failed 4 sucess 815: 6520 bytes received in 10.000000 s => 651.999992
+Average datarate : 652.879988 	Std dev: 1.156544
+done! press key for next round
+press key!
+press key once slave received first packet!
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 1 found! Can start!
+[A4][ 9][4E][ 1][70][69][6E][67][90][ 1][ 0][ 0][63]
+Channel 1 open! took 0.196718
+Run 0: failed 7 sucess 812: 6496 bytes received in 10.000000 s => 649.599992
+Run 1: failed 4 sucess 815: 6520 bytes received in 10.000000 s => 651.999992
+Run 2: failed 3 sucess 816: 6528 bytes received in 10.000000 s => 652.799997
+Run 3: failed 1 sucess 818: 6544 bytes received in 10.000000 s => 654.399994
+Run 4: failed 7 sucess 812: 6496 bytes received in 10.000000 s => 649.599997
+Run 5: failed 3 sucess 816: 6528 bytes received in 10.000000 s => 652.799991
+Run 6: failed 5 sucess 815: 6520 bytes received in 10.000000 s => 651.999997
+Run 7: failed 2 sucess 817: 6536 bytes received in 10.000000 s => 653.599997
+Run 8: failed 0 sucess 819: 6552 bytes received in 10.000000 s => 655.199999
+Run 9: failed 3 sucess 816: 6528 bytes received in 10.000000 s => 652.799990
+Average datarate : 652.479995 	Std dev: 1.723253
+done! press key for next round
+press key!
+press key once slave received first packet!
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 1 found! Can start!
+[A4][ 9][4E][ 1][70][69][6E][67][90][ 1][ 0][ 0][63]
+Channel 1 open! took 0.156057
+Run 0: failed 0 sucess 819: 6552 bytes received in 10.000000 s => 655.199999
+Run 1: failed 6 sucess 813: 6504 bytes received in 10.000000 s => 650.399992
+Run 2: failed 1 sucess 818: 6544 bytes received in 10.000000 s => 654.399990
+Run 3: failed 2 sucess 817: 6536 bytes received in 10.000000 s => 653.599999
+Run 4: failed 6 sucess 813: 6504 bytes received in 10.000000 s => 650.399994
+Run 5: failed 8 sucess 812: 6496 bytes received in 10.000000 s => 649.599998
+Run 6: failed 5 sucess 814: 6512 bytes received in 10.000000 s => 651.199993
+Run 7: failed 1 sucess 818: 6544 bytes received in 10.000000 s => 654.399994
+Run 8: failed 4 sucess 815: 6520 bytes received in 10.000000 s => 651.999999
+Run 9: failed 1 sucess 818: 6544 bytes received in 10.000000 s => 654.399992
+Average datarate : 652.559995 	Std dev: 1.961224
+done! press key for next round
+
+[michael@xps src]$ sudo ./ant -p /dev/ttyUSB0 -t m -n 2 -f 350
+Power setting is now: 0dBm
+Experiment 2: Broadcast Data Transfer between multiple nodes
+press key!
+press key once slave received first packet!
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 1 found! Can start!
+[A4][ 9][4E][ 1][70][69][6E][67][5E][ 1][ 0][ 0][AD]
+Channel 1 open! took 0.200305
+Run 0: failed 11 sucess 925: 7400 bytes received in 10.000000 s => 739.999988
+Run 1: failed 5 sucess 931: 7448 bytes received in 10.000000 s => 744.799989
+Run 2: failed 1 sucess 935: 7480 bytes received in 10.000000 s => 747.999992
+Run 3: failed 3 sucess 933: 7464 bytes received in 10.000000 s => 746.399989
+Run 4: failed 0 sucess 937: 7496 bytes received in 10.000000 s => 749.599993
+Run 5: failed 5 sucess 931: 7448 bytes received in 10.000000 s => 744.799994
+Run 6: failed 6 sucess 930: 7440 bytes received in 10.000000 s => 743.999988
+Run 7: failed 2 sucess 934: 7472 bytes received in 10.000000 s => 747.199997
+Run 8: failed 1 sucess 936: 7488 bytes received in 10.000000 s => 748.799996
+Run 9: failed 2 sucess 934: 7472 bytes received in 10.000000 s => 747.199996
+Average datarate : 746.079992 	Std dev: 2.658122
+done! press key for next round
+press key!
+press key once slave received first packet!
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 1 found! Can start!
+[A4][ 9][4E][ 1][70][69][6E][67][5E][ 1][ 0][ 0][AD]
+Channel 1 open! took 0.202750
+Run 0: failed 5 sucess 931: 7448 bytes received in 10.000000 s => 744.799989
+Run 1: failed 3 sucess 933: 7464 bytes received in 10.000000 s => 746.399995
+Run 2: failed 2 sucess 934: 7472 bytes received in 10.000000 s => 747.199999
+Run 3: failed 1 sucess 935: 7480 bytes received in 10.000000 s => 747.999990
+Run 4: failed 1 sucess 936: 7488 bytes received in 10.000000 s => 748.799997
+Run 5: failed 2 sucess 934: 7472 bytes received in 10.000000 s => 747.199993
+Run 6: failed 7 sucess 929: 7432 bytes received in 10.000000 s => 743.199992
+Run 7: failed 1 sucess 935: 7480 bytes received in 10.000000 s => 748.000000
+Run 8: failed 0 sucess 937: 7496 bytes received in 10.000000 s => 749.599997
+Run 9: failed 2 sucess 934: 7472 bytes received in 10.000000 s => 747.199996
+Average datarate : 747.039995 	Std dev: 1.781686
+done! press key for next round
+^C[michael@xps src]$ sudo ./ant -p /dev/ttyUSB0 -t m -n 2 -f 350
+Power setting is now: 0dBm
+Experiment 2: Broadcast Data Transfer between multiple nodes
+press key!
+press key once slave received first packet!
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 1 found! Can start!
+[A4][ 9][4E][ 1][70][69][6E][67][5E][ 1][ 0][ 0][AD]
+Channel 1 open! took 0.000092
+Run 0: failed 11 sucess 925: 7400 bytes received in 10.000000 s => 739.999999
+Run 1: failed 9 sucess 928: 7424 bytes received in 10.000000 s => 742.399995
+Run 2: failed 5 sucess 931: 7448 bytes received in 10.000000 s => 744.799991
+Run 3: failed 0 sucess 936: 7488 bytes received in 10.000000 s => 748.800000
+Run 4: failed 2 sucess 934: 7472 bytes received in 10.000000 s => 747.199990
+Run 5: failed 3 sucess 934: 7472 bytes received in 10.000000 s => 747.199992
+Run 6: failed 1 sucess 935: 7480 bytes received in 10.000000 s => 747.999995
+Run 7: failed 2 sucess 934: 7472 bytes received in 10.000003 s => 747.199791
+Run 8: failed 3 sucess 933: 7464 bytes received in 10.000002 s => 746.399856
+Run 9: failed 0 sucess 937: 7496 bytes received in 10.000000 s => 749.599992
+Average datarate : 746.159960 	Std dev: 2.818217
+done! press key for next round
+^C[michael@xps src]$ sudo ./ant -p /dev/ttyUSB0 -t m -n 2 -f 350
+Power setting is now: 0dBm
+Experiment 2: Broadcast Data Transfer between multiple nodes
+press key!
+press key once slave received first packet!
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 1 found! Can start!
+[A4][ 9][4E][ 1][70][69][6E][67][5E][ 1][ 0][ 0][AD]
+Channel 1 open! took 0.000108
+Run 0: failed 6 sucess 931: 7448 bytes received in 10.000000 s => 744.800000
+Run 1: failed 2 sucess 934: 7472 bytes received in 10.000000 s => 747.199996
+Run 2: failed 2 sucess 934: 7472 bytes received in 10.000000 s => 747.199990
+Run 3: failed 2 sucess 935: 7480 bytes received in 10.000000 s => 747.999992
+Run 4: failed 4 sucess 932: 7456 bytes received in 10.000000 s => 745.599993
+Run 5: failed 3 sucess 933: 7464 bytes received in 10.000000 s => 746.400000
+Run 6: failed 3 sucess 933: 7464 bytes received in 10.000000 s => 746.399998
+Run 7: failed 2 sucess 935: 7480 bytes received in 10.000000 s => 747.999996
+Run 8: failed 1 sucess 935: 7480 bytes received in 10.000000 s => 747.999988
+Run 9: failed 1 sucess 935: 7480 bytes received in 10.000000 s => 747.999999
+Average datarate : 746.959995 	Std dev: 1.076288
+done! press key for next round
+^C[michael@xps src]$ sudo ./ant -p /dev/ttyUSB0 -t m -n 2 -f 350
+Power setting is now: 0dBm
+Experiment 2: Broadcast Data Transfer between multiple nodes
+press key!
+press key once slave received first packet!
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 1 found! Can start!
+[A4][ 9][4E][ 1][70][69][6E][67][5E][ 1][ 0][ 0][AD]
+Channel 1 open! took 0.198821
+Run 0: failed 8 sucess 928: 7424 bytes received in 10.000000 s => 742.400000
+Run 1: failed 7 sucess 929: 7432 bytes received in 10.000000 s => 743.199993
+Run 2: failed 3 sucess 933: 7464 bytes received in 10.000000 s => 746.399990
+Run 3: failed 1 sucess 935: 7480 bytes received in 10.000000 s => 747.999996
+Run 4: failed 3 sucess 934: 7472 bytes received in 10.000000 s => 747.199993
+Run 5: failed 5 sucess 931: 7448 bytes received in 10.000000 s => 744.799995
+Run 6: failed 4 sucess 932: 7456 bytes received in 10.000000 s => 745.599991
+Run 7: failed 4 sucess 932: 7456 bytes received in 10.000000 s => 745.599989
+Run 8: failed 0 sucess 937: 7496 bytes received in 10.000000 s => 749.599990
+Run 9: failed 3 sucess 933: 7464 bytes received in 10.000000 s => 746.399997
+Average datarate : 745.919993 	Std dev: 2.030171
+done! press key for next round
+press key!
+press key once slave received first packet!
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 1 found! Can start!
+[A4][ 9][4E][ 1][70][69][6E][67][5E][ 1][ 0][ 0][AD]
+Channel 1 open! took 0.000063
+Run 0: failed 3 sucess 932: 7456 bytes received in 10.000000 s => 745.599989
+Run 1: failed 3 sucess 934: 7472 bytes received in 10.000000 s => 747.199991
+Run 2: failed 4 sucess 932: 7456 bytes received in 10.000000 s => 745.599993
+Run 3: failed 2 sucess 934: 7472 bytes received in 10.000000 s => 747.199998
+Run 4: failed 3 sucess 933: 7464 bytes received in 10.000000 s => 746.399984
+Run 5: failed 3 sucess 934: 7472 bytes received in 10.000000 s => 747.199991
+Run 6: failed 4 sucess 932: 7456 bytes received in 10.000000 s => 745.599995
+Run 7: failed 2 sucess 934: 7472 bytes received in 10.000000 s => 747.200000
+Run 8: failed 573 sucess 349: 2792 bytes received in 10.000000 s => 279.199999
+Run 9: failed 205 sucess 727: 5816 bytes received in 10.000000 s => 581.599998
+Average datarate : 683.279994 	Std dev: 143.386893
+done! press key for next round
+press key!
+press key once slave received first packet!
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 1 found! Can start!
+[A4][ 9][4E][ 1][70][69][6E][67][5E][ 1][ 0][ 0][AD]
+Channel 1 open! took 0.109776
+Run 0: failed 7 sucess 929: 7432 bytes received in 10.000000 s => 743.199991
+Run 1: failed 2 sucess 934: 7472 bytes received in 10.000000 s => 747.199996
+Run 2: failed 2 sucess 934: 7472 bytes received in 10.000000 s => 747.199993
+Run 3: failed 2 sucess 934: 7472 bytes received in 10.000000 s => 747.200000
+Run 4: failed 3 sucess 934: 7472 bytes received in 10.000000 s => 747.199992
+Run 5: failed 2 sucess 934: 7472 bytes received in 10.000000 s => 747.199998
+Run 6: failed 2 sucess 934: 7472 bytes received in 10.000000 s => 747.199990
+Run 7: failed 8 sucess 928: 7424 bytes received in 10.000000 s => 742.399988
+Run 8: failed 4 sucess 933: 7464 bytes received in 10.000000 s => 746.399993
+Run 9: failed 1 sucess 935: 7480 bytes received in 10.000000 s => 747.999996
+Average datarate : 746.319994 	Std dev: 1.804884
+done! press key for next round
+press key!
+press key once slave received first packet!
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 1 found! Can start!
+[A4][ 9][4E][ 1][70][69][6E][67][5E][ 1][ 0][ 0][AD]
+Channel 1 open! took 0.020500
+Run 0: failed 4 sucess 932: 7456 bytes received in 10.000000 s => 745.599999
+Run 1: failed 2 sucess 934: 7472 bytes received in 10.000000 s => 747.199997
+Run 2: failed 3 sucess 933: 7464 bytes received in 10.000000 s => 746.399990
+Run 3: failed 265 sucess 657: 5256 bytes received in 10.000000 s => 525.599992
+Run 4: failed 466 sucess 461: 3688 bytes received in 10.000000 s => 368.799995
+Run 5: failed 60 sucess 868: 6944 bytes received in 10.000000 s => 694.399998
+Run 6: failed 8 sucess 928: 7424 bytes received in 10.000000 s => 742.399992
+Run 7: failed 7 sucess 929: 7432 bytes received in 10.000000 s => 743.199994
+Run 8: failed 6 sucess 930: 7440 bytes received in 10.000000 s => 743.999989
+Run 9: failed 4 sucess 933: 7464 bytes received in 10.000000 s => 746.399999
+Average datarate : 680.399995 	Std dev: 122.683202
+done! press key for next round
+press key!
+press key once slave received first packet!
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 1 found! Can start!
+[A4][ 9][4E][ 1][70][69][6E][67][5E][ 1][ 0][ 0][AD]
+Channel 1 open! took 0.000104
+Run 0: failed 3 sucess 934: 7472 bytes received in 10.000000 s => 747.199997
+Run 1: failed 4 sucess 932: 7456 bytes received in 10.000000 s => 745.600000
+Run 2: failed 2 sucess 934: 7472 bytes received in 10.000000 s => 747.199991
+Run 3: failed 1 sucess 935: 7480 bytes received in 10.000000 s => 747.999996
+Run 4: failed 5 sucess 932: 7456 bytes received in 10.000000 s => 745.600000
+Run 5: failed 0 sucess 936: 7488 bytes received in 10.000000 s => 748.799997
+Run 6: failed 0 sucess 936: 7488 bytes received in 10.000000 s => 748.799992
+Run 7: failed 6 sucess 930: 7440 bytes received in 10.000000 s => 743.999989
+Run 8: failed 5 sucess 931: 7448 bytes received in 10.000000 s => 744.799997
+Run 9: failed 0 sucess 937: 7496 bytes received in 10.000000 s => 749.599992
+Average datarate : 746.959995 	Std dev: 1.790642
+done! press key for next round
+press key!
+press key once slave received first packet!
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 1 found! Can start!
+[A4][ 9][4E][ 1][70][69][6E][67][5E][ 1][ 0][ 0][AD]
+Channel 1 open! took 0.000140
+Run 0: failed 2 sucess 934: 7472 bytes received in 10.000000 s => 747.199999
+Run 1: failed 0 sucess 936: 7488 bytes received in 10.000000 s => 748.799992
+Run 2: failed 5 sucess 931: 7448 bytes received in 10.000000 s => 744.799993
+Run 3: failed 3 sucess 933: 7464 bytes received in 10.000000 s => 746.399994
+Run 4: failed 1 sucess 936: 7488 bytes received in 10.000000 s => 748.799998
+Run 5: failed 3 sucess 933: 7464 bytes received in 10.000000 s => 746.399988
+Run 6: failed 3 sucess 933: 7464 bytes received in 10.000000 s => 746.399994
+Run 7: failed 3 sucess 933: 7464 bytes received in 10.000000 s => 746.399998
+Run 8: failed 2 sucess 935: 7480 bytes received in 10.000000 s => 747.999994
+Run 9: failed 3 sucess 933: 7464 bytes received in 10.000000 s => 746.399994
+Average datarate : 746.959995 	Std dev: 1.189286
+
+[michael@xps src]$ sudo ./ant -p /dev/ttyUSB0 -t m -n 2 -f 330
+Power setting is now: 0dBm
+Experiment 2: Broadcast Data Transfer between multiple nodes
+press key!
+press key once slave received first packet!
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 1 found! Can start!
+[A4][ 9][4E][ 1][70][69][6E][67][4A][ 1][ 0][ 0][B9]
+Channel 1 open! took 0.000080
+Run 0: failed 8 sucess 983: 7864 bytes received in 10.000000 s => 786.400000
+Run 1: failed 11 sucess 982: 7856 bytes received in 10.000000 s => 785.599995
+Run 2: failed 7 sucess 986: 7888 bytes received in 10.000000 s => 788.799995
+Run 3: failed 4 sucess 989: 7912 bytes received in 10.000000 s => 791.199995
+Run 4: failed 8 sucess 985: 7880 bytes received in 10.000000 s => 787.999996
+Run 5: failed 5 sucess 988: 7904 bytes received in 10.000000 s => 790.399993
+Run 6: failed 8 sucess 985: 7880 bytes received in 10.000000 s => 787.999992
+Run 7: failed 3 sucess 990: 7920 bytes received in 10.000000 s => 791.999992
+Run 8: failed 6 sucess 987: 7896 bytes received in 10.000000 s => 789.599989
+Run 9: failed 5 sucess 988: 7904 bytes received in 10.000000 s => 790.399989
+Average datarate : 789.039994 	Std dev: 1.961222
+done! press key for next round
+press key!
+press key once slave received first packet!
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 1 found! Can start!
+[A4][ 9][4E][ 1][ 0][ 0][6E][67][4A][ 1][ 0][ 0][A0]
+Channel 1 open! took 0.021671
+Run 0: failed 7 sucess 985: 7880 bytes received in 10.000000 s => 787.999998
+Run 1: failed 3 sucess 990: 7920 bytes received in 10.000000 s => 791.999997
+Run 2: failed 6 sucess 987: 7896 bytes received in 10.000000 s => 789.599995
+Run 3: failed 6 sucess 987: 7896 bytes received in 10.000000 s => 789.599999
+Run 4: failed 9 sucess 984: 7872 bytes received in 10.000000 s => 787.199989
+Run 5: failed 10 sucess 983: 7864 bytes received in 10.000000 s => 786.399991
+Run 6: failed 3 sucess 990: 7920 bytes received in 10.000000 s => 791.999990
+Run 7: failed 8 sucess 985: 7880 bytes received in 10.000000 s => 787.999998
+Run 8: failed 5 sucess 988: 7904 bytes received in 10.000000 s => 790.399993
+Run 9: failed 4 sucess 989: 7912 bytes received in 10.000000 s => 791.199991
+Average datarate : 789.439994 	Std dev: 1.886372
+done! press key for next round
+^C[michael@xps src]$ sudo ./ant -p /dev/ttyUSB0 -t m -n 2 -f 330
+Power setting is now: 0dBm
+Experiment 2: Broadcast Data Transfer between multiple nodes
+press key!
+press key once slave received first packet!
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 1 found! Can start!
+[A4][ 9][4E][ 1][70][69][6E][67][4A][ 1][ 0][ 0][B9]
+Channel 1 open! took 0.000210
+Run 0: failed 3 sucess 1228: 9824 bytes received in 10.000000 s => 982.399985
+Run 1: failed 2 sucess 990: 7920 bytes received in 10.000000 s => 791.999987
+Run 2: failed 5 sucess 989: 7912 bytes received in 10.000000 s => 791.199997
+Run 3: failed 10 sucess 982: 7856 bytes received in 10.000000 s => 785.599989
+Run 4: failed 6 sucess 988: 7904 bytes received in 10.000000 s => 790.399990
+Run 5: failed 4 sucess 988: 7904 bytes received in 10.000000 s => 790.399984
+Run 6: failed 4 sucess 989: 7912 bytes received in 10.000000 s => 791.199996
+Run 7: failed 4 sucess 989: 7912 bytes received in 10.000000 s => 791.199990
+Run 8: failed 5 sucess 988: 7904 bytes received in 10.000000 s => 790.399998
+Run 9: failed 4 sucess 989: 7912 bytes received in 10.000000 s => 791.199994
+Average datarate : 809.599991 	Std dev: 57.624437
+done! press key for next round
+press key!
+press key once slave received first packet!
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 1 found! Can start!
+[A4][ 9][4E][ 1][70][69][6E][67][4A][ 1][ 0][ 0][B9]
+Channel 1 open! took 0.019810
+Run 0: failed 3 sucess 989: 7912 bytes received in 10.000000 s => 791.200000
+Run 1: failed 0 sucess 993: 7944 bytes received in 10.000000 s => 794.399998
+Run 2: failed 3 sucess 990: 7920 bytes received in 10.000000 s => 791.999993
+Run 3: failed 4 sucess 989: 7912 bytes received in 10.000000 s => 791.199988
+Run 4: failed 3 sucess 990: 7920 bytes received in 10.000000 s => 791.999994
+Run 5: failed 5 sucess 988: 7904 bytes received in 10.000000 s => 790.399989
+Run 6: failed 5 sucess 988: 7904 bytes received in 10.000000 s => 790.399998
+Run 7: failed 6 sucess 987: 7896 bytes received in 10.000000 s => 789.599988
+Run 8: failed 5 sucess 988: 7904 bytes received in 10.000000 s => 790.399986
+Run 9: failed 9 sucess 984: 7872 bytes received in 10.000000 s => 787.199991
+Average datarate : 790.879992 	Std dev: 1.760002
+done! press key for next round
+press key!
+press key once slave received first packet!
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 1 found! Can start!
+[A4][ 9][4E][ 1][70][69][6E][67][4A][ 1][ 0][ 0][B9]
+Channel 1 open! took 0.023618
+Run 0: failed 6 sucess 986: 7888 bytes received in 10.000000 s => 788.799999
+Run 1: failed 2 sucess 991: 7928 bytes received in 10.000000 s => 792.799996
+Run 2: failed 5 sucess 988: 7904 bytes received in 10.000000 s => 790.399999
+Run 3: failed 6 sucess 987: 7896 bytes received in 10.000000 s => 789.600000
+Run 4: failed 4 sucess 989: 7912 bytes received in 10.000000 s => 791.199991
+Run 5: failed 2 sucess 991: 7928 bytes received in 10.000000 s => 792.800000
+Run 6: failed 8 sucess 985: 7880 bytes received in 10.000000 s => 787.999997
+Run 7: failed 3 sucess 990: 7920 bytes received in 10.000000 s => 791.999997
+Run 8: failed 4 sucess 989: 7912 bytes received in 10.000000 s => 791.199997
+Run 9: failed 5 sucess 988: 7904 bytes received in 10.000000 s => 790.399993
+Average datarate : 790.719997 	Std dev: 1.526302
+done! press key for next round
+press key!
+press key once slave received first packet!
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 1 found! Can start!
+[A4][ 9][4E][ 1][70][69][6E][67][4A][ 1][ 0][ 0][B9]
+Channel 1 open! took 0.209381
+Run 0: failed 2 sucess 979: 7832 bytes received in 10.000000 s => 783.199989
+Run 1: failed 6 sucess 987: 7896 bytes received in 10.000000 s => 789.599998
+Run 2: failed 6 sucess 987: 7896 bytes received in 10.000000 s => 789.599996
+Run 3: failed 4 sucess 989: 7912 bytes received in 10.000000 s => 791.199997
+Run 4: failed 6 sucess 987: 7896 bytes received in 10.000000 s => 789.599990
+Run 5: failed 5 sucess 988: 7904 bytes received in 10.000000 s => 790.399990
+Run 6: failed 3 sucess 990: 7920 bytes received in 10.000000 s => 791.999997
+Run 7: failed 6 sucess 987: 7896 bytes received in 10.000000 s => 789.599991
+Run 8: failed 6 sucess 987: 7896 bytes received in 10.000000 s => 789.599999
+Run 9: failed 7 sucess 986: 7888 bytes received in 10.000000 s => 788.799991
+Average datarate : 789.359994 	Std dev: 2.235712
+done! press key for next round
+press key!
+press key once slave received first packet!
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 1 found! Can start!
+[A4][ 9][4E][ 1][70][69][6E][67][4A][ 1][ 0][ 0][B9]
+Channel 1 open! took 0.000066
+Run 0: failed 0 sucess 993: 7944 bytes received in 10.000000 s => 794.399994
+Run 1: failed 9 sucess 983: 7864 bytes received in 10.000000 s => 786.399987
+Run 2: failed 5 sucess 988: 7904 bytes received in 10.000000 s => 790.399999
+Run 3: failed 7 sucess 987: 7896 bytes received in 10.000000 s => 789.599990
+Run 4: failed 6 sucess 986: 7888 bytes received in 10.000000 s => 788.799989
+Run 5: failed 1 sucess 993: 7944 bytes received in 10.000000 s => 794.399997
+Run 6: failed 3 sucess 989: 7912 bytes received in 10.000000 s => 791.199997
+Run 7: failed 4 sucess 989: 7912 bytes received in 10.000000 s => 791.199988
+Run 8: failed 7 sucess 987: 7896 bytes received in 10.000000 s => 789.599999
+Run 9: failed 3 sucess 989: 7912 bytes received in 10.000000 s => 791.199992
+Average datarate : 790.719993 	Std dev: 2.296434
+done! press key for next round
+press key!
+press key once slave received first packet!
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 1 found! Can start!
+[A4][ 9][4E][ 1][70][69][6E][67][4A][ 1][ 0][ 0][B9]
+Channel 1 open! took 0.000108
+Run 0: failed 6 sucess 986: 7888 bytes received in 10.000000 s => 788.800000
+Run 1: failed 3 sucess 990: 7920 bytes received in 10.000000 s => 791.999998
+Run 2: failed 9 sucess 984: 7872 bytes received in 10.000000 s => 787.199992
+Run 3: failed 5 sucess 988: 7904 bytes received in 10.000000 s => 790.399996
+Run 4: failed 8 sucess 985: 7880 bytes received in 10.000000 s => 788.000000
+Run 5: failed 8 sucess 985: 7880 bytes received in 10.000000 s => 787.999992
+Run 6: failed 4 sucess 989: 7912 bytes received in 10.000000 s => 791.199982
+Run 7: failed 4 sucess 989: 7912 bytes received in 10.000000 s => 791.199996
+Run 8: failed 5 sucess 988: 7904 bytes received in 10.000000 s => 790.399996
+Run 9: failed 3 sucess 990: 7920 bytes received in 10.000000 s => 791.999998
+Average datarate : 789.919995 	Std dev: 1.685704
+done! press key for next round
+press key!
+press key once slave received first packet!
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 1 found! Can start!
+[A4][ 9][4E][ 1][70][69][6E][67][4A][ 1][ 0][ 0][B9]
+Channel 1 open! took 0.025033
+Run 0: failed 3 sucess 989: 7912 bytes received in 10.000000 s => 791.200000
+Run 1: failed 7 sucess 986: 7888 bytes received in 10.000000 s => 788.799997
+Run 2: failed 7 sucess 986: 7888 bytes received in 10.000000 s => 788.799988
+Run 3: failed 7 sucess 986: 7888 bytes received in 10.000000 s => 788.799994
+Run 4: failed 4 sucess 989: 7912 bytes received in 10.000000 s => 791.199998
+Run 5: failed 4 sucess 989: 7912 bytes received in 10.000000 s => 791.199995
+Run 6: failed 4 sucess 989: 7912 bytes received in 10.000000 s => 791.199991
+Run 7: failed 5 sucess 988: 7904 bytes received in 10.000000 s => 790.399988
+Run 8: failed 6 sucess 987: 7896 bytes received in 10.000000 s => 789.599991
+Run 9: failed 8 sucess 985: 7880 bytes received in 10.000000 s => 787.999999
+Average datarate : 789.919994 	Std dev: 1.197330
+done! press key for next round
+press key!
+press key once slave received first packet!
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 1 found! Can start!
+[A4][ 9][4E][ 1][70][69][6E][67][4A][ 1][ 0][ 0][B9]
+Channel 1 open! took 0.024549
+Run 0: failed 10 sucess 982: 7856 bytes received in 10.000000 s => 785.599988
+Run 1: failed 3 sucess 990: 7920 bytes received in 10.000000 s => 791.999998
+Run 2: failed 3 sucess 990: 7920 bytes received in 10.000000 s => 791.999983
+Run 3: failed 7 sucess 986: 7888 bytes received in 10.000000 s => 788.799983
+Run 4: failed 7 sucess 986: 7888 bytes received in 10.000000 s => 788.800000
+Run 5: failed 3 sucess 990: 7920 bytes received in 10.000000 s => 791.999996
+Run 6: failed 5 sucess 988: 7904 bytes received in 10.000000 s => 790.399990
+Run 7: failed 5 sucess 988: 7904 bytes received in 10.000000 s => 790.399991
+Run 8: failed 5 sucess 988: 7904 bytes received in 10.000000 s => 790.399998
+Run 9: failed 9 sucess 984: 7872 bytes received in 10.000000 s => 787.199993
+Average datarate : 789.759992 	Std dev: 2.049001
+done! press key for next round
+
+[michael@xps src]$ sudo ,/ant -p /dev/ttyUSB0 -t m -n 2 -f 320
+[sudo] Passwort für michael: 
+Power setting is now: 0dBm
+Experiment 2: Broadcast Data Transfer between multiple nodes
+press key!
+press key once slave received first packet!
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 1 found! Can start!
+[A4][ 9][4E][ 1][ 0][ 0][6E][67][4A][ 1][ 0][ 0][A0]
+Channel 1 open! took 0,017749
+Run 0: failed 513 sucess 367: 2936 bytes received in 10,000000 s => 293,599997
+Run 1: failed 521 sucess 439: 3512 bytes received in 10,000000 s => 351,199995
+Run 2: failed 262 sucess 735: 5880 bytes received in 10,000000 s => 588,000000
+Run 3: failed 7 sucess 1017: 8136 bytes received in 10,000000 s => 813,599992
+Run 4: failed 4 sucess 1020: 8160 bytes received in 10,000000 s => 815,999989
+Run 5: failed 5 sucess 1019: 8152 bytes received in 10,000000 s => 815,199990
+Run 6: failed 9 sucess 1015: 8120 bytes received in 10,000000 s => 812,000000
+Run 7: failed 2 sucess 1022: 8176 bytes received in 10,000000 s => 817,599997
+Run 8: failed 3 sucess 1021: 8168 bytes received in 10,000000 s => 816,799999
+Run 9: failed 6 sucess 1018: 8144 bytes received in 10,000000 s => 814,399989
+Average datarate : 693,839995 	Std dev: 197,919756
+done! press key for next round
+press key!
+press key once slave received first packet!
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 1 found! Can start!
+[A4][ 9][4E][ 1][ 0][ 0][6E][67][4A][ 1][ 0][ 0][A0]
+Channel 1 open! took 0,017515
+Run 0: failed 4 sucess 1019: 8152 bytes received in 10,000000 s => 815,199995
+Run 1: failed 2 sucess 1022: 8176 bytes received in 10,000000 s => 817,599991
+Run 2: failed 1 sucess 1023: 8184 bytes received in 10,000000 s => 818,399998
+Run 3: failed 7 sucess 1017: 8136 bytes received in 10,000000 s => 813,599990
+Run 4: failed 2 sucess 1022: 8176 bytes received in 10,000000 s => 817,599998
+Run 5: failed 7 sucess 1017: 8136 bytes received in 10,000000 s => 813,599992
+Run 6: failed 4 sucess 1020: 8160 bytes received in 10,000000 s => 815,999997
+Run 7: failed 5 sucess 1019: 8152 bytes received in 10,000000 s => 815,200000
+Run 8: failed 175 sucess 850: 6800 bytes received in 10,000000 s => 679,999991
+Run 9: failed 389 sucess 571: 4568 bytes received in 10,000000 s => 456,799996
+Average datarate : 766,399995 	Std dev: 110,879538
+done! press key for next round
+press key!
+press key once slave received first packet!
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 1 found! Can start!
+[A4][ 9][4E][ 1][ 0][ 0][6E][67][4A][ 1][ 0][ 0][A0]
+Channel 1 open! took 0,023059
+Run 0: failed 9 sucess 1014: 8112 bytes received in 10,000000 s => 811,200000
+Run 1: failed 0 sucess 1024: 8192 bytes received in 10,000000 s => 819,199992
+Run 2: failed 4 sucess 1020: 8160 bytes received in 10,000000 s => 815,999993
+Run 3: failed 4 sucess 1021: 8168 bytes received in 10,000000 s => 816,799999
+Run 4: failed 7 sucess 1016: 8128 bytes received in 10,000000 s => 812,799999
+Run 5: failed 3 sucess 1021: 8168 bytes received in 10,000000 s => 816,799990
+Run 6: failed 5 sucess 1019: 8152 bytes received in 10,000000 s => 815,199992
+Run 7: failed 5 sucess 1019: 8152 bytes received in 10,000000 s => 815,199998
+Run 8: failed 239 sucess 786: 6288 bytes received in 10,000000 s => 628,799990
+Run 9: failed 391 sucess 569: 4552 bytes received in 10,000000 s => 455,199994
+Average datarate : 760,719995 	Std dev: 116,063680
+done! press key for next round
+press key!
+press key once slave received first packet!
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 1 found! Can start!
+[A4][ 9][4E][ 1][ 0][ 0][6E][67][4A][ 1][ 0][ 0][A0]
+Channel 1 open! took 0,000121
+Run 0: failed 6 sucess 1018: 8144 bytes received in 10,000000 s => 814,399992
+Run 1: failed 8 sucess 1016: 8128 bytes received in 10,000000 s => 812,799990
+Run 2: failed 259 sucess 733: 5864 bytes received in 10,000000 s => 586,399999
+Run 3: failed 524 sucess 436: 3488 bytes received in 10,000000 s => 348,799997
+Run 4: failed 439 sucess 554: 4432 bytes received in 10,000000 s => 443,199999
+Run 5: failed 89 sucess 908: 7264 bytes received in 10,000000 s => 726,399993
+Run 6: failed 5 sucess 1019: 8152 bytes received in 10,000000 s => 815,199995
+Run 7: failed 8 sucess 1016: 8128 bytes received in 10,000000 s => 812,799989
+Run 8: failed 9 sucess 1015: 8120 bytes received in 10,000000 s => 811,999990
+Run 9: failed 7 sucess 1017: 8136 bytes received in 10,000000 s => 813,599993
+Average datarate : 726,079993 	Std dev: 202,988611
+done! press key for next round
+press key!
+press key once slave received first packet!
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 1 found! Can start!
+[A4][ 9][4E][ 1][ 0][ 0][6E][67][4A][ 1][ 0][ 0][A0]
+Channel 1 open! took 0,000196
+Run 0: failed 9 sucess 1014: 8112 bytes received in 10,000000 s => 811,199998
+Run 1: failed 0 sucess 1024: 8192 bytes received in 10,000000 s => 819,199989
+Run 2: failed 4 sucess 1020: 8160 bytes received in 10,000000 s => 815,999990
+Run 3: failed 3 sucess 1021: 8168 bytes received in 10,000000 s => 816,799993
+Run 4: failed 7 sucess 1017: 8136 bytes received in 10,000000 s => 813,599996
+Run 5: failed 5 sucess 1019: 8152 bytes received in 10,000000 s => 815,199993
+Run 6: failed 3 sucess 1021: 8168 bytes received in 10,000000 s => 816,799990
+Run 7: failed 7 sucess 1017: 8136 bytes received in 10,000000 s => 813,599989
+Run 8: failed 519 sucess 441: 3528 bytes received in 10,000000 s => 352,800000
+Run 9: failed 427 sucess 566: 4528 bytes received in 10,000000 s => 452,800000
+Average datarate : 732,799994 	Std dev: 166,521107
+done! press key for next round
+press key!
+press key once slave received first packet!
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 1 found! Can start!
+[A4][ 9][4E][ 1][ 0][ 0][6E][67][4A][ 1][ 0][ 0][A0]
+Channel 1 open! took 0,009449
+Run 0: failed 0 sucess 1023: 8184 bytes received in 10,000000 s => 818,399999
+Run 1: failed 3 sucess 1022: 8176 bytes received in 10,000000 s => 817,599990
+Run 2: failed 6 sucess 1018: 8144 bytes received in 10,000000 s => 814,399997
+Run 3: failed 11 sucess 1013: 8104 bytes received in 10,000000 s => 810,399991
+Run 4: failed 5 sucess 1019: 8152 bytes received in 10,000000 s => 815,199987
+Run 5: failed 4 sucess 1020: 8160 bytes received in 10,000000 s => 815,999989
+Run 6: failed 6 sucess 1018: 8144 bytes received in 10,000000 s => 814,399994
+Run 7: failed 6 sucess 1018: 8144 bytes received in 10,000000 s => 814,399992
+Run 8: failed 3 sucess 1021: 8168 bytes received in 10,000000 s => 816,799987
+Run 9: failed 4 sucess 1020: 8160 bytes received in 10,000000 s => 815,999992
+Average datarate : 815,359992 	Std dev: 2,110545
+done! press key for next round
+press key!
+press key once slave received first packet!
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 1 found! Can start!
+[A4][ 9][4E][ 1][ 0][ 0][6E][67][4A][ 1][ 0][ 0][A0]
+Channel 1 open! took 0,000113
+Run 0: failed 477 sucess 515: 4120 bytes received in 10,000000 s => 411,999997
+Run 1: failed 389 sucess 571: 4568 bytes received in 10,000000 s => 456,799993
+Run 2: failed 436 sucess 528: 4224 bytes received in 10,000000 s => 422,399997
+Run 3: failed 8 sucess 1016: 8128 bytes received in 10,000000 s => 812,799993
+Run 4: failed 1 sucess 1023: 8184 bytes received in 10,000000 s => 818,399991
+Run 5: failed 1 sucess 1023: 8184 bytes received in 10,000000 s => 818,399981
+Run 6: failed 9 sucess 1015: 8120 bytes received in 10,000000 s => 811,999999
+Run 7: failed 3 sucess 1021: 8168 bytes received in 10,000000 s => 816,799998
+Run 8: failed 3 sucess 1021: 8168 bytes received in 10,000000 s => 816,799987
+Run 9: failed 2 sucess 1022: 8176 bytes received in 10,000000 s => 817,599992
+Average datarate : 700,399993 	Std dev: 177,078963
+done! press key for next round
+press key!
+press key once slave received first packet!
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 1 found! Can start!
+[A4][ 9][4E][ 1][70][69][6E][67][40][ 1][ 0][ 0][B3]
+Channel 1 open! took 0,018364
+Run 0: failed 1 sucess 1022: 8176 bytes received in 10,000000 s => 817,599987
+Run 1: failed 8 sucess 1016: 8128 bytes received in 10,000000 s => 812,799995
+Run 2: failed 3 sucess 1021: 8168 bytes received in 10,000000 s => 816,799995
+Run 3: failed 7 sucess 1017: 8136 bytes received in 10,000000 s => 813,599999
+Run 4: failed 4 sucess 1021: 8168 bytes received in 10,000000 s => 816,799998
+Run 5: failed 8 sucess 1015: 8120 bytes received in 10,000000 s => 811,999981
+Run 6: failed 3 sucess 1021: 8168 bytes received in 10,000000 s => 816,799999
+Run 7: failed 6 sucess 1018: 8144 bytes received in 10,000000 s => 814,399998
+Run 8: failed 5 sucess 1019: 8152 bytes received in 10,000000 s => 815,199990
+Run 9: failed 6 sucess 1018: 8144 bytes received in 10,000000 s => 814,399994
+Average datarate : 815,039994 	Std dev: 1,817252
+done! press key for next round
+press key!
+press key once slave received first packet!
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 1 found! Can start!
+[A4][ 9][4E][ 1][70][69][6E][67][40][ 1][ 0][ 0][B3]
+Channel 1 open! took 0,000153
+Run 0: failed 521 sucess 470: 3760 bytes received in 10,000000 s => 375,999998
+Run 1: failed 6 sucess 992: 7936 bytes received in 10,000000 s => 793,599996
+Run 2: failed 9 sucess 1015: 8120 bytes received in 10,000000 s => 811,999996
+Run 3: failed 5 sucess 1019: 8152 bytes received in 10,000000 s => 815,199989
+Run 4: failed 3 sucess 1021: 8168 bytes received in 10,000000 s => 816,799985
+Run 5: failed 9 sucess 1015: 8120 bytes received in 10,000000 s => 811,999994
+Run 6: failed 5 sucess 1019: 8152 bytes received in 10,000000 s => 815,199998
+Run 7: failed 4 sucess 1020: 8160 bytes received in 10,000000 s => 816,000000
+Run 8: failed 6 sucess 1018: 8144 bytes received in 10,000000 s => 814,399989
+Run 9: failed 8 sucess 1016: 8128 bytes received in 10,000000 s => 812,799997
+Average datarate : 768,399994 	Std dev: 130,954525
+done! press key for next round
+press key!
+press key once slave received first packet!
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 1 found! Can start!
+[A4][ 9][4E][ 1][70][69][6E][67][40][ 1][ 0][ 0][B3]
+Channel 1 open! took 0,000069
+Run 0: failed 1 sucess 1022: 8176 bytes received in 10,000000 s => 817,599998
+Run 1: failed 6 sucess 1017: 8136 bytes received in 10,000000 s => 813,599990
+Run 2: failed 4 sucess 1021: 8168 bytes received in 10,000000 s => 816,799989
+Run 3: failed 4 sucess 1020: 8160 bytes received in 10,000000 s => 815,999998
+Run 4: failed 3 sucess 1020: 8160 bytes received in 10,000000 s => 815,999993
+Run 5: failed 2 sucess 1022: 8176 bytes received in 10,000000 s => 817,599991
+Run 6: failed 3 sucess 1021: 8168 bytes received in 10,000000 s => 816,800000
+Run 7: failed 4 sucess 1020: 8160 bytes received in 10,000000 s => 815,999993
+Run 8: failed 251 sucess 774: 6192 bytes received in 10,000000 s => 619,199998
+Run 9: failed 391 sucess 569: 4552 bytes received in 10,000000 s => 455,200000
+Average datarate : 760,479995 	Std dev: 117,513544
+done! press key for next round
+
+[michael@xps src]$ sudo ./ant -p /dev/ttyUSB0 -t m -n 2 -f 310
+Power setting is now: 0dBm
+Experiment 2: Broadcast Data Transfer between multiple nodes
+press key!
+press key once slave received first packet!
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 1 found! Can start!
+[A4][ 9][4E][ 1][ 0][ 0][6E][67][40][ 1][ 0][ 0][AA]
+Channel 1 open! took 0.000110
+Run 0: failed 755 sucess 216: 1728 bytes received in 10.000000 s => 172.799998
+Run 1: failed 14 sucess 1003: 8024 bytes received in 10.000000 s => 802.399994
+Run 2: failed 8 sucess 1049: 8392 bytes received in 10.000000 s => 839.199999
+Run 3: failed 265 sucess 755: 6040 bytes received in 10.000000 s => 603.999999
+Run 4: failed 46 sucess 1011: 8088 bytes received in 10.000000 s => 808.799989
+Run 5: failed 4 sucess 1053: 8424 bytes received in 10.000000 s => 842.399989
+Run 6: failed 11 sucess 1046: 8368 bytes received in 10.000000 s => 836.799993
+Run 7: failed 12 sucess 1045: 8360 bytes received in 10.000000 s => 835.999998
+Run 8: failed 10 sucess 1047: 8376 bytes received in 10.000000 s => 837.599988
+Run 9: failed 5 sucess 1052: 8416 bytes received in 10.000000 s => 841.599998
+Average datarate : 742.159995 	Std dev: 201.879503
+done! press key for next round
+press key!
+press key once slave received first packet!
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 1 found! Can start!
+[A4][ 9][4E][ 1][70][69][6E][67][36][ 1][ 0][ 0][C5]
+Channel 1 open! took 0.039382
+Run 0: failed 5 sucess 1051: 8408 bytes received in 10.000000 s => 840.799989
+Run 1: failed 260 sucess 761: 6088 bytes received in 10.000000 s => 608.799995
+Run 2: failed 53 sucess 1003: 8024 bytes received in 10.000000 s => 802.399988
+Run 3: failed 4 sucess 1053: 8424 bytes received in 10.000000 s => 842.399992
+Run 4: failed 13 sucess 1044: 8352 bytes received in 10.000000 s => 835.199993
+Run 5: failed 10 sucess 1048: 8384 bytes received in 10.000000 s => 838.399990
+Run 6: failed 7 sucess 1050: 8400 bytes received in 10.000000 s => 839.999994
+Run 7: failed 3 sucess 1054: 8432 bytes received in 10.000000 s => 843.199990
+Run 8: failed 14 sucess 1042: 8336 bytes received in 10.000000 s => 833.599989
+Run 9: failed 5 sucess 1053: 8424 bytes received in 10.000000 s => 842.399997
+Average datarate : 812.719992 	Std dev: 68.930526
+done! press key for next round
+press key!
+press key once slave received first packet!
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 1 found! Can start!
+[A4][ 9][4E][ 1][70][69][6E][67][36][ 1][ 0][ 0][C5]
+Channel 1 open! took 0.002096
+Run 0: failed 513 sucess 457: 3656 bytes received in 10.000000 s => 365.599997
+Run 1: failed 3 sucess 1054: 8432 bytes received in 10.000000 s => 843.199995
+Run 2: failed 5 sucess 1052: 8416 bytes received in 10.000000 s => 841.599995
+Run 3: failed 301 sucess 719: 5752 bytes received in 10.000000 s => 575.199994
+Run 4: failed 12 sucess 1045: 8360 bytes received in 10.000000 s => 835.999991
+Run 5: failed 7 sucess 1050: 8400 bytes received in 10.000000 s => 839.999998
+Run 6: failed 4 sucess 1053: 8424 bytes received in 10.000000 s => 842.399988
+Run 7: failed 7 sucess 1050: 8400 bytes received in 10.000000 s => 839.999992
+Run 8: failed 5 sucess 1052: 8416 bytes received in 10.000000 s => 841.599998
+Run 9: failed 8 sucess 1049: 8392 bytes received in 10.000000 s => 839.199999
+Average datarate : 766.479995 	Std dev: 155.293353
+done! press key for next round
+press key!
+press key once slave received first packet!
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 1 found! Can start!
+[A4][ 9][4E][ 1][70][69][6E][67][36][ 1][ 0][ 0][C5]
+Channel 1 open! took 0.000171
+Run 0: failed 301 sucess 705: 5640 bytes received in 10.000000 s => 563.999990
+Run 1: failed 8 sucess 1049: 8392 bytes received in 10.000000 s => 839.199989
+Run 2: failed 8 sucess 1049: 8392 bytes received in 10.000000 s => 839.199997
+Run 3: failed 11 sucess 1046: 8368 bytes received in 10.000000 s => 836.799981
+Run 4: failed 11 sucess 1045: 8360 bytes received in 10.000000 s => 835.999988
+Run 5: failed 5 sucess 1053: 8424 bytes received in 10.000000 s => 842.399989
+Run 6: failed 5 sucess 1052: 8416 bytes received in 10.000000 s => 841.599996
+Run 7: failed 259 sucess 761: 6088 bytes received in 10.000000 s => 608.799992
+Run 8: failed 53 sucess 1004: 8032 bytes received in 10.000000 s => 803.199996
+Run 9: failed 5 sucess 1052: 8416 bytes received in 10.000000 s => 841.599996
+Average datarate : 785.279991 	Std dev: 100.538200
+done! press key for next round
+press key!
+press key once slave received first packet!
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 1 found! Can start!
+[A4][ 9][4E][ 1][70][69][6E][67][36][ 1][ 0][ 0][C5]
+Channel 1 open! took 0.000113
+Run 0: failed 305 sucess 712: 5696 bytes received in 10.000000 s => 569.599995
+Run 1: failed 9 sucess 1048: 8384 bytes received in 10.000000 s => 838.399982
+Run 2: failed 5 sucess 1052: 8416 bytes received in 10.000000 s => 841.599987
+Run 3: failed 5 sucess 1052: 8416 bytes received in 10.000000 s => 841.599998
+Run 4: failed 6 sucess 1047: 8376 bytes received in 10.000000 s => 837.599991
+Run 5: failed 4 sucess 1053: 8424 bytes received in 10.000000 s => 842.399987
+Run 6: failed 6 sucess 1052: 8416 bytes received in 10.000000 s => 841.599997
+Run 7: failed 261 sucess 759: 6072 bytes received in 10.000000 s => 607.199998
+Run 8: failed 49 sucess 1008: 8064 bytes received in 10.000000 s => 806.399987
+Run 9: failed 6 sucess 1051: 8408 bytes received in 10.000000 s => 840.799995
+Average datarate : 786.719992 	Std dev: 100.037879
+done! press key for next round
+press key!
+press key once slave received first packet!
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 1 found! Can start!
+[A4][ 9][4E][ 1][70][69][6E][67][36][ 1][ 0][ 0][C5]
+Channel 1 open! took 0.000136
+Run 0: failed 8 sucess 1049: 8392 bytes received in 10.000000 s => 839.199992
+Run 1: failed 11 sucess 1045: 8360 bytes received in 10.000000 s => 835.999987
+Run 2: failed 10 sucess 1048: 8384 bytes received in 10.000000 s => 838.399993
+Run 3: failed 4 sucess 1052: 8416 bytes received in 10.000000 s => 841.599991
+Run 4: failed 36 sucess 1022: 8176 bytes received in 10.000000 s => 817.599998
+Run 5: failed 274 sucess 746: 5968 bytes received in 10.000000 s => 596.799996
+Run 6: failed 8 sucess 1049: 8392 bytes received in 10.000000 s => 839.199997
+Run 7: failed 5 sucess 1052: 8416 bytes received in 10.000000 s => 841.599992
+Run 8: failed 8 sucess 1049: 8392 bytes received in 10.000000 s => 839.199993
+Run 9: failed 9 sucess 1048: 8384 bytes received in 10.000000 s => 838.399991
+Average datarate : 812.799993 	Std dev: 72.303360
+done! press key for next round
+press key!
+press key once slave received first packet!
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 1 found! Can start!
+[A4][ 9][4E][ 1][70][69][6E][67][36][ 1][ 0][ 0][C5]
+Channel 1 open! took 0.000131
+Run 0: failed 10 sucess 1046: 8368 bytes received in 10.000000 s => 836.799988
+Run 1: failed 4 sucess 1053: 8424 bytes received in 10.000000 s => 842.399984
+Run 2: failed 8 sucess 1049: 8392 bytes received in 10.000000 s => 839.199991
+Run 3: failed 5 sucess 1052: 8416 bytes received in 10.000000 s => 841.599992
+Run 4: failed 4 sucess 1053: 8424 bytes received in 10.000000 s => 842.399995
+Run 5: failed 257 sucess 764: 6112 bytes received in 10.000000 s => 611.199994
+Run 6: failed 51 sucess 1005: 8040 bytes received in 10.000000 s => 803.999997
+Run 7: failed 4 sucess 1054: 8432 bytes received in 10.000000 s => 843.199983
+Run 8: failed 4 sucess 1052: 8416 bytes received in 10.000000 s => 841.599984
+Run 9: failed 8 sucess 1049: 8392 bytes received in 10.000000 s => 839.199996
+Average datarate : 814.159990 	Std dev: 68.561492
+done! press key for next round
+press key!
+press key once slave received first packet!
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 1 found! Can start!
+[A4][ 9][4E][ 1][70][69][6E][67][36][ 1][ 0][ 0][C5]
+Channel 1 open! took 0.035705
+Run 0: failed 6 sucess 1050: 8400 bytes received in 10.000000 s => 839.999997
+Run 1: failed 209 sucess 849: 6792 bytes received in 10.000000 s => 679.199997
+Run 2: failed 104 sucess 916: 7328 bytes received in 10.000000 s => 732.799994
+Run 3: failed 8 sucess 1049: 8392 bytes received in 10.000000 s => 839.199995
+Run 4: failed 7 sucess 1050: 8400 bytes received in 10.000000 s => 839.999993
+Run 5: failed 9 sucess 1048: 8384 bytes received in 10.000000 s => 838.399992
+Run 6: failed 4 sucess 1053: 8424 bytes received in 10.000000 s => 842.399990
+Run 7: failed 12 sucess 1044: 8352 bytes received in 10.000000 s => 835.199993
+Run 8: failed 4 sucess 1054: 8432 bytes received in 10.000000 s => 843.199989
+Run 9: failed 8 sucess 1049: 8392 bytes received in 10.000000 s => 839.199987
+Average datarate : 812.959993 	Std dev: 54.845002
+done! press key for next round
+press key!
+press key once slave received first packet!
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 1 found! Can start!
+[A4][ 9][4E][ 1][70][69][6E][67][36][ 1][ 0][ 0][C5]
+Channel 1 open! took 0.000098
+Run 0: failed 300 sucess 720: 5760 bytes received in 10.000000 s => 575.999999
+Run 1: failed 6 sucess 1051: 8408 bytes received in 10.000000 s => 840.799987
+Run 2: failed 6 sucess 1051: 8408 bytes received in 10.000000 s => 840.799994
+Run 3: failed 5 sucess 1052: 8416 bytes received in 10.000000 s => 841.600000
+Run 4: failed 11 sucess 1046: 8368 bytes received in 10.000000 s => 836.799989
+Run 5: failed 4 sucess 1053: 8424 bytes received in 10.000000 s => 842.400000
+Run 6: failed 5 sucess 1052: 8416 bytes received in 10.000000 s => 841.599991
+Run 7: failed 6 sucess 1051: 8408 bytes received in 10.000000 s => 840.799995
+Run 8: failed 2 sucess 1055: 8440 bytes received in 10.000000 s => 843.999987
+Run 9: failed 179 sucess 879: 7032 bytes received in 10.000000 s => 703.199997
+Average datarate : 800.799994 	Std dev: 85.488524
+done! press key for next round
+press key!
+press key once slave received first packet!
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 1 found! Can start!
+[A4][ 9][4E][ 1][70][69][6E][67][36][ 1][ 0][ 0][C5]
+Channel 1 open! took 0.000107
+Run 0: failed 6 sucess 1047: 8376 bytes received in 10.000000 s => 837.599999
+Run 1: failed 258 sucess 762: 6096 bytes received in 10.000000 s => 609.599992
+Run 2: failed 54 sucess 1003: 8024 bytes received in 10.000000 s => 802.399993
+Run 3: failed 3 sucess 1054: 8432 bytes received in 10.000000 s => 843.199987
+Run 4: failed 5 sucess 1052: 8416 bytes received in 10.000000 s => 841.599991
+Run 5: failed 4 sucess 1053: 8424 bytes received in 10.000000 s => 842.399990
+Run 6: failed 7 sucess 1050: 8400 bytes received in 10.000000 s => 839.999991
+Run 7: failed 2 sucess 1055: 8440 bytes received in 10.000000 s => 843.999985
+Run 8: failed 6 sucess 1051: 8408 bytes received in 10.000000 s => 840.799988
+Run 9: failed 4 sucess 1053: 8424 bytes received in 10.000000 s => 842.399999
+Average datarate : 814.399991 	Std dev: 69.275565
+done! press key for next round
+
+[michael@xps src]$ sudo ./ant -p /dev/ttyUSB0 -t m -n 2 -f 300
+[sudo] Passwort für michael: 
+Power setting is now: 0dBm
+Experiment 2: Broadcast Data Transfer between multiple nodes
+press key!
+press key once slave received first packet!
+Waiting for msgType 4E! Press any key to continue!
+Run 0: failed 261 sucess 603: 4824 bytes received in 10.000000 s => 482.399996
+Run 1: failed 6 sucess 1086: 8688 bytes received in 10.000000 s => 868.799988
+Run 2: failed 3 sucess 1088: 8704 bytes received in 10.000000 s => 870.399996
+Run 3: failed 9 sucess 1084: 8672 bytes received in 10.000000 s => 867.199989
+Run 4: failed 10 sucess 1083: 8664 bytes received in 10.000000 s => 866.399994
+Run 5: failed 513 sucess 558: 4464 bytes received in 10.000000 s => 446.399996
+Run 6: failed 6 sucess 1087: 8696 bytes received in 10.000000 s => 869.599988
+Run 7: failed 3 sucess 1089: 8712 bytes received in 10.000000 s => 871.199997
+Run 8: failed 2 sucess 1090: 8720 bytes received in 10.000000 s => 871.999989
+Run 9: failed 4 sucess 1088: 8704 bytes received in 10.000000 s => 870.399999
+Average datarate : 788.479993 	Std dev: 162.247888
+done! press key for next round
+press key!
+press key once slave received first packet!
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 1 found! Can start!
+[A4][ 9][4E][ 1][70][69][6E][67][2C][ 1][ 0][ 0][DF]
+Channel 1 open! took 0.017308
+Run 0: failed 8 sucess 1084: 8672 bytes received in 10.000000 s => 867.199994
+Run 1: failed 6 sucess 1086: 8688 bytes received in 10.000000 s => 868.799998
+Run 2: failed 2 sucess 1090: 8720 bytes received in 10.000000 s => 871.999991
+Run 3: failed 5 sucess 1087: 8696 bytes received in 10.000000 s => 869.599993
+Run 4: failed 123 sucess 970: 7760 bytes received in 10.000000 s => 775.999998
+Run 5: failed 399 sucess 673: 5384 bytes received in 10.000000 s => 538.399998
+Run 6: failed 4 sucess 1088: 8704 bytes received in 10.000000 s => 870.400000
+Run 7: failed 4 sucess 1088: 8704 bytes received in 10.000000 s => 870.399987
+Run 8: failed 6 sucess 1086: 8688 bytes received in 10.000000 s => 868.799988
+Run 9: failed 6 sucess 1086: 8688 bytes received in 10.000000 s => 868.799997
+Average datarate : 827.039994 	Std dev: 100.177633
+done! press key for next round
+press key!
+press key once slave received first packet!
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 1 found! Can start!
+[A4][ 9][4E][ 1][70][69][6E][67][2C][ 1][ 0][ 0][DF]
+Channel 1 open! took 0.020556
+Run 0: failed 5 sucess 1087: 8696 bytes received in 10.000000 s => 869.599993
+Run 1: failed 5 sucess 1087: 8696 bytes received in 10.000000 s => 869.599999
+Run 2: failed 5 sucess 1088: 8704 bytes received in 10.000000 s => 870.399992
+Run 3: failed 14 sucess 1078: 8624 bytes received in 10.000000 s => 862.399999
+Run 4: failed 261 sucess 819: 6552 bytes received in 10.000000 s => 655.199998
+Run 5: failed 263 sucess 821: 6568 bytes received in 10.000000 s => 656.799996
+Run 6: failed 9 sucess 1083: 8664 bytes received in 10.000000 s => 866.399988
+Run 7: failed 3 sucess 1089: 8712 bytes received in 10.000000 s => 871.199993
+Run 8: failed 7 sucess 1086: 8688 bytes received in 10.000000 s => 868.799998
+Run 9: failed 7 sucess 1085: 8680 bytes received in 10.000000 s => 867.999987
+Average datarate : 825.839994 	Std dev: 84.953106
+done! press key for next round
+press key!
+press key once slave received first packet!
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 1 found! Can start!
+[A4][ 9][4E][ 1][70][69][6E][67][2C][ 1][ 0][ 0][DF]
+Channel 1 open! took 0.023898
+Run 0: failed 4 sucess 1088: 8704 bytes received in 10.000000 s => 870.399999
+Run 1: failed 7 sucess 1085: 8680 bytes received in 10.000000 s => 868.000000
+Run 2: failed 2 sucess 1090: 8720 bytes received in 10.000000 s => 871.999997
+Run 3: failed 10 sucess 1083: 8664 bytes received in 10.000000 s => 866.399999
+Run 4: failed 67 sucess 1025: 8200 bytes received in 10.000000 s => 819.999994
+Run 5: failed 455 sucess 616: 4928 bytes received in 10.000000 s => 492.799995
+Run 6: failed 7 sucess 1085: 8680 bytes received in 10.000000 s => 867.999989
+Run 7: failed 5 sucess 1088: 8704 bytes received in 10.000000 s => 870.399994
+Run 8: failed 4 sucess 1088: 8704 bytes received in 10.000000 s => 870.399989
+Run 9: failed 6 sucess 1086: 8688 bytes received in 10.000000 s => 868.799995
+Average datarate : 826.719995 	Std dev: 112.283185
+done! press key for next round
+press key!
+press key once slave received first packet!
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 1 found! Can start!
+[A4][ 9][4E][ 1][70][69][6E][67][2C][ 1][ 0][ 0][DF]
+Channel 1 open! took 0.000096
+Run 0: failed 263 sucess 818: 6544 bytes received in 10.000000 s => 654.399997
+Run 1: failed 257 sucess 826: 6608 bytes received in 10.000000 s => 660.799994
+Run 2: failed 4 sucess 1088: 8704 bytes received in 10.000000 s => 870.399991
+Run 3: failed 1 sucess 1092: 8736 bytes received in 10.000000 s => 873.599989
+Run 4: failed 6 sucess 1086: 8688 bytes received in 10.000000 s => 868.799997
+Run 5: failed 6 sucess 1086: 8688 bytes received in 10.000000 s => 868.799991
+Run 6: failed 6 sucess 1087: 8696 bytes received in 10.000000 s => 869.599998
+Run 7: failed 12 sucess 1080: 8640 bytes received in 10.000000 s => 863.999991
+Run 8: failed 359 sucess 722: 5776 bytes received in 10.000000 s => 577.600000
+Run 9: failed 162 sucess 920: 7360 bytes received in 10.000000 s => 735.999994
+Average datarate : 784.399994 	Std dev: 109.763526
+done! press key for next round
+press key!
+press key once slave received first packet!
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 1 found! Can start!
+[A4][ 9][4E][ 1][70][69][6E][67][2C][ 1][ 0][ 0][DF]
+Channel 1 open! took 0.023782
+Run 0: failed 3 sucess 1088: 8704 bytes received in 10.000000 s => 870.399996
+Run 1: failed 7 sucess 1085: 8680 bytes received in 10.000000 s => 867.999992
+Run 2: failed 4 sucess 1089: 8712 bytes received in 10.000000 s => 871.199999
+Run 3: failed 6 sucess 1087: 8696 bytes received in 10.000000 s => 869.599995
+Run 4: failed 259 sucess 833: 6664 bytes received in 10.000000 s => 666.399994
+Run 5: failed 262 sucess 809: 6472 bytes received in 10.000000 s => 647.199999
+Run 6: failed 10 sucess 1083: 8664 bytes received in 10.000000 s => 866.399987
+Run 7: failed 7 sucess 1084: 8672 bytes received in 10.000000 s => 867.199998
+Run 8: failed 7 sucess 1086: 8688 bytes received in 10.000000 s => 868.799998
+Run 9: failed 4 sucess 1088: 8704 bytes received in 10.000000 s => 870.399997
+Average datarate : 826.559995 	Std dev: 85.000367
+done! press key for next round
+press key!
+press key once slave received first packet!
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 1 found! Can start!
+[A4][ 9][4E][ 1][70][69][6E][67][2C][ 1][ 0][ 0][DF]
+Channel 1 open! took 0.000168
+Run 0: failed 3 sucess 1089: 8712 bytes received in 10.000000 s => 871.199998
+Run 1: failed 405 sucess 676: 5408 bytes received in 10.000000 s => 540.799997
+Run 2: failed 120 sucess 962: 7696 bytes received in 10.000000 s => 769.599990
+Run 3: failed 6 sucess 1087: 8696 bytes received in 10.000000 s => 869.600000
+Run 4: failed 5 sucess 1087: 8696 bytes received in 10.000000 s => 869.599986
+Run 5: failed 5 sucess 1087: 8696 bytes received in 10.000000 s => 869.599999
+Run 6: failed 8 sucess 1085: 8680 bytes received in 10.000000 s => 867.999994
+Run 7: failed 8 sucess 1084: 8672 bytes received in 10.000000 s => 867.199993
+Run 8: failed 9 sucess 1083: 8664 bytes received in 10.000000 s => 866.399991
+Run 9: failed 466 sucess 615: 4920 bytes received in 10.000000 s => 491.999997
+Average datarate : 788.399995 	Std dev: 139.562860
+done! press key for next round
+press key!
+press key once slave received first packet!
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 1 found! Can start!
+[A4][ 9][4E][ 1][70][69][6E][67][2C][ 1][ 0][ 0][DF]
+Channel 1 open! took 0.000117
+Run 0: failed 7 sucess 1084: 8672 bytes received in 10.000000 s => 867.199987
+Run 1: failed 8 sucess 1084: 8672 bytes received in 10.000000 s => 867.199995
+Run 2: failed 9 sucess 1084: 8672 bytes received in 10.000000 s => 867.199990
+Run 3: failed 461 sucess 620: 4960 bytes received in 10.000000 s => 495.999994
+Run 4: failed 60 sucess 1023: 8184 bytes received in 10.000000 s => 818.399994
+Run 5: failed 10 sucess 1082: 8656 bytes received in 10.000000 s => 865.599984
+Run 6: failed 2 sucess 1090: 8720 bytes received in 10.000000 s => 871.999994
+Run 7: failed 7 sucess 1085: 8680 bytes received in 10.000000 s => 867.999999
+Run 8: failed 10 sucess 1082: 8656 bytes received in 10.000000 s => 865.599992
+Run 9: failed 6 sucess 1087: 8696 bytes received in 10.000000 s => 869.599987
+Average datarate : 825.679992 	Std dev: 110.890186
+done! press key for next round
+press key!
+press key once slave received first packet!
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 1 found! Can start!
+[A4][ 9][4E][ 1][70][69][6E][67][2C][ 1][ 0][ 0][DF]
+Channel 1 open! took 0.018017
+Run 0: failed 5 sucess 1087: 8696 bytes received in 10.000000 s => 869.599981
+Run 1: failed 5 sucess 1086: 8688 bytes received in 10.000000 s => 868.799987
+Run 2: failed 5 sucess 1088: 8704 bytes received in 10.000000 s => 870.399991
+Run 3: failed 2 sucess 1090: 8720 bytes received in 10.000000 s => 871.999989
+Run 4: failed 3 sucess 1090: 8720 bytes received in 10.000000 s => 871.999992
+Run 5: failed 514 sucess 557: 4456 bytes received in 10.000000 s => 445.599998
+Run 6: failed 7 sucess 1086: 8688 bytes received in 10.000000 s => 868.799989
+Run 7: failed 8 sucess 1084: 8672 bytes received in 10.000000 s => 867.199990
+Run 8: failed 8 sucess 1084: 8672 bytes received in 10.000000 s => 867.199988
+Run 9: failed 7 sucess 1085: 8680 bytes received in 10.000000 s => 868.000000
+Average datarate : 826.959991 	Std dev: 127.130570
+done! press key for next round
+press key!
+press key once slave received first packet!
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 1 found! Can start!
+[A4][ 9][4E][ 1][70][69][6E][67][2C][ 1][ 0][ 0][DF]
+Channel 1 open! took 0.017525
+Run 0: failed 4 sucess 1087: 8696 bytes received in 10.000000 s => 869.600000
+Run 1: failed 7 sucess 1085: 8680 bytes received in 10.000000 s => 867.999995
+Run 2: failed 5 sucess 1088: 8704 bytes received in 10.000000 s => 870.400000
+Run 3: failed 4 sucess 1088: 8704 bytes received in 10.000000 s => 870.399997
+Run 4: failed 128 sucess 965: 7720 bytes received in 10.000000 s => 771.999994
+Run 5: failed 396 sucess 675: 5400 bytes received in 10.000000 s => 539.999994
+Run 6: failed 12 sucess 1081: 8648 bytes received in 10.000000 s => 864.799991
+Run 7: failed 8 sucess 1084: 8672 bytes received in 10.000000 s => 867.199987
+Run 8: failed 9 sucess 1083: 8664 bytes received in 10.000000 s => 866.399994
+Run 9: failed 7 sucess 1085: 8680 bytes received in 10.000000 s => 867.999996
+Average datarate : 825.679995 	Std dev: 99.457376
+done! press key for next round
+
+[michael@xps src]$ sudo ./ant -p /dev/ttyUSB0 -t m -n 2 -f 290
+[sudo] Passwort für michael: 
+Power setting is now: 0dBm
+Experiment 2: Broadcast Data Transfer between multiple nodes
+press key!
+press key once slave received first packet!
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 1 found! Can start!
+[A4][ 9][4E][ 1][70][69][6E][67][2C][ 1][ 0][ 0][DF]
+Channel 1 open! took 0.000092
+Run 0: failed 287 sucess 1243: 9944 bytes received in 10.000000 s => 994.399991
+Run 1: failed 522 sucess 597: 4776 bytes received in 10.000000 s => 477.599998
+Run 2: failed 523 sucess 571: 4568 bytes received in 10.000000 s => 456.799996
+Run 3: failed 525 sucess 585: 4680 bytes received in 10.000000 s => 467.999998
+Run 4: failed 15 sucess 1115: 8920 bytes received in 10.000000 s => 891.999991
+Run 5: failed 3 sucess 1127: 9016 bytes received in 10.000000 s => 901.599998
+Run 6: failed 2 sucess 1128: 9024 bytes received in 10.000000 s => 902.399989
+Run 7: failed 195 sucess 936: 7488 bytes received in 10.000000 s => 748.799993
+Run 8: failed 329 sucess 770: 6160 bytes received in 10.000000 s => 615.999995
+Run 9: failed 2 sucess 1128: 9024 bytes received in 10.000000 s => 902.399996
+Average datarate : 735.999994 	Std dev: 201.250807
+done! press key for next round
+press key!
+press key once slave received first packet!
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 1 found! Can start!
+[A4][ 9][4E][ 1][70][69][6E][67][2C][ 1][ 0][ 0][DF]
+Channel 1 open! took 0.003277
+Run 0: failed 528 sucess 566: 4528 bytes received in 10.000000 s => 452.799997
+Run 1: failed 272 sucess 851: 6808 bytes received in 10.000000 s => 680.799997
+Run 2: failed 6 sucess 1123: 8984 bytes received in 10.000000 s => 898.399987
+Run 3: failed 6 sucess 1125: 9000 bytes received in 10.000000 s => 899.999993
+Run 4: failed 5 sucess 1124: 8992 bytes received in 10.000000 s => 899.199993
+Run 5: failed 517 sucess 583: 4664 bytes received in 10.000000 s => 466.399996
+Run 6: failed 6 sucess 1124: 8992 bytes received in 10.000000 s => 899.199998
+Run 7: failed 3 sucess 1127: 9016 bytes received in 10.000000 s => 901.599989
+Run 8: failed 8 sucess 1122: 8976 bytes received in 10.000000 s => 897.599991
+Run 9: failed 517 sucess 589: 4712 bytes received in 10.000000 s => 471.199993
+Average datarate : 746.719993 	Std dev: 196.208932
+done! press key for next round
+press key!
+press key once slave received first packet!
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 1 found! Can start!
+[A4][ 9][4E][ 1][70][69][6E][67][22][ 1][ 0][ 0][D1]
+Channel 1 open! took 0.019550
+Run 0: failed 4 sucess 1125: 9000 bytes received in 10.000000 s => 899.999996
+Run 1: failed 519 sucess 581: 4648 bytes received in 10.000000 s => 464.800000
+Run 2: failed 3 sucess 1127: 9016 bytes received in 10.000000 s => 901.599989
+Run 3: failed 3 sucess 1127: 9016 bytes received in 10.000000 s => 901.599996
+Run 4: failed 10 sucess 1120: 8960 bytes received in 10.000000 s => 895.999991
+Run 5: failed 527 sucess 580: 4640 bytes received in 10.000000 s => 463.999996
+Run 6: failed 578 sucess 528: 4224 bytes received in 10.000000 s => 422.399994
+Run 7: failed 467 sucess 643: 5144 bytes received in 10.000000 s => 514.399999
+Run 8: failed 11 sucess 1119: 8952 bytes received in 10.000000 s => 895.199996
+Run 9: failed 7 sucess 1123: 8984 bytes received in 10.000000 s => 898.399990
+Average datarate : 725.839995 	Std dev: 212.841212
+done! press key for next round
+press key!
+press key once slave received first packet!
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 1 found! Can start!
+[A4][ 9][4E][ 1][70][69][6E][67][22][ 1][ 0][ 0][D1]
+Channel 1 open! took 0.146506
+Run 0: failed 259 sucess 863: 6904 bytes received in 10.000000 s => 690.399992
+Run 1: failed 517 sucess 583: 4664 bytes received in 10.000000 s => 466.400000
+Run 2: failed 4 sucess 1127: 9016 bytes received in 10.000000 s => 901.599989
+Run 3: failed 7 sucess 1122: 8976 bytes received in 10.000000 s => 897.599994
+Run 4: failed 109 sucess 1022: 8176 bytes received in 10.000000 s => 817.599997
+Run 5: failed 579 sucess 527: 4216 bytes received in 10.000000 s => 421.599998
+Run 6: failed 579 sucess 527: 4216 bytes received in 10.000000 s => 421.599994
+Run 7: failed 310 sucess 800: 6400 bytes received in 10.000000 s => 639.999996
+Run 8: failed 8 sucess 1122: 8976 bytes received in 10.000000 s => 897.599994
+Run 9: failed 2 sucess 1128: 9024 bytes received in 10.000000 s => 902.399990
+Average datarate : 705.679994 	Std dev: 196.591253
+done! press key for next round
+press key!
+press key once slave received first packet!
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 1 found! Can start!
+[A4][ 9][4E][ 1][70][69][6E][67][22][ 1][ 0][ 0][D1]
+Channel 1 open! took 0.018763
+Run 0: failed 4 sucess 1125: 9000 bytes received in 10.000000 s => 899.999992
+Run 1: failed 519 sucess 587: 4696 bytes received in 10.000000 s => 469.599998
+Run 2: failed 523 sucess 583: 4664 bytes received in 10.000000 s => 466.399999
+Run 3: failed 673 sucess 439: 3512 bytes received in 10.000000 s => 351.199993
+Run 4: failed 623 sucess 474: 3792 bytes received in 10.000000 s => 379.199998
+Run 5: failed 527 sucess 579: 4632 bytes received in 10.000000 s => 463.199994
+Run 6: failed 264 sucess 859: 6872 bytes received in 10.000000 s => 687.199992
+Run 7: failed 4 sucess 1125: 9000 bytes received in 10.000000 s => 899.999993
+Run 8: failed 2 sucess 1128: 9024 bytes received in 10.000000 s => 902.399991
+Run 9: failed 5 sucess 1125: 9000 bytes received in 10.000000 s => 899.999989
+Average datarate : 641.919994 	Std dev: 227.089887
+done! press key for next round
+press key!
+press key once slave received first packet!
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 1 found! Can start!
+[A4][ 9][4E][ 1][70][69][6E][67][22][ 1][ 0][ 0][D1]
+Channel 1 open! took 0.000113
+Run 0: failed 4 sucess 1125: 9000 bytes received in 10.000000 s => 899.999986
+Run 1: failed 519 sucess 587: 4696 bytes received in 10.000000 s => 469.599994
+Run 2: failed 524 sucess 582: 4656 bytes received in 10.000000 s => 465.599997
+Run 3: failed 669 sucess 444: 3552 bytes received in 10.000000 s => 355.199995
+Run 4: failed 627 sucess 469: 3752 bytes received in 10.000000 s => 375.199998
+Run 5: failed 521 sucess 585: 4680 bytes received in 10.000000 s => 468.000000
+Run 6: failed 264 sucess 859: 6872 bytes received in 10.000000 s => 687.199991
+Run 7: failed 11 sucess 1119: 8952 bytes received in 10.000000 s => 895.199999
+Run 8: failed 1 sucess 1129: 9032 bytes received in 10.000000 s => 903.199988
+Run 9: failed 12 sucess 1118: 8944 bytes received in 10.000000 s => 894.399989
+Average datarate : 641.359994 	Std dev: 225.653622
+done! press key for next round
+press key!
+press key once slave received first packet!
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 1 found! Can start!
+[A4][ 9][4E][ 1][70][69][6E][67][22][ 1][ 0][ 0][D1]
+Channel 1 open! took 0.022196
+Run 0: failed 2 sucess 1127: 9016 bytes received in 10.000000 s => 901.599986
+Run 1: failed 520 sucess 586: 4688 bytes received in 10.000000 s => 468.799993
+Run 2: failed 522 sucess 584: 4672 bytes received in 10.000000 s => 467.199998
+Run 3: failed 524 sucess 587: 4696 bytes received in 10.000000 s => 469.599999
+Run 4: failed 7 sucess 1124: 8992 bytes received in 10.000000 s => 899.199987
+Run 5: failed 3 sucess 1126: 9008 bytes received in 10.000000 s => 900.799996
+Run 6: failed 4 sucess 1126: 9008 bytes received in 10.000000 s => 900.799987
+Run 7: failed 261 sucess 857: 6856 bytes received in 10.000000 s => 685.599996
+Run 8: failed 521 sucess 586: 4688 bytes received in 10.000000 s => 468.799998
+Run 9: failed 558 sucess 548: 4384 bytes received in 10.000000 s => 438.400000
+Average datarate : 660.079994 	Std dev: 206.847093
+done! press key for next round
+press key!
+press key once slave received first packet!
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 1 found! Can start!
+[A4][ 9][4E][ 1][70][69][6E][67][22][ 1][ 0][ 0][D1]
+Channel 1 open! took 0.000181
+Run 0: failed 153 sucess 957: 7656 bytes received in 10.000000 s => 765.599999
+Run 1: failed 3 sucess 1127: 9016 bytes received in 10.000000 s => 901.599987
+Run 2: failed 5 sucess 1125: 9000 bytes received in 10.000000 s => 899.999982
+Run 3: failed 520 sucess 587: 4696 bytes received in 10.000000 s => 469.599993
+Run 4: failed 524 sucess 581: 4648 bytes received in 10.000000 s => 464.799993
+Run 5: failed 668 sucess 444: 3552 bytes received in 10.000000 s => 355.199998
+Run 6: failed 629 sucess 467: 3736 bytes received in 10.000000 s => 373.600000
+Run 7: failed 524 sucess 583: 4664 bytes received in 10.000000 s => 466.399993
+Run 8: failed 820 sucess 283: 2264 bytes received in 10.000000 s => 226.399996
+Run 9: failed 579 sucess 527: 4216 bytes received in 10.000000 s => 421.599998
+Average datarate : 534.479994 	Std dev: 223.869801
+done! press key for next round
+press key!
+press key once slave received first packet!
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 1 found! Can start!
+[A4][ 9][4E][ 1][70][69][6E][67][22][ 1][ 0][ 0][D1]
+Channel 1 open! took 0.000200
+Run 0: failed 647 sucess 686: 5488 bytes received in 10.000000 s => 548.800000
+Run 1: failed 270 sucess 854: 6832 bytes received in 10.000000 s => 683.199993
+Run 2: failed 8 sucess 1121: 8968 bytes received in 10.000000 s => 896.799997
+Run 3: failed 4 sucess 1127: 9016 bytes received in 10.000000 s => 901.599990
+Run 4: failed 7 sucess 1122: 8976 bytes received in 10.000000 s => 897.599988
+Run 5: failed 516 sucess 590: 4720 bytes received in 10.000000 s => 471.999998
+Run 6: failed 521 sucess 585: 4680 bytes received in 10.000000 s => 467.999993
+Run 7: failed 770 sucess 342: 2736 bytes received in 10.000000 s => 273.599996
+Run 8: failed 563 sucess 534: 4272 bytes received in 10.000000 s => 427.199998
+Run 9: failed 579 sucess 527: 4216 bytes received in 10.000000 s => 421.599995
+Average datarate : 599.039995 	Std dev: 218.902804
+done! press key for next round
+press key!
+press key once slave received first packet!
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 1 found! Can start!
+[A4][ 9][4E][ 1][70][69][6E][67][22][ 1][ 0][ 0][D1]
+Channel 1 open! took 0.000157
+Run 0: failed 520 sucess 1005: 8040 bytes received in 10.000000 s => 803.999996
+Run 1: failed 546 sucess 561: 4488 bytes received in 10.000000 s => 448.799995
+Run 2: failed 831 sucess 269: 2152 bytes received in 10.000000 s => 215.199999
+Run 3: failed 578 sucess 530: 4240 bytes received in 10.000000 s => 423.999999
+Run 4: failed 579 sucess 527: 4216 bytes received in 10.000000 s => 421.599995
+Run 5: failed 80 sucess 1043: 8344 bytes received in 10.000000 s => 834.399997
+Run 6: failed 6 sucess 1123: 8984 bytes received in 10.000000 s => 898.399988
+Run 7: failed 5 sucess 1125: 9000 bytes received in 10.000000 s => 899.999989
+Run 8: failed 88 sucess 1043: 8344 bytes received in 10.000000 s => 834.399996
+Run 9: failed 580 sucess 526: 4208 bytes received in 10.000000 s => 420.799996
+Average datarate : 620.159995 	Std dev: 243.378038
+done! press key for next round

@@ -1,3 +1,922 @@
+[michael@xps src]$ sudo ./ant -p /dev/ttyUSB1 -t s -n 1
+Power setting is now: 0dBm
+Experiment 1: Broadcast Data Transfer between two nodes
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][FF][FF][ 0][ 0][F3]
+Channel 0 open! took 4.714233
+Run 0: failed 0 sucess 5: 40 bytes received in 10.000000 s => 4.000000
+Run 1: failed 0 sucess 5: 40 bytes received in 10.000000 s => 4.000000
+Run 2: failed 0 sucess 5: 40 bytes received in 10.000000 s => 4.000000
+Run 3: failed 0 sucess 5: 40 bytes received in 10.000000 s => 4.000000
+Run 4: failed 0 sucess 5: 40 bytes received in 10.000000 s => 4.000000
+Run 5: failed 0 sucess 5: 40 bytes received in 10.000000 s => 4.000000
+Run 6: failed 0 sucess 5: 40 bytes received in 10.000000 s => 4.000000
+Run 7: failed 0 sucess 5: 40 bytes received in 10.000000 s => 4.000000
+Run 8: failed 0 sucess 5: 40 bytes received in 10.000000 s => 4.000000
+Run 9: failed 0 sucess 5: 40 bytes received in 10.000001 s => 3.999999
+Average datarate : 4.000000 	Std dev: 0.000000
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][FF][FF][ 0][ 0][F3]
+Channel 0 open! took 2.997877
+Run 0: failed 0 sucess 5: 40 bytes received in 10.000000 s => 4.000000
+Run 1: failed 0 sucess 5: 40 bytes received in 10.000000 s => 4.000000
+Run 2: failed 0 sucess 5: 40 bytes received in 10.000000 s => 4.000000
+Run 3: failed 0 sucess 5: 40 bytes received in 10.000000 s => 4.000000
+Run 4: failed 0 sucess 5: 40 bytes received in 10.000000 s => 4.000000
+Run 5: failed 0 sucess 5: 40 bytes received in 10.000000 s => 4.000000
+Run 6: failed 0 sucess 5: 40 bytes received in 10.000000 s => 4.000000
+Run 7: failed 0 sucess 5: 40 bytes received in 10.000000 s => 4.000000
+Run 8: failed 0 sucess 5: 40 bytes received in 10.000000 s => 4.000000
+Run 9: failed 0 sucess 5: 40 bytes received in 10.000000 s => 4.000000
+Average datarate : 4.000000 	Std dev: 0.000000
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][FF][FF][ 0][ 0][F3]
+Channel 0 open! took 28.996472
+Run 0: failed 0 sucess 5: 40 bytes received in 10.000000 s => 4.000000
+Run 1: failed 0 sucess 5: 40 bytes received in 10.000000 s => 4.000000
+Run 2: failed 0 sucess 5: 40 bytes received in 10.000000 s => 4.000000
+Run 3: failed 0 sucess 5: 40 bytes received in 10.000000 s => 4.000000
+Run 4: failed 0 sucess 5: 40 bytes received in 10.000000 s => 4.000000
+Run 5: failed 0 sucess 5: 40 bytes received in 10.000000 s => 4.000000
+Run 6: failed 0 sucess 5: 40 bytes received in 10.000000 s => 4.000000
+Run 7: failed 0 sucess 5: 40 bytes received in 10.000000 s => 4.000000
+Run 8: failed 0 sucess 5: 40 bytes received in 10.000000 s => 4.000000
+Run 9: failed 0 sucess 5: 40 bytes received in 10.000000 s => 4.000000
+Average datarate : 4.000000 	Std dev: 0.000000
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][FF][FF][ 0][ 0][F3]
+Channel 0 open! took 28.996450
+Run 0: failed 0 sucess 5: 40 bytes received in 10.000000 s => 4.000000
+Run 1: failed 0 sucess 5: 40 bytes received in 10.000000 s => 4.000000
+Run 2: failed 0 sucess 5: 40 bytes received in 10.000000 s => 4.000000
+Run 3: failed 0 sucess 5: 40 bytes received in 10.000000 s => 4.000000
+Run 4: failed 0 sucess 5: 40 bytes received in 10.000000 s => 4.000000
+Run 5: failed 0 sucess 5: 40 bytes received in 10.000000 s => 4.000000
+Run 6: failed 0 sucess 5: 40 bytes received in 10.000000 s => 4.000000
+Run 7: failed 0 sucess 5: 40 bytes received in 10.000000 s => 4.000000
+Run 8: failed 0 sucess 5: 40 bytes received in 10.000000 s => 4.000000
+Run 9: failed 0 sucess 5: 40 bytes received in 10.000000 s => 4.000000
+Average datarate : 4.000000 	Std dev: 0.000000
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][FF][FF][ 0][ 0][F3]
+Channel 0 open! took 28.996473
+Run 0: failed 0 sucess 5: 40 bytes received in 10.000000 s => 4.000000
+Run 1: failed 0 sucess 5: 40 bytes received in 10.000000 s => 4.000000
+Run 2: failed 0 sucess 5: 40 bytes received in 10.000000 s => 4.000000
+Run 3: failed 0 sucess 5: 40 bytes received in 10.000000 s => 4.000000
+Run 4: failed 0 sucess 5: 40 bytes received in 10.000000 s => 4.000000
+Run 5: failed 0 sucess 5: 40 bytes received in 10.000000 s => 4.000000
+Run 6: failed 0 sucess 5: 40 bytes received in 10.000000 s => 4.000000
+Run 7: failed 0 sucess 5: 40 bytes received in 10.000000 s => 4.000000
+Run 8: failed 0 sucess 5: 40 bytes received in 10.000000 s => 4.000000
+Run 9: failed 0 sucess 5: 40 bytes received in 10.000000 s => 4.000000
+Average datarate : 4.000000 	Std dev: 0.000000
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][FF][FF][ 0][ 0][F3]
+Channel 0 open! took 2.997691
+Run 0: failed 0 sucess 5: 40 bytes received in 10.000000 s => 4.000000
+Run 1: failed 0 sucess 5: 40 bytes received in 10.000000 s => 4.000000
+Run 2: failed 0 sucess 5: 40 bytes received in 10.000000 s => 4.000000
+Run 3: failed 0 sucess 5: 40 bytes received in 10.000000 s => 4.000000
+Run 4: failed 0 sucess 5: 40 bytes received in 10.000000 s => 4.000000
+Run 5: failed 0 sucess 5: 40 bytes received in 10.000000 s => 4.000000
+Run 6: failed 0 sucess 5: 40 bytes received in 10.000000 s => 4.000000
+Run 7: failed 0 sucess 5: 40 bytes received in 10.000000 s => 4.000000
+Run 8: failed 0 sucess 5: 40 bytes received in 10.000000 s => 4.000000
+Run 9: failed 0 sucess 5: 40 bytes received in 10.000000 s => 4.000000
+Average datarate : 4.000000 	Std dev: 0.000000
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][FF][FF][ 0][ 0][F3]
+Channel 0 open! took 28.996579
+Run 0: failed 0 sucess 5: 40 bytes received in 10.000000 s => 4.000000
+Run 1: failed 0 sucess 5: 40 bytes received in 10.000000 s => 4.000000
+Run 2: failed 0 sucess 5: 40 bytes received in 10.000000 s => 4.000000
+Run 3: failed 0 sucess 5: 40 bytes received in 10.000000 s => 4.000000
+Run 4: failed 0 sucess 5: 40 bytes received in 10.000000 s => 4.000000
+Run 5: failed 0 sucess 5: 40 bytes received in 10.000000 s => 4.000000
+Run 6: failed 0 sucess 5: 40 bytes received in 10.000000 s => 4.000000
+Run 7: failed 0 sucess 5: 40 bytes received in 10.000000 s => 4.000000
+Run 8: failed 0 sucess 5: 40 bytes received in 10.000000 s => 4.000000
+Run 9: failed 0 sucess 5: 40 bytes received in 10.000000 s => 4.000000
+Average datarate : 4.000000 	Std dev: 0.000000
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][FF][FF][ 0][ 0][F3]
+Channel 0 open! took 2.997637
+Run 0: failed 1 sucess 4: 32 bytes received in 10.000000 s => 3.200000
+Run 1: failed 0 sucess 5: 40 bytes received in 10.000000 s => 4.000000
+Run 2: failed 0 sucess 5: 40 bytes received in 10.000000 s => 4.000000
+Run 3: failed 0 sucess 5: 40 bytes received in 10.000000 s => 4.000000
+Run 4: failed 0 sucess 5: 40 bytes received in 10.000000 s => 4.000000
+Run 5: failed 0 sucess 5: 40 bytes received in 10.000000 s => 4.000000
+Run 6: failed 0 sucess 5: 40 bytes received in 10.000000 s => 4.000000
+Run 7: failed 0 sucess 5: 40 bytes received in 10.000000 s => 4.000000
+Run 8: failed 0 sucess 5: 40 bytes received in 10.000000 s => 4.000000
+Run 9: failed 0 sucess 5: 40 bytes received in 10.000000 s => 4.000000
+Average datarate : 3.920000 	Std dev: 0.240000
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][FF][FF][ 0][ 0][F3]
+Channel 0 open! took 18.996184
+Run 0: failed 0 sucess 5: 40 bytes received in 10.000000 s => 4.000000
+Run 1: failed 0 sucess 5: 40 bytes received in 10.000000 s => 4.000000
+Run 2: failed 0 sucess 5: 40 bytes received in 10.000000 s => 4.000000
+Run 3: failed 0 sucess 5: 40 bytes received in 10.000000 s => 4.000000
+Run 4: failed 0 sucess 5: 40 bytes received in 10.000000 s => 4.000000
+Run 5: failed 0 sucess 5: 40 bytes received in 10.000000 s => 4.000000
+Run 6: failed 0 sucess 5: 40 bytes received in 10.000000 s => 4.000000
+Run 7: failed 0 sucess 5: 40 bytes received in 10.000000 s => 4.000000
+Run 8: failed 0 sucess 5: 40 bytes received in 10.000000 s => 4.000000
+Run 9: failed 0 sucess 5: 40 bytes received in 10.000000 s => 4.000000
+Average datarate : 4.000000 	Std dev: 0.000000
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][FF][FF][ 0][ 0][F3]
+Channel 0 open! took 28.996452
+Run 0: failed 0 sucess 5: 40 bytes received in 10.000000 s => 4.000000
+Run 1: failed 0 sucess 5: 40 bytes received in 10.000000 s => 4.000000
+Run 2: failed 0 sucess 5: 40 bytes received in 10.000000 s => 4.000000
+Run 3: failed 1 sucess 4: 32 bytes received in 10.000000 s => 3.200000
+Run 4: failed 0 sucess 5: 40 bytes received in 10.000000 s => 4.000000
+Run 5: failed 0 sucess 5: 40 bytes received in 10.000000 s => 4.000000
+Run 6: failed 0 sucess 5: 40 bytes received in 10.000000 s => 4.000000
+Run 7: failed 0 sucess 5: 40 bytes received in 10.000000 s => 4.000000
+Run 8: failed 0 sucess 5: 40 bytes received in 10.000000 s => 4.000000
+Run 9: failed 0 sucess 5: 40 bytes received in 10.000000 s => 4.000000
+Average datarate : 3.920000 	Std dev: 0.240000
+done! Press Any key!
+
+Message Period = 32767 (1.000031 Hz)
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][FF][7F][ 0][ 0][73]
+Channel 0 open! took 8.185837
+Run 0: failed 0 sucess 10: 80 bytes received in 10.000000 s => 8.000000
+Run 1: failed 1 sucess 9: 72 bytes received in 10.000000 s => 7.200000
+Run 2: failed 0 sucess 10: 80 bytes received in 10.000000 s => 8.000000
+Run 3: failed 0 sucess 10: 80 bytes received in 10.000000 s => 8.000000
+Run 4: failed 0 sucess 10: 80 bytes received in 10.000000 s => 8.000000
+Run 5: failed 0 sucess 10: 80 bytes received in 10.000000 s => 8.000000
+Run 6: failed 0 sucess 10: 80 bytes received in 10.000000 s => 8.000000
+Run 7: failed 0 sucess 10: 80 bytes received in 10.000000 s => 8.000000
+Run 8: failed 0 sucess 10: 80 bytes received in 10.000000 s => 8.000000
+Run 9: failed 0 sucess 10: 80 bytes received in 10.000000 s => 8.000000
+Average datarate : 7.920000 	Std dev: 0.240000
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][FF][7F][ 0][ 0][73]
+Channel 0 open! took 11.995114
+Run 0: failed 1 sucess 9: 72 bytes received in 10.000000 s => 7.200000
+Run 1: failed 0 sucess 10: 80 bytes received in 10.000000 s => 8.000000
+Run 2: failed 0 sucess 10: 80 bytes received in 10.000000 s => 8.000000
+Run 3: failed 0 sucess 10: 80 bytes received in 10.000000 s => 8.000000
+Run 4: failed 0 sucess 10: 80 bytes received in 10.000000 s => 8.000000
+Run 5: failed 0 sucess 10: 80 bytes received in 10.000000 s => 8.000000
+Run 6: failed 0 sucess 10: 80 bytes received in 10.000000 s => 8.000000
+Run 7: failed 0 sucess 10: 80 bytes received in 10.000000 s => 8.000000
+Run 8: failed 0 sucess 10: 80 bytes received in 10.000000 s => 8.000000
+Run 9: failed 0 sucess 10: 80 bytes received in 10.000000 s => 8.000000
+Average datarate : 7.920000 	Std dev: 0.240000
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][FF][7F][ 0][ 0][73]
+Channel 0 open! took 11.994962
+Run 0: failed 0 sucess 10: 80 bytes received in 10.000000 s => 8.000000
+Run 1: failed 0 sucess 10: 80 bytes received in 10.000000 s => 8.000000
+Run 2: failed 0 sucess 10: 80 bytes received in 10.000000 s => 8.000000
+Run 3: failed 0 sucess 10: 80 bytes received in 10.000000 s => 8.000000
+Run 4: failed 0 sucess 10: 80 bytes received in 10.000000 s => 8.000000
+Run 5: failed 0 sucess 10: 80 bytes received in 10.000000 s => 8.000000
+Run 6: failed 0 sucess 10: 80 bytes received in 10.000000 s => 8.000000
+Run 7: failed 0 sucess 10: 80 bytes received in 10.000000 s => 8.000000
+Run 8: failed 0 sucess 10: 80 bytes received in 10.000000 s => 8.000000
+Run 9: failed 0 sucess 10: 80 bytes received in 10.000000 s => 8.000000
+Average datarate : 8.000000 	Std dev: 0.000000
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][FF][7F][ 0][ 0][73]
+Channel 0 open! took 1.994713
+Run 0: failed 0 sucess 10: 80 bytes received in 10.000000 s => 8.000000
+Run 1: failed 0 sucess 10: 80 bytes received in 10.000000 s => 8.000000
+Run 2: failed 0 sucess 10: 80 bytes received in 10.000000 s => 8.000000
+Run 3: failed 0 sucess 10: 80 bytes received in 10.000000 s => 8.000000
+Run 4: failed 0 sucess 10: 80 bytes received in 10.000000 s => 8.000000
+Run 5: failed 0 sucess 10: 80 bytes received in 10.000000 s => 8.000000
+Run 6: failed 0 sucess 10: 80 bytes received in 10.000000 s => 8.000000
+Run 7: failed 0 sucess 10: 80 bytes received in 10.000000 s => 8.000000
+Run 8: failed 0 sucess 10: 80 bytes received in 10.000000 s => 8.000000
+Run 9: failed 0 sucess 10: 80 bytes received in 10.000000 s => 8.000000
+Average datarate : 8.000000 	Std dev: 0.000000
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][FF][7F][ 0][ 0][73]
+Channel 0 open! took 11.995007
+Run 0: failed 0 sucess 10: 80 bytes received in 10.000000 s => 8.000000
+Run 1: failed 0 sucess 10: 80 bytes received in 10.000000 s => 8.000000
+Run 2: failed 0 sucess 10: 80 bytes received in 10.000000 s => 8.000000
+Run 3: failed 0 sucess 10: 80 bytes received in 10.000000 s => 8.000000
+Run 4: failed 0 sucess 10: 80 bytes received in 10.000000 s => 8.000000
+Run 5: failed 0 sucess 10: 80 bytes received in 10.000000 s => 8.000000
+Run 6: failed 0 sucess 10: 80 bytes received in 10.000000 s => 8.000000
+Run 7: failed 0 sucess 10: 80 bytes received in 10.000000 s => 8.000000
+Run 8: failed 0 sucess 10: 80 bytes received in 10.000000 s => 8.000000
+Run 9: failed 0 sucess 10: 80 bytes received in 10.000000 s => 8.000000
+Average datarate : 8.000000 	Std dev: 0.000000
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][FF][7F][ 0][ 0][73]
+Channel 0 open! took 1.994852
+Run 0: failed 0 sucess 10: 80 bytes received in 10.000000 s => 8.000000
+Run 1: failed 0 sucess 10: 80 bytes received in 10.000000 s => 8.000000
+Run 2: failed 0 sucess 10: 80 bytes received in 10.000000 s => 8.000000
+Run 3: failed 0 sucess 10: 80 bytes received in 10.000000 s => 8.000000
+Run 4: failed 1 sucess 9: 72 bytes received in 10.000000 s => 7.200000
+Run 5: failed 0 sucess 10: 80 bytes received in 10.000000 s => 8.000000
+Run 6: failed 0 sucess 10: 80 bytes received in 10.000000 s => 8.000000
+Run 7: failed 0 sucess 10: 80 bytes received in 10.000000 s => 8.000000
+Run 8: failed 0 sucess 10: 80 bytes received in 10.000000 s => 8.000000
+Run 9: failed 0 sucess 10: 80 bytes received in 10.000000 s => 8.000000
+Average datarate : 7.920000 	Std dev: 0.240000
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][FF][7F][ 0][ 0][73]
+Channel 0 open! took 11.994967
+Run 0: failed 0 sucess 10: 80 bytes received in 10.000000 s => 8.000000
+Run 1: failed 0 sucess 10: 80 bytes received in 10.000000 s => 8.000000
+Run 2: failed 0 sucess 10: 80 bytes received in 10.000000 s => 8.000000
+Run 3: failed 0 sucess 10: 80 bytes received in 10.000000 s => 8.000000
+Run 4: failed 0 sucess 10: 80 bytes received in 10.000000 s => 8.000000
+Run 5: failed 0 sucess 10: 80 bytes received in 10.000000 s => 8.000000
+Run 6: failed 0 sucess 10: 80 bytes received in 10.000000 s => 8.000000
+Run 7: failed 0 sucess 10: 80 bytes received in 10.000000 s => 8.000000
+Run 8: failed 0 sucess 10: 80 bytes received in 10.000000 s => 8.000000
+Run 9: failed 0 sucess 10: 80 bytes received in 10.000000 s => 8.000000
+Average datarate : 8.000000 	Std dev: 0.000000
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][FF][7F][ 0][ 0][73]
+Channel 0 open! took 11.994977
+Run 0: failed 0 sucess 10: 80 bytes received in 10.000000 s => 8.000000
+Run 1: failed 0 sucess 10: 80 bytes received in 10.000000 s => 8.000000
+Run 2: failed 0 sucess 10: 80 bytes received in 10.000000 s => 8.000000
+Run 3: failed 0 sucess 10: 80 bytes received in 10.000000 s => 8.000000
+Run 4: failed 0 sucess 10: 80 bytes received in 10.000000 s => 8.000000
+Run 5: failed 0 sucess 10: 80 bytes received in 10.000000 s => 8.000000
+Run 6: failed 0 sucess 10: 80 bytes received in 10.000000 s => 8.000000
+Run 7: failed 0 sucess 10: 80 bytes received in 10.000000 s => 8.000000
+Run 8: failed 0 sucess 10: 80 bytes received in 10.000000 s => 8.000000
+Run 9: failed 0 sucess 10: 80 bytes received in 10.000000 s => 8.000000
+Average datarate : 8.000000 	Std dev: 0.000000
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][FF][7F][ 0][ 0][73]
+Channel 0 open! took 8.995880
+Run 0: failed 0 sucess 10: 80 bytes received in 10.000000 s => 8.000000
+Run 1: failed 0 sucess 10: 80 bytes received in 10.000000 s => 8.000000
+Run 2: failed 0 sucess 10: 80 bytes received in 10.000000 s => 8.000000
+Run 3: failed 0 sucess 10: 80 bytes received in 10.000000 s => 8.000000
+Run 4: failed 0 sucess 10: 80 bytes received in 10.000000 s => 8.000000
+Run 5: failed 0 sucess 10: 80 bytes received in 10.000000 s => 8.000000
+Run 6: failed 0 sucess 10: 80 bytes received in 10.000000 s => 8.000000
+Run 7: failed 0 sucess 10: 80 bytes received in 10.000000 s => 8.000000
+Run 8: failed 0 sucess 10: 80 bytes received in 10.000000 s => 8.000000
+Run 9: failed 0 sucess 10: 80 bytes received in 10.000000 s => 8.000000
+Average datarate : 8.000000 	Std dev: 0.000000
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][FF][7F][ 0][ 0][73]
+Channel 0 open! took 11.994983
+Run 0: failed 0 sucess 10: 80 bytes received in 10.000000 s => 8.000000
+Run 1: failed 0 sucess 10: 80 bytes received in 10.000000 s => 8.000000
+Run 2: failed 0 sucess 10: 80 bytes received in 10.000000 s => 8.000000
+Run 3: failed 0 sucess 10: 80 bytes received in 10.000000 s => 8.000000
+Run 4: failed 0 sucess 10: 80 bytes received in 10.000000 s => 8.000000
+Run 5: failed 0 sucess 10: 80 bytes received in 10.000000 s => 8.000000
+Run 6: failed 0 sucess 10: 80 bytes received in 10.000000 s => 8.000000
+Run 7: failed 0 sucess 10: 80 bytes received in 10.000000 s => 8.000000
+Run 8: failed 0 sucess 10: 80 bytes received in 10.000000 s => 8.000000
+Run 9: failed 0 sucess 10: 80 bytes received in 10.000000 s => 8.000000
+Average datarate : 8.000000 	Std dev: 0.000000
+done! Press Any key!
+
+Message Period = 16383 (2.000122 Hz)
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][FF][3F][ 0][ 0][33]
+Channel 0 open! took 6.372856
+Run 0: failed 0 sucess 20: 160 bytes received in 10.000000 s => 16.000000
+Run 1: failed 0 sucess 20: 160 bytes received in 10.000000 s => 16.000000
+Run 2: failed 0 sucess 20: 160 bytes received in 10.000000 s => 16.000000
+Run 3: failed 0 sucess 20: 160 bytes received in 10.000000 s => 16.000000
+Run 4: failed 1 sucess 19: 152 bytes received in 10.000000 s => 15.200000
+Run 5: failed 0 sucess 20: 160 bytes received in 10.000000 s => 16.000000
+Run 6: failed 0 sucess 20: 160 bytes received in 10.000000 s => 16.000000
+Run 7: failed 0 sucess 20: 160 bytes received in 10.000000 s => 16.000000
+Run 8: failed 1 sucess 19: 152 bytes received in 10.000000 s => 15.200000
+Run 9: failed 0 sucess 20: 160 bytes received in 10.000000 s => 16.000000
+Average datarate : 15.840000 	Std dev: 0.320000
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][FF][3F][ 0][ 0][33]
+Channel 0 open! took 4.492429
+Run 0: failed 0 sucess 20: 160 bytes received in 10.000000 s => 16.000000
+Run 1: failed 0 sucess 20: 160 bytes received in 10.000000 s => 16.000000
+Run 2: failed 0 sucess 20: 160 bytes received in 10.000000 s => 16.000000
+Run 3: failed 1 sucess 19: 152 bytes received in 10.000000 s => 15.200000
+Run 4: failed 0 sucess 20: 160 bytes received in 10.000000 s => 16.000000
+Run 5: failed 0 sucess 20: 160 bytes received in 10.000000 s => 16.000000
+Run 6: failed 0 sucess 20: 160 bytes received in 10.000000 s => 16.000000
+Run 7: failed 0 sucess 20: 160 bytes received in 10.000000 s => 16.000000
+Run 8: failed 0 sucess 20: 160 bytes received in 10.000000 s => 16.000000
+Run 9: failed 0 sucess 20: 160 bytes received in 10.000000 s => 16.000000
+Average datarate : 15.920000 	Std dev: 0.240000
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][FF][3F][ 0][ 0][33]
+Channel 0 open! took 4.492373
+Run 0: failed 0 sucess 20: 160 bytes received in 10.000000 s => 16.000000
+Run 1: failed 0 sucess 20: 160 bytes received in 10.000000 s => 16.000000
+Run 2: failed 0 sucess 20: 160 bytes received in 10.000000 s => 16.000000
+Run 3: failed 0 sucess 20: 160 bytes received in 10.000000 s => 16.000000
+Run 4: failed 0 sucess 20: 160 bytes received in 10.000000 s => 16.000000
+Run 5: failed 0 sucess 20: 160 bytes received in 10.000000 s => 16.000000
+Run 6: failed 0 sucess 20: 160 bytes received in 10.000000 s => 16.000000
+Run 7: failed 0 sucess 20: 160 bytes received in 10.000001 s => 15.999999
+Run 8: failed 0 sucess 20: 160 bytes received in 10.000000 s => 16.000000
+Run 9: failed 0 sucess 20: 160 bytes received in 10.000000 s => 16.000000
+Average datarate : 16.000000 	Std dev: 0.000000
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][FF][3F][ 0][ 0][33]
+Channel 0 open! took 4.492413
+Run 0: failed 0 sucess 20: 160 bytes received in 10.000000 s => 16.000000
+Run 1: failed 2 sucess 18: 144 bytes received in 10.000000 s => 14.400000
+Run 2: failed 0 sucess 20: 160 bytes received in 10.000000 s => 16.000000
+Run 3: failed 0 sucess 20: 160 bytes received in 10.000000 s => 16.000000
+Run 4: failed 0 sucess 20: 160 bytes received in 10.000000 s => 16.000000
+Run 5: failed 0 sucess 20: 160 bytes received in 10.000000 s => 16.000000
+Run 6: failed 0 sucess 20: 160 bytes received in 10.000000 s => 16.000000
+Run 7: failed 0 sucess 20: 160 bytes received in 10.000000 s => 16.000000
+Run 8: failed 0 sucess 20: 160 bytes received in 10.000000 s => 16.000000
+Run 9: failed 0 sucess 20: 160 bytes received in 10.000000 s => 16.000000
+Average datarate : 15.840000 	Std dev: 0.480000
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][FF][3F][ 0][ 0][33]
+Channel 0 open! took 1.493228
+Run 0: failed 0 sucess 20: 160 bytes received in 10.000000 s => 16.000000
+Run 1: failed 0 sucess 20: 160 bytes received in 10.000000 s => 16.000000
+Run 2: failed 0 sucess 20: 160 bytes received in 10.000000 s => 16.000000
+Run 3: failed 0 sucess 20: 160 bytes received in 10.000000 s => 16.000000
+Run 4: failed 0 sucess 20: 160 bytes received in 10.000000 s => 16.000000
+Run 5: failed 0 sucess 20: 160 bytes received in 10.000000 s => 16.000000
+Run 6: failed 0 sucess 20: 160 bytes received in 10.000000 s => 16.000000
+Run 7: failed 0 sucess 20: 160 bytes received in 10.000000 s => 16.000000
+Run 8: failed 0 sucess 20: 160 bytes received in 10.000000 s => 16.000000
+Run 9: failed 0 sucess 20: 160 bytes received in 10.000000 s => 16.000000
+Average datarate : 16.000000 	Std dev: 0.000000
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][FF][3F][ 0][ 0][33]
+Channel 0 open! took 4.492390
+Run 0: failed 0 sucess 20: 160 bytes received in 10.000000 s => 16.000000
+Run 1: failed 0 sucess 20: 160 bytes received in 10.000000 s => 16.000000
+Run 2: failed 0 sucess 20: 160 bytes received in 10.000000 s => 16.000000
+Run 3: failed 0 sucess 20: 160 bytes received in 10.000000 s => 16.000000
+Run 4: failed 0 sucess 20: 160 bytes received in 10.000000 s => 16.000000
+Run 5: failed 0 sucess 20: 160 bytes received in 10.000000 s => 16.000000
+Run 6: failed 0 sucess 20: 160 bytes received in 10.000000 s => 16.000000
+Run 7: failed 0 sucess 20: 160 bytes received in 10.000000 s => 16.000000
+Run 8: failed 0 sucess 20: 160 bytes received in 10.000000 s => 16.000000
+Run 9: failed 0 sucess 20: 160 bytes received in 10.000000 s => 16.000000
+Average datarate : 16.000000 	Std dev: 0.000000
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][FF][3F][ 0][ 0][33]
+Channel 0 open! took 1.985095
+Run 0: failed 0 sucess 20: 160 bytes received in 10.000000 s => 16.000000
+Run 1: failed 0 sucess 20: 160 bytes received in 10.000000 s => 16.000000
+Run 2: failed 0 sucess 20: 160 bytes received in 10.000000 s => 16.000000
+Run 3: failed 0 sucess 20: 160 bytes received in 10.000000 s => 16.000000
+Run 4: failed 0 sucess 20: 160 bytes received in 10.000000 s => 16.000000
+Run 5: failed 0 sucess 20: 160 bytes received in 10.000000 s => 16.000000
+Run 6: failed 0 sucess 20: 160 bytes received in 10.000000 s => 16.000000
+Run 7: failed 0 sucess 20: 160 bytes received in 10.000000 s => 16.000000
+Run 8: failed 0 sucess 20: 160 bytes received in 10.000000 s => 16.000000
+Run 9: failed 0 sucess 20: 160 bytes received in 10.000000 s => 16.000000
+Average datarate : 16.000000 	Std dev: 0.000000
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][FF][3F][ 0][ 0][33]
+Channel 0 open! took 1.493248
+Run 0: failed 0 sucess 20: 160 bytes received in 10.000000 s => 16.000000
+Run 1: failed 0 sucess 20: 160 bytes received in 10.000000 s => 16.000000
+Run 2: failed 0 sucess 20: 160 bytes received in 10.000000 s => 16.000000
+Run 3: failed 0 sucess 20: 160 bytes received in 10.000000 s => 16.000000
+Run 4: failed 1 sucess 19: 152 bytes received in 10.000000 s => 15.200000
+Run 5: failed 0 sucess 20: 160 bytes received in 10.000000 s => 16.000000
+Run 6: failed 0 sucess 20: 160 bytes received in 10.000000 s => 16.000000
+Run 7: failed 0 sucess 20: 160 bytes received in 10.000000 s => 16.000000
+Run 8: failed 0 sucess 20: 160 bytes received in 10.000000 s => 16.000000
+Run 9: failed 0 sucess 20: 160 bytes received in 10.000000 s => 16.000000
+Average datarate : 15.920000 	Std dev: 0.240000
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][FF][3F][ 0][ 0][33]
+Channel 0 open! took 4.492422
+Run 0: failed 0 sucess 20: 160 bytes received in 10.000000 s => 16.000000
+Run 1: failed 0 sucess 20: 160 bytes received in 10.000000 s => 16.000000
+Run 2: failed 1 sucess 19: 152 bytes received in 10.000000 s => 15.200000
+Run 3: failed 0 sucess 20: 160 bytes received in 10.000000 s => 16.000000
+Run 4: failed 0 sucess 20: 160 bytes received in 10.000000 s => 16.000000
+Run 5: failed 0 sucess 20: 160 bytes received in 10.000000 s => 16.000000
+Run 6: failed 0 sucess 20: 160 bytes received in 10.000000 s => 16.000000
+Run 7: failed 0 sucess 20: 160 bytes received in 10.000000 s => 16.000000
+Run 8: failed 0 sucess 20: 160 bytes received in 10.000000 s => 16.000000
+Run 9: failed 0 sucess 20: 160 bytes received in 10.000000 s => 16.000000
+Average datarate : 15.920000 	Std dev: 0.240000
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][FF][3F][ 0][ 0][33]
+Channel 0 open! took 1.493271
+Run 0: failed 1 sucess 19: 152 bytes received in 10.000000 s => 15.200000
+Run 1: failed 0 sucess 20: 160 bytes received in 10.000000 s => 16.000000
+Run 2: failed 0 sucess 20: 160 bytes received in 10.000000 s => 16.000000
+Run 3: failed 0 sucess 20: 160 bytes received in 10.000000 s => 16.000000
+Run 4: failed 0 sucess 20: 160 bytes received in 10.000000 s => 16.000000
+Run 5: failed 1 sucess 19: 152 bytes received in 10.000000 s => 15.200000
+Run 6: failed 0 sucess 20: 160 bytes received in 10.000000 s => 16.000000
+Run 7: failed 0 sucess 20: 160 bytes received in 10.000000 s => 16.000000
+Run 8: failed 0 sucess 20: 160 bytes received in 10.000000 s => 16.000000
+Run 9: failed 0 sucess 20: 160 bytes received in 10.000000 s => 16.000000
+Average datarate : 15.840000 	Std dev: 0.320000
+done! Press Any key!
+
+Message Period = 8191 (4.000488 Hz)
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][FF][1F][ 0][ 0][13]
+Channel 0 open! took 1.782574
+Run 0: failed 0 sucess 40: 320 bytes received in 10.000000 s => 32.000000
+Run 1: failed 0 sucess 40: 320 bytes received in 10.000000 s => 32.000000
+Run 2: failed 0 sucess 40: 320 bytes received in 10.000000 s => 32.000000
+Run 3: failed 0 sucess 40: 320 bytes received in 10.000000 s => 32.000000
+Run 4: failed 1 sucess 39: 312 bytes received in 10.000000 s => 31.200000
+Run 5: failed 0 sucess 40: 320 bytes received in 10.000000 s => 32.000000
+Run 6: failed 0 sucess 40: 320 bytes received in 10.000000 s => 32.000000
+Run 7: failed 0 sucess 40: 320 bytes received in 10.000000 s => 32.000000
+Run 8: failed 0 sucess 40: 320 bytes received in 10.000000 s => 32.000000
+Run 9: failed 0 sucess 40: 320 bytes received in 10.000000 s => 32.000000
+Average datarate : 31.920000 	Std dev: 0.240000
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][FF][1F][ 0][ 0][13]
+Channel 0 open! took 2.486547
+Run 0: failed 0 sucess 40: 320 bytes received in 10.000000 s => 32.000000
+Run 1: failed 0 sucess 40: 320 bytes received in 10.000000 s => 32.000000
+Run 2: failed 0 sucess 40: 320 bytes received in 10.000000 s => 32.000000
+Run 3: failed 0 sucess 40: 320 bytes received in 10.000000 s => 32.000000
+Run 4: failed 0 sucess 40: 320 bytes received in 10.000000 s => 32.000000
+Run 5: failed 0 sucess 40: 320 bytes received in 10.000000 s => 32.000000
+Run 6: failed 0 sucess 40: 320 bytes received in 10.000000 s => 32.000000
+Run 7: failed 0 sucess 40: 320 bytes received in 10.000000 s => 32.000000
+Run 8: failed 0 sucess 40: 320 bytes received in 10.000000 s => 32.000000
+Run 9: failed 0 sucess 40: 320 bytes received in 10.000000 s => 32.000000
+Average datarate : 32.000000 	Std dev: 0.000000
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][FF][1F][ 0][ 0][13]
+Channel 0 open! took 2.486510
+Run 0: failed 0 sucess 40: 320 bytes received in 10.000000 s => 32.000000
+Run 1: failed 0 sucess 40: 320 bytes received in 10.000000 s => 32.000000
+Run 2: failed 0 sucess 40: 320 bytes received in 10.000000 s => 32.000000
+Run 3: failed 1 sucess 39: 312 bytes received in 10.000000 s => 31.200000
+Run 4: failed 0 sucess 40: 320 bytes received in 10.000000 s => 32.000000
+Run 5: failed 0 sucess 40: 320 bytes received in 10.000000 s => 32.000000
+Run 6: failed 0 sucess 40: 320 bytes received in 10.000000 s => 32.000000
+Run 7: failed 0 sucess 40: 320 bytes received in 10.000000 s => 32.000000
+Run 8: failed 0 sucess 40: 320 bytes received in 10.000000 s => 32.000000
+Run 9: failed 0 sucess 40: 320 bytes received in 10.000000 s => 32.000000
+Average datarate : 31.920000 	Std dev: 0.240000
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][FF][1F][ 0][ 0][13]
+Channel 0 open! took 2.236106
+Run 0: failed 0 sucess 40: 320 bytes received in 10.000000 s => 32.000000
+Run 1: failed 0 sucess 40: 320 bytes received in 10.000000 s => 32.000000
+Run 2: failed 0 sucess 40: 320 bytes received in 10.000000 s => 32.000000
+Run 3: failed 0 sucess 40: 320 bytes received in 10.000000 s => 32.000000
+Run 4: failed 0 sucess 40: 320 bytes received in 10.000000 s => 32.000000
+Run 5: failed 0 sucess 40: 320 bytes received in 10.000000 s => 32.000000
+Run 6: failed 0 sucess 40: 320 bytes received in 10.000000 s => 32.000000
+Run 7: failed 1 sucess 39: 312 bytes received in 10.000000 s => 31.200000
+Run 8: failed 0 sucess 40: 320 bytes received in 10.000000 s => 32.000000
+Run 9: failed 0 sucess 40: 320 bytes received in 10.000000 s => 32.000000
+Average datarate : 31.920000 	Std dev: 0.240000
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][FF][1F][ 0][ 0][13]
+Channel 0 open! took 2.235819
+Run 0: failed 0 sucess 40: 320 bytes received in 10.000000 s => 32.000000
+Run 1: failed 0 sucess 40: 320 bytes received in 10.000000 s => 32.000000
+Run 2: failed 0 sucess 40: 320 bytes received in 10.000000 s => 32.000000
+Run 3: failed 0 sucess 40: 320 bytes received in 10.000000 s => 32.000000
+Run 4: failed 0 sucess 40: 320 bytes received in 10.000000 s => 32.000000
+Run 5: failed 0 sucess 40: 320 bytes received in 10.000000 s => 32.000000
+Run 6: failed 1 sucess 39: 312 bytes received in 10.000000 s => 31.200000
+Run 7: failed 0 sucess 40: 320 bytes received in 10.000000 s => 32.000000
+Run 8: failed 0 sucess 40: 320 bytes received in 10.000000 s => 32.000000
+Run 9: failed 0 sucess 40: 320 bytes received in 10.000000 s => 32.000000
+Average datarate : 31.920000 	Std dev: 0.240000
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][FF][1F][ 0][ 0][13]
+Channel 0 open! took 2.235785
+Run 0: failed 0 sucess 40: 320 bytes received in 10.000000 s => 32.000000
+Run 1: failed 0 sucess 40: 320 bytes received in 10.000000 s => 32.000000
+Run 2: failed 0 sucess 40: 320 bytes received in 10.000000 s => 32.000000
+Run 3: failed 2 sucess 38: 304 bytes received in 10.000000 s => 30.400000
+Run 4: failed 0 sucess 40: 320 bytes received in 10.000000 s => 32.000000
+Run 5: failed 0 sucess 40: 320 bytes received in 10.000000 s => 32.000000
+Run 6: failed 0 sucess 40: 320 bytes received in 10.000000 s => 32.000000
+Run 7: failed 0 sucess 40: 320 bytes received in 10.000000 s => 32.000000
+Run 8: failed 0 sucess 40: 320 bytes received in 10.000000 s => 32.000000
+Run 9: failed 0 sucess 40: 320 bytes received in 10.000000 s => 32.000000
+Average datarate : 31.840000 	Std dev: 0.480000
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][FF][1F][ 0][ 0][13]
+Channel 0 open! took 2.235798
+Run 0: failed 1 sucess 39: 312 bytes received in 10.000000 s => 31.200000
+Run 1: failed 0 sucess 40: 320 bytes received in 10.000000 s => 32.000000
+Run 2: failed 1 sucess 39: 312 bytes received in 10.000000 s => 31.200000
+Run 3: failed 0 sucess 40: 320 bytes received in 10.000000 s => 32.000000
+Run 4: failed 0 sucess 40: 320 bytes received in 10.000000 s => 32.000000
+Run 5: failed 0 sucess 40: 320 bytes received in 10.000000 s => 32.000000
+Run 6: failed 0 sucess 40: 320 bytes received in 10.000000 s => 32.000000
+Run 7: failed 0 sucess 40: 320 bytes received in 10.000000 s => 32.000000
+Run 8: failed 0 sucess 40: 320 bytes received in 10.000000 s => 32.000000
+Run 9: failed 0 sucess 40: 320 bytes received in 10.000000 s => 32.000000
+Average datarate : 31.840000 	Std dev: 0.320000
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][FF][1F][ 0][ 0][13]
+Channel 0 open! took 2.235800
+Run 0: failed 1 sucess 39: 312 bytes received in 10.000000 s => 31.200000
+Run 1: failed 0 sucess 40: 320 bytes received in 10.000000 s => 32.000000
+Run 2: failed 0 sucess 40: 320 bytes received in 10.000000 s => 32.000000
+Run 3: failed 0 sucess 40: 320 bytes received in 10.000000 s => 32.000000
+Run 4: failed 0 sucess 40: 320 bytes received in 10.000000 s => 32.000000
+Run 5: failed 0 sucess 40: 320 bytes received in 10.000000 s => 32.000000
+Run 6: failed 0 sucess 40: 320 bytes received in 10.000000 s => 32.000000
+Run 7: failed 0 sucess 40: 320 bytes received in 10.000000 s => 32.000000
+Run 8: failed 0 sucess 40: 320 bytes received in 10.000000 s => 32.000000
+Run 9: failed 0 sucess 40: 320 bytes received in 10.000000 s => 32.000000
+Average datarate : 31.920000 	Std dev: 0.240000
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][FF][1F][ 0][ 0][13]
+Channel 0 open! took 2.235863
+Run 0: failed 1 sucess 39: 312 bytes received in 10.000000 s => 31.200000
+Run 1: failed 0 sucess 40: 320 bytes received in 10.000000 s => 32.000000
+Run 2: failed 0 sucess 40: 320 bytes received in 10.000000 s => 32.000000
+Run 3: failed 0 sucess 40: 320 bytes received in 10.000000 s => 32.000000
+Run 4: failed 0 sucess 40: 320 bytes received in 10.000000 s => 32.000000
+Run 5: failed 0 sucess 40: 320 bytes received in 10.000000 s => 32.000000
+Run 6: failed 0 sucess 40: 320 bytes received in 10.000000 s => 32.000000
+Run 7: failed 0 sucess 40: 320 bytes received in 10.000000 s => 32.000000
+Run 8: failed 0 sucess 40: 320 bytes received in 10.000000 s => 32.000000
+Run 9: failed 0 sucess 40: 320 bytes received in 10.000000 s => 32.000000
+Average datarate : 31.920000 	Std dev: 0.240000
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][FF][1F][ 0][ 0][13]
+Channel 0 open! took 2.486541
+Run 0: failed 0 sucess 40: 320 bytes received in 10.000000 s => 32.000000
+Run 1: failed 0 sucess 40: 320 bytes received in 10.000000 s => 32.000000
+Run 2: failed 0 sucess 40: 320 bytes received in 10.000000 s => 32.000000
+Run 3: failed 1 sucess 39: 312 bytes received in 10.000000 s => 31.200000
+Run 4: failed 0 sucess 40: 320 bytes received in 10.000000 s => 32.000000
+Run 5: failed 0 sucess 40: 320 bytes received in 10.000000 s => 32.000000
+Run 6: failed 0 sucess 40: 320 bytes received in 10.000000 s => 32.000000
+Run 7: failed 0 sucess 40: 320 bytes received in 10.000000 s => 32.000000
+Run 8: failed 0 sucess 40: 320 bytes received in 10.000000 s => 32.000000
+Run 9: failed 0 sucess 40: 320 bytes received in 10.000000 s => 32.000000
+Average datarate : 31.920000 	Std dev: 0.240000
+done! Press Any key!
+
+Message Period = 4095 (8.001954 Hz)
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][FF][ F][ 0][ 0][ 3]
+Channel 0 open! took 2.409377
+Run 0: failed 0 sucess 80: 640 bytes received in 10.000000 s => 63.999999
+Run 1: failed 0 sucess 80: 640 bytes received in 10.000000 s => 63.999999
+Run 2: failed 2 sucess 78: 624 bytes received in 10.000000 s => 62.399999
+Run 3: failed 0 sucess 80: 640 bytes received in 10.000000 s => 64.000000
+Run 4: failed 1 sucess 79: 632 bytes received in 10.000000 s => 63.200000
+Run 5: failed 1 sucess 79: 632 bytes received in 10.000000 s => 63.199999
+Run 6: failed 0 sucess 80: 640 bytes received in 10.000000 s => 64.000000
+Run 7: failed 0 sucess 80: 640 bytes received in 10.000000 s => 63.999999
+Run 8: failed 0 sucess 80: 640 bytes received in 10.000000 s => 64.000000
+Run 9: failed 0 sucess 80: 640 bytes received in 10.000000 s => 63.999999
+Average datarate : 63.679999 	Std dev: 0.530660
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][FF][ F][ 0][ 0][ 3]
+Channel 0 open! took 1.348663
+Run 0: failed 0 sucess 80: 640 bytes received in 10.000000 s => 63.999999
+Run 1: failed 1 sucess 79: 632 bytes received in 10.000000 s => 63.200000
+Run 2: failed 0 sucess 80: 640 bytes received in 10.000000 s => 64.000000
+Run 3: failed 0 sucess 80: 640 bytes received in 10.000000 s => 63.999999
+Run 4: failed 1 sucess 79: 632 bytes received in 10.000000 s => 63.200000
+Run 5: failed 1 sucess 79: 632 bytes received in 10.000000 s => 63.200000
+Run 6: failed 0 sucess 80: 640 bytes received in 10.000000 s => 63.999999
+Run 7: failed 0 sucess 80: 640 bytes received in 10.000000 s => 63.999999
+Run 8: failed 0 sucess 80: 640 bytes received in 10.000000 s => 64.000000
+Run 9: failed 0 sucess 80: 640 bytes received in 10.000000 s => 63.999999
+Average datarate : 63.760000 	Std dev: 0.366606
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][FF][ F][ 0][ 0][ 3]
+Channel 0 open! took 1.223261
+Run 0: failed 0 sucess 80: 640 bytes received in 10.000000 s => 63.999999
+Run 1: failed 1 sucess 79: 632 bytes received in 10.000000 s => 63.199999
+Run 2: failed 0 sucess 80: 640 bytes received in 10.000000 s => 64.000000
+Run 3: failed 1 sucess 79: 632 bytes received in 10.000000 s => 63.200000
+Run 4: failed 0 sucess 80: 640 bytes received in 10.000000 s => 64.000000
+Run 5: failed 0 sucess 80: 640 bytes received in 10.000000 s => 64.000000
+Run 6: failed 0 sucess 80: 640 bytes received in 10.000000 s => 63.999999
+Run 7: failed 0 sucess 80: 640 bytes received in 10.000000 s => 64.000000
+Run 8: failed 0 sucess 80: 640 bytes received in 10.000000 s => 64.000000
+Run 9: failed 0 sucess 80: 640 bytes received in 10.000000 s => 64.000000
+Average datarate : 63.840000 	Std dev: 0.320000
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][FF][ F][ 0][ 0][ 3]
+Channel 0 open! took 1.097895
+Run 0: failed 0 sucess 80: 640 bytes received in 10.000000 s => 63.999999
+Run 1: failed 0 sucess 80: 640 bytes received in 10.000000 s => 63.999999
+Run 2: failed 0 sucess 80: 640 bytes received in 10.000000 s => 64.000000
+Run 3: failed 1 sucess 79: 632 bytes received in 10.000000 s => 63.199999
+Run 4: failed 0 sucess 80: 640 bytes received in 10.000000 s => 63.999999
+Run 5: failed 0 sucess 80: 640 bytes received in 10.000000 s => 63.999999
+Run 6: failed 0 sucess 80: 640 bytes received in 10.000000 s => 63.999999
+Run 7: failed 0 sucess 80: 640 bytes received in 10.000000 s => 63.999999
+Run 8: failed 0 sucess 80: 640 bytes received in 10.000000 s => 63.999999
+Run 9: failed 0 sucess 80: 640 bytes received in 10.000000 s => 64.000000
+Average datarate : 63.919999 	Std dev: 0.240000
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][FF][ F][ 0][ 0][ 3]
+Channel 0 open! took 1.223476
+Run 0: failed 0 sucess 80: 640 bytes received in 10.000000 s => 64.000000
+Run 1: failed 0 sucess 80: 640 bytes received in 10.000000 s => 63.999999
+Run 2: failed 0 sucess 80: 640 bytes received in 10.000000 s => 64.000000
+Run 3: failed 0 sucess 80: 640 bytes received in 10.000000 s => 64.000000
+Run 4: failed 0 sucess 80: 640 bytes received in 10.000000 s => 64.000000
+Run 5: failed 0 sucess 80: 640 bytes received in 10.000000 s => 64.000000
+Run 6: failed 0 sucess 80: 640 bytes received in 10.000000 s => 63.999999
+Run 7: failed 0 sucess 80: 640 bytes received in 10.000000 s => 64.000000
+Run 8: failed 0 sucess 80: 640 bytes received in 10.000000 s => 64.000000
+Run 9: failed 0 sucess 80: 640 bytes received in 10.000000 s => 63.999999
+Average datarate : 64.000000 	Std dev: 0.000000
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][FF][ F][ 0][ 0][ 3]
+Channel 0 open! took 1.097899
+Run 0: failed 0 sucess 80: 640 bytes received in 10.000000 s => 64.000000
+Run 1: failed 0 sucess 80: 640 bytes received in 10.000000 s => 64.000000
+Run 2: failed 0 sucess 80: 640 bytes received in 10.000000 s => 63.999999
+Run 3: failed 0 sucess 80: 640 bytes received in 10.000000 s => 64.000000
+Run 4: failed 0 sucess 80: 640 bytes received in 10.000000 s => 64.000000
+Run 5: failed 0 sucess 80: 640 bytes received in 10.000000 s => 63.999999
+Run 6: failed 1 sucess 79: 632 bytes received in 10.000000 s => 63.199999
+Run 7: failed 0 sucess 80: 640 bytes received in 10.000000 s => 63.999999
+Run 8: failed 0 sucess 80: 640 bytes received in 10.000000 s => 64.000000
+Run 9: failed 1 sucess 79: 632 bytes received in 10.000000 s => 63.200000
+Average datarate : 63.840000 	Std dev: 0.320000
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][FF][ F][ 0][ 0][ 3]
+Channel 0 open! took 1.348620
+Run 0: failed 0 sucess 80: 640 bytes received in 10.000000 s => 63.999999
+Run 1: failed 0 sucess 80: 640 bytes received in 10.000000 s => 63.999999
+Run 2: failed 0 sucess 80: 640 bytes received in 10.000000 s => 63.999999
+Run 3: failed 0 sucess 80: 640 bytes received in 10.000000 s => 64.000000
+Run 4: failed 1 sucess 79: 632 bytes received in 10.000000 s => 63.200000
+Run 5: failed 0 sucess 80: 640 bytes received in 10.000000 s => 63.999999
+Run 6: failed 0 sucess 80: 640 bytes received in 10.000000 s => 64.000000
+Run 7: failed 0 sucess 80: 640 bytes received in 10.000000 s => 63.999999
+Run 8: failed 0 sucess 80: 640 bytes received in 10.000000 s => 64.000000
+Run 9: failed 0 sucess 80: 640 bytes received in 10.000000 s => 63.999999
+Average datarate : 63.919999 	Std dev: 0.240000
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][FF][ F][ 0][ 0][ 3]
+Channel 0 open! took 1.097840
+Run 0: failed 0 sucess 80: 640 bytes received in 10.000000 s => 63.999999
+Run 1: failed 0 sucess 80: 640 bytes received in 10.000000 s => 63.999999
+Run 2: failed 1 sucess 79: 632 bytes received in 10.000000 s => 63.199999
+Run 3: failed 0 sucess 80: 640 bytes received in 10.000000 s => 64.000000
+Run 4: failed 0 sucess 80: 640 bytes received in 10.000000 s => 64.000000
+Run 5: failed 0 sucess 80: 640 bytes received in 10.000000 s => 63.999999
+Run 6: failed 0 sucess 80: 640 bytes received in 10.000000 s => 64.000000
+Run 7: failed 1 sucess 79: 632 bytes received in 10.000000 s => 63.200000
+Run 8: failed 0 sucess 80: 640 bytes received in 10.000000 s => 63.999999
+Run 9: failed 1 sucess 79: 632 bytes received in 10.000000 s => 63.200000
+Average datarate : 63.760000 	Std dev: 0.366606
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][FF][ F][ 0][ 0][ 3]
+Channel 0 open! took 1.098443
+Run 0: failed 1 sucess 79: 632 bytes received in 10.000000 s => 63.200000
+Run 1: failed 1 sucess 79: 632 bytes received in 10.000000 s => 63.200000
+Run 2: failed 1 sucess 79: 632 bytes received in 10.000000 s => 63.199999
+Run 3: failed 1 sucess 79: 632 bytes received in 10.000000 s => 63.200000
+Run 4: failed 0 sucess 80: 640 bytes received in 10.000000 s => 63.999999
+Run 5: failed 1 sucess 79: 632 bytes received in 10.000000 s => 63.199999
+Run 6: failed 0 sucess 80: 640 bytes received in 10.000000 s => 64.000000
+Run 7: failed 1 sucess 79: 632 bytes received in 10.000000 s => 63.199999
+Run 8: failed 0 sucess 80: 640 bytes received in 10.000000 s => 64.000000
+Run 9: failed 1 sucess 79: 632 bytes received in 10.000000 s => 63.199999
+Average datarate : 63.440000 	Std dev: 0.366606
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][FF][ F][ 0][ 0][ 3]
+Channel 0 open! took 0.972810
+Run 0: failed 0 sucess 80: 640 bytes received in 10.000000 s => 63.999999
+Run 1: failed 0 sucess 80: 640 bytes received in 10.000000 s => 64.000000
+Run 2: failed 0 sucess 80: 640 bytes received in 10.000000 s => 64.000000
+Run 3: failed 0 sucess 80: 640 bytes received in 10.000000 s => 64.000000
+Run 4: failed 0 sucess 80: 640 bytes received in 10.000000 s => 64.000000
+Run 5: failed 0 sucess 80: 640 bytes received in 10.000000 s => 64.000000
+Run 6: failed 0 sucess 80: 640 bytes received in 10.000000 s => 63.999999
+Run 7: failed 0 sucess 80: 640 bytes received in 10.000000 s => 64.000000
+Run 8: failed 0 sucess 80: 640 bytes received in 10.000000 s => 64.000000
+Run 9: failed 0 sucess 80: 640 bytes received in 10.000000 s => 63.999999
+Average datarate : 64.000000 	Std dev: 0.000000
+done! Press Any key!
+
+Message Period = 2047 (16.007816 Hz)
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][FF][ 7][ 0][ 0][ B]
+Channel 0 open! took 0.490346
+Run 0: failed 1 sucess 159: 1272 bytes received in 10.000000 s => 127.199999
+Run 1: failed 1 sucess 159: 1272 bytes received in 10.000000 s => 127.200000
+Run 2: failed 0 sucess 160: 1280 bytes received in 10.000000 s => 127.999999
+Run 3: failed 1 sucess 159: 1272 bytes received in 10.000000 s => 127.199999
+Run 4: failed 1 sucess 159: 1272 bytes received in 10.000000 s => 127.199999
+Run 5: failed 0 sucess 160: 1280 bytes received in 10.000000 s => 128.000000
+Run 6: failed 1 sucess 159: 1272 bytes received in 10.000000 s => 127.199998
+Run 7: failed 1 sucess 159: 1272 bytes received in 10.000000 s => 127.199999
+Run 8: failed 0 sucess 160: 1280 bytes received in 10.000000 s => 127.999999
+Run 9: failed 0 sucess 160: 1280 bytes received in 10.000000 s => 127.999999
+Average datarate : 127.519999 	Std dev: 0.391918
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][FF][ 7][ 0][ 0][ B]
+Channel 0 open! took 0.885748
+Run 0: failed 1 sucess 159: 1272 bytes received in 10.000000 s => 127.199998
+Run 1: failed 0 sucess 160: 1280 bytes received in 10.000000 s => 128.000000
+Run 2: failed 0 sucess 160: 1280 bytes received in 10.000000 s => 127.999999
+Run 3: failed 0 sucess 160: 1280 bytes received in 10.000000 s => 127.999998
+Run 4: failed 1 sucess 159: 1272 bytes received in 10.000000 s => 127.199998
+Run 5: failed 0 sucess 160: 1280 bytes received in 10.000000 s => 127.999999
+Run 6: failed 0 sucess 160: 1280 bytes received in 10.000000 s => 127.999999
+Run 7: failed 0 sucess 160: 1280 bytes received in 10.000000 s => 127.999999
+Run 8: failed 0 sucess 160: 1280 bytes received in 10.000000 s => 127.999999
+Run 9: failed 0 sucess 160: 1280 bytes received in 10.000000 s => 128.000000
+Average datarate : 127.839999 	Std dev: 0.320000
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][FF][ 7][ 0][ 0][ B]
+Channel 0 open! took 0.635255
+Run 0: failed 0 sucess 160: 1280 bytes received in 10.000000 s => 128.000000
+Run 1: failed 0 sucess 160: 1280 bytes received in 10.000000 s => 128.000000
+Run 2: failed 0 sucess 160: 1280 bytes received in 10.000000 s => 128.000000
+Run 3: failed 0 sucess 160: 1280 bytes received in 10.000000 s => 128.000000
+Run 4: failed 0 sucess 160: 1280 bytes received in 10.000000 s => 127.999999
+Run 5: failed 0 sucess 160: 1280 bytes received in 10.000000 s => 127.999999
+Run 6: failed 0 sucess 160: 1280 bytes received in 10.000000 s => 128.000000
+Run 7: failed 1 sucess 159: 1272 bytes received in 10.000000 s => 127.199998
+Run 8: failed 1 sucess 159: 1272 bytes received in 10.000000 s => 127.199997
+Run 9: failed 0 sucess 160: 1280 bytes received in 10.000000 s => 128.000000
+Average datarate : 127.839999 	Std dev: 0.320001
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][FF][ 7][ 0][ 0][ B]
+Channel 0 open! took 0.885742
+Run 0: failed 2 sucess 158: 1264 bytes received in 10.000000 s => 126.399998
+Run 1: failed 1 sucess 159: 1272 bytes received in 10.000000 s => 127.200000
+Run 2: failed 0 sucess 160: 1280 bytes received in 10.000000 s => 127.999998
+Run 3: failed 0 sucess 160: 1280 bytes received in 10.000000 s => 127.999998
+Run 4: failed 2 sucess 158: 1264 bytes received in 10.000000 s => 126.399998
+Run 5: failed 1 sucess 159: 1272 bytes received in 10.000000 s => 127.200000
+Run 6: failed 0 sucess 160: 1280 bytes received in 10.000000 s => 128.000000
+Run 7: failed 2 sucess 158: 1264 bytes received in 10.000000 s => 126.400000
+Run 8: failed 0 sucess 160: 1280 bytes received in 10.000000 s => 127.999999
+Run 9: failed 1 sucess 159: 1272 bytes received in 10.000000 s => 127.199999
+Average datarate : 127.279999 	Std dev: 0.664530
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][FF][ 7][ 0][ 0][ B]
+Channel 0 open! took 0.885720
+Run 0: failed 1 sucess 159: 1272 bytes received in 10.000000 s => 127.200000
+Run 1: failed 0 sucess 160: 1280 bytes received in 10.000000 s => 128.000000
+Run 2: failed 1 sucess 159: 1272 bytes received in 10.000000 s => 127.200000
+Run 3: failed 0 sucess 160: 1280 bytes received in 10.000000 s => 127.999999
+Run 4: failed 1 sucess 159: 1272 bytes received in 10.000000 s => 127.199999
+Run 5: failed 0 sucess 160: 1280 bytes received in 10.000000 s => 127.999999
+Run 6: failed 1 sucess 159: 1272 bytes received in 10.000000 s => 127.200000
+Run 7: failed 0 sucess 160: 1280 bytes received in 10.000000 s => 127.999998
+Run 8: failed 1 sucess 159: 1272 bytes received in 10.000000 s => 127.200000
+Run 9: failed 0 sucess 160: 1280 bytes received in 10.000000 s => 128.000000
+Average datarate : 127.599999 	Std dev: 0.400000
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][FF][ 7][ 0][ 0][ B]
+Channel 0 open! took 0.760367
+Run 0: failed 0 sucess 160: 1280 bytes received in 10.000000 s => 127.999999
+Run 1: failed 2 sucess 158: 1264 bytes received in 10.000000 s => 126.399999
+Run 2: failed 1 sucess 159: 1272 bytes received in 10.000000 s => 127.199999
+Run 3: failed 1 sucess 159: 1272 bytes received in 10.000000 s => 127.199999
+Run 4: failed 0 sucess 160: 1280 bytes received in 10.000000 s => 127.999999
+Run 5: failed 0 sucess 160: 1280 bytes received in 10.000000 s => 127.999999
+Run 6: failed 0 sucess 160: 1280 bytes received in 10.000000 s => 128.000000
+Run 7: failed 1 sucess 159: 1272 bytes received in 10.000000 s => 127.200000
+Run 8: failed 0 sucess 160: 1280 bytes received in 10.000000 s => 127.999998
+Run 9: failed 1 sucess 159: 1272 bytes received in 10.000000 s => 127.199999
+Average datarate : 127.519999 	Std dev: 0.530660
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][FF][ 7][ 0][ 0][ B]
+Channel 0 open! took 1.011326
+Run 0: failed 2 sucess 158: 1264 bytes received in 10.000000 s => 126.399999
+Run 1: failed 0 sucess 160: 1280 bytes received in 10.000000 s => 127.999999
+Run 2: failed 1 sucess 159: 1272 bytes received in 10.000000 s => 127.199999
+Run 3: failed 0 sucess 160: 1280 bytes received in 10.000000 s => 127.999999
+Run 4: failed 0 sucess 160: 1280 bytes received in 10.000000 s => 127.999998
+Run 5: failed 0 sucess 160: 1280 bytes received in 10.000000 s => 128.000000
+Run 6: failed 0 sucess 160: 1280 bytes received in 10.000000 s => 127.999998
+Run 7: failed 1 sucess 159: 1272 bytes received in 10.000000 s => 127.199999
+Run 8: failed 0 sucess 160: 1280 bytes received in 10.000000 s => 128.000000
+Run 9: failed 0 sucess 160: 1280 bytes received in 10.000000 s => 127.999998
+Average datarate : 127.679999 	Std dev: 0.530660
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][FF][ 7][ 0][ 0][ B]
+Channel 0 open! took 0.760669
+Run 0: failed 1 sucess 159: 1272 bytes received in 10.000000 s => 127.200000
+Run 1: failed 0 sucess 160: 1280 bytes received in 10.000000 s => 127.999999
+Run 2: failed 5 sucess 155: 1240 bytes received in 10.000000 s => 123.999998
+Run 3: failed 1 sucess 159: 1272 bytes received in 10.000000 s => 127.199998
+Run 4: failed 0 sucess 160: 1280 bytes received in 10.000000 s => 127.999999
+Run 5: failed 0 sucess 160: 1280 bytes received in 10.000000 s => 127.999999
+Run 6: failed 1 sucess 159: 1272 bytes received in 10.000000 s => 127.199999
+Run 7: failed 0 sucess 160: 1280 bytes received in 10.000000 s => 128.000000
+Run 8: failed 1 sucess 159: 1272 bytes received in 10.000000 s => 127.199999
+Run 9: failed 2 sucess 158: 1264 bytes received in 10.000000 s => 126.399999
+Average datarate : 127.119999 	Std dev: 1.156547
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][FF][ 7][ 0][ 0][ B]
+Channel 0 open! took 0.886274
+Run 0: failed 0 sucess 160: 1280 bytes received in 10.000000 s => 127.999998
+Run 1: failed 0 sucess 160: 1280 bytes received in 10.000000 s => 127.999998
+Run 2: failed 0 sucess 160: 1280 bytes received in 10.000000 s => 127.999999
+Run 3: failed 1 sucess 159: 1272 bytes received in 10.000000 s => 127.199998
+Run 4: failed 0 sucess 160: 1280 bytes received in 10.000000 s => 127.999999
+Run 5: failed 0 sucess 160: 1280 bytes received in 10.000000 s => 127.999999
+Run 6: failed 1 sucess 159: 1272 bytes received in 10.000000 s => 127.199999
+Run 7: failed 0 sucess 160: 1280 bytes received in 10.000000 s => 127.999999
+Run 8: failed 0 sucess 160: 1280 bytes received in 10.000000 s => 127.999999
+Run 9: failed 0 sucess 160: 1280 bytes received in 10.000000 s => 128.000000
+Average datarate : 127.839999 	Std dev: 0.320000
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][FF][ 7][ 0][ 0][ B]
+Channel 0 open! took 0.760454
+Run 0: failed 1 sucess 159: 1272 bytes received in 10.000000 s => 127.199999
+Run 1: failed 0 sucess 160: 1280 bytes received in 10.000000 s => 127.999999
+Run 2: failed 0 sucess 160: 1280 bytes received in 10.000000 s => 127.999999
+Run 3: failed 1 sucess 159: 1272 bytes received in 10.000000 s => 127.199999
+Run 4: failed 1 sucess 159: 1272 bytes received in 10.000000 s => 127.199999
+Run 5: failed 1 sucess 159: 1272 bytes received in 10.000000 s => 127.199999
+Run 6: failed 1 sucess 159: 1272 bytes received in 10.000000 s => 127.199998
+Run 7: failed 0 sucess 160: 1280 bytes received in 10.000000 s => 127.999999
+Run 8: failed 1 sucess 159: 1272 bytes received in 10.000000 s => 127.199998
+Run 9: failed 0 sucess 160: 1280 bytes received in 10.000000 s => 128.000000
+Average datarate : 127.519999 	Std dev: 0.391919
+
 [michael@xps src]$ sudo ./ant -p /dev/ttyUSB1 -t s -n 1 -f 1023
 [sudo] Passwort für michael: 
 Port = /dev/ttyUSB1

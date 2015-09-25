@@ -133,7 +133,7 @@ Furthermore in experiments which measure data throughput, we show maximum theore
 	\begin{figure}[H]
 		\centering
 		\includegraphics[scale=0.5]{content/images/exp1_detail.png}
-		\caption{Broadcast data rate (129Hz - 199Hz)}\label{fig:exp1between}
+		\caption{Broadcast data rate (129Hz - 198.6Hz)}\label{fig:exp1between}
 	\end{figure}
 	As seen in figure \ref{fig:exp1between} the measured data rates for frequencies above 140 Hz all fall short of the expected values. The average data throughput of these frequencies remains consistently at around 1100 Bps. The experiment was repeated multiple times, running it at different times and places, thus an environmental factor can be excluded. That means, the reason for the upper limit has to be found with the test set up itself. See section \ref{sec:dataThrougput} for a discussion about possible reasons for this upper limit.
 	
@@ -146,7 +146,7 @@ Furthermore in experiments which measure data throughput, we show maximum theore
 \end{description}
 \newpage
 
-\section{Experiment 2: Broadcast Data Transfer with multiple channels}
+\section{Experiment 2: Broadcast Data Transfer with two channels}
 \begin{description} 
 	\item{\textbf{Description}} \hfill \\ In experiment 1 we determined the channel period, which allows for the maximum throughput. In this experiment we try to determine, how the maximum throughput is affected by the amount of channels in the network. SHAMPU needs two channels, so it can work correctly: One channel which sends data from the base station to the nodes in order to control them and another channel by which the nodes can send debugging and other information.
 	\item{\textbf{Use-Case}} \hfill \\ Scheduled data-transmission	
@@ -216,13 +216,14 @@ Furthermore in experiments which measure data throughput, we show maximum theore
 		\includegraphics[scale=0.5]{content/images/exp2_norm.png}
 		\caption{Broadcast data through - 2 channels (0.5Hz - 129Hz)}\label{fig:exp2low}
 	\end{figure}
-	Figures \ref{fig:exp2low} shows the results of the measurements, the left bar displaying the throughput for channel 0, the right bar displaying the throughput for channel 1. Just as in experiment 1 the  line shows the theoretical maximum of the data throughput for the given frequency. Up to a frequency of 64 Hz the data throughput increases with the frequency for both channels and matches the maximum value very closely. However there is a complete drop at 128 Hz.
+	Figures \ref{fig:exp2low} shows the results of the measurements, the left bar displaying the throughput for channel 1, the right bar displaying the throughput for channel 2. Just as in experiment 1 the  line shows the theoretical maximum of the data throughput for the given frequency. Up to a frequency of 64 Hz the data throughput increases with the frequency for both channels and matches the maximum value very closely. However the data throughput of channel 2  drops to zero at 128 Hz, while the data throughput of channel 1 almost matches the expected value.
 		\begin{figure}[H]
 			\centering
 			\includegraphics[scale=0.5]{content/images/exp2_detail.png}
 			\caption{Broadcast data through - 2 channels (64Hz - 129Hz)}\label{fig:exp2high}
 		\end{figure}
-	To further investigate this drop off, figure \ref{fig:exp2high} shows the data throughput for chosen frequencies between 64 Hz and 128 Hz. The figure clearly shows that somewhere between 72 Hz and 76 Hz the data throughput begins to drop off. The maximum combined data rate for two channels adds up to around 1160 Bps, which is in line with the result from experiment 1. From this data we can assume, that the entire available data rate of 1160 Bps is simply split among all existing channels.
+	To further investigate this drop off, figure \ref{fig:exp2high} shows the data throughput for chosen frequencies between 82 Hz and 113 Hz. The figure clearly shows that somewhere between 82 Hz and 99 Hz the data throughput matches the expect values. For frequencies over 100 Hz however the data throughput begins to drop off, while the measured error increases. From this result we conclude two things: The 200 Hz combined rate of the ANT chip is split between all channels the chip joined. In this case each chip broadcasts with 100 Hz and receives with 100 Hz, resulting in a data throughput of around 800 Bps for each channel. See section \ref{sec:dataThrougput} for a discussion about this upper limit. 	
+	
 \end{description}
 \newpage
 
@@ -465,8 +466,9 @@ Furthermore in experiments which measure data throughput, we show maximum theore
 \section{Maximum Data Throughput}
 \label{sec:dataThrougput}
 
-All our experiments seem to confirm that there is a hard limit for the maximum data throughput which can be achieved with our current set up. The ANT AP1MxIB supports a maximum message frequency of 200 Hz, which means that we would expect to see a maximum transmission rate of 1600 Bps.
- However, we missed that limit by around 500 Bps or 30\%. For a burst transmission there should be up to 20 kbps of throughput measurable, but again we only achieved around 1100 Bps, a loss of 1400 Bps or 56\%.\\
+In our experiments we were able to confirm two important limits for the maximum data throughput which can be achieved with our current set up. The ANT AP1MxIB supports a maximum message frequency of 200 Hz, which means that we would expect to see a maximum transmission rate of 1600 Bps.
+However, this limit can only be achieved by splitting the available bandwidth between receiving and sending. If we try to utilized the full 200 Hz only for either receiving or sending, we are limited to 1100 Bps, around 500 Bps or 30\% lower than the theoretical maximum. The same 1100 Bps limit holds for burst transmissions, where we loose around 1100 Bps or 56\% of the maximum data throughput.\\
+
 To balance environmental influences, the experiments were repeated in different locations and times of day and night. Since the throughput did not change noticeably, it can be assumed that there are no easily eliminated environmental factors which affect the maximum rate. We conclude that the root cause for the lower than expected throughput must be attributed to the hardware or software. \\
 
 If we exclude environmental factors, we are left with three possible reasons:
@@ -475,6 +477,6 @@ If we exclude environmental factors, we are left with three possible reasons:
 
 	\item{\textbf{ANT API}} \hfill \\ The software we use is not officially supported by ANT. It is thus possible that there are some bugs which have an impact on the performance. Except for the missing burst mode (see \ref{sec:future}), there were no unusual measured values during the experiments. If there is a bug, it might be hard to find without rewriting all the experiments and running them with the official ANT library \cite{ANTWinLib}
 	
-	\item{\textbf{ANT AP1MxIB}} \hfill \\ Due to the black box nature of ANT, it is very hard to exactly determine what causes the problem. The inner workings of the chip are not documented in any way, and the error messages of the protocol are not very specific. The chip itself is from 2007 and the manufacturer no longer recommends the use of the chip\cite{AP1page}. There are alternatives available, like the newer ANTAP281M5IB chip \cite{AP2Datasheet}.
+	\item{\textbf{ANT AP1MxIB}} \hfill \\ Due to the black box nature of ANT, it is very hard to exactly determine what causes the problem. The inner workings of the chip are not documented in any way, and the error messages of the protocol are not very specific. We suspect that the ANT chip receiver and sender are somehow limiting the maximum data throughput. The chip itself is from 2007 and the manufacturer no longer recommends the use of the chip\cite{AP1page}. There are alternatives available, like the newer ANTAP281M5IB chip \cite{AP2Datasheet}.
 \end{itemize}
 \newpage

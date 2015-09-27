@@ -53,32 +53,38 @@ int main(int argc, char** argv) {
     
   switch (experimentNum) {
     case 1:
-      printf("Experiment 1: Broadcast Data Transfer between two nodes\n");
+      printf("Experiment 1: \
+              Broadcast Data Transfer between two nodes\n");
       doExperiment1(deviceType);
     break;
 
     case 2:
-      printf("Experiment 2: Broadcast Data Transfer with two channels\n");
+      printf("Experiment 2: \
+              Broadcast Data Transfer with two channels\n");
       doExperiment2(deviceType);
     break;
 
     case 3:
-      printf("Experiment 3: Ackowledge Data Transfer between two nodes\n");
+      printf("Experiment 3: \
+              Ackowledge Data Transfer between two nodes\n");
       doExperiment3(deviceType);
     break;
 
     case 4:
-      printf("Experiment 4: Ackowledge Data Delay\n");
+      printf("Experiment 4: \
+              Ackowledge Data Delay\n");
       doExperiment4(deviceType);
     break;
 
     case 5:
-      printf("Experiment 5: Burst Data Transfer between two nodes\n");      
+      printf("Experiment 5: \
+              Burst Data Transfer between two nodes\n");      
       doExperiment5(deviceType);
     break;
 
     case 6:
-      printf("Experiment 6: Communication Distance\n");
+      printf("Experiment 6: \
+              Communication Distance\n");
       doExperiment6(deviceType);
     break;
 

@@ -162,7 +162,9 @@ int kbhit(void) {
   return 0;
 }
 
-void doExperiment(uint8_t msgType, uint8_t channel, exprHandler fn) {
+void doExperiment(uint8_t msgType,
+                  uint8_t channel,
+                  exprHandler fn) {
   double speed_avr = 0.0;
   uint16_t i; 
   flushBuffer();
@@ -413,7 +415,7 @@ void doExperiment4(char deviceType) {
 /* Experiment 5: Burst Data Transfer between two nodes */
 void doExperiment5(char deviceType) {
   if (deviceType == 'm') {
-    printf("Burst mode not working! Please use ANTWareII to simulate!\n");
+    printf("Burst mode not working! Please use ANTWareII!\n");
   } else {
     uint32_t count = 0;
     openChannel(ID_CHAN1, FREQ_CHAN1, STD_FREQ, false);

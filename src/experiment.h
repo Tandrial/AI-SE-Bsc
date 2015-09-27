@@ -14,11 +14,11 @@
 #define   ID_CHAN2             1
 #define   FREQ_CHAN2          77
 
-#define   START_FREQ      0xFFFF /* 0.5 Hz */
-#define   STD_FREQ        0x2000 /*   4 Hz */
-#define   END_FREQ        0x00A5 /* 200 Hz */
-#define   STOP_SINGLE     0x00FF /* 255 Hz */
-#define   STOP_DOUBLE     0x01FF /* 511 Hz */
+#define   START_FREQ      0xFFFF /*   0.5 Hz */
+#define   STD_FREQ        0x2000 /*   4.0 Hz */
+#define   END_FREQ        0x00A5 /* 198.6 Hz */
+#define   STOP_SINGLE     0x00FF /* 255.0 Hz */
+#define   STOP_DOUBLE     0x01FF /*  64.2 Hz */
 
 #define   RUN_COUNT           10
 #define   SLICE_COUNT         10

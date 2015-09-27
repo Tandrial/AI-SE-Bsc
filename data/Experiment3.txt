@@ -179,3 +179,39 @@ Run 7: Delay 0.028813
 Run 8: Delay 0.028591
 Run 9: Delay 0.028720
 Average delay : 0.027926 	Std dev: 0.002386
+Message Period = 400 (81.920000 Hz)
+Run 0: Delay 0.025393
+Run 1: Delay 0.024382
+Run 2: Delay 0.024398
+Run 3: Delay 0.024395
+Run 4: Delay 0.024366
+Run 5: Delay 0.024411
+Run 6: Delay 0.024421
+Run 7: Delay 0.024345
+Run 8: Delay 0.024357
+Run 9: Delay 0.024446
+Average delay : 0.024491 	Std dev: 0.000302
+Message Period = 350 (93.622875 Hz)
+Run 0: Delay 0.024845
+Run 1: Delay 0.021320
+Run 2: Delay 0.021346
+Run 3: Delay 0.021283
+Run 4: Delay 0.021339
+Run 5: Delay 0.021432
+Run 6: Delay 0.021283
+Run 7: Delay 0.021347
+Run 8: Delay 0.021294
+Run 9: Delay 0.021344
+Average delay : 0.021683 	Std dev: 0.001055
+Message Period = 300 (109.226667 Hz)
+Run 0: Delay 0.017467
+Run 1: Delay 0.018257
+Run 2: Delay 0.018313
+Run 3: Delay 0.018284
+Run 4: Delay 0.018285
+Run 5: Delay 0.018350
+Run 6: Delay 0.018204
+Run 7: Delay 0.018286
+Run 8: Delay 0.018284
+Run 9: Delay 0.018273
+Average delay : 0.018200 	Std dev: 0.000247

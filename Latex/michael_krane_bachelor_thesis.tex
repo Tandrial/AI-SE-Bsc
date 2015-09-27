@@ -89,6 +89,7 @@ bibliography=totoc]{scrbook}
 		showtabs = false,
 		basicstyle = \normalsize\ttfamily}
 
+\usepackage{advdate}
 
 % finetune the gaps between figure and text in the subfigure environment (basically close the gap as much as possible)
 \renewcommand{\subfigtopskip}{0pt}
@@ -144,8 +145,8 @@ bibliography=totoc]{scrbook}
 % the second line below there will be no error messages and no todos will be shown
 % anymore. So - even if you have forgotten to delete one of them - they will not appear
 % in the final printout. 
-\newcommand{\todo}[1]{\marginpar{\textcolor{red}{ToDo:} #1}}
-%\newcommand{\todo}[1]{}
+%\newcommand{\todo}[1]{\marginpar{\textcolor{red}{ToDo:} #1}}
+\newcommand{\todo}[1]{}
 
 % We recommend to split your document into several files. Usually one for every chapter is a 
 % good idea. If you follow this guideline (how to assemble these files in a single document

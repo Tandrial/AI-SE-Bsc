@@ -31,14 +31,15 @@ In order for the ANT protocol to work each mote needs to be part of a network. A
 
 \subsection{ANT Channels}
 \label{sec:ANTchan}
-The ANT protocol uses virtual channels to allow different nodes to transmit data, without interfering with each other. Each channel can be assigned to a 1 MHz wide RF frequency band between 2400 MHz and 2524 MHz.\cite{DynastreamInnovationsInc.2013} In theory this allows 125 different channels to exist without interference between them. It is possible for multiple channels to use the same frequency depending on the rate of transmission, since the data rate of each 1MHz band is limited to 1MBps. 
+The ANT protocol uses virtual channels to allow different nodes to transmit data. Each channel can be assigned to a 1 MHz wide RF frequency band between 2400 MHz and 2524 MHz.\cite{DynastreamInnovationsInc.2013} In theory this allows 125 different channels to exist without interference between them. It is possible for multiple channels to use the same frequency depending on the rate of transmission, since the data rate of each 1MHz band is limited to 1MBps. 
 To avoid interference between nodes which use the same frequency isochronous self adjusting Time Division Multiple Access (TDMA) is used. TDMA allows the ANT protocol to adjust the transmit timings of the channels individually.
 
 Each node has to specify how the assigned channel is being used. The node can either be a master or a slave node. While a master node mostly sends data and a slave node mostly receives data, the slave retains the ability to respond to the incoming data.
 
 The ANT protocol further differentiates between two different channel types:
 \begin{description}
-	\item{\textbf{Independent Channels}} \hfill \\ Independent Channels are used if there is only one node which transmits data. There is no limit to the amount of slave devices which receive messages. Furthermore, the message being sent out is broadcast to all nodes. Tt is not possible to address only a specific node.
+	\item{\textbf{Independent Channels}} \hfill \\ Independent Channels are used if there is only one node which transmits data. There is no limit to the amount of slave devices which receive messages. Furthermore, the message being sent out is broadcast to all nodes. It is not possible to address only a specific node.
+	
 	\item{\textbf{Shared Channels}} \hfill \\ Shared Channels are used if there is more than one node which sends data. This type of channel is facilitated by the use of a Shared Channel Address, which in turn reduces the amount of data that can be transmitted at a time. All ANT nodes still receive every message, but only pass on messages which have a matching address. The Channel master can decide to either use one or two bytes as the address, which allows for either 255 or 65535 slave devices in the same channel. 
 \end{description}
 
@@ -64,10 +65,10 @@ The ANT protocol supports three different data types: broadcast, acknowledge and
 	
 	\item{Acknowledge data} \hfill \\ Acknowledge data can be used to ensure a node has received a transmitted packet. After receiving an acknowledge packet the node will send a message back to the sender. Acknowledge data should only be used as a unicast, since if multiple nodes send an acknowledge message back, the messages can interfere with each other. Figure \ref{fig:antflow} shows that, just like broadcast data, acknowledge data is always aligned to a time slot, yet the receiver does not wait for the next time slot and instead sends the answer immediately back to the sender.
 	
-	\item{Burst data} \hfill \\ Burst data provides a method to quickly transmit larger amounts of data. This is achieved by ignoring the normal channel time slots and sending the packets immediately one after the other. This allows for a transmission rate of up to 20 kbps \cite{DynastreamInnovationsInc.2013}, which is much higher than the other data transmission types. Similar to acknowledge data at the end of the transmission the sender is informed whether the transfer failed or succeeded. Just like acknowledge data, burst transmission should be unicast, since if one node fails to receive a packet the transmission is stopped. The drawback of this method is, that burst data is prioritized over all other transmissions and will interrupt other transmissions over the same RF frequency.
+	\item{Burst data} \hfill \\ Burst data provides a method to quickly transmit larger amounts of data. This is achieved by ignoring the normal channel time slots and sending the packets immediately one after the other. This allows for a transmission rate of up to 20 kbps \cite{DynastreamInnovationsInc.2013}, which is much higher than the other data transmission types. Similar to acknowledge data, at the end of the transmission the sender is informed whether the transfer failed or succeeded. Just like acknowledge data, burst transmission should be unicast, since if one node fails to receive a packet the transmission is stopped. The drawback of this method is, that burst data is prioritized over all other transmissions and will interrupt other transmissions over the same RF frequency.
 \end{itemize}
 
-\subsection{ANT messages}
+\subsection{ANT Messages}
 In the ANT protocol each message has the basic format as specified in Figure \ref{fig:antmsg}.
 \begin{figure}[H]
 	\centering
@@ -76,7 +77,7 @@ In the ANT protocol each message has the basic format as specified in Figure \re
 \end{figure}
 Each message starts with a special Sync-Byte and ends with a checksum, which is calculated by xoring all previous bytes. The Msg Length byte shows the number of Message Content bytes. The Msg ID byte specifies which kind of data is contained in the message. The ANT protocol also provides an extended message format, which allows to attach further information to each message. The length of the message varies between message types, but the size of the payload for each of the three different data-transmission types is always at 8 bytes.
 
-\section{ANT library}
+\section{ANT Library}
 There is an official ANT library \cite{ANTWinLib} available, however this library is written in C++ for Windows. Since SHAMPU uses a PIC24FJ64GB002 microcontroller\cite{smeets2014demonstration} it is not possible to use the official library. Instead we use an already existing ANT library for this thesis \cite{ANTPICLIB}. This library implements almost the complete ANT API, except for two important features. The library uses busy-waiting to receive packets. Also sending burst transmission does not work correctly. In order to be able to use ANT efficiently with SHAMPU we implemented a non-blocking packet receiver. This is an important addition to the code, because otherwise the microcontroller is not able to function, while it is waiting for a packet. Unfortunately we were not able to get burst mode working correctly. Burst packets need to have a precise timing, but the black box nature of the ANT protocol makes it a challenge to debug the code.
 \section{ANTAP1MxIB RF}
 Each SHAMPU device is equipped with an ANTAP1MxIB RF Transceiver Module\cite{Networks}. The module was chosen because of its small form factor (20mm x 20mm) and its very low power draw. The ANTAP1M can handle up to 4 different ANT channels with a combined message rate of 200 Hz. 

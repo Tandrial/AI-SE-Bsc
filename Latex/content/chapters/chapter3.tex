@@ -13,7 +13,7 @@ In order to assess the capabilities of SHAMPU, we planed and ran experiments des
 	
 To evaluate ANT according to these two use-cases, we identified three metrics which indicate how well a use-case can be handled:
 	\begin{itemize}
-		\item {\textbf{Data throughput }} \hfill \\ The speed with which ANT can transmit data, directly affects the network performance and how many nodes can be part of the network at the same time. ANT provides three different data types which can be used to transport data: Broadcast data and acknowledge data is typically used for scheduled data-transmission, whereas burst mode is used mostly for unscheduled data-transmission. 		
+		\item {\textbf{Data throughput }} \hfill \\ The speed, with which ANT can transmit data, directly affects the network performance and how many nodes can be part of the network at the same time. ANT provides three different data types which can be used to transport data: Broadcast data and acknowledge data is typically used for scheduled data-transmission, whereas burst mode is used mostly for unscheduled data-transmission. 		
 		
 		\item {\textbf{Message delay}} \hfill \\ A SHAMPU base station not only acts as a data sink for incoming logging information, but is also able to send commands to other SHAMPU devices in the network.
 		It is thus important to know how long it takes ANT to verify whether a message was correctly received or not.
@@ -139,7 +139,7 @@ The results for each experiment is always the average over all measured values. 
 	\begin{figure}[H]
 		\centering
 		\includegraphics[scale=0.5]{content/images/exp1_detail.png}
-		\caption{Broadcast data throughput (129Hz - 198.6Hz)}\label{fig:exp1between}
+		\caption{Broadcast data throughput (128.5Hz - 198.6Hz)}\label{fig:exp1between}
 	\end{figure}
 	As seen in figure \ref{fig:exp1between} the measured data throughputs for frequencies above 140 Hz all fall short of the maximum values. The average data throughput of these frequencies remains consistently at around 1100 Bps. The experiment was repeated multiple times, running it at different times and places, thus an environmental factor can be excluded. That means, the reason for the upper limit has to be found with the test setup itself. See section \ref{sec:dataThrougput} for a discussion about possible reasons for this upper limit.
 	
@@ -220,17 +220,15 @@ The results for each experiment is always the average over all measured values. 
 	\begin{figure}[H]
 		\centering
 		\includegraphics[scale=0.5]{content/images/exp2_norm.png}
-		\caption{Broadcast data throughput - 2 channels (0.5Hz - 129Hz)}\label{fig:exp2low}
+		\caption{Broadcast data throughput - 2 channels (0.5Hz - 128.5Hz)}\label{fig:exp2low}
 	\end{figure}
 	Figures \ref{fig:exp2low} shows the results of the measurements, the left bar displaying the throughput for channel 1, the right bar displaying the throughput for channel 2. Just as in experiment 1 the  line shows the theoretical maximum of the data throughput for the given frequency. Up to a frequency of 64 Hz the data throughput increases with the frequency for both channels and matches the maximum value very closely. However the data throughput of channel 2  drops to zero at 128 Hz, while the data throughput of channel 1 almost matches the expected value, although the standard deviation indicates performance problems in this channel as well.
 		\begin{figure}[H]
 			\centering
 			\includegraphics[scale=0.5]{content/images/exp2_detail.png}
-			\caption{Broadcast data throughput - 2 channels (64Hz - 113Hz)}\label{fig:exp2high}
+			\caption{Broadcast data throughput - 2 channels (82Hz - 113Hz)}\label{fig:exp2high}
 		\end{figure}
-	To further investigate this drop off, figure \ref{fig:exp2high} shows the data throughput for chosen frequencies between 82 Hz and 113 Hz. Up to a frequency of 99 Hz the data throughput matches the expected values. For frequencies over 100 Hz however the data throughput drops off, while the measured errors increase. From this result we conclude two things: The 200 Hz capacity of the ANT chip is split between all channels the chip opened. In the test set up each chip can broadcast and receive with 100 Hz each, resulting in a data throughput of around 800 Bps for each channel. Above 100 Hz the increased standard deviation can be interpreted as an indication of interference between the sending and receiving unit of the ANT chip. This interference eventually leads to a breakdown of the data throughput at even higher frequencies.	
-	See section \ref{sec:dataThrougput} for a discussion about this upper limit. 	
-	
+	To further investigate this drop off, figure \ref{fig:exp2high} shows the data throughput for chosen frequencies between 82 Hz and 113 Hz. Up to a frequency of 99 Hz the data throughput matches the expected values. For frequencies over 100 Hz however the data throughput drops off, while the measured errors increase. From this result we conclude two things: The 200 Hz capacity of the ANT chip is split between all channels the chip opened. In the test set up each chip can broadcast and receive with 100 Hz each, resulting in a data throughput of around 800 Bps for each channel. 	
 \end{description}
 \newpage
 
@@ -254,7 +252,7 @@ The results for each experiment is always the average over all measured values. 
 		  count = 0, fail = 0
 		  for (10 seconds) 
 		    ANT_SendAcknowledgedData(ID_CHAN1, [0x70, 0x69, 0x6E, 0x67])		    
-		    if (receivedPacket() == ANT_BROADCAST_DATA)		        
+		    if (receivedPacket() == ANT_ACKNOWLEDGED_DATA)		        
 		      count++;			  
 		    else if (receivedPacket() == ANT_MESSAGE_EVENT_RX_FAIL)
 		      fail++;		    
@@ -290,12 +288,12 @@ The results for each experiment is always the average over all measured values. 
 	\begin{figure}[H]
 		\centering
 		\includegraphics[scale=0.5]{content/images/exp3_norm.png}
-		\caption{Acknowledge data throughput (0.5Hz - 129Hz)}\label{fig:exp4norm}
+		\caption{Acknowledge data throughput (0.5Hz - 128.5Hz)}\label{fig:exp4norm}
 	\end{figure}
 	\begin{figure}[H]
 		\centering
 		\includegraphics[scale=0.5]{content/images/exp3_detail.png}
-		\caption{Acknowledge data throughput (82Hz - 113Hz)}\label{fig:exp4between}
+		\caption{Acknowledge data throughput (65.4Hz - 69.6Hz)}\label{fig:exp4between}
 	\end{figure}
 	
 	Figure \ref{fig:exp4norm} shows the measured transmission speeds for the different tested frequencies. For the lower frequencies the values align very well with the maximum theoretical data throughput. However, the tranmisson breaks down at 129 Hz. Figure \ref{fig:exp4between} shows the data throughput for some values between 65 Hz and 70 Hz, demonstrating that a drop off can be observed at around 69 Hz. 
@@ -318,9 +316,8 @@ The results for each experiment is always the average over all measured values. 
 		\begin{verbatim}
 		channelPeriod = max_Channel_Period
 		while (channelPeriod >= min_Channel_Period) {
-		  ANT_SetChannelPeriod(ID_CHAN1, channelPeriod);
-		  ANT_OpenChannel(ID_CHAN1, ANT_Bidirectional_Master);
-		  duration = 0.0
+		  ANT_SetChannelPeriod(ID_CHAN1, channelPeriod)
+		  ANT_OpenChannel(ID_CHAN1, ANT_Bidirectional_Master)
 		  for (i in 0..10) {
 		    ANT_SendAcknowledgedData(ID_CHAN1, [0x70, 0x69, 0x6E, 0x67])
 		    start = getTime()	   
@@ -339,10 +336,10 @@ The results for each experiment is always the average over all measured values. 
 		\begin{verbatim}
 		channelPeriod = max_Channel_Period
 		while (channelPeriod >= min_Channel_Period)
-		  ANT_SetChannelPeriod(ID_CHAN1, channelPeriod);
-		  ANT_OpenChannel(ID_CHAN1, ANT_Bidirectional_Slave);				 
-		  wait_for_user_input();
-		  ANT_CloseChannel(ID_CHAN1);
+		  ANT_SetChannelPeriod(ID_CHAN1, channelPeriod)
+		  ANT_OpenChannel(ID_CHAN1, ANT_Bidirectional_Slave)
+		  wait_for_user_input()
+		  ANT_CloseChannel(ID_CHAN1)
 		  if (channelPeriod >= 0x00FF)
 		    channelPeriod = channelPeriod >> 1
 		  else
@@ -364,18 +361,18 @@ The results for each experiment is always the average over all measured values. 
 	\begin{figure}[H]
 		\centering
 		\includegraphics[scale=0.5]{content/images/exp4_detail.png}
-		\caption{Acknowledge delay (16Hz - 129Hz)}\label{fig:exp3high}
+		\caption{Acknowledge delay (16Hz - 128.5Hz)}\label{fig:exp3high}
 	\end{figure}
 	Figure \ref{fig:exp3low} and \ref{fig:exp3high} show the delays for the tested frequencies. The lines show the time $T_{ch}$ between two timeslots for various frequencies $f$, where $T_{ch} = \frac{1}{f}$. These values are in line with the measured delays until a frequency of 68.8Hz. 69.3 Hz represents a transition area, where the individual data points show delays with a duration of either one or two times $T_{ch}$. This explains the increased standard deviation. Above that frequency the delay corresponds with $2T_{ch}$ up to a frequency of at least 109 Hz. At 129 Hz no delay could be measured, as no acknowledge messages were correctly received. 
 
-	We conclude, that in the given setup ANT requires at least 15 ms (equivalent to a frequency of 68.1 Hz) to confirm that a message has been successfully transmitted. If the time between the timeslots is shorter, it takes an additional timeslot to confirm the message. Due to lack of information about ANT, we cannot provide an explanation for this behaviour. Similarly we cannot offer a reason, why the acknowledge data-transmission breaks down completely at 128 Hz. The fact of the maximum delay of 15 ms explains why the maximum data throughput of acknowledge data is only 550 Bps.
+	We conclude, that in the given setup ANT requires at least 15 ms (equivalent to a frequency of 68.1 Hz) to confirm that a message has been successfully transmitted. If the time between the timeslots is shorter, it takes an additional timeslot to confirm the message. Due to lack of information about ANT, we cannot provide an explanation for this behaviour. Similarly we cannot offer a reason, why the acknowledge data-transmission breaks down completely at 128 Hz. The fact of the minimum delay of 15 ms explains why the maximum data throughput of acknowledge data is only 550 Bps.
 
 \end{description}
 \newpage
 
 \section{Experiment 5: Burst Data Transfer between two nodes}
 \begin{description} 
-	\item{\textbf{Description}} \hfill \\ Burst data transmissions make it possible to drastically increase the throughput rate. This allows a SHAMPU base station to quickly transmit a new firmware to a node or a node to dump its RAM back to the base station.	According to the specification rates of up to 20 kbps can be achieved. To fully utilize this speed a baud rate of 50000 is needed\cite{BurstMax}. In the current setup the base station uses 19200 baud, since it is the only value that both the ANT chip and the RS-232 interface support. Because of this we expect the maximum speed to be less than 20 kbps. Furthermore we try to determine whether the size of the burst transfer has an impact on the speed, since longer bursts will disrupt communications on other channels.
+	\item{\textbf{Description}} \hfill \\ Burst data transmissions make it possible to drastically increase the throughput rate. This allows a SHAMPU base station to quickly transmit a new firmware to a node or a node to dump its RAM back to the base station.	According to the specification rates up to 20 kbps can be achieved. To fully utilize this speed a baud rate of 50000 is needed\cite{BurstMax}. In the current setup the base station uses 19200 baud, since it is the only value that both the ANT chip and the RS-232 interface support. Because of this we expect the maximum speed to be less than 20 kbps. Furthermore we try to determine whether the size of the burst transfer has an impact on the speed, since longer bursts will disrupt communications on other channels.
 	\item{\textbf{Use-Case}} \hfill \\ Unscheduled data-transmission
 	\item{\textbf{Network topology and pseudo code}} \hfill \\ 
 	\begin{figure}[H]
@@ -385,9 +382,9 @@ The results for each experiment is always the average over all measured values. 
 	\end{figure}
 	\begin{code}[H]
 		\begin{verbatim}
-		size = START_SIZE
+		size = 16
 		ANT_OpenChannel(ID_CHAN1, ANT_Bidirectional_Slave);		
-		while (size >= END_SIZE)
+		while (size >= 16384)
 		  for (i in 0..10) 
 		    // The first packet of a burst has the 3 MSB of the channelID field set to 0
 		    wait_until(received_Packet == ANT_BURST_DATA && 
@@ -397,7 +394,7 @@ The results for each experiment is always the average over all measured values. 
 		    wait_until(received_Packet == ANT_BURST_DATA && 
 		               (received_message_channelID[0] & 0x80) > 0)		    
 		  print (size - 1) / (getTime() - start) " Bytes per second"
-		  size = 2 * size
+		  size *= 2
 		\end{verbatim}
 		\caption{Burst data transfer (Slave)}\label{lst:sExp5}
 	\end{code}
@@ -414,7 +411,7 @@ The results for each experiment is always the average over all measured values. 
 \end{description}
 \newpage
 
-\section{Experiment 6: Maximum communication Range}
+\section{Experiment 6: Maximum communication range}
 \begin{description} 
 	\item{\textbf{Description}} \hfill \\  In this experiment we try to determine the correlation between the maximum range and the power setting of the ANT radio. One of SHAMPU's advantages is the low power consumption. It might be possible to further reduce the power consumption by decreasing the power level of the ANT radio, especially in smaller environments where there is no need for a long range. According to the datasheet the maximum range for communication is 30m, however the ANT documentation does not provide different ranges for different power settings. 
 	
@@ -432,8 +429,8 @@ The results for each experiment is always the average over all measured values. 
 		  ANT_SetTransmitPower(pSetting)
 		  openChannel(ID_CHAN1, ANT_Bidirectional_Master)
 		  ANT_SendBroadcastData(ID_CHAN1, [0x70, 0x69, 0x6E, 0x67])
-		  wait_for_user_input();
-		  closeChannel(ID_CHAN1);
+		  wait_for_user_input()
+		  closeChannel(ID_CHAN1)
 		\end{verbatim}
 		\caption{Maximum communication range (Master)}\label{lst:mExp6}
 	\end{code}
@@ -457,7 +454,7 @@ The results for each experiment is always the average over all measured values. 
 		      distance -= .4
 		      print "Connections lost : " + distance
 		    else distance += .4
-		  closeChannel(ID_CHAN1);
+		  closeChannel(ID_CHAN1)
 		\end{verbatim}
 		\caption{Maximum communication range (Slave)}\label{lst:sExp6}
 	\end{code}
@@ -479,14 +476,16 @@ The results for each experiment is always the average over all measured values. 
 In our experiments we were able to confirm two important limits for the maximum data throughput which can be achieved with our current setup. The ANT AP1MxIB supports a maximum message frequency of 200 Hz, which means that we would expect to see a maximum transmission rate of 1600 Bps.
 However, this limit can only be achieved by splitting the available bandwidth between receiving and sending. If we try to utilize the full 200 Hz only for either receiving or sending, we are limited to 1100 Bps, around 500 Bps or 30\% lower than the theoretical maximum. A similar limit of 1165 Bps holds for burst transmissions, where we loose around 1335 Bps or 53\% of the maximum theoretical data throughput.\\
 
+For acknowledge data, only a data throughput of 550 Bps could be achieved. The analysis of individual data points suggest, that the acknowledge reply consumes an additional time slot for frequencies above 69 Hz. At 128 Hz no successful data transmission could be confirmed.\\
+
 To balance environmental influences, the experiments were repeated in different locations and times of day and night. Since the throughput did not change noticeably, it can be assumed that there are no easily eliminated environmental factors affecting the maximum rate. We conclude that the root cause for the lower than expected throughput must be attributed to the hardware or software. \\
 
-If we exclude environmental factors, the limitations could be based on certain parts of the test set up:
+If we exclude environmental factors, the limitations could be based on certain parts of the test setup:
 \begin{itemize}
-	\item{\textbf{RS-232 Connection}} \hfill \\ The base station is connected to a PC over a serial connection. For the speed we chose 19200 baud, since it is the highest value supported by the ANT chip and the serial-Interface. With 19200 baud the maximum data throughput of the RS-232 Connection is 1920 Bps, since the interface adds a start and stop bit to each byte. If the serial connection would be the bottle neck for burst transmission, we would expect to get the full 1920 Bps of data throughput. Since this is not the case we can conclude that the RS-232 connection is not the limiting factor. This is supported by the similarity of the limits for broadcast and burst transmissions.
+	\item{\textbf{RS-232 Connection}} \hfill \\ The base station is connected to a PC over a serial connection. For the speed we chose 19200 baud, since it is the highest value supported by the ANT chip and the serial-Interface. With 19200 baud the maximum data throughput of the RS-232 connection is 1920 Bps, since the interface adds a start and stop bit to each byte. If the serial connection would be the bottle neck for burst transmission, we would expect to get the full 1920 Bps of data throughput. Since this is not the case we can conclude that the RS-232 connection is not the limiting factor. This is supported by the similarity of the limits for broadcast and burst transmissions.
 
 	\item{\textbf{ANT API}} \hfill \\ The software we use is not officially supported by ANT. It is thus possible that there are some bugs which have an impact on the performance. Except for the missing burst mode (see \ref{sec:future}), there were no unusual measured values during the experiments. If there is a bug, it might be hard to find without rewriting all the experiments and running them with the official ANT library \cite{ANTWinLib}
 	
-	\item{\textbf{ANT AP1MxIB}} \hfill \\ Due to the black box nature of ANT, it is very hard to exactly determine what might cause a performance deficit. The inner workings of the chip are not documented in any way, and the error messages of the protocol are not very specific. We suspect that the ANT chip receiver and sender are somehow limiting the maximum data throughput. The chip itself is from 2007 and the manufacturer no longer recommends the use of the chip\cite{AP1page}. There are alternatives available, like the newer ANTAP281M5IB chip \cite{AP2Datasheet}.
+	\item{\textbf{ANT AP1MxIB}} \hfill \\ Due to the black box nature of ANT, it is very hard to exactly determine what might cause a performance deficit. The inner workings of the chip are not documented, and the error messages of the protocol are not very specific. The chip itself is from 2007 and the manufacturer no longer recommends the use of the chip\cite{AP1page}. There are alternatives available, like the newer ANTAP281M5IB chip \cite{AP2Datasheet}.
 \end{itemize}
 \newpage

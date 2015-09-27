@@ -484,8 +484,7 @@ void doExperiment6(char deviceType) {
                 state = DS_DONE;
               } else {
                 printf("Still in range (current %fm)\n!", distance);
-                printf("Increase distance by 0.4m and press return!",
-                       distance);
+                printf("Increase distance by 0.4m and press return!");
                 distance += .4f;
               }
               break;

@@ -15,7 +15,8 @@ int main(int argc, char** argv) {
 
   ProgName = fileName(argv[0]); /* error.c */
   if (argc == 1) {
-    error("Usage: %s -p /dev/ttyUSB[Number] -t [m(aster) or s(lave)]
+    error("Usage: %s -p /dev/ttyUSB[Number] \
+          -t [m(aster) or s(lave)] \
           -n experiment [-f start_period]\n", ProgName);
   }
 

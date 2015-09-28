@@ -1,0 +1,53 @@
+% Titelseite braucht folgenden  Eintrag
+% \usepackage[absolute]{textpos}
+% textpos ist nicht Bestandteil von tetex
+% kann aber von dante heruntergeladen werden
+\begin{titlepage}
+\vspace*{-1cm}
+\newlength{\links}
+\setlength{\links}{0.9cm}
+\setlength{\TPHorizModule}{1cm}
+\setlength{\TPVertModule}{1cm}
+\textblockorigin{0pt}{0pt}
+
+\sf
+\LARGE
+
+\begin{textblock}{16.5}(2.8,2.6)
+ \hspace*{-0.25cm} \textbf{UNIVERSITÄT DUISBURG-ESSEN} \\
+ \hspace*{-1.15cm} \rule{5mm}{5mm} \hspace*{0.05cm} FAKULTÄT FÜR WIRTSCHAFTSWISSENSCHAFTEN\\
+ \large{}INSTITUT FÜR INFORMATIK UND WIRTSCHAFTSINFORMATIK \\
+ \large{}LEHRSTUHL FÜR PERVASIVE COMPUTING\\
+\end{textblock}
+
+
+%Hier Titel, Name, und Matrikelnummer eintragen, \\ make a newline
+\begin{textblock}{14.5}(3.2,8.5)
+  \large
+{ \bf Bachelorarbeit} \\[1cm]
+{\LARGE \Large\bf Evaluation of a lightweight debugging platform for mobile	sensor networks} \\[1.3cm]
+\studentFirsName {} \studentSecondName\\
+Matrikelnummer: \studentMatrikelnummer
+\end{textblock}
+
+
+
+\begin{textblock}{10}(10.5,17.5)
+%\includegraphics[scale=1.0]{unilogo.pdf}\\
+\includegraphics[scale=0.23	]{content/images/NES_Logo.pdf}\\
+\normalsize
+\raggedleft
+Networked Embedded Systems Group \\
+Institut für Informatik und Wirtschaftsinformatik \\
+Fakultät für Wirtschaftswissenschaften \\
+Universität Duisburg-Essen \\[2ex]
+\today\\[15ex]
+\raggedright
+% Prüfers
+{\bf Erstprüfer:} Prof. Dr. Pedro José Marrón \\
+{\bf Zweitprüfer:} Prof. Dr. Gregor Schiele \\
+{\bf Zeitraum:} 7.Juli 2015 - 29.September 2015\\
+\end{textblock}
+
+
+\end{titlepage}

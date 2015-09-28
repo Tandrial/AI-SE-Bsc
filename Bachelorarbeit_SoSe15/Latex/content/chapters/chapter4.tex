@@ -1,0 +1,40 @@
+\chapter{Discussion}
+\section{Summary}
+
+%In this thesis we evaluate the wireless capabilities of the SHAMPU framework for debugging and reprogramming WSNs. In order to assess the wireless technology which currently makes use of the ANT protocol, we designed and ran several different experiments to evaluate ANT according to different use-cases.
+
+In our experiments ANT showed useful properties, although it fell short of the theoretical performance in some experiments.
+
+\begin{itemize}
+	\item{\textbf{Data throughput}} \hfill \\ 
+	The ANT chip is able to utilize the advertised 200 Hz message rate, which translates into a data throughput of 1600 Bps. However this limit can only be reached by combining sending and receiving. The maximum data throughput drops down to around 1100 Bps or 128 Hz, if the chip is only sending or receiving. Surprisingly even the burst mode is limited by a similar 1165 Bps limit.
+	
+	\item{\textbf{Connections/Acknowledge delay}} \hfill \\ 
+	We determined that for frequencies above 8 Hz the delay to establish a connection is well below 1 second. This means that for any channel with around 100 Bps or more the delay is insignificant and can most likely be ignored. \\
+	Additionally the delay for an ANT node to confirm whether a message was correctly received by a second node was analyzed. The minimum delay was determined to be 15ms, as is expected for a frequency of 68 Hz. At higher frequencies the ANT-chip seems to need two timeslots to acknowledge a transfer. This explains that the highest throughput of acknowledge data is 550 Bps, almost exactly half the speed of one-directional broadcast transfer.
+	
+	\item{\textbf{Communication Range}} \hfill \\ The maximum communication range of 6m is probably the most disturbing result of this thesis. The short range implies, that the physical location of the base station is critical for a successful deployment of SHAMPU. It also means that a larger network requires more than one such base station to be able to reach all nodes. 
+\end{itemize}
+
+We could show that SHAMPU can be used together with ANT. There are limitations, but most of them seem to be of little relevance in real world situations. Even the range limitation can be overcome by appropriate design decisions.
+
+\section{SHAMPU network setup}
+In order to correctly function each SHAMPU node needs to be connected to two channels. Each node can then receive and simultaneously send 800 Bps or can either send or receive with 1100 Bps. This limitations affects the SHAMPU base stations the most, because they have to act as a data sink for multiple SHAMPU devices.
+
+With these limitations of data throughput, the network setup has to be chosen very carefully. One option is to use additional SHAMPU nodes as relays, which serve a dual purpose. They allow to extend the range of the network, while increasing the data throughput of the whole network.\\ Another possibility to counteract the limitation is to leverage the numerous advantages of the SHAMPU framework, such as its low weight, form factor and power draw. A mobile base station, e.g. TrainSense \cite{smeets2013trainsense}, which can easily be moved around to the location where the SHAMPU nodes are deployed and act as data mule, makes it possible to address all above mentioned problems. The range no longer represents a problem, since the base station is simply moved towards the node until a connection can be achieved. At the same time, the limited range provides a solution for the limited data throughput. Since the number of nodes, which are able to connect to the base station can be controlled, it is possible to ensure that only a small number of nodes transmit data to the base station at the same time.
+
+
+\newpage
+\section{Future Work}
+\label{sec:future}
+Due to lack of time and the limited hardware availability we were not able to fully explore and evaluate the possibilities of ANT in the SHAMPU network. Especially the following four areas are worth to be investigated in the future:
+
+\begin{itemize}
+	\item{\textbf{Power consumption}} \hfill \\ Each experiment tries to find the maximum of either data throughput or the communication range. We did not measure how the power consumption changes, if for example the message period is reduced. Since SHAMPU tries to be very low-powered, this is an important measurement for the decision whether SHAMPU can be used for a specific application. The data sheet of the ANT AP1MxIB module provides interesting data \cite{Networks}: The maximum current draw seems to be around 5 mA for a continuous burst transmission and around 40 $\mu$A for a normal broadcast operation.
+	
+	\item{\textbf{Burst mode}} \hfill \\ We used a custom library, which provides an API to interface with the ANT-Chip. For this thesis an attempt was made to add the missing burst transfer mode. However, due to time constraints we were unable to get the mode working correctly. 
+	
+	\item{\textbf{Shared channels}} \hfill \\ Due to missing hardware, we were only able to test the communication between two nodes. Shared channels could not be tested, yet we expect the available data throughput to be in line with the results from our experiments. ANT uses up to 2 bytes of the 8 byte payload to specify the address of the receiver. Therefore we expect to lose approximately 12.5\% to 25\% of throughput if shared channels are used. It would be important to confirm this to fully assess the usefulness of the ANT chip.
+	
+	\item{\textbf{New ANT-chip}} \hfill \\ As mentioned before the chip currently in use is old and no longer recommended for use. The successor of the current chip, the ANTAP281M4IB, has roughly the same specifications as the current chip. Therefore the experiments should be rerun with the newer model in order to determine whether this allows to exploit the full data throughput potential of the ANT-chip in all use cases.
+\end{itemize}

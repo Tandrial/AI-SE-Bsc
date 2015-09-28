@@ -1,0 +1,2966 @@
+[michael@xps src]$ sudo ./ant -p /dev/ttyUSB1 -t s -n 1
+Power setting is now: 0dBm
+Experiment 1: Broadcast Data Transfer between two nodes
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][FF][FF][ 0][ 0][F3]
+Channel 0 open! took 4.714233
+Run 0: failed 0 sucess 5: 40 bytes in 10.000000 s => 4.000000
+Run 1: failed 0 sucess 5: 40 bytes in 10.000000 s => 4.000000
+Run 2: failed 0 sucess 5: 40 bytes in 10.000000 s => 4.000000
+Run 3: failed 0 sucess 5: 40 bytes in 10.000000 s => 4.000000
+Run 4: failed 0 sucess 5: 40 bytes in 10.000000 s => 4.000000
+Run 5: failed 0 sucess 5: 40 bytes in 10.000000 s => 4.000000
+Run 6: failed 0 sucess 5: 40 bytes in 10.000000 s => 4.000000
+Run 7: failed 0 sucess 5: 40 bytes in 10.000000 s => 4.000000
+Run 8: failed 0 sucess 5: 40 bytes in 10.000000 s => 4.000000
+Run 9: failed 0 sucess 5: 40 bytes in 10.000001 s => 3.999999
+Average datarate : 4.000000 	Std dev: 0.000000
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][FF][FF][ 0][ 0][F3]
+Channel 0 open! took 2.997877
+Run 0: failed 0 sucess 5: 40 bytes in 10.000000 s => 4.000000
+Run 1: failed 0 sucess 5: 40 bytes in 10.000000 s => 4.000000
+Run 2: failed 0 sucess 5: 40 bytes in 10.000000 s => 4.000000
+Run 3: failed 0 sucess 5: 40 bytes in 10.000000 s => 4.000000
+Run 4: failed 0 sucess 5: 40 bytes in 10.000000 s => 4.000000
+Run 5: failed 0 sucess 5: 40 bytes in 10.000000 s => 4.000000
+Run 6: failed 0 sucess 5: 40 bytes in 10.000000 s => 4.000000
+Run 7: failed 0 sucess 5: 40 bytes in 10.000000 s => 4.000000
+Run 8: failed 0 sucess 5: 40 bytes in 10.000000 s => 4.000000
+Run 9: failed 0 sucess 5: 40 bytes in 10.000000 s => 4.000000
+Average datarate : 4.000000 	Std dev: 0.000000
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][FF][FF][ 0][ 0][F3]
+Channel 0 open! took 28.996472
+Run 0: failed 0 sucess 5: 40 bytes in 10.000000 s => 4.000000
+Run 1: failed 0 sucess 5: 40 bytes in 10.000000 s => 4.000000
+Run 2: failed 0 sucess 5: 40 bytes in 10.000000 s => 4.000000
+Run 3: failed 0 sucess 5: 40 bytes in 10.000000 s => 4.000000
+Run 4: failed 0 sucess 5: 40 bytes in 10.000000 s => 4.000000
+Run 5: failed 0 sucess 5: 40 bytes in 10.000000 s => 4.000000
+Run 6: failed 0 sucess 5: 40 bytes in 10.000000 s => 4.000000
+Run 7: failed 0 sucess 5: 40 bytes in 10.000000 s => 4.000000
+Run 8: failed 0 sucess 5: 40 bytes in 10.000000 s => 4.000000
+Run 9: failed 0 sucess 5: 40 bytes in 10.000000 s => 4.000000
+Average datarate : 4.000000 	Std dev: 0.000000
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][FF][FF][ 0][ 0][F3]
+Channel 0 open! took 28.996450
+Run 0: failed 0 sucess 5: 40 bytes in 10.000000 s => 4.000000
+Run 1: failed 0 sucess 5: 40 bytes in 10.000000 s => 4.000000
+Run 2: failed 0 sucess 5: 40 bytes in 10.000000 s => 4.000000
+Run 3: failed 0 sucess 5: 40 bytes in 10.000000 s => 4.000000
+Run 4: failed 0 sucess 5: 40 bytes in 10.000000 s => 4.000000
+Run 5: failed 0 sucess 5: 40 bytes in 10.000000 s => 4.000000
+Run 6: failed 0 sucess 5: 40 bytes in 10.000000 s => 4.000000
+Run 7: failed 0 sucess 5: 40 bytes in 10.000000 s => 4.000000
+Run 8: failed 0 sucess 5: 40 bytes in 10.000000 s => 4.000000
+Run 9: failed 0 sucess 5: 40 bytes in 10.000000 s => 4.000000
+Average datarate : 4.000000 	Std dev: 0.000000
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][FF][FF][ 0][ 0][F3]
+Channel 0 open! took 28.996473
+Run 0: failed 0 sucess 5: 40 bytes in 10.000000 s => 4.000000
+Run 1: failed 0 sucess 5: 40 bytes in 10.000000 s => 4.000000
+Run 2: failed 0 sucess 5: 40 bytes in 10.000000 s => 4.000000
+Run 3: failed 0 sucess 5: 40 bytes in 10.000000 s => 4.000000
+Run 4: failed 0 sucess 5: 40 bytes in 10.000000 s => 4.000000
+Run 5: failed 0 sucess 5: 40 bytes in 10.000000 s => 4.000000
+Run 6: failed 0 sucess 5: 40 bytes in 10.000000 s => 4.000000
+Run 7: failed 0 sucess 5: 40 bytes in 10.000000 s => 4.000000
+Run 8: failed 0 sucess 5: 40 bytes in 10.000000 s => 4.000000
+Run 9: failed 0 sucess 5: 40 bytes in 10.000000 s => 4.000000
+Average datarate : 4.000000 	Std dev: 0.000000
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][FF][FF][ 0][ 0][F3]
+Channel 0 open! took 2.997691
+Run 0: failed 0 sucess 5: 40 bytes in 10.000000 s => 4.000000
+Run 1: failed 0 sucess 5: 40 bytes in 10.000000 s => 4.000000
+Run 2: failed 0 sucess 5: 40 bytes in 10.000000 s => 4.000000
+Run 3: failed 0 sucess 5: 40 bytes in 10.000000 s => 4.000000
+Run 4: failed 0 sucess 5: 40 bytes in 10.000000 s => 4.000000
+Run 5: failed 0 sucess 5: 40 bytes in 10.000000 s => 4.000000
+Run 6: failed 0 sucess 5: 40 bytes in 10.000000 s => 4.000000
+Run 7: failed 0 sucess 5: 40 bytes in 10.000000 s => 4.000000
+Run 8: failed 0 sucess 5: 40 bytes in 10.000000 s => 4.000000
+Run 9: failed 0 sucess 5: 40 bytes in 10.000000 s => 4.000000
+Average datarate : 4.000000 	Std dev: 0.000000
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][FF][FF][ 0][ 0][F3]
+Channel 0 open! took 28.996579
+Run 0: failed 0 sucess 5: 40 bytes in 10.000000 s => 4.000000
+Run 1: failed 0 sucess 5: 40 bytes in 10.000000 s => 4.000000
+Run 2: failed 0 sucess 5: 40 bytes in 10.000000 s => 4.000000
+Run 3: failed 0 sucess 5: 40 bytes in 10.000000 s => 4.000000
+Run 4: failed 0 sucess 5: 40 bytes in 10.000000 s => 4.000000
+Run 5: failed 0 sucess 5: 40 bytes in 10.000000 s => 4.000000
+Run 6: failed 0 sucess 5: 40 bytes in 10.000000 s => 4.000000
+Run 7: failed 0 sucess 5: 40 bytes in 10.000000 s => 4.000000
+Run 8: failed 0 sucess 5: 40 bytes in 10.000000 s => 4.000000
+Run 9: failed 0 sucess 5: 40 bytes in 10.000000 s => 4.000000
+Average datarate : 4.000000 	Std dev: 0.000000
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][FF][FF][ 0][ 0][F3]
+Channel 0 open! took 2.997637
+Run 0: failed 1 sucess 4: 32 bytes in 10.000000 s => 3.200000
+Run 1: failed 0 sucess 5: 40 bytes in 10.000000 s => 4.000000
+Run 2: failed 0 sucess 5: 40 bytes in 10.000000 s => 4.000000
+Run 3: failed 0 sucess 5: 40 bytes in 10.000000 s => 4.000000
+Run 4: failed 0 sucess 5: 40 bytes in 10.000000 s => 4.000000
+Run 5: failed 0 sucess 5: 40 bytes in 10.000000 s => 4.000000
+Run 6: failed 0 sucess 5: 40 bytes in 10.000000 s => 4.000000
+Run 7: failed 0 sucess 5: 40 bytes in 10.000000 s => 4.000000
+Run 8: failed 0 sucess 5: 40 bytes in 10.000000 s => 4.000000
+Run 9: failed 0 sucess 5: 40 bytes in 10.000000 s => 4.000000
+Average datarate : 3.920000 	Std dev: 0.240000
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][FF][FF][ 0][ 0][F3]
+Channel 0 open! took 18.996184
+Run 0: failed 0 sucess 5: 40 bytes in 10.000000 s => 4.000000
+Run 1: failed 0 sucess 5: 40 bytes in 10.000000 s => 4.000000
+Run 2: failed 0 sucess 5: 40 bytes in 10.000000 s => 4.000000
+Run 3: failed 0 sucess 5: 40 bytes in 10.000000 s => 4.000000
+Run 4: failed 0 sucess 5: 40 bytes in 10.000000 s => 4.000000
+Run 5: failed 0 sucess 5: 40 bytes in 10.000000 s => 4.000000
+Run 6: failed 0 sucess 5: 40 bytes in 10.000000 s => 4.000000
+Run 7: failed 0 sucess 5: 40 bytes in 10.000000 s => 4.000000
+Run 8: failed 0 sucess 5: 40 bytes in 10.000000 s => 4.000000
+Run 9: failed 0 sucess 5: 40 bytes in 10.000000 s => 4.000000
+Average datarate : 4.000000 	Std dev: 0.000000
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][FF][FF][ 0][ 0][F3]
+Channel 0 open! took 28.996452
+Run 0: failed 0 sucess 5: 40 bytes in 10.000000 s => 4.000000
+Run 1: failed 0 sucess 5: 40 bytes in 10.000000 s => 4.000000
+Run 2: failed 0 sucess 5: 40 bytes in 10.000000 s => 4.000000
+Run 3: failed 1 sucess 4: 32 bytes in 10.000000 s => 3.200000
+Run 4: failed 0 sucess 5: 40 bytes in 10.000000 s => 4.000000
+Run 5: failed 0 sucess 5: 40 bytes in 10.000000 s => 4.000000
+Run 6: failed 0 sucess 5: 40 bytes in 10.000000 s => 4.000000
+Run 7: failed 0 sucess 5: 40 bytes in 10.000000 s => 4.000000
+Run 8: failed 0 sucess 5: 40 bytes in 10.000000 s => 4.000000
+Run 9: failed 0 sucess 5: 40 bytes in 10.000000 s => 4.000000
+Average datarate : 3.920000 	Std dev: 0.240000
+done! Press Any key!
+
+Message Period = 32767 (1.000031 Hz)
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][FF][7F][ 0][ 0][73]
+Channel 0 open! took 8.185837
+Run 0: failed 0 sucess 10: 80 bytes in 10.000000 s => 8.000000
+Run 1: failed 1 sucess 9: 72 bytes in 10.000000 s => 7.200000
+Run 2: failed 0 sucess 10: 80 bytes in 10.000000 s => 8.000000
+Run 3: failed 0 sucess 10: 80 bytes in 10.000000 s => 8.000000
+Run 4: failed 0 sucess 10: 80 bytes in 10.000000 s => 8.000000
+Run 5: failed 0 sucess 10: 80 bytes in 10.000000 s => 8.000000
+Run 6: failed 0 sucess 10: 80 bytes in 10.000000 s => 8.000000
+Run 7: failed 0 sucess 10: 80 bytes in 10.000000 s => 8.000000
+Run 8: failed 0 sucess 10: 80 bytes in 10.000000 s => 8.000000
+Run 9: failed 0 sucess 10: 80 bytes in 10.000000 s => 8.000000
+Average datarate : 7.920000 	Std dev: 0.240000
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][FF][7F][ 0][ 0][73]
+Channel 0 open! took 11.995114
+Run 0: failed 1 sucess 9: 72 bytes in 10.000000 s => 7.200000
+Run 1: failed 0 sucess 10: 80 bytes in 10.000000 s => 8.000000
+Run 2: failed 0 sucess 10: 80 bytes in 10.000000 s => 8.000000
+Run 3: failed 0 sucess 10: 80 bytes in 10.000000 s => 8.000000
+Run 4: failed 0 sucess 10: 80 bytes in 10.000000 s => 8.000000
+Run 5: failed 0 sucess 10: 80 bytes in 10.000000 s => 8.000000
+Run 6: failed 0 sucess 10: 80 bytes in 10.000000 s => 8.000000
+Run 7: failed 0 sucess 10: 80 bytes in 10.000000 s => 8.000000
+Run 8: failed 0 sucess 10: 80 bytes in 10.000000 s => 8.000000
+Run 9: failed 0 sucess 10: 80 bytes in 10.000000 s => 8.000000
+Average datarate : 7.920000 	Std dev: 0.240000
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][FF][7F][ 0][ 0][73]
+Channel 0 open! took 11.994962
+Run 0: failed 0 sucess 10: 80 bytes in 10.000000 s => 8.000000
+Run 1: failed 0 sucess 10: 80 bytes in 10.000000 s => 8.000000
+Run 2: failed 0 sucess 10: 80 bytes in 10.000000 s => 8.000000
+Run 3: failed 0 sucess 10: 80 bytes in 10.000000 s => 8.000000
+Run 4: failed 0 sucess 10: 80 bytes in 10.000000 s => 8.000000
+Run 5: failed 0 sucess 10: 80 bytes in 10.000000 s => 8.000000
+Run 6: failed 0 sucess 10: 80 bytes in 10.000000 s => 8.000000
+Run 7: failed 0 sucess 10: 80 bytes in 10.000000 s => 8.000000
+Run 8: failed 0 sucess 10: 80 bytes in 10.000000 s => 8.000000
+Run 9: failed 0 sucess 10: 80 bytes in 10.000000 s => 8.000000
+Average datarate : 8.000000 	Std dev: 0.000000
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][FF][7F][ 0][ 0][73]
+Channel 0 open! took 1.994713
+Run 0: failed 0 sucess 10: 80 bytes in 10.000000 s => 8.000000
+Run 1: failed 0 sucess 10: 80 bytes in 10.000000 s => 8.000000
+Run 2: failed 0 sucess 10: 80 bytes in 10.000000 s => 8.000000
+Run 3: failed 0 sucess 10: 80 bytes in 10.000000 s => 8.000000
+Run 4: failed 0 sucess 10: 80 bytes in 10.000000 s => 8.000000
+Run 5: failed 0 sucess 10: 80 bytes in 10.000000 s => 8.000000
+Run 6: failed 0 sucess 10: 80 bytes in 10.000000 s => 8.000000
+Run 7: failed 0 sucess 10: 80 bytes in 10.000000 s => 8.000000
+Run 8: failed 0 sucess 10: 80 bytes in 10.000000 s => 8.000000
+Run 9: failed 0 sucess 10: 80 bytes in 10.000000 s => 8.000000
+Average datarate : 8.000000 	Std dev: 0.000000
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][FF][7F][ 0][ 0][73]
+Channel 0 open! took 11.995007
+Run 0: failed 0 sucess 10: 80 bytes in 10.000000 s => 8.000000
+Run 1: failed 0 sucess 10: 80 bytes in 10.000000 s => 8.000000
+Run 2: failed 0 sucess 10: 80 bytes in 10.000000 s => 8.000000
+Run 3: failed 0 sucess 10: 80 bytes in 10.000000 s => 8.000000
+Run 4: failed 0 sucess 10: 80 bytes in 10.000000 s => 8.000000
+Run 5: failed 0 sucess 10: 80 bytes in 10.000000 s => 8.000000
+Run 6: failed 0 sucess 10: 80 bytes in 10.000000 s => 8.000000
+Run 7: failed 0 sucess 10: 80 bytes in 10.000000 s => 8.000000
+Run 8: failed 0 sucess 10: 80 bytes in 10.000000 s => 8.000000
+Run 9: failed 0 sucess 10: 80 bytes in 10.000000 s => 8.000000
+Average datarate : 8.000000 	Std dev: 0.000000
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][FF][7F][ 0][ 0][73]
+Channel 0 open! took 1.994852
+Run 0: failed 0 sucess 10: 80 bytes in 10.000000 s => 8.000000
+Run 1: failed 0 sucess 10: 80 bytes in 10.000000 s => 8.000000
+Run 2: failed 0 sucess 10: 80 bytes in 10.000000 s => 8.000000
+Run 3: failed 0 sucess 10: 80 bytes in 10.000000 s => 8.000000
+Run 4: failed 1 sucess 9: 72 bytes in 10.000000 s => 7.200000
+Run 5: failed 0 sucess 10: 80 bytes in 10.000000 s => 8.000000
+Run 6: failed 0 sucess 10: 80 bytes in 10.000000 s => 8.000000
+Run 7: failed 0 sucess 10: 80 bytes in 10.000000 s => 8.000000
+Run 8: failed 0 sucess 10: 80 bytes in 10.000000 s => 8.000000
+Run 9: failed 0 sucess 10: 80 bytes in 10.000000 s => 8.000000
+Average datarate : 7.920000 	Std dev: 0.240000
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][FF][7F][ 0][ 0][73]
+Channel 0 open! took 11.994967
+Run 0: failed 0 sucess 10: 80 bytes in 10.000000 s => 8.000000
+Run 1: failed 0 sucess 10: 80 bytes in 10.000000 s => 8.000000
+Run 2: failed 0 sucess 10: 80 bytes in 10.000000 s => 8.000000
+Run 3: failed 0 sucess 10: 80 bytes in 10.000000 s => 8.000000
+Run 4: failed 0 sucess 10: 80 bytes in 10.000000 s => 8.000000
+Run 5: failed 0 sucess 10: 80 bytes in 10.000000 s => 8.000000
+Run 6: failed 0 sucess 10: 80 bytes in 10.000000 s => 8.000000
+Run 7: failed 0 sucess 10: 80 bytes in 10.000000 s => 8.000000
+Run 8: failed 0 sucess 10: 80 bytes in 10.000000 s => 8.000000
+Run 9: failed 0 sucess 10: 80 bytes in 10.000000 s => 8.000000
+Average datarate : 8.000000 	Std dev: 0.000000
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][FF][7F][ 0][ 0][73]
+Channel 0 open! took 11.994977
+Run 0: failed 0 sucess 10: 80 bytes in 10.000000 s => 8.000000
+Run 1: failed 0 sucess 10: 80 bytes in 10.000000 s => 8.000000
+Run 2: failed 0 sucess 10: 80 bytes in 10.000000 s => 8.000000
+Run 3: failed 0 sucess 10: 80 bytes in 10.000000 s => 8.000000
+Run 4: failed 0 sucess 10: 80 bytes in 10.000000 s => 8.000000
+Run 5: failed 0 sucess 10: 80 bytes in 10.000000 s => 8.000000
+Run 6: failed 0 sucess 10: 80 bytes in 10.000000 s => 8.000000
+Run 7: failed 0 sucess 10: 80 bytes in 10.000000 s => 8.000000
+Run 8: failed 0 sucess 10: 80 bytes in 10.000000 s => 8.000000
+Run 9: failed 0 sucess 10: 80 bytes in 10.000000 s => 8.000000
+Average datarate : 8.000000 	Std dev: 0.000000
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][FF][7F][ 0][ 0][73]
+Channel 0 open! took 8.995880
+Run 0: failed 0 sucess 10: 80 bytes in 10.000000 s => 8.000000
+Run 1: failed 0 sucess 10: 80 bytes in 10.000000 s => 8.000000
+Run 2: failed 0 sucess 10: 80 bytes in 10.000000 s => 8.000000
+Run 3: failed 0 sucess 10: 80 bytes in 10.000000 s => 8.000000
+Run 4: failed 0 sucess 10: 80 bytes in 10.000000 s => 8.000000
+Run 5: failed 0 sucess 10: 80 bytes in 10.000000 s => 8.000000
+Run 6: failed 0 sucess 10: 80 bytes in 10.000000 s => 8.000000
+Run 7: failed 0 sucess 10: 80 bytes in 10.000000 s => 8.000000
+Run 8: failed 0 sucess 10: 80 bytes in 10.000000 s => 8.000000
+Run 9: failed 0 sucess 10: 80 bytes in 10.000000 s => 8.000000
+Average datarate : 8.000000 	Std dev: 0.000000
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][FF][7F][ 0][ 0][73]
+Channel 0 open! took 11.994983
+Run 0: failed 0 sucess 10: 80 bytes in 10.000000 s => 8.000000
+Run 1: failed 0 sucess 10: 80 bytes in 10.000000 s => 8.000000
+Run 2: failed 0 sucess 10: 80 bytes in 10.000000 s => 8.000000
+Run 3: failed 0 sucess 10: 80 bytes in 10.000000 s => 8.000000
+Run 4: failed 0 sucess 10: 80 bytes in 10.000000 s => 8.000000
+Run 5: failed 0 sucess 10: 80 bytes in 10.000000 s => 8.000000
+Run 6: failed 0 sucess 10: 80 bytes in 10.000000 s => 8.000000
+Run 7: failed 0 sucess 10: 80 bytes in 10.000000 s => 8.000000
+Run 8: failed 0 sucess 10: 80 bytes in 10.000000 s => 8.000000
+Run 9: failed 0 sucess 10: 80 bytes in 10.000000 s => 8.000000
+Average datarate : 8.000000 	Std dev: 0.000000
+done! Press Any key!
+
+Message Period = 16383 (2.000122 Hz)
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][FF][3F][ 0][ 0][33]
+Channel 0 open! took 6.372856
+Run 0: failed 0 sucess 20: 160 bytes in 10.000000 s => 16.000000
+Run 1: failed 0 sucess 20: 160 bytes in 10.000000 s => 16.000000
+Run 2: failed 0 sucess 20: 160 bytes in 10.000000 s => 16.000000
+Run 3: failed 0 sucess 20: 160 bytes in 10.000000 s => 16.000000
+Run 4: failed 1 sucess 19: 152 bytes in 10.000000 s => 15.200000
+Run 5: failed 0 sucess 20: 160 bytes in 10.000000 s => 16.000000
+Run 6: failed 0 sucess 20: 160 bytes in 10.000000 s => 16.000000
+Run 7: failed 0 sucess 20: 160 bytes in 10.000000 s => 16.000000
+Run 8: failed 1 sucess 19: 152 bytes in 10.000000 s => 15.200000
+Run 9: failed 0 sucess 20: 160 bytes in 10.000000 s => 16.000000
+Average datarate : 15.840000 	Std dev: 0.320000
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][FF][3F][ 0][ 0][33]
+Channel 0 open! took 4.492429
+Run 0: failed 0 sucess 20: 160 bytes in 10.000000 s => 16.000000
+Run 1: failed 0 sucess 20: 160 bytes in 10.000000 s => 16.000000
+Run 2: failed 0 sucess 20: 160 bytes in 10.000000 s => 16.000000
+Run 3: failed 1 sucess 19: 152 bytes in 10.000000 s => 15.200000
+Run 4: failed 0 sucess 20: 160 bytes in 10.000000 s => 16.000000
+Run 5: failed 0 sucess 20: 160 bytes in 10.000000 s => 16.000000
+Run 6: failed 0 sucess 20: 160 bytes in 10.000000 s => 16.000000
+Run 7: failed 0 sucess 20: 160 bytes in 10.000000 s => 16.000000
+Run 8: failed 0 sucess 20: 160 bytes in 10.000000 s => 16.000000
+Run 9: failed 0 sucess 20: 160 bytes in 10.000000 s => 16.000000
+Average datarate : 15.920000 	Std dev: 0.240000
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][FF][3F][ 0][ 0][33]
+Channel 0 open! took 4.492373
+Run 0: failed 0 sucess 20: 160 bytes in 10.000000 s => 16.000000
+Run 1: failed 0 sucess 20: 160 bytes in 10.000000 s => 16.000000
+Run 2: failed 0 sucess 20: 160 bytes in 10.000000 s => 16.000000
+Run 3: failed 0 sucess 20: 160 bytes in 10.000000 s => 16.000000
+Run 4: failed 0 sucess 20: 160 bytes in 10.000000 s => 16.000000
+Run 5: failed 0 sucess 20: 160 bytes in 10.000000 s => 16.000000
+Run 6: failed 0 sucess 20: 160 bytes in 10.000000 s => 16.000000
+Run 7: failed 0 sucess 20: 160 bytes in 10.000001 s => 15.999999
+Run 8: failed 0 sucess 20: 160 bytes in 10.000000 s => 16.000000
+Run 9: failed 0 sucess 20: 160 bytes in 10.000000 s => 16.000000
+Average datarate : 16.000000 	Std dev: 0.000000
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][FF][3F][ 0][ 0][33]
+Channel 0 open! took 4.492413
+Run 0: failed 0 sucess 20: 160 bytes in 10.000000 s => 16.000000
+Run 1: failed 2 sucess 18: 144 bytes in 10.000000 s => 14.400000
+Run 2: failed 0 sucess 20: 160 bytes in 10.000000 s => 16.000000
+Run 3: failed 0 sucess 20: 160 bytes in 10.000000 s => 16.000000
+Run 4: failed 0 sucess 20: 160 bytes in 10.000000 s => 16.000000
+Run 5: failed 0 sucess 20: 160 bytes in 10.000000 s => 16.000000
+Run 6: failed 0 sucess 20: 160 bytes in 10.000000 s => 16.000000
+Run 7: failed 0 sucess 20: 160 bytes in 10.000000 s => 16.000000
+Run 8: failed 0 sucess 20: 160 bytes in 10.000000 s => 16.000000
+Run 9: failed 0 sucess 20: 160 bytes in 10.000000 s => 16.000000
+Average datarate : 15.840000 	Std dev: 0.480000
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][FF][3F][ 0][ 0][33]
+Channel 0 open! took 1.493228
+Run 0: failed 0 sucess 20: 160 bytes in 10.000000 s => 16.000000
+Run 1: failed 0 sucess 20: 160 bytes in 10.000000 s => 16.000000
+Run 2: failed 0 sucess 20: 160 bytes in 10.000000 s => 16.000000
+Run 3: failed 0 sucess 20: 160 bytes in 10.000000 s => 16.000000
+Run 4: failed 0 sucess 20: 160 bytes in 10.000000 s => 16.000000
+Run 5: failed 0 sucess 20: 160 bytes in 10.000000 s => 16.000000
+Run 6: failed 0 sucess 20: 160 bytes in 10.000000 s => 16.000000
+Run 7: failed 0 sucess 20: 160 bytes in 10.000000 s => 16.000000
+Run 8: failed 0 sucess 20: 160 bytes in 10.000000 s => 16.000000
+Run 9: failed 0 sucess 20: 160 bytes in 10.000000 s => 16.000000
+Average datarate : 16.000000 	Std dev: 0.000000
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][FF][3F][ 0][ 0][33]
+Channel 0 open! took 4.492390
+Run 0: failed 0 sucess 20: 160 bytes in 10.000000 s => 16.000000
+Run 1: failed 0 sucess 20: 160 bytes in 10.000000 s => 16.000000
+Run 2: failed 0 sucess 20: 160 bytes in 10.000000 s => 16.000000
+Run 3: failed 0 sucess 20: 160 bytes in 10.000000 s => 16.000000
+Run 4: failed 0 sucess 20: 160 bytes in 10.000000 s => 16.000000
+Run 5: failed 0 sucess 20: 160 bytes in 10.000000 s => 16.000000
+Run 6: failed 0 sucess 20: 160 bytes in 10.000000 s => 16.000000
+Run 7: failed 0 sucess 20: 160 bytes in 10.000000 s => 16.000000
+Run 8: failed 0 sucess 20: 160 bytes in 10.000000 s => 16.000000
+Run 9: failed 0 sucess 20: 160 bytes in 10.000000 s => 16.000000
+Average datarate : 16.000000 	Std dev: 0.000000
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][FF][3F][ 0][ 0][33]
+Channel 0 open! took 1.985095
+Run 0: failed 0 sucess 20: 160 bytes in 10.000000 s => 16.000000
+Run 1: failed 0 sucess 20: 160 bytes in 10.000000 s => 16.000000
+Run 2: failed 0 sucess 20: 160 bytes in 10.000000 s => 16.000000
+Run 3: failed 0 sucess 20: 160 bytes in 10.000000 s => 16.000000
+Run 4: failed 0 sucess 20: 160 bytes in 10.000000 s => 16.000000
+Run 5: failed 0 sucess 20: 160 bytes in 10.000000 s => 16.000000
+Run 6: failed 0 sucess 20: 160 bytes in 10.000000 s => 16.000000
+Run 7: failed 0 sucess 20: 160 bytes in 10.000000 s => 16.000000
+Run 8: failed 0 sucess 20: 160 bytes in 10.000000 s => 16.000000
+Run 9: failed 0 sucess 20: 160 bytes in 10.000000 s => 16.000000
+Average datarate : 16.000000 	Std dev: 0.000000
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][FF][3F][ 0][ 0][33]
+Channel 0 open! took 1.493248
+Run 0: failed 0 sucess 20: 160 bytes in 10.000000 s => 16.000000
+Run 1: failed 0 sucess 20: 160 bytes in 10.000000 s => 16.000000
+Run 2: failed 0 sucess 20: 160 bytes in 10.000000 s => 16.000000
+Run 3: failed 0 sucess 20: 160 bytes in 10.000000 s => 16.000000
+Run 4: failed 1 sucess 19: 152 bytes in 10.000000 s => 15.200000
+Run 5: failed 0 sucess 20: 160 bytes in 10.000000 s => 16.000000
+Run 6: failed 0 sucess 20: 160 bytes in 10.000000 s => 16.000000
+Run 7: failed 0 sucess 20: 160 bytes in 10.000000 s => 16.000000
+Run 8: failed 0 sucess 20: 160 bytes in 10.000000 s => 16.000000
+Run 9: failed 0 sucess 20: 160 bytes in 10.000000 s => 16.000000
+Average datarate : 15.920000 	Std dev: 0.240000
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][FF][3F][ 0][ 0][33]
+Channel 0 open! took 4.492422
+Run 0: failed 0 sucess 20: 160 bytes in 10.000000 s => 16.000000
+Run 1: failed 0 sucess 20: 160 bytes in 10.000000 s => 16.000000
+Run 2: failed 1 sucess 19: 152 bytes in 10.000000 s => 15.200000
+Run 3: failed 0 sucess 20: 160 bytes in 10.000000 s => 16.000000
+Run 4: failed 0 sucess 20: 160 bytes in 10.000000 s => 16.000000
+Run 5: failed 0 sucess 20: 160 bytes in 10.000000 s => 16.000000
+Run 6: failed 0 sucess 20: 160 bytes in 10.000000 s => 16.000000
+Run 7: failed 0 sucess 20: 160 bytes in 10.000000 s => 16.000000
+Run 8: failed 0 sucess 20: 160 bytes in 10.000000 s => 16.000000
+Run 9: failed 0 sucess 20: 160 bytes in 10.000000 s => 16.000000
+Average datarate : 15.920000 	Std dev: 0.240000
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][FF][3F][ 0][ 0][33]
+Channel 0 open! took 1.493271
+Run 0: failed 1 sucess 19: 152 bytes in 10.000000 s => 15.200000
+Run 1: failed 0 sucess 20: 160 bytes in 10.000000 s => 16.000000
+Run 2: failed 0 sucess 20: 160 bytes in 10.000000 s => 16.000000
+Run 3: failed 0 sucess 20: 160 bytes in 10.000000 s => 16.000000
+Run 4: failed 0 sucess 20: 160 bytes in 10.000000 s => 16.000000
+Run 5: failed 1 sucess 19: 152 bytes in 10.000000 s => 15.200000
+Run 6: failed 0 sucess 20: 160 bytes in 10.000000 s => 16.000000
+Run 7: failed 0 sucess 20: 160 bytes in 10.000000 s => 16.000000
+Run 8: failed 0 sucess 20: 160 bytes in 10.000000 s => 16.000000
+Run 9: failed 0 sucess 20: 160 bytes in 10.000000 s => 16.000000
+Average datarate : 15.840000 	Std dev: 0.320000
+done! Press Any key!
+
+Message Period = 8191 (4.000488 Hz)
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][FF][1F][ 0][ 0][13]
+Channel 0 open! took 1.782574
+Run 0: failed 0 sucess 40: 320 bytes in 10.000000 s => 32.000000
+Run 1: failed 0 sucess 40: 320 bytes in 10.000000 s => 32.000000
+Run 2: failed 0 sucess 40: 320 bytes in 10.000000 s => 32.000000
+Run 3: failed 0 sucess 40: 320 bytes in 10.000000 s => 32.000000
+Run 4: failed 1 sucess 39: 312 bytes in 10.000000 s => 31.200000
+Run 5: failed 0 sucess 40: 320 bytes in 10.000000 s => 32.000000
+Run 6: failed 0 sucess 40: 320 bytes in 10.000000 s => 32.000000
+Run 7: failed 0 sucess 40: 320 bytes in 10.000000 s => 32.000000
+Run 8: failed 0 sucess 40: 320 bytes in 10.000000 s => 32.000000
+Run 9: failed 0 sucess 40: 320 bytes in 10.000000 s => 32.000000
+Average datarate : 31.920000 	Std dev: 0.240000
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][FF][1F][ 0][ 0][13]
+Channel 0 open! took 2.486547
+Run 0: failed 0 sucess 40: 320 bytes in 10.000000 s => 32.000000
+Run 1: failed 0 sucess 40: 320 bytes in 10.000000 s => 32.000000
+Run 2: failed 0 sucess 40: 320 bytes in 10.000000 s => 32.000000
+Run 3: failed 0 sucess 40: 320 bytes in 10.000000 s => 32.000000
+Run 4: failed 0 sucess 40: 320 bytes in 10.000000 s => 32.000000
+Run 5: failed 0 sucess 40: 320 bytes in 10.000000 s => 32.000000
+Run 6: failed 0 sucess 40: 320 bytes in 10.000000 s => 32.000000
+Run 7: failed 0 sucess 40: 320 bytes in 10.000000 s => 32.000000
+Run 8: failed 0 sucess 40: 320 bytes in 10.000000 s => 32.000000
+Run 9: failed 0 sucess 40: 320 bytes in 10.000000 s => 32.000000
+Average datarate : 32.000000 	Std dev: 0.000000
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][FF][1F][ 0][ 0][13]
+Channel 0 open! took 2.486510
+Run 0: failed 0 sucess 40: 320 bytes in 10.000000 s => 32.000000
+Run 1: failed 0 sucess 40: 320 bytes in 10.000000 s => 32.000000
+Run 2: failed 0 sucess 40: 320 bytes in 10.000000 s => 32.000000
+Run 3: failed 1 sucess 39: 312 bytes in 10.000000 s => 31.200000
+Run 4: failed 0 sucess 40: 320 bytes in 10.000000 s => 32.000000
+Run 5: failed 0 sucess 40: 320 bytes in 10.000000 s => 32.000000
+Run 6: failed 0 sucess 40: 320 bytes in 10.000000 s => 32.000000
+Run 7: failed 0 sucess 40: 320 bytes in 10.000000 s => 32.000000
+Run 8: failed 0 sucess 40: 320 bytes in 10.000000 s => 32.000000
+Run 9: failed 0 sucess 40: 320 bytes in 10.000000 s => 32.000000
+Average datarate : 31.920000 	Std dev: 0.240000
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][FF][1F][ 0][ 0][13]
+Channel 0 open! took 2.236106
+Run 0: failed 0 sucess 40: 320 bytes in 10.000000 s => 32.000000
+Run 1: failed 0 sucess 40: 320 bytes in 10.000000 s => 32.000000
+Run 2: failed 0 sucess 40: 320 bytes in 10.000000 s => 32.000000
+Run 3: failed 0 sucess 40: 320 bytes in 10.000000 s => 32.000000
+Run 4: failed 0 sucess 40: 320 bytes in 10.000000 s => 32.000000
+Run 5: failed 0 sucess 40: 320 bytes in 10.000000 s => 32.000000
+Run 6: failed 0 sucess 40: 320 bytes in 10.000000 s => 32.000000
+Run 7: failed 1 sucess 39: 312 bytes in 10.000000 s => 31.200000
+Run 8: failed 0 sucess 40: 320 bytes in 10.000000 s => 32.000000
+Run 9: failed 0 sucess 40: 320 bytes in 10.000000 s => 32.000000
+Average datarate : 31.920000 	Std dev: 0.240000
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][FF][1F][ 0][ 0][13]
+Channel 0 open! took 2.235819
+Run 0: failed 0 sucess 40: 320 bytes in 10.000000 s => 32.000000
+Run 1: failed 0 sucess 40: 320 bytes in 10.000000 s => 32.000000
+Run 2: failed 0 sucess 40: 320 bytes in 10.000000 s => 32.000000
+Run 3: failed 0 sucess 40: 320 bytes in 10.000000 s => 32.000000
+Run 4: failed 0 sucess 40: 320 bytes in 10.000000 s => 32.000000
+Run 5: failed 0 sucess 40: 320 bytes in 10.000000 s => 32.000000
+Run 6: failed 1 sucess 39: 312 bytes in 10.000000 s => 31.200000
+Run 7: failed 0 sucess 40: 320 bytes in 10.000000 s => 32.000000
+Run 8: failed 0 sucess 40: 320 bytes in 10.000000 s => 32.000000
+Run 9: failed 0 sucess 40: 320 bytes in 10.000000 s => 32.000000
+Average datarate : 31.920000 	Std dev: 0.240000
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][FF][1F][ 0][ 0][13]
+Channel 0 open! took 2.235785
+Run 0: failed 0 sucess 40: 320 bytes in 10.000000 s => 32.000000
+Run 1: failed 0 sucess 40: 320 bytes in 10.000000 s => 32.000000
+Run 2: failed 0 sucess 40: 320 bytes in 10.000000 s => 32.000000
+Run 3: failed 2 sucess 38: 304 bytes in 10.000000 s => 30.400000
+Run 4: failed 0 sucess 40: 320 bytes in 10.000000 s => 32.000000
+Run 5: failed 0 sucess 40: 320 bytes in 10.000000 s => 32.000000
+Run 6: failed 0 sucess 40: 320 bytes in 10.000000 s => 32.000000
+Run 7: failed 0 sucess 40: 320 bytes in 10.000000 s => 32.000000
+Run 8: failed 0 sucess 40: 320 bytes in 10.000000 s => 32.000000
+Run 9: failed 0 sucess 40: 320 bytes in 10.000000 s => 32.000000
+Average datarate : 31.840000 	Std dev: 0.480000
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][FF][1F][ 0][ 0][13]
+Channel 0 open! took 2.235798
+Run 0: failed 1 sucess 39: 312 bytes in 10.000000 s => 31.200000
+Run 1: failed 0 sucess 40: 320 bytes in 10.000000 s => 32.000000
+Run 2: failed 1 sucess 39: 312 bytes in 10.000000 s => 31.200000
+Run 3: failed 0 sucess 40: 320 bytes in 10.000000 s => 32.000000
+Run 4: failed 0 sucess 40: 320 bytes in 10.000000 s => 32.000000
+Run 5: failed 0 sucess 40: 320 bytes in 10.000000 s => 32.000000
+Run 6: failed 0 sucess 40: 320 bytes in 10.000000 s => 32.000000
+Run 7: failed 0 sucess 40: 320 bytes in 10.000000 s => 32.000000
+Run 8: failed 0 sucess 40: 320 bytes in 10.000000 s => 32.000000
+Run 9: failed 0 sucess 40: 320 bytes in 10.000000 s => 32.000000
+Average datarate : 31.840000 	Std dev: 0.320000
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][FF][1F][ 0][ 0][13]
+Channel 0 open! took 2.235800
+Run 0: failed 1 sucess 39: 312 bytes in 10.000000 s => 31.200000
+Run 1: failed 0 sucess 40: 320 bytes in 10.000000 s => 32.000000
+Run 2: failed 0 sucess 40: 320 bytes in 10.000000 s => 32.000000
+Run 3: failed 0 sucess 40: 320 bytes in 10.000000 s => 32.000000
+Run 4: failed 0 sucess 40: 320 bytes in 10.000000 s => 32.000000
+Run 5: failed 0 sucess 40: 320 bytes in 10.000000 s => 32.000000
+Run 6: failed 0 sucess 40: 320 bytes in 10.000000 s => 32.000000
+Run 7: failed 0 sucess 40: 320 bytes in 10.000000 s => 32.000000
+Run 8: failed 0 sucess 40: 320 bytes in 10.000000 s => 32.000000
+Run 9: failed 0 sucess 40: 320 bytes in 10.000000 s => 32.000000
+Average datarate : 31.920000 	Std dev: 0.240000
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][FF][1F][ 0][ 0][13]
+Channel 0 open! took 2.235863
+Run 0: failed 1 sucess 39: 312 bytes in 10.000000 s => 31.200000
+Run 1: failed 0 sucess 40: 320 bytes in 10.000000 s => 32.000000
+Run 2: failed 0 sucess 40: 320 bytes in 10.000000 s => 32.000000
+Run 3: failed 0 sucess 40: 320 bytes in 10.000000 s => 32.000000
+Run 4: failed 0 sucess 40: 320 bytes in 10.000000 s => 32.000000
+Run 5: failed 0 sucess 40: 320 bytes in 10.000000 s => 32.000000
+Run 6: failed 0 sucess 40: 320 bytes in 10.000000 s => 32.000000
+Run 7: failed 0 sucess 40: 320 bytes in 10.000000 s => 32.000000
+Run 8: failed 0 sucess 40: 320 bytes in 10.000000 s => 32.000000
+Run 9: failed 0 sucess 40: 320 bytes in 10.000000 s => 32.000000
+Average datarate : 31.920000 	Std dev: 0.240000
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][FF][1F][ 0][ 0][13]
+Channel 0 open! took 2.486541
+Run 0: failed 0 sucess 40: 320 bytes in 10.000000 s => 32.000000
+Run 1: failed 0 sucess 40: 320 bytes in 10.000000 s => 32.000000
+Run 2: failed 0 sucess 40: 320 bytes in 10.000000 s => 32.000000
+Run 3: failed 1 sucess 39: 312 bytes in 10.000000 s => 31.200000
+Run 4: failed 0 sucess 40: 320 bytes in 10.000000 s => 32.000000
+Run 5: failed 0 sucess 40: 320 bytes in 10.000000 s => 32.000000
+Run 6: failed 0 sucess 40: 320 bytes in 10.000000 s => 32.000000
+Run 7: failed 0 sucess 40: 320 bytes in 10.000000 s => 32.000000
+Run 8: failed 0 sucess 40: 320 bytes in 10.000000 s => 32.000000
+Run 9: failed 0 sucess 40: 320 bytes in 10.000000 s => 32.000000
+Average datarate : 31.920000 	Std dev: 0.240000
+done! Press Any key!
+
+Message Period = 4095 (8.001954 Hz)
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][FF][ F][ 0][ 0][ 3]
+Channel 0 open! took 2.409377
+Run 0: failed 0 sucess 80: 640 bytes in 10.000000 s => 63.999999
+Run 1: failed 0 sucess 80: 640 bytes in 10.000000 s => 63.999999
+Run 2: failed 2 sucess 78: 624 bytes in 10.000000 s => 62.399999
+Run 3: failed 0 sucess 80: 640 bytes in 10.000000 s => 64.000000
+Run 4: failed 1 sucess 79: 632 bytes in 10.000000 s => 63.200000
+Run 5: failed 1 sucess 79: 632 bytes in 10.000000 s => 63.199999
+Run 6: failed 0 sucess 80: 640 bytes in 10.000000 s => 64.000000
+Run 7: failed 0 sucess 80: 640 bytes in 10.000000 s => 63.999999
+Run 8: failed 0 sucess 80: 640 bytes in 10.000000 s => 64.000000
+Run 9: failed 0 sucess 80: 640 bytes in 10.000000 s => 63.999999
+Average datarate : 63.679999 	Std dev: 0.530660
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][FF][ F][ 0][ 0][ 3]
+Channel 0 open! took 1.348663
+Run 0: failed 0 sucess 80: 640 bytes in 10.000000 s => 63.999999
+Run 1: failed 1 sucess 79: 632 bytes in 10.000000 s => 63.200000
+Run 2: failed 0 sucess 80: 640 bytes in 10.000000 s => 64.000000
+Run 3: failed 0 sucess 80: 640 bytes in 10.000000 s => 63.999999
+Run 4: failed 1 sucess 79: 632 bytes in 10.000000 s => 63.200000
+Run 5: failed 1 sucess 79: 632 bytes in 10.000000 s => 63.200000
+Run 6: failed 0 sucess 80: 640 bytes in 10.000000 s => 63.999999
+Run 7: failed 0 sucess 80: 640 bytes in 10.000000 s => 63.999999
+Run 8: failed 0 sucess 80: 640 bytes in 10.000000 s => 64.000000
+Run 9: failed 0 sucess 80: 640 bytes in 10.000000 s => 63.999999
+Average datarate : 63.760000 	Std dev: 0.366606
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][FF][ F][ 0][ 0][ 3]
+Channel 0 open! took 1.223261
+Run 0: failed 0 sucess 80: 640 bytes in 10.000000 s => 63.999999
+Run 1: failed 1 sucess 79: 632 bytes in 10.000000 s => 63.199999
+Run 2: failed 0 sucess 80: 640 bytes in 10.000000 s => 64.000000
+Run 3: failed 1 sucess 79: 632 bytes in 10.000000 s => 63.200000
+Run 4: failed 0 sucess 80: 640 bytes in 10.000000 s => 64.000000
+Run 5: failed 0 sucess 80: 640 bytes in 10.000000 s => 64.000000
+Run 6: failed 0 sucess 80: 640 bytes in 10.000000 s => 63.999999
+Run 7: failed 0 sucess 80: 640 bytes in 10.000000 s => 64.000000
+Run 8: failed 0 sucess 80: 640 bytes in 10.000000 s => 64.000000
+Run 9: failed 0 sucess 80: 640 bytes in 10.000000 s => 64.000000
+Average datarate : 63.840000 	Std dev: 0.320000
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][FF][ F][ 0][ 0][ 3]
+Channel 0 open! took 1.097895
+Run 0: failed 0 sucess 80: 640 bytes in 10.000000 s => 63.999999
+Run 1: failed 0 sucess 80: 640 bytes in 10.000000 s => 63.999999
+Run 2: failed 0 sucess 80: 640 bytes in 10.000000 s => 64.000000
+Run 3: failed 1 sucess 79: 632 bytes in 10.000000 s => 63.199999
+Run 4: failed 0 sucess 80: 640 bytes in 10.000000 s => 63.999999
+Run 5: failed 0 sucess 80: 640 bytes in 10.000000 s => 63.999999
+Run 6: failed 0 sucess 80: 640 bytes in 10.000000 s => 63.999999
+Run 7: failed 0 sucess 80: 640 bytes in 10.000000 s => 63.999999
+Run 8: failed 0 sucess 80: 640 bytes in 10.000000 s => 63.999999
+Run 9: failed 0 sucess 80: 640 bytes in 10.000000 s => 64.000000
+Average datarate : 63.919999 	Std dev: 0.240000
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][FF][ F][ 0][ 0][ 3]
+Channel 0 open! took 1.223476
+Run 0: failed 0 sucess 80: 640 bytes in 10.000000 s => 64.000000
+Run 1: failed 0 sucess 80: 640 bytes in 10.000000 s => 63.999999
+Run 2: failed 0 sucess 80: 640 bytes in 10.000000 s => 64.000000
+Run 3: failed 0 sucess 80: 640 bytes in 10.000000 s => 64.000000
+Run 4: failed 0 sucess 80: 640 bytes in 10.000000 s => 64.000000
+Run 5: failed 0 sucess 80: 640 bytes in 10.000000 s => 64.000000
+Run 6: failed 0 sucess 80: 640 bytes in 10.000000 s => 63.999999
+Run 7: failed 0 sucess 80: 640 bytes in 10.000000 s => 64.000000
+Run 8: failed 0 sucess 80: 640 bytes in 10.000000 s => 64.000000
+Run 9: failed 0 sucess 80: 640 bytes in 10.000000 s => 63.999999
+Average datarate : 64.000000 	Std dev: 0.000000
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][FF][ F][ 0][ 0][ 3]
+Channel 0 open! took 1.097899
+Run 0: failed 0 sucess 80: 640 bytes in 10.000000 s => 64.000000
+Run 1: failed 0 sucess 80: 640 bytes in 10.000000 s => 64.000000
+Run 2: failed 0 sucess 80: 640 bytes in 10.000000 s => 63.999999
+Run 3: failed 0 sucess 80: 640 bytes in 10.000000 s => 64.000000
+Run 4: failed 0 sucess 80: 640 bytes in 10.000000 s => 64.000000
+Run 5: failed 0 sucess 80: 640 bytes in 10.000000 s => 63.999999
+Run 6: failed 1 sucess 79: 632 bytes in 10.000000 s => 63.199999
+Run 7: failed 0 sucess 80: 640 bytes in 10.000000 s => 63.999999
+Run 8: failed 0 sucess 80: 640 bytes in 10.000000 s => 64.000000
+Run 9: failed 1 sucess 79: 632 bytes in 10.000000 s => 63.200000
+Average datarate : 63.840000 	Std dev: 0.320000
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][FF][ F][ 0][ 0][ 3]
+Channel 0 open! took 1.348620
+Run 0: failed 0 sucess 80: 640 bytes in 10.000000 s => 63.999999
+Run 1: failed 0 sucess 80: 640 bytes in 10.000000 s => 63.999999
+Run 2: failed 0 sucess 80: 640 bytes in 10.000000 s => 63.999999
+Run 3: failed 0 sucess 80: 640 bytes in 10.000000 s => 64.000000
+Run 4: failed 1 sucess 79: 632 bytes in 10.000000 s => 63.200000
+Run 5: failed 0 sucess 80: 640 bytes in 10.000000 s => 63.999999
+Run 6: failed 0 sucess 80: 640 bytes in 10.000000 s => 64.000000
+Run 7: failed 0 sucess 80: 640 bytes in 10.000000 s => 63.999999
+Run 8: failed 0 sucess 80: 640 bytes in 10.000000 s => 64.000000
+Run 9: failed 0 sucess 80: 640 bytes in 10.000000 s => 63.999999
+Average datarate : 63.919999 	Std dev: 0.240000
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][FF][ F][ 0][ 0][ 3]
+Channel 0 open! took 1.097840
+Run 0: failed 0 sucess 80: 640 bytes in 10.000000 s => 63.999999
+Run 1: failed 0 sucess 80: 640 bytes in 10.000000 s => 63.999999
+Run 2: failed 1 sucess 79: 632 bytes in 10.000000 s => 63.199999
+Run 3: failed 0 sucess 80: 640 bytes in 10.000000 s => 64.000000
+Run 4: failed 0 sucess 80: 640 bytes in 10.000000 s => 64.000000
+Run 5: failed 0 sucess 80: 640 bytes in 10.000000 s => 63.999999
+Run 6: failed 0 sucess 80: 640 bytes in 10.000000 s => 64.000000
+Run 7: failed 1 sucess 79: 632 bytes in 10.000000 s => 63.200000
+Run 8: failed 0 sucess 80: 640 bytes in 10.000000 s => 63.999999
+Run 9: failed 1 sucess 79: 632 bytes in 10.000000 s => 63.200000
+Average datarate : 63.760000 	Std dev: 0.366606
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][FF][ F][ 0][ 0][ 3]
+Channel 0 open! took 1.098443
+Run 0: failed 1 sucess 79: 632 bytes in 10.000000 s => 63.200000
+Run 1: failed 1 sucess 79: 632 bytes in 10.000000 s => 63.200000
+Run 2: failed 1 sucess 79: 632 bytes in 10.000000 s => 63.199999
+Run 3: failed 1 sucess 79: 632 bytes in 10.000000 s => 63.200000
+Run 4: failed 0 sucess 80: 640 bytes in 10.000000 s => 63.999999
+Run 5: failed 1 sucess 79: 632 bytes in 10.000000 s => 63.199999
+Run 6: failed 0 sucess 80: 640 bytes in 10.000000 s => 64.000000
+Run 7: failed 1 sucess 79: 632 bytes in 10.000000 s => 63.199999
+Run 8: failed 0 sucess 80: 640 bytes in 10.000000 s => 64.000000
+Run 9: failed 1 sucess 79: 632 bytes in 10.000000 s => 63.199999
+Average datarate : 63.440000 	Std dev: 0.366606
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][FF][ F][ 0][ 0][ 3]
+Channel 0 open! took 0.972810
+Run 0: failed 0 sucess 80: 640 bytes in 10.000000 s => 63.999999
+Run 1: failed 0 sucess 80: 640 bytes in 10.000000 s => 64.000000
+Run 2: failed 0 sucess 80: 640 bytes in 10.000000 s => 64.000000
+Run 3: failed 0 sucess 80: 640 bytes in 10.000000 s => 64.000000
+Run 4: failed 0 sucess 80: 640 bytes in 10.000000 s => 64.000000
+Run 5: failed 0 sucess 80: 640 bytes in 10.000000 s => 64.000000
+Run 6: failed 0 sucess 80: 640 bytes in 10.000000 s => 63.999999
+Run 7: failed 0 sucess 80: 640 bytes in 10.000000 s => 64.000000
+Run 8: failed 0 sucess 80: 640 bytes in 10.000000 s => 64.000000
+Run 9: failed 0 sucess 80: 640 bytes in 10.000000 s => 63.999999
+Average datarate : 64.000000 	Std dev: 0.000000
+done! Press Any key!
+
+Message Period = 2047 (16.007816 Hz)
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][FF][ 7][ 0][ 0][ B]
+Channel 0 open! took 0.490346
+Run 0: failed 1 sucess 159: 1272 bytes in 10.000000 s => 127.199999
+Run 1: failed 1 sucess 159: 1272 bytes in 10.000000 s => 127.200000
+Run 2: failed 0 sucess 160: 1280 bytes in 10.000000 s => 127.999999
+Run 3: failed 1 sucess 159: 1272 bytes in 10.000000 s => 127.199999
+Run 4: failed 1 sucess 159: 1272 bytes in 10.000000 s => 127.199999
+Run 5: failed 0 sucess 160: 1280 bytes in 10.000000 s => 128.000000
+Run 6: failed 1 sucess 159: 1272 bytes in 10.000000 s => 127.199998
+Run 7: failed 1 sucess 159: 1272 bytes in 10.000000 s => 127.199999
+Run 8: failed 0 sucess 160: 1280 bytes in 10.000000 s => 127.999999
+Run 9: failed 0 sucess 160: 1280 bytes in 10.000000 s => 127.999999
+Average datarate : 127.519999 	Std dev: 0.391918
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][FF][ 7][ 0][ 0][ B]
+Channel 0 open! took 0.885748
+Run 0: failed 1 sucess 159: 1272 bytes in 10.000000 s => 127.199998
+Run 1: failed 0 sucess 160: 1280 bytes in 10.000000 s => 128.000000
+Run 2: failed 0 sucess 160: 1280 bytes in 10.000000 s => 127.999999
+Run 3: failed 0 sucess 160: 1280 bytes in 10.000000 s => 127.999998
+Run 4: failed 1 sucess 159: 1272 bytes in 10.000000 s => 127.199998
+Run 5: failed 0 sucess 160: 1280 bytes in 10.000000 s => 127.999999
+Run 6: failed 0 sucess 160: 1280 bytes in 10.000000 s => 127.999999
+Run 7: failed 0 sucess 160: 1280 bytes in 10.000000 s => 127.999999
+Run 8: failed 0 sucess 160: 1280 bytes in 10.000000 s => 127.999999
+Run 9: failed 0 sucess 160: 1280 bytes in 10.000000 s => 128.000000
+Average datarate : 127.839999 	Std dev: 0.320000
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][FF][ 7][ 0][ 0][ B]
+Channel 0 open! took 0.635255
+Run 0: failed 0 sucess 160: 1280 bytes in 10.000000 s => 128.000000
+Run 1: failed 0 sucess 160: 1280 bytes in 10.000000 s => 128.000000
+Run 2: failed 0 sucess 160: 1280 bytes in 10.000000 s => 128.000000
+Run 3: failed 0 sucess 160: 1280 bytes in 10.000000 s => 128.000000
+Run 4: failed 0 sucess 160: 1280 bytes in 10.000000 s => 127.999999
+Run 5: failed 0 sucess 160: 1280 bytes in 10.000000 s => 127.999999
+Run 6: failed 0 sucess 160: 1280 bytes in 10.000000 s => 128.000000
+Run 7: failed 1 sucess 159: 1272 bytes in 10.000000 s => 127.199998
+Run 8: failed 1 sucess 159: 1272 bytes in 10.000000 s => 127.199997
+Run 9: failed 0 sucess 160: 1280 bytes in 10.000000 s => 128.000000
+Average datarate : 127.839999 	Std dev: 0.320001
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][FF][ 7][ 0][ 0][ B]
+Channel 0 open! took 0.885742
+Run 0: failed 2 sucess 158: 1264 bytes in 10.000000 s => 126.399998
+Run 1: failed 1 sucess 159: 1272 bytes in 10.000000 s => 127.200000
+Run 2: failed 0 sucess 160: 1280 bytes in 10.000000 s => 127.999998
+Run 3: failed 0 sucess 160: 1280 bytes in 10.000000 s => 127.999998
+Run 4: failed 2 sucess 158: 1264 bytes in 10.000000 s => 126.399998
+Run 5: failed 1 sucess 159: 1272 bytes in 10.000000 s => 127.200000
+Run 6: failed 0 sucess 160: 1280 bytes in 10.000000 s => 128.000000
+Run 7: failed 2 sucess 158: 1264 bytes in 10.000000 s => 126.400000
+Run 8: failed 0 sucess 160: 1280 bytes in 10.000000 s => 127.999999
+Run 9: failed 1 sucess 159: 1272 bytes in 10.000000 s => 127.199999
+Average datarate : 127.279999 	Std dev: 0.664530
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][FF][ 7][ 0][ 0][ B]
+Channel 0 open! took 0.885720
+Run 0: failed 1 sucess 159: 1272 bytes in 10.000000 s => 127.200000
+Run 1: failed 0 sucess 160: 1280 bytes in 10.000000 s => 128.000000
+Run 2: failed 1 sucess 159: 1272 bytes in 10.000000 s => 127.200000
+Run 3: failed 0 sucess 160: 1280 bytes in 10.000000 s => 127.999999
+Run 4: failed 1 sucess 159: 1272 bytes in 10.000000 s => 127.199999
+Run 5: failed 0 sucess 160: 1280 bytes in 10.000000 s => 127.999999
+Run 6: failed 1 sucess 159: 1272 bytes in 10.000000 s => 127.200000
+Run 7: failed 0 sucess 160: 1280 bytes in 10.000000 s => 127.999998
+Run 8: failed 1 sucess 159: 1272 bytes in 10.000000 s => 127.200000
+Run 9: failed 0 sucess 160: 1280 bytes in 10.000000 s => 128.000000
+Average datarate : 127.599999 	Std dev: 0.400000
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][FF][ 7][ 0][ 0][ B]
+Channel 0 open! took 0.760367
+Run 0: failed 0 sucess 160: 1280 bytes in 10.000000 s => 127.999999
+Run 1: failed 2 sucess 158: 1264 bytes in 10.000000 s => 126.399999
+Run 2: failed 1 sucess 159: 1272 bytes in 10.000000 s => 127.199999
+Run 3: failed 1 sucess 159: 1272 bytes in 10.000000 s => 127.199999
+Run 4: failed 0 sucess 160: 1280 bytes in 10.000000 s => 127.999999
+Run 5: failed 0 sucess 160: 1280 bytes in 10.000000 s => 127.999999
+Run 6: failed 0 sucess 160: 1280 bytes in 10.000000 s => 128.000000
+Run 7: failed 1 sucess 159: 1272 bytes in 10.000000 s => 127.200000
+Run 8: failed 0 sucess 160: 1280 bytes in 10.000000 s => 127.999998
+Run 9: failed 1 sucess 159: 1272 bytes in 10.000000 s => 127.199999
+Average datarate : 127.519999 	Std dev: 0.530660
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][FF][ 7][ 0][ 0][ B]
+Channel 0 open! took 1.011326
+Run 0: failed 2 sucess 158: 1264 bytes in 10.000000 s => 126.399999
+Run 1: failed 0 sucess 160: 1280 bytes in 10.000000 s => 127.999999
+Run 2: failed 1 sucess 159: 1272 bytes in 10.000000 s => 127.199999
+Run 3: failed 0 sucess 160: 1280 bytes in 10.000000 s => 127.999999
+Run 4: failed 0 sucess 160: 1280 bytes in 10.000000 s => 127.999998
+Run 5: failed 0 sucess 160: 1280 bytes in 10.000000 s => 128.000000
+Run 6: failed 0 sucess 160: 1280 bytes in 10.000000 s => 127.999998
+Run 7: failed 1 sucess 159: 1272 bytes in 10.000000 s => 127.199999
+Run 8: failed 0 sucess 160: 1280 bytes in 10.000000 s => 128.000000
+Run 9: failed 0 sucess 160: 1280 bytes in 10.000000 s => 127.999998
+Average datarate : 127.679999 	Std dev: 0.530660
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][FF][ 7][ 0][ 0][ B]
+Channel 0 open! took 0.760669
+Run 0: failed 1 sucess 159: 1272 bytes in 10.000000 s => 127.200000
+Run 1: failed 0 sucess 160: 1280 bytes in 10.000000 s => 127.999999
+Run 2: failed 5 sucess 155: 1240 bytes in 10.000000 s => 123.999998
+Run 3: failed 1 sucess 159: 1272 bytes in 10.000000 s => 127.199998
+Run 4: failed 0 sucess 160: 1280 bytes in 10.000000 s => 127.999999
+Run 5: failed 0 sucess 160: 1280 bytes in 10.000000 s => 127.999999
+Run 6: failed 1 sucess 159: 1272 bytes in 10.000000 s => 127.199999
+Run 7: failed 0 sucess 160: 1280 bytes in 10.000000 s => 128.000000
+Run 8: failed 1 sucess 159: 1272 bytes in 10.000000 s => 127.199999
+Run 9: failed 2 sucess 158: 1264 bytes in 10.000000 s => 126.399999
+Average datarate : 127.119999 	Std dev: 1.156547
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][FF][ 7][ 0][ 0][ B]
+Channel 0 open! took 0.886274
+Run 0: failed 0 sucess 160: 1280 bytes in 10.000000 s => 127.999998
+Run 1: failed 0 sucess 160: 1280 bytes in 10.000000 s => 127.999998
+Run 2: failed 0 sucess 160: 1280 bytes in 10.000000 s => 127.999999
+Run 3: failed 1 sucess 159: 1272 bytes in 10.000000 s => 127.199998
+Run 4: failed 0 sucess 160: 1280 bytes in 10.000000 s => 127.999999
+Run 5: failed 0 sucess 160: 1280 bytes in 10.000000 s => 127.999999
+Run 6: failed 1 sucess 159: 1272 bytes in 10.000000 s => 127.199999
+Run 7: failed 0 sucess 160: 1280 bytes in 10.000000 s => 127.999999
+Run 8: failed 0 sucess 160: 1280 bytes in 10.000000 s => 127.999999
+Run 9: failed 0 sucess 160: 1280 bytes in 10.000000 s => 128.000000
+Average datarate : 127.839999 	Std dev: 0.320000
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][FF][ 7][ 0][ 0][ B]
+Channel 0 open! took 0.760454
+Run 0: failed 1 sucess 159: 1272 bytes in 10.000000 s => 127.199999
+Run 1: failed 0 sucess 160: 1280 bytes in 10.000000 s => 127.999999
+Run 2: failed 0 sucess 160: 1280 bytes in 10.000000 s => 127.999999
+Run 3: failed 1 sucess 159: 1272 bytes in 10.000000 s => 127.199999
+Run 4: failed 1 sucess 159: 1272 bytes in 10.000000 s => 127.199999
+Run 5: failed 1 sucess 159: 1272 bytes in 10.000000 s => 127.199999
+Run 6: failed 1 sucess 159: 1272 bytes in 10.000000 s => 127.199998
+Run 7: failed 0 sucess 160: 1280 bytes in 10.000000 s => 127.999999
+Run 8: failed 1 sucess 159: 1272 bytes in 10.000000 s => 127.199998
+Run 9: failed 0 sucess 160: 1280 bytes in 10.000000 s => 128.000000
+Average datarate : 127.519999 	Std dev: 0.391919
+
+[michael@xps src]$ sudo ./ant -p /dev/ttyUSB1 -t s -n 1 -f 1023
+[sudo] Passwort für michael: 
+Port = /dev/ttyUSB1
+Type = s
+Message Period = 1023 (32.031281 Hz)
+Power setting is now: 0dBm
+Experiment 1: Broadcast Data Transfer between two nodes
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][FF][ 3][ 0][ 0][ F]
+Channel 0 open! took 0.413453
+Run 0: failed 0 sucess 320: 2560 bytes in 10.000000 s => 256.000000
+Run 1: failed 0 sucess 320: 2560 bytes in 10.000000 s => 255.999997
+Run 2: failed 0 sucess 320: 2560 bytes in 10.000000 s => 255.999998
+Run 3: failed 0 sucess 321: 2568 bytes in 10.000000 s => 256.800000
+Run 4: failed 0 sucess 320: 2560 bytes in 10.000000 s => 255.999997
+Run 5: failed 0 sucess 320: 2560 bytes in 10.000000 s => 255.999997
+Run 6: failed 0 sucess 321: 2568 bytes in 10.000000 s => 256.799999
+Run 7: failed 0 sucess 320: 2560 bytes in 10.000000 s => 256.000000
+Run 8: failed 1 sucess 319: 2552 bytes in 10.000000 s => 255.199997
+Run 9: failed 0 sucess 321: 2568 bytes in 10.000000 s => 256.799999
+Average datarate : 256.159998 	Std dev: 0.480001
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][FF][ 3][ 0][ 0][ F]
+Channel 0 open! took 0.364942
+Run 0: failed 0 sucess 320: 2560 bytes in 10.000000 s => 255.999999
+Run 1: failed 1 sucess 319: 2552 bytes in 10.000000 s => 255.200000
+Run 2: failed 0 sucess 320: 2560 bytes in 10.000000 s => 255.999996
+Run 3: failed 0 sucess 321: 2568 bytes in 10.000000 s => 256.799999
+Run 4: failed 0 sucess 320: 2560 bytes in 10.000000 s => 255.999998
+Run 5: failed 0 sucess 320: 2560 bytes in 10.000000 s => 255.999998
+Run 6: failed 0 sucess 321: 2568 bytes in 10.000000 s => 256.799998
+Run 7: failed 1 sucess 319: 2552 bytes in 10.000000 s => 255.199998
+Run 8: failed 0 sucess 320: 2560 bytes in 10.000000 s => 255.999999
+Run 9: failed 0 sucess 321: 2568 bytes in 10.000000 s => 256.799997
+Average datarate : 256.079998 	Std dev: 0.560000
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][FF][ 3][ 0][ 0][ F]
+Channel 0 open! took 0.364934
+Run 0: failed 0 sucess 320: 2560 bytes in 10.000000 s => 255.999999
+Run 1: failed 0 sucess 320: 2560 bytes in 10.000000 s => 255.999999
+Run 2: failed 0 sucess 320: 2560 bytes in 10.000000 s => 255.999997
+Run 3: failed 0 sucess 321: 2568 bytes in 10.000000 s => 256.799998
+Run 4: failed 0 sucess 320: 2560 bytes in 10.000000 s => 255.999999
+Run 5: failed 0 sucess 320: 2560 bytes in 10.000000 s => 255.999998
+Run 6: failed 0 sucess 321: 2568 bytes in 10.000000 s => 256.799998
+Run 7: failed 0 sucess 320: 2560 bytes in 10.000000 s => 255.999999
+Run 8: failed 1 sucess 319: 2552 bytes in 10.000000 s => 255.199997
+Run 9: failed 0 sucess 321: 2568 bytes in 10.000000 s => 256.799998
+Average datarate : 256.159998 	Std dev: 0.480000
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][FF][ 3][ 0][ 0][ F]
+Channel 0 open! took 0.364933
+Run 0: failed 0 sucess 320: 2560 bytes in 10.000000 s => 255.999997
+Run 1: failed 1 sucess 319: 2552 bytes in 10.000000 s => 255.199998
+Run 2: failed 0 sucess 320: 2560 bytes in 10.000000 s => 255.999997
+Run 3: failed 0 sucess 321: 2568 bytes in 10.000000 s => 256.799997
+Run 4: failed 1 sucess 319: 2552 bytes in 10.000000 s => 255.199996
+Run 5: failed 1 sucess 319: 2552 bytes in 10.000000 s => 255.199998
+Run 6: failed 1 sucess 320: 2560 bytes in 10.000000 s => 255.999997
+Run 7: failed 1 sucess 319: 2552 bytes in 10.000000 s => 255.199997
+Run 8: failed 0 sucess 320: 2560 bytes in 10.000000 s => 255.999998
+Run 9: failed 0 sucess 321: 2568 bytes in 10.000000 s => 256.799998
+Average datarate : 255.839997 	Std dev: 0.598665
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][FF][ 3][ 0][ 0][ F]
+Channel 0 open! took 0.364994
+Run 0: failed 0 sucess 320: 2560 bytes in 10.000000 s => 256.000000
+Run 1: failed 0 sucess 320: 2560 bytes in 10.000000 s => 255.999999
+Run 2: failed 0 sucess 320: 2560 bytes in 10.000000 s => 256.000000
+Run 3: failed 0 sucess 321: 2568 bytes in 10.000000 s => 256.799999
+Run 4: failed 0 sucess 320: 2560 bytes in 10.000000 s => 255.999999
+Run 5: failed 0 sucess 320: 2560 bytes in 10.000000 s => 255.999998
+Run 6: failed 0 sucess 321: 2568 bytes in 10.000000 s => 256.799999
+Run 7: failed 0 sucess 320: 2560 bytes in 10.000000 s => 255.999999
+Run 8: failed 0 sucess 320: 2560 bytes in 10.000000 s => 256.000000
+Run 9: failed 0 sucess 321: 2568 bytes in 10.000000 s => 256.799999
+Average datarate : 256.239999 	Std dev: 0.366606
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][FF][ 3][ 0][ 0][ F]
+Channel 0 open! took 0.240137
+Run 0: failed 1 sucess 319: 2552 bytes in 10.000000 s => 255.199999
+Run 1: failed 0 sucess 320: 2560 bytes in 10.000000 s => 255.999999
+Run 2: failed 0 sucess 320: 2560 bytes in 10.000000 s => 255.999998
+Run 3: failed 0 sucess 321: 2568 bytes in 10.000000 s => 256.800000
+Run 4: failed 0 sucess 320: 2560 bytes in 10.000000 s => 255.999997
+Run 5: failed 0 sucess 320: 2560 bytes in 10.000000 s => 256.000000
+Run 6: failed 0 sucess 321: 2568 bytes in 10.000000 s => 256.799998
+Run 7: failed 0 sucess 320: 2560 bytes in 10.000000 s => 256.000000
+Run 8: failed 0 sucess 320: 2560 bytes in 10.000000 s => 256.000000
+Run 9: failed 0 sucess 321: 2568 bytes in 10.000000 s => 256.799997
+Average datarate : 256.159999 	Std dev: 0.480000
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][FF][ 3][ 0][ 0][ F]
+Channel 0 open! took 0.239624
+Run 0: failed 0 sucess 320: 2560 bytes in 10.000000 s => 255.999997
+Run 1: failed 1 sucess 319: 2552 bytes in 10.000000 s => 255.199997
+Run 2: failed 1 sucess 319: 2552 bytes in 10.000000 s => 255.199996
+Run 3: failed 1 sucess 320: 2560 bytes in 10.000000 s => 255.999998
+Run 4: failed 0 sucess 320: 2560 bytes in 10.000000 s => 255.999998
+Run 5: failed 0 sucess 320: 2560 bytes in 10.000000 s => 255.999996
+Run 6: failed 1 sucess 320: 2560 bytes in 10.000000 s => 255.999996
+Run 7: failed 1 sucess 319: 2552 bytes in 10.000000 s => 255.199998
+Run 8: failed 0 sucess 320: 2560 bytes in 10.000000 s => 255.999997
+Run 9: failed 0 sucess 321: 2568 bytes in 10.000000 s => 256.799999
+Average datarate : 255.839997 	Std dev: 0.480000
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][FF][ 3][ 0][ 0][ F]
+Channel 0 open! took 0.364923
+Run 0: failed 0 sucess 320: 2560 bytes in 10.000000 s => 256.000000
+Run 1: failed 0 sucess 320: 2560 bytes in 10.000000 s => 255.999996
+Run 2: failed 0 sucess 320: 2560 bytes in 10.000000 s => 256.000000
+Run 3: failed 0 sucess 321: 2568 bytes in 10.000000 s => 256.800000
+Run 4: failed 0 sucess 320: 2560 bytes in 10.000000 s => 256.000000
+Run 5: failed 0 sucess 320: 2560 bytes in 10.000000 s => 255.999999
+Run 6: failed 1 sucess 320: 2560 bytes in 10.000000 s => 256.000000
+Run 7: failed 0 sucess 320: 2560 bytes in 10.000000 s => 255.999996
+Run 8: failed 0 sucess 320: 2560 bytes in 10.000000 s => 255.999997
+Run 9: failed 0 sucess 321: 2568 bytes in 10.000000 s => 256.800000
+Average datarate : 256.159999 	Std dev: 0.320001
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][FF][ 3][ 0][ 0][ F]
+Channel 0 open! took 0.365590
+Run 0: failed 0 sucess 320: 2560 bytes in 10.000000 s => 256.000000
+Run 1: failed 0 sucess 320: 2560 bytes in 10.000000 s => 255.999998
+Run 2: failed 0 sucess 320: 2560 bytes in 10.000000 s => 255.999997
+Run 3: failed 0 sucess 321: 2568 bytes in 10.000000 s => 256.799996
+Run 4: failed 0 sucess 320: 2560 bytes in 10.000000 s => 256.000000
+Run 5: failed 0 sucess 320: 2560 bytes in 10.000000 s => 256.000000
+Run 6: failed 0 sucess 321: 2568 bytes in 10.000000 s => 256.799997
+Run 7: failed 1 sucess 319: 2552 bytes in 10.000000 s => 255.199997
+Run 8: failed 0 sucess 320: 2560 bytes in 10.000000 s => 255.999994
+Run 9: failed 0 sucess 321: 2568 bytes in 10.000000 s => 256.800000
+Average datarate : 256.159998 	Std dev: 0.480000
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][FF][ 3][ 0][ 0][ F]
+Channel 0 open! took 0.239591
+Run 0: failed 3 sucess 317: 2536 bytes in 10.000000 s => 253.599999
+Run 1: failed 0 sucess 320: 2560 bytes in 10.000000 s => 256.000000
+Run 2: failed 0 sucess 320: 2560 bytes in 10.000000 s => 255.999998
+Run 3: failed 0 sucess 321: 2568 bytes in 10.000000 s => 256.799997
+Run 4: failed 0 sucess 320: 2560 bytes in 10.000000 s => 256.000000
+Run 5: failed 0 sucess 320: 2560 bytes in 10.000000 s => 256.000000
+Run 6: failed 1 sucess 320: 2560 bytes in 10.000000 s => 256.000000
+Run 7: failed 0 sucess 320: 2560 bytes in 10.000000 s => 255.999999
+Run 8: failed 0 sucess 320: 2560 bytes in 10.000000 s => 256.000000
+Run 9: failed 0 sucess 321: 2568 bytes in 10.000000 s => 256.800000
+Average datarate : 255.919999 	Std dev: 0.835224
+done! Press Any key!
+
+Message Period = 511 (64.125245 Hz)
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][FF][ 1][ 0][ 0][ D]
+Channel 0 open! took 0.065984
+Run 0: failed 0 sucess 641: 5128 bytes in 10.000000 s => 512.799998
+Run 1: failed 0 sucess 641: 5128 bytes in 10.000000 s => 512.799999
+Run 2: failed 0 sucess 641: 5128 bytes in 10.000000 s => 512.799997
+Run 3: failed 0 sucess 642: 5136 bytes in 10.000000 s => 513.599994
+Run 4: failed 1 sucess 640: 5120 bytes in 10.000000 s => 511.999997
+Run 5: failed 0 sucess 641: 5128 bytes in 10.000000 s => 512.799993
+Run 6: failed 1 sucess 640: 5120 bytes in 10.000000 s => 511.999995
+Run 7: failed 2 sucess 640: 5120 bytes in 10.000000 s => 511.999999
+Run 8: failed 1 sucess 640: 5120 bytes in 10.000000 s => 511.999994
+Run 9: failed 1 sucess 640: 5120 bytes in 10.000000 s => 511.999998
+Average datarate : 512.479996 	Std dev: 0.530659
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][FF][ 1][ 0][ 0][ D]
+Channel 0 open! took 0.094927
+Run 0: failed 0 sucess 641: 5128 bytes in 10.000000 s => 512.799995
+Run 1: failed 1 sucess 640: 5120 bytes in 10.000000 s => 511.999995
+Run 2: failed 0 sucess 641: 5128 bytes in 10.000000 s => 512.799997
+Run 3: failed 3 sucess 639: 5112 bytes in 10.000000 s => 511.199995
+Run 4: failed 0 sucess 641: 5128 bytes in 10.000000 s => 512.799993
+Run 5: failed 1 sucess 640: 5120 bytes in 10.000000 s => 511.999994
+Run 6: failed 0 sucess 641: 5128 bytes in 10.000000 s => 512.799993
+Run 7: failed 0 sucess 642: 5136 bytes in 10.000000 s => 513.599998
+Run 8: failed 2 sucess 639: 5112 bytes in 10.000000 s => 511.199996
+Run 9: failed 1 sucess 640: 5120 bytes in 10.000000 s => 511.999995
+Average datarate : 512.319995 	Std dev: 0.733212
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][FF][ 1][ 0][ 0][ D]
+Channel 0 open! took 0.000226
+Run 0: failed 1 sucess 640: 5120 bytes in 10.000000 s => 512.699994
+Run 1: failed 2 sucess 640: 5120 bytes in 10.000000 s => 511.999996
+Run 2: failed 2 sucess 639: 5112 bytes in 10.000000 s => 511.199994
+Run 3: failed 0 sucess 641: 5128 bytes in 10.000000 s => 512.799997
+Run 4: failed 3 sucess 638: 5104 bytes in 10.000006 s => 510.399677
+Run 5: failed 1 sucess 641: 5128 bytes in 10.000000 s => 512.799995
+Run 6: failed 1 sucess 640: 5120 bytes in 10.000000 s => 511.999997
+Run 7: failed 0 sucess 641: 5128 bytes in 10.000000 s => 512.799994
+Run 8: failed 0 sucess 641: 5128 bytes in 10.000000 s => 512.799998
+Run 9: failed 1 sucess 641: 5128 bytes in 10.000000 s => 512.799994
+Average datarate : 517.199964 	Std dev: 15.086963
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][FF][ 1][ 0][ 0][ D]
+Channel 0 open! took 0.114206
+Run 0: failed 0 sucess 641: 5128 bytes in 10.000000 s => 512.799999
+Run 1: failed 0 sucess 641: 5128 bytes in 10.000000 s => 512.799996
+Run 2: failed 2 sucess 639: 5112 bytes in 10.000000 s => 511.199999
+Run 3: failed 1 sucess 641: 5128 bytes in 10.000000 s => 512.799998
+Run 4: failed 0 sucess 641: 5128 bytes in 10.000000 s => 512.800000
+Run 5: failed 0 sucess 641: 5128 bytes in 10.000000 s => 512.799996
+Run 6: failed 0 sucess 641: 5128 bytes in 10.000000 s => 512.799998
+Run 7: failed 0 sucess 642: 5136 bytes in 10.000000 s => 513.600000
+Run 8: failed 0 sucess 641: 5128 bytes in 10.000000 s => 512.799993
+Run 9: failed 1 sucess 640: 5120 bytes in 10.000000 s => 511.999993
+Average datarate : 512.639997 	Std dev: 0.598666
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][FF][ 1][ 0][ 0][ D]
+Channel 0 open! took 0.172311
+Run 0: failed 1 sucess 640: 5120 bytes in 10.000000 s => 511.999993
+Run 1: failed 2 sucess 639: 5112 bytes in 10.000000 s => 511.199994
+Run 2: failed 0 sucess 641: 5128 bytes in 10.000000 s => 512.799994
+Run 3: failed 0 sucess 642: 5136 bytes in 10.000000 s => 513.599997
+Run 4: failed 1 sucess 640: 5120 bytes in 10.000000 s => 511.999998
+Run 5: failed 1 sucess 640: 5120 bytes in 10.000000 s => 511.999997
+Run 6: failed 1 sucess 640: 5120 bytes in 10.000000 s => 511.999997
+Run 7: failed 0 sucess 642: 5136 bytes in 10.000000 s => 513.599994
+Run 8: failed 1 sucess 640: 5120 bytes in 10.000000 s => 511.999997
+Run 9: failed 1 sucess 640: 5120 bytes in 10.000000 s => 511.999994
+Average datarate : 512.319995 	Std dev: 0.733212
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][FF][ 1][ 0][ 0][ D]
+Channel 0 open! took 0.000166
+Run 0: failed 2 sucess 633: 5064 bytes in 10.000000 s => 506.399999
+Run 1: failed 0 sucess 641: 5128 bytes in 10.000000 s => 512.799995
+Run 2: failed 1 sucess 641: 5128 bytes in 10.000000 s => 512.799995
+Run 3: failed 0 sucess 641: 5128 bytes in 10.000000 s => 512.800000
+Run 4: failed 1 sucess 640: 5120 bytes in 10.000000 s => 511.999995
+Run 5: failed 1 sucess 640: 5120 bytes in 10.000000 s => 511.999998
+Run 6: failed 1 sucess 641: 5128 bytes in 10.000000 s => 512.799996
+Run 7: failed 0 sucess 641: 5128 bytes in 10.000000 s => 512.799993
+Run 8: failed 0 sucess 641: 5128 bytes in 10.000000 s => 512.799993
+Run 9: failed 0 sucess 641: 5128 bytes in 10.000000 s => 512.799998
+Average datarate : 511.999996 	Std dev: 1.893144
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][FF][ 1][ 0][ 0][ D]
+Channel 0 open! took 0.066012
+Run 0: failed 0 sucess 641: 5128 bytes in 10.000000 s => 512.799993
+Run 1: failed 0 sucess 641: 5128 bytes in 10.000000 s => 512.799993
+Run 2: failed 0 sucess 641: 5128 bytes in 10.000000 s => 512.799995
+Run 3: failed 2 sucess 640: 5120 bytes in 10.000000 s => 511.999993
+Run 4: failed 3 sucess 638: 5104 bytes in 10.000000 s => 510.399999
+Run 5: failed 1 sucess 640: 5120 bytes in 10.000000 s => 511.999993
+Run 6: failed 2 sucess 639: 5112 bytes in 10.000000 s => 511.199996
+Run 7: failed 0 sucess 642: 5136 bytes in 10.000000 s => 513.599993
+Run 8: failed 0 sucess 641: 5128 bytes in 10.000000 s => 512.799992
+Run 9: failed 1 sucess 640: 5120 bytes in 10.000000 s => 511.999999
+Average datarate : 512.239995 	Std dev: 0.879998
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][FF][ 1][ 0][ 0][ D]
+Channel 0 open! took 0.000089
+Run 0: failed 1 sucess 634: 5072 bytes in 10.000000 s => 507.199994
+Run 1: failed 0 sucess 641: 5128 bytes in 10.000000 s => 512.799996
+Run 2: failed 1 sucess 641: 5128 bytes in 10.000000 s => 512.799995
+Run 3: failed 0 sucess 641: 5128 bytes in 10.000000 s => 512.800000
+Run 4: failed 1 sucess 640: 5120 bytes in 10.000000 s => 511.999995
+Run 5: failed 2 sucess 639: 5112 bytes in 10.000000 s => 511.200000
+Run 6: failed 0 sucess 642: 5136 bytes in 10.000000 s => 513.599996
+Run 7: failed 0 sucess 641: 5128 bytes in 10.000000 s => 512.799998
+Run 8: failed 1 sucess 640: 5120 bytes in 10.000000 s => 511.999994
+Run 9: failed 1 sucess 640: 5120 bytes in 10.000000 s => 511.999998
+Average datarate : 511.919996 	Std dev: 1.695170
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][FF][ 1][ 0][ 0][ D]
+Channel 0 open! took 0.017768
+Run 0: failed 0 sucess 641: 5128 bytes in 10.000000 s => 512.799993
+Run 1: failed 0 sucess 641: 5128 bytes in 10.000000 s => 512.799998
+Run 2: failed 0 sucess 641: 5128 bytes in 10.000000 s => 512.799995
+Run 3: failed 0 sucess 642: 5136 bytes in 10.000000 s => 513.599995
+Run 4: failed 0 sucess 641: 5128 bytes in 10.000000 s => 512.799996
+Run 5: failed 2 sucess 639: 5112 bytes in 10.000000 s => 511.199996
+Run 6: failed 1 sucess 640: 5120 bytes in 10.000000 s => 511.999997
+Run 7: failed 1 sucess 641: 5128 bytes in 10.000000 s => 512.799993
+Run 8: failed 0 sucess 641: 5128 bytes in 10.000000 s => 512.799993
+Run 9: failed 0 sucess 641: 5128 bytes in 10.000000 s => 512.799998
+Average datarate : 512.639995 	Std dev: 0.598665
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][FF][ 1][ 0][ 0][ D]
+Channel 0 open! took 0.220378
+Run 0: failed 1 sucess 640: 5120 bytes in 10.000000 s => 511.999995
+Run 1: failed 0 sucess 641: 5128 bytes in 10.000000 s => 512.799994
+Run 2: failed 0 sucess 641: 5128 bytes in 10.000000 s => 512.799993
+Run 3: failed 0 sucess 642: 5136 bytes in 10.000000 s => 513.599994
+Run 4: failed 0 sucess 641: 5128 bytes in 10.000000 s => 512.799995
+Run 5: failed 2 sucess 639: 5112 bytes in 10.000000 s => 511.199998
+Run 6: failed 3 sucess 638: 5104 bytes in 10.000000 s => 510.399996
+Run 7: failed 1 sucess 641: 5128 bytes in 10.000000 s => 512.799998
+Run 8: failed 0 sucess 641: 5128 bytes in 10.000000 s => 512.799997
+Run 9: failed 2 sucess 639: 5112 bytes in 10.000000 s => 511.199997
+Average datarate : 512.239996 	Std dev: 0.949946
+
+[michael@xps src]$ sudo ./ant -p /dev/ttyUSB1 -t s -n 1 -f 255
+[sudo] Passwort für michael: 
+Port = /dev/ttyUSB1
+Type = s
+Message Period = 255 (128.501961 Hz)
+Power setting is now: 0dBm
+Experiment 1: Broadcast Data Transfer between two nodes
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][FF][ 0][ 0][ 0][ C]
+Channel 0 open! took 0.000324
+Run 0: failed 1 sucess 1277: 10216 bytes in 10.000000 s => 1021.599983
+Run 1: failed 1 sucess 1281: 10248 bytes in 10.000000 s => 1024.799998
+Run 2: failed 1 sucess 1281: 10248 bytes in 10.000000 s => 1024.799995
+Run 3: failed 0 sucess 1285: 10280 bytes in 10.000000 s => 1027.999995
+Run 4: failed 1 sucess 1281: 10248 bytes in 10.000000 s => 1024.799988
+Run 5: failed 1 sucess 1281: 10248 bytes in 10.000000 s => 1024.799989
+Run 6: failed 1 sucess 1281: 10248 bytes in 10.000000 s => 1024.799985
+Run 7: failed 3 sucess 1273: 10184 bytes in 10.000000 s => 1018.399996
+Run 8: failed 1 sucess 1281: 10248 bytes in 10.000000 s => 1024.799996
+Run 9: failed 2 sucess 1277: 10216 bytes in 10.000000 s => 1021.599992
+Average datarate : 1023.839992 	Std dev: 2.499280
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][FF][ 0][ 0][ 0][ C]
+Channel 0 open! took 0.047257
+Run 0: failed 4 sucess 1269: 10152 bytes in 10.000000 s => 1015.199991
+Run 1: failed 8 sucess 1248: 9984 bytes in 10.000000 s => 998.399990
+Run 2: failed 0 sucess 1285: 10280 bytes in 10.000000 s => 1027.999997
+Run 3: failed 1 sucess 1281: 10248 bytes in 10.000000 s => 1024.799990
+Run 4: failed 2 sucess 1277: 10216 bytes in 10.000000 s => 1021.599999
+Run 5: failed 1 sucess 1281: 10248 bytes in 10.000000 s => 1024.799993
+Run 6: failed 1 sucess 1281: 10248 bytes in 10.000000 s => 1024.799993
+Run 7: failed 2 sucess 1277: 10216 bytes in 10.000000 s => 1021.599991
+Run 8: failed 1 sucess 1281: 10248 bytes in 10.000000 s => 1024.799989
+Run 9: failed 2 sucess 1277: 10216 bytes in 10.000000 s => 1021.599986
+Average datarate : 1020.559992 	Std dev: 8.064144
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][FF][ 0][ 0][ 0][ C]
+Channel 0 open! took 0.000116
+Run 0: failed 3 sucess 1273: 10184 bytes in 10.000000 s => 1018.399991
+Run 1: failed 0 sucess 1285: 10280 bytes in 10.000000 s => 1027.999991
+Run 2: failed 1 sucess 1281: 10248 bytes in 10.000000 s => 1024.799995
+Run 3: failed 2 sucess 1277: 10216 bytes in 10.000000 s => 1021.599986
+Run 4: failed 1 sucess 1281: 10248 bytes in 10.000000 s => 1024.799991
+Run 5: failed 2 sucess 1277: 10216 bytes in 10.000000 s => 1021.599997
+Run 6: failed 0 sucess 1285: 10280 bytes in 10.000000 s => 1027.999998
+Run 7: failed 2 sucess 1277: 10216 bytes in 10.000000 s => 1021.599987
+Run 8: failed 1 sucess 1281: 10248 bytes in 10.000000 s => 1024.799993
+Run 9: failed 0 sucess 1285: 10280 bytes in 10.000000 s => 1027.999990
+Average datarate : 1024.159992 	Std dev: 3.135348
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][FF][ 0][ 0][ 0][ C]
+Channel 0 open! took 0.000245
+Run 0: failed 1 sucess 1281: 10248 bytes in 10.000000 s => 1024.799997
+Run 1: failed 0 sucess 1285: 10280 bytes in 10.000000 s => 1027.999986
+Run 2: failed 2 sucess 1277: 10216 bytes in 10.000000 s => 1021.599996
+Run 3: failed 1 sucess 1281: 10248 bytes in 10.000000 s => 1024.799991
+Run 4: failed 1 sucess 1281: 10248 bytes in 10.000000 s => 1024.799997
+Run 5: failed 1 sucess 1281: 10248 bytes in 10.000000 s => 1024.799989
+Run 6: failed 0 sucess 1285: 10280 bytes in 10.000000 s => 1027.999995
+Run 7: failed 1 sucess 1281: 10248 bytes in 10.000000 s => 1024.799991
+Run 8: failed 1 sucess 1281: 10248 bytes in 10.000000 s => 1024.799991
+Run 9: failed 1 sucess 1281: 10248 bytes in 10.000000 s => 1024.799999
+Average datarate : 1025.119993 	Std dev: 1.723251
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][FF][ 0][ 0][ 0][ C]
+Channel 0 open! took 0.000072
+Run 0: failed 4 sucess 1268: 10144 bytes in 10.000000 s => 1014.399999
+Run 1: failed 3 sucess 1273: 10184 bytes in 10.000000 s => 1018.399993
+Run 2: failed 0 sucess 1285: 10280 bytes in 10.000000 s => 1027.999997
+Run 3: failed 3 sucess 1273: 10184 bytes in 10.000000 s => 1018.399992
+Run 4: failed 0 sucess 1285: 10280 bytes in 10.000000 s => 1027.999989
+Run 5: failed 1 sucess 1282: 10256 bytes in 10.000000 s => 1025.599999
+Run 6: failed 3 sucess 1273: 10184 bytes in 10.000000 s => 1018.399987
+Run 7: failed 0 sucess 1285: 10280 bytes in 10.000000 s => 1027.999997
+Run 8: failed 1 sucess 1281: 10248 bytes in 10.000000 s => 1024.799999
+Run 9: failed 4 sucess 1269: 10152 bytes in 10.000000 s => 1015.199993
+Average datarate : 1021.919994 	Std dev: 5.211680
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][FF][ 0][ 0][ 0][ C]
+Channel 0 open! took 0.056356
+Run 0: failed 1 sucess 1281: 10248 bytes in 10.000000 s => 1024.799995
+Run 1: failed 1 sucess 1281: 10248 bytes in 10.000000 s => 1024.799998
+Run 2: failed 0 sucess 1285: 10280 bytes in 10.000000 s => 1027.999995
+Run 3: failed 2 sucess 1277: 10216 bytes in 10.000000 s => 1021.599988
+Run 4: failed 4 sucess 1269: 10152 bytes in 10.000000 s => 1015.199994
+Run 5: failed 0 sucess 1285: 10280 bytes in 10.000000 s => 1027.999999
+Run 6: failed 1 sucess 1281: 10248 bytes in 10.000000 s => 1024.799986
+Run 7: failed 2 sucess 1277: 10216 bytes in 10.000000 s => 1021.599993
+Run 8: failed 2 sucess 1277: 10216 bytes in 10.000000 s => 1021.599996
+Run 9: failed 3 sucess 1273: 10184 bytes in 10.000000 s => 1018.399986
+Average datarate : 1022.879993 	Std dev: 3.840002
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][FF][ 0][ 0][ 0][ C]
+Channel 0 open! took 0.000121
+Run 0: failed 1 sucess 1281: 10248 bytes in 10.000000 s => 1024.799987
+Run 1: failed 0 sucess 1285: 10280 bytes in 10.000000 s => 1027.999997
+Run 2: failed 3 sucess 1273: 10184 bytes in 10.000000 s => 1018.399987
+Run 3: failed 2 sucess 1277: 10216 bytes in 10.000000 s => 1021.599988
+Run 4: failed 1 sucess 1281: 10248 bytes in 10.000000 s => 1024.799995
+Run 5: failed 1 sucess 1281: 10248 bytes in 10.000000 s => 1024.799999
+Run 6: failed 2 sucess 1277: 10216 bytes in 10.000000 s => 1021.599996
+Run 7: failed 1 sucess 1281: 10248 bytes in 10.000000 s => 1024.799998
+Run 8: failed 0 sucess 1285: 10280 bytes in 10.000000 s => 1027.999995
+Run 9: failed 1 sucess 1281: 10248 bytes in 10.000000 s => 1024.799990
+Average datarate : 1024.159993 	Std dev: 2.789698
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][FF][ 0][ 0][ 0][ C]
+Channel 0 open! took 0.000353
+Run 0: failed 2 sucess 1276: 10208 bytes in 10.000000 s => 1020.799996
+Run 1: failed 0 sucess 1285: 10280 bytes in 10.000000 s => 1027.999995
+Run 2: failed 1 sucess 1281: 10248 bytes in 10.000000 s => 1024.799997
+Run 3: failed 0 sucess 1285: 10280 bytes in 10.000000 s => 1027.999997
+Run 4: failed 1 sucess 1281: 10248 bytes in 10.000000 s => 1024.799987
+Run 5: failed 1 sucess 1281: 10248 bytes in 10.000000 s => 1024.799995
+Run 6: failed 1 sucess 1281: 10248 bytes in 10.000000 s => 1024.799999
+Run 7: failed 1 sucess 1281: 10248 bytes in 10.000000 s => 1024.799993
+Run 8: failed 2 sucess 1277: 10216 bytes in 10.000000 s => 1021.599987
+Run 9: failed 2 sucess 1277: 10216 bytes in 10.000000 s => 1021.599987
+Average datarate : 1024.399993 	Std dev: 2.352873
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][FF][ 0][ 0][ 0][ C]
+Channel 0 open! took 0.000087
+Run 0: failed 1 sucess 1280: 10240 bytes in 10.000000 s => 1023.999998
+Run 1: failed 0 sucess 1285: 10280 bytes in 10.000000 s => 1027.999992
+Run 2: failed 1 sucess 1281: 10248 bytes in 10.000000 s => 1024.799998
+Run 3: failed 1 sucess 1281: 10248 bytes in 10.000000 s => 1024.799990
+Run 4: failed 1 sucess 1281: 10248 bytes in 10.000000 s => 1024.799986
+Run 5: failed 5 sucess 1265: 10120 bytes in 10.000000 s => 1011.999995
+Run 6: failed 0 sucess 1285: 10280 bytes in 10.000000 s => 1027.999993
+Run 7: failed 0 sucess 1285: 10280 bytes in 10.000000 s => 1027.999992
+Run 8: failed 0 sucess 1285: 10280 bytes in 10.000000 s => 1027.999995
+Run 9: failed 0 sucess 1285: 10280 bytes in 10.000000 s => 1027.999997
+Average datarate : 1025.039994 	Std dev: 4.637930
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][FF][ 0][ 0][ 0][ C]
+Channel 0 open! took 0.000258
+Run 0: failed 3 sucess 1272: 10176 bytes in 10.000000 s => 1017.599986
+Run 1: failed 2 sucess 1277: 10216 bytes in 10.000000 s => 1021.599987
+Run 2: failed 1 sucess 1282: 10256 bytes in 10.000000 s => 1025.599990
+Run 3: failed 1 sucess 1281: 10248 bytes in 10.000000 s => 1024.799996
+Run 4: failed 1 sucess 1281: 10248 bytes in 10.000000 s => 1024.799992
+Run 5: failed 0 sucess 1285: 10280 bytes in 10.000000 s => 1027.999995
+Run 6: failed 0 sucess 1285: 10280 bytes in 10.000000 s => 1027.999985
+Run 7: failed 0 sucess 1285: 10280 bytes in 10.000000 s => 1027.999999
+Run 8: failed 2 sucess 1277: 10216 bytes in 10.000000 s => 1021.599989
+Run 9: failed 1 sucess 1281: 10248 bytes in 10.000000 s => 1024.799995
+Average datarate : 1024.479991 	Std dev: 3.204000
+
+[michael@xps src]$ sudo ./ant -p /dev/ttyUSB1 -t s -n 1 -f 245
+Port = /dev/ttyUSB1
+Type = s
+Message Period = 245 (133.746939 Hz)
+Power setting is now: 0dBm
+Experiment 1: Broadcast Data Transfer between two nodes
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][F5][ 0][ 0][ 0][ 6]
+Channel 0 open! took 0.017785
+Run 0: failed 0 sucess 1337: 10696 bytes in 10.000000 s => 1069.599990
+Run 1: failed 1 sucess 1329: 10632 bytes in 10.000000 s => 1063.200000
+Run 2: failed 1 sucess 1330: 10640 bytes in 10.000000 s => 1063.999995
+Run 3: failed 0 sucess 1337: 10696 bytes in 10.000000 s => 1069.599990
+Run 4: failed 0 sucess 1338: 10704 bytes in 10.000000 s => 1070.399987
+Run 5: failed 0 sucess 1337: 10696 bytes in 10.000000 s => 1069.599999
+Run 6: failed 1 sucess 1330: 10640 bytes in 10.000000 s => 1063.999995
+Run 7: failed 2 sucess 1321: 10568 bytes in 10.000000 s => 1056.799996
+Run 8: failed 0 sucess 1338: 10704 bytes in 10.000000 s => 1070.399994
+Run 9: failed 1 sucess 1329: 10632 bytes in 10.000000 s => 1063.199986
+Average datarate : 1066.079993 	Std dev: 4.311101
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][F5][ 0][ 0][ 0][ 6]
+Channel 0 open! took 0.000114
+Run 0: failed 2 sucess 1320: 10560 bytes in 10.000000 s => 1055.999997
+Run 1: failed 2 sucess 1322: 10576 bytes in 10.000000 s => 1057.599989
+Run 2: failed 0 sucess 1337: 10696 bytes in 10.000000 s => 1069.599989
+Run 3: failed 0 sucess 1338: 10704 bytes in 10.000000 s => 1070.399999
+Run 4: failed 1 sucess 1329: 10632 bytes in 10.000000 s => 1063.199990
+Run 5: failed 3 sucess 1314: 10512 bytes in 10.000000 s => 1051.199992
+Run 6: failed 2 sucess 1321: 10568 bytes in 10.000000 s => 1056.799997
+Run 7: failed 1 sucess 1330: 10640 bytes in 10.000000 s => 1063.999991
+Run 8: failed 0 sucess 1337: 10696 bytes in 10.000000 s => 1069.599991
+Run 9: failed 0 sucess 1338: 10704 bytes in 10.000000 s => 1070.399984
+Average datarate : 1062.879992 	Std dev: 6.733319
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][F5][ 0][ 0][ 0][ 6]
+Channel 0 open! took 0.000072
+Run 0: failed 2 sucess 1321: 10568 bytes in 10.000000 s => 1056.799987
+Run 1: failed 3 sucess 1313: 10504 bytes in 10.000000 s => 1050.399998
+Run 2: failed 2 sucess 1322: 10576 bytes in 10.000000 s => 1057.599988
+Run 3: failed 1 sucess 1329: 10632 bytes in 10.000000 s => 1063.199997
+Run 4: failed 1 sucess 1330: 10640 bytes in 10.000000 s => 1063.999986
+Run 5: failed 1 sucess 1329: 10632 bytes in 10.000000 s => 1063.199983
+Run 6: failed 0 sucess 1338: 10704 bytes in 10.000000 s => 1070.400000
+Run 7: failed 1 sucess 1329: 10632 bytes in 10.000000 s => 1063.199989
+Run 8: failed 0 sucess 1338: 10704 bytes in 10.000000 s => 1070.399993
+Run 9: failed 1 sucess 1329: 10632 bytes in 10.000000 s => 1063.199984
+Average datarate : 1062.239991 	Std dev: 5.755554
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][F5][ 0][ 0][ 0][ 6]
+Channel 0 open! took 0.000080
+Run 0: failed 1 sucess 1329: 10632 bytes in 10.000000 s => 1063.200000
+Run 1: failed 1 sucess 1329: 10632 bytes in 10.000000 s => 1063.199995
+Run 2: failed 1 sucess 1330: 10640 bytes in 10.000000 s => 1063.999989
+Run 3: failed 3 sucess 1313: 10504 bytes in 10.000000 s => 1050.399997
+Run 4: failed 0 sucess 1338: 10704 bytes in 10.000000 s => 1070.399998
+Run 5: failed 2 sucess 1321: 10568 bytes in 10.000000 s => 1056.799984
+Run 6: failed 1 sucess 1330: 10640 bytes in 10.000000 s => 1063.999990
+Run 7: failed 2 sucess 1321: 10568 bytes in 10.000000 s => 1056.800000
+Run 8: failed 1 sucess 1330: 10640 bytes in 10.000000 s => 1063.999987
+Run 9: failed 3 sucess 1313: 10504 bytes in 10.000000 s => 1050.399995
+Average datarate : 1060.319994 	Std dev: 6.167787
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][F5][ 0][ 0][ 0][ 6]
+Channel 0 open! took 0.000091
+Run 0: failed 1 sucess 1329: 10632 bytes in 10.000000 s => 1063.199994
+Run 1: failed 1 sucess 1329: 10632 bytes in 10.000000 s => 1063.199997
+Run 2: failed 3 sucess 1314: 10512 bytes in 10.000000 s => 1051.199987
+Run 3: failed 1 sucess 1329: 10632 bytes in 10.000000 s => 1063.200000
+Run 4: failed 1 sucess 1330: 10640 bytes in 10.000000 s => 1063.999992
+Run 5: failed 1 sucess 1329: 10632 bytes in 10.000000 s => 1063.199995
+Run 6: failed 2 sucess 1322: 10576 bytes in 10.000000 s => 1057.599990
+Run 7: failed 1 sucess 1329: 10632 bytes in 10.000000 s => 1063.199999
+Run 8: failed 1 sucess 1330: 10640 bytes in 10.000000 s => 1064.000000
+Run 9: failed 0 sucess 1337: 10696 bytes in 10.000000 s => 1069.599997
+Average datarate : 1062.239995 	Std dev: 4.564913
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][F5][ 0][ 0][ 0][ 6]
+Channel 0 open! took 0.065977
+Run 0: failed 0 sucess 1337: 10696 bytes in 10.000000 s => 1069.599994
+Run 1: failed 1 sucess 1330: 10640 bytes in 10.000000 s => 1063.999990
+Run 2: failed 2 sucess 1321: 10568 bytes in 10.000000 s => 1056.799991
+Run 3: failed 2 sucess 1322: 10576 bytes in 10.000000 s => 1057.599996
+Run 4: failed 1 sucess 1329: 10632 bytes in 10.000000 s => 1063.199984
+Run 5: failed 1 sucess 1330: 10640 bytes in 10.000000 s => 1063.999989
+Run 6: failed 0 sucess 1337: 10696 bytes in 10.000000 s => 1069.599996
+Run 7: failed 0 sucess 1337: 10696 bytes in 10.000000 s => 1069.599985
+Run 8: failed 2 sucess 1322: 10576 bytes in 10.000000 s => 1057.599993
+Run 9: failed 1 sucess 1329: 10632 bytes in 10.000000 s => 1063.199998
+Average datarate : 1063.519992 	Std dev: 4.762520
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][F5][ 0][ 0][ 0][ 6]
+Channel 0 open! took 0.095181
+Run 0: failed 4 sucess 1305: 10440 bytes in 10.000000 s => 1043.999995
+Run 1: failed 1 sucess 1329: 10632 bytes in 10.000000 s => 1063.199990
+Run 2: failed 2 sucess 1322: 10576 bytes in 10.000000 s => 1057.599993
+Run 3: failed 1 sucess 1329: 10632 bytes in 10.000000 s => 1063.199995
+Run 4: failed 1 sucess 1330: 10640 bytes in 10.000000 s => 1063.999995
+Run 5: failed 0 sucess 1337: 10696 bytes in 10.000000 s => 1069.599985
+Run 6: failed 0 sucess 1338: 10704 bytes in 10.000000 s => 1070.400000
+Run 7: failed 0 sucess 1337: 10696 bytes in 10.000000 s => 1069.599989
+Run 8: failed 1 sucess 1330: 10640 bytes in 10.000000 s => 1063.999995
+Run 9: failed 3 sucess 1313: 10504 bytes in 10.000000 s => 1050.399990
+Average datarate : 1061.599993 	Std dev: 8.205364
+Waiting for msgType 4E! Press any key to continue!
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][F5][ 0][ 0][ 0][ 6]
+Channel 0 open! took 0.000069
+Run 0: failed 2 sucess 1321: 10568 bytes in 10.000000 s => 1056.799994
+Run 1: failed 0 sucess 1338: 10704 bytes in 10.000000 s => 1070.399994
+Run 2: failed 2 sucess 1321: 10568 bytes in 10.000000 s => 1056.799986
+Run 3: failed 2 sucess 1322: 10576 bytes in 10.000000 s => 1057.599991
+Run 4: failed 0 sucess 1337: 10696 bytes in 10.000000 s => 1069.599991
+Run 5: failed 3 sucess 1314: 10512 bytes in 10.000000 s => 1051.199993
+Run 6: failed 0 sucess 1337: 10696 bytes in 10.000000 s => 1069.599992
+Run 7: failed 1 sucess 1330: 10640 bytes in 10.000000 s => 1063.999999
+Run 8: failed 0 sucess 1337: 10696 bytes in 10.000000 s => 1069.599991
+Run 9: failed 1 sucess 1330: 10640 bytes in 10.000000 s => 1063.999999
+Average datarate : 1062.959993 	Std dev: 6.578025
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][F5][ 0][ 0][ 0][ 6]
+Channel 0 open! took 0.056470
+Run 0: failed 1 sucess 1329: 10632 bytes in 10.000000 s => 1063.199987
+Run 1: failed 1 sucess 1329: 10632 bytes in 10.000000 s => 1063.199987
+Run 2: failed 0 sucess 1338: 10704 bytes in 10.000000 s => 1070.399995
+Run 3: failed 1 sucess 1329: 10632 bytes in 10.000000 s => 1063.199998
+Run 4: failed 2 sucess 1322: 10576 bytes in 10.000000 s => 1057.599985
+Run 5: failed 0 sucess 1337: 10696 bytes in 10.000000 s => 1069.599997
+Run 6: failed 0 sucess 1338: 10704 bytes in 10.000000 s => 1070.399987
+Run 7: failed 1 sucess 1329: 10632 bytes in 10.000000 s => 1063.199993
+Run 8: failed 0 sucess 1338: 10704 bytes in 10.000000 s => 1070.399990
+Run 9: failed 1 sucess 1329: 10632 bytes in 10.000000 s => 1063.199994
+Average datarate : 1065.439991 	Std dev: 4.215022
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][F5][ 0][ 0][ 0][ 6]
+Channel 0 open! took 0.000297
+Run 0: failed 1 sucess 1323: 10584 bytes in 10.000000 s => 1058.399999
+Run 1: failed 1 sucess 1329: 10632 bytes in 10.000000 s => 1063.199985
+Run 2: failed 2 sucess 1322: 10576 bytes in 10.000000 s => 1057.599994
+Run 3: failed 4 sucess 1305: 10440 bytes in 10.000000 s => 1043.999994
+Run 4: failed 3 sucess 1313: 10504 bytes in 10.000000 s => 1050.399999
+Run 5: failed 0 sucess 1338: 10704 bytes in 10.000000 s => 1070.399992
+Run 6: failed 3 sucess 1313: 10504 bytes in 10.000000 s => 1050.399996
+Run 7: failed 0 sucess 1338: 10704 bytes in 10.000000 s => 1070.399984
+Run 8: failed 0 sucess 1337: 10696 bytes in 10.000000 s => 1069.599986
+Run 9: failed 3 sucess 1314: 10512 bytes in 10.000000 s => 1051.199995
+Average datarate : 1058.559993 	Std dev: 9.077793
+
+[michael@xps src]$ sudo ./ant -p /dev/ttyUSB1 -t s -n 1 -f 235
+[sudo] Passwort für michael: 
+Port = /dev/ttyUSB1
+Type = s
+Message Period = 235 (139.438298 Hz)
+Power setting is now: 0dBm
+Experiment 1: Broadcast Data Transfer between two nodes
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][EB][ 0][ 0][ 0][18]
+Channel 0 open! took 0.015145
+Run 0: failed 4 sucess 1382: 11056 bytes in 10.000000 s => 1105.600000
+Run 1: failed 3 sucess 1385: 11080 bytes in 10.000000 s => 1107.999999
+Run 2: failed 1 sucess 1392: 11136 bytes in 10.000000 s => 1113.599984
+Run 3: failed 1 sucess 1391: 11128 bytes in 10.000000 s => 1112.799992
+Run 4: failed 1 sucess 1392: 11136 bytes in 10.000000 s => 1113.599991
+Run 5: failed 3 sucess 1385: 11080 bytes in 10.000000 s => 1107.999995
+Run 6: failed 3 sucess 1385: 11080 bytes in 10.000000 s => 1107.999984
+Run 7: failed 1 sucess 1392: 11136 bytes in 10.000000 s => 1113.599987
+Run 8: failed 3 sucess 1385: 11080 bytes in 10.000000 s => 1107.999986
+Run 9: failed 5 sucess 1380: 11040 bytes in 10.000000 s => 1103.999998
+Average datarate : 1109.519992 	Std dev: 3.402584
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][EB][ 0][ 0][ 0][18]
+Channel 0 open! took 0.015096
+Run 0: failed 1 sucess 1391: 11128 bytes in 10.000000 s => 1112.799987
+Run 1: failed 5 sucess 1379: 11032 bytes in 10.000000 s => 1103.199997
+Run 2: failed 0 sucess 1395: 11160 bytes in 10.000000 s => 1115.999993
+Run 3: failed 1 sucess 1391: 11128 bytes in 10.000000 s => 1112.800000
+Run 4: failed 0 sucess 1395: 11160 bytes in 10.000000 s => 1115.999995
+Run 5: failed 5 sucess 1379: 11032 bytes in 10.000000 s => 1103.199993
+Run 6: failed 0 sucess 1394: 11152 bytes in 10.000000 s => 1115.199991
+Run 7: failed 7 sucess 1374: 10992 bytes in 10.000000 s => 1099.199996
+Run 8: failed 0 sucess 1394: 11152 bytes in 10.000000 s => 1115.199993
+Run 9: failed 2 sucess 1389: 11112 bytes in 10.000000 s => 1111.199989
+Average datarate : 1110.479994 	Std dev: 5.916214
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][EB][ 0][ 0][ 0][18]
+Channel 0 open! took 0.017793
+Run 0: failed 2 sucess 1388: 11104 bytes in 10.000000 s => 1110.399985
+Run 1: failed 1 sucess 1391: 11128 bytes in 10.000000 s => 1112.799999
+Run 2: failed 2 sucess 1389: 11112 bytes in 10.000000 s => 1111.199999
+Run 3: failed 2 sucess 1388: 11104 bytes in 10.000000 s => 1110.399986
+Run 4: failed 4 sucess 1383: 11064 bytes in 10.000000 s => 1106.399987
+Run 5: failed 2 sucess 1388: 11104 bytes in 10.000000 s => 1110.399988
+Run 6: failed 5 sucess 1379: 11032 bytes in 10.000000 s => 1103.199995
+Run 7: failed 0 sucess 1395: 11160 bytes in 10.000000 s => 1115.999986
+Run 8: failed 3 sucess 1385: 11080 bytes in 10.000000 s => 1108.000000
+Run 9: failed 0 sucess 1395: 11160 bytes in 10.000000 s => 1115.999995
+Average datarate : 1110.479992 	Std dev: 3.776982
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][EB][ 0][ 0][ 0][18]
+Channel 0 open! took 0.017827
+Run 0: failed 3 sucess 1385: 11080 bytes in 10.000000 s => 1107.999991
+Run 1: failed 1 sucess 1391: 11128 bytes in 10.000000 s => 1112.799992
+Run 2: failed 5 sucess 1380: 11040 bytes in 10.000000 s => 1103.999994
+Run 3: failed 2 sucess 1388: 11104 bytes in 10.000000 s => 1110.399984
+Run 4: failed 2 sucess 1389: 11112 bytes in 10.000000 s => 1111.199987
+Run 5: failed 4 sucess 1382: 11056 bytes in 10.000000 s => 1105.599999
+Run 6: failed 2 sucess 1388: 11104 bytes in 10.000000 s => 1110.399987
+Run 7: failed 5 sucess 1380: 11040 bytes in 10.000000 s => 1103.999985
+Run 8: failed 4 sucess 1382: 11056 bytes in 10.000000 s => 1105.599998
+Run 9: failed 4 sucess 1383: 11064 bytes in 10.000000 s => 1106.399996
+Average datarate : 1107.839991 	Std dev: 3.010380
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][EB][ 0][ 0][ 0][18]
+Channel 0 open! took 0.011229
+Run 0: failed 1 sucess 1391: 11128 bytes in 10.000000 s => 1112.799989
+Run 1: failed 2 sucess 1388: 11104 bytes in 10.000000 s => 1110.399987
+Run 2: failed 1 sucess 1392: 11136 bytes in 10.000000 s => 1113.599989
+Run 3: failed 4 sucess 1382: 11056 bytes in 10.000000 s => 1105.599989
+Run 4: failed 1 sucess 1392: 11136 bytes in 10.000000 s => 1113.599991
+Run 5: failed 2 sucess 1388: 11104 bytes in 10.000000 s => 1110.399997
+Run 6: failed 3 sucess 1385: 11080 bytes in 10.000000 s => 1107.999993
+Run 7: failed 8 sucess 1309: 10472 bytes in 10.000000 s => 1047.199988
+Run 8: failed 1 sucess 1391: 11128 bytes in 10.000000 s => 1112.799996
+Run 9: failed 1 sucess 1392: 11136 bytes in 10.000000 s => 1113.599998
+Average datarate : 1104.799992 	Std dev: 19.369255
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][EB][ 0][ 0][ 0][18]
+Channel 0 open! took 0.013317
+Run 0: failed 5 sucess 1379: 11032 bytes in 10.000000 s => 1103.199991
+Run 1: failed 1 sucess 1391: 11128 bytes in 10.000000 s => 1112.799985
+Run 2: failed 3 sucess 1386: 11088 bytes in 10.000000 s => 1108.799978
+Run 3: failed 1 sucess 1391: 11128 bytes in 10.000000 s => 1112.799984
+Run 4: failed 1 sucess 1392: 11136 bytes in 10.000000 s => 1113.599998
+Run 5: failed 3 sucess 1385: 11080 bytes in 10.000000 s => 1107.999993
+Run 6: failed 2 sucess 1388: 11104 bytes in 10.000000 s => 1110.399997
+Run 7: failed 3 sucess 1386: 11088 bytes in 10.000000 s => 1108.799993
+Run 8: failed 4 sucess 1382: 11056 bytes in 10.000000 s => 1105.599992
+Run 9: failed 3 sucess 1386: 11088 bytes in 10.000000 s => 1108.799998
+Average datarate : 1109.279991 	Std dev: 3.123075
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][EB][ 0][ 0][ 0][18]
+Channel 0 open! took 0.011803
+Run 0: failed 3 sucess 1385: 11080 bytes in 10.000000 s => 1107.999988
+Run 1: failed 1 sucess 1391: 11128 bytes in 10.000000 s => 1112.799989
+Run 2: failed 5 sucess 1380: 11040 bytes in 10.000000 s => 1103.999996
+Run 3: failed 3 sucess 1385: 11080 bytes in 10.000000 s => 1107.999992
+Run 4: failed 2 sucess 1389: 11112 bytes in 10.000000 s => 1111.199994
+Run 5: failed 2 sucess 1388: 11104 bytes in 10.000000 s => 1110.399994
+Run 6: failed 1 sucess 1391: 11128 bytes in 10.000000 s => 1112.799990
+Run 7: failed 3 sucess 1386: 11088 bytes in 10.000000 s => 1108.799988
+Run 8: failed 4 sucess 1382: 11056 bytes in 10.000000 s => 1105.599996
+Run 9: failed 2 sucess 1389: 11112 bytes in 10.000000 s => 1111.199994
+Average datarate : 1109.279992 	Std dev: 2.798855
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][EB][ 0][ 0][ 0][18]
+Channel 0 open! took 0.017801
+Run 0: failed 2 sucess 1388: 11104 bytes in 10.000000 s => 1110.399985
+Run 1: failed 0 sucess 1394: 11152 bytes in 10.000000 s => 1115.199993
+Run 2: failed 3 sucess 1386: 11088 bytes in 10.000000 s => 1108.799999
+Run 3: failed 2 sucess 1388: 11104 bytes in 10.000000 s => 1110.399993
+Run 4: failed 1 sucess 1392: 11136 bytes in 10.000000 s => 1113.599993
+Run 5: failed 3 sucess 1385: 11080 bytes in 10.000000 s => 1107.999995
+Run 6: failed 3 sucess 1385: 11080 bytes in 10.000000 s => 1108.000000
+Run 7: failed 5 sucess 1380: 11040 bytes in 10.000000 s => 1103.999985
+Run 8: failed 2 sucess 1388: 11104 bytes in 10.000000 s => 1110.399999
+Run 9: failed 6 sucess 1377: 11016 bytes in 10.000000 s => 1101.599988
+Average datarate : 1109.039993 	Std dev: 3.837501
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][EB][ 0][ 0][ 0][18]
+Channel 0 open! took 0.012271
+Run 0: failed 3 sucess 1385: 11080 bytes in 10.000000 s => 1107.999996
+Run 1: failed 1 sucess 1391: 11128 bytes in 10.000000 s => 1112.800000
+Run 2: failed 2 sucess 1389: 11112 bytes in 10.000000 s => 1111.199984
+Run 3: failed 1 sucess 1391: 11128 bytes in 10.000000 s => 1112.799988
+Run 4: failed 0 sucess 1395: 11160 bytes in 10.000000 s => 1115.999988
+Run 5: failed 2 sucess 1388: 11104 bytes in 10.000000 s => 1110.400000
+Run 6: failed 2 sucess 1388: 11104 bytes in 10.000000 s => 1110.399985
+Run 7: failed 0 sucess 1395: 11160 bytes in 10.000000 s => 1115.999993
+Run 8: failed 1 sucess 1391: 11128 bytes in 10.000000 s => 1112.799995
+Run 9: failed 1 sucess 1392: 11136 bytes in 10.000000 s => 1113.599985
+Average datarate : 1112.399991 	Std dev: 2.379915
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][EB][ 0][ 0][ 0][18]
+Channel 0 open! took 0.017778
+Run 0: failed 8 sucess 1335: 10680 bytes in 10.000000 s => 1067.999998
+Run 1: failed 6 sucess 1376: 11008 bytes in 10.000000 s => 1100.799996
+Run 2: failed 2 sucess 1389: 11112 bytes in 10.000000 s => 1111.199991
+Run 3: failed 2 sucess 1388: 11104 bytes in 10.000000 s => 1110.399999
+Run 4: failed 3 sucess 1386: 11088 bytes in 10.000000 s => 1108.799997
+Run 5: failed 2 sucess 1388: 11104 bytes in 10.000000 s => 1110.399995
+Run 6: failed 0 sucess 1394: 11152 bytes in 10.000000 s => 1115.199989
+Run 7: failed 1 sucess 1392: 11136 bytes in 10.000000 s => 1113.599993
+Run 8: failed 1 sucess 1391: 11128 bytes in 10.000000 s => 1112.799993
+Run 9: failed 1 sucess 1392: 11136 bytes in 10.000000 s => 1113.599986
+Average datarate : 1106.479994 	Std dev: 13.374362
+
+[michael@xps src]$ sudo ./ant -p /dev/ttyUSB1 -t s -n 1 -f 225
+Port = /dev/ttyUSB1
+Type = s
+Message Period = 225 (145.635556 Hz)
+Power setting is now: 0dBm
+Experiment 1: Broadcast Data Transfer between two nodes
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][E1][ 0][ 0][ 0][12]
+Channel 0 open! took 0.095188
+Run 0: failed 3 sucess 1439: 11512 bytes in 10.000000 s => 1151.199985
+Run 1: failed 5 sucess 1427: 11416 bytes in 10.000000 s => 1141.599985
+Run 2: failed 5 sucess 1427: 11416 bytes in 10.000000 s => 1141.599985
+Run 3: failed 3 sucess 1439: 11512 bytes in 10.000000 s => 1151.199991
+Run 4: failed 8 sucess 1408: 11264 bytes in 10.000000 s => 1126.399985
+Run 5: failed 4 sucess 1433: 11464 bytes in 10.000000 s => 1146.399991
+Run 6: failed 2 sucess 1444: 11552 bytes in 10.000000 s => 1155.199984
+Run 7: failed 6 sucess 1421: 11368 bytes in 10.000000 s => 1136.799992
+Run 8: failed 2 sucess 1444: 11552 bytes in 10.000000 s => 1155.199998
+Run 9: failed 3 sucess 1438: 11504 bytes in 10.000000 s => 1150.399990
+Average datarate : 1145.599989 	Std dev: 8.653324
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][E1][ 0][ 0][ 0][12]
+Channel 0 open! took 0.000078
+Run 0: failed 2 sucess 1443: 11544 bytes in 10.000000 s => 1154.399998
+Run 1: failed 3 sucess 1438: 11504 bytes in 10.000000 s => 1150.399992
+Run 2: failed 1 sucess 1451: 11608 bytes in 10.000000 s => 1160.799994
+Run 3: failed 4 sucess 1434: 11472 bytes in 10.000000 s => 1147.199986
+Run 4: failed 7 sucess 1413: 11304 bytes in 10.000000 s => 1130.399988
+Run 5: failed 6 sucess 1420: 11360 bytes in 10.000000 s => 1135.999993
+Run 6: failed 3 sucess 1439: 11512 bytes in 10.000000 s => 1151.199985
+Run 7: failed 7 sucess 1414: 11312 bytes in 10.000000 s => 1131.199994
+Run 8: failed 3 sucess 1438: 11504 bytes in 10.000000 s => 1150.399989
+Run 9: failed 4 sucess 1433: 11464 bytes in 10.000000 s => 1146.399990
+Average datarate : 1145.839991 	Std dev: 9.586992
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][E1][ 0][ 0][ 0][12]
+Channel 0 open! took 0.000078
+Run 0: failed 5 sucess 1426: 11408 bytes in 10.000000 s => 1140.799994
+Run 1: failed 3 sucess 1438: 11504 bytes in 10.000000 s => 1150.399983
+Run 2: failed 2 sucess 1445: 11560 bytes in 10.000000 s => 1155.999990
+Run 3: failed 3 sucess 1438: 11504 bytes in 10.000000 s => 1150.399983
+Run 4: failed 8 sucess 1408: 11264 bytes in 10.000000 s => 1126.399990
+Run 5: failed 0 sucess 1457: 11656 bytes in 10.000000 s => 1165.599988
+Run 6: failed 4 sucess 1432: 11456 bytes in 10.000000 s => 1145.599995
+Run 7: failed 4 sucess 1432: 11456 bytes in 10.000000 s => 1145.599998
+Run 8: failed 7 sucess 1415: 11320 bytes in 10.000000 s => 1131.999999
+Run 9: failed 0 sucess 1456: 11648 bytes in 10.000000 s => 1164.799988
+Average datarate : 1147.759991 	Std dev: 12.053478
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][E1][ 0][ 0][ 0][12]
+Channel 0 open! took 0.000078
+Run 0: failed 4 sucess 1431: 11448 bytes in 10.000000 s => 1144.799998
+Run 1: failed 2 sucess 1445: 11560 bytes in 10.000000 s => 1155.999998
+Run 2: failed 7 sucess 1414: 11312 bytes in 10.000000 s => 1131.199994
+Run 3: failed 2 sucess 1444: 11552 bytes in 10.000000 s => 1155.199989
+Run 4: failed 7 sucess 1415: 11320 bytes in 10.000000 s => 1131.999992
+Run 5: failed 4 sucess 1432: 11456 bytes in 10.000000 s => 1145.599984
+Run 6: failed 8 sucess 1409: 11272 bytes in 10.000000 s => 1127.199995
+Run 7: failed 4 sucess 1432: 11456 bytes in 10.000000 s => 1145.599988
+Run 8: failed 3 sucess 1438: 11504 bytes in 10.000000 s => 1150.399983
+Run 9: failed 7 sucess 1415: 11320 bytes in 10.000000 s => 1131.999983
+Average datarate : 1141.999991 	Std dev: 10.051069
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][E1][ 0][ 0][ 0][12]
+Channel 0 open! took 0.027466
+Run 0: failed 5 sucess 1426: 11408 bytes in 10.000000 s => 1140.800000
+Run 1: failed 4 sucess 1432: 11456 bytes in 10.000000 s => 1145.599983
+Run 2: failed 4 sucess 1433: 11464 bytes in 10.000000 s => 1146.399997
+Run 3: failed 3 sucess 1438: 11504 bytes in 10.000000 s => 1150.400000
+Run 4: failed 4 sucess 1432: 11456 bytes in 10.000000 s => 1145.599993
+Run 5: failed 2 sucess 1445: 11560 bytes in 10.000000 s => 1155.999984
+Run 6: failed 7 sucess 1414: 11312 bytes in 10.000000 s => 1131.199984
+Run 7: failed 2 sucess 1444: 11552 bytes in 10.000000 s => 1155.199998
+Run 8: failed 6 sucess 1421: 11368 bytes in 10.000000 s => 1136.799988
+Run 9: failed 7 sucess 1414: 11312 bytes in 10.000000 s => 1131.199992
+Average datarate : 1143.919992 	Std dev: 8.431941
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][E1][ 0][ 0][ 0][12]
+Channel 0 open! took 0.000063
+Run 0: failed 7 sucess 1414: 11312 bytes in 10.000000 s => 1131.199993
+Run 1: failed 4 sucess 1432: 11456 bytes in 10.000000 s => 1145.599994
+Run 2: failed 5 sucess 1427: 11416 bytes in 10.000000 s => 1141.599988
+Run 3: failed 5 sucess 1426: 11408 bytes in 10.000000 s => 1140.799989
+Run 4: failed 8 sucess 1408: 11264 bytes in 10.000000 s => 1126.399984
+Run 5: failed 5 sucess 1427: 11416 bytes in 10.000000 s => 1141.599989
+Run 6: failed 9 sucess 1402: 11216 bytes in 10.000000 s => 1121.599988
+Run 7: failed 4 sucess 1432: 11456 bytes in 10.000000 s => 1145.599992
+Run 8: failed 7 sucess 1415: 11320 bytes in 10.000000 s => 1132.000000
+Run 9: failed 3 sucess 1438: 11504 bytes in 10.000000 s => 1150.399990
+Average datarate : 1137.679991 	Std dev: 8.875675
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][E1][ 0][ 0][ 0][12]
+Channel 0 open! took 0.000304
+Run 0: failed 9 sucess 1398: 11184 bytes in 10.000000 s => 1118.399999
+Run 1: failed 4 sucess 1432: 11456 bytes in 10.000000 s => 1145.599992
+Run 2: failed 5 sucess 1426: 11408 bytes in 10.000000 s => 1140.799993
+Run 3: failed 6 sucess 1421: 11368 bytes in 10.000000 s => 1136.799998
+Run 4: failed 6 sucess 1420: 11360 bytes in 10.000000 s => 1135.999988
+Run 5: failed 4 sucess 1432: 11456 bytes in 10.000000 s => 1145.599993
+Run 6: failed 3 sucess 1439: 11512 bytes in 10.000000 s => 1151.199994
+Run 7: failed 2 sucess 1444: 11552 bytes in 10.000000 s => 1155.199991
+Run 8: failed 6 sucess 1421: 11368 bytes in 10.000000 s => 1136.799995
+Run 9: failed 5 sucess 1426: 11408 bytes in 10.000000 s => 1140.799993
+Average datarate : 1140.719994 	Std dev: 9.582983
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][E1][ 0][ 0][ 0][12]
+Channel 0 open! took 0.027445
+Run 0: failed 5 sucess 1426: 11408 bytes in 10.000000 s => 1140.799993
+Run 1: failed 3 sucess 1438: 11504 bytes in 10.000000 s => 1150.399984
+Run 2: failed 3 sucess 1439: 11512 bytes in 10.000000 s => 1151.199991
+Run 3: failed 6 sucess 1420: 11360 bytes in 10.000000 s => 1135.999999
+Run 4: failed 6 sucess 1420: 11360 bytes in 10.000000 s => 1135.999976
+Run 5: failed 4 sucess 1433: 11464 bytes in 10.000000 s => 1146.399992
+Run 6: failed 6 sucess 1420: 11360 bytes in 10.000000 s => 1135.999993
+Run 7: failed 7 sucess 1414: 11312 bytes in 10.000000 s => 1131.199985
+Run 8: failed 6 sucess 1421: 11368 bytes in 10.000000 s => 1136.799992
+Run 9: failed 3 sucess 1438: 11504 bytes in 10.000000 s => 1150.399993
+Average datarate : 1141.519990 	Std dev: 7.042273
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][E1][ 0][ 0][ 0][12]
+Channel 0 open! took 0.143263
+Run 0: failed 7 sucess 1414: 11312 bytes in 10.000000 s => 1131.199984
+Run 1: failed 4 sucess 1432: 11456 bytes in 10.000000 s => 1145.599992
+Run 2: failed 3 sucess 1439: 11512 bytes in 10.000000 s => 1151.199996
+Run 3: failed 5 sucess 1426: 11408 bytes in 10.000000 s => 1140.799995
+Run 4: failed 7 sucess 1414: 11312 bytes in 10.000000 s => 1131.199989
+Run 5: failed 5 sucess 1427: 11416 bytes in 10.000000 s => 1141.599994
+Run 6: failed 2 sucess 1444: 11552 bytes in 10.000000 s => 1155.199997
+Run 7: failed 3 sucess 1438: 11504 bytes in 10.000000 s => 1150.399983
+Run 8: failed 2 sucess 1445: 11560 bytes in 10.000000 s => 1155.999994
+Run 9: failed 3 sucess 1438: 11504 bytes in 10.000000 s => 1150.399998
+Average datarate : 1145.359992 	Std dev: 8.549529
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][E1][ 0][ 0][ 0][12]
+Channel 0 open! took 0.000111
+Run 0: failed 8 sucess 1408: 11264 bytes in 10.000000 s => 1126.399996
+Run 1: failed 5 sucess 1426: 11408 bytes in 10.000000 s => 1140.799987
+Run 2: failed 5 sucess 1427: 11416 bytes in 10.000000 s => 1141.599992
+Run 3: failed 5 sucess 1426: 11408 bytes in 10.000000 s => 1140.799986
+Run 4: failed 8 sucess 1409: 11272 bytes in 10.000000 s => 1127.199985
+Run 5: failed 3 sucess 1438: 11504 bytes in 10.000000 s => 1150.399987
+Run 6: failed 3 sucess 1438: 11504 bytes in 10.000000 s => 1150.399989
+Run 7: failed 7 sucess 1415: 11320 bytes in 10.000000 s => 1131.999989
+Run 8: failed 7 sucess 1414: 11312 bytes in 10.000000 s => 1131.199992
+Run 9: failed 6 sucess 1420: 11360 bytes in 10.000000 s => 1135.999994
+Average datarate : 1137.679990 	Std dev: 8.201072
+
+[michael@xps src]$ sudo ./ant -p /dev/ttyUSB1 -t s -n 1 -f 215
+[sudo] Passwort für michael: 
+Port = /dev/ttyUSB1
+Type = s
+Message Period = 215 (152.409302 Hz)
+Power setting is now: 0dBm
+Experiment 1: Broadcast Data Transfer between two nodes
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][D7][ 0][ 0][ 0][24]
+Channel 0 open! took 0.017781
+Run 0: failed 2 sucess 1435: 11480 bytes in 10.000000 s => 1147.999994
+Run 1: failed 5 sucess 1393: 11144 bytes in 10.000000 s => 1114.399985
+Run 2: failed 3 sucess 1422: 11376 bytes in 10.000000 s => 1137.599997
+Run 3: failed 3 sucess 1421: 11368 bytes in 10.000000 s => 1136.799990
+Run 4: failed 4 sucess 1408: 11264 bytes in 10.000000 s => 1126.399991
+Run 5: failed 1 sucess 1450: 11600 bytes in 10.000000 s => 1159.999989
+Run 6: failed 4 sucess 1406: 11248 bytes in 10.000000 s => 1124.799998
+Run 7: failed 2 sucess 1435: 11480 bytes in 10.000000 s => 1147.999986
+Run 8: failed 6 sucess 1380: 11040 bytes in 10.000000 s => 1103.999990
+Run 9: failed 7 sucess 1365: 10920 bytes in 10.000000 s => 1091.999988
+Average datarate : 1129.199991 	Std dev: 20.122028
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][D7][ 0][ 0][ 0][24]
+Channel 0 open! took 0.000094
+Run 0: failed 1 sucess 1448: 11584 bytes in 10.000000 s => 1158.399991
+Run 1: failed 0 sucess 1463: 11704 bytes in 10.000000 s => 1170.399996
+Run 2: failed 2 sucess 1436: 11488 bytes in 10.000000 s => 1148.799991
+Run 3: failed 3 sucess 1422: 11376 bytes in 10.000000 s => 1137.599999
+Run 4: failed 1 sucess 1448: 11584 bytes in 10.000000 s => 1158.399992
+Run 5: failed 2 sucess 1435: 11480 bytes in 10.000000 s => 1147.999999
+Run 6: failed 3 sucess 1422: 11376 bytes in 10.000000 s => 1137.599997
+Run 7: failed 1 sucess 1450: 11600 bytes in 10.000000 s => 1159.999992
+Run 8: failed 3 sucess 1421: 11368 bytes in 10.000000 s => 1136.799991
+Run 9: failed 4 sucess 1407: 11256 bytes in 10.000000 s => 1125.599999
+Average datarate : 1148.159995 	Std dev: 13.061331
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][D7][ 0][ 0][ 0][24]
+Channel 0 open! took 0.043173
+Run 0: failed 2 sucess 1434: 11472 bytes in 10.000000 s => 1147.199983
+Run 1: failed 2 sucess 1436: 11488 bytes in 10.000000 s => 1148.799998
+Run 2: failed 1 sucess 1449: 11592 bytes in 10.000000 s => 1159.199984
+Run 3: failed 4 sucess 1407: 11256 bytes in 10.000000 s => 1125.599998
+Run 4: failed 1 sucess 1449: 11592 bytes in 10.000000 s => 1159.199983
+Run 5: failed 4 sucess 1408: 11264 bytes in 10.000000 s => 1126.399997
+Run 6: failed 4 sucess 1406: 11248 bytes in 10.000000 s => 1124.799992
+Run 7: failed 7 sucess 1366: 10928 bytes in 10.000000 s => 1092.799993
+Run 8: failed 1 sucess 1449: 11592 bytes in 10.000000 s => 1159.199987
+Run 9: failed 3 sucess 1421: 11368 bytes in 10.000000 s => 1136.799996
+Average datarate : 1137.999991 	Std dev: 20.141099
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][D7][ 0][ 0][ 0][24]
+Channel 0 open! took 0.000164
+Run 0: failed 3 sucess 1419: 11352 bytes in 10.000000 s => 1135.199992
+Run 1: failed 2 sucess 1436: 11488 bytes in 10.000000 s => 1148.799997
+Run 2: failed 2 sucess 1435: 11480 bytes in 10.000000 s => 1147.999986
+Run 3: failed 2 sucess 1435: 11480 bytes in 10.000000 s => 1147.999989
+Run 4: failed 2 sucess 1435: 11480 bytes in 10.000000 s => 1147.999990
+Run 5: failed 1 sucess 1449: 11592 bytes in 10.000000 s => 1159.199997
+Run 6: failed 5 sucess 1393: 11144 bytes in 10.000000 s => 1114.399991
+Run 7: failed 2 sucess 1436: 11488 bytes in 10.000000 s => 1148.799985
+Run 8: failed 6 sucess 1380: 11040 bytes in 10.000000 s => 1103.999989
+Run 9: failed 4 sucess 1408: 11264 bytes in 10.000000 s => 1126.399991
+Average datarate : 1138.079991 	Std dev: 16.846413
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][D7][ 0][ 0][ 0][24]
+Channel 0 open! took 0.000218
+Run 0: failed 2 sucess 1429: 11432 bytes in 10.000000 s => 1143.199988
+Run 1: failed 4 sucess 1406: 11248 bytes in 10.000000 s => 1124.799988
+Run 2: failed 7 sucess 1365: 10920 bytes in 10.000000 s => 1091.999986
+Run 3: failed 2 sucess 1435: 11480 bytes in 10.000000 s => 1147.999997
+Run 4: failed 5 sucess 1394: 11152 bytes in 10.000000 s => 1115.199989
+Run 5: failed 2 sucess 1436: 11488 bytes in 10.000000 s => 1148.799982
+Run 6: failed 5 sucess 1393: 11144 bytes in 10.000000 s => 1114.399996
+Run 7: failed 8 sucess 1353: 10824 bytes in 10.000000 s => 1082.399985
+Run 8: failed 1 sucess 1449: 11592 bytes in 10.000000 s => 1159.199982
+Run 9: failed 2 sucess 1435: 11480 bytes in 10.000000 s => 1147.999988
+Average datarate : 1127.599988 	Std dev: 24.839324
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][D7][ 0][ 0][ 0][24]
+Channel 0 open! took 0.000085
+Run 0: failed 3 sucess 1420: 11360 bytes in 10.000000 s => 1135.999996
+Run 1: failed 1 sucess 1449: 11592 bytes in 10.000000 s => 1159.199983
+Run 2: failed 2 sucess 1436: 11488 bytes in 10.000000 s => 1148.799992
+Run 3: failed 6 sucess 1379: 11032 bytes in 10.000000 s => 1103.199992
+Run 4: failed 3 sucess 1422: 11376 bytes in 10.000000 s => 1137.599997
+Run 5: failed 4 sucess 1407: 11256 bytes in 10.000000 s => 1125.599991
+Run 6: failed 5 sucess 1393: 11144 bytes in 10.000000 s => 1114.399989
+Run 7: failed 2 sucess 1436: 11488 bytes in 10.000000 s => 1148.799983
+Run 8: failed 5 sucess 1394: 11152 bytes in 10.000000 s => 1115.199989
+Run 9: failed 1 sucess 1449: 11592 bytes in 10.000000 s => 1159.199984
+Average datarate : 1134.799990 	Std dev: 18.642744
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][D7][ 0][ 0][ 0][24]
+Channel 0 open! took 0.000083
+Run 0: failed 2 sucess 1438: 11504 bytes in 10.000000 s => 1150.399987
+Run 1: failed 0 sucess 1459: 11672 bytes in 10.000000 s => 1167.199985
+Run 2: failed 2 sucess 1435: 11480 bytes in 10.000000 s => 1147.999984
+Run 3: failed 1 sucess 1449: 11592 bytes in 10.000000 s => 1159.199989
+Run 4: failed 4 sucess 1408: 11264 bytes in 10.000000 s => 1126.399988
+Run 5: failed 4 sucess 1407: 11256 bytes in 10.000000 s => 1125.599987
+Run 6: failed 1 sucess 1448: 11584 bytes in 10.000000 s => 1158.399991
+Run 7: failed 4 sucess 1407: 11256 bytes in 10.000000 s => 1125.599993
+Run 8: failed 3 sucess 1421: 11368 bytes in 10.000000 s => 1136.799987
+Run 9: failed 1 sucess 1450: 11600 bytes in 10.000000 s => 1159.999992
+Average datarate : 1145.759988 	Std dev: 15.156991
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][D7][ 0][ 0][ 0][24]
+Channel 0 open! took 0.028024
+Run 0: failed 5 sucess 1403: 11224 bytes in 10.000000 s => 1122.399997
+Run 1: failed 5 sucess 1383: 11064 bytes in 10.000000 s => 1106.399987
+Run 2: failed 2 sucess 1436: 11488 bytes in 10.000000 s => 1148.799994
+Run 3: failed 1 sucess 1449: 11592 bytes in 10.000000 s => 1159.199995
+Run 4: failed 1 sucess 1449: 11592 bytes in 10.000000 s => 1159.199986
+Run 5: failed 5 sucess 1394: 11152 bytes in 10.000000 s => 1115.199987
+Run 6: failed 3 sucess 1421: 11368 bytes in 10.000000 s => 1136.799988
+Run 7: failed 2 sucess 1435: 11480 bytes in 10.000000 s => 1147.999984
+Run 8: failed 5 sucess 1393: 11144 bytes in 10.000000 s => 1114.399988
+Run 9: failed 1 sucess 1449: 11592 bytes in 10.000000 s => 1159.199990
+Average datarate : 1136.959989 	Std dev: 19.683252
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][D7][ 0][ 0][ 0][24]
+Channel 0 open! took 0.037072
+Run 0: failed 4 sucess 1405: 11240 bytes in 10.000000 s => 1123.999988
+Run 1: failed 3 sucess 1422: 11376 bytes in 10.000000 s => 1137.599983
+Run 2: failed 3 sucess 1422: 11376 bytes in 10.000000 s => 1137.599986
+Run 3: failed 1 sucess 1449: 11592 bytes in 10.000000 s => 1159.199996
+Run 4: failed 3 sucess 1421: 11368 bytes in 10.000000 s => 1136.799995
+Run 5: failed 2 sucess 1435: 11480 bytes in 10.000000 s => 1147.999991
+Run 6: failed 4 sucess 1408: 11264 bytes in 10.000000 s => 1126.399984
+Run 7: failed 1 sucess 1450: 11600 bytes in 10.000000 s => 1159.999997
+Run 8: failed 1 sucess 1449: 11592 bytes in 10.000000 s => 1159.199988
+Run 9: failed 6 sucess 1380: 11040 bytes in 10.000000 s => 1103.999988
+Average datarate : 1139.279990 	Std dev: 17.189581
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][D7][ 0][ 0][ 0][24]
+Channel 0 open! took 0.094945
+Run 0: failed 3 sucess 1422: 11376 bytes in 10.000000 s => 1137.599995
+Run 1: failed 2 sucess 1435: 11480 bytes in 10.000000 s => 1147.999994
+Run 2: failed 1 sucess 1449: 11592 bytes in 10.000000 s => 1159.200000
+Run 3: failed 2 sucess 1435: 11480 bytes in 10.000000 s => 1147.999999
+Run 4: failed 0 sucess 1463: 11704 bytes in 10.000000 s => 1170.399999
+Run 5: failed 4 sucess 1408: 11264 bytes in 10.000000 s => 1126.399989
+Run 6: failed 1 sucess 1449: 11592 bytes in 10.000000 s => 1159.199996
+Run 7: failed 6 sucess 1379: 11032 bytes in 10.000000 s => 1103.199984
+Run 8: failed 3 sucess 1422: 11376 bytes in 10.000000 s => 1137.600000
+Run 9: failed 3 sucess 1420: 11360 bytes in 10.000000 s => 1135.999999
+Average datarate : 1142.559996 	Std dev: 18.140081
+
+[michael@xps src]$ sudo ./ant -p /dev/ttyUSB1 -t s -n 1 -f 205
+[sudo] Passwort für michael: 
+Port = /dev/ttyUSB1
+Type = s
+Message Period = 205 (159.843902 Hz)
+Power setting is now: 0dBm
+Experiment 1: Broadcast Data Transfer between two nodes
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][CD][ 0][ 0][ 0][3E]
+Channel 0 open! took 0.085313
+Run 0: failed 2 sucess 1453: 11624 bytes in 10.000000 s => 1162.399995
+Run 1: failed 2 sucess 1453: 11624 bytes in 10.000000 s => 1162.399995
+Run 2: failed 3 sucess 1449: 11592 bytes in 10.000000 s => 1159.199996
+Run 3: failed 5 sucess 1440: 11520 bytes in 10.000000 s => 1151.999993
+Run 4: failed 5 sucess 1441: 11528 bytes in 10.000000 s => 1152.799990
+Run 5: failed 3 sucess 1450: 11600 bytes in 10.000000 s => 1159.999991
+Run 6: failed 3 sucess 1449: 11592 bytes in 10.000000 s => 1159.199992
+Run 7: failed 4 sucess 1445: 11560 bytes in 10.000000 s => 1155.999994
+Run 8: failed 9 sucess 1424: 11392 bytes in 10.000000 s => 1139.199996
+Run 9: failed 1 sucess 1457: 11656 bytes in 10.000000 s => 1165.599997
+Average datarate : 1156.879994 	Std dev: 7.150497
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][CD][ 0][ 0][ 0][3E]
+Channel 0 open! took 0.000357
+Run 0: failed 4 sucess 1445: 11560 bytes in 10.000000 s => 1155.999983
+Run 1: failed 2 sucess 1453: 11624 bytes in 10.000000 s => 1162.399985
+Run 2: failed 3 sucess 1450: 11600 bytes in 10.000000 s => 1159.999998
+Run 3: failed 4 sucess 1444: 11552 bytes in 10.000000 s => 1155.199987
+Run 4: failed 3 sucess 1448: 11584 bytes in 10.000000 s => 1158.399987
+Run 5: failed 4 sucess 1446: 11568 bytes in 10.000000 s => 1156.799989
+Run 6: failed 2 sucess 1453: 11624 bytes in 10.000000 s => 1162.399992
+Run 7: failed 3 sucess 1449: 11592 bytes in 10.000000 s => 1159.199992
+Run 8: failed 0 sucess 1461: 11688 bytes in 10.000000 s => 1168.799983
+Run 9: failed 5 sucess 1440: 11520 bytes in 10.000000 s => 1151.999994
+Average datarate : 1159.119989 	Std dev: 4.446301
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][CD][ 0][ 0][ 0][3E]
+Channel 0 open! took 0.037105
+Run 0: failed 2 sucess 1452: 11616 bytes in 10.000000 s => 1161.599984
+Run 1: failed 4 sucess 1446: 11568 bytes in 10.000000 s => 1156.799994
+Run 2: failed 3 sucess 1449: 11592 bytes in 10.000000 s => 1159.199993
+Run 3: failed 3 sucess 1449: 11592 bytes in 10.000000 s => 1159.199998
+Run 4: failed 6 sucess 1438: 11504 bytes in 10.000000 s => 1150.399987
+Run 5: failed 1 sucess 1458: 11664 bytes in 10.000000 s => 1166.399985
+Run 6: failed 5 sucess 1441: 11528 bytes in 10.000000 s => 1152.799988
+Run 7: failed 4 sucess 1444: 11552 bytes in 10.000000 s => 1155.199990
+Run 8: failed 0 sucess 1461: 11688 bytes in 10.000000 s => 1168.799986
+Run 9: failed 4 sucess 1445: 11560 bytes in 10.000000 s => 1155.999984
+Average datarate : 1158.639989 	Std dev: 5.449990
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][CD][ 0][ 0][ 0][3E]
+Channel 0 open! took 0.000116
+Run 0: failed 1 sucess 1456: 11648 bytes in 10.000000 s => 1164.799987
+Run 1: failed 2 sucess 1453: 11624 bytes in 10.000000 s => 1162.399984
+Run 2: failed 2 sucess 1453: 11624 bytes in 10.000000 s => 1162.399993
+Run 3: failed 5 sucess 1440: 11520 bytes in 10.000000 s => 1151.999999
+Run 4: failed 1 sucess 1457: 11656 bytes in 10.000000 s => 1165.599994
+Run 5: failed 1 sucess 1457: 11656 bytes in 10.000000 s => 1165.599988
+Run 6: failed 0 sucess 1461: 11688 bytes in 10.000000 s => 1168.799992
+Run 7: failed 1 sucess 1457: 11656 bytes in 10.000000 s => 1165.599994
+Run 8: failed 1 sucess 1457: 11656 bytes in 10.000000 s => 1165.599996
+Run 9: failed 3 sucess 1450: 11600 bytes in 10.000000 s => 1159.999989
+Average datarate : 1163.279991 	Std dev: 4.402907
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][CD][ 0][ 0][ 0][3E]
+Channel 0 open! took 0.037434
+Run 0: failed 4 sucess 1445: 11560 bytes in 10.000000 s => 1155.999989
+Run 1: failed 4 sucess 1444: 11552 bytes in 10.000000 s => 1155.199992
+Run 2: failed 0 sucess 1461: 11688 bytes in 10.000000 s => 1168.799995
+Run 3: failed 4 sucess 1446: 11568 bytes in 10.000000 s => 1156.799996
+Run 4: failed 2 sucess 1453: 11624 bytes in 10.000000 s => 1162.399983
+Run 5: failed 2 sucess 1453: 11624 bytes in 10.000000 s => 1162.399987
+Run 6: failed 1 sucess 1457: 11656 bytes in 10.000000 s => 1165.599985
+Run 7: failed 7 sucess 1434: 11472 bytes in 10.000000 s => 1147.199986
+Run 8: failed 3 sucess 1450: 11600 bytes in 10.000000 s => 1159.999995
+Run 9: failed 4 sucess 1445: 11560 bytes in 10.000000 s => 1155.999991
+Average datarate : 1159.039990 	Std dev: 5.832873
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][CD][ 0][ 0][ 0][3E]
+Channel 0 open! took 0.000095
+Run 0: failed 3 sucess 1448: 11584 bytes in 10.000000 s => 1158.399985
+Run 1: failed 1 sucess 1458: 11664 bytes in 10.000000 s => 1166.399983
+Run 2: failed 2 sucess 1453: 11624 bytes in 10.000000 s => 1162.399997
+Run 3: failed 0 sucess 1461: 11688 bytes in 10.000000 s => 1168.799988
+Run 4: failed 3 sucess 1448: 11584 bytes in 10.000000 s => 1158.399995
+Run 5: failed 3 sucess 1448: 11584 bytes in 10.000000 s => 1158.399986
+Run 6: failed 4 sucess 1445: 11560 bytes in 10.000000 s => 1155.999999
+Run 7: failed 1 sucess 1457: 11656 bytes in 10.000000 s => 1165.599984
+Run 8: failed 3 sucess 1448: 11584 bytes in 10.000000 s => 1158.399990
+Run 9: failed 7 sucess 1435: 11480 bytes in 10.000000 s => 1147.999996
+Average datarate : 1160.079990 	Std dev: 5.706975
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][CD][ 0][ 0][ 0][3E]
+Channel 0 open! took 0.000101
+Run 0: failed 2 sucess 1452: 11616 bytes in 10.000000 s => 1161.600000
+Run 1: failed 1 sucess 1457: 11656 bytes in 10.000000 s => 1165.599998
+Run 2: failed 0 sucess 1461: 11688 bytes in 10.000000 s => 1168.800000
+Run 3: failed 4 sucess 1445: 11560 bytes in 10.000000 s => 1155.999994
+Run 4: failed 6 sucess 1437: 11496 bytes in 10.000000 s => 1149.599999
+Run 5: failed 1 sucess 1457: 11656 bytes in 10.000000 s => 1165.599993
+Run 6: failed 3 sucess 1448: 11584 bytes in 10.000000 s => 1158.399991
+Run 7: failed 2 sucess 1454: 11632 bytes in 10.000000 s => 1163.199983
+Run 8: failed 3 sucess 1450: 11600 bytes in 10.000000 s => 1159.999996
+Run 9: failed 2 sucess 1452: 11616 bytes in 10.000000 s => 1161.599997
+Average datarate : 1161.039995 	Std dev: 5.209836
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][CD][ 0][ 0][ 0][3E]
+Channel 0 open! took 0.000106
+Run 0: failed 1 sucess 1454: 11632 bytes in 10.000000 s => 1163.199996
+Run 1: failed 3 sucess 1449: 11592 bytes in 10.000000 s => 1159.199993
+Run 2: failed 2 sucess 1453: 11624 bytes in 10.000000 s => 1162.399996
+Run 3: failed 2 sucess 1454: 11632 bytes in 10.000000 s => 1163.199985
+Run 4: failed 0 sucess 1461: 11688 bytes in 10.000000 s => 1168.799996
+Run 5: failed 3 sucess 1448: 11584 bytes in 10.000000 s => 1158.399984
+Run 6: failed 4 sucess 1445: 11560 bytes in 10.000000 s => 1155.999987
+Run 7: failed 1 sucess 1457: 11656 bytes in 10.000000 s => 1165.599998
+Run 8: failed 3 sucess 1450: 11600 bytes in 10.000000 s => 1159.999988
+Run 9: failed 2 sucess 1453: 11624 bytes in 10.000000 s => 1162.399994
+Average datarate : 1161.919992 	Std dev: 3.509077
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][CD][ 0][ 0][ 0][3E]
+Channel 0 open! took 0.000118
+Run 0: failed 2 sucess 1452: 11616 bytes in 10.000000 s => 1161.599983
+Run 1: failed 3 sucess 1449: 11592 bytes in 10.000000 s => 1159.199985
+Run 2: failed 2 sucess 1452: 11616 bytes in 10.000000 s => 1161.599989
+Run 3: failed 1 sucess 1458: 11664 bytes in 10.000000 s => 1166.399983
+Run 4: failed 3 sucess 1449: 11592 bytes in 10.000000 s => 1159.199994
+Run 5: failed 1 sucess 1457: 11656 bytes in 10.000000 s => 1165.599984
+Run 6: failed 3 sucess 1448: 11584 bytes in 10.000000 s => 1158.399989
+Run 7: failed 0 sucess 1461: 11688 bytes in 10.000000 s => 1168.799999
+Run 8: failed 5 sucess 1441: 11528 bytes in 10.000000 s => 1152.799999
+Run 9: failed 2 sucess 1453: 11624 bytes in 10.000000 s => 1162.399984
+Average datarate : 1161.599989 	Std dev: 4.367148
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][CD][ 0][ 0][ 0][3E]
+Channel 0 open! took 0.000205
+Run 0: failed 5 sucess 1441: 11528 bytes in 10.000000 s => 1152.799995
+Run 1: failed 1 sucess 1457: 11656 bytes in 10.000000 s => 1165.599999
+Run 2: failed 1 sucess 1458: 11664 bytes in 10.000000 s => 1166.399986
+Run 3: failed 1 sucess 1456: 11648 bytes in 10.000000 s => 1164.799999
+Run 4: failed 3 sucess 1450: 11600 bytes in 10.000000 s => 1159.999985
+Run 5: failed 3 sucess 1449: 11592 bytes in 10.000000 s => 1159.199994
+Run 6: failed 2 sucess 1452: 11616 bytes in 10.000000 s => 1161.599994
+Run 7: failed 2 sucess 1454: 11632 bytes in 10.000000 s => 1163.199983
+Run 8: failed 4 sucess 1445: 11560 bytes in 10.000000 s => 1155.999999
+Run 9: failed 1 sucess 1457: 11656 bytes in 10.000000 s => 1165.599989
+Average datarate : 1161.519992 	Std dev: 4.299952
+
+[michael@xps src]$ sudo ./ant -p /dev/ttyUSB1 -t s -n 1 -f 205
+[sudo] Passwort für michael: 
+Port = /dev/ttyUSB1
+Type = s
+Message Period = 205 (159.843902 Hz)
+Power setting is now: 0dBm
+Experiment 1: Broadcast Data Transfer between two nodes
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][CD][ 0][ 0][ 0][3E]
+Channel 0 open! took 0.085313
+Run 0: failed 2 sucess 1453: 11624 bytes in 10.000000 s => 1162.399995
+Run 1: failed 2 sucess 1453: 11624 bytes in 10.000000 s => 1162.399995
+Run 2: failed 3 sucess 1449: 11592 bytes in 10.000000 s => 1159.199996
+Run 3: failed 5 sucess 1440: 11520 bytes in 10.000000 s => 1151.999993
+Run 4: failed 5 sucess 1441: 11528 bytes in 10.000000 s => 1152.799990
+Run 5: failed 3 sucess 1450: 11600 bytes in 10.000000 s => 1159.999991
+Run 6: failed 3 sucess 1449: 11592 bytes in 10.000000 s => 1159.199992
+Run 7: failed 4 sucess 1445: 11560 bytes in 10.000000 s => 1155.999994
+Run 8: failed 9 sucess 1424: 11392 bytes in 10.000000 s => 1139.199996
+Run 9: failed 1 sucess 1457: 11656 bytes in 10.000000 s => 1165.599997
+Average datarate : 1156.879994 	Std dev: 7.150497
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][CD][ 0][ 0][ 0][3E]
+Channel 0 open! took 0.000357
+Run 0: failed 4 sucess 1445: 11560 bytes in 10.000000 s => 1155.999983
+Run 1: failed 2 sucess 1453: 11624 bytes in 10.000000 s => 1162.399985
+Run 2: failed 3 sucess 1450: 11600 bytes in 10.000000 s => 1159.999998
+Run 3: failed 4 sucess 1444: 11552 bytes in 10.000000 s => 1155.199987
+Run 4: failed 3 sucess 1448: 11584 bytes in 10.000000 s => 1158.399987
+Run 5: failed 4 sucess 1446: 11568 bytes in 10.000000 s => 1156.799989
+Run 6: failed 2 sucess 1453: 11624 bytes in 10.000000 s => 1162.399992
+Run 7: failed 3 sucess 1449: 11592 bytes in 10.000000 s => 1159.199992
+Run 8: failed 0 sucess 1461: 11688 bytes in 10.000000 s => 1168.799983
+Run 9: failed 5 sucess 1440: 11520 bytes in 10.000000 s => 1151.999994
+Average datarate : 1159.119989 	Std dev: 4.446301
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][CD][ 0][ 0][ 0][3E]
+Channel 0 open! took 0.037105
+Run 0: failed 2 sucess 1452: 11616 bytes in 10.000000 s => 1161.599984
+Run 1: failed 4 sucess 1446: 11568 bytes in 10.000000 s => 1156.799994
+Run 2: failed 3 sucess 1449: 11592 bytes in 10.000000 s => 1159.199993
+Run 3: failed 3 sucess 1449: 11592 bytes in 10.000000 s => 1159.199998
+Run 4: failed 6 sucess 1438: 11504 bytes in 10.000000 s => 1150.399987
+Run 5: failed 1 sucess 1458: 11664 bytes in 10.000000 s => 1166.399985
+Run 6: failed 5 sucess 1441: 11528 bytes in 10.000000 s => 1152.799988
+Run 7: failed 4 sucess 1444: 11552 bytes in 10.000000 s => 1155.199990
+Run 8: failed 0 sucess 1461: 11688 bytes in 10.000000 s => 1168.799986
+Run 9: failed 4 sucess 1445: 11560 bytes in 10.000000 s => 1155.999984
+Average datarate : 1158.639989 	Std dev: 5.449990
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][CD][ 0][ 0][ 0][3E]
+Channel 0 open! took 0.000116
+Run 0: failed 1 sucess 1456: 11648 bytes in 10.000000 s => 1164.799987
+Run 1: failed 2 sucess 1453: 11624 bytes in 10.000000 s => 1162.399984
+Run 2: failed 2 sucess 1453: 11624 bytes in 10.000000 s => 1162.399993
+Run 3: failed 5 sucess 1440: 11520 bytes in 10.000000 s => 1151.999999
+Run 4: failed 1 sucess 1457: 11656 bytes in 10.000000 s => 1165.599994
+Run 5: failed 1 sucess 1457: 11656 bytes in 10.000000 s => 1165.599988
+Run 6: failed 0 sucess 1461: 11688 bytes in 10.000000 s => 1168.799992
+Run 7: failed 1 sucess 1457: 11656 bytes in 10.000000 s => 1165.599994
+Run 8: failed 1 sucess 1457: 11656 bytes in 10.000000 s => 1165.599996
+Run 9: failed 3 sucess 1450: 11600 bytes in 10.000000 s => 1159.999989
+Average datarate : 1163.279991 	Std dev: 4.402907
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][CD][ 0][ 0][ 0][3E]
+Channel 0 open! took 0.037434
+Run 0: failed 4 sucess 1445: 11560 bytes in 10.000000 s => 1155.999989
+Run 1: failed 4 sucess 1444: 11552 bytes in 10.000000 s => 1155.199992
+Run 2: failed 0 sucess 1461: 11688 bytes in 10.000000 s => 1168.799995
+Run 3: failed 4 sucess 1446: 11568 bytes in 10.000000 s => 1156.799996
+Run 4: failed 2 sucess 1453: 11624 bytes in 10.000000 s => 1162.399983
+Run 5: failed 2 sucess 1453: 11624 bytes in 10.000000 s => 1162.399987
+Run 6: failed 1 sucess 1457: 11656 bytes in 10.000000 s => 1165.599985
+Run 7: failed 7 sucess 1434: 11472 bytes in 10.000000 s => 1147.199986
+Run 8: failed 3 sucess 1450: 11600 bytes in 10.000000 s => 1159.999995
+Run 9: failed 4 sucess 1445: 11560 bytes in 10.000000 s => 1155.999991
+Average datarate : 1159.039990 	Std dev: 5.832873
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][CD][ 0][ 0][ 0][3E]
+Channel 0 open! took 0.000095
+Run 0: failed 3 sucess 1448: 11584 bytes in 10.000000 s => 1158.399985
+Run 1: failed 1 sucess 1458: 11664 bytes in 10.000000 s => 1166.399983
+Run 2: failed 2 sucess 1453: 11624 bytes in 10.000000 s => 1162.399997
+Run 3: failed 0 sucess 1461: 11688 bytes in 10.000000 s => 1168.799988
+Run 4: failed 3 sucess 1448: 11584 bytes in 10.000000 s => 1158.399995
+Run 5: failed 3 sucess 1448: 11584 bytes in 10.000000 s => 1158.399986
+Run 6: failed 4 sucess 1445: 11560 bytes in 10.000000 s => 1155.999999
+Run 7: failed 1 sucess 1457: 11656 bytes in 10.000000 s => 1165.599984
+Run 8: failed 3 sucess 1448: 11584 bytes in 10.000000 s => 1158.399990
+Run 9: failed 7 sucess 1435: 11480 bytes in 10.000000 s => 1147.999996
+Average datarate : 1160.079990 	Std dev: 5.706975
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][CD][ 0][ 0][ 0][3E]
+Channel 0 open! took 0.000101
+Run 0: failed 2 sucess 1452: 11616 bytes in 10.000000 s => 1161.600000
+Run 1: failed 1 sucess 1457: 11656 bytes in 10.000000 s => 1165.599998
+Run 2: failed 0 sucess 1461: 11688 bytes in 10.000000 s => 1168.800000
+Run 3: failed 4 sucess 1445: 11560 bytes in 10.000000 s => 1155.999994
+Run 4: failed 6 sucess 1437: 11496 bytes in 10.000000 s => 1149.599999
+Run 5: failed 1 sucess 1457: 11656 bytes in 10.000000 s => 1165.599993
+Run 6: failed 3 sucess 1448: 11584 bytes in 10.000000 s => 1158.399991
+Run 7: failed 2 sucess 1454: 11632 bytes in 10.000000 s => 1163.199983
+Run 8: failed 3 sucess 1450: 11600 bytes in 10.000000 s => 1159.999996
+Run 9: failed 2 sucess 1452: 11616 bytes in 10.000000 s => 1161.599997
+Average datarate : 1161.039995 	Std dev: 5.209836
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][CD][ 0][ 0][ 0][3E]
+Channel 0 open! took 0.000106
+Run 0: failed 1 sucess 1454: 11632 bytes in 10.000000 s => 1163.199996
+Run 1: failed 3 sucess 1449: 11592 bytes in 10.000000 s => 1159.199993
+Run 2: failed 2 sucess 1453: 11624 bytes in 10.000000 s => 1162.399996
+Run 3: failed 2 sucess 1454: 11632 bytes in 10.000000 s => 1163.199985
+Run 4: failed 0 sucess 1461: 11688 bytes in 10.000000 s => 1168.799996
+Run 5: failed 3 sucess 1448: 11584 bytes in 10.000000 s => 1158.399984
+Run 6: failed 4 sucess 1445: 11560 bytes in 10.000000 s => 1155.999987
+Run 7: failed 1 sucess 1457: 11656 bytes in 10.000000 s => 1165.599998
+Run 8: failed 3 sucess 1450: 11600 bytes in 10.000000 s => 1159.999988
+Run 9: failed 2 sucess 1453: 11624 bytes in 10.000000 s => 1162.399994
+Average datarate : 1161.919992 	Std dev: 3.509077
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][CD][ 0][ 0][ 0][3E]
+Channel 0 open! took 0.000118
+Run 0: failed 2 sucess 1452: 11616 bytes in 10.000000 s => 1161.599983
+Run 1: failed 3 sucess 1449: 11592 bytes in 10.000000 s => 1159.199985
+Run 2: failed 2 sucess 1452: 11616 bytes in 10.000000 s => 1161.599989
+Run 3: failed 1 sucess 1458: 11664 bytes in 10.000000 s => 1166.399983
+Run 4: failed 3 sucess 1449: 11592 bytes in 10.000000 s => 1159.199994
+Run 5: failed 1 sucess 1457: 11656 bytes in 10.000000 s => 1165.599984
+Run 6: failed 3 sucess 1448: 11584 bytes in 10.000000 s => 1158.399989
+Run 7: failed 0 sucess 1461: 11688 bytes in 10.000000 s => 1168.799999
+Run 8: failed 5 sucess 1441: 11528 bytes in 10.000000 s => 1152.799999
+Run 9: failed 2 sucess 1453: 11624 bytes in 10.000000 s => 1162.399984
+Average datarate : 1161.599989 	Std dev: 4.367148
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][CD][ 0][ 0][ 0][3E]
+Channel 0 open! took 0.000205
+Run 0: failed 5 sucess 1441: 11528 bytes in 10.000000 s => 1152.799995
+Run 1: failed 1 sucess 1457: 11656 bytes in 10.000000 s => 1165.599999
+Run 2: failed 1 sucess 1458: 11664 bytes in 10.000000 s => 1166.399986
+Run 3: failed 1 sucess 1456: 11648 bytes in 10.000000 s => 1164.799999
+Run 4: failed 3 sucess 1450: 11600 bytes in 10.000000 s => 1159.999985
+Run 5: failed 3 sucess 1449: 11592 bytes in 10.000000 s => 1159.199994
+Run 6: failed 2 sucess 1452: 11616 bytes in 10.000000 s => 1161.599994
+Run 7: failed 2 sucess 1454: 11632 bytes in 10.000000 s => 1163.199983
+Run 8: failed 4 sucess 1445: 11560 bytes in 10.000000 s => 1155.999999
+Run 9: failed 1 sucess 1457: 11656 bytes in 10.000000 s => 1165.599989
+Average datarate : 1161.519992 	Std dev: 4.299952
+
+[michael@xps src]$ sudo ./ant -p /dev/ttyUSB1 -t s -n 1 -f 195
+[sudo] Passwort für michael: 
+Port = /dev/ttyUSB1
+Type = s
+Message Period = 195 (168.041026 Hz)
+Power setting is now: 0dBm
+Experiment 1: Broadcast Data Transfer between two nodes
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][C3][ 0][ 0][ 0][30]
+Channel 0 open! took 0.056332
+Run 0: failed 3 sucess 1460: 11680 bytes in 10.000000 s => 1167.999983
+Run 1: failed 6 sucess 1455: 11640 bytes in 10.000000 s => 1163.999994
+Run 2: failed 8 sucess 1455: 11640 bytes in 10.000000 s => 1163.999997
+Run 3: failed 6 sucess 1457: 11656 bytes in 10.000000 s => 1165.599998
+Run 4: failed 1 sucess 1462: 11696 bytes in 10.000000 s => 1169.599983
+Run 5: failed 3 sucess 1459: 11672 bytes in 10.000000 s => 1167.199989
+Run 6: failed 4 sucess 1459: 11672 bytes in 10.000000 s => 1167.199991
+Run 7: failed 3 sucess 1461: 11688 bytes in 10.000000 s => 1168.799995
+Run 8: failed 7 sucess 1455: 11640 bytes in 10.000000 s => 1163.999985
+Run 9: failed 7 sucess 1454: 11632 bytes in 10.000000 s => 1163.199987
+Average datarate : 1166.159990 	Std dev: 2.177704
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][C3][ 0][ 0][ 0][30]
+Channel 0 open! took 0.000116
+Run 0: failed 3 sucess 1458: 11664 bytes in 10.000000 s => 1166.399986
+Run 1: failed 3 sucess 1460: 11680 bytes in 10.000000 s => 1167.999996
+Run 2: failed 7 sucess 1457: 11656 bytes in 10.000000 s => 1165.599994
+Run 3: failed 6 sucess 1456: 11648 bytes in 10.000000 s => 1164.799988
+Run 4: failed 6 sucess 1457: 11656 bytes in 10.000000 s => 1165.599988
+Run 5: failed 4 sucess 1458: 11664 bytes in 10.000000 s => 1166.399997
+Run 6: failed 2 sucess 1461: 11688 bytes in 10.000000 s => 1168.799993
+Run 7: failed 5 sucess 1458: 11664 bytes in 10.000000 s => 1166.399985
+Run 8: failed 4 sucess 1458: 11664 bytes in 10.000000 s => 1166.399995
+Run 9: failed 2 sucess 1461: 11688 bytes in 10.000000 s => 1168.799989
+Average datarate : 1166.719991 	Std dev: 1.299847
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][C3][ 0][ 0][ 0][30]
+Channel 0 open! took 0.000274
+Run 0: failed 3 sucess 1459: 11672 bytes in 10.000000 s => 1167.199996
+Run 1: failed 5 sucess 1457: 11656 bytes in 10.000000 s => 1165.599986
+Run 2: failed 4 sucess 1459: 11672 bytes in 10.000000 s => 1167.199994
+Run 3: failed 6 sucess 1456: 11648 bytes in 10.000000 s => 1164.799998
+Run 4: failed 5 sucess 1458: 11664 bytes in 10.000000 s => 1166.399965
+Run 5: failed 4 sucess 1459: 11672 bytes in 10.000000 s => 1167.199985
+Run 6: failed 2 sucess 1461: 11688 bytes in 10.000000 s => 1168.799983
+Run 7: failed 6 sucess 1456: 11648 bytes in 10.000000 s => 1164.799990
+Run 8: failed 3 sucess 1460: 11680 bytes in 10.000000 s => 1167.999991
+Run 9: failed 1 sucess 1462: 11696 bytes in 10.000000 s => 1169.599991
+Average datarate : 1166.959988 	Std dev: 1.520000
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][C3][ 0][ 0][ 0][30]
+Channel 0 open! took 0.000127
+Run 0: failed 3 sucess 1458: 11664 bytes in 10.000000 s => 1166.399990
+Run 1: failed 1 sucess 1462: 11696 bytes in 10.000000 s => 1169.599999
+Run 2: failed 5 sucess 1456: 11648 bytes in 10.000000 s => 1164.799991
+Run 3: failed 5 sucess 1457: 11656 bytes in 10.000000 s => 1165.599993
+Run 4: failed 3 sucess 1460: 11680 bytes in 10.000000 s => 1167.999996
+Run 5: failed 3 sucess 1459: 11672 bytes in 10.000000 s => 1167.199986
+Run 6: failed 3 sucess 1459: 11672 bytes in 10.000000 s => 1167.199989
+Run 7: failed 5 sucess 1459: 11672 bytes in 10.000000 s => 1167.199986
+Run 8: failed 4 sucess 1459: 11672 bytes in 10.000000 s => 1167.199988
+Run 9: failed 0 sucess 1463: 11704 bytes in 10.000000 s => 1170.399993
+Average datarate : 1167.359991 	Std dev: 1.591982
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][C3][ 0][ 0][ 0][30]
+Channel 0 open! took 0.066015
+Run 0: failed 7 sucess 1454: 11632 bytes in 10.000000 s => 1163.199993
+Run 1: failed 3 sucess 1460: 11680 bytes in 10.000000 s => 1167.999993
+Run 2: failed 5 sucess 1459: 11672 bytes in 10.000000 s => 1167.199990
+Run 3: failed 6 sucess 1456: 11648 bytes in 10.000000 s => 1164.799993
+Run 4: failed 3 sucess 1460: 11680 bytes in 10.000000 s => 1167.999992
+Run 5: failed 4 sucess 1459: 11672 bytes in 10.000000 s => 1167.199998
+Run 6: failed 4 sucess 1458: 11664 bytes in 10.000000 s => 1166.399998
+Run 7: failed 6 sucess 1455: 11640 bytes in 10.000000 s => 1163.999996
+Run 8: failed 3 sucess 1460: 11680 bytes in 10.000000 s => 1167.999997
+Run 9: failed 4 sucess 1458: 11664 bytes in 10.000000 s => 1166.399991
+Average datarate : 1166.319994 	Std dev: 1.656985
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][C3][ 0][ 0][ 0][30]
+Channel 0 open! took 0.000073
+Run 0: failed 4 sucess 1458: 11664 bytes in 10.000000 s => 1166.400000
+Run 1: failed 8 sucess 1454: 11632 bytes in 10.000000 s => 1163.199988
+Run 2: failed 5 sucess 1457: 11656 bytes in 10.000000 s => 1165.599990
+Run 3: failed 4 sucess 1446: 11568 bytes in 10.000000 s => 1156.799990
+Run 4: failed 6 sucess 1457: 11656 bytes in 10.000000 s => 1165.599996
+Run 5: failed 2 sucess 1461: 11688 bytes in 10.000000 s => 1168.799990
+Run 6: failed 8 sucess 1455: 11640 bytes in 10.000000 s => 1163.999999
+Run 7: failed 5 sucess 1456: 11648 bytes in 10.000000 s => 1164.799986
+Run 8: failed 4 sucess 1459: 11672 bytes in 10.000000 s => 1167.199995
+Run 9: failed 5 sucess 1458: 11664 bytes in 10.000000 s => 1166.399984
+Average datarate : 1164.879992 	Std dev: 3.087006
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][C3][ 0][ 0][ 0][30]
+Channel 0 open! took 0.037129
+Run 0: failed 5 sucess 1456: 11648 bytes in 10.000000 s => 1164.799991
+Run 1: failed 0 sucess 1464: 11712 bytes in 10.000000 s => 1171.199997
+Run 2: failed 5 sucess 1456: 11648 bytes in 10.000000 s => 1164.799984
+Run 3: failed 4 sucess 1460: 11680 bytes in 10.000000 s => 1167.999994
+Run 4: failed 8 sucess 1452: 11616 bytes in 10.000000 s => 1161.599993
+Run 5: failed 5 sucess 1458: 11664 bytes in 10.000000 s => 1166.399990
+Run 6: failed 7 sucess 1455: 11640 bytes in 10.000000 s => 1163.999983
+Run 7: failed 6 sucess 1454: 11632 bytes in 10.000000 s => 1163.199995
+Run 8: failed 1 sucess 1462: 11696 bytes in 10.000000 s => 1169.599986
+Run 9: failed 7 sucess 1454: 11632 bytes in 10.000000 s => 1163.199990
+Average datarate : 1165.679990 	Std dev: 2.916437
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][C3][ 0][ 0][ 0][30]
+Channel 0 open! took 0.046712
+Run 0: failed 4 sucess 1459: 11672 bytes in 10.000000 s => 1167.199993
+Run 1: failed 5 sucess 1456: 11648 bytes in 10.000000 s => 1164.800000
+Run 2: failed 4 sucess 1458: 11664 bytes in 10.000000 s => 1166.399995
+Run 3: failed 1 sucess 1463: 11704 bytes in 10.000000 s => 1170.399985
+Run 4: failed 3 sucess 1459: 11672 bytes in 10.000000 s => 1167.199989
+Run 5: failed 4 sucess 1458: 11664 bytes in 10.000000 s => 1166.399999
+Run 6: failed 3 sucess 1460: 11680 bytes in 10.000000 s => 1168.000000
+Run 7: failed 5 sucess 1457: 11656 bytes in 10.000000 s => 1165.599995
+Run 8: failed 3 sucess 1460: 11680 bytes in 10.000000 s => 1167.999992
+Run 9: failed 5 sucess 1457: 11656 bytes in 10.000000 s => 1165.599986
+Average datarate : 1166.959993 	Std dev: 1.519998
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][C3][ 0][ 0][ 0][30]
+Channel 0 open! took 0.000149
+Run 0: failed 6 sucess 1454: 11632 bytes in 10.000000 s => 1163.199997
+Run 1: failed 1 sucess 1462: 11696 bytes in 10.000000 s => 1169.599995
+Run 2: failed 4 sucess 1458: 11664 bytes in 10.000000 s => 1166.399994
+Run 3: failed 4 sucess 1459: 11672 bytes in 10.000000 s => 1167.199991
+Run 4: failed 2 sucess 1462: 11696 bytes in 10.000000 s => 1169.599992
+Run 5: failed 4 sucess 1458: 11664 bytes in 10.000000 s => 1166.399983
+Run 6: failed 2 sucess 1461: 11688 bytes in 10.000000 s => 1168.799993
+Run 7: failed 3 sucess 1459: 11672 bytes in 10.000000 s => 1167.199977
+Run 8: failed 2 sucess 1462: 11696 bytes in 10.000000 s => 1169.599984
+Run 9: failed 5 sucess 1457: 11656 bytes in 10.000000 s => 1165.599995
+Average datarate : 1167.359990 	Std dev: 1.985546
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][C3][ 0][ 0][ 0][30]
+Channel 0 open! took 0.000138
+Run 0: failed 4 sucess 1457: 11656 bytes in 10.000000 s => 1165.599989
+Run 1: failed 6 sucess 1456: 11648 bytes in 10.000000 s => 1164.799990
+Run 2: failed 1 sucess 1462: 11696 bytes in 10.000000 s => 1169.599996
+Run 3: failed 2 sucess 1461: 11688 bytes in 10.000000 s => 1168.799993
+Run 4: failed 8 sucess 1454: 11632 bytes in 10.000000 s => 1163.199998
+Run 5: failed 2 sucess 1461: 11688 bytes in 10.000000 s => 1168.799966
+Run 6: failed 5 sucess 1456: 11648 bytes in 10.000000 s => 1164.799988
+Run 7: failed 6 sucess 1457: 11656 bytes in 10.000000 s => 1165.599983
+Run 8: failed 4 sucess 1458: 11664 bytes in 10.000000 s => 1166.399990
+Run 9: failed 2 sucess 1462: 11696 bytes in 10.000000 s => 1169.599994
+Average datarate : 1166.719989 	Std dev: 2.182108
+
+[michael@xps src]$ sudo ./ant -p /dev/ttyUSB1 -t s -n 1 -f 185
+[sudo] Passwort für michael: 
+Port = /dev/ttyUSB1
+Type = s
+Message Period = 185 (177.124324 Hz)
+Power setting is now: 0dBm
+Experiment 1: Broadcast Data Transfer between two nodes
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][B9][ 0][ 0][ 0][4A]
+Channel 0 open! took 0.076157
+Run 0: failed 5 sucess 1429: 11432 bytes in 10.000000 s => 1143.199989
+Run 1: failed 3 sucess 1442: 11536 bytes in 10.000000 s => 1153.599994
+Run 2: failed 5 sucess 1430: 11440 bytes in 10.000000 s => 1143.999994
+Run 3: failed 3 sucess 1443: 11544 bytes in 10.000000 s => 1154.399997
+Run 4: failed 4 sucess 1435: 11480 bytes in 10.000000 s => 1147.999998
+Run 5: failed 2 sucess 1450: 11600 bytes in 10.000000 s => 1159.999989
+Run 6: failed 10 sucess 1393: 11144 bytes in 10.000000 s => 1114.399980
+Run 7: failed 8 sucess 1388: 11104 bytes in 10.000000 s => 1110.399998
+Run 8: failed 7 sucess 1416: 11328 bytes in 10.000000 s => 1132.799997
+Run 9: failed 5 sucess 1429: 11432 bytes in 10.000000 s => 1143.199985
+Average datarate : 1140.399992 	Std dev: 15.730735
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][B9][ 0][ 0][ 0][4A]
+Channel 0 open! took 0.000116
+Run 0: failed 2 sucess 1448: 11584 bytes in 10.000000 s => 1158.399989
+Run 1: failed 5 sucess 1429: 11432 bytes in 10.000000 s => 1143.199999
+Run 2: failed 4 sucess 1436: 11488 bytes in 10.000000 s => 1148.799984
+Run 3: failed 4 sucess 1436: 11488 bytes in 10.000000 s => 1148.799990
+Run 4: failed 2 sucess 1449: 11592 bytes in 10.000000 s => 1159.199993
+Run 5: failed 4 sucess 1437: 11496 bytes in 10.000000 s => 1149.599985
+Run 6: failed 5 sucess 1429: 11432 bytes in 10.000000 s => 1143.199995
+Run 7: failed 3 sucess 1442: 11536 bytes in 10.000000 s => 1153.599999
+Run 8: failed 2 sucess 1450: 11600 bytes in 10.000000 s => 1160.000000
+Run 9: failed 2 sucess 1450: 11600 bytes in 10.000000 s => 1159.999985
+Average datarate : 1152.479992 	Std dev: 6.341734
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][B9][ 0][ 0][ 0][4A]
+Channel 0 open! took 0.000064
+Run 0: failed 5 sucess 1428: 11424 bytes in 10.000000 s => 1142.399989
+Run 1: failed 0 sucess 1463: 11704 bytes in 10.000000 s => 1170.399986
+Run 2: failed 5 sucess 1429: 11432 bytes in 10.000000 s => 1143.199986
+Run 3: failed 3 sucess 1444: 11552 bytes in 10.000000 s => 1155.199998
+Run 4: failed 2 sucess 1450: 11600 bytes in 10.000000 s => 1159.999994
+Run 5: failed 5 sucess 1429: 11432 bytes in 10.000000 s => 1143.199987
+Run 6: failed 5 sucess 1429: 11432 bytes in 10.000000 s => 1143.199985
+Run 7: failed 2 sucess 1449: 11592 bytes in 10.000000 s => 1159.199982
+Run 8: failed 4 sucess 1436: 11488 bytes in 10.000000 s => 1148.799993
+Run 9: failed 9 sucess 1403: 11224 bytes in 10.000000 s => 1122.399996
+Average datarate : 1148.799989 	Std dev: 12.542407
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][B9][ 0][ 0][ 0][4A]
+Channel 0 open! took 0.000153
+Run 0: failed 3 sucess 1442: 11536 bytes in 10.000000 s => 1153.599983
+Run 1: failed 7 sucess 1415: 11320 bytes in 10.000000 s => 1131.999999
+Run 2: failed 6 sucess 1422: 11376 bytes in 10.000000 s => 1137.599994
+Run 3: failed 8 sucess 1410: 11280 bytes in 10.000000 s => 1127.999993
+Run 4: failed 6 sucess 1423: 11384 bytes in 10.000000 s => 1138.399989
+Run 5: failed 7 sucess 1416: 11328 bytes in 10.000000 s => 1132.799999
+Run 6: failed 4 sucess 1436: 11488 bytes in 10.000000 s => 1148.799994
+Run 7: failed 5 sucess 1430: 11440 bytes in 10.000000 s => 1143.999985
+Run 8: failed 5 sucess 1430: 11440 bytes in 10.000000 s => 1143.999986
+Run 9: failed 2 sucess 1449: 11592 bytes in 10.000000 s => 1159.199991
+Average datarate : 1141.839991 	Std dev: 9.472821
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][B9][ 0][ 0][ 0][4A]
+Channel 0 open! took 0.056373
+Run 0: failed 9 sucess 1402: 11216 bytes in 10.000000 s => 1121.599997
+Run 1: failed 6 sucess 1422: 11376 bytes in 10.000000 s => 1137.599987
+Run 2: failed 4 sucess 1436: 11488 bytes in 10.000000 s => 1148.799989
+Run 3: failed 2 sucess 1450: 11600 bytes in 10.000000 s => 1159.999989
+Run 4: failed 5 sucess 1429: 11432 bytes in 10.000000 s => 1143.199998
+Run 5: failed 3 sucess 1442: 11536 bytes in 10.000000 s => 1153.599996
+Run 6: failed 7 sucess 1415: 11320 bytes in 10.000000 s => 1131.999988
+Run 7: failed 2 sucess 1449: 11592 bytes in 10.000000 s => 1159.199994
+Run 8: failed 4 sucess 1436: 11488 bytes in 10.000000 s => 1148.799994
+Run 9: failed 6 sucess 1422: 11376 bytes in 10.000000 s => 1137.599997
+Average datarate : 1144.239993 	Std dev: 11.631955
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][B9][ 0][ 0][ 0][4A]
+Channel 0 open! took 0.000123
+Run 0: failed 2 sucess 1449: 11592 bytes in 10.000000 s => 1159.199990
+Run 1: failed 2 sucess 1450: 11600 bytes in 10.000000 s => 1159.999992
+Run 2: failed 6 sucess 1422: 11376 bytes in 10.000000 s => 1137.599991
+Run 3: failed 5 sucess 1429: 11432 bytes in 10.000000 s => 1143.200000
+Run 4: failed 7 sucess 1416: 11328 bytes in 10.000000 s => 1132.799988
+Run 5: failed 3 sucess 1443: 11544 bytes in 10.000000 s => 1154.399987
+Run 6: failed 6 sucess 1423: 11384 bytes in 10.000000 s => 1138.399987
+Run 7: failed 9 sucess 1401: 11208 bytes in 10.000000 s => 1120.799987
+Run 8: failed 3 sucess 1443: 11544 bytes in 10.000000 s => 1154.400000
+Run 9: failed 3 sucess 1443: 11544 bytes in 10.000000 s => 1154.399986
+Average datarate : 1145.519991 	Std dev: 12.349317
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][B9][ 0][ 0][ 0][4A]
+Channel 0 open! took 0.085305
+Run 0: failed 2 sucess 1449: 11592 bytes in 10.000000 s => 1159.199987
+Run 1: failed 2 sucess 1449: 11592 bytes in 10.000000 s => 1159.199990
+Run 2: failed 4 sucess 1435: 11480 bytes in 10.000000 s => 1147.999987
+Run 3: failed 1 sucess 1457: 11656 bytes in 10.000000 s => 1165.599996
+Run 4: failed 7 sucess 1414: 11312 bytes in 10.000000 s => 1131.199996
+Run 5: failed 6 sucess 1423: 11384 bytes in 10.000000 s => 1138.399996
+Run 6: failed 4 sucess 1436: 11488 bytes in 10.000000 s => 1148.799984
+Run 7: failed 6 sucess 1423: 11384 bytes in 10.000000 s => 1138.399997
+Run 8: failed 5 sucess 1430: 11440 bytes in 10.000000 s => 1143.999990
+Run 9: failed 3 sucess 1443: 11544 bytes in 10.000000 s => 1154.399983
+Average datarate : 1148.719991 	Std dev: 10.390455
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][B9][ 0][ 0][ 0][4A]
+Channel 0 open! took 0.000110
+Run 0: failed 4 sucess 1436: 11488 bytes in 10.000000 s => 1148.799986
+Run 1: failed 6 sucess 1422: 11376 bytes in 10.000000 s => 1137.599996
+Run 2: failed 0 sucess 1463: 11704 bytes in 10.000000 s => 1170.399992
+Run 3: failed 5 sucess 1429: 11432 bytes in 10.000000 s => 1143.199987
+Run 4: failed 9 sucess 1399: 11192 bytes in 10.000000 s => 1119.199997
+Run 5: failed 3 sucess 1443: 11544 bytes in 10.000000 s => 1154.399989
+Run 6: failed 4 sucess 1435: 11480 bytes in 10.000000 s => 1147.999992
+Run 7: failed 6 sucess 1423: 11384 bytes in 10.000000 s => 1138.399986
+Run 8: failed 2 sucess 1450: 11600 bytes in 10.000000 s => 1159.999998
+Run 9: failed 1 sucess 1456: 11648 bytes in 10.000000 s => 1164.799983
+Average datarate : 1148.479991 	Std dev: 14.213007
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][B9][ 0][ 0][ 0][4A]
+Channel 0 open! took 0.000094
+Run 0: failed 3 sucess 1442: 11536 bytes in 10.000000 s => 1153.599983
+Run 1: failed 3 sucess 1442: 11536 bytes in 10.000000 s => 1153.599998
+Run 2: failed 9 sucess 1402: 11216 bytes in 10.000000 s => 1121.599987
+Run 3: failed 9 sucess 1402: 11216 bytes in 10.000000 s => 1121.599991
+Run 4: failed 4 sucess 1436: 11488 bytes in 10.000000 s => 1148.799990
+Run 5: failed 11 sucess 1389: 11112 bytes in 10.000000 s => 1111.199985
+Run 6: failed 2 sucess 1450: 11600 bytes in 10.000000 s => 1159.999984
+Run 7: failed 1 sucess 1456: 11648 bytes in 10.000000 s => 1164.799985
+Run 8: failed 6 sucess 1423: 11384 bytes in 10.000000 s => 1138.399996
+Run 9: failed 8 sucess 1409: 11272 bytes in 10.000000 s => 1127.199987
+Average datarate : 1140.079989 	Std dev: 17.706767
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][B9][ 0][ 0][ 0][4A]
+Channel 0 open! took 0.000076
+Run 0: failed 5 sucess 1427: 11416 bytes in 10.000000 s => 1141.599990
+Run 1: failed 4 sucess 1436: 11488 bytes in 10.000000 s => 1148.799995
+Run 2: failed 3 sucess 1443: 11544 bytes in 10.000000 s => 1154.399991
+Run 3: failed 4 sucess 1435: 11480 bytes in 10.000000 s => 1147.999995
+Run 4: failed 2 sucess 1449: 11592 bytes in 10.000000 s => 1159.199990
+Run 5: failed 4 sucess 1437: 11496 bytes in 10.000000 s => 1149.599993
+Run 6: failed 8 sucess 1409: 11272 bytes in 10.000000 s => 1127.199983
+Run 7: failed 3 sucess 1443: 11544 bytes in 10.000000 s => 1154.399983
+Run 8: failed 6 sucess 1424: 11392 bytes in 10.000000 s => 1139.199998
+Run 9: failed 2 sucess 1450: 11600 bytes in 10.000000 s => 1159.999994
+Average datarate : 1148.239991 	Std dev: 9.513276
+
+[michael@xps src]$ sudo ./ant -p /dev/ttyUSB1 -t s -n 1 -f 175
+[sudo] Passwort für michael: 
+Port = /dev/ttyUSB1
+Type = s
+Message Period = 175 (187.245714 Hz)
+Power setting is now: 0dBm
+Experiment 1: Broadcast Data Transfer between two nodes
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][AF][ 0][ 0][ 0][5C]
+Channel 0 open! took 0.037084
+Run 0: failed 2 sucess 1451: 11608 bytes in 10.000000 s => 1160.799993
+Run 1: failed 2 sucess 1452: 11616 bytes in 10.000000 s => 1161.599993
+Run 2: failed 4 sucess 1447: 11576 bytes in 10.000000 s => 1157.599996
+Run 3: failed 6 sucess 1443: 11544 bytes in 10.000000 s => 1154.399989
+Run 4: failed 6 sucess 1443: 11544 bytes in 10.000000 s => 1154.399992
+Run 5: failed 9 sucess 1434: 11472 bytes in 10.000000 s => 1147.199988
+Run 6: failed 6 sucess 1443: 11544 bytes in 10.000000 s => 1154.399984
+Run 7: failed 11 sucess 1429: 11432 bytes in 10.000000 s => 1143.199995
+Run 8: failed 6 sucess 1443: 11544 bytes in 10.000000 s => 1154.399986
+Run 9: failed 5 sucess 1445: 11560 bytes in 10.000000 s => 1155.999988
+Average datarate : 1154.399991 	Std dev: 5.318647
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][AF][ 0][ 0][ 0][5C]
+Channel 0 open! took 0.000155
+Run 0: failed 9 sucess 1433: 11464 bytes in 10.000000 s => 1146.399996
+Run 1: failed 8 sucess 1437: 11496 bytes in 10.000000 s => 1149.599993
+Run 2: failed 8 sucess 1431: 11448 bytes in 10.000000 s => 1144.799989
+Run 3: failed 7 sucess 1440: 11520 bytes in 10.000000 s => 1151.999992
+Run 4: failed 8 sucess 1438: 11504 bytes in 10.000000 s => 1150.399991
+Run 5: failed 5 sucess 1444: 11552 bytes in 10.000000 s => 1155.199996
+Run 6: failed 10 sucess 1434: 11472 bytes in 10.000000 s => 1147.199996
+Run 7: failed 4 sucess 1447: 11576 bytes in 10.000000 s => 1157.599989
+Run 8: failed 3 sucess 1450: 11600 bytes in 10.000000 s => 1159.999992
+Run 9: failed 5 sucess 1444: 11552 bytes in 10.000000 s => 1155.199985
+Average datarate : 1151.839992 	Std dev: 4.797332
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][AF][ 0][ 0][ 0][5C]
+Channel 0 open! took 0.027442
+Run 0: failed 6 sucess 1441: 11528 bytes in 10.000000 s => 1152.799991
+Run 1: failed 7 sucess 1440: 11520 bytes in 10.000000 s => 1151.999992
+Run 2: failed 5 sucess 1445: 11560 bytes in 10.000000 s => 1155.999997
+Run 3: failed 7 sucess 1441: 11528 bytes in 10.000000 s => 1152.799998
+Run 4: failed 3 sucess 1449: 11592 bytes in 10.000000 s => 1159.199985
+Run 5: failed 5 sucess 1443: 11544 bytes in 10.000000 s => 1154.399991
+Run 6: failed 5 sucess 1445: 11560 bytes in 10.000000 s => 1155.999991
+Run 7: failed 7 sucess 1439: 11512 bytes in 10.000000 s => 1151.199999
+Run 8: failed 2 sucess 1452: 11616 bytes in 10.000000 s => 1161.599984
+Run 9: failed 8 sucess 1437: 11496 bytes in 10.000000 s => 1149.599989
+Average datarate : 1154.559992 	Std dev: 3.519997
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][AF][ 0][ 0][ 0][5C]
+Channel 0 open! took 0.000163
+Run 0: failed 7 sucess 1545: 12360 bytes in 10.000000 s => 1235.999990
+Run 1: failed 2 sucess 1452: 11616 bytes in 10.000000 s => 1161.599992
+Run 2: failed 7 sucess 1441: 11528 bytes in 10.000000 s => 1152.799995
+Run 3: failed 6 sucess 1442: 11536 bytes in 10.000000 s => 1153.599991
+Run 4: failed 6 sucess 1443: 11544 bytes in 10.000000 s => 1154.399995
+Run 5: failed 3 sucess 1450: 11600 bytes in 10.000000 s => 1159.999998
+Run 6: failed 4 sucess 1447: 11576 bytes in 10.000000 s => 1157.599998
+Run 7: failed 5 sucess 1445: 11560 bytes in 10.000000 s => 1155.999996
+Run 8: failed 4 sucess 1448: 11584 bytes in 10.000000 s => 1158.399987
+Run 9: failed 4 sucess 1447: 11576 bytes in 10.000000 s => 1157.599996
+Average datarate : 1164.799994 	Std dev: 23.879697
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][AF][ 0][ 0][ 0][5C]
+Channel 0 open! took 0.037357
+Run 0: failed 4 sucess 1446: 11568 bytes in 10.000000 s => 1156.799991
+Run 1: failed 7 sucess 1441: 11528 bytes in 10.000000 s => 1152.799994
+Run 2: failed 3 sucess 1451: 11608 bytes in 10.000000 s => 1160.799999
+Run 3: failed 6 sucess 1443: 11544 bytes in 10.000000 s => 1154.399998
+Run 4: failed 2 sucess 1452: 11616 bytes in 10.000000 s => 1161.599998
+Run 5: failed 2 sucess 1451: 11608 bytes in 10.000000 s => 1160.799983
+Run 6: failed 8 sucess 1438: 11504 bytes in 10.000000 s => 1150.399985
+Run 7: failed 10 sucess 1433: 11464 bytes in 10.000000 s => 1146.399987
+Run 8: failed 3 sucess 1449: 11592 bytes in 10.000000 s => 1159.199992
+Run 9: failed 7 sucess 1439: 11512 bytes in 10.000000 s => 1151.199992
+Average datarate : 1155.439992 	Std dev: 4.945141
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][AF][ 0][ 0][ 0][5C]
+Channel 0 open! took 0.066314
+Run 0: failed 2 sucess 1451: 11608 bytes in 10.000000 s => 1160.799997
+Run 1: failed 4 sucess 1448: 11584 bytes in 10.000000 s => 1158.399993
+Run 2: failed 4 sucess 1446: 11568 bytes in 10.000000 s => 1156.799984
+Run 3: failed 7 sucess 1441: 11528 bytes in 10.000000 s => 1152.799997
+Run 4: failed 3 sucess 1450: 11600 bytes in 10.000000 s => 1159.999984
+Run 5: failed 4 sucess 1447: 11576 bytes in 10.000000 s => 1157.599995
+Run 6: failed 4 sucess 1447: 11576 bytes in 10.000000 s => 1157.599996
+Run 7: failed 4 sucess 1446: 11568 bytes in 10.000000 s => 1156.799999
+Run 8: failed 6 sucess 1442: 11536 bytes in 10.000000 s => 1153.599996
+Run 9: failed 8 sucess 1438: 11504 bytes in 10.000000 s => 1150.399996
+Average datarate : 1156.479994 	Std dev: 3.102513
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][AF][ 0][ 0][ 0][5C]
+Channel 0 open! took 0.000176
+Run 0: failed 5 sucess 1444: 11552 bytes in 10.000000 s => 1155.199985
+Run 1: failed 8 sucess 1438: 11504 bytes in 10.000000 s => 1150.399993
+Run 2: failed 3 sucess 1449: 11592 bytes in 10.000000 s => 1159.199986
+Run 3: failed 3 sucess 1450: 11600 bytes in 10.000000 s => 1159.999993
+Run 4: failed 6 sucess 1442: 11536 bytes in 10.000000 s => 1153.599991
+Run 5: failed 4 sucess 1447: 11576 bytes in 10.000000 s => 1157.599996
+Run 6: failed 3 sucess 1449: 11592 bytes in 10.000000 s => 1159.199989
+Run 7: failed 3 sucess 1450: 11600 bytes in 10.000000 s => 1159.999979
+Run 8: failed 6 sucess 1442: 11536 bytes in 10.000000 s => 1153.599989
+Run 9: failed 6 sucess 1443: 11544 bytes in 10.000000 s => 1154.399996
+Average datarate : 1156.319990 	Std dev: 3.163793
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][AF][ 0][ 0][ 0][5C]
+Channel 0 open! took 0.000214
+Run 0: failed 8 sucess 1510: 12080 bytes in 10.000000 s => 1207.999984
+Run 1: failed 6 sucess 1444: 11552 bytes in 10.000000 s => 1155.199997
+Run 2: failed 4 sucess 1447: 11576 bytes in 10.000000 s => 1157.599993
+Run 3: failed 2 sucess 1452: 11616 bytes in 10.000000 s => 1161.599985
+Run 4: failed 5 sucess 1445: 11560 bytes in 10.000000 s => 1155.999985
+Run 5: failed 4 sucess 1446: 11568 bytes in 10.000000 s => 1156.799983
+Run 6: failed 5 sucess 1446: 11568 bytes in 10.000000 s => 1156.799983
+Run 7: failed 9 sucess 1436: 11488 bytes in 10.000000 s => 1148.799983
+Run 8: failed 7 sucess 1438: 11504 bytes in 10.000000 s => 1150.399986
+Run 9: failed 5 sucess 1446: 11568 bytes in 10.000000 s => 1156.799999
+Average datarate : 1160.799988 	Std dev: 16.103663
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][AF][ 0][ 0][ 0][5C]
+Channel 0 open! took 0.000165
+Run 0: failed 5 sucess 1444: 11552 bytes in 10.000000 s => 1155.199990
+Run 1: failed 6 sucess 1443: 11544 bytes in 10.000000 s => 1154.399989
+Run 2: failed 7 sucess 1440: 11520 bytes in 10.000000 s => 1151.999996
+Run 3: failed 4 sucess 1447: 11576 bytes in 10.000000 s => 1157.599988
+Run 4: failed 7 sucess 1440: 11520 bytes in 10.000000 s => 1151.999987
+Run 5: failed 2 sucess 1452: 11616 bytes in 10.000000 s => 1161.599990
+Run 6: failed 5 sucess 1445: 11560 bytes in 10.000000 s => 1155.999983
+Run 7: failed 13 sucess 1424: 11392 bytes in 10.000000 s => 1139.199991
+Run 8: failed 6 sucess 1444: 11552 bytes in 10.000000 s => 1155.199987
+Run 9: failed 6 sucess 1441: 11528 bytes in 10.000000 s => 1152.799992
+Average datarate : 1153.599989 	Std dev: 5.519419
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][AF][ 0][ 0][ 0][5C]
+Channel 0 open! took 0.000091
+Run 0: failed 8 sucess 1546: 12368 bytes in 10.000000 s => 1236.799984
+Run 1: failed 6 sucess 1442: 11536 bytes in 10.000000 s => 1153.599990
+Run 2: failed 3 sucess 1450: 11600 bytes in 10.000000 s => 1159.999986
+Run 3: failed 7 sucess 1440: 11520 bytes in 10.000000 s => 1151.999992
+Run 4: failed 8 sucess 1438: 11504 bytes in 10.000000 s => 1150.399996
+Run 5: failed 8 sucess 1438: 11504 bytes in 10.000000 s => 1150.399987
+Run 6: failed 2 sucess 1452: 11616 bytes in 10.000000 s => 1161.599989
+Run 7: failed 5 sucess 1444: 11552 bytes in 10.000000 s => 1155.199987
+Run 8: failed 3 sucess 1450: 11600 bytes in 10.000000 s => 1159.999993
+Run 9: failed 7 sucess 1440: 11520 bytes in 10.000001 s => 1151.999914
+Average datarate : 1163.199982 	Std dev: 24.848985
+
+[michael@xps src]$ sudo ./ant -p /dev/ttyUSB1 -t s -n 1 -f 165
+[sudo] Passwort für michael: 
+Port = /dev/ttyUSB1
+Type = s
+Message Period = 165 (198.593939 Hz)
+Power setting is now: 0dBm
+Experiment 1: Broadcast Data Transfer between two nodes
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][A5][ 0][ 0][ 0][56]
+Channel 0 open! took 0.000083
+Run 0: failed 8 sucess 1402: 11216 bytes in 10.000000 s => 1121.599997
+Run 1: failed 1 sucess 1451: 11608 bytes in 10.000000 s => 1160.799996
+Run 2: failed 3 sucess 1436: 11488 bytes in 10.000000 s => 1148.799984
+Run 3: failed 5 sucess 1423: 11384 bytes in 10.000000 s => 1138.399986
+Run 4: failed 6 sucess 1418: 11344 bytes in 10.000000 s => 1134.399996
+Run 5: failed 4 sucess 1431: 11448 bytes in 10.000000 s => 1144.799988
+Run 6: failed 3 sucess 1438: 11504 bytes in 10.000000 s => 1150.399987
+Run 7: failed 5 sucess 1424: 11392 bytes in 10.000000 s => 1139.199989
+Run 8: failed 4 sucess 1430: 11440 bytes in 10.000000 s => 1143.999986
+Run 9: failed 6 sucess 1417: 11336 bytes in 10.000000 s => 1133.599986
+Average datarate : 1141.599990 	Std dev: 10.226240
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][A5][ 0][ 0][ 0][56]
+Channel 0 open! took 0.046708
+Run 0: failed 2 sucess 1443: 11544 bytes in 10.000000 s => 1154.399991
+Run 1: failed 4 sucess 1431: 11448 bytes in 10.000000 s => 1144.799996
+Run 2: failed 7 sucess 1410: 11280 bytes in 10.000000 s => 1127.999983
+Run 3: failed 7 sucess 1411: 11288 bytes in 10.000000 s => 1128.799999
+Run 4: failed 4 sucess 1430: 11440 bytes in 10.000000 s => 1143.999990
+Run 5: failed 5 sucess 1423: 11384 bytes in 10.000000 s => 1138.399996
+Run 6: failed 1 sucess 1450: 11600 bytes in 10.000000 s => 1159.999986
+Run 7: failed 5 sucess 1425: 11400 bytes in 10.000000 s => 1139.999988
+Run 8: failed 5 sucess 1424: 11392 bytes in 10.000000 s => 1139.199990
+Run 9: failed 4 sucess 1432: 11456 bytes in 10.000000 s => 1145.600000
+Average datarate : 1142.319992 	Std dev: 9.468769
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][A5][ 0][ 0][ 0][56]
+Channel 0 open! took 0.046772
+Run 0: failed 6 sucess 1418: 11344 bytes in 10.000000 s => 1134.399989
+Run 1: failed 6 sucess 1417: 11336 bytes in 10.000000 s => 1133.599984
+Run 2: failed 4 sucess 1430: 11440 bytes in 10.000000 s => 1143.999996
+Run 3: failed 4 sucess 1431: 11448 bytes in 10.000000 s => 1144.799986
+Run 4: failed 4 sucess 1430: 11440 bytes in 10.000000 s => 1143.999986
+Run 5: failed 5 sucess 1422: 11376 bytes in 10.000000 s => 1137.599992
+Run 6: failed 8 sucess 1405: 11240 bytes in 10.000000 s => 1123.999989
+Run 7: failed 5 sucess 1424: 11392 bytes in 10.000000 s => 1139.199999
+Run 8: failed 6 sucess 1419: 11352 bytes in 10.000000 s => 1135.199996
+Run 9: failed 4 sucess 1430: 11440 bytes in 10.000000 s => 1143.999994
+Average datarate : 1138.079991 	Std dev: 6.260480
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][A5][ 0][ 0][ 0][56]
+Channel 0 open! took 0.000197
+Run 0: failed 4 sucess 1429: 11432 bytes in 10.000000 s => 1143.199988
+Run 1: failed 5 sucess 1423: 11384 bytes in 10.000000 s => 1138.399986
+Run 2: failed 6 sucess 1417: 11336 bytes in 10.000000 s => 1133.599993
+Run 3: failed 6 sucess 1417: 11336 bytes in 10.000000 s => 1133.599978
+Run 4: failed 4 sucess 1430: 11440 bytes in 10.000000 s => 1143.999991
+Run 5: failed 12 sucess 1379: 11032 bytes in 10.000000 s => 1103.199984
+Run 6: failed 1 sucess 1450: 11600 bytes in 10.000000 s => 1159.999986
+Run 7: failed 5 sucess 1423: 11384 bytes in 10.000000 s => 1138.399990
+Run 8: failed 5 sucess 1424: 11392 bytes in 10.000000 s => 1139.199989
+Run 9: failed 6 sucess 1417: 11336 bytes in 10.000000 s => 1133.599998
+Average datarate : 1136.719988 	Std dev: 13.422132
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][A5][ 0][ 0][ 0][56]
+Channel 0 open! took 0.000244
+Run 0: failed 2 sucess 1442: 11536 bytes in 10.000000 s => 1153.599985
+Run 1: failed 6 sucess 1416: 11328 bytes in 10.000000 s => 1132.799988
+Run 2: failed 2 sucess 1443: 11544 bytes in 10.000000 s => 1154.399984
+Run 3: failed 1 sucess 1451: 11608 bytes in 10.000000 s => 1160.799998
+Run 4: failed 6 sucess 1422: 11376 bytes in 10.000000 s => 1137.599995
+Run 5: failed 4 sucess 1426: 11408 bytes in 10.000000 s => 1140.799987
+Run 6: failed 4 sucess 1431: 11448 bytes in 10.000000 s => 1144.799990
+Run 7: failed 2 sucess 1444: 11552 bytes in 10.000000 s => 1155.199998
+Run 8: failed 4 sucess 1431: 11448 bytes in 10.000000 s => 1144.799986
+Run 9: failed 1 sucess 1449: 11592 bytes in 10.000000 s => 1159.199987
+Average datarate : 1148.399990 	Std dev: 9.073919
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][A5][ 0][ 0][ 0][56]
+Channel 0 open! took 0.037033
+Run 0: failed 7 sucess 1411: 11288 bytes in 10.000000 s => 1128.799982
+Run 1: failed 7 sucess 1409: 11272 bytes in 10.000000 s => 1127.200000
+Run 2: failed 5 sucess 1424: 11392 bytes in 10.000000 s => 1139.199995
+Run 3: failed 4 sucess 1430: 11440 bytes in 10.000000 s => 1143.999984
+Run 4: failed 8 sucess 1403: 11224 bytes in 10.000000 s => 1122.399989
+Run 5: failed 7 sucess 1411: 11288 bytes in 10.000000 s => 1128.799993
+Run 6: failed 7 sucess 1411: 11288 bytes in 10.000000 s => 1128.799991
+Run 7: failed 6 sucess 1418: 11344 bytes in 10.000000 s => 1134.399995
+Run 8: failed 1 sucess 1450: 11600 bytes in 10.000000 s => 1159.999994
+Run 9: failed 2 sucess 1444: 11552 bytes in 10.000000 s => 1155.199999
+Average datarate : 1136.879992 	Std dev: 11.965017
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][A5][ 0][ 0][ 0][56]
+Channel 0 open! took 0.046730
+Run 0: failed 4 sucess 1430: 11440 bytes in 10.000000 s => 1143.999992
+Run 1: failed 3 sucess 1437: 11496 bytes in 10.000000 s => 1149.599993
+Run 2: failed 2 sucess 1444: 11552 bytes in 10.000000 s => 1155.199998
+Run 3: failed 5 sucess 1423: 11384 bytes in 10.000000 s => 1138.399996
+Run 4: failed 6 sucess 1417: 11336 bytes in 10.000000 s => 1133.599983
+Run 5: failed 1 sucess 1450: 11600 bytes in 10.000000 s => 1159.999992
+Run 6: failed 7 sucess 1410: 11280 bytes in 10.000000 s => 1127.999990
+Run 7: failed 5 sucess 1424: 11392 bytes in 10.000000 s => 1139.199985
+Run 8: failed 5 sucess 1424: 11392 bytes in 10.000000 s => 1139.199991
+Run 9: failed 6 sucess 1418: 11344 bytes in 10.000000 s => 1134.399991
+Average datarate : 1142.159991 	Std dev: 9.553556
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][A5][ 0][ 0][ 0][56]
+Channel 0 open! took 0.000120
+Run 0: failed 3 sucess 1435: 11480 bytes in 10.000000 s => 1147.999984
+Run 1: failed 8 sucess 1404: 11232 bytes in 10.000000 s => 1123.199996
+Run 2: failed 4 sucess 1430: 11440 bytes in 10.000000 s => 1143.999991
+Run 3: failed 5 sucess 1424: 11392 bytes in 10.000000 s => 1139.199991
+Run 4: failed 7 sucess 1411: 11288 bytes in 10.000000 s => 1128.799987
+Run 5: failed 6 sucess 1417: 11336 bytes in 10.000000 s => 1133.599997
+Run 6: failed 9 sucess 1404: 11232 bytes in 10.000000 s => 1123.199994
+Run 7: failed 5 sucess 1417: 11336 bytes in 10.000000 s => 1133.599985
+Run 8: failed 6 sucess 1418: 11344 bytes in 10.000000 s => 1134.399987
+Run 9: failed 6 sucess 1418: 11344 bytes in 10.000000 s => 1134.399989
+Average datarate : 1134.239990 	Std dev: 7.638217
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][A5][ 0][ 0][ 0][56]
+Channel 0 open! took 0.000071
+Run 0: failed 7 sucess 1408: 11264 bytes in 10.000000 s => 1126.399985
+Run 1: failed 5 sucess 1424: 11392 bytes in 10.000000 s => 1139.199985
+Run 2: failed 3 sucess 1437: 11496 bytes in 10.000000 s => 1149.599991
+Run 3: failed 2 sucess 1443: 11544 bytes in 10.000000 s => 1154.399989
+Run 4: failed 4 sucess 1432: 11456 bytes in 10.000000 s => 1145.599989
+Run 5: failed 4 sucess 1431: 11448 bytes in 10.000000 s => 1144.799997
+Run 6: failed 2 sucess 1443: 11544 bytes in 10.000000 s => 1154.399994
+Run 7: failed 6 sucess 1417: 11336 bytes in 10.000000 s => 1133.599985
+Run 8: failed 3 sucess 1437: 11496 bytes in 10.000000 s => 1149.599993
+Run 9: failed 3 sucess 1437: 11496 bytes in 10.000000 s => 1149.599992
+Average datarate : 1144.719990 	Std dev: 8.656653
+Waiting for msgType 4E! Press any key to continue!
+pkg (4E) on Chan 0 found! Can start!
+[A4][ 9][4E][ 0][70][69][6E][67][A5][ 0][ 0][ 0][56]
+Channel 0 open! took 0.000076
+Run 0: failed 3 sucess 1436: 11488 bytes in 10.000000 s => 1148.799984
+Run 1: failed 5 sucess 1423: 11384 bytes in 10.000000 s => 1138.399995
+Run 2: failed 5 sucess 1423: 11384 bytes in 10.000000 s => 1138.399994
+Run 3: failed 3 sucess 1437: 11496 bytes in 10.000000 s => 1149.599988
+Run 4: failed 7 sucess 1411: 11288 bytes in 10.000000 s => 1128.800000
+Run 5: failed 3 sucess 1438: 11504 bytes in 10.000000 s => 1150.399989
+Run 6: failed 4 sucess 1429: 11432 bytes in 10.000000 s => 1143.199988
+Run 7: failed 3 sucess 1437: 11496 bytes in 10.000000 s => 1149.599989
+Run 8: failed 10 sucess 1389: 11112 bytes in 10.000000 s => 1111.199988
+Run 9: failed 5 sucess 1423: 11384 bytes in 10.000000 s => 1138.399992
+Average datarate : 1139.679991 	Std dev: 11.583159

@@ -1,0 +1,217 @@
+[michael@xps src]$ sudo ./ant -p /dev/ttyUSB0 -t m -n 3
+Port = /dev/ttyUSB0
+Type = m
+Message Period = 65535 (0.500008 Hz)
+Power setting is now: 0dBm
+Experiment 3: Ackowledge Data Delay
+Waiting for msgType 4E! Press any key to continue!
+Run 0: Delay 1.999917
+Run 1: Delay 1.999910
+Run 2: Delay 1.999884
+Run 3: Delay 1.999907
+Run 4: Delay 1.999832
+Run 5: Delay 1.999961
+Run 6: Delay 1.999840
+Run 7: Delay 1.999978
+Run 8: Delay 1.999896
+Run 9: Delay 1.999891
+Average delay : 1.816246 	Std dev: 0.550961
+Message Period = 32767 (1.000031 Hz)
+Waiting for msgType 4E! Press any key to continue!
+Run 0: Delay 1.000029
+Run 1: Delay 0.999964
+Run 2: Delay 0.999934
+Run 3: Delay 0.999906
+Run 4: Delay 0.999914
+Run 5: Delay 0.999910
+Run 6: Delay 0.999962
+Run 7: Delay 0.999881
+Run 8: Delay 0.999958
+Run 9: Delay 0.999970
+Average delay : 0.999943 	Std dev: 0.000040
+Message Period = 16383 (2.000122 Hz)
+Waiting for msgType 4E! Press any key to continue!
+Run 0: Delay 0.494833
+Run 1: Delay 0.499966
+Run 2: Delay 0.499873
+Run 3: Delay 0.499936
+Run 4: Delay 0.499937
+Run 5: Delay 0.499942
+Run 6: Delay 0.499934
+Run 7: Delay 0.499935
+Run 8: Delay 0.499887
+Run 9: Delay 0.499937
+Average delay : 0.499418 	Std dev: 0.001529
+Message Period = 8191 (4.000488 Hz)
+Waiting for msgType 4E! Press any key to continue!
+Run 0: Delay 0.173012
+Run 1: Delay 0.249920
+Run 2: Delay 0.249943
+Run 3: Delay 0.249916
+Run 4: Delay 0.249943
+Run 5: Delay 0.249965
+Run 6: Delay 0.249943
+Run 7: Delay 0.249933
+Run 8: Delay 0.249944
+Run 9: Delay 0.249965
+Average delay : 0.242248 	Std dev: 0.023079
+Message Period = 4095 (8.001954 Hz)
+Waiting for msgType 4E! Press any key to continue!
+Run 0: Delay 0.088357
+Run 1: Delay 0.124976
+Run 2: Delay 0.124848
+Run 3: Delay 0.124938
+Run 4: Delay 0.124915
+Run 5: Delay 0.124967
+Run 6: Delay 0.124921
+Run 7: Delay 0.124943
+Run 8: Delay 0.124960
+Run 9: Delay 0.124957
+Average delay : 0.121278 	Std dev: 0.010974
+Message Period = 2047 (16.007816 Hz)
+Waiting for msgType 4E! Press any key to continue!
+Run 0: Delay 0.062416
+Run 1: Delay 0.062437
+Run 2: Delay 0.062401
+Run 3: Delay 0.062491
+Run 4: Delay 0.062424
+Run 5: Delay 0.062406
+Run 6: Delay 0.062473
+Run 7: Delay 0.062440
+Run 8: Delay 0.062402
+Run 9: Delay 0.062487
+Average delay : 0.061044 	Std dev: 0.004189
+Message Period = 1023 (32.031281 Hz)
+Waiting for msgType 4E! Press any key to continue!
+Run 0: Delay 0.022871
+Run 1: Delay 0.031298
+Run 2: Delay 0.031102
+Run 3: Delay 0.031183
+Run 4: Delay 0.031231
+Run 5: Delay 0.031189
+Run 6: Delay 0.031206
+Run 7: Delay 0.031184
+Run 8: Delay 0.031169
+Run 9: Delay 0.031193
+Average delay : 0.030363 	Std dev: 0.002498
+Message Period = 511 (64.125245 Hz)
+Waiting for msgType 4E! Press any key to continue!
+Run 0: Delay 0.021685
+Run 1: Delay 0.015587
+Run 2: Delay 0.015568
+Run 3: Delay 0.015569
+Run 4: Delay 0.015604
+Run 5: Delay 0.015576
+Run 6: Delay 0.015572
+Run 7: Delay 0.015518
+Run 8: Delay 0.015569
+Run 9: Delay 0.015573
+Average delay : 0.016182 	Std dev: 0.001834
+Message Period = 501 (65.405190 Hz)
+Run 0: Delay 0.015368
+Run 1: Delay 0.015254
+Run 2: Delay 0.015448
+Run 3: Delay 0.015208
+Run 4: Delay 0.015251
+Run 5: Delay 0.015312
+Run 6: Delay 0.015236
+Run 7: Delay 0.015241
+Run 8: Delay 0.015321
+Run 9: Delay 0.015259
+Average delay : 0.015290 	Std dev: 0.000069
+Message Period = 491 (66.737271 Hz)
+Run 0: Delay 0.015074
+Run 1: Delay 0.014947
+Run 2: Delay 0.014947
+Run 3: Delay 0.014950
+Run 4: Delay 0.015018
+Run 5: Delay 0.014933
+Run 6: Delay 0.014952
+Run 7: Delay 0.014941
+Run 8: Delay 0.014974
+Run 9: Delay 0.014955
+Average delay : 0.014969 	Std dev: 0.000042
+Message Period = 481 (68.124740 Hz)
+Run 0: Delay 0.028445
+Run 1: Delay 0.014695
+Run 2: Delay 0.014623
+Run 3: Delay 0.014652
+Run 4: Delay 0.014666
+Run 5: Delay 0.014640
+Run 6: Delay 0.014641
+Run 7: Delay 0.014646
+Run 8: Delay 0.014683
+Run 9: Delay 0.014654
+Average delay : 0.016035 	Std dev: 0.004137
+Message Period = 476 (68.840336 Hz)
+Run 0: Delay 0.020347
+Run 1: Delay 0.014477
+Run 2: Delay 0.014467
+Run 3: Delay 0.014528
+Run 4: Delay 0.014491
+Run 5: Delay 0.014477
+Run 6: Delay 0.014533
+Run 7: Delay 0.014506
+Run 8: Delay 0.014457
+Run 9: Delay 0.014517
+Average delay : 0.015080 	Std dev: 0.001756
+Message Period = 473 (69.276956 Hz)
+Run 0: Delay 0.016740
+Run 1: Delay 0.014564
+Run 2: Delay 0.014438
+Run 3: Delay 0.028836
+Run 4: Delay 0.014437
+Run 5: Delay 0.028836
+Run 6: Delay 0.028837
+Run 7: Delay 0.028822
+Run 8: Delay 0.014448
+Run 9: Delay 0.028847
+Average delay : 0.021880 	Std dev: 0.006985
+Message Period = 471 (69.571125 Hz)
+Run 0: Delay 0.020770
+Run 1: Delay 0.028748
+Run 2: Delay 0.028708
+Run 3: Delay 0.028750
+Run 4: Delay 0.028736
+Run 5: Delay 0.028709
+Run 6: Delay 0.028716
+Run 7: Delay 0.028813
+Run 8: Delay 0.028591
+Run 9: Delay 0.028720
+Average delay : 0.027926 	Std dev: 0.002386
+Message Period = 400 (81.920000 Hz)
+Run 0: Delay 0.025393
+Run 1: Delay 0.024382
+Run 2: Delay 0.024398
+Run 3: Delay 0.024395
+Run 4: Delay 0.024366
+Run 5: Delay 0.024411
+Run 6: Delay 0.024421
+Run 7: Delay 0.024345
+Run 8: Delay 0.024357
+Run 9: Delay 0.024446
+Average delay : 0.024491 	Std dev: 0.000302
+Message Period = 350 (93.622875 Hz)
+Run 0: Delay 0.024845
+Run 1: Delay 0.021320
+Run 2: Delay 0.021346
+Run 3: Delay 0.021283
+Run 4: Delay 0.021339
+Run 5: Delay 0.021432
+Run 6: Delay 0.021283
+Run 7: Delay 0.021347
+Run 8: Delay 0.021294
+Run 9: Delay 0.021344
+Average delay : 0.021683 	Std dev: 0.001055
+Message Period = 300 (109.226667 Hz)
+Run 0: Delay 0.017467
+Run 1: Delay 0.018257
+Run 2: Delay 0.018313
+Run 3: Delay 0.018284
+Run 4: Delay 0.018285
+Run 5: Delay 0.018350
+Run 6: Delay 0.018204
+Run 7: Delay 0.018286
+Run 8: Delay 0.018284
+Run 9: Delay 0.018273
+Average delay : 0.018200 	Std dev: 0.000247

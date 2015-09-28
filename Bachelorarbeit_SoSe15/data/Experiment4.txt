@@ -1,0 +1,215 @@
+[michael@xps src]$ sudo ./ant -p /dev/ttyUSB0 -t m -n 3
+Port = /dev/ttyUSB0
+Type = m
+Message Period = 65535 (0.500008 Hz)
+Power setting is now: 0dBm
+Experiment 3: Ackowledge Data Transfer between two nodes
+Waiting for msgType 4F! Press any key to continue!
+Run 0: failed 1 sucess 4: 32 bytes in 10.000000 s => 3.200000
+Run 1: failed 0 sucess 5: 40 bytes in 10.000000 s => 4.000000
+Run 2: failed 1 sucess 4: 32 bytes in 10.000000 s => 3.200000
+Run 3: failed 1 sucess 4: 32 bytes in 10.000000 s => 3.200000
+Run 4: failed 0 sucess 5: 40 bytes in 10.000000 s => 4.000000
+Run 5: failed 0 sucess 5: 40 bytes in 10.000000 s => 4.000000
+Run 6: failed 0 sucess 5: 40 bytes in 10.000000 s => 4.000000
+Run 7: failed 0 sucess 5: 40 bytes in 10.000000 s => 4.000000
+Run 8: failed 0 sucess 5: 40 bytes in 10.000000 s => 4.000000
+Run 9: failed 0 sucess 5: 40 bytes in 10.000000 s => 4.000000
+Average datarate : 3.760000 	Std dev: 0.366606
+
+Message Period = 32767 (1.000031 Hz)
+Waiting for msgType 4F! Press any key to continue!
+Run 0: failed 0 sucess 10: 80 bytes in 10.000000 s => 8.000000
+Run 1: failed 0 sucess 10: 80 bytes in 10.000000 s => 8.000000
+Run 2: failed 0 sucess 10: 80 bytes in 10.000000 s => 8.000000
+Run 3: failed 1 sucess 9: 72 bytes in 10.000000 s => 7.200000
+Run 4: failed 1 sucess 9: 72 bytes in 10.000000 s => 7.200000
+Run 5: failed 0 sucess 10: 80 bytes in 10.000000 s => 8.000000
+Run 6: failed 1 sucess 9: 72 bytes in 10.000000 s => 7.200000
+Run 7: failed 0 sucess 10: 80 bytes in 10.000000 s => 8.000000
+Run 8: failed 0 sucess 10: 80 bytes in 10.000000 s => 8.000000
+Run 9: failed 0 sucess 10: 80 bytes in 10.000000 s => 8.000000
+Average datarate : 7.760000 	Std dev: 0.366606
+
+Message Period = 16383 (2.000122 Hz)
+Waiting for msgType 4F! Press any key to continue!
+Run 0: failed 1 sucess 19: 152 bytes in 10.000000 s => 15.200000
+Run 1: failed 1 sucess 19: 152 bytes in 10.000000 s => 15.200000
+Run 2: failed 0 sucess 20: 160 bytes in 10.000000 s => 16.000000
+Run 3: failed 1 sucess 19: 152 bytes in 10.000000 s => 15.200000
+Run 4: failed 1 sucess 19: 152 bytes in 10.000000 s => 15.200000
+Run 5: failed 0 sucess 20: 160 bytes in 10.000000 s => 16.000000
+Run 6: failed 1 sucess 19: 152 bytes in 10.000000 s => 15.200000
+Run 7: failed 1 sucess 19: 152 bytes in 10.000000 s => 15.200000
+Run 8: failed 0 sucess 20: 160 bytes in 10.000000 s => 16.000000
+Run 9: failed 0 sucess 20: 160 bytes in 10.000000 s => 16.000000
+Average datarate : 15.520000 	Std dev: 0.391918
+
+Message Period = 8191 (4.000488 Hz)
+Waiting for msgType 4F! Press any key to continue!
+Run 0: failed 2 sucess 38: 304 bytes in 10.000000 s => 30.400000
+Run 1: failed 0 sucess 40: 320 bytes in 10.000000 s => 32.000000
+Run 2: failed 0 sucess 40: 320 bytes in 10.000000 s => 32.000000
+Run 3: failed 0 sucess 40: 320 bytes in 10.000000 s => 32.000000
+Run 4: failed 0 sucess 40: 320 bytes in 10.000000 s => 32.000000
+Run 5: failed 0 sucess 40: 320 bytes in 10.000000 s => 32.000000
+Run 6: failed 1 sucess 39: 312 bytes in 10.000000 s => 31.200000
+Run 7: failed 0 sucess 40: 320 bytes in 10.000000 s => 32.000000
+Run 8: failed 0 sucess 40: 320 bytes in 10.000000 s => 31.999999
+Run 9: failed 2 sucess 38: 304 bytes in 10.000000 s => 30.400000
+Average datarate : 31.600000 	Std dev: 0.644981
+
+Message Period = 4095 (8.001954 Hz)
+Waiting for msgType 4F! Press any key to continue!
+Run 0: failed 1 sucess 79: 632 bytes in 10.000000 s => 63.200000
+Run 1: failed 2 sucess 78: 624 bytes in 10.000000 s => 62.400000
+Run 2: failed 1 sucess 79: 632 bytes in 10.000000 s => 63.200000
+Run 3: failed 0 sucess 80: 640 bytes in 10.000000 s => 64.000000
+Run 4: failed 0 sucess 80: 640 bytes in 10.000000 s => 64.000000
+Run 5: failed 2 sucess 78: 624 bytes in 10.000000 s => 62.399999
+Run 6: failed 3 sucess 77: 616 bytes in 10.000000 s => 61.600000
+Run 7: failed 2 sucess 78: 624 bytes in 10.000000 s => 62.399999
+Run 8: failed 1 sucess 79: 632 bytes in 10.000000 s => 63.200000
+Run 9: failed 2 sucess 78: 624 bytes in 10.000000 s => 62.399999
+Average datarate : 62.880000 	Std dev: 0.733212
+
+Message Period = 2047 (16.007816 Hz)
+Waiting for msgType 4F! Press any key to continue!
+Run 0: failed 3 sucess 157: 1256 bytes in 10.000000 s => 125.599999
+Run 1: failed 2 sucess 158: 1264 bytes in 10.000000 s => 126.399999
+Run 2: failed 3 sucess 157: 1256 bytes in 10.000000 s => 125.599999
+Run 3: failed 1 sucess 159: 1272 bytes in 10.000000 s => 127.199999
+Run 4: failed 3 sucess 158: 1264 bytes in 10.000000 s => 126.399999
+Run 5: failed 3 sucess 157: 1256 bytes in 10.000000 s => 125.599999
+Run 6: failed 2 sucess 158: 1264 bytes in 10.000000 s => 126.400000
+Run 7: failed 2 sucess 158: 1264 bytes in 10.000000 s => 126.400000
+Run 8: failed 0 sucess 160: 1280 bytes in 10.000000 s => 127.999999
+Run 9: failed 1 sucess 159: 1272 bytes in 10.000000 s => 127.199999
+Average datarate : 126.479999 	Std dev: 0.754718
+
+Message Period = 1023 (32.031281 Hz)
+Waiting for msgType 4F! Press any key to continue!
+Run 0: failed 2 sucess 318: 2544 bytes in 10.000000 s => 254.399999
+Run 1: failed 5 sucess 315: 2520 bytes in 10.000000 s => 251.999998
+Run 2: failed 6 sucess 314: 2512 bytes in 10.000000 s => 251.199998
+Run 3: failed 6 sucess 315: 2520 bytes in 10.000000 s => 251.999998
+Run 4: failed 9 sucess 311: 2488 bytes in 10.000000 s => 248.799998
+Run 5: failed 4 sucess 316: 2528 bytes in 10.000000 s => 252.800000
+Run 6: failed 4 sucess 317: 2536 bytes in 10.000000 s => 253.599998
+Run 7: failed 5 sucess 315: 2520 bytes in 10.000000 s => 251.999999
+Run 8: failed 5 sucess 315: 2520 bytes in 10.000000 s => 251.999998
+Run 9: failed 9 sucess 311: 2488 bytes in 10.000000 s => 248.799997
+Average datarate : 251.759998 	Std dev: 1.717673
+
+Message Period = 511 (64.125245 Hz)
+Waiting for msgType 4F! Press any key to continue!
+Run 0: failed 16 sucess 625: 5000 bytes in 10.000000 s => 499.999998
+Run 1: failed 11 sucess 629: 5032 bytes in 10.000000 s => 503.199996
+Run 2: failed 13 sucess 627: 5016 bytes in 10.000000 s => 501.599997
+Run 3: failed 14 sucess 627: 5016 bytes in 10.000000 s => 501.599996
+Run 4: failed 10 sucess 632: 5056 bytes in 10.000000 s => 505.599995
+Run 5: failed 8 sucess 632: 5056 bytes in 10.000000 s => 505.599994
+Run 6: failed 10 sucess 630: 5040 bytes in 10.000000 s => 503.999998
+Run 7: failed 6 sucess 635: 5080 bytes in 10.000000 s => 507.999995
+Run 8: failed 8 sucess 633: 5064 bytes in 10.000000 s => 506.399998
+Run 9: failed 11 sucess 629: 5032 bytes in 10.000000 s => 503.199993
+Average datarate : 503.919996 	Std dev: 2.358304
+
+
+Message Period = 501 (65.405190 Hz)
+Waiting for msgType 4F! Press any key to continue!
+Run 0: failed 6 sucess 647: 5176 bytes in 10.000000 s => 517.599993
+Run 1: failed 7 sucess 647: 5176 bytes in 10.000000 s => 517.599994
+Run 2: failed 10 sucess 644: 5152 bytes in 10.000000 s => 515.200000
+Run 3: failed 6 sucess 648: 5184 bytes in 10.000000 s => 518.399999
+Run 4: failed 11 sucess 643: 5144 bytes in 10.000000 s => 514.399999
+Run 5: failed 11 sucess 643: 5144 bytes in 10.000000 s => 514.399998
+Run 6: failed 10 sucess 644: 5152 bytes in 10.000000 s => 515.199995
+Run 7: failed 9 sucess 645: 5160 bytes in 10.000000 s => 515.999996
+Run 8: failed 12 sucess 641: 5128 bytes in 10.000000 s => 512.799998
+Run 9: failed 16 sucess 637: 5096 bytes in 10.000000 s => 509.599994
+Average datarate : 515.119997 	Std dev: 2.464467
+
+Message Period = 491 (66.737271 Hz)
+Waiting for msgType 4F! Press any key to continue!
+Run 0: failed 6 sucess 660: 5280 bytes in 10.000000 s => 527.999996
+Run 1: failed 5 sucess 662: 5296 bytes in 10.000000 s => 529.599994
+Run 2: failed 9 sucess 657: 5256 bytes in 10.000000 s => 525.599995
+Run 3: failed 12 sucess 655: 5240 bytes in 10.000000 s => 523.999994
+Run 4: failed 7 sucess 660: 5280 bytes in 10.000000 s => 527.999995
+Run 5: failed 13 sucess 653: 5224 bytes in 10.000000 s => 522.399996
+Run 6: failed 10 sucess 658: 5264 bytes in 10.000000 s => 526.400000
+Run 7: failed 7 sucess 659: 5272 bytes in 10.000000 s => 527.199998
+Run 8: failed 12 sucess 654: 5232 bytes in 10.000000 s => 523.199996
+Run 9: failed 11 sucess 656: 5248 bytes in 10.000000 s => 524.799999
+Average datarate : 525.919996 	Std dev: 2.211244
+
+Message Period = 481 (68.124740 Hz)
+Waiting for msgType 4F! Press any key to continue!
+Run 0: failed 13 sucess 666: 5328 bytes in 10.000000 s => 532.799996
+Run 1: failed 15 sucess 665: 5320 bytes in 10.000000 s => 531.999999
+Run 2: failed 12 sucess 665: 5320 bytes in 10.000000 s => 531.999997
+Run 3: failed 10 sucess 671: 5368 bytes in 10.000000 s => 536.799993
+Run 4: failed 13 sucess 667: 5336 bytes in 10.000000 s => 533.599998
+Run 5: failed 14 sucess 665: 5320 bytes in 10.000000 s => 531.999992
+Run 6: failed 8 sucess 671: 5368 bytes in 10.000000 s => 536.799994
+Run 7: failed 11 sucess 669: 5352 bytes in 10.000000 s => 535.199999
+Run 8: failed 14 sucess 665: 5320 bytes in 10.000000 s => 531.999995
+Run 9: failed 14 sucess 665: 5320 bytes in 10.000000 s => 531.999995
+Average datarate : 533.519996 	Std dev: 1.908297
+
+Message Period = 476 (68.840336 Hz)
+Waiting for msgType 4F! Press any key to continue!
+Run 0: failed 13 sucess 655: 5240 bytes in 10.000000 s => 523.999991
+Run 1: failed 6 sucess 662: 5296 bytes in 10.000000 s => 529.599999
+Run 2: failed 9 sucess 660: 5280 bytes in 10.000000 s => 527.999997
+Run 3: failed 14 sucess 657: 5256 bytes in 10.000000 s => 525.599993
+Run 4: failed 8 sucess 660: 5280 bytes in 10.000000 s => 527.999993
+Run 5: failed 11 sucess 661: 5288 bytes in 10.000000 s => 528.799999
+Run 6: failed 10 sucess 659: 5272 bytes in 10.000000 s => 527.199998
+Run 7: failed 4 sucess 661: 5288 bytes in 10.000000 s => 528.800000
+Run 8: failed 9 sucess 657: 5256 bytes in 10.000000 s => 525.599994
+Run 9: failed 7 sucess 663: 5304 bytes in 10.000000 s => 530.399998
+Average datarate : 527.599996 	Std dev: 1.901581
+
+Message Period = 473 (69.276956 Hz)
+Waiting for msgType 4F! Press any key to continue!
+Run 0: failed 2 sucess 357: 2856 bytes in 10.000000 s => 285.599996
+Run 1: failed 10 sucess 355: 2840 bytes in 10.000000 s => 283.999996
+Run 2: failed 6 sucess 356: 2848 bytes in 10.000000 s => 284.799997
+Run 3: failed 9 sucess 353: 2824 bytes in 10.000000 s => 282.399997
+Run 4: failed 9 sucess 351: 2808 bytes in 10.000000 s => 280.799997
+Run 5: failed 8 sucess 353: 2824 bytes in 10.000000 s => 282.399996
+Run 6: failed 2 sucess 358: 2864 bytes in 10.000000 s => 286.399996
+Run 7: failed 4 sucess 356: 2848 bytes in 10.000000 s => 284.799996
+Run 8: failed 7 sucess 358: 2864 bytes in 10.000000 s => 286.399996
+Run 9: failed 6 sucess 355: 2840 bytes in 10.000000 s => 283.999998
+Average datarate : 284.159996 	Std dev: 1.745394
+
+Message Period = 471 (69.571125 Hz)
+Waiting for msgType 4F! Press any key to continue!
+Run 0: failed 8 sucess 344: 2752 bytes in 10.000000 s => 275.200000
+Run 1: failed 6 sucess 347: 2776 bytes in 10.000000 s => 277.599996
+Run 2: failed 8 sucess 343: 2744 bytes in 10.000000 s => 274.399999
+Run 3: failed 9 sucess 343: 2744 bytes in 10.000000 s => 274.399996
+Run 4: failed 4 sucess 346: 2768 bytes in 10.000000 s => 276.799996
+Run 5: failed 10 sucess 343: 2744 bytes in 10.000000 s => 274.399996
+Run 6: failed 8 sucess 275: 2200 bytes in 10.000000 s => 219.999999
+Run 7: failed 4 sucess 345: 2760 bytes in 10.000000 s => 275.999996
+Run 8: failed 12 sucess 344: 2752 bytes in 10.000000 s => 275.200000
+Run 9: failed 8 sucess 344: 2752 bytes in 10.000000 s => 275.199998
+Average datarate : 269.919998 	Std dev: 16.670740
+
+Message Period = 255 (128.501961 Hz)
+Waiting for msgType 4F! Press any key to continue!
+Run 0: failed 641 sucess 1: 8 bytes in 10.000000 s => 0.800000
+Run 1: failed 642 sucess 0: 0 bytes in 10.000000 s => 0.000000
+Run 2: failed 641 sucess 1: 8 bytes in 10.000000 s => 0.800000
+Run 3: failed 642 sucess 0: 0 bytes in 10.000000 s => 0.000000
+Run 4: failed 642 sucess 0: 0 bytes in 10.000000 s => 0.000000
+Run 5: failed 642 sucess 0: 0 bytes in 10.000000 s => 0.000000
+Run 6: failed 642 sucess 0: 0 bytes in 10.000000 s => 0.000000
+Run 7: failed 641 sucess 0: 0 bytes in 10.000000 s => 0.000000
+Run 8: failed 643 sucess 0: 0 bytes in 10.000000 s => 0.000000
+Run 9: failed 641 sucess 0: 0 bytes in 10.000000 s => 0.000000
+Average datarate : 0.160000 	Std dev: 0.320000

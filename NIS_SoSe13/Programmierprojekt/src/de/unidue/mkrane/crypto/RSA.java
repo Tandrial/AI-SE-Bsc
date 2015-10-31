@@ -7,10 +7,10 @@ public class RSA {
 		int e = 1;
 		int d = 1;
 
-		while (Utils.Modulo(e, phiN) == 0)
+		while (Utils.modulo(e, phiN) == 0)
 			e++;
 
-		while (Utils.Modulo(e * d, phiN) != 1 || e == d)
+		while (Utils.modulo(e * d, phiN) != 1 || e == d)
 			d++;
 
 		return new int[] {n, e, d};
@@ -31,7 +31,7 @@ public class RSA {
 	}
 
 	public static void main(String[] args) {
-		int[] primes = Utils.GetPrimes(1000);
+		int[] primes = Utils.getPrimes(1000);
 		int p = primes[Utils.randomInt(0, primes.length - 1)];
 		int q = primes[Utils.randomInt(0, primes.length - 1)];
 		System.out.println(p + " " + q);
@@ -46,21 +46,21 @@ public class RSA {
 		int[] chars = new int[klar.length()];
 
 		for (int i = 0; i < chars.length; i++) {
-			chars[i] = Utils.CharToDez(klar.charAt(i));
+			chars[i] = Utils.convertCharToDez(klar.charAt(i));
 		}
 
 		int[] result = RSA.encrypt(keys, chars);
 
 		System.out.println("Klartext:  " + klar);
 
-		System.out.println("Encrypted: " + Utils.IntArrayToString(result, "_"));
+		System.out.println("Encrypted: " + Utils.buildStringFromArray(result, "_"));
 
 		result = RSA.decrypt(keys, chars);
 
 		StringBuilder sb = new StringBuilder();
 
 		for (int i = 0; i < result.length; i++) {
-			sb.append(Utils.DezToChar(result[i]));
+			sb.append(Utils.convertDezToChar(result[i]));
 		}
 		String klar2 = sb.toString();
 

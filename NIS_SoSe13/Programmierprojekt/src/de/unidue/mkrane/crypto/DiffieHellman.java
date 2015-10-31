@@ -11,34 +11,34 @@ public class DiffieHellman {
 	}
 
 	public static String encrypt(String text, int secret) {
-		String s = Utils.DezToBin(secret);
+		String s = Utils.convertDezToBin(secret);
 
 		StringBuilder result = new StringBuilder();
 
-		String xor = Utils.XOR(Utils.CharToBin(text.charAt(0)), s);
+		String xor = Utils.XOR(Utils.convertCharToBin(text.charAt(0)), s);
 
-		result.append(Utils.BinToDez(xor));
+		result.append(Utils.convertBinToDez(xor));
 
 		for (int i = 1; i < text.length(); i++) {
 			char c = text.charAt(i);
-			xor = Utils.XOR(Utils.CharToBin(c), s);
+			xor = Utils.XOR(Utils.convertCharToBin(c), s);
 
-			result.append("_" + Utils.BinToDez(xor));
+			result.append("_" + Utils.convertBinToDez(xor));
 		}
 
 		return result.toString();
 	}
 
 	public static String decrypt(String[] text, int secret) {
-		String s = Utils.DezToBin(secret);
+		String s = Utils.convertDezToBin(secret);
 
 		StringBuilder result = new StringBuilder();
 
 		for (int i = 0; i < text.length; i++) {
 			String xor = Utils
-					.XOR(Utils.DezToBin(Integer.parseInt(text[i])), s);
+					.XOR(Utils.convertDezToBin(Integer.parseInt(text[i])), s);
 
-			result.append(Utils.BinToChar(xor));
+			result.append(Utils.convertBinToChar(xor));
 		}
 
 		return result.toString();

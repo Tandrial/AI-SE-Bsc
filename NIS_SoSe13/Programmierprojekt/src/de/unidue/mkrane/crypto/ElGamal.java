@@ -12,7 +12,7 @@ public class ElGamal {
 	}
 
 	private static int calcP() {
-		int[] primes = Utils.GetPrimes(10000);
+		int[] primes = Utils.getPrimes(10000);
 		int down = Utils.randomInt(primes.length / 10, primes.length - 1);
 
 		int q = primes[down--] * 2 + 1;
@@ -51,7 +51,7 @@ public class ElGamal {
 		int[] text = new int[sa0.length() + 1];
 
 		for (int i = 1; i < text.length; i++) {
-			text[i] = Utils.CharToDez(sa0.charAt(i - 1));
+			text[i] = Utils.convertCharToDez(sa0.charAt(i - 1));
 		}
 
 		int k = Utils.randomInt(1, p - 2);
@@ -63,16 +63,16 @@ public class ElGamal {
 
 		for (int i = 1; i < text.length; i++) {
 			text[i] = Utils
-					.Modulo(Utils.powerModulo(beta, k, p)
-							* Utils.Modulo(text[i], p), p);
+					.modulo(Utils.powerModulo(beta, k, p)
+							* Utils.modulo(text[i], p), p);
 		}
 
 		StringBuilder result = new StringBuilder();
 
-		result.append(Utils.DezToHex(text[0]));
+		result.append(Utils.convertDezToHex(text[0]));
 
 		for (int i = 1; i < text.length; i++) {
-			result.append("_" + Utils.DezToHex(text[i]));
+			result.append("_" + Utils.convertDezToHex(text[i]));
 		}
 		return result.toString();
 	}
@@ -81,17 +81,17 @@ public class ElGamal {
 
 		String[] cypher = sa0.split("_");
 
-		int y1 = Utils.HexToDez(cypher[0]);
+		int y1 = Utils.convertHexToDez(cypher[0]);
 		int K_1 = Utils.powerModulo(y1, p - 1 - a, p);
 
 		StringBuilder result = new StringBuilder();
 
 		for (int i = 1; i < cypher.length; i++) {
-			int y2 = Utils.HexToDez(cypher[i]);
+			int y2 = Utils.convertHexToDez(cypher[i]);
 
-			int c = Utils.Modulo(y2 * K_1, p);
+			int c = Utils.modulo(y2 * K_1, p);
 
-			result.append(Utils.DezToChar(c));
+			result.append(Utils.convertDezToChar(c));
 		}
 
 		return result.toString();

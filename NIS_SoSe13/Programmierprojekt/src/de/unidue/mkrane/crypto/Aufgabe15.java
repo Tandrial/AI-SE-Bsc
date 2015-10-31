@@ -16,11 +16,11 @@ public class Aufgabe15 {
 	}
 
 	public static String getSolution(String sa0, String sa1) {
-		int[] key = Utils.StringToIntArray(sa0, "_");
+		int[] key = Utils.splitStringToIntArray(sa0, "_");
 
 		key = RC4.rndGen(key, sa1.length());
 
-		return Utils.IntArrayToString(key);
+		return Utils.buildStringFromArray(key);
 	}
 
 	/**

@@ -18,8 +18,8 @@ public class Aufgabe07 {
 		String subKey = Utils.paddTo("0", 48);
 
 		String b = DES.IP(sa0);
-		String l = DES.GetL(b);
-		String r = DES.GetR(b);
+		String l = DES.getL(b);
+		String r = DES.getR(b);
 
 		for (int i = 0; i < ia0; i++) {
 			String tmpR = r;

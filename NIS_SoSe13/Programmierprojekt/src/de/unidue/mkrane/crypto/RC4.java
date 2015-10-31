@@ -11,7 +11,7 @@ public class RC4 {
 		}
 		int j = 0;
 		for (int i = 0; i < mod; i++) {
-			j = Utils.Modulo(j + sBox[i] + key[Utils.Modulo(i, mod)], mod);
+			j = Utils.modulo(j + sBox[i] + key[Utils.modulo(i, mod)], mod);
 			int swap = sBox[i];
 			sBox[i] = sBox[j];
 			sBox[j] = swap;
@@ -29,21 +29,21 @@ public class RC4 {
 
 		for (int n = 0; n < anzahl; n++) {
 
-			i = Utils.Modulo(i + 1, mod);
-			j = Utils.Modulo(j + key[i], mod);
+			i = Utils.modulo(i + 1, mod);
+			j = Utils.modulo(j + key[i], mod);
 
 			int swap = key[i];
 			key[i] = key[j];
 			key[j] = swap;
 
-			result[n] = key[Utils.Modulo(key[i] + key[j], mod)];
+			result[n] = key[Utils.modulo(key[i] + key[j], mod)];
 		}
 		return result;
 	}
 
 	public static String encrypt(String key, String klar) {
 
-		int[] sBox = Utils.StringToIntArray(key, "_");
+		int[] sBox = Utils.splitStringToIntArray(key, "_");
 
 		sBox = RC4.initiateSBox(sBox);
 		sBox = RC4.rndGen(sBox, klar.length());
@@ -52,8 +52,8 @@ public class RC4 {
 
 		for (int i = 0; i < klar.length(); i++) {
 
-			String keyy = Utils.DezToBin(sBox[i]);
-			String textc = Utils.CharToBin(klar.charAt(i));
+			String keyy = Utils.convertDezToBin(sBox[i]);
+			String textc = Utils.convertCharToBin(klar.charAt(i));
 			result.append(Utils.XOR(keyy, textc));
 		}
 		return result.toString();
@@ -62,7 +62,7 @@ public class RC4 {
 
 	public static String decrypt(String key, String cypher) {
 
-		int[] sBox = Utils.StringToIntArray(key, "_");
+		int[] sBox = Utils.splitStringToIntArray(key, "_");
 
 		String[] text = Utils.splitIntoChunksOf(cypher, 8);
 
@@ -72,10 +72,10 @@ public class RC4 {
 		StringBuilder result = new StringBuilder();
 
 		for (int i = 0; i < text.length; i++) {
-			String keyy = Utils.DezToBin(sBox[i]);
+			String keyy = Utils.convertDezToBin(sBox[i]);
 			String klar = Utils.XOR(keyy, text[i]);
 
-			result.append(Utils.BinToChar(Utils.removePadding(klar)));
+			result.append(Utils.convertBinToChar(Utils.removePadding(klar)));
 		}
 		return result.toString();
 	}
@@ -87,10 +87,10 @@ public class RC4 {
 		String klar = "lohnsteuerjahresausgleich";
 		String key = "bootsfahrt";
 
-		String keyInt = Utils.CharToDez(key.charAt(0)) + "";
+		String keyInt = Utils.convertCharToDez(key.charAt(0)) + "";
 
 		for (int i = 1; i < key.length(); i++) {
-			keyInt += "_" + Utils.CharToDez(key.charAt(i));
+			keyInt += "_" + Utils.convertCharToDez(key.charAt(i));
 		}
 
 		System.out.println("Klartext:  " + klar);

@@ -14,8 +14,8 @@ public class Aufgabe02 {
 	}
 
 	public static String getSolution(String sa0, String sa1) {
-		sa0 = Utils.HexToBin(sa0);
-		sa1 = Utils.HexToBin(sa1);
+		sa0 = Utils.convertHexToBin(sa0);
+		sa1 = Utils.convertHexToBin(sa1);
 
 		String result = Utils.XOR(sa0, sa1);
 		return Utils.removePadding(result);

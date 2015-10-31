@@ -26,16 +26,18 @@ public class Aufgabe14 {
 
 		text = AES.addRoundKey(text, keys, 0);
 
-		String result = AES.getStringFromMatrix(text);
+		StringBuilder result = new StringBuilder();
+		result.append(AES.getStringFromMatrix(text));
 
 		for (int i = 1; i < 3; i++) {
 			text = AES.subBytes(text, AESD.S);
 			text = AES.shiftRows(text);
 			text = AES.mixColumns(text);
 			text = AES.addRoundKey(text, keys, i);
-			result += "_" + AES.getStringFromMatrix(text);
+			result.append("_");
+			result.append(AES.getStringFromMatrix(text));
 		}
-		return result;
+		return result.toString();
 	}
 
 	/**

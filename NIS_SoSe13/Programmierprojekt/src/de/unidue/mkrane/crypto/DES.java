@@ -6,8 +6,8 @@ public class DES {
 		String[] subkeys = new String[16];
 		sa0 = PC1(sa0);
 
-		String l = GetL(sa0);
-		String r = GetR(sa0);
+		String l = getL(sa0);
+		String r = getR(sa0);
 
 		for (int i = 0; i < subkeys.length; i++) {
 			switch (i) {
@@ -47,8 +47,8 @@ public class DES {
 	public static String crypt(String block, String key, boolean encrypt) {
 		String[] subkeys = getRundenSchlussel(key);
 		String b = IP(block);
-		String l = GetL(b);
-		String r = GetR(b);
+		String l = getL(b);
+		String r = getR(b);
 
 		for (int i = 0; i < subkeys.length; i++) {
 			String tmpR = r;
@@ -68,7 +68,7 @@ public class DES {
 		StringBuilder result = new StringBuilder();
 
 		for (int i = 0; i < 8; i++) {
-			result.append(Utils.DezToBin(S(i, sIn[i]), 4));
+			result.append(Utils.convertDezToBin(S(i, sIn[i]), 4));
 		}
 
 		return P(result.toString());
@@ -78,8 +78,8 @@ public class DES {
 		String outer = src.charAt(0) + "" + src.charAt(src.length() - 1);
 		String inner = src.substring(1, src.length() - 1);
 
-		int r = Utils.BinToDez(outer);
-		int c = Utils.BinToDez(inner);
+		int r = Utils.convertBinToDez(outer);
+		int c = Utils.convertBinToDez(inner);
 		return DESD.S[number][r * 16 + c];
 	}
 
@@ -99,11 +99,11 @@ public class DES {
 		return permute(key, DESD.P);
 	}
 
-	public static String GetL(String key) {
+	public static String getL(String key) {
 		return key.substring(0, key.length() / 2);
 	}
 
-	public static String GetR(String key) {
+	public static String getR(String key) {
 		return key.substring(key.length() / 2);
 	}
 

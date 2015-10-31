@@ -14,7 +14,7 @@ public class Aufgabe03 {
 	}	
 
 	public static String getSolution(int ia0, int ia1) {
-		return "" + Utils.Modulo(ia0, ia1);
+		return "" + Utils.modulo(ia0, ia1);
 	}
 
 	/**

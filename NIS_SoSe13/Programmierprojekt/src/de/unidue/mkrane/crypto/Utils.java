@@ -89,7 +89,7 @@ class Utils {
 					"1110101", "1110110", "1110111", "1111000", "1111001",
 					"1111010" } };
 
-	public static String CharToBin(char c) {
+	public static String convertCharToBin(char c) {
 		for (int i = 0; i < ASCII[0].length; i++) {
 			if (ASCII[0][i].charAt(0) == c)
 				return Utils.paddTo(ASCII[1][i], 8);
@@ -97,7 +97,7 @@ class Utils {
 		return "";
 	}
 
-	public static char BinToChar(String c) {
+	public static char convertBinToChar(String c) {
 		for (int i = 0; i < ASCII[0].length; i++) {
 			if (ASCII[1][i].equals(c))
 				return ASCII[0][i].charAt(0);
@@ -105,15 +105,15 @@ class Utils {
 		return ' ';
 	}
 
-	public static int CharToDez(char c) {
-		return BinToDez(CharToBin(c));
+	public static int convertCharToDez(char c) {
+		return convertBinToDez(convertCharToBin(c));
 	}
 
-	public static char DezToChar(int c) {
-		return BinToChar(DezToBin(c));
+	public static char convertDezToChar(int c) {
+		return convertBinToChar(convertDezToBin(c));
 	}
 
-	public static String HexToBin(String a) {
+	public static String convertHexToBin(String a) {
 		StringBuilder result = new StringBuilder();
 		for (int i = 0; i < a.length(); i++) {
 			for (int j = 0; j < HexBinLookUp[0].length; j++) {
@@ -125,31 +125,31 @@ class Utils {
 		return result.toString();
 	}
 
-	public static String BinToHex(String a) {
+	public static String convertBinToHex(String a) {
 		String[] tmp = Utils.splitIntoChunksOf(a, 4);
 
 		StringBuilder result = new StringBuilder();
 		for (int i = 0; i < tmp.length; i++) {
-			result.append(HexBinLookUp[0][BinToDez(tmp[i])]);
+			result.append(HexBinLookUp[0][convertBinToDez(tmp[i])]);
 		}
 		return result.toString();
 	}
 
-	public static String DezToBin(int a) {
-		return DezToBin(a, 0);
+	public static String convertDezToBin(int a) {
+		return convertDezToBin(a, 0);
 	}
 
-	public static String DezToBin(int a, int padding) {
+	public static String convertDezToBin(int a, int padding) {
 		String result = "";
 
 		while (a > 0) {
-			result = (Modulo(a, 2) == 0 ? "0" : "1") + result;
+			result = (modulo(a, 2) == 0 ? "0" : "1") + result;
 			a /= 2;
 		}
 		return paddTo(result, padding);
 	}
 
-	public static int BinToDez(String s) {
+	public static int convertBinToDez(String s) {
 		int result = 0;
 		for (int i = 0; i < s.length(); i++) {
 			if (s.charAt(i) == '1')
@@ -158,15 +158,15 @@ class Utils {
 		return result;
 	}
 
-	public static int HexToDez(String a) {
-		return BinToDez(HexToBin(a));
+	public static int convertHexToDez(String a) {
+		return convertBinToDez(convertHexToBin(a));
 	}
 
-	public static String DezToHex(int a) {
-		return BinToHex(DezToBin(a, 0));
+	public static String convertDezToHex(int a) {
+		return convertBinToHex(convertDezToBin(a, 0));
 	}
 
-	public static int[] StringToIntArray(String text, String c) {
+	public static int[] splitStringToIntArray(String text, String c) {
 		String[] strings = text.split(c);
 
 		int[] result = new int[strings.length];
@@ -176,16 +176,17 @@ class Utils {
 		return result;
 	}
 
-	public static String IntArrayToString(int[] array) {
-		return IntArrayToString(array, "");
+	public static String buildStringFromArray(int[] array) {
+		return buildStringFromArray(array, "");
 	}
 
-	public static String IntArrayToString(int[] array, String c) {
+	public static String buildStringFromArray(int[] array, String c) {
 		StringBuilder result = new StringBuilder();
 		result.append(array[0]);
 
 		for (int i = 1; i < array.length; i++) {
-			result.append(c + array[i]);
+			result.append(c);
+			result.append(array[i]);
 		}
 		return result.toString();
 	}
@@ -215,7 +216,7 @@ class Utils {
 	}
 
 	public static String[] splitIntoChunksOf(String a, int size) {
-		while (Utils.Modulo(a.length(), size) != 0) {
+		while (Utils.modulo(a.length(), size) != 0) {
 			a = "0" + a;
 		}
 
@@ -246,7 +247,7 @@ class Utils {
 		return result.toString();
 	}
 
-	public static int Modulo(int a, int b) {
+	public static int modulo(int a, int b) {
 		while (a < 0)
 			a += b;
 		while (a >= b)
@@ -260,12 +261,12 @@ class Utils {
 
 		for (int i = 0; i < b; i++) {
 			result *= a;
-			result = Modulo(result, c);
+			result = modulo(result, c);
 		}
 		return result;
 	}
 
-	public static String Modulo(String a, String b) {
+	public static String modulo(String a, String b) {
 		if (a.length() > b.length())
 			b = addPadding(b, a.length());
 		else
@@ -282,12 +283,12 @@ class Utils {
 		return paddTo(result.toString(), 8);
 	}
 
-	public static String Faktor(int a) {
+	public static String faktorNumber(int a) {
 		StringBuilder result = new StringBuilder();
 		int max = (int) Math.sqrt(a);
 
 		for (int i = 2; i < max; i++) {
-			if (Modulo(a, i) == 0) {
+			if (modulo(a, i) == 0) {
 				a /= i;
 				result.append(i + ",");
 				i = 1;
@@ -298,7 +299,7 @@ class Utils {
 		return result.toString();
 	}
 
-	public static int[] GetPrimes(int max) {
+	public static int[] getPrimes(int max) {
 		boolean[] notPrime = new boolean[max + 1];
 		int n = max - 1;
 
@@ -308,7 +309,7 @@ class Utils {
 			for (int j = i + 1; j < notPrime.length; j++) {
 				if (notPrime[j])
 					continue;
-				if (Modulo(j, i) == 0) {
+				if (modulo(j, i) == 0) {
 					notPrime[j] = true;
 					n--;
 				}

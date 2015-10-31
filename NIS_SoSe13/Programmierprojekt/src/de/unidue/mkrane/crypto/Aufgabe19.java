@@ -21,11 +21,11 @@ public class Aufgabe19 {
 		int[] chars = new int[sa0.length()];
 
 		for (int i = 0; i < chars.length; i++) {
-			chars[i] = Utils.CharToDez(sa0.charAt(i));
+			chars[i] = Utils.convertCharToDez(sa0.charAt(i));
 		}
 
 		int[] result = RSA.encrypt(params, chars);
-		return Utils.IntArrayToString(result, "_");
+		return Utils.buildStringFromArray(result, "_");
 	}
 
 	/**

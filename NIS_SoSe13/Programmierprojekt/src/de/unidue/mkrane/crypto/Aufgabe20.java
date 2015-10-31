@@ -21,7 +21,7 @@ import de.unidue.iem.tdr.nis.client.TaskObject;
 public class Aufgabe20 {
 
 	public static String[] calcParams() {
-		int[] primes = Utils.GetPrimes(1000);
+		int[] primes = Utils.getPrimes(1000);
 		int p = primes[Utils.randomInt(0, primes.length - 1)];
 		int q = primes[Utils.randomInt(0, primes.length - 1)];
 
@@ -46,13 +46,13 @@ public class Aufgabe20 {
 		int[] params = { Integer.parseInt(para[0]), Integer.parseInt(para[1]),
 				Integer.parseInt(para[2]) };
 
-		int[] chars = Utils.StringToIntArray(sa0, "_");
+		int[] chars = Utils.splitStringToIntArray(sa0, "_");
 		int[] cryptText = RSA.decrypt(params, chars);
 
 		StringBuilder result = new StringBuilder();
 
 		for (int i = 0; i < cryptText.length; i++) {
-			result.append(Utils.DezToChar(cryptText[i]));
+			result.append(Utils.convertDezToChar(cryptText[i]));
 		}
 
 		return result.toString();

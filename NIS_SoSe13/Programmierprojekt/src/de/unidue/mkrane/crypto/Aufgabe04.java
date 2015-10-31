@@ -15,7 +15,7 @@ public class Aufgabe04 {
 	}
 
 	public static String getSolution(int ia0) {
-		int[] faktors = Utils.StringToIntArray(Utils.Faktor(ia0), ",");
+		int[] faktors = Utils.splitStringToIntArray(Utils.faktorNumber(ia0), ",");
 
 		for (int i = 0; i < faktors.length; i++) {
 			for (int j = i + 1; j < faktors.length; j++) {
@@ -27,7 +27,7 @@ public class Aufgabe04 {
 			}
 		}
 
-		return Utils.IntArrayToString(faktors, "*");
+		return Utils.buildStringFromArray(faktors, "*");
 	}
 
 	/**

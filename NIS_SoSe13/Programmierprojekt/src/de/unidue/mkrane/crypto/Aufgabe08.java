@@ -16,8 +16,8 @@ public class Aufgabe08 {
 	}
 
 	public static String getSolution(String sa0, String sa1) {
-		String r = DES.GetR(sa0);
-		String l = DES.GetL(sa0);
+		String r = DES.getR(sa0);
+		String l = DES.getL(sa0);
 		r = DES.feistel(r, sa1);
 		return Utils.XOR(l, r);
 	}

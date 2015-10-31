@@ -15,10 +15,10 @@ public class Aufgabe10 {
 	}
 
 	public static String getSolution(String sa0, String sa1) {
-		sa0 = Utils.HexToBin(sa0);
-		sa1 = Utils.HexToBin(sa1);		
+		sa0 = Utils.convertHexToBin(sa0);
+		sa1 = Utils.convertHexToBin(sa1);		
 
-		return Utils.BinToHex(Utils.GF8(sa0, sa1));
+		return Utils.convertBinToHex(Utils.GF8(sa0, sa1));
 	}
 
 	/**

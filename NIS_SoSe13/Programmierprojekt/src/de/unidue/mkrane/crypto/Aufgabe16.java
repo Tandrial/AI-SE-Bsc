@@ -16,11 +16,11 @@ public class Aufgabe16 {
 	}
 
 	public static String getSolution(String sa0) {
-		int[] key = Utils.StringToIntArray(sa0, "_");
+		int[] key = Utils.splitStringToIntArray(sa0, "_");
 
 		key = RC4.initiateSBox(key);
 
-		return Utils.IntArrayToString(key, "_");
+		return Utils.buildStringFromArray(key, "_");
 	}
 
 	/**

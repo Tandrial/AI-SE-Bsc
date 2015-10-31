@@ -11,23 +11,21 @@ public class Vigenere {
 	}
 
 	private static String crypt(String text, String key, boolean decrypt) {
-		String result = "";
+		StringBuilder result = new StringBuilder();
 
 		text = text.toLowerCase();
 		key = key.toLowerCase();
 
 		for (int i = 0; i < text.length(); i++) {
-			result += Caeser(text.charAt(i),
-					key.charAt(Utils.Modulo(i, key.length())), decrypt);
+			result.append(applyCaeser(text.charAt(i), key.charAt(Utils.modulo(i, key.length())), decrypt));
 		}
-		return result;
+		return result.toString();
 	}
 
-	private static char abc[] = { 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j',
-			'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w',
-			'x', 'y', 'z' };
+	private static char abc[] = { 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q',
+			'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z' };
 
-	private static char Caeser(char c, char v, boolean decrypt) {
+	private static char applyCaeser(char c, char v, boolean decrypt) {
 		int pos = 0, a = -1, b = -1;
 
 		for (int i = 0; i < abc.length; i++) {
@@ -42,7 +40,7 @@ public class Vigenere {
 
 		if (decrypt)
 			k = a - b;
-		pos = Utils.Modulo(k, 26);
+		pos = Utils.modulo(k, 26);
 		return abc[pos];
 	}
 

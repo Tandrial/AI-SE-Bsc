@@ -11,7 +11,7 @@ public class AES {
 		}
 
 		for (int i = 4; i < keyschedule[0].length; i++) {
-			if (Utils.Modulo(i, 4) == 0) {
+			if (Utils.modulo(i, 4) == 0) {
 				String[] w_i = getCol(keyschedule, i - 1);
 				w_i = rotWord(w_i);
 				w_i = subByte(w_i, AESD.S);
@@ -124,10 +124,10 @@ public class AES {
 	}
 
 	private static String subByte(String a, String[] LookUp) {
-		int col = Utils.BinToDez(Utils.splitIntoChunksOf(a, 4)[1]);
-		int row = Utils.BinToDez(Utils.splitIntoChunksOf(a, 4)[0]);
+		int col = Utils.convertBinToDez(Utils.splitIntoChunksOf(a, 4)[1]);
+		int row = Utils.convertBinToDez(Utils.splitIntoChunksOf(a, 4)[0]);
 
-		return Utils.HexToBin(LookUp[row * 16 + col]);
+		return Utils.convertHexToBin(LookUp[row * 16 + col]);
 	}
 
 	public static String[][] shiftRows(String[][] sMatrix) {
@@ -182,7 +182,7 @@ public class AES {
 	}
 
 	public static String[][] getStateMatrix(String a) {
-		a = Utils.HexToBin(a);
+		a = Utils.convertHexToBin(a);
 		String[] tmp = Utils.splitIntoChunksOf(a, 8);
 
 		String[][] sMatrix = new String[4][4];
@@ -203,7 +203,7 @@ public class AES {
 
 		for (int i = round * 4; i < (round * 4) + 4; i++)
 			for (int j = 0; j < sMatrix.length; j++)
-				result.append(Utils.BinToHex(sMatrix[j][i]));
+				result.append(Utils.convertBinToHex(sMatrix[j][i]));
 
 		return result.toString();
 	}
@@ -225,8 +225,5 @@ public class AES {
 		System.out.println("Decrypted: " + klar2);
 
 		System.out.println("Equals? " + klar.equals(klar2));
-
-		textblock = AES.decrypt(textblock, keys);
-
 	}
 }
